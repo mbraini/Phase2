@@ -4,5 +4,9 @@ public enum FrameLocations {
     top,
     right,
     bottom,
-    left
+    left,
+    topLeft,
+    topRight,
+    bottomLeft,
+    bottomRight
 }

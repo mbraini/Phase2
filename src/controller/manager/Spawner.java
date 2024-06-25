@@ -7,6 +7,7 @@ import model.objectModel.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.basicEnemies.SquarantineModel;
 import model.objectModel.basicEnemies.TrigorathModel;
+import model.objectModel.normalEnemies.OmenoctModel;
 import model.objectModel.projectiles.EpsilonBulletModel;
 import utils.Helper;
 import utils.Vector;
@@ -16,6 +17,7 @@ import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
 import view.objectViews.basicEnemyView.SquarantineView;
 import view.objectViews.basicEnemyView.TrigorathView;
+import view.objectViews.normalEnemyView.OmenoctView;
 import view.objectViews.projectiles.EpsilonBulletView;
 
 import java.awt.*;
@@ -42,6 +44,9 @@ public abstract class Spawner {
             case squarantine:
                 ModelData.addModel(new SquarantineModel(position ,id));
                 ViewData.addObject(new SquarantineView(position ,id));
+            case omenoct:
+                ModelData.addModel(new OmenoctModel(position ,id));
+                ViewData.addObject(new OmenoctView(position ,id));
         }
     }
 

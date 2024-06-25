@@ -5,5 +5,7 @@ public enum ObjectType {
     squarantine,
     trigorath,
     collective,
-    epsilonBullet
+    epsilonBullet,
+    omenoct,
+    omenoctBullet
 }

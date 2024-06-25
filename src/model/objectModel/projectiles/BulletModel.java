@@ -1,5 +1,14 @@
 package model.objectModel.projectiles;
 
-public class BulletModel extends ProjectileModel {
+import model.interfaces.MoveAble;
+import utils.Math;
+
+public abstract class BulletModel extends ProjectileModel implements MoveAble {
     protected double hp = 1;
+
+    @Override
+    public void move() {
+        velocity = Math.VectorAdd(velocity ,acceleration);
+        position = Math.VectorAdd(position ,velocity);
+    }
 }

@@ -90,18 +90,6 @@ public abstract class Controller {
                 ObjectType.epsilon
         );
 
-        Spawner.addObject(
-                new Vector(Constants.SCREEN_SIZE.width / 3d , Constants.SCREEN_SIZE.height / 3d) ,
-                Helper.RandomStringGenerator(Constants.ID_SIZE) ,
-                ObjectType.trigorath
-        );
-
-        Spawner.addObject(
-                new Vector(Constants.SCREEN_SIZE.width / 4d , Constants.SCREEN_SIZE.height / 4d) ,
-                Helper.RandomStringGenerator(Constants.ID_SIZE) ,
-                ObjectType.squarantine
-        );
-
         Spawner.addFrame(
                 new Vector(
                         Constants.SCREEN_SIZE.width / 2d - Constants.GAME_WIDTH / 2d ,
@@ -118,12 +106,9 @@ public abstract class Controller {
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
 
-        Spawner.addFrame(
-                new Vector(
-                        Constants.SCREEN_SIZE.width / 3d * 2 - Constants.GAME_WIDTH / 3d * 2 ,
-                        Constants.SCREEN_SIZE.height / 2d - Constants.GAME_HEIGHT / 2d),
-                new Dimension(Constants.GAME_WIDTH ,Constants.GAME_HEIGHT),
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
+        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 3d ,Constants.SCREEN_SIZE.height / 3d) ,
+                Helper.RandomStringGenerator(Constants.ID_SIZE),
+                ObjectType.omenoct
         );
 
     }
