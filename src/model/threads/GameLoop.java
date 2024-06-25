@@ -34,6 +34,9 @@ public class GameLoop extends Thread {
     }
 
     private void UpdateModel() {
+
+        ///////concurrent
+
         ArrayList<ObjectModel> models = ModelData.getModels();
         for (ObjectModel model : models){
             if (model instanceof Ability){

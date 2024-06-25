@@ -257,7 +257,7 @@ public class Collision {
         double modelX = point.x;
         double modelY = point.y;
 
-        if (modelX > frameX1 && modelX < frameX2 && modelY > frameY1 && modelY <frameY2){
+        if (modelX >= frameX1 && modelX <= frameX2 && modelY >= frameY1 && modelY <= frameY2){
             return true;
         }
         return false;

@@ -59,6 +59,9 @@ public class FrameThread extends Thread{
     }
 
     private void defineLocalFrames() {
+
+        ///////concurrent
+
         HashMap<ObjectModel ,FrameModel> previousLocals = ModelData.getLocalFrames();
         HashMap<ObjectModel ,FrameModel> newLocals = new HashMap<>();
         for (ObjectModel model : ModelData.getModels()){

@@ -7,8 +7,9 @@ import model.objectModel.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.basicEnemies.SquarantineModel;
 import model.objectModel.basicEnemies.TrigorathModel;
-import model.objectModel.normalEnemies.OmenoctModel;
+import model.objectModel.normalEnemies.omenoctModel.OmenoctModel;
 import model.objectModel.projectiles.EpsilonBulletModel;
+import model.objectModel.projectiles.OmenoctBulletModel;
 import utils.Helper;
 import utils.Vector;
 import view.ViewData;
@@ -19,6 +20,7 @@ import view.objectViews.basicEnemyView.SquarantineView;
 import view.objectViews.basicEnemyView.TrigorathView;
 import view.objectViews.normalEnemyView.OmenoctView;
 import view.objectViews.projectiles.EpsilonBulletView;
+import view.objectViews.projectiles.OmenoctBulletView;
 
 import java.awt.*;
 
@@ -44,9 +46,11 @@ public abstract class Spawner {
             case squarantine:
                 ModelData.addModel(new SquarantineModel(position ,id));
                 ViewData.addObject(new SquarantineView(position ,id));
+                break;
             case omenoct:
                 ModelData.addModel(new OmenoctModel(position ,id));
                 ViewData.addObject(new OmenoctView(position ,id));
+                break;
         }
     }
 
@@ -61,6 +65,16 @@ public abstract class Spawner {
                         )
                 );
                 ViewData.addObject(new EpsilonBulletView(position ,0 ,id));
+                break;
+            case omenoctBullet:
+                ModelData.addModel(new OmenoctBulletModel(
+                        position ,
+                        direction ,
+                        id
+                        )
+                );
+                ViewData.addObject(new OmenoctBulletView(position, 0, id));
+                break;
         }
     }
 

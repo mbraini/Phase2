@@ -1,4 +1,4 @@
-package model.objectModel.normalEnemies.helper;
+package model.objectModel.normalEnemies.omenoctModel;
 
 import data.Constants;
 import model.ModelData;
@@ -11,20 +11,25 @@ import utils.Vector;
 public class OmenoctNavigater {
 
     private Vector position;
-    private Vector velocity;
     private Vector destination;
     private FrameLocations willAttachTo;
 
-    public OmenoctNavigater(Vector position ,Vector velocity){
+    public OmenoctNavigater(Vector position){
         this.position = position;
-        this.velocity = velocity;
+        destination = position.clone();
     }
 
 
 
     public void navigateFrame() {
+
         FrameModel epsilonFrame = ModelData.getLocalFrames().get(ModelData.getModels().getFirst());
-        assert epsilonFrame!= null;
+        if (epsilonFrame == null)
+            return;
+        if (hasArrived(epsilonFrame)){
+            return;
+        }
+
         double top = epsilonFrame.getPosition().getY();
         double bottom = epsilonFrame.getPosition().getY() + epsilonFrame.getSize().height;
         double left = epsilonFrame.getPosition().getX();
@@ -42,48 +47,40 @@ public class OmenoctNavigater {
             );
 
             if (min == topDistance){
-                velocity = Math.VectorWithSize(new Vector(0 ,-1) , Constants.OMENOCT_NAVIGATE_VELOCITY);
                 destination = new Vector(position.x ,top);
                 willAttachTo = FrameLocations.top;
             }
             if (min == bottomDistance){
-                velocity = Math.VectorWithSize(new Vector(0 ,1) ,Constants.OMENOCT_NAVIGATE_VELOCITY);
                 destination = new Vector(position.x ,bottom);
                 willAttachTo = FrameLocations.bottom;
             }
             if (min == leftDistance){
-                velocity = Math.VectorWithSize(new Vector(-1 ,0) ,Constants.OMENOCT_NAVIGATE_VELOCITY);
                 destination = new Vector(left ,position.y);
                 willAttachTo = FrameLocations.left;
             }
             if (min == rightDistance){
-                velocity = Math.VectorWithSize(new Vector(1 ,0) ,Constants.OMENOCT_NAVIGATE_VELOCITY);
                 destination = new Vector(right ,position.y);
                 willAttachTo = FrameLocations.right;
             }
         }
         else {
-            if (position.x > left && position.x < right){
+            if (position.x >= left && position.x <= right){
                 if (topDistance <= bottomDistance){
-                    velocity = Math.VectorWithSize(new Vector(0 ,1) ,Constants.OMENOCT_NAVIGATE_VELOCITY);
                     destination = new Vector(position.x ,top);
                     willAttachTo = FrameLocations.top;
                 }
                 else {
-                    velocity = Math.VectorWithSize(new Vector(0 ,-1) ,Constants.OMENOCT_NAVIGATE_VELOCITY);
                     destination = new Vector(position.x ,bottom);
                     willAttachTo = FrameLocations.bottom;
                 }
                 return;
             }
-            if (position.y > top && position.y < bottom){
-                if (topDistance <= bottomDistance){
-                    velocity = Math.VectorWithSize(new Vector(1 ,0) ,Constants.OMENOCT_NAVIGATE_VELOCITY);
+            if (position.y >= top && position.y <= bottom){
+                if (leftDistance <= rightDistance){
                     destination = new Vector(left ,position.y);
                     willAttachTo = FrameLocations.left;
                 }
                 else {
-                    velocity = Math.VectorWithSize(new Vector(-1 ,0) ,Constants.OMENOCT_NAVIGATE_VELOCITY);
                     destination = new Vector(right ,position.y);
                     willAttachTo = FrameLocations.right;
                 }
@@ -130,45 +127,58 @@ public class OmenoctNavigater {
             );
 
             if (min == topLeftD){
-                velocity = Math.VectorWithSize(
-                        Math.VectorAdd(Math.ScalarInVector(-1 ,position), topLeft) ,
-                        Constants.OMENOCT_NAVIGATE_VELOCITY
-                );
                 destination = topLeft;
                 willAttachTo = FrameLocations.topLeft;
             }
 
             if (min == topRightD){
-                velocity = Math.VectorWithSize(
-                        Math.VectorAdd(Math.ScalarInVector(-1 ,position), topRight) ,
-                        Constants.OMENOCT_NAVIGATE_VELOCITY
-                );
                 destination = topRight;
                 willAttachTo = FrameLocations.topRight;
             }
 
             if (min == bottomLeftD){
-                velocity = Math.VectorWithSize(
-                        Math.VectorAdd(Math.ScalarInVector(-1 ,position), bottomLeft) ,
-                        Constants.OMENOCT_NAVIGATE_VELOCITY
-                );
                 destination = bottomLeft;
                 willAttachTo = FrameLocations.bottomLeft;
             }
 
             if (min == bottomRightD){
-                velocity = Math.VectorWithSize(
-                        Math.VectorAdd(Math.ScalarInVector(-1 ,position), bottomRight) ,
-                        Constants.OMENOCT_NAVIGATE_VELOCITY
-                );
                 destination = bottomRight;
                 willAttachTo = FrameLocations.bottomRight;
             }
         }
     }
 
-    public Vector getVelocity() {
-        return velocity;
+    private boolean hasArrived(FrameModel epsilonFrame) {
+        Vector topLeft = epsilonFrame.getPosition().clone();
+        Vector topRight = Math.VectorAdd(
+                epsilonFrame.getPosition() ,
+                new Vector(epsilonFrame.getSize().width, 0)
+        );
+        Vector bottomRight = Math.VectorAdd(
+                epsilonFrame.getPosition() ,
+                new Vector(epsilonFrame.getSize().width, epsilonFrame.getSize().height)
+        );
+
+        Vector bottomLeft = Math.VectorAdd(
+                epsilonFrame.getPosition() ,
+                new Vector(0, epsilonFrame.getSize().height)
+        );
+
+        if (position.Equals(topLeft) || position.Equals(topRight) ||
+                position.Equals(bottomLeft) || position.Equals(bottomRight)){
+            return true;
+        }
+
+        if (position.x == topLeft.x && position.y > topLeft.y && position.y < bottomLeft.y)
+            return true;
+        if (position.x == topRight.x && position.y > topRight.y && position.y < bottomRight.y)
+            return true;
+        if (position.y == topLeft.y && position.x > topLeft.x && position.x < topRight.x)
+            return true;
+        if (position.y == bottomLeft.y && position.x > topLeft.x && position.x < topRight.x)
+            return true;
+
+        return false;
     }
 
 

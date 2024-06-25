@@ -1,17 +1,13 @@
-package model.objectModel.normalEnemies;
+package model.objectModel.normalEnemies.omenoctModel;
 
 import controller.enums.ObjectType;
 import controller.manager.Spawner;
 import data.Constants;
-import model.GameState;
 import model.ModelData;
-import model.collision.Collision;
 import model.interfaces.*;
 import model.objectModel.EpsilonModel;
 import model.objectModel.frameModel.FrameLocations;
-import model.objectModel.frameModel.FrameModel;
-import model.objectModel.normalEnemies.helper.OmenoctNavigater;
-import model.objectModel.projectiles.EpsilonBulletModel;
+import model.objectModel.normalEnemies.NormalEnemyModel;
 import utils.Helper;
 import utils.Math;
 import utils.Vector;
@@ -35,26 +31,6 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         this.id = id;
         this.HP = 20;
         omega = Constants.ENEMY_ROTATION_SPEED;
-
-        shooter = new Timer(Constants.OMENOCT_FIRING_TIME, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                EpsilonModel epsilon = (EpsilonModel) ModelData.getModels().getFirst();
-                Vector direction = Math.VectorAdd(
-                        Math.ScalarInVector(-1 ,position),
-                        epsilon.getPosition()
-                );
-                String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
-                Vector bulletPosition = Math.VectorAdd(
-                        position,
-                        Math.VectorWithSize(
-                                direction ,
-                                Constants.OMENOCT_BULLET_RADIOUS + Constants.OMENOCT_RADIOS
-                        )
-                );
-                Spawner.addProjectile(bulletPosition ,direction , ObjectType.omenoctBullet);
-            }
-        });
     }
 
 
@@ -65,37 +41,53 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
 
     @Override
     public void ability() {
-        OmenoctNavigater navigater = new OmenoctNavigater(position ,velocity);
+        OmenoctNavigater navigater = new OmenoctNavigater(position);
+
         navigater.navigateFrame();
-        velocity = navigater.getVelocity();
         destination = navigater.getDestination();
         willAttachTo = navigater.getWillAttachTo();
+        setNavigationVelocity();
 
         checkAttached();
+    }
 
-        if (frameLocation != null){
-            shooter.start();
-        }
-        else {
-            shooter.stop();
-        }
+    private void setNavigationVelocity() {
+        assert destination!= null;
+        velocity = Math.VectorWithSize(
+                Math.VectorAdd(
+                        Math.ScalarInVector(-1 ,position),
+                        destination
+                )
+                ,Constants.OMENOCT_NAVIGATE_VELOCITY
+        );
     }
 
     private void checkAttached() {
+        if (willAttachTo == null)
+            return;
         if (Math.VectorSize(Math.VectorAdd(
                 Math.ScalarInVector(-1 ,position),
                 destination
-        )) <= Constants.OMENOCT_NAVIGATE_VELOCITY){
+        )) <= Constants.OMENOCT_NAVIGATE_VELOCITY * Constants.UPS){
             position = destination.clone();
+            velocity = new Vector();
         }
         if (destination.Equals(position)){
             frameLocation = willAttachTo;
+            setUpShooter();
         }
         else {
             frameLocation = null;
+            if (shooter != null){
+                shooter.stop();
+            }
         }
     }
 
+    private void setUpShooter() {
+        shooter = new Timer(Constants.OMENOCT_FIRING_TIME ,new OmenoctShooter(position));
+        shooter.start();
+    }
 
 
     @Override

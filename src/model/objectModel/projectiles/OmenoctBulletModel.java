@@ -9,7 +9,7 @@ public class OmenoctBulletModel extends BulletModel implements IsCircle {
 
     public OmenoctBulletModel(Vector position , Vector direction , String id){
         this.position = position;
-        this.velocity = Math.VectorWithSize(direction , Constants.OMENOCT_NAVIGATE_VELOCITY);
+        this.velocity = Math.VectorWithSize(direction , Constants.OMENOCT_BULLET_VELOCITY);
         this.acceleration = new Vector(0 ,0);
         this.id = id;
         this.HP = 1;

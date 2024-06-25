@@ -111,6 +111,16 @@ public abstract class Controller {
                 ObjectType.omenoct
         );
 
+        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 4d ,Constants.SCREEN_SIZE.height / 2d) ,
+                Helper.RandomStringGenerator(Constants.ID_SIZE),
+                ObjectType.omenoct
+        );
+
+        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 10) ,
+                Helper.RandomStringGenerator(Constants.ID_SIZE),
+                ObjectType.omenoct
+        );
+
     }
 
     public static void threadsStarter() {

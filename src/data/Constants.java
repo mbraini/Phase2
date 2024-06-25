@@ -17,6 +17,7 @@ public class Constants {
     public static final int SQURANTINE_DAMAGE = 10;
     public static final int OMENOCT_FIRING_TIME = 1000;
     public static final double OMENOCT_NAVIGATE_VELOCITY = 0.1;
+    public static final double OMENOCT_BULLET_VELOCITY = 6;
     public static final double OMENOCT_RADIOS = 30;
     public static final double OMENOCT_BULLET_RADIOUS = 8;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
