@@ -1,0 +1,18 @@
+package view.objectViews;
+
+import data.Constants;
+
+import java.awt.*;
+
+public class EpsilonVertexView extends ObjectView{
+    @Override
+    public void draw(Graphics2D g2d) {
+        g2d.setColor(Color.WHITE);
+        g2d.fillOval(
+                (int) position.x - Constants.EPSILON_VERTICES_RADIOS + Constants.SCREEN_SIZE.width ,
+                (int) position.y - Constants.EPSILON_VERTICES_RADIOS + Constants.SCREEN_SIZE.height,
+                Constants.EPSILON_VERTICES_RADIOS * 2 ,
+                Constants.EPSILON_VERTICES_RADIOS * 2
+        );
+    }
+}
