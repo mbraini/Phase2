@@ -8,6 +8,7 @@ public abstract class ObjectView {
     protected String id;
     protected Vector position;
     protected double theta;
+    protected boolean hovering;
     abstract public void draw(Graphics2D g2d);
 
     public String getId() {
@@ -32,5 +33,13 @@ public abstract class ObjectView {
 
     public void setTheta(double theta) {
         this.theta = theta;
+    }
+
+    public boolean isHovering() {
+        return hovering;
+    }
+
+    public void setHovering(boolean hovering) {
+        this.hovering = hovering;
     }
 }

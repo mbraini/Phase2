@@ -7,5 +7,7 @@ public enum ObjectType {
     collective,
     epsilonBullet,
     omenoct,
-    omenoctBullet
+    omenoctBullet,
+    necropick,
+    necropickBullet
 }

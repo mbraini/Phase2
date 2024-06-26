@@ -103,4 +103,23 @@ public class ViewData {
     public static void setLocalViews(HashMap<ObjectView, FrameView> localViews) {
         ViewData.localViews = localViews;
     }
+
+    public static void removeView(String id) {
+        for (ObjectView view : views){
+            if (view.getId().equals(id)) {
+                views.remove(view);
+                return;
+            }
+        }
+    }
+
+    public static void removeFrame(String id) {
+        for (int i = 0; i < frames.size(); i++){
+            if (frames.get(i).getId().equals(id)){
+                frames.remove(i);
+                panels.remove(i);
+                return;
+            }
+        }
+    }
 }

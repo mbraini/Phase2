@@ -2,6 +2,7 @@ package model.objectModel.projectiles;
 
 import data.Constants;
 import model.interfaces.IsCircle;
+import model.logics.Impact;
 import utils.Math;
 import utils.Vector;
 
@@ -11,6 +12,9 @@ public class OmenoctBulletModel extends BulletModel implements IsCircle {
         this.position = position;
         this.velocity = Math.VectorWithSize(direction , Constants.OMENOCT_BULLET_VELOCITY);
         this.acceleration = new Vector(0 ,0);
+
+        setSolid(false);
+
         this.id = id;
         this.HP = 1;
     }
@@ -23,5 +27,10 @@ public class OmenoctBulletModel extends BulletModel implements IsCircle {
     @Override
     public Vector getCenter() {
         return position;
+    }
+
+    @Override
+    public void die() {
+        new Impact(position).MakeImpact();
     }
 }

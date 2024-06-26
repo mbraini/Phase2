@@ -94,4 +94,9 @@ public class EpsilonModel extends ObjectModel implements MoveAble, IsCircle, Has
         EpsilonModel.vertices = vertices;
     }
 
+    @Override
+    public void die() {
+        //////////////// endGame
+        //////todo
+    }
 }

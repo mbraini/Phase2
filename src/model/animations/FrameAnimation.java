@@ -27,7 +27,7 @@ public class FrameAnimation extends Animation{
         rightAcceleration = -2 * right / (Math.pow(this.time ,2));
         leftAcceleration = -2 * left / (Math.pow(this.time ,2));
         this.frame.setUpDownV(-this.time * upAcceleration ,-this.time * downAcceleration);
-        this.frame.setLeftRightV(-this.time * rightAcceleration ,-this.time * leftAcceleration);
+        this.frame.setLeftRightV(-this.time * leftAcceleration ,-this.time * rightAcceleration);
         timer = new Timer((int) this.time, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -47,7 +47,7 @@ public class FrameAnimation extends Animation{
     @Override
     public void StartAnimation() {
         frame.setUpDownA(new Vector(upAcceleration ,downAcceleration));
-        frame.setLeftRightA(new Vector(rightAcceleration ,leftAcceleration));
+        frame.setLeftRightA(new Vector(leftAcceleration ,rightAcceleration));
         frame.setResizing(true);
         timer.start();
     }

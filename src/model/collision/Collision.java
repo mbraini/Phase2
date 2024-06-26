@@ -9,12 +9,14 @@ import model.objectModel.frameModel.FrameModel;
 import model.objectModel.projectiles.BulletModel;
 import utils.Helper;
 import utils.Math;
+import utils.Pair;
 import utils.Vector;
 
 import java.util.ArrayList;
 
 public class Collision {
-    Vector collisionPoint;
+    private Vector collisionPoint;
+    private static ArrayList<Pair> collisionPairs = new ArrayList<>();
 
     public static boolean IsColliding(ObjectModel a , ObjectModel b){
         if (a instanceof IsPolygon && b instanceof IsPolygon){
@@ -55,6 +57,26 @@ public class Collision {
             );
         }
         model.setPosition(Math.VectorAdd(model.getPosition() ,solution));
+    }
+
+    public static void resetPairs() {
+        collisionPairs = new ArrayList<>();
+    }
+
+    public static void checkCollisions(ArrayList<ObjectModel> models){
+        for (int i = 0; i < models.size() ; i++){
+            for (int j = 0 ;j < models.size() ;j++){
+                if (i == j)
+                    continue;
+                Pair pair = new Pair(i ,j);
+                if (Pair.Contains(collisionPairs ,pair))
+                    continue;
+                if (Collision.IsColliding(models.get(i) ,models.get(j))){
+                    new Collision().CollisionResponse(models.get(i) ,models.get(j));
+                    collisionPairs.add(new Pair(i ,j));
+                }
+            }
+        }
     }
 
     public void CollisionResponse(ObjectModel a, ObjectModel b) {

@@ -121,4 +121,8 @@ public class TrigorathModel extends BasicEnemyModel implements HasVertices, IsPo
         isImpacted = impact;
     }
 
+    @Override
+    public void die() {
+        //////////collectives
+    }
 }

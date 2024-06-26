@@ -38,7 +38,7 @@ public class EpsilonAiming implements MouseListener {
             if (clickedPoint.Equals(epsilon.getPosition()))
                 return;
             Vector direction = Math.VectorAdd(Math.ScalarInVector(-1 ,epsilon.getPosition()) ,clickedPoint);
-            Vector position = Math.VectorAdd(Math.VectorWithSize(direction ,Constants.BULLET_DIAMETER / 2 + Constants.EPSILON_DIMENSION.width) ,epsilon.getPosition());
+            Vector position = Math.VectorAdd(Math.VectorWithSize(direction ,Constants.EPSILON_BULLET_DIAMETER / 2 + Constants.EPSILON_DIMENSION.width) ,epsilon.getPosition());
             int constant = -1;
         Spawner.addProjectile(position, direction , ObjectType.epsilonBullet);
             for (int i = 0; i < extraAim ;i++) {

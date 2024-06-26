@@ -21,6 +21,8 @@ public abstract class ObjectModel {
         return position;
     }
 
+    public abstract void die();
+
     public void setPosition(double x ,double y) {
         this.position.setX(x);
         this.position.setY(y);

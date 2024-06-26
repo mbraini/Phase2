@@ -1,12 +1,18 @@
+
 package model.threads;
 
 import data.Constants;
 import model.GameState;
 import model.ModelData;
 import model.collision.Collision;
+import model.logics.FrameHit;
 import model.logics.Impact;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
+import model.objectModel.projectiles.BulletModel;
+import model.objectModel.projectiles.EpsilonBulletModel;
+import utils.FrameCalculationHelper;
+import utils.Math;
 import utils.Vector;
 
 import java.util.ArrayList;
@@ -15,6 +21,8 @@ import java.util.HashMap;
 public class FrameThread extends Thread{
 
     private ArrayList<FrameModel> frames;
+    private ArrayList<ObjectModel> models;
+    private HashMap<ObjectModel ,FrameModel> localFrames;
 
     public FrameThread(){
         frames = new ArrayList<>();
@@ -38,16 +46,38 @@ public class FrameThread extends Thread{
     }
 
     private void updateFrames() {
+        synchronized (ModelData.getModels()) {
+            localFrames = (HashMap<ObjectModel, FrameModel>) ModelData.getLocalFrames().clone();
+            models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
+            frames = (ArrayList<FrameModel>) ModelData.getFrames().clone();
+        }
         defineLocalFrames();
+        synchronized (ModelData.getModels()) {
+            localFrames = (HashMap<ObjectModel, FrameModel>) ModelData.getLocalFrames().clone();
+        }
+        checkBullets();
         checkSolids();
-        resize();
+        resize(frames);
+    }
+
+    private void checkBullets() {
+        for (ObjectModel model : models){
+            if (model.isSolid() && model instanceof BulletModel){
+                if (FrameCalculationHelper.findClosestDistanceToFrameEdges(
+                        model.getPosition(),
+                        localFrames.get(model)
+                ) <= Math.VectorSize(model.getVelocity()) * Constants.UPS + 1){
+                    new FrameHit(localFrames.get(model) ,model).handle();
+                    model.die();
+                }
+            }
+        }
     }
 
     private void checkSolids() {
         /////todo
-        ArrayList<ObjectModel> models = ModelData.getModels();
         for (ObjectModel model : models){
-            FrameModel frame = ModelData.getLocalFrames().get(model);
+            FrameModel frame = localFrames.get(model);
             if (frame == null)
                 continue;
             if (model.isSolid() && !Collision.isFullyInFrame(model ,frame)){
@@ -61,10 +91,8 @@ public class FrameThread extends Thread{
     private void defineLocalFrames() {
 
         ///////concurrent
-
-        HashMap<ObjectModel ,FrameModel> previousLocals = ModelData.getLocalFrames();
         HashMap<ObjectModel ,FrameModel> newLocals = new HashMap<>();
-        for (ObjectModel model : ModelData.getModels()){
+        for (ObjectModel model : models){
             ArrayList<FrameModel> modelFrames = defineFrame(model);
             if (modelFrames.isEmpty()){
                 newLocals.put(model ,null);
@@ -73,8 +101,8 @@ public class FrameThread extends Thread{
                 newLocals.put(model ,modelFrames.getFirst());
             }
             else {
-                if (modelFrames.contains(previousLocals.get(model))){
-                    newLocals.put(model ,previousLocals.get(model));
+                if (modelFrames.contains(localFrames.get(model))){
+                    newLocals.put(model ,localFrames.get(model));
                 }
                 else {
                     newLocals.put(model ,modelFrames.getFirst());
@@ -84,8 +112,7 @@ public class FrameThread extends Thread{
         ModelData.setLocalFrames(newLocals);
     }
 
-    private void resize() {
-        ArrayList<FrameModel> frameModels = ModelData.getFrames();
+    private void resize(ArrayList<FrameModel> frameModels) {
         for (FrameModel frame : frameModels){
             if (!frame.isIsometric()){
                 frame.move();

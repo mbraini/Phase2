@@ -92,4 +92,8 @@ public class SquarantineModel extends BasicEnemyModel implements HasVertices, Is
         isImpacted = impact;
     }
 
+    @Override
+    public void die() {
+        ////////collectives
+    }
 }

@@ -1,10 +1,10 @@
 package model.objectModel.normalEnemies.omenoctModel;
 
-import data.Constants;
 import model.ModelData;
 import model.collision.Collision;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.frameModel.FrameModel;
+import utils.FrameCalculationHelper;
 import utils.Math;
 import utils.Vector;
 
@@ -22,47 +22,40 @@ public class OmenoctNavigater {
 
 
     public void navigateFrame() {
-
         FrameModel epsilonFrame = ModelData.getLocalFrames().get(ModelData.getModels().getFirst());
-        if (epsilonFrame == null)
-            return;
-        if (hasArrived(epsilonFrame)){
-            return;
-        }
 
         double top = epsilonFrame.getPosition().getY();
         double bottom = epsilonFrame.getPosition().getY() + epsilonFrame.getSize().height;
         double left = epsilonFrame.getPosition().getX();
         double right = epsilonFrame.getPosition().getX() + epsilonFrame.getSize().width;
-
         double topDistance = java.lang.Math.abs(position.y - top);
         double bottomDistance = java.lang.Math.abs(position.y - bottom);
         double leftDistance = java.lang.Math.abs(position.x - left);
         double rightDistance = java.lang.Math.abs(position.x - right);
 
+        if (epsilonFrame == null)
+            return;
+        if (hasArrived(epsilonFrame)){
+            return;
+        }
         if (Collision.isInFrame(epsilonFrame, position)){
-            double min = java.lang.Math.min(
-                    java.lang.Math.min(leftDistance ,rightDistance),
-                    java.lang.Math.min(topDistance ,bottomDistance)
-            );
-
-            if (min == topDistance){
-                destination = new Vector(position.x ,top);
-                willAttachTo = FrameLocations.top;
-            }
-            if (min == bottomDistance){
-                destination = new Vector(position.x ,bottom);
-                willAttachTo = FrameLocations.bottom;
-            }
-            if (min == leftDistance){
-                destination = new Vector(left ,position.y);
-                willAttachTo = FrameLocations.left;
-            }
-            if (min == rightDistance){
-                destination = new Vector(right ,position.y);
-                willAttachTo = FrameLocations.right;
+            willAttachTo = FrameCalculationHelper.findClosestLocalFrameLocation(epsilonFrame ,position);
+            switch (willAttachTo){
+                case top :
+                    destination = new Vector(position.x ,top);
+                    return;
+                case bottom:
+                    destination = new Vector(position.x ,bottom);
+                    return;
+                case left:
+                    destination = new Vector(left ,position.y);
+                    return;
+                case right:
+                    destination = new Vector(right ,position.y);
+                    return;
             }
         }
+
         else {
             if (position.x >= left && position.x <= right){
                 if (topDistance <= bottomDistance){

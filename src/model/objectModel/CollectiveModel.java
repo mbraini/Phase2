@@ -62,4 +62,9 @@ public class CollectiveModel extends ObjectModel implements IsCircle, Ability, M
         double yMoved = ((2 * velocity.y - acceleration.y * Constants.UPS) / 2) * Constants.UPS;
         setPosition(position.x + xMoved ,position.y + yMoved);
     }
+
+    @Override
+    public void die() {
+        ///////////////addXP
+    }
 }

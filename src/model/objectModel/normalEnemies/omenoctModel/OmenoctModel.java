@@ -47,7 +47,6 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         destination = navigater.getDestination();
         willAttachTo = navigater.getWillAttachTo();
         setNavigationVelocity();
-
         checkAttached();
     }
 
@@ -85,6 +84,9 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
     }
 
     private void setUpShooter() {
+        if (shooter != null){
+            shooter.stop();
+        }
         shooter = new Timer(Constants.OMENOCT_FIRING_TIME ,new OmenoctShooter(position));
         shooter.start();
     }
@@ -118,5 +120,10 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         theta = theta + thetaMoved;
         if (this instanceof HasVertices)
             ((HasVertices) this).UpdateVertices(xMoved ,yMoved ,thetaMoved);
+    }
+
+    @Override
+    public void die() {
+        //////////////collective
     }
 }

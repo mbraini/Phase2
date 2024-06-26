@@ -33,4 +33,8 @@ public class EpsilonVertexModel extends ObjectModel implements IsCircle {
         position = Math.RotateByTheta(origin ,epsilon.getPosition() ,theta);
     }
 
+    @Override
+    public void die() {
+        ////////////doNothing
+    }
 }

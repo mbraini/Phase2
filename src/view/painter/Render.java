@@ -7,6 +7,7 @@ import controller.listeners.EpsilonMovement;
 import data.Constants;
 import utils.Vector;
 import view.ViewData;
+import view.ViewRequest;
 import view.gamePanels.ImaginaryPanel;
 import view.objectViews.FrameView;
 import view.objectViews.ObjectView;
@@ -27,6 +28,7 @@ public class Render extends Thread {
             lastTime = now;
             if (deltaPaint >= Constants.FPS) {
                 Controller.updateView();
+                ViewRequest.checkRequests();
                 paint();
                 deltaPaint = 0;
             }

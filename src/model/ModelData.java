@@ -43,4 +43,22 @@ public class ModelData {
     public static void setLocalFrames(HashMap<ObjectModel, FrameModel> localFrames) {
         ModelData.localFrames = localFrames;
     }
+
+    public static void removeModel(String id) {
+        for (ObjectModel model : models){
+            if (model.getId().equals(id)){
+                models.remove(model);
+                return;
+            }
+        }
+    }
+
+    public static void removeFrame(String id) {
+        for (FrameModel frameModel : frames){
+            if (frameModel.getId().equals(id)){
+                frames.remove(frameModel);
+                return;
+            }
+        }
+    }
 }

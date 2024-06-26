@@ -21,10 +21,10 @@ public class OmenoctView extends NormalEnemyView{
         );
         g2d.drawImage(
                 Constants.omenoct ,
-                (int) position.getX() - Constants.EPSILON_DIMENSION.width / 2 + Constants.SCREEN_SIZE.width ,
-                (int) position.getY() - Constants.EPSILON_DIMENSION.height / 2 + Constants.SCREEN_SIZE.height,
-                Constants.EPSILON_DIMENSION.width ,
-                Constants.EPSILON_DIMENSION.height ,
+                (int) position.getX() - Constants.OMENOCT_DIMENTION.width / 2 + Constants.SCREEN_SIZE.width ,
+                (int) position.getY() - Constants.OMENOCT_DIMENTION.height / 2 + Constants.SCREEN_SIZE.height,
+                Constants.OMENOCT_DIMENTION.width ,
+                Constants.OMENOCT_DIMENTION.height ,
                 null
         );
         g2d.rotate(

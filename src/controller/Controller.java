@@ -4,6 +4,7 @@ import controller.enums.ObjectType;
 import controller.manager.GameManager;
 import controller.manager.Spawner;
 import data.Constants;
+import model.ModelRequests;
 import model.threads.FrameThread;
 import model.threads.GameLoop;
 import model.GameState;
@@ -13,6 +14,7 @@ import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
 import utils.Helper;
 import utils.Vector;
+import view.ViewRequest;
 import view.ViewData;
 import view.objectViews.FrameView;
 import view.objectViews.ObjectView;
@@ -39,20 +41,21 @@ public abstract class Controller {
             ObjectModel model = ModelData.getModels().get(i);
             views.get(i).setPosition(model.getPosition());
             views.get(i).setTheta(model.getTheta());
+            views.get(i).setHovering(model.isHovering());
 
-            FrameModel frameModel = ModelData.getLocalFrames().get(model);
-            if (ModelData.getLocalFrames().get(model) != null){
-                locals.put(
-                        ViewData.getViews().get(ModelData.getModels().indexOf(model)),
-                        ViewData.getFrames().get(ModelData.getFrames().indexOf(frameModel))
-                );
-            }
-            else {
-                locals.put(
-                        ViewData.getViews().get(ModelData.getModels().indexOf(model)),
-                        null
-                );
-            }
+//            FrameModel frameModel = ModelData.getLocalFrames().get(model);
+//            if (ModelData.getLocalFrames().get(model) != null && ModelData.getLocalFrames().containsKey(model)){
+//                locals.put(
+//                        ViewData.getViews().get(ModelData.getModels().indexOf(model)),
+//                        ViewData.getFrames().get(ModelData.getFrames().indexOf(frameModel))
+//                );
+//            }
+//            else {
+//                locals.put(
+//                        ViewData.getViews().get(ModelData.getModels().indexOf(model)),
+//                        null
+//                );
+//            }
         }
 
 
@@ -61,6 +64,15 @@ public abstract class Controller {
         ViewData.setLocalViews(locals);
 
         setVariables();
+    }
+
+    public static void removeObject(ObjectModel model) {
+        ModelRequests.removeObjectModelReq.add(model.getId());
+        ViewRequest.removeObjectViewReq.add(model.getId());
+    }
+
+    public static void sendViewUpdates() {
+
     }
 
     private void updateObjectViews(){
@@ -98,14 +110,6 @@ public abstract class Controller {
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
 
-        Spawner.addFrame(
-                new Vector(
-                        Constants.SCREEN_SIZE.width / 3d - Constants.GAME_WIDTH / 2d ,
-                        Constants.SCREEN_SIZE.height / 3d - Constants.GAME_HEIGHT / 2d),
-                new Dimension(Constants.GAME_WIDTH ,Constants.GAME_HEIGHT),
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
-        );
-
         Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 3d ,Constants.SCREEN_SIZE.height / 3d) ,
                 Helper.RandomStringGenerator(Constants.ID_SIZE),
                 ObjectType.omenoct
@@ -119,6 +123,10 @@ public abstract class Controller {
         Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 10) ,
                 Helper.RandomStringGenerator(Constants.ID_SIZE),
                 ObjectType.omenoct
+        );
+        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 150) ,
+                Helper.RandomStringGenerator(Constants.ID_SIZE),
+                ObjectType.necropick
         );
 
     }

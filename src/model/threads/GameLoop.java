@@ -1,16 +1,15 @@
 package model.threads;
 
 
+import controller.Controller;
 import data.Constants;
 import model.GameState;
 import model.ModelData;
+import model.ModelRequests;
 import model.collision.Collision;
 import model.interfaces.Ability;
-import model.interfaces.ImpactAble;
 import model.interfaces.MoveAble;
 import model.objectModel.ObjectModel;
-import model.objectModel.basicEnemies.BasicEnemyModel;
-import utils.Pair;
 
 import java.util.ArrayList;
 
@@ -34,10 +33,19 @@ public class GameLoop extends Thread {
     }
 
     private void UpdateModel() {
-
         ///////concurrent
+        synchronized (ModelData.getModels()) {
+            ModelRequests.checkRequests();
+            Controller.sendViewUpdates();
+        }
+        ArrayList<ObjectModel> models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
+        interfaceObjects(models);
+        Collision.resetPairs();
+        Collision.checkCollisions(models);
 
-        ArrayList<ObjectModel> models = ModelData.getModels();
+    }
+
+    private void interfaceObjects(ArrayList<ObjectModel> models) {
         for (ObjectModel model : models){
             if (model instanceof Ability){
                 if (((Ability) model).hasAbility())
@@ -46,23 +54,6 @@ public class GameLoop extends Thread {
             if (model instanceof MoveAble)
                 ((MoveAble) model).move();
         }
-
-        ArrayList<Pair> collisions = new ArrayList<>();
-        for (int i = 0 ;i < ModelData.getModels().size() ;i++){
-            for (int j = 0 ;j < ModelData.getModels().size() ;j++){
-                if (i == j)
-                    continue;
-                Pair pair = new Pair(i ,j);
-                if (Pair.Contains(collisions ,pair))
-                    continue;
-                if (Collision.IsColliding(ModelData.getModels().get(i) ,ModelData.getModels().get(j))){
-                    new Collision().CollisionResponse(ModelData.getModels().get(i) ,ModelData.getModels().get(j));
-                    collisions.add(new Pair(i ,j));
-                }
-            }
-        }
-
-
     }
 
 
