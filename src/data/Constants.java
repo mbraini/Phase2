@@ -26,6 +26,7 @@ public class Constants {
     public static final Dimension NECROPICK_DIMENSION = new Dimension(50 ,50);
     public static final Dimension OMENOCT_DIMENTION = new Dimension(50 ,50);
     public static final Object NECROPCIK_BULLET_RADIOS = 5;
+    public static final Dimension ARCHMIRE_DIMENSION = new Dimension(100 ,100);
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);
