@@ -9,5 +9,7 @@ public enum ObjectType {
     omenoct,
     omenoctBullet,
     necropick,
-    necropickBullet
+    necropickBullet,
+    archmirePoint,
+    archmire
 }

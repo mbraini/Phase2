@@ -39,9 +39,16 @@ public class GameLoop extends Thread {
             Controller.sendViewUpdates();
         }
         ArrayList<ObjectModel> models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
-        interfaceObjects(models);
-        Collision.resetPairs();
-        Collision.checkCollisions(models);
+
+        for (int i = 0 ;i < models.size() ;i++){
+            if (models.get(i).getId() == null){
+                System.out.println("NULL :(");
+            }
+        }
+
+            interfaceObjects(models);
+//        Collision.resetPairs();
+//        Collision.checkCollisions(models);
 
     }
 

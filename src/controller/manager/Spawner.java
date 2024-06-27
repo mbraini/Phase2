@@ -3,10 +3,13 @@ package controller.manager;
 import controller.enums.ObjectType;
 import data.Constants;
 import model.ModelData;
+import model.ModelRequests;
 import model.objectModel.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.basicEnemies.SquarantineModel;
 import model.objectModel.basicEnemies.TrigorathModel;
+import model.objectModel.normalEnemies.archmireModel.ArchmireModel;
+import model.objectModel.normalEnemies.archmireModel.ArchmirePointModel;
 import model.objectModel.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.normalEnemies.omenoctModel.OmenoctModel;
 import model.objectModel.projectiles.EpsilonBulletModel;
@@ -23,6 +26,8 @@ import view.objectViews.basicEnemyView.SquarantineView;
 import view.objectViews.basicEnemyView.TrigorathView;
 import view.objectViews.normalEnemyView.NecropickView;
 import view.objectViews.normalEnemyView.OmenoctView;
+import view.objectViews.normalEnemyView.archmireView.ArchmirePointView;
+import view.objectViews.normalEnemyView.archmireView.ArchmireView;
 import view.objectViews.projectiles.EpsilonBulletView;
 import view.objectViews.projectiles.NecropickBulletView;
 import view.objectViews.projectiles.OmenoctBulletView;
@@ -31,62 +36,69 @@ import java.awt.*;
 
 public abstract class Spawner {
 
-    public static void addFrame(Vector position , Dimension size ,String id){
+    public synchronized static void addFrame(Vector position , Dimension size ,String id){
         ModelData.addFrame(new FrameModel(position ,size ,id));
 
         ViewData.addFrame(new FrameView(position ,size ,id));
         ViewData.addImaginaryPanel(new ImaginaryPanel(ViewData.getFrames().getLast().getId()));
     }
 
-    public static void addObject(Vector position , String id , ObjectType objectType){
+    public synchronized static void addObject(Vector position , String id , ObjectType objectType){
         switch (objectType) {
             case epsilon:
-                ModelData.addModel(new EpsilonModel(position, id));
-                ViewData.addObject(new EpsilonView(position, id));
+                ModelRequests.addObjectModel(new EpsilonModel(position, id));
+                ViewRequest.addObjectView(new EpsilonView(position, id));
                 break;
             case trigorath:
-                ModelData.addModel(new TrigorathModel(position, id));
-                ViewData.addObject(new TrigorathView(position, id));
+                ModelRequests.addObjectModel(new TrigorathModel(position, id));
+                ViewRequest.addObjectView(new TrigorathView(position, id));
                 break;
             case squarantine:
-                ModelData.addModel(new SquarantineModel(position, id));
-                ViewData.addObject(new SquarantineView(position, id));
+                ModelRequests.addObjectModel(new SquarantineModel(position, id));
+                ViewRequest.addObjectView(new SquarantineView(position, id));
                 break;
             case omenoct:
-                ModelData.addModel(new OmenoctModel(position, id));
-                ViewData.addObject(new OmenoctView(position, id));
+                ModelRequests.addObjectModel(new OmenoctModel(position, id));
+                ViewRequest.addObjectView(new OmenoctView(position, id));
                 break;
             case necropick:
-                ModelData.addModel(new NecropickModel(position ,id));
-                ViewData.addObject(new NecropickView(position ,id));
+                ModelRequests.addObjectModel(new NecropickModel(position ,id));
+                ViewRequest.addObjectView(new NecropickView(position ,id));
+                break;
+            case archmire:
+                ModelRequests.addObjectModel(new ArchmireModel(position ,id));
+                ViewRequest.addObjectView(new ArchmireView(position ,id));
+            case archmirePoint:
+                ModelRequests.addObjectModel(new ArchmirePointModel(position ,id));
+                ViewRequest.addObjectView(new ArchmirePointView(position ,id));
                 break;
         }
     }
 
-    public static void addProjectile(Vector position ,Vector direction ,ObjectType objectType){
+    public synchronized static void addProjectile(Vector position ,Vector direction ,ObjectType objectType){
         String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
         switch (objectType) {
             case epsilonBullet:
-                ModelData.addModel(new EpsilonBulletModel(
+                ModelRequests.addObjectModel(new EpsilonBulletModel(
                                 position,
                                 direction,
                                 id
                         )
                 );
-                ViewData.addObject(new EpsilonBulletView(position, 0, id));
+                ViewRequest.addObjectView(new EpsilonBulletView(position, 0, id));
                 break;
             case omenoctBullet:
-                ModelData.addModel(new OmenoctBulletModel(
+                ModelRequests.addObjectModel(new OmenoctBulletModel(
                                 position,
                                 direction,
                                 id
                         )
                 );
-                ViewData.addObject(new OmenoctBulletView(position, 0, id));
+                ViewRequest.addObjectView(new OmenoctBulletView(position, 0, id));
                 break;
             case necropickBullet:
-                ModelData.addModel(new NecropickBulletModel(position ,direction ,id));
-                ViewData.addObject(new NecropickBulletView(position ,0 ,id));
+                ModelRequests.addObjectModel(new NecropickBulletModel(position ,direction ,id));
+                ViewRequest.addObjectView(new NecropickBulletView(position ,0 ,id));
                 break;
         }
     }

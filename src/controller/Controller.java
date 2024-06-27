@@ -5,6 +5,7 @@ import controller.manager.GameManager;
 import controller.manager.Spawner;
 import data.Constants;
 import model.ModelRequests;
+import model.objectModel.EpsilonModel;
 import model.threads.FrameThread;
 import model.threads.GameLoop;
 import model.GameState;
@@ -16,6 +17,8 @@ import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
 import view.ViewData;
+import view.gamePanels.ImaginaryPanel;
+import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
 import view.objectViews.ObjectView;
 import view.painter.Render;
@@ -27,48 +30,52 @@ import java.util.HashMap;
 public abstract class Controller {
 
     public static void updateView(){
-        ArrayList<ObjectView> views = ViewData.getViews();
-        ArrayList<FrameView> frames = ViewData.getFrames();
+        ArrayList<ObjectView> objectViews =(ArrayList<ObjectView>) ViewData.getViews().clone();
+        ArrayList<FrameView> frameViews =(ArrayList<FrameView>) ViewData.getFrames().clone();
+        ArrayList<ObjectModel> objectModels =(ArrayList<ObjectModel>) ModelData.getModels().clone();
+        ArrayList<FrameModel> frameModels =(ArrayList<FrameModel>) ModelData.getFrames().clone();
+
         HashMap<ObjectView ,FrameView> locals = new HashMap<>();
 
-        for (int i = 0 ;i < ModelData.getFrames().size() ;i++){
-            FrameModel frame = ModelData.getFrames().get(i);
-            frames.get(i).setPosition(frame.getPosition());
-            frames.get(i).setDimension(frame.getSize());
+        for (int i = 0 ;i < frameViews.size() ;i++){
+            int index = -1;
+            for (int j = 0 ;j < frameModels.size() ;j++){
+                if (frameModels.get(j).getId().equals(frameViews.get(i).getId()))
+                    index = j;
+            }
+            if (index == -1)
+                continue;
+
+            FrameModel frame = frameModels.get(index);
+            frameViews.get(i).setPosition(frame.getPosition());
+            frameViews.get(i).setDimension(frame.getSize());
         }
 
-        for (int i = 0 ;i < ModelData.getModels().size() ;i++){
-            ObjectModel model = ModelData.getModels().get(i);
-            views.get(i).setPosition(model.getPosition());
-            views.get(i).setTheta(model.getTheta());
-            views.get(i).setHovering(model.isHovering());
-
-//            FrameModel frameModel = ModelData.getLocalFrames().get(model);
-//            if (ModelData.getLocalFrames().get(model) != null && ModelData.getLocalFrames().containsKey(model)){
-//                locals.put(
-//                        ViewData.getViews().get(ModelData.getModels().indexOf(model)),
-//                        ViewData.getFrames().get(ModelData.getFrames().indexOf(frameModel))
-//                );
-//            }
-//            else {
-//                locals.put(
-//                        ViewData.getViews().get(ModelData.getModels().indexOf(model)),
-//                        null
-//                );
-//            }
+        for (int i = 0 ;i < objectViews.size() ;i++){
+            int index = -1;
+            for (int j = 0 ;j < objectModels.size() ;j++){
+                if (objectModels.get(j).getId().equals(objectViews.get(i).getId()))
+                    index = j;
+            }
+            if (index == -1)
+                continue;
+            ObjectModel model = objectModels.get(index);
+            objectViews.get(i).setPosition(model.getPosition());
+            objectViews.get(i).setTheta(model.getTheta());
+            objectViews.get(i).setHovering(model.isHovering());
         }
 
 
-        ViewData.setViews(views);
-        ViewData.setFrames(frames);
-        ViewData.setLocalViews(locals);
+        ViewData.setViews(objectViews);
+        ViewData.setFrames(frameViews);
+//        ViewData.setLocalViews(locals);
 
         setVariables();
     }
 
-    public static void removeObject(ObjectModel model) {
-        ModelRequests.removeObjectModelReq.add(model.getId());
-        ViewRequest.removeObjectViewReq.add(model.getId());
+    public synchronized static void removeObject(ObjectModel model) {
+        ModelRequests.removeObjectModel(model.getId());
+        ViewRequest.removeObjectView(model.getId());
     }
 
     public static void sendViewUpdates() {
@@ -96,37 +103,39 @@ public abstract class Controller {
     }
 
     private static void addEpsilonAndFrame() {
-        Spawner.addObject(
-                        new Vector(Constants.SCREEN_SIZE.width / 2d , Constants.SCREEN_SIZE.height / 2d) ,
-                        Helper.RandomStringGenerator(Constants.ID_SIZE) ,
-                ObjectType.epsilon
+        EpsilonModel epsilon = new EpsilonModel(
+                new Vector(Constants.SCREEN_SIZE.width / 2d ,
+                        Constants.SCREEN_SIZE.height / 2d
+                )
+                ,Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
+        ModelData.addModel(epsilon);
+        ViewData.addObject(new EpsilonView(epsilon.getPosition() ,epsilon.getId()));
 
-        Spawner.addFrame(
+        FrameModel frameModel = new FrameModel(
                 new Vector(
-                        Constants.SCREEN_SIZE.width / 2d - Constants.GAME_WIDTH / 2d ,
-                        Constants.SCREEN_SIZE.height / 2d - Constants.GAME_HEIGHT / 2d),
+                    Constants.SCREEN_SIZE.width / 2d - Constants.GAME_WIDTH / 2d ,
+                    Constants.SCREEN_SIZE.height / 2d - Constants.GAME_HEIGHT / 2d
+                ),
                 new Dimension(Constants.GAME_WIDTH ,Constants.GAME_HEIGHT),
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
-
-        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 3d ,Constants.SCREEN_SIZE.height / 3d) ,
-                Helper.RandomStringGenerator(Constants.ID_SIZE),
-                ObjectType.omenoct
+        ModelData.addFrame(frameModel);
+        ViewData.addFrame(new FrameView(
+                frameModel.getPosition(),
+                frameModel.getSize(),
+                frameModel.getId())
         );
+        ViewData.addImaginaryPanel(new ImaginaryPanel(frameModel.getId()));
 
-        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 4d ,Constants.SCREEN_SIZE.height / 2d) ,
-                Helper.RandomStringGenerator(Constants.ID_SIZE),
-                ObjectType.omenoct
-        );
-
-        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 10) ,
-                Helper.RandomStringGenerator(Constants.ID_SIZE),
-                ObjectType.omenoct
-        );
         Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 150) ,
                 Helper.RandomStringGenerator(Constants.ID_SIZE),
-                ObjectType.necropick
+                ObjectType.archmire
+        );
+
+        Spawner.addFrame(new Vector(Constants.SCREEN_SIZE.width / 3d ,Constants.SCREEN_SIZE.height / 3d),
+                new Dimension(Constants.GAME_WIDTH ,Constants.GAME_HEIGHT),
+                Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
 
     }

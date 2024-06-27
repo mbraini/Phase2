@@ -1,9 +1,7 @@
 package view.gamePanels;
 
-import controller.listeners.EpsilonAiming;
 import data.Constants;
 import model.GameState;
-import utils.Vector;
 import view.ViewData;
 import view.objectViews.FrameView;
 import view.objectViews.ObjectView;

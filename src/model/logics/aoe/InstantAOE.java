@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class InstantAOE extends AOE{
     @Override
-    void dealDamage(ArrayList<ObjectModel> models) {
+    public void dealDamage(ArrayList<ObjectModel> models) {
 
     }
 }

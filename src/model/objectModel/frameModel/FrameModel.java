@@ -28,6 +28,7 @@ public class FrameModel implements MoveAble {
     public FrameModel(Vector positionInit ,Dimension dimensionInit ,String id){
         this.position = positionInit;
         this.size = dimensionInit;
+        this.id = id;
         this.positionInit = positionInit;
         this.dimensionInit = dimensionInit;
     }

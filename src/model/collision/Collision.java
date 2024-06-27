@@ -237,7 +237,7 @@ public class Collision {
         return answer;
     }
 
-    private static boolean IsInPolygon(IsPolygon polygon ,Vector a){
+    public static boolean IsInPolygon(IsPolygon polygon ,Vector a){
         int num_vertices = polygon.getVertices().size();
         double x = a.x, y = a.y;
         boolean inside = false;

@@ -6,5 +6,5 @@ import java.util.ArrayList;
 
 public abstract class AOE {
     protected double damage;
-    abstract void dealDamage(ArrayList<ObjectModel> models);
+    public abstract void dealDamage(ArrayList<ObjectModel> models);
 }
