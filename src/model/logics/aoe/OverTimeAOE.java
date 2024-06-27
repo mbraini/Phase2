@@ -1,20 +1,17 @@
 package model.logics.aoe;
 
 import controller.Controller;
-import model.ModelRequests;
 import model.objectModel.ObjectModel;
 import model.objectModel.effectModel.EffectModel;
 
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class OverTimeAOE extends AOE{
-    private ArrayList<EffectModel> points;
+    private ArrayList<EffectModel> shapes;
     private ArrayList<Double> times;
 
     public OverTimeAOE(){
-        points = new ArrayList<>();
+        shapes = new ArrayList<>();
         times = new ArrayList<>();
     }
 
@@ -23,26 +20,26 @@ public class OverTimeAOE extends AOE{
 
     }
 
-    public void removePointOverTime(double time){
-        for (int i = 0; i < points.size() ;i++){
+    public void removeShapeOverTime(double time){
+        for (int i = 0; i < shapes.size() ; i++){
             if (times.get(i) >= time){
-                Controller.removeEffect(points.get(i));
+                Controller.removeEffect(shapes.get(i));
                 times.remove(i);
-                points.remove(i);
+                shapes.remove(i);
                 i--;
             }
         }
     }
 
-    public void addPoint(EffectModel point){
-        points.add(point);
+    public void addShape(EffectModel point){
+        shapes.add(point);
         times.add(0d);
     }
 
     public int indexOfPoint(ObjectModel point){
-        for (int i = 0; i < points.size() ;i++){
-            if (points.get(i).getPosition().x == point.getPosition().x
-                    && points.get(i).getPosition().y == point.getPosition().y)
+        for (int i = 0; i < shapes.size() ; i++){
+            if (shapes.get(i).getPosition().x == point.getPosition().x
+                    && shapes.get(i).getPosition().y == point.getPosition().y)
                 return i;
         }
         return -1;
@@ -54,12 +51,12 @@ public class OverTimeAOE extends AOE{
         return false;
     }
 
-    public ArrayList<EffectModel> getPoints() {
-        return points;
+    public ArrayList<EffectModel> getShapes() {
+        return shapes;
     }
 
-    public void setPoints(ArrayList<EffectModel> points) {
-        this.points = points;
+    public void setShapes(ArrayList<EffectModel> shapes) {
+        this.shapes = shapes;
     }
 
     public ArrayList<Double> getTimes() {

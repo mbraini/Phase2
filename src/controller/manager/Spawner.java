@@ -1,6 +1,5 @@
 package controller.manager;
 
-import controller.enums.EffectType;
 import controller.enums.ObjectType;
 import data.Constants;
 import model.ModelData;
@@ -10,7 +9,7 @@ import model.objectModel.frameModel.FrameModel;
 import model.objectModel.basicEnemies.SquarantineModel;
 import model.objectModel.basicEnemies.TrigorathModel;
 import model.objectModel.normalEnemies.archmireModel.ArchmireModel;
-import model.objectModel.normalEnemies.archmireModel.ArchmirePointModel;
+import model.objectModel.normalEnemies.archmireModel.ArchmireEffectModel;
 import model.objectModel.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.normalEnemies.omenoctModel.OmenoctModel;
 import model.objectModel.projectiles.EpsilonBulletModel;
@@ -27,7 +26,7 @@ import view.objectViews.basicEnemyView.SquarantineView;
 import view.objectViews.basicEnemyView.TrigorathView;
 import view.objectViews.normalEnemyView.NecropickView;
 import view.objectViews.normalEnemyView.OmenoctView;
-import view.objectViews.normalEnemyView.archmireView.ArchmirePointView;
+import view.objectViews.normalEnemyView.archmireView.ArchmireEffectView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireView;
 import view.objectViews.projectiles.EpsilonBulletView;
 import view.objectViews.projectiles.NecropickBulletView;
@@ -116,18 +115,10 @@ public abstract class Spawner {
         }
     }
 
-    public synchronized static void addEffectWithId(Vector position , EffectType effectType ,String id){
-        switch (effectType){
-            case archmirePoint:
-                ModelRequests.addEffectModel(new ArchmirePointModel(position ,id));
-                ViewRequest.addEffectView(new ArchmirePointView(position ,id));
-                break;
-        }
-    }
-
-    public synchronized static void addEffect(Vector position ,EffectType effectType){
-        String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
-        addEffectWithId(position ,effectType ,id);
+    public synchronized static void addArchmireEffect(ArchmireEffectModel archmireEffectModel){
+        String id = archmireEffectModel.getId();
+        ModelRequests.addEffectModel(archmireEffectModel);
+        ViewRequest.addEffectView(new ArchmireEffectView(archmireEffectModel.getArea() ,id));
     }
 
 }

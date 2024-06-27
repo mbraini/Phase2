@@ -86,7 +86,7 @@ public abstract class Controller {
                     if (index == -1)
                         continue;
                     EffectModel effectModel = effectModels.get(index);
-                    effectViews.get(i).setPosition(effectModel.getPosition());
+                    effectViews.get(i).setArea(effectModel.getArea());
                     effectViews.get(i).setTheta(effectModel.getTheta());
                     effectViews.get(i).setColor(effectModel.getColor());
                 }
@@ -165,9 +165,17 @@ public abstract class Controller {
         );
         ViewData.addImaginaryPanel(new ImaginaryPanel(frameModel.getId()));
 
-        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 150),
+        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
                 ObjectType.archmire
         );
+
+//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d - 150 ,Constants.SCREEN_SIZE.height / 2d - 150),
+//                ObjectType.archmire
+//        );
+//
+//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ObjectType.archmire
+//        );
 
         Spawner.addFrame(new Vector(Constants.SCREEN_SIZE.width / 3d ,Constants.SCREEN_SIZE.height / 3d),
                 new Dimension(Constants.GAME_WIDTH ,Constants.GAME_HEIGHT)

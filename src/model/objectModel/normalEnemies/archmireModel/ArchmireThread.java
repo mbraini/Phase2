@@ -1,16 +1,12 @@
 package model.objectModel.normalEnemies.archmireModel;
 
-import controller.enums.EffectType;
 import controller.manager.Spawner;
 import data.Constants;
 import model.GameState;
 import model.ModelData;
-import model.collision.Collision;
-import model.interfaces.IsPolygon;
 import model.objectModel.ObjectModel;
 import model.objectModel.effectModel.EffectModel;
 import utils.Helper;
-import utils.Vector;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -48,7 +44,7 @@ public class ArchmireThread extends Thread{
             models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
             effects = (ArrayList<EffectModel>) ModelData.getEffectModels().clone();
         }
-        addNewPoints();
+        addNewShapes();
         addTimeToPoints();
         checkTimeLimit();
         setColors();
@@ -56,12 +52,12 @@ public class ArchmireThread extends Thread{
     }
 
     private void setColors() {
-        for (int i = 0; i < archmire.getAOE().getPoints().size() ;i++){
+        for (int i = 0; i < archmire.getAOE().getShapes().size() ; i++){
             int R = (int)
                     (255 - (255d/Constants.ARCHMIRE_AOE_TIME_LIMIT) * archmire.getAOE().getTimes().get(i)
                     );
-            archmire.getAOE().getPoints().get(i).setColor(new Color(R ,0 ,0));
-            setEffectColor(archmire.getAOE().getPoints().get(i));
+            archmire.getAOE().getShapes().get(i).setColor(new Color(R ,0 ,0));
+            setEffectColor(archmire.getAOE().getShapes().get(i));
         }
 
     }
@@ -90,41 +86,15 @@ public class ArchmireThread extends Thread{
     }
 
     private void checkTimeLimit() {
-        archmire.getAOE().removePointOverTime(Constants.ARCHMIRE_AOE_TIME_LIMIT);
+        archmire.getAOE().removeShapeOverTime(Constants.ARCHMIRE_AOE_TIME_LIMIT);
     }
 
-    private void addNewPoints() {
-        ArrayList<EffectModel> pointsInArchmire = getPointsInArchmire();
-        for (EffectModel point : pointsInArchmire){
-            if (archmire.getAOE().containsPoint(point)){
-                int index = archmire.getAOE().indexOfPoint(point);
-                archmire.getAOE().getTimes().set(index ,0d);
-            }
-            else {
-                archmire.getAOE().addPoint(point);
-                Spawner.addEffectWithId(point.getPosition(), EffectType.archmirePoint ,point.getId());
-            }
-        }
+    private void addNewShapes() {
+        ArchmireEffectModel archmireEffectModel = new ArchmireEffectModel(archmire ,
+                Helper.RandomStringGenerator(Constants.ID_SIZE)
+        );
+        archmire.getAOE().addShape(archmireEffectModel);
+        Spawner.addArchmireEffect(archmireEffectModel);
     }
 
-    private ArrayList<EffectModel> getPointsInArchmire() {
-        ArrayList<EffectModel> newPoints = new ArrayList<>();
-        double xS = archmire.getPosition().x - Constants.ARCHMIRE_DIMENSION.width / 2d;
-        double xE = archmire.getPosition().x + Constants.ARCHMIRE_DIMENSION.width / 2d;
-        double yS = archmire.getPosition().y - Constants.ARCHMIRE_DIMENSION.height / 2d;
-        double yE = archmire.getPosition().y + Constants.ARCHMIRE_DIMENSION.height / 2d;
-        for (int i = (int) xS ;i < (int) xE ;i++){
-            for (int j = (int) yS ;j < (int) yE ;j++){
-                if (Collision.IsInPolygon((IsPolygon) archmire ,new Vector(i ,j))){
-                    newPoints.add(new ArchmirePointModel(
-                            new Vector(i ,j),
-                            Helper.RandomStringGenerator(Constants.ID_SIZE))
-                    );
-                }
-                j+=(int) Constants.ARCHMIRE_POINT_RADIOS;
-            }
-            i+=(int) Constants.ARCHMIRE_POINT_RADIOS;
-        }
-        return newPoints;
-    }
 }
