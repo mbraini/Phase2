@@ -5,14 +5,16 @@ import model.GameState;
 import view.ViewData;
 import view.objectViews.FrameView;
 import view.objectViews.ObjectView;
+import view.objectViews.effectView.EffectView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class ImaginaryPanel extends JPanel {
-    private ArrayList<ObjectView> views;
+    private ArrayList<ObjectView> views = new ArrayList<>();
     private FrameView epsilonFrame;
+    private ArrayList<EffectView> effectViews = new ArrayList<>();
     private String id;
     public ImaginaryPanel(String id){
         this.setLayout(null);
@@ -26,6 +28,17 @@ public class ImaginaryPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        if (effectViews == null)
+            return;
+
+        Graphics2D g2d = (Graphics2D) g;
+        for (int i = 0; i < effectViews.size() ;i++){
+            if (effectViews.get(i) == null)
+                System.out.println("NULL IN PAINTER :(");
+            effectViews.get(i).draw(g2d);
+        }
+
         if (epsilonFrame != null) {
             g.setColor(Color.MAGENTA);
             g.setFont(new Font(null, Font.BOLD, 10));
@@ -50,7 +63,6 @@ public class ImaginaryPanel extends JPanel {
             );
         }
 
-        Graphics2D g2d = (Graphics2D) g;
         if (views == null)
             return;
         for (int i = 0 ;i < views.size() ;i++){
@@ -67,4 +79,9 @@ public class ImaginaryPanel extends JPanel {
         FrameView epsilonFrame = ViewData.getLocalViews().get(ViewData.getViews().getFirst());
         this.epsilonFrame = epsilonFrame;
     }
+
+    public void setEffects(ArrayList<EffectView> effectViews){
+        this.effectViews = effectViews;
+    }
+
 }

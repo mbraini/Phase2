@@ -1,5 +1,6 @@
 package model;
 
+import model.objectModel.effectModel.EffectModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
 
@@ -11,6 +12,7 @@ public class ModelData {
     private static ArrayList<FrameModel> frames = new ArrayList<>();
     private static ArrayList<ObjectModel> models = new ArrayList<>();
     private static HashMap<ObjectModel ,FrameModel> localFrames = new HashMap<>();
+    private static ArrayList<EffectModel> effectModels = new ArrayList<>();
 
     public static ArrayList<FrameModel> getFrames() {
         return frames;
@@ -44,6 +46,14 @@ public class ModelData {
         ModelData.localFrames = localFrames;
     }
 
+    public static ArrayList<EffectModel> getEffectModels() {
+        return effectModels;
+    }
+
+    public static void setEffectModels(ArrayList<EffectModel> effectModels) {
+        ModelData.effectModels = effectModels;
+    }
+
     public static void removeModel(String id) {
         for (ObjectModel model : models){
             if (model.getId().equals(id)){
@@ -60,5 +70,18 @@ public class ModelData {
                 return;
             }
         }
+    }
+
+    public static void removeEffect(String id){
+        for (EffectModel effectModel : effectModels){
+            if (effectModel.getId().equals(id)){
+                effectModels.remove(effectModel);
+                return;
+            }
+        }
+    }
+
+    public static void addEffect(EffectModel effectModel) {
+        effectModels.add(effectModel);
     }
 }

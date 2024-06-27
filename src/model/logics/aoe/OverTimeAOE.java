@@ -3,13 +3,14 @@ package model.logics.aoe;
 import controller.Controller;
 import model.ModelRequests;
 import model.objectModel.ObjectModel;
+import model.objectModel.effectModel.EffectModel;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class OverTimeAOE extends AOE{
-    private ArrayList<ObjectModel> points;
+    private ArrayList<EffectModel> points;
     private ArrayList<Double> times;
 
     public OverTimeAOE(){
@@ -25,7 +26,7 @@ public class OverTimeAOE extends AOE{
     public void removePointOverTime(double time){
         for (int i = 0; i < points.size() ;i++){
             if (times.get(i) >= time){
-                Controller.removeObject(points.get(i));
+                Controller.removeEffect(points.get(i));
                 times.remove(i);
                 points.remove(i);
                 i--;
@@ -33,7 +34,7 @@ public class OverTimeAOE extends AOE{
         }
     }
 
-    public void addPoint(ObjectModel point){
+    public void addPoint(EffectModel point){
         points.add(point);
         times.add(0d);
     }
@@ -53,11 +54,11 @@ public class OverTimeAOE extends AOE{
         return false;
     }
 
-    public ArrayList<ObjectModel> getPoints() {
+    public ArrayList<EffectModel> getPoints() {
         return points;
     }
 
-    public void setPoints(ArrayList<ObjectModel> points) {
+    public void setPoints(ArrayList<EffectModel> points) {
         this.points = points;
     }
 

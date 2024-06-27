@@ -29,7 +29,7 @@ public class Constants {
     public static final Dimension ARCHMIRE_DIMENSION = new Dimension(100 ,100);
     public static final int ARCHMIRE_AOE_TIME_LIMIT = 5000;
     public static final int ARCHMIRE_THREAD_REFRESH_RATE = ARCHMIRE_AOE_TIME_LIMIT / 50;
-    public static final double ARCHMIRE_VELOCITY = 0.5;
+    public static final double ARCHMIRE_VELOCITY = 0.1;
     public static final int ARCHMIRE_POINT_RADIOS = 20;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);

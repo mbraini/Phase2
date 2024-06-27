@@ -6,6 +6,7 @@ import controller.listeners.EpsilonMovement;
 import view.objectViews.FrameView;
 import view.objectViews.ObjectView;
 import view.gamePanels.ImaginaryPanel;
+import view.objectViews.effectView.EffectView;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class ViewData {
     private static ArrayList<FrameView> frames = new ArrayList<>();
     private static ArrayList<ObjectView> views = new ArrayList<>();
     private static HashMap<ObjectView ,FrameView> localViews = new HashMap<>();
+    private static ArrayList<EffectView> effectViews = new ArrayList<>();
     private static double time;
     private static double hp;
     private static double xp;
@@ -104,6 +106,14 @@ public class ViewData {
         ViewData.localViews = localViews;
     }
 
+    public static ArrayList<EffectView> getEffectViews() {
+        return effectViews;
+    }
+
+    public static void setEffectViews(ArrayList<EffectView> effectViews) {
+        ViewData.effectViews = effectViews;
+    }
+
     public static void removeView(String id) {
         for (ObjectView view : views){
             if (view.getId().equals(id)) {
@@ -121,5 +131,18 @@ public class ViewData {
                 return;
             }
         }
+    }
+
+    public static void removeEffect(String id){
+        for (int i = 0 ;i < effectViews.size() ;i++){
+            if (effectViews.get(i).getId().equals(id)){
+                effectViews.remove(i);
+                return;
+            }
+        }
+    }
+
+    public static void addEffect(EffectView effectView) {
+        effectViews.add(effectView);
     }
 }

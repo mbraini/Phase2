@@ -1,7 +1,6 @@
 package model.objectModel.normalEnemies.archmireModel;
 
-import controller.Controller;
-import controller.enums.ObjectType;
+import controller.enums.EffectType;
 import controller.manager.Spawner;
 import data.Constants;
 import model.GameState;
@@ -9,14 +8,17 @@ import model.ModelData;
 import model.collision.Collision;
 import model.interfaces.IsPolygon;
 import model.objectModel.ObjectModel;
+import model.objectModel.effectModel.EffectModel;
 import utils.Helper;
 import utils.Vector;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class ArchmireThread extends Thread{
     private double time;
     private ArrayList<ObjectModel> models;
+    private ArrayList<EffectModel> effects;
     private ArchmireModel archmire;
     ArchmireThread(ArchmireModel archmire){
         this.archmire = archmire;
@@ -44,11 +46,32 @@ public class ArchmireThread extends Thread{
     private void updateAOE() {
         synchronized (ModelData.getModels()) {
             models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
+            effects = (ArrayList<EffectModel>) ModelData.getEffectModels().clone();
         }
         addNewPoints();
         addTimeToPoints();
         checkTimeLimit();
+        setColors();
         checkForDamage();
+    }
+
+    private void setColors() {
+        for (int i = 0; i < archmire.getAOE().getPoints().size() ;i++){
+            int R = (int)
+                    (255 - (255d/Constants.ARCHMIRE_AOE_TIME_LIMIT) * archmire.getAOE().getTimes().get(i)
+                    );
+            archmire.getAOE().getPoints().get(i).setColor(new Color(R ,0 ,0));
+            setEffectColor(archmire.getAOE().getPoints().get(i));
+        }
+
+    }
+
+    private void setEffectColor(EffectModel effectModel) {
+        for (EffectModel effect : effects){
+            if (effect.getId().equals(effectModel.getId())){
+                effect.setColor(effectModel.getColor());
+            }
+        }
     }
 
     private void addTimeToPoints() {
@@ -71,21 +94,21 @@ public class ArchmireThread extends Thread{
     }
 
     private void addNewPoints() {
-        ArrayList<ObjectModel> pointsInArchmire = getPointsInArchmire();
-        for (ObjectModel point : pointsInArchmire){
+        ArrayList<EffectModel> pointsInArchmire = getPointsInArchmire();
+        for (EffectModel point : pointsInArchmire){
             if (archmire.getAOE().containsPoint(point)){
                 int index = archmire.getAOE().indexOfPoint(point);
                 archmire.getAOE().getTimes().set(index ,0d);
             }
             else {
                 archmire.getAOE().addPoint(point);
-                Spawner.addObject(point.getPosition() ,point.getId() , ObjectType.archmirePoint);
+                Spawner.addEffectWithId(point.getPosition(), EffectType.archmirePoint ,point.getId());
             }
         }
     }
 
-    private ArrayList<ObjectModel> getPointsInArchmire() {
-        ArrayList<ObjectModel> newPoints = new ArrayList<>();
+    private ArrayList<EffectModel> getPointsInArchmire() {
+        ArrayList<EffectModel> newPoints = new ArrayList<>();
         double xS = archmire.getPosition().x - Constants.ARCHMIRE_DIMENSION.width / 2d;
         double xE = archmire.getPosition().x + Constants.ARCHMIRE_DIMENSION.width / 2d;
         double yS = archmire.getPosition().y - Constants.ARCHMIRE_DIMENSION.height / 2d;

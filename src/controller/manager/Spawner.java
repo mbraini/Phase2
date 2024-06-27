@@ -1,5 +1,6 @@
 package controller.manager;
 
+import controller.enums.EffectType;
 import controller.enums.ObjectType;
 import data.Constants;
 import model.ModelData;
@@ -36,14 +37,20 @@ import java.awt.*;
 
 public abstract class Spawner {
 
-    public synchronized static void addFrame(Vector position , Dimension size ,String id){
+    public synchronized static void addFrame(Vector position , Dimension size){
+        String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
+        addFrameWithId(position ,size ,id);
+    }
+
+    public synchronized static void addFrameWithId(Vector position ,Dimension size ,String id){
         ModelData.addFrame(new FrameModel(position ,size ,id));
 
         ViewData.addFrame(new FrameView(position ,size ,id));
         ViewData.addImaginaryPanel(new ImaginaryPanel(ViewData.getFrames().getLast().getId()));
     }
 
-    public synchronized static void addObject(Vector position , String id , ObjectType objectType){
+
+    public synchronized static void addObjectWithId(Vector position, ObjectType objectType ,String id){
         switch (objectType) {
             case epsilon:
                 ModelRequests.addObjectModel(new EpsilonModel(position, id));
@@ -68,15 +75,21 @@ public abstract class Spawner {
             case archmire:
                 ModelRequests.addObjectModel(new ArchmireModel(position ,id));
                 ViewRequest.addObjectView(new ArchmireView(position ,id));
-            case archmirePoint:
-                ModelRequests.addObjectModel(new ArchmirePointModel(position ,id));
-                ViewRequest.addObjectView(new ArchmirePointView(position ,id));
                 break;
         }
     }
 
+    public synchronized static void addObject(Vector position ,ObjectType objectType){
+        addObjectWithId(position ,objectType ,Helper.RandomStringGenerator(Constants.ID_SIZE));
+    }
+
+
     public synchronized static void addProjectile(Vector position ,Vector direction ,ObjectType objectType){
         String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
+        addProjectileWithId(position ,direction ,objectType ,id);
+    }
+
+    public synchronized static void addProjectileWithId(Vector position ,Vector direction ,ObjectType objectType ,String id){
         switch (objectType) {
             case epsilonBullet:
                 ModelRequests.addObjectModel(new EpsilonBulletModel(
@@ -101,6 +114,20 @@ public abstract class Spawner {
                 ViewRequest.addObjectView(new NecropickBulletView(position ,0 ,id));
                 break;
         }
+    }
+
+    public synchronized static void addEffectWithId(Vector position , EffectType effectType ,String id){
+        switch (effectType){
+            case archmirePoint:
+                ModelRequests.addEffectModel(new ArchmirePointModel(position ,id));
+                ViewRequest.addEffectView(new ArchmirePointView(position ,id));
+                break;
+        }
+    }
+
+    public synchronized static void addEffect(Vector position ,EffectType effectType){
+        String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
+        addEffectWithId(position ,effectType ,id);
     }
 
 }

@@ -1,10 +1,13 @@
 package model.objectModel.normalEnemies.archmireModel;
 
-import model.objectModel.ObjectModel;
+import model.objectModel.effectModel.EffectModel;
 import utils.Vector;
 
-public class ArchmirePointModel extends ObjectModel {
+import java.awt.*;
+
+public class ArchmirePointModel extends EffectModel {
     public ArchmirePointModel(Vector position , String id){
+        this.color = Color.RED;
         this.id = id;
         this.position = position;
     }
