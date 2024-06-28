@@ -42,7 +42,7 @@ public class Constants {
     public static final int WYRM_THREAD_REFRESH_RATE = WYRM_CIRCULAR_T / WYRM_THETA_UPDATE_COUNT;
     public static final double WYRM_BULLET_VELOCITY = 0.4;
     public static final int BLACK_ORB_SPAWN_DELAY = 1000;
-    public static final double BLACK_ORB_DISTANCE = 300;
+    public static final double BLACK_ORB_DISTANCE = 400;
     public static final Dimension BLACK_ORB_FRAME_DIMENSION = new Dimension(100 ,100);
     public static final double BLACK_ORB_DIAGONAL_SIZE = BLACK_ORB_DISTANCE / (2 * Math.sin(Math.toRadians(36)));
     public static final Dimension ORB_DIMENSION = new Dimension(40 ,40);

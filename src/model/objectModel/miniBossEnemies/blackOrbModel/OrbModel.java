@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class OrbModel extends MiniBossModel implements IsCircle {
 
     private ArrayList<BlackOrbLaserModel> connectedLasers = new ArrayList<>();
-    private ArrayList<Integer> connectedOrbIndexes = new ArrayList<>();
 
     public OrbModel(Vector position ,String id){
         this.position = position;
@@ -40,9 +39,8 @@ public class OrbModel extends MiniBossModel implements IsCircle {
         return position;
     }
 
-    public void addLaser(BlackOrbLaserModel laserModel ,int index){
+    public void addLaser(BlackOrbLaserModel laserModel){
         connectedLasers.add(laserModel);
-        connectedOrbIndexes.add(index);
     }
 
 }

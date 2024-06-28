@@ -50,7 +50,7 @@ public class BlackOrbThread extends Thread{
         for (int i = 0 ;i < orbs.size() ;i++){
             if (i == index - 1)
                 continue;
-            OrbModel orbModelNumber1 = orbs.get(i);
+            OrbModel orbModelNumberi = orbs.get(i);
             OrbModel orbModelNumberIndex = orbs.get(index - 1);
 
             OverTimeAOE aoe = new OverTimeAOE();
@@ -59,14 +59,16 @@ public class BlackOrbThread extends Thread{
                     Helper.RandomStringGenerator(Constants.ID_SIZE)
             );
             BlackOrbLaserEffectModel effectModel = new BlackOrbLaserEffectModel(
-                    orbModelNumber1 ,
+                    orbModelNumberi,
                     orbModelNumberIndex ,
                     laserModel.getId()
             );
-            aoe.addShape(effectModel);
+            laserModel.getAoe().addShape(effectModel);
 
+            blackOrbModel.addLaser(laserModel);
+            orbModelNumberi.addLaser(laserModel);
+            orbModelNumberIndex.addLaser(laserModel);
             Spawner.addBlackOrbEffectModel(effectModel);
         }
-
     }
 }

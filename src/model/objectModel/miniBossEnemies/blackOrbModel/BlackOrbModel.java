@@ -4,6 +4,7 @@ import data.Constants;
 import model.objectModel.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.miniBossEnemies.MiniBossModel;
+import model.objectModel.projectiles.BlackOrbLaserModel;
 import utils.Vector;
 
 import javax.swing.*;
@@ -16,6 +17,7 @@ public class BlackOrbModel {
     private BlackOrbThread blackOrbThread;
     private ArrayList<OrbModel> orbModels;
     private ArrayList<FrameModel> frameModels;
+    private ArrayList<BlackOrbLaserModel> lasers;
     private Vector center;
     private boolean allFramesSpawned;
     private boolean allOrbsSpawned;
@@ -25,6 +27,7 @@ public class BlackOrbModel {
     public BlackOrbModel(Vector center){
         frameModels = new ArrayList<>();
         orbModels = new ArrayList<>();
+        lasers = new ArrayList<>();
         blackOrbThread = new BlackOrbThread(this);
         this.center = center;
     }
@@ -121,5 +124,17 @@ public class BlackOrbModel {
 
     public void setBlackOrbThread(BlackOrbThread blackOrbThread) {
         this.blackOrbThread = blackOrbThread;
+    }
+
+    public ArrayList<BlackOrbLaserModel> getLasers() {
+        return lasers;
+    }
+
+    public void setLasers(ArrayList<BlackOrbLaserModel> lasers) {
+        this.lasers = lasers;
+    }
+
+    public void addLaser(BlackOrbLaserModel laserModel) {
+        lasers.add(laserModel);
     }
 }

@@ -35,7 +35,7 @@ public class Render extends Thread {
             if (deltaPaint >= Constants.FPS) {
                 ViewRequest.checkRequests();
                 ////////null problems
-                checkIfNull();
+//                checkIfNull();
                 /////////////////
                 Controller.updateView();
                 paint();
