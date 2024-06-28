@@ -59,6 +59,12 @@ public abstract class Controller {
                     FrameModel frame = frameModels.get(index);
                     frameViews.get(i).setPosition(frame.getPosition());
                     frameViews.get(i).setDimension(frame.getSize());
+                    frameViews.get(i).setDimension(
+                            new Dimension(
+                                    frame.getSize().width + Constants.barD.width,
+                                    frame.getSize().height + Constants.barD.height
+                            )
+                    );
                 }
 
                 for (int i = 0; i < objectViews.size(); i++) {
