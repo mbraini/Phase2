@@ -1,7 +1,7 @@
 package model;
 
 import model.objectModel.ObjectModel;
-import model.objectModel.effectModel.EffectModel;
+import model.objectModel.EffectModel;
 import model.objectModel.frameModel.FrameModel;
 
 import java.util.ArrayList;

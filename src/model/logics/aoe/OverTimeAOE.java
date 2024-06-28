@@ -2,7 +2,7 @@ package model.logics.aoe;
 
 import controller.Controller;
 import model.objectModel.ObjectModel;
-import model.objectModel.effectModel.EffectModel;
+import model.objectModel.EffectModel;
 
 import java.util.ArrayList;
 

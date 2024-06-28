@@ -5,7 +5,7 @@ import data.Constants;
 import model.GameState;
 import model.ModelData;
 import model.objectModel.ObjectModel;
-import model.objectModel.effectModel.EffectModel;
+import model.objectModel.EffectModel;
 import utils.Helper;
 
 import java.awt.*;

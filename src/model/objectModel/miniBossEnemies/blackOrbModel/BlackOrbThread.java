@@ -1,8 +1,12 @@
 package model.objectModel.miniBossEnemies.blackOrbModel;
 
+import controller.manager.Spawner;
 import data.Constants;
 import model.GameState;
+import model.logics.aoe.OverTimeAOE;
 import model.objectModel.frameModel.FrameModel;
+import model.objectModel.projectiles.BlackOrbLaserModel;
+import utils.Helper;
 
 import java.util.ArrayList;
 
@@ -37,6 +41,32 @@ public class BlackOrbThread extends Thread{
         ArrayList<FrameModel> frames = blackOrbModel.getFrameModels();
         ArrayList<OrbModel> orbs = blackOrbModel.getOrbModels();
 
+
+    }
+
+    public void connectLasers(int index) {
+        ArrayList<FrameModel> frames = blackOrbModel.getFrameModels();
+        ArrayList<OrbModel> orbs = blackOrbModel.getOrbModels();
+        for (int i = 0 ;i < orbs.size() ;i++){
+            if (i == index - 1)
+                continue;
+            OrbModel orbModelNumber1 = orbs.get(i);
+            OrbModel orbModelNumberIndex = orbs.get(index - 1);
+
+            OverTimeAOE aoe = new OverTimeAOE();
+            BlackOrbLaserModel laserModel = new BlackOrbLaserModel(
+                    aoe,
+                    Helper.RandomStringGenerator(Constants.ID_SIZE)
+            );
+            BlackOrbLaserEffectModel effectModel = new BlackOrbLaserEffectModel(
+                    orbModelNumber1 ,
+                    orbModelNumberIndex ,
+                    laserModel.getId()
+            );
+            aoe.addShape(effectModel);
+
+            Spawner.addBlackOrbEffectModel(effectModel);
+        }
 
     }
 }

@@ -1,6 +1,6 @@
 package model;
 
-import model.objectModel.effectModel.EffectModel;
+import model.objectModel.EffectModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
 

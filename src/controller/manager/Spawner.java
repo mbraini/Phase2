@@ -8,6 +8,7 @@ import model.objectModel.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.basicEnemies.SquarantineModel;
 import model.objectModel.basicEnemies.TrigorathModel;
+import model.objectModel.miniBossEnemies.blackOrbModel.BlackOrbLaserEffectModel;
 import model.objectModel.miniBossEnemies.blackOrbModel.BlackOrbModel;
 import model.objectModel.miniBossEnemies.blackOrbModel.OrbModel;
 import model.objectModel.normalEnemies.archmireModel.ArchmireModel;
@@ -27,6 +28,7 @@ import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
 import view.objectViews.basicEnemyView.SquarantineView;
 import view.objectViews.basicEnemyView.TrigorathView;
+import view.objectViews.miniBossEnemyView.BlackOrbLaserEffectView;
 import view.objectViews.miniBossEnemyView.OrbView;
 import view.objectViews.normalEnemyView.NecropickView;
 import view.objectViews.normalEnemyView.OmenoctView;
@@ -145,4 +147,8 @@ public abstract class Spawner {
         ViewRequest.addEffectView(new ArchmireEffectView(archmireEffectModel.getArea() ,id));
     }
 
+    public static void addBlackOrbEffectModel(BlackOrbLaserEffectModel effectModel) {
+        ModelRequests.addEffectModel(effectModel);
+        ViewRequest.addEffectView(new BlackOrbLaserEffectView(effectModel.getArea() ,effectModel.getId()));
+    }
 }

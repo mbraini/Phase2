@@ -19,7 +19,7 @@ public class OrbSpawner implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Spawner.addObject(
+        Spawner.addObjectWithId(
                 Math.VectorAdd(
                         blackOrbModel.getFrameModels().get(counter).getPosition(),
                         new Vector(
@@ -27,9 +27,21 @@ public class OrbSpawner implements ActionListener {
                                 Constants.BLACK_ORB_FRAME_DIMENSION.height / 2d
                         )
                 ),
-                ObjectType.orb
+                ObjectType.orb,
+                blackOrbModel.getFrameModels().get(counter).getId()
         );
+        blackOrbModel.addOrb(new OrbModel(
+                Math.VectorAdd(
+                        blackOrbModel.getFrameModels().get(counter).getPosition(),
+                        new Vector(
+                                Constants.BLACK_ORB_FRAME_DIMENSION.width / 2d,
+                                Constants.BLACK_ORB_FRAME_DIMENSION.height / 2d
+                        )
+                ),
+                blackOrbModel.getFrameModels().get(counter).getId()
+        ));
         counter++;
+        blackOrbModel.getBlackOrbThread().connectLasers(counter);
         if (counter == 5){
             blackOrbModel.getBlackOrbThread().start();
             blackOrbModel.getOrbSpawner().stop();

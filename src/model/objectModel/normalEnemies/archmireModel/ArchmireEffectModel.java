@@ -1,7 +1,7 @@
 package model.objectModel.normalEnemies.archmireModel;
 
 import model.interfaces.IsPolygon;
-import model.objectModel.effectModel.EffectModel;
+import model.objectModel.EffectModel;
 import utils.area.Polygon;
 
 import java.awt.*;
