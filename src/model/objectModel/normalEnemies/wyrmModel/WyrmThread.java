@@ -35,7 +35,7 @@ public class WyrmThread extends Thread{
     }
 
     private void rotateModel() {
-        Vector newPosition = new Vector();
+        Vector newPosition;
         if (isInPositiveDirection) {
             newPosition = Math.RotateByTheta(wyrmModel.getPosition(), origin, thetaD);
             wyrmModel.setTheta(wyrmModel.getTheta() + thetaD);

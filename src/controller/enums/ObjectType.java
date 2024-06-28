@@ -11,5 +11,6 @@ public enum ObjectType {
     necropick,
     necropickBullet,
     archmire,
-    wyrm
+    wyrm,
+    blackOrb
 }

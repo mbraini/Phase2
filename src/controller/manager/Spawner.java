@@ -8,6 +8,7 @@ import model.objectModel.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.basicEnemies.SquarantineModel;
 import model.objectModel.basicEnemies.TrigorathModel;
+import model.objectModel.miniBossEnemies.blackOrbModel.BlackOrbModel;
 import model.objectModel.normalEnemies.archmireModel.ArchmireModel;
 import model.objectModel.normalEnemies.archmireModel.ArchmireEffectModel;
 import model.objectModel.normalEnemies.necropickModel.NecropickModel;
@@ -38,16 +39,23 @@ import java.awt.*;
 
 public abstract class Spawner {
 
+    public synchronized static void addFrame(FrameModel frameModel){
+        ModelRequests.addFrameModel(frameModel);
+        ViewRequest.addFrameView(new FrameView(
+                frameModel.getPosition(),
+                frameModel.getSize(),
+                frameModel.getId()
+        ));
+    }
+
     public synchronized static void addFrame(Vector position , Dimension size){
         String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
         addFrameWithId(position ,size ,id);
     }
 
     public synchronized static void addFrameWithId(Vector position ,Dimension size ,String id){
-        ModelData.addFrame(new FrameModel(position ,size ,id));
-
-        ViewData.addFrame(new FrameView(position ,size ,id));
-        ViewData.addImaginaryPanel(new ImaginaryPanel(ViewData.getFrames().getLast().getId()));
+        ModelRequests.addFrameModel(new FrameModel(position ,size ,id));
+        ViewRequest.addFrameView(new FrameView(position ,size ,id));
     }
 
 
@@ -79,14 +87,13 @@ public abstract class Spawner {
                 break;
             case wyrm:
                 WyrmModel wyrmModel = new WyrmModel(position ,id);
-                ModelRequests.addFrameModel(wyrmModel.getFrameModel());
                 ModelRequests.addObjectModel(wyrmModel);
                 ViewRequest.addObjectView(new WyrmView(wyrmModel.getPosition() ,id));
-                ViewRequest.addFrameView(new FrameView(
-                        wyrmModel.getFrameModel().getPosition(),
-                        wyrmModel.getFrameModel().getSize(),
-                        wyrmModel.getFrameModel().getId()
-                ));
+                addFrame(wyrmModel.getFrameModel());
+                break;
+            case blackOrb :
+                new BlackOrbModel(position).spawn();
+                break;
         }
     }
 

@@ -17,7 +17,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
 
     private FrameModel frameModel;
     private boolean isInRange;
-    private ArrayList<Vector> vertices;
+    private ArrayList<Vector> vertices = new ArrayList<>();
     private Timer shooter;
     private WyrmThread wyrmThread;
 
@@ -28,22 +28,12 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         this.acceleration = new Vector(0 ,0);
         this.HP = 20;
 
-        setThetaRelativeToEpsilon();
         setFrame();
-
         setPosition(Math.VectorAdd(
                 position,
                 new Vector(frameModel.getSize().width / 2d ,frameModel.getSize().height / 2d))
         );
 
-    }
-
-    private void setThetaRelativeToEpsilon() {
-        Vector epsilonPosition = ModelData.getModels().getFirst().getPosition();
-        Vector xVector = new Vector(1 ,0);
-        double dotProduct = Math.DotProduct(epsilonPosition ,xVector);
-        double cosTheta = dotProduct / Math.VectorSize(epsilonPosition);
-        setTheta(java.lang.Math.acos(cosTheta));
     }
 
     private void setFrame() {
