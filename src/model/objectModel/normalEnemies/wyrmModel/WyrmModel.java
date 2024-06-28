@@ -129,4 +129,11 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
     public ArrayList<Vector> getVertices() {
         return vertices;
     }
+
+    public void setThetaRelativeToOrigin(Vector distance) {
+        Vector xVector = new Vector(1 ,0);
+        double dotProduct = Math.DotProduct(distance ,xVector);
+        double cosTheta = dotProduct / Math.VectorSize(distance);
+        setTheta(java.lang.Math.acos(cosTheta));
+    }
 }

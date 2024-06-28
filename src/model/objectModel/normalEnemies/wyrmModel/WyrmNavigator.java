@@ -23,11 +23,7 @@ public class WyrmNavigator {
                         Constants.WYRM_NAVIGATION_VELOCITY
                 )
         );
-
-        Vector xVector = new Vector(1 ,0);
-        double dotProduct = Math.DotProduct(epsilonPosition ,xVector);
-        double cosTheta = dotProduct / Math.VectorSize(epsilonPosition);
-        wyrmModel.setTheta(java.lang.Math.acos(cosTheta));
+        wyrmModel.setThetaRelativeToOrigin(direction);
     }
 
     public boolean hasArrived() {

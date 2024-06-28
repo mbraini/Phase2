@@ -173,9 +173,9 @@ public abstract class Controller {
 //                ObjectType.omenoct
 //        );
 
-//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ObjectType.archmire
-//        );
+        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+                ObjectType.archmire
+        );
 
         Spawner.addFrame(new Vector(Constants.SCREEN_SIZE.width / 3d ,Constants.SCREEN_SIZE.height / 3d),
                 new Dimension(Constants.GAME_WIDTH ,Constants.GAME_HEIGHT)

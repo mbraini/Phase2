@@ -36,11 +36,15 @@ public class WyrmThread extends Thread{
 
     private void rotateModel() {
         Vector newPosition = new Vector();
-        if (isInPositiveDirection)
-            newPosition = Math.RotateByTheta(wyrmModel.getPosition() ,origin ,thetaD);
+        if (isInPositiveDirection) {
+            newPosition = Math.RotateByTheta(wyrmModel.getPosition(), origin, thetaD);
+            wyrmModel.setTheta(wyrmModel.getTheta() + thetaD);
+        }
         else {
             newPosition = Math.RotateByTheta(wyrmModel.getPosition() ,origin ,-thetaD);
+            wyrmModel.setTheta(wyrmModel.getTheta() - thetaD);
         }
         wyrmModel.setPosition(newPosition);
+
     }
 }
