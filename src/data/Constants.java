@@ -31,6 +31,15 @@ public class Constants {
     public static final int ARCHMIRE_THREAD_REFRESH_RATE = ARCHMIRE_AOE_TIME_LIMIT / 50;
     public static final double ARCHMIRE_VELOCITY = 0.1;
     public static final int ARCHMIRE_POINT_RADIOS = 30;
+    public static final Dimension WYRM_FRAME_DIMENSION = new Dimension(150 ,150);
+    public static final Dimension WYRM_DIMENSION = new Dimension(100 ,100);
+    public static final double WYRM_NAVIGATION_VELOCITY = 0.3;
+    public static final double WYRM_NAVIGATION_RADIOS = 500;
+    public static final int WYRM_SHOOTING_TIME = 1000;
+    public static final double WYRM_ANGULAR_VELOCITY = 2;
+    public static final int WYRM_CIRCULAR_T = (int)(Math.PI * 2 * WYRM_NAVIGATION_RADIOS / WYRM_ANGULAR_VELOCITY);
+    public static final int WYRM_THETA_UPDATE_COUNT = 360;
+    public static final int WYRM_THREAD_REFRESH_RATE = WYRM_CIRCULAR_T / WYRM_THETA_UPDATE_COUNT;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);

@@ -8,7 +8,9 @@ import model.ModelData;
 import model.ModelRequests;
 import model.collision.Collision;
 import model.interfaces.Ability;
+import model.interfaces.FrameSticker;
 import model.interfaces.MoveAble;
+import model.interfaces.Navigator;
 import model.objectModel.ObjectModel;
 
 import java.util.ArrayList;
@@ -60,6 +62,12 @@ public class GameLoop extends Thread {
             }
             if (model instanceof MoveAble)
                 ((MoveAble) model).move();
+            if (model instanceof Navigator){
+                if (!((Navigator) model).hasArrived())
+                    ((Navigator) model).navigate();
+            }
+            if (model instanceof FrameSticker)
+                ((FrameSticker) model).setStuckFramePosition();
         }
     }
 

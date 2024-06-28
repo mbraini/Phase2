@@ -10,5 +10,6 @@ public enum ObjectType {
     omenoctBullet,
     necropick,
     necropickBullet,
-    archmire
+    archmire,
+    wyrm
 }

@@ -12,6 +12,7 @@ import model.objectModel.normalEnemies.archmireModel.ArchmireModel;
 import model.objectModel.normalEnemies.archmireModel.ArchmireEffectModel;
 import model.objectModel.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.normalEnemies.omenoctModel.OmenoctModel;
+import model.objectModel.normalEnemies.wyrmModel.WyrmModel;
 import model.objectModel.projectiles.EpsilonBulletModel;
 import model.objectModel.projectiles.NecropickBulletModel;
 import model.objectModel.projectiles.OmenoctBulletModel;
@@ -26,6 +27,7 @@ import view.objectViews.basicEnemyView.SquarantineView;
 import view.objectViews.basicEnemyView.TrigorathView;
 import view.objectViews.normalEnemyView.NecropickView;
 import view.objectViews.normalEnemyView.OmenoctView;
+import view.objectViews.normalEnemyView.WyrmView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireEffectView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireView;
 import view.objectViews.projectiles.EpsilonBulletView;
@@ -75,6 +77,16 @@ public abstract class Spawner {
                 ModelRequests.addObjectModel(new ArchmireModel(position ,id));
                 ViewRequest.addObjectView(new ArchmireView(position ,id));
                 break;
+            case wyrm:
+                WyrmModel wyrmModel = new WyrmModel(position ,id);
+                ModelRequests.addFrameModel(wyrmModel.getFrameModel());
+                ModelRequests.addObjectModel(wyrmModel);
+                ViewRequest.addObjectView(new WyrmView(wyrmModel.getPosition() ,id));
+                ViewRequest.addFrameView(new FrameView(
+                        wyrmModel.getFrameModel().getPosition(),
+                        wyrmModel.getFrameModel().getSize(),
+                        wyrmModel.getFrameModel().getId()
+                ));
         }
     }
 

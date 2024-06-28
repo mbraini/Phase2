@@ -18,6 +18,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble, FrameAttacher {
+
+    /////////////////////// Fix the Ability interface with Navigator interface
+
+
     private ArrayList<Vector> vertices = new ArrayList<>();
     private FrameLocations frameLocation;
     private FrameLocations willAttachTo;

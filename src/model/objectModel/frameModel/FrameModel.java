@@ -18,7 +18,7 @@ public class FrameModel implements MoveAble {
     private Vector leftRightV = new Vector();
     private Vector upDownP = new Vector();
     private Vector leftRightP = new Vector();
-    private final Vector positionInit;
+    private Vector positionInit;
     private final Dimension dimensionInit;
     private boolean isResizing;
     private boolean isIsometric;
@@ -95,6 +95,13 @@ public class FrameModel implements MoveAble {
     private void revalidate() {
         setSize(new Dimension((int)(leftRightP.y + leftRightP.x + dimensionInit.width) ,(int)(upDownP.y + upDownP.x + dimensionInit.height)));
         setPosition(new Vector(-leftRightP.x + positionInit.x, -upDownP.x + positionInit.y));
+    }
+
+    public void transfer(Vector vector){
+        positionInit = vector.clone();
+        position = vector.clone();
+        setLeftRightP(0 ,0);
+        setUpDownP(0 ,0);
     }
 
     public Vector getUpDownV() {
