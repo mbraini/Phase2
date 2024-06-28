@@ -11,7 +11,9 @@ import java.util.ArrayList;
 
 public class BlackOrbModel {
 
+    private Timer orbSpawner;
     private Timer frameSpawner;
+    private BlackOrbThread blackOrbThread;
     private ArrayList<OrbModel> orbModels;
     private ArrayList<FrameModel> frameModels;
     private Vector center;
@@ -23,6 +25,7 @@ public class BlackOrbModel {
     public BlackOrbModel(Vector center){
         frameModels = new ArrayList<>();
         orbModels = new ArrayList<>();
+        blackOrbThread = new BlackOrbThread(this);
         this.center = center;
     }
 
@@ -100,6 +103,23 @@ public class BlackOrbModel {
 
     public void spawn() {
         frameSpawner = new Timer(Constants.BLACK_ORB_SPAWN_DELAY ,new FrameSpawner(this));
+        orbSpawner = new Timer(Constants.BLACK_ORB_SPAWN_DELAY ,new OrbSpawner(this));
         frameSpawner.start();
+    }
+
+    public Timer getOrbSpawner() {
+        return orbSpawner;
+    }
+
+    public void setOrbSpawner(Timer orbSpawner) {
+        this.orbSpawner = orbSpawner;
+    }
+
+    public BlackOrbThread getBlackOrbThread() {
+        return blackOrbThread;
+    }
+
+    public void setBlackOrbThread(BlackOrbThread blackOrbThread) {
+        this.blackOrbThread = blackOrbThread;
     }
 }

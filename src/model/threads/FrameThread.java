@@ -56,7 +56,7 @@ public class FrameThread extends Thread{
             localFrames = (HashMap<ObjectModel, FrameModel>) ModelData.getLocalFrames().clone();
         }
         checkBullets();
-//        checkSolids();
+        checkSolids();
         resize(frames);
     }
 

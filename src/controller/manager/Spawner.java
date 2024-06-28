@@ -9,6 +9,7 @@ import model.objectModel.frameModel.FrameModel;
 import model.objectModel.basicEnemies.SquarantineModel;
 import model.objectModel.basicEnemies.TrigorathModel;
 import model.objectModel.miniBossEnemies.blackOrbModel.BlackOrbModel;
+import model.objectModel.miniBossEnemies.blackOrbModel.OrbModel;
 import model.objectModel.normalEnemies.archmireModel.ArchmireModel;
 import model.objectModel.normalEnemies.archmireModel.ArchmireEffectModel;
 import model.objectModel.normalEnemies.necropickModel.NecropickModel;
@@ -26,6 +27,7 @@ import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
 import view.objectViews.basicEnemyView.SquarantineView;
 import view.objectViews.basicEnemyView.TrigorathView;
+import view.objectViews.miniBossEnemyView.OrbView;
 import view.objectViews.normalEnemyView.NecropickView;
 import view.objectViews.normalEnemyView.OmenoctView;
 import view.objectViews.normalEnemyView.WyrmView;
@@ -94,6 +96,9 @@ public abstract class Spawner {
             case blackOrb :
                 new BlackOrbModel(position).spawn();
                 break;
+            case orb:
+                ModelRequests.addObjectModel(new OrbModel(position ,id));
+                ViewRequest.addObjectView(new OrbView(position ,id));
         }
     }
 

@@ -45,6 +45,8 @@ public class Constants {
     public static final double BLACK_ORB_DISTANCE = 200;
     public static final Dimension BLACK_ORB_FRAME_DIMENSION = new Dimension(100 ,100);
     public static final double BLACK_ORB_DIAGONAL_SIZE = BLACK_ORB_DISTANCE / (2 * Math.sin(Math.toRadians(36)));
+    public static final Dimension ORB_DIMENSION = new Dimension(90 ,90);
+    public static final int BLACK_ORB_THEAD_REFRESH_RATE = 100;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);
