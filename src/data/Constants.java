@@ -40,6 +40,7 @@ public class Constants {
     public static final int WYRM_CIRCULAR_T = (int)(Math.PI * 2 * WYRM_NAVIGATION_RADIOS / WYRM_ANGULAR_VELOCITY);
     public static final int WYRM_THETA_UPDATE_COUNT = 360;
     public static final int WYRM_THREAD_REFRESH_RATE = WYRM_CIRCULAR_T / WYRM_THETA_UPDATE_COUNT;
+    public static final double WYRM_BULLET_VELOCITY = 0.4;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);

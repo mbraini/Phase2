@@ -7,9 +7,8 @@ import java.awt.*;
 
 public class OmenoctBulletView extends BulletView{
 
-    public OmenoctBulletView(Vector position , double theta , String id){
+    public OmenoctBulletView(Vector position , String id){
         this.position = position;
-        this.theta = theta;
         this.id = id;
     }
 

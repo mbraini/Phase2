@@ -109,7 +109,7 @@ public abstract class Spawner {
                                 id
                         )
                 );
-                ViewRequest.addObjectView(new EpsilonBulletView(position, 0, id));
+                ViewRequest.addObjectView(new EpsilonBulletView(position, id));
                 break;
             case omenoctBullet:
                 ModelRequests.addObjectModel(new OmenoctBulletModel(
@@ -118,7 +118,7 @@ public abstract class Spawner {
                                 id
                         )
                 );
-                ViewRequest.addObjectView(new OmenoctBulletView(position, 0, id));
+                ViewRequest.addObjectView(new OmenoctBulletView(position, id));
                 break;
             case necropickBullet:
                 ModelRequests.addObjectModel(new NecropickBulletModel(position ,direction ,id));

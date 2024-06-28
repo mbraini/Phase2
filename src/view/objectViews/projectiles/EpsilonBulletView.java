@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class EpsilonBulletView extends BulletView {
 
-    public EpsilonBulletView(Vector position , double theta , String id){
+    public EpsilonBulletView(Vector position, String id){
         this.position = position;
         this.theta = theta;
         this.id = id;
