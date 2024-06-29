@@ -5,12 +5,9 @@ import data.Constants;
 import model.GameState;
 import model.ModelData;
 import model.collision.Collision;
-import model.logics.FrameHit;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
-import model.objectModel.projectiles.BulletModel;
 import utils.FrameCalculationHelper;
-import utils.Math;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,24 +52,42 @@ public class FrameThread extends Thread{
         synchronized (ModelData.getModels()) {
             localFrames = (HashMap<ObjectModel, FrameModel>) ModelData.getLocalFrames().clone();
         }
-        setSolidBetween();
-//        checkBullets();
-        checkSolids();
+        resetDisables();
+        setDisablesForSolidObjects();
+        setDisablesForSolidFrames();
+        checkSolidObjectBounds();
         resize(frames);
         updatePreviousLocals();
     }
 
-    private void updatePreviousLocals() {
-        previousLocals = (HashMap<ObjectModel, FrameModel>) localFrames.clone();
-    }
-
-    private void setSolidBetween() {
+    private void resetDisables() {
         for (FrameModel frameModel : frames){
             frameModel.setCanTopResize(true);
             frameModel.setCanBottomResize(true);
             frameModel.setCanLeftResize(true);
             frameModel.setCanRightResize(true);
         }
+    }
+
+    private void setDisablesForSolidFrames() {
+        for (int i = 0; i < frames.size(); i++){
+            for (int j = 0; j < frames.size(); j++){
+                if (i == j)
+                    continue;
+                if (frames.get(i).isSolid() && frames.get(j).isSolid())
+                    FrameCalculationHelper.setFrameDisables(
+                            frames.get(i),
+                            frames.get(j)
+                    );
+            }
+        }
+    }
+
+    private void updatePreviousLocals() {
+        previousLocals = (HashMap<ObjectModel, FrameModel>) localFrames.clone();
+    }
+
+    private void setDisablesForSolidObjects() {
         for (ObjectModel model : models){
             if (!model.isSolid())
                 continue;
@@ -92,21 +107,7 @@ public class FrameThread extends Thread{
         }
     }
 
-    private void checkBullets() {
-        for (ObjectModel model : models){
-            if (model.isSolid() && model instanceof BulletModel){
-                if (FrameCalculationHelper.findClosestDistanceToFrameEdges(
-                        model.getPosition(),
-                        localFrames.get(model)
-                ) <= Math.VectorSize(model.getVelocity()) * Constants.UPS + 1){
-                    new FrameHit(localFrames.get(model) ,model).handle();
-                    model.die();
-                }
-            }
-        }
-    }
-
-    private void checkSolids() {
+    private void checkSolidObjectBounds() {
         for (ObjectModel model : models){
             FrameModel frame = localFrames.get(model);
             if (frame == null && model.isSolid())
