@@ -1,4 +1,4 @@
-package model.threads;
+package utils.FrameHelper;
 
 import model.collision.Collision;
 import model.logics.FrameHit;
@@ -7,7 +7,6 @@ import model.objectModel.EpsilonModel;
 import model.objectModel.ObjectModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.projectiles.BulletModel;
-import utils.FrameCalculationHelper;
 import utils.Math;
 import utils.Vector;
 

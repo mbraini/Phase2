@@ -7,7 +7,8 @@ import model.ModelData;
 import model.collision.Collision;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
-import utils.FrameCalculationHelper;
+import utils.FrameHelper.NullLocalFrameHandler;
+import utils.FrameHelper.FrameCalculationHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -5,7 +5,7 @@ import model.animations.FrameAnimation;
 import model.objectModel.ObjectModel;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.frameModel.FrameModel;
-import utils.FrameCalculationHelper;
+import utils.FrameHelper.FrameCalculationHelper;
 
 public class FrameHit {
     private FrameModel frame;

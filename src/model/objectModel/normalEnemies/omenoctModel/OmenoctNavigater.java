@@ -4,7 +4,7 @@ import model.ModelData;
 import model.collision.Collision;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.frameModel.FrameModel;
-import utils.FrameCalculationHelper;
+import utils.FrameHelper.FrameCalculationHelper;
 import utils.Math;
 import utils.Vector;
 
