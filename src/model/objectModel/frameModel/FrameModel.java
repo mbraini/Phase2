@@ -1,13 +1,12 @@
 package model.objectModel.frameModel;
 
 import data.Constants;
-import model.interfaces.MoveAble;
 import utils.Math;
 import utils.Vector;
 
 import java.awt.*;
 
-public class FrameModel implements MoveAble {
+public class FrameModel {
 
     private Vector position;
     private Dimension size;
@@ -23,6 +22,10 @@ public class FrameModel implements MoveAble {
     private boolean isResizing;
     private boolean isIsometric;
     private boolean isSolid;
+    private boolean canTopResize = true;
+    private boolean canBottomResize = true;
+    private boolean canRightResize = true;
+    private boolean canLeftResize = true;
     private boolean isShrinking;
 
     public FrameModel(Vector positionInit ,Dimension dimensionInit ,String id){
@@ -57,8 +60,7 @@ public class FrameModel implements MoveAble {
         this.id = id;
     }
 
-    @Override
-    public void move() {
+    public void resize() {
         setUpDownV(
                 getUpDownV().x + upDownA.x * Constants.FRAME_ANIMATION_REFRESH_RATE ,
                 getUpDownV().y + upDownA.y * Constants.FRAME_ANIMATION_REFRESH_RATE
@@ -67,27 +69,26 @@ public class FrameModel implements MoveAble {
                 getLeftRightV().x + leftRightA.x * Constants.FRAME_ANIMATION_REFRESH_RATE ,
                 getLeftRightV().y + leftRightA.y * Constants.FRAME_ANIMATION_REFRESH_RATE
         );
-
-        Vector upDownMoved = new Vector(
-                (2 * getUpDownV().x - upDownA.x * Constants.FRAME_ANIMATION_REFRESH_RATE)
-                        * Constants.FRAME_ANIMATION_REFRESH_RATE / 2 ,
-                (2 * getUpDownV().y - upDownA.y * Constants.FRAME_ANIMATION_REFRESH_RATE)
-                        * Constants.FRAME_ANIMATION_REFRESH_RATE / 2
-        );
-        Vector leftRightMoved = new Vector(
-                (2 * getLeftRightV().x - leftRightA.x
-                        * Constants.FRAME_ANIMATION_REFRESH_RATE) * Constants.FRAME_ANIMATION_REFRESH_RATE / 2
-                ,(2 * getLeftRightV().y - leftRightA.y * Constants.FRAME_ANIMATION_REFRESH_RATE)
-                * Constants.FRAME_ANIMATION_REFRESH_RATE / 2
-        );
+        Vector upDownMoved = new Vector();
+        Vector leftRightMoved = new Vector();
+        if (canTopResize){
+            upDownMoved.setX((2 * getUpDownV().x - upDownA.x * Constants.FRAME_ANIMATION_REFRESH_RATE)
+                    * Constants.FRAME_ANIMATION_REFRESH_RATE / 2);
+        }
+        if (canBottomResize){
+            upDownMoved.setY((2 * getUpDownV().y - upDownA.y * Constants.FRAME_ANIMATION_REFRESH_RATE)
+                    * Constants.FRAME_ANIMATION_REFRESH_RATE / 2);
+        }
+        if (canLeftResize){
+            leftRightMoved.setX((2 * getLeftRightV().x - leftRightA.x
+                    * Constants.FRAME_ANIMATION_REFRESH_RATE) * Constants.FRAME_ANIMATION_REFRESH_RATE / 2);
+        }
+        if (canRightResize){
+            leftRightMoved.setY((2 * getLeftRightV().y - leftRightA.y * Constants.FRAME_ANIMATION_REFRESH_RATE)
+                    * Constants.FRAME_ANIMATION_REFRESH_RATE / 2);
+        }
         setUpDownP(Math.VectorAdd(upDownMoved ,getUpDownP()));
         setLeftRightP(Math.VectorAdd(leftRightMoved ,getLeftRightP()));
-        if (dimensionInit.height + upDownP.x + upDownP.y <= Constants.MINIMUM_FRAME_DIMENSION.height) {
-            setUpDownP(Math.VectorAdd(Math.ScalarInVector(-1, upDownMoved), getUpDownP()));
-        }
-        if (dimensionInit.width + leftRightP.x + leftRightP.y <= Constants.MINIMUM_FRAME_DIMENSION.width) {
-            setLeftRightP(Math.VectorAdd(Math.ScalarInVector(-1, leftRightMoved), getLeftRightP()));
-        }
 
         revalidate();
     }
@@ -208,4 +209,35 @@ public class FrameModel implements MoveAble {
         isShrinking = shrinking;
     }
 
+    public boolean canTopResize() {
+        return canTopResize;
+    }
+
+    public void setCanTopResize(boolean canTopResize) {
+        this.canTopResize = canTopResize;
+    }
+
+    public boolean canBottomResize() {
+        return canBottomResize;
+    }
+
+    public void setCanBottomResize(boolean canBottomResize) {
+        this.canBottomResize = canBottomResize;
+    }
+
+    public boolean canRightResize() {
+        return canRightResize;
+    }
+
+    public void setCanRightResize(boolean canRightResize) {
+        this.canRightResize = canRightResize;
+    }
+
+    public boolean canLeftResize() {
+        return canLeftResize;
+    }
+
+    public void setCanLeftResize(boolean canLeftResize) {
+        this.canLeftResize = canLeftResize;
+    }
 }

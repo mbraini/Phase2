@@ -6,14 +6,11 @@ import model.GameState;
 import model.ModelData;
 import model.collision.Collision;
 import model.logics.FrameHit;
-import model.logics.Impact;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
 import model.objectModel.projectiles.BulletModel;
-import model.objectModel.projectiles.EpsilonBulletModel;
 import utils.FrameCalculationHelper;
 import utils.Math;
-import utils.Vector;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,9 +20,12 @@ public class FrameThread extends Thread{
     private ArrayList<FrameModel> frames;
     private ArrayList<ObjectModel> models;
     private HashMap<ObjectModel ,FrameModel> localFrames;
+    private HashMap<ObjectModel ,FrameModel> previousLocals;
 
     public FrameThread(){
         frames = new ArrayList<>();
+        models = new ArrayList<>();
+        previousLocals = new HashMap<>();
     }
 
     @Override
@@ -55,9 +55,41 @@ public class FrameThread extends Thread{
         synchronized (ModelData.getModels()) {
             localFrames = (HashMap<ObjectModel, FrameModel>) ModelData.getLocalFrames().clone();
         }
-        checkBullets();
+        setSolidBetween();
+//        checkBullets();
         checkSolids();
         resize(frames);
+        updatePreviousLocals();
+    }
+
+    private void updatePreviousLocals() {
+        previousLocals = (HashMap<ObjectModel, FrameModel>) localFrames.clone();
+    }
+
+    private void setSolidBetween() {
+        for (FrameModel frameModel : frames){
+            frameModel.setCanTopResize(true);
+            frameModel.setCanBottomResize(true);
+            frameModel.setCanLeftResize(true);
+            frameModel.setCanRightResize(true);
+        }
+        for (ObjectModel model : models){
+            if (!model.isSolid())
+                continue;
+            ArrayList<FrameModel> localFrames = defineFrame(model);
+            if (localFrames.size() >= 2){
+                for (int i = 0; i < localFrames.size() ;i++){
+                    for (int j = 0; j < localFrames.size() ;j++){
+                        if (i==j)
+                            continue;
+                        FrameCalculationHelper.setFrameDisables(
+                                localFrames.get(i),
+                                localFrames.get(j)
+                        );
+                    }
+                }
+            }
+        }
     }
 
     private void checkBullets() {
@@ -75,16 +107,10 @@ public class FrameThread extends Thread{
     }
 
     private void checkSolids() {
-        /////todo
         for (ObjectModel model : models){
             FrameModel frame = localFrames.get(model);
-            if (frame == null)
-                continue;
-            if (model.isSolid() && !Collision.isFullyInFrame(model ,frame)){
-                Vector outerVertex = Collision.findTheOuterVertices(frame ,model).getFirst().clone();
-                Collision.getOutOfFrame(model ,frame);
-                new Impact(outerVertex).MakeImpact();
-            }
+            if (frame == null && model.isSolid())
+                new NullLocalFrameHandler(model ,frames ,previousLocals).handle();
         }
     }
 
@@ -115,7 +141,7 @@ public class FrameThread extends Thread{
     private void resize(ArrayList<FrameModel> frameModels) {
         for (FrameModel frame : frameModels){
             if (!frame.isIsometric()){
-                frame.move();
+                frame.resize();
             }
         }
     }

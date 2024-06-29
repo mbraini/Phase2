@@ -7,6 +7,7 @@ import data.Constants;
 import model.ModelRequests;
 import model.objectModel.EpsilonModel;
 import model.objectModel.EffectModel;
+import model.objectModel.frameModel.FrameModelBuilder;
 import model.threads.FrameThread;
 import model.threads.GameLoop;
 import model.GameState;
@@ -153,15 +154,16 @@ public abstract class Controller {
         );
         ModelData.addModel(epsilon);
         ViewData.addObject(new EpsilonView(epsilon.getPosition() ,epsilon.getId()));
-
-        FrameModel frameModel = new FrameModel(
+        FrameModelBuilder builder = new FrameModelBuilder(
                 new Vector(
-                    Constants.SCREEN_SIZE.width / 2d - Constants.GAME_WIDTH / 2d ,
-                    Constants.SCREEN_SIZE.height / 2d - Constants.GAME_HEIGHT / 2d
+                        Constants.SCREEN_SIZE.width / 2d - Constants.GAME_WIDTH / 2d ,
+                        Constants.SCREEN_SIZE.height / 2d - Constants.GAME_HEIGHT / 2d
                 ),
                 new Dimension(Constants.GAME_WIDTH ,Constants.GAME_HEIGHT),
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
+        builder.setSolid(true);
+        FrameModel frameModel = builder.create();
         ModelData.addFrame(frameModel);
         ViewData.addFrame(new FrameView(
                 frameModel.getPosition(),
@@ -170,35 +172,35 @@ public abstract class Controller {
         );
         ViewData.addImaginaryPanel(new ImaginaryPanel(frameModel.getId()));
 
-        Spawner.addObject(new Vector(0 ,0),
-                ObjectType.wyrm
-        );
-
-        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d - 150 ,Constants.SCREEN_SIZE.height / 2d - 150),
-                ObjectType.omenoct
-        );
-
-        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-                ObjectType.archmire
-        );
-
-        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-                ObjectType.trigorath
-        );
-
-        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-                ObjectType.squarantine
-        );
-
-
+//        Spawner.addObject(new Vector(0 ,0),
+//                ObjectType.wyrm
+//        );
+//
+//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d - 150 ,Constants.SCREEN_SIZE.height / 2d - 150),
+//                ObjectType.omenoct
+//        );
+//
+//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ObjectType.archmire
+//        );
+//
+//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ObjectType.trigorath
+//        );
+//
+//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ObjectType.squarantine
+//        );
+//
+//
         Spawner.addObject(
                 new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
                 ObjectType.blackOrb
         );
 
-//        Spawner.addFrame(new Vector(Constants.SCREEN_SIZE.width / 3d ,Constants.SCREEN_SIZE.height / 3d),
-//                new Dimension(Constants.GAME_WIDTH ,Constants.GAME_HEIGHT)
-//        );
+        Spawner.addFrame(new Vector(0 ,0),
+                new Dimension(Constants.GAME_WIDTH ,Constants.GAME_HEIGHT)
+        );
 
     }
 
