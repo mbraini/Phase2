@@ -15,14 +15,13 @@ public class CollectiveModel extends ObjectModel implements IsCircle, Ability, M
     double time;
     boolean hasAbility = false;
 
-    public CollectiveModel(Vector position , String id , int value , double time){
+    public CollectiveModel(Vector position , String id , int value){
         this.position = position;
         this.velocity = new Vector(0 ,0);
         this.acceleration = new Vector(0 ,0);
         this.id = id;
         this.HP = 1;
         this.value = value;
-        this.time = time;
     }
 
     @Override

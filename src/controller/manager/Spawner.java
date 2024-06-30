@@ -3,6 +3,7 @@ package controller.manager;
 import controller.enums.ObjectType;
 import data.Constants;
 import model.ModelRequests;
+import model.objectModel.CollectiveModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
@@ -22,6 +23,7 @@ import model.objectModel.projectiles.WyrmBulletModel;
 import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
+import view.objectViews.CollectiveView;
 import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
 import view.objectViews.basicEnemyView.SquarantineView;
@@ -39,6 +41,7 @@ import view.objectViews.projectiles.OmenoctBulletView;
 import view.objectViews.projectiles.WyrmBulletView;
 
 import java.awt.*;
+import java.util.Random;
 
 public abstract class Spawner {
 
@@ -154,4 +157,26 @@ public abstract class Spawner {
         ModelRequests.addEffectModel(effectModel);
         ViewRequest.addEffectView(new BlackOrbLaserEffectView(effectModel.getArea() ,effectModel.getId()));
     }
+
+    public static void addCollectives(Vector position ,int count ,int value){
+        Random random = new Random();
+        for (int i = 0; i < count; i++){
+            int x = random.nextInt(
+                    (int) position.x - Constants.COLLECTIVE_BOX_DIMENSION.width ,
+                    (int) position.x + Constants.COLLECTIVE_BOX_DIMENSION.width
+            );
+            int y = random.nextInt(
+                    (int) position.y - Constants.COLLECTIVE_BOX_DIMENSION.height ,
+                    (int) position.y + Constants.COLLECTIVE_BOX_DIMENSION.height
+            );
+            addCollective(new Vector(x ,y) ,value);
+        }
+    }
+
+    private static void addCollective(Vector position, int value) {
+        String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
+        ModelRequests.addObjectModel(new CollectiveModel(position,id ,value));
+        ViewRequest.addObjectView(new CollectiveView(position ,id));
+    }
+
 }
