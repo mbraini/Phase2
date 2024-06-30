@@ -47,10 +47,6 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         frameModel = builder.create();
     }
 
-    @Override
-    protected void meleeAttack(EpsilonModel epsilon) {
-
-    }
 
     @Override
     public void die() {

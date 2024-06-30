@@ -49,10 +49,6 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
 
     }
 
-    @Override
-    protected void meleeAttack(EpsilonModel epsilon) {
-        ///////nothing
-    }
 
     @Override
     public void die() {

@@ -29,7 +29,20 @@ public class CollisionHandler {
     }
 
     public void handle() {
+        if (model1 instanceof EpsilonModel || model2 instanceof EpsilonModel){
+            if (model1 instanceof EpsilonModel){
+                epsilonHandler((EpsilonModel) model1 ,model2);
+            }
+            else {
+                epsilonHandler((EpsilonModel) model2 ,model1);
+            }
+        }
+    }
 
+    private void epsilonHandler(EpsilonModel epsilon ,ObjectModel object) {
+        if (object instanceof EnemyModel){
+
+        }
     }
 
 

@@ -38,10 +38,6 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
     }
 
 
-    @Override
-    protected void meleeAttack(EpsilonModel epsilon) {
-
-    }
 
     @Override
     public void ability() {

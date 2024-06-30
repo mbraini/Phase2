@@ -18,10 +18,6 @@ public class OrbModel extends MiniBossModel implements IsCircle {
         this.id = id;
     }
 
-    @Override
-    protected void meleeAttack(EpsilonModel epsilon) {
-
-    }
 
     @Override
     public void die() {

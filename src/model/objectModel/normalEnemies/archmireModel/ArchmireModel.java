@@ -52,11 +52,6 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
 
 
     @Override
-    protected void meleeAttack(EpsilonModel epsilon) {
-        //////////////nothing
-    }
-
-    @Override
     public void die() {
 
     }

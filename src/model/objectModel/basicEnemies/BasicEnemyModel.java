@@ -26,9 +26,5 @@ public abstract class BasicEnemyModel extends EnemyModel implements MoveAble {
             ((HasVertices) this).UpdateVertices(xMoved ,yMoved ,thetaMoved);
     }
 
-    @Override
-    public void meleeAttack(EpsilonModel epsilon){
-        /////////todo
-    }
 
 }

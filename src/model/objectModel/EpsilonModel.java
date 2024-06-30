@@ -9,7 +9,7 @@ import utils.Vector;
 
 import java.util.ArrayList;
 
-public class EpsilonModel extends ObjectModel implements MoveAble, IsCircle, HasVertices , ImpactAble {
+public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, HasVertices , ImpactAble {
     private static ArrayList<EpsilonVertexModel> vertices = new ArrayList<>();
     private boolean isImpacted = false;
     public EpsilonModel(Vector position , String id){
