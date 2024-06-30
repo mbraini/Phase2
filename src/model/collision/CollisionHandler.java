@@ -19,10 +19,55 @@ import utils.Math;
 import utils.Vector;
 
 public class CollisionHandler {
+    ObjectModel model1;
+    ObjectModel model2;
     Vector collisionPoint;
-    public CollisionHandler(Vector collisionPoint){
-        this.collisionPoint = collisionPoint;
+    public CollisionHandler(ObjectModel model1 ,ObjectModel model2){
+        this.model1 = model1;
+        this.model2 = model2;
+        this.collisionPoint = Collision.FindCollisionPoint(model1 ,model2);
     }
+
+    public void handle() {
+
+    }
+
+
+//    public void CollisionResponse(ObjectModel a, ObjectModel b) {
+//        if (collisionPoint == null)
+//            return;
+//
+//        /////epsilon enemy
+//        if (a instanceof EpsilonModel && b instanceof EnemyModel){
+//            collisionHandler.EpsilonEnemy((EpsilonModel)a ,(EnemyModel) b);
+//        }
+//        else if (b instanceof EpsilonModel && a instanceof EnemyModel){
+//            collisionHandler.EpsilonEnemy((EpsilonModel)b ,(EnemyModel) a);
+//        }
+//
+//        /////enemy enemy
+//        else if (a instanceof EnemyModel && b instanceof EnemyModel){
+//            collisionHandler.EnemyEnemy((EnemyModel) a ,(EnemyModel) b);
+//        }
+//
+//        /////enemy bullet
+//        else if (a instanceof EnemyModel && b instanceof BulletModel){
+//            collisionHandler.EnemyBullet((EnemyModel)a ,(BulletModel)b);
+//        }
+//        else if (b instanceof EnemyModel && a instanceof BulletModel){
+//            collisionHandler.EnemyBullet((EnemyModel)b ,(BulletModel)a);
+//        }
+//        /////Collectives
+//        else if (a instanceof EpsilonModel && b instanceof CollectiveModel){
+//            collisionHandler.EpsilonCollective((EpsilonModel) a ,(CollectiveModel) b);
+//        }
+//        else if (b instanceof EpsilonModel && a instanceof CollectiveModel){
+//            collisionHandler.EpsilonCollective((EpsilonModel) b ,(CollectiveModel) a);
+//        }
+//    }
+
+
+
     public void EpsilonEnemy(EpsilonModel epsilon , EnemyModel enemy){
         for (int i = 0 ;i < ((IsPolygon)enemy).getVertices().size() ;i++){
             if (Collision.IsInCircle(epsilon ,((IsPolygon)enemy).getVertices().get(i))){
@@ -86,4 +131,5 @@ public class CollisionHandler {
     public void EpsilonCollective(EpsilonModel epsilon, CollectiveModel collective) {
         collective.setHP(-1);
     }
+
 }

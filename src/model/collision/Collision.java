@@ -72,51 +72,19 @@ public class Collision {
                 if (Pair.Contains(collisionPairs ,pair))
                     continue;
                 if (Collision.IsColliding(models.get(i) ,models.get(j))){
-                    new Collision().CollisionResponse(models.get(i) ,models.get(j));
+                    new CollisionHandler(
+                            models.get(i) ,
+                            models.get(j)
+                    ).handle();
                     collisionPairs.add(new Pair(i ,j));
                 }
             }
         }
     }
 
-    public void CollisionResponse(ObjectModel a, ObjectModel b) {
-        collisionPoint = FindCollisionPoint(a, b);
-        if (collisionPoint == null)
-            return;
-        CollisionHandler collisionHandler = new CollisionHandler(collisionPoint);
-
-        /////epsilon enemy
-        if (a instanceof EpsilonModel && b instanceof EnemyModel){
-            collisionHandler.EpsilonEnemy((EpsilonModel)a ,(EnemyModel) b);
-        }
-        else if (b instanceof EpsilonModel && a instanceof EnemyModel){
-            collisionHandler.EpsilonEnemy((EpsilonModel)b ,(EnemyModel) a);
-        }
-
-        /////enemy enemy
-        else if (a instanceof EnemyModel && b instanceof EnemyModel){
-            collisionHandler.EnemyEnemy((EnemyModel) a ,(EnemyModel) b);
-        }
-
-        /////enemy bullet
-        else if (a instanceof EnemyModel && b instanceof BulletModel){
-            collisionHandler.EnemyBullet((EnemyModel)a ,(BulletModel)b);
-        }
-        else if (b instanceof EnemyModel && a instanceof BulletModel){
-            collisionHandler.EnemyBullet((EnemyModel)b ,(BulletModel)a);
-        }
-        /////Collectives
-        else if (a instanceof EpsilonModel && b instanceof CollectiveModel){
-            collisionHandler.EpsilonCollective((EpsilonModel) a ,(CollectiveModel) b);
-        }
-        else if (b instanceof EpsilonModel && a instanceof CollectiveModel){
-            collisionHandler.EpsilonCollective((EpsilonModel) b ,(CollectiveModel) a);
-        }
-    }
 
 
-
-    private static Vector FindCollisionPoint(ObjectModel a, ObjectModel b) {
+    public static Vector FindCollisionPoint(ObjectModel a, ObjectModel b) {
         if (a instanceof IsPolygon && b instanceof IsPolygon) {
             IsPolygon polygon = (IsPolygon) a;
             IsPolygon target = (IsPolygon) b;
