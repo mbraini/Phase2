@@ -1,5 +1,7 @@
 package model.objectModel.fighters.normalEnemies.necropickModel;
 
+import controller.Controller;
+import controller.manager.Spawner;
 import data.Constants;
 import model.ModelData;
 import model.interfaces.Ability;
@@ -26,7 +28,7 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
         this.velocity = new Vector(0 ,0);
         this.acceleration = new Vector(0 ,0);
         this.id = id;
-        this.HP = 20;
+        this.HP = 10;
         vulnerableToEpsilonBullet = true;
         vulnerableToEpsilonMelee = true;
         initVertices();
@@ -56,7 +58,8 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
 
     @Override
     public void die() {
-
+        Controller.removeObject(this);
+        Spawner.addCollectives(position ,4 ,2);
     }
 
 

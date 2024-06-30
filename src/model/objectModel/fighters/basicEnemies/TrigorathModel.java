@@ -1,5 +1,7 @@
 package model.objectModel.fighters.basicEnemies;
 
+import controller.Controller;
+import controller.manager.Spawner;
 import data.Constants;
 import model.ModelData;
 import model.interfaces.Ability;
@@ -126,6 +128,7 @@ public class TrigorathModel extends BasicEnemyModel implements HasVertices, IsPo
 
     @Override
     public void die() {
-        //////////collectives
+        Controller.removeObject(this);
+        Spawner.addCollectives(position ,2 ,5);
     }
 }

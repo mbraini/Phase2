@@ -1,6 +1,8 @@
 package model.objectModel.fighters.basicEnemies;
 
 
+import controller.Controller;
+import controller.manager.Spawner;
 import data.Constants;
 import model.ModelData;
 import model.animations.DashAnimation;
@@ -97,6 +99,7 @@ public class SquarantineModel extends BasicEnemyModel implements HasVertices, Is
 
     @Override
     public void die() {
-        ////////collectives
+        Controller.removeObject(this);
+        Spawner.addCollectives(position ,1 ,5);
     }
 }

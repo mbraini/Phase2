@@ -1,5 +1,7 @@
 package model.objectModel.fighters.normalEnemies.archmireModel;
 
+import controller.Controller;
+import controller.manager.Spawner;
 import data.Constants;
 import model.ModelData;
 import model.interfaces.Ability;
@@ -25,7 +27,7 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
         this.velocity = new Vector(0 ,0);
         this.acceleration = new Vector(0 ,0);
         this.id = id;
-        this.HP = 20;
+        this.HP = 30;
         setHovering(true);
         vulnerableToEpsilonBullet = true;
         omega = Constants.ENEMY_ROTATION_SPEED;
@@ -53,7 +55,9 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
 
     @Override
     public void die() {
-
+        //////todo
+        Controller.removeObject(this);
+        Spawner.addCollectives(position ,5 ,6);
     }
 
     public OverTimeAOE getAOE(){

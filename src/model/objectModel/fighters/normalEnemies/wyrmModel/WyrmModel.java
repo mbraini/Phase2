@@ -1,5 +1,7 @@
 package model.objectModel.fighters.normalEnemies.wyrmModel;
 
+import controller.Controller;
+import controller.manager.Spawner;
 import data.Constants;
 import model.ModelData;
 import model.interfaces.*;
@@ -26,7 +28,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         this.position = position;
         this.velocity = new Vector(0 ,0);
         this.acceleration = new Vector(0 ,0);
-        this.HP = 20;
+        this.HP = 12;
         vulnerableToEpsilonBullet = true;
         initVertices();
         setFrame();
@@ -71,7 +73,9 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
 
     @Override
     public void die() {
-
+        Controller.removeObject(this);
+        Controller.removeFrame(frameModel);
+        Spawner.addCollectives(position ,2 ,8);
     }
 
     public FrameModel getFrameModel() {

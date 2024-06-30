@@ -15,7 +15,7 @@ public class BlackOrbLaserEffectModel extends EffectModel {
     public BlackOrbLaserEffectModel(OrbModel orb1 ,OrbModel orb2 ,String id){
         this.orb1 = orb1;
         this.orb2 = orb2;
-        this.color = new Color(218, 40, 157);
+        this.color = Color.MAGENTA;
         this.id = id;
         initArea();
     }
