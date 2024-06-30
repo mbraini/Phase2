@@ -29,6 +29,8 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         this.HP = 20;
         vulnerableToEpsilonBullet = true;
         vulnerableToEpsilonMelee = true;
+        hasMeleeAttack = true;
+        meleeAttack = Constants.OMENOCT_MELEE_ATTACK;
         omega = Constants.ENEMY_ROTATION_SPEED;
     }
 

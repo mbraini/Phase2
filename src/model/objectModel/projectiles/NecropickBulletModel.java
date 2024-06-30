@@ -14,7 +14,7 @@ public class NecropickBulletModel extends BulletModel implements IsCircle {
         this.acceleration = new Vector(0 ,0);
 
         setSolid(false);
-
+        damage = Constants.NECROPICK_BULLET_DAMAGE;
         this.id = id;
         this.HP = 1;
     }

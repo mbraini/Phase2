@@ -49,6 +49,9 @@ public class Constants {
     public static final int BLACK_ORB_THEAD_REFRESH_RATE = 100;
     public static final double WYRM_RANGE_DAMAGE = 8;
     public static final double WYRM_BULLET_RADIOUS = 6;
+    public static final double OMENOCT_BULLET_DAMAGE = 4;
+    public static final int OMENOCT_MELEE_ATTACK = 8;
+    public static final double NECROPICK_BULLET_DAMAGE = 5;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);

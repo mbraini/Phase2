@@ -175,12 +175,12 @@ public abstract class Controller {
         ViewData.addImaginaryPanel(new ImaginaryPanel(frameModel.getId()));
 
 
-//         Spawner.addObject(new Vector(0 ,0),
-//                ObjectType.necropick
-//        );
-        Spawner.addObject(new Vector(0 ,0),
-                ObjectType.wyrm
+         Spawner.addObject(new Vector(0 ,0),
+                ObjectType.necropick
         );
+//        Spawner.addObject(new Vector(0 ,0),
+//                ObjectType.wyrm
+//        );
 
 //        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 100),
 //                ObjectType.wyrm
@@ -194,13 +194,13 @@ public abstract class Controller {
 //                ObjectType.archmire
 //        );
 //
-        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-                ObjectType.trigorath
-        );
-
-        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-                ObjectType.squarantine
-        );
+//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ObjectType.trigorath
+//        );
+//
+//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ObjectType.squarantine
+//        );
 //
 //
 //        Spawner.addObject(
