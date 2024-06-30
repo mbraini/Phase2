@@ -22,6 +22,8 @@ public class TrigorathModel extends BasicEnemyModel implements HasVertices, IsPo
         this.HP = 15;
         this.meleeAttack = Constants.TRIGORATH_DAMAGE;
         this.hasMeleeAttack = true;
+        this.vulnerableToEpsilonMelee = true;
+        this.vulnerableToEpsilonBullet = true;
         omega = Constants.ENEMY_ROTATION_SPEED;
         initVertices();
     }

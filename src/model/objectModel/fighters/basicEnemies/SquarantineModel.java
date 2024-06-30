@@ -24,6 +24,8 @@ public class SquarantineModel extends BasicEnemyModel implements HasVertices, Is
         this.HP = 10;
         this.meleeAttack = Constants.SQURANTINE_DAMAGE;
         this.hasMeleeAttack = true;
+        this.vulnerableToEpsilonMelee = true;
+        this.vulnerableToEpsilonBullet = true;
         omega = Constants.ENEMY_ROTATION_SPEED;
         initVertices();
     }

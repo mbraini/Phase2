@@ -15,6 +15,8 @@ public class OrbModel extends MiniBossModel implements IsCircle {
     public OrbModel(Vector position ,String id){
         this.position = position;
         this.id = id;
+        vulnerableToEpsilonMelee = true;
+        vulnerableToEpsilonBullet = true;
     }
 
 

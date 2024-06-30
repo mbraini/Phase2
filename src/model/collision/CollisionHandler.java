@@ -39,6 +39,10 @@ public class CollisionHandler {
     }
 
     private void epsilonHandler(EpsilonModel epsilon ,ObjectModel object) {
+        if (object.isHovering()){
+            epsilon.meleeAttack((EnemyModel) object);
+            return;
+        }
         if (object instanceof EnemyModel){
             ((EnemyModel) object).meleeAttack(epsilon);
             epsilon.meleeAttack((EnemyModel) object);

@@ -43,7 +43,11 @@ public class WyrmThread extends Thread{
             newPosition = Math.RotateByTheta(wyrmModel.getPosition() ,origin ,-thetaD);
             wyrmModel.setTheta(wyrmModel.getTheta() - thetaD);
         }
+        Vector previousPosition = wyrmModel.getPosition().clone();
         wyrmModel.setPosition(newPosition);
-
+        Vector moved = Math.VectorAdd(
+                newPosition,
+                Math.ScalarInVector(-1 ,previousPosition)
+        );
     }
 }

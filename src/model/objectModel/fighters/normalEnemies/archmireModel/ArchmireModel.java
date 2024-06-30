@@ -27,6 +27,7 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
         this.id = id;
         this.HP = 20;
         setHovering(true);
+        vulnerableToEpsilonBullet = true;
         omega = Constants.ENEMY_ROTATION_SPEED;
         initVertices();
         thread.setPriority(3);

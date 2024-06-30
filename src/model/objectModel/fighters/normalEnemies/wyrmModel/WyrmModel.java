@@ -16,7 +16,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
 
     private FrameModel frameModel;
     private boolean isInRange;
-    private ArrayList<Vector> vertices = new ArrayList<>();
+    private ArrayList<Vector> vertices;
     private Timer shooter;
     private WyrmThread wyrmThread;
 
@@ -26,13 +26,33 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         this.velocity = new Vector(0 ,0);
         this.acceleration = new Vector(0 ,0);
         this.HP = 20;
-
+        vulnerableToEpsilonBullet = true;
         setFrame();
         setPosition(Math.VectorAdd(
                 position,
                 new Vector(frameModel.getSize().width / 2d ,frameModel.getSize().height / 2d))
         );
+        this.setVertices();
+    }
 
+    private void setVertices() {
+        vertices = new ArrayList<>();
+        vertices.add(new Vector(
+                position.x + (Constants.Squarantine_DIMENTION.width / 2d) ,
+                position.y + (Constants.Squarantine_DIMENTION.height / 2d))
+        );
+        vertices.add(new Vector(
+                position.x + (Constants.Squarantine_DIMENTION.width / 2d) ,
+                position.y - (Constants.Squarantine_DIMENTION.height / 2d))
+        );
+        vertices.add(new Vector(
+                position.x - (Constants.Squarantine_DIMENTION.width / 2d) ,
+                position.y - (Constants.Squarantine_DIMENTION.height / 2d))
+        );
+        vertices.add(new Vector(
+                position.x - (Constants.Squarantine_DIMENTION.width / 2d) ,
+                position.y + (Constants.Squarantine_DIMENTION.height / 2d))
+        );
     }
 
     private void setFrame() {

@@ -4,6 +4,7 @@ import data.Constants;
 import model.ModelData;
 import model.interfaces.Ability;
 import model.interfaces.HasVertices;
+import model.interfaces.IsPolygon;
 import model.interfaces.MoveAble;
 import model.objectModel.fighters.normalEnemies.NormalEnemyModel;
 import utils.Math;
@@ -12,11 +13,13 @@ import utils.Vector;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public class NecropickModel extends NormalEnemyModel implements MoveAble ,Ability{
+public class NecropickModel extends NormalEnemyModel implements MoveAble ,Ability , IsPolygon ,HasVertices {
     private Timer timer;
     private Timer abilityTimer;
     private boolean hasAbility;
+    private ArrayList<Vector> vertices;
 
     public NecropickModel(Vector position ,String id){
         this.position = position;
@@ -24,6 +27,9 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
         this.acceleration = new Vector(0 ,0);
         this.id = id;
         this.HP = 20;
+        vulnerableToEpsilonBullet = true;
+        vulnerableToEpsilonMelee = true;
+        initVertices();
         timer = new Timer(8000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -45,7 +51,6 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
             }
         });
         timer.start();
-
     }
 
 
@@ -83,5 +88,34 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
     @Override
     public boolean hasAbility() {
         return hasAbility;
+    }
+
+    @Override
+    public ArrayList<Vector> getVertices() {
+        return vertices;
+    }
+
+    void initVertices(){
+        vertices = new ArrayList<>();
+        vertices.add(new Vector(
+                position.x ,
+                position.y - (java.lang.Math.sqrt(3) * Constants.TRIGORATH_DIMENTION.width / 3d))
+        );
+        vertices.add(new Vector(
+                position.x - Constants.TRIGORATH_DIMENTION.width / 2d ,
+                position.y + (java.lang.Math.sqrt(3) * Constants.TRIGORATH_DIMENTION.width / 6d))
+        );
+        vertices.add(new Vector(
+                position.x + Constants.TRIGORATH_DIMENTION.width / 2d ,
+                position.y + (java.lang.Math.sqrt(3) * Constants.TRIGORATH_DIMENTION.width / 6d))
+        );
+    }
+
+    @Override
+    public void UpdateVertices(double xMoved ,double yMoved ,double theta) {
+        for (int i = 0 ;i < vertices.size() ;i++){
+            vertices.set(i ,new Vector(vertices.get(i).getX() + xMoved ,vertices.get(i).getY() + yMoved));
+            vertices.set(i , Math.RotateByTheta(vertices.get(i) ,position ,theta));
+        }
     }
 }

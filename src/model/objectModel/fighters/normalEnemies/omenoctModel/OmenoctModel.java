@@ -27,6 +27,8 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         this.acceleration = new Vector(0 ,0);
         this.id = id;
         this.HP = 20;
+        vulnerableToEpsilonBullet = true;
+        vulnerableToEpsilonMelee = true;
         omega = Constants.ENEMY_ROTATION_SPEED;
     }
 
