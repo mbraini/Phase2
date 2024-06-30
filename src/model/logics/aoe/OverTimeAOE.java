@@ -3,16 +3,15 @@ package model.logics.aoe;
 import controller.Controller;
 import model.objectModel.ObjectModel;
 import model.objectModel.EffectModel;
+import model.objectModel.fighters.normalEnemies.archmireModel.ArchmireEffectModel;
 
 import java.util.ArrayList;
 
 public class OverTimeAOE extends AOE{
     private ArrayList<EffectModel> shapes;
-    private ArrayList<Double> times;
 
     public OverTimeAOE(){
         shapes = new ArrayList<>();
-        times = new ArrayList<>();
     }
 
     @Override
@@ -20,20 +19,8 @@ public class OverTimeAOE extends AOE{
 
     }
 
-    public void removeShapeOverTime(double time){
-        for (int i = 0; i < shapes.size() ; i++){
-            if (times.get(i) >= time){
-                Controller.removeEffect(shapes.get(i));
-                times.remove(i);
-                shapes.remove(i);
-                i--;
-            }
-        }
-    }
-
     public void addShape(EffectModel point){
         shapes.add(point);
-        times.add(0d);
     }
 
     public int indexOfPoint(ObjectModel point){
@@ -59,11 +46,7 @@ public class OverTimeAOE extends AOE{
         this.shapes = shapes;
     }
 
-    public ArrayList<Double> getTimes() {
-        return times;
-    }
-
-    public void setTimes(ArrayList<Double> times) {
-        this.times = times;
+    public void removeShape(EffectModel effectModel) {
+        shapes.remove(effectModel);
     }
 }

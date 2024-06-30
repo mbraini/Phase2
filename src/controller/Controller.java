@@ -195,9 +195,9 @@ public abstract class Controller {
 //                ObjectType.omenoct
 //        );
 //
-//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ObjectType.archmire
-//        );
+        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+                ObjectType.archmire
+        );
 //
 //
 //        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
@@ -205,10 +205,10 @@ public abstract class Controller {
 //        );
 //
 //
-        Spawner.addObject(
-                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
-                ObjectType.blackOrb
-        );
+//        Spawner.addObject(
+//                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
+//                ObjectType.blackOrb
+//        );
 
         Spawner.addFrame(new Vector(0 ,0),
                 new Dimension(Constants.GAME_WIDTH ,Constants.GAME_HEIGHT)

@@ -3,12 +3,15 @@ package controller.manager;
 import data.Constants;
 import model.GameState;
 import model.ModelData;
+import model.interfaces.Fader;
+import model.objectModel.EffectModel;
 import model.objectModel.ObjectModel;
 
 import java.util.ArrayList;
 
 public class GameManagerThread extends Thread{
     private ArrayList<ObjectModel> models;
+    private ArrayList<EffectModel> effects;
     private double time;
 
     @Override
@@ -33,11 +36,26 @@ public class GameManagerThread extends Thread{
 
         synchronized (ModelData.getModels()){
             models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
+            effects = (ArrayList<EffectModel>) ModelData.getEffectModels().clone();
         }
-
+        interfaces();
         killObjects();
-        GameState.update(models);
+        GameState.update(models ,time);
+    }
 
+    private void interfaces() {
+        for (ObjectModel model : models){
+            if (model instanceof Fader){
+                ((Fader) model).addTime(Constants.MANAGER_THREAD_REFRESH_TIME);
+                ((Fader) model).fadeIf();
+            }
+        }
+        for (EffectModel effect : effects){
+            if (effect instanceof Fader){
+                ((Fader) effect).addTime(Constants.MANAGER_THREAD_REFRESH_TIME);
+                ((Fader) effect).fadeIf();
+            }
+        }
     }
 
     private void killObjects() {

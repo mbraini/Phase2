@@ -58,6 +58,7 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
         //////todo
         Controller.removeObject(this);
         Spawner.addCollectives(position ,5 ,6);
+        thread.interrupt();
     }
 
     public OverTimeAOE getAOE(){

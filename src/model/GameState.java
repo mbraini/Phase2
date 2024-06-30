@@ -75,7 +75,8 @@ public class GameState {
         GameState.isOver = isOver;
     }
 
-    public static void update(ArrayList<ObjectModel> models) {
+    public static void update(ArrayList<ObjectModel> models ,double time) {
         setHp(models.getFirst().getHP());
+        setTime(time);
     }
 }

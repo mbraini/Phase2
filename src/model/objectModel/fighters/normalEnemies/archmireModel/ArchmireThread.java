@@ -27,7 +27,7 @@ public class ArchmireThread extends Thread{
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
-        while (!GameState.isPause() && !GameState.isOver()) {
+        while (!GameState.isPause() && !GameState.isOver() && !isInterrupted()) {
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
@@ -45,38 +45,7 @@ public class ArchmireThread extends Thread{
             effects = (ArrayList<EffectModel>) ModelData.getEffectModels().clone();
         }
         addNewShapes();
-        addTimeToPoints();
-        checkTimeLimit();
-        setColors();
         checkForDamage();
-    }
-
-    private void setColors() {
-        for (int i = 0; i < archmire.getAOE().getShapes().size() ; i++){
-            int R = (int)
-                    (255 - (255d/Constants.ARCHMIRE_AOE_TIME_LIMIT) * archmire.getAOE().getTimes().get(i)
-                    );
-            archmire.getAOE().getShapes().get(i).setColor(new Color(R ,0 ,0));
-            setEffectColor(archmire.getAOE().getShapes().get(i));
-        }
-
-    }
-
-    private void setEffectColor(EffectModel effectModel) {
-        for (EffectModel effect : effects){
-            if (effect.getId().equals(effectModel.getId())){
-                effect.setColor(effectModel.getColor());
-            }
-        }
-    }
-
-    private void addTimeToPoints() {
-        for (int i = 0;i < archmire.getAOE().getTimes().size(); i++){
-            archmire.getAOE().getTimes().set(
-                    i ,
-                    archmire.getAOE().getTimes().get(i) + Constants.ARCHMIRE_THREAD_REFRESH_RATE
-            );
-        }
     }
 
     private void checkForDamage() {
@@ -85,9 +54,6 @@ public class ArchmireThread extends Thread{
         }
     }
 
-    private void checkTimeLimit() {
-        archmire.getAOE().removeShapeOverTime(Constants.ARCHMIRE_AOE_TIME_LIMIT);
-    }
 
     private void addNewShapes() {
         ArchmireEffectModel archmireEffectModel = new ArchmireEffectModel(archmire ,

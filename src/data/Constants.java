@@ -53,6 +53,7 @@ public class Constants {
     public static final int OMENOCT_MELEE_ATTACK = 8;
     public static final double NECROPICK_BULLET_DAMAGE = 5;
     public static final double MANAGER_THREAD_REFRESH_TIME = 100;
+    public static final double COLLECTIVE_FADE_TIME = 7000;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);
@@ -76,7 +77,6 @@ public class Constants {
     public static Image banish;
     public static final double ENEMY_LINEAR_SPEED = 0.2;
     public static final double COLLECTIVE_RADIOS = 5;
-    public static final int COLLECTIVE_FADE = 7000;
     public static final double COLLECTIVE_VELOCITY = 0.6;
     public static final int COLLECTIVE_ABILITY_ACTIVATION_RADIOS = 100;
 

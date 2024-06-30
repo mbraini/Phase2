@@ -1,16 +1,15 @@
 package model.objectModel;
 
 
+import controller.Controller;
 import data.Constants;
 import model.GameState;
 import model.ModelData;
-import model.interfaces.Ability;
-import model.interfaces.IsCircle;
-import model.interfaces.MoveAble;
+import model.interfaces.*;
 import utils.Math;
 import utils.Vector;
 
-public class CollectiveModel extends ObjectModel implements IsCircle, Ability, MoveAble {
+public class CollectiveModel extends ObjectModel implements IsCircle, Ability, MoveAble , CollisionDetector , Fader {
     int value;
     double time;
     boolean hasAbility = false;
@@ -26,7 +25,7 @@ public class CollectiveModel extends ObjectModel implements IsCircle, Ability, M
 
     @Override
     public double getRadios() {
-        return Constants.COLLECTIVE_RADIOS;
+        return Constants.COLLECTIVE_ABILITY_ACTIVATION_RADIOS;
     }
 
     @Override
@@ -44,8 +43,18 @@ public class CollectiveModel extends ObjectModel implements IsCircle, Ability, M
 
     @Override
     public void ability() {
-        if ((GameState.getTime() - time) * 1000 >= Constants.COLLECTIVE_FADE){
-//            Controller.removeRequest(this);
+        Vector epsilonPosition = ModelData.getModels().getFirst().getPosition();
+        Vector distance = Math.VectorAdd(
+                epsilonPosition,
+                Math.ScalarInVector(-1 ,position)
+        );
+        velocity = Math.VectorWithSize(
+                distance,
+                Constants.COLLECTIVE_VELOCITY
+        );
+        if (Math.VectorSize(distance) <= Constants.EPSILON_DIMENSION.width) {
+            GameState.setXp(GameState.getXp() + value);
+            die();
         }
     }
 
@@ -64,6 +73,23 @@ public class CollectiveModel extends ObjectModel implements IsCircle, Ability, M
 
     @Override
     public void die() {
-        ///////////////addXP
+        Controller.removeObject(this);
+    }
+
+    @Override
+    public void detect() {
+        hasAbility = true;
+    }
+
+    @Override
+    public void addTime(double time) {
+        this.time += time;
+    }
+
+    @Override
+    public void fadeIf() {
+        if (time >= Constants.COLLECTIVE_FADE_TIME){
+            die();
+        }
     }
 }

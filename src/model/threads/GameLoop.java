@@ -7,10 +7,7 @@ import model.GameState;
 import model.ModelData;
 import model.ModelRequests;
 import model.collision.Collision;
-import model.interfaces.Ability;
-import model.interfaces.FrameSticker;
-import model.interfaces.MoveAble;
-import model.interfaces.Navigator;
+import model.interfaces.*;
 import model.objectModel.ObjectModel;
 
 import java.util.ArrayList;

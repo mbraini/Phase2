@@ -58,7 +58,7 @@ public class ImaginaryPanel extends JPanel {
                     20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
             );
             g.setColor(Color.WHITE);
-            g.drawString("Time: " + (int) ViewData.getTime(),
+            g.drawString("Time: " + (int) ViewData.getTime() / 1000,
                     151 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
                     20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
             );
