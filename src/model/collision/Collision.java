@@ -112,12 +112,16 @@ public class Collision {
             return Math.VectorAdd(direction ,circle.getPosition());
         }
         else if (a instanceof IsCircle && b instanceof IsCircle){
-            double ra = ((IsCircle) a).getRadios();
-            double rb = ((IsCircle) a).getRadios();
-            Vector v1 = Math.ScalarInVector(rb ,a.getPosition());
-            Vector v2 = Math.ScalarInVector(ra ,b.getPosition());
-            Vector v3 = Math.VectorAdd(v1 ,v2);
-            return Math.VectorWithSize(v3 ,1d / (ra + rb));
+            Vector aCenter = ((IsCircle) a).getCenter();
+            Vector direction = Math.VectorAdd(
+                    ((IsCircle) b).getCenter(),
+                    Math.ScalarInVector(-1 ,aCenter)
+            );
+            double aRadios = ((IsCircle) a).getRadios();
+            return Math.VectorAdd(
+                    aCenter,
+                    Math.VectorWithSize(direction ,aRadios)
+            );
         }
         return null;
     }

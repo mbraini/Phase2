@@ -5,7 +5,7 @@ import data.Constants;
 import model.ModelData;
 import model.animations.DashAnimation;
 import model.interfaces.ImpactAble;
-import model.objectModel.EpsilonModel;
+import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
 import utils.Vector;
 import view.soundEffects.Sound;

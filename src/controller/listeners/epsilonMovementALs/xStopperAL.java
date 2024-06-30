@@ -1,7 +1,7 @@
 package controller.listeners.epsilonMovementALs;
 
 
-import model.objectModel.EpsilonModel;
+import model.objectModel.fighters.EpsilonModel;
 import controller.listeners.EpsilonMovement;
 
 import java.awt.event.ActionEvent;

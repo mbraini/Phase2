@@ -1,15 +1,9 @@
 package model.objectModel;
 
-import model.interfaces.IsPolygon;
-
 public abstract class FighterModel extends ObjectModel{
     protected boolean hasMeleeAttack;
+    protected int meleeAttack;
 
-    public void meleeAttack(EnemyModel epsilon){
-        if (this instanceof IsPolygon){
-            ///////////meleeAttack
-        }
-    }
 
     public boolean isHasMeleeAttack() {
         return hasMeleeAttack;
@@ -17,5 +11,13 @@ public abstract class FighterModel extends ObjectModel{
 
     public void setHasMeleeAttack(boolean hasMeleeAttack) {
         this.hasMeleeAttack = hasMeleeAttack;
+    }
+
+    public int getMeleeAttack() {
+        return meleeAttack;
+    }
+
+    public void setMeleeAttack(int meleeAttack) {
+        this.meleeAttack = meleeAttack;
     }
 }

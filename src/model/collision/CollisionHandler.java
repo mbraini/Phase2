@@ -5,15 +5,14 @@ import controller.configs.Configs;
 import data.Constants;
 import model.GameState;
 import model.interfaces.HasVertices;
-import model.interfaces.IsCircle;
 import model.interfaces.IsPolygon;
 import model.logics.Impact;
 import model.objectModel.CollectiveModel;
-import model.objectModel.EnemyModel;
-import model.objectModel.EpsilonModel;
+import model.objectModel.fighters.EnemyModel;
+import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.ObjectModel;
-import model.objectModel.basicEnemies.SquarantineModel;
-import model.objectModel.basicEnemies.TrigorathModel;
+import model.objectModel.fighters.basicEnemies.SquarantineModel;
+import model.objectModel.fighters.basicEnemies.TrigorathModel;
 import model.objectModel.projectiles.BulletModel;
 import utils.Math;
 import utils.Vector;
@@ -41,7 +40,10 @@ public class CollisionHandler {
 
     private void epsilonHandler(EpsilonModel epsilon ,ObjectModel object) {
         if (object instanceof EnemyModel){
-
+            ((EnemyModel) object).meleeAttack(epsilon);
+            epsilon.meleeAttack((EnemyModel) object);
+            pullOut(epsilon ,object);
+            new Impact(collisionPoint).MakeImpact();
         }
     }
 
@@ -97,7 +99,7 @@ public class CollisionHandler {
                 break;
             }
         }
-        PullOut(epsilon ,enemy);
+        pullOut(epsilon ,enemy);
         new Impact(collisionPoint).MakeImpact();
     }
 
@@ -109,7 +111,7 @@ public class CollisionHandler {
                 defender = a;
             }
         }
-        PullOut(attacker, defender);
+        pullOut(attacker, defender);
         new Impact(collisionPoint).MakeImpact();
     }
 
@@ -119,26 +121,17 @@ public class CollisionHandler {
     }
 
 
-    private void PullOut(ObjectModel attacker, ObjectModel defender) {
-        if (attacker instanceof IsPolygon && defender instanceof IsPolygon) {
-            Vector attackerP = Math.VectorAdd(Math.ScalarInVector(-1, collisionPoint), attacker.getPosition());
-            attackerP = Math.VectorWithSize(attackerP, 1);
-            while (Collision.IsColliding(attacker, defender)) {
-                attacker.setPosition(Math.VectorAdd(attackerP, attacker.getPosition()));
-                collisionPoint = Math.VectorAdd(collisionPoint ,attackerP);
+    private void pullOut(ObjectModel attacker, ObjectModel defender) {
+        Vector attackerP = Math.VectorAdd(Math.ScalarInVector(-1, collisionPoint), attacker.getPosition());
+        attackerP = Math.VectorWithSize(attackerP, 1);
+        while (Collision.IsColliding(attacker, defender)) {
+            attacker.setPosition(Math.VectorAdd(attackerP, attacker.getPosition()));
+//            collisionPoint = Math.VectorAdd(collisionPoint ,attackerP);
+            if (attacker instanceof HasVertices){
                 ((HasVertices) attacker).UpdateVertices(attackerP.x ,attackerP.y ,0);
             }
         }
-        else if (attacker instanceof IsCircle && defender instanceof IsPolygon){
-            Vector attackerP = Math.VectorAdd(Math.ScalarInVector(-1, collisionPoint), attacker.getPosition());
-            attackerP = Math.VectorWithSize(attackerP, 1);
-            while (Collision.IsColliding(attacker, defender)){
-                attacker.setPosition(Math.VectorAdd(attacker.getPosition() ,attackerP));
-                collisionPoint = Math.VectorAdd(collisionPoint ,attackerP);
-                if (attacker instanceof EpsilonModel)
-                    ((EpsilonModel) attacker).UpdateVertices(attackerP.x ,attackerP.y ,0);
-            }
-        }
+
     }
 
     public void EpsilonCollective(EpsilonModel epsilon, CollectiveModel collective) {

@@ -5,7 +5,7 @@ import controller.manager.GameManager;
 import controller.manager.Spawner;
 import data.Constants;
 import model.ModelRequests;
-import model.objectModel.EpsilonModel;
+import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.EffectModel;
 import model.objectModel.frameModel.FrameModelBuilder;
 import model.threads.FrameThread;

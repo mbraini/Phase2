@@ -2,7 +2,7 @@ package model.animations;
 
 
 import data.Constants;
-import model.objectModel.EpsilonModel;
+import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 
 import javax.swing.*;

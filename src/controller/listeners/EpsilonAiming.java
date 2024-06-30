@@ -6,7 +6,7 @@ import controller.manager.Spawner;
 import data.Constants;
 import model.GameState;
 import model.ModelData;
-import model.objectModel.EpsilonModel;
+import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
 import utils.Vector;
 import view.soundEffects.Sound;

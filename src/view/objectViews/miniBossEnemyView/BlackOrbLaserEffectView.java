@@ -1,7 +1,6 @@
 package view.objectViews.miniBossEnemyView;
 
 import data.Constants;
-import model.objectModel.miniBossEnemies.blackOrbModel.BlackOrbLaserEffectModel;
 import utils.area.Area;
 import utils.area.Polygon;
 import view.objectViews.effectView.EffectView;

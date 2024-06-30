@@ -1,9 +1,8 @@
 package controller.listeners;
 
 
-import controller.Controller;
 import model.ModelData;
-import model.objectModel.EpsilonModel;
+import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
 import utils.Vector;
 

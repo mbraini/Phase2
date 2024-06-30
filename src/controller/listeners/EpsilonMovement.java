@@ -3,7 +3,7 @@ package controller.listeners;
 
 import controller.configs.Configs;
 import model.ModelData;
-import model.objectModel.EpsilonModel;
+import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
 import utils.Vector;
 import controller.listeners.epsilonMovementALs.xStopperAL;
