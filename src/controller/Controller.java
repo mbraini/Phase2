@@ -194,9 +194,9 @@ public abstract class Controller {
 //                ObjectType.archmire
 //        );
 //
-//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ObjectType.trigorath
-//        );
+        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+                ObjectType.trigorath
+        );
 //
 //        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
 //                ObjectType.squarantine

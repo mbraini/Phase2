@@ -15,6 +15,7 @@ import model.objectModel.ObjectModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
 import model.objectModel.projectiles.BulletModel;
+import model.objectModel.projectiles.EpsilonBulletModel;
 import utils.Math;
 import utils.Vector;
 
@@ -40,11 +41,27 @@ public class CollisionHandler {
             return;
         }
 
+        /////////enemy and enemy
         if (model1 instanceof EnemyModel && model2 instanceof EnemyModel){
             enemyHandler((EnemyModel) model1 ,(EnemyModel)model2);
+            return;
         }
 
-        ///////////
+        ///////////enemy and epsilonBullet
+        if (model1 instanceof EnemyModel && model2 instanceof EpsilonBulletModel) {
+            BulletToEnemyHandler((EnemyModel) model1, (EpsilonBulletModel) model2);
+            return;
+        }
+        if (model2 instanceof EnemyModel && model1 instanceof EpsilonBulletModel){
+            BulletToEnemyHandler((EnemyModel) model2 ,(EpsilonBulletModel) model1);
+            return;
+        }
+
+    }
+
+    private void BulletToEnemyHandler(EnemyModel enemy, EpsilonBulletModel epsilonBullet) {
+        enemy.setHP(enemy.getHP() - epsilonBullet.getDamage());
+        epsilonBullet.die();
     }
 
     private void enemyHandler(EnemyModel enemy1, EnemyModel enemy2) {
