@@ -37,9 +37,25 @@ public class CollisionHandler {
             else {
                 epsilonHandler((EpsilonModel) model2 ,model1);
             }
+            return;
+        }
+
+        if (model1 instanceof EnemyModel && model2 instanceof EnemyModel){
+            enemyHandler((EnemyModel) model1 ,(EnemyModel)model2);
         }
 
         ///////////
+    }
+
+    private void enemyHandler(EnemyModel enemy1, EnemyModel enemy2) {
+        if (enemy1.isHovering() || enemy2.isHovering())
+            return;
+        pullOut(enemy1 ,enemy2);
+        new Impact(collisionPoint).MakeImpact();
+        if (enemy1 instanceof CollisionDetector)
+            ((CollisionDetector) enemy1).detect();
+        if (enemy2 instanceof CollisionDetector)
+            ((CollisionDetector) enemy2).detect();
     }
 
     private void epsilonHandler(EpsilonModel epsilon ,ObjectModel object) {
