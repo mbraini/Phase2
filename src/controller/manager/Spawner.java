@@ -18,6 +18,7 @@ import model.objectModel.fighters.normalEnemies.wyrmModel.WyrmModel;
 import model.objectModel.projectiles.EpsilonBulletModel;
 import model.objectModel.projectiles.NecropickBulletModel;
 import model.objectModel.projectiles.OmenoctBulletModel;
+import model.objectModel.projectiles.WyrmBulletModel;
 import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
@@ -35,6 +36,7 @@ import view.objectViews.normalEnemyView.archmireView.ArchmireView;
 import view.objectViews.projectiles.EpsilonBulletView;
 import view.objectViews.projectiles.NecropickBulletView;
 import view.objectViews.projectiles.OmenoctBulletView;
+import view.objectViews.projectiles.WyrmBulletView;
 
 import java.awt.*;
 
@@ -133,7 +135,11 @@ public abstract class Spawner {
                 break;
             case necropickBullet:
                 ModelRequests.addObjectModel(new NecropickBulletModel(position ,direction ,id));
-                ViewRequest.addObjectView(new NecropickBulletView(position ,0 ,id));
+                ViewRequest.addObjectView(new NecropickBulletView(position ,id));
+                break;
+            case wyrmBullet:
+                ModelRequests.addObjectModel(new WyrmBulletModel(position ,direction ,id));
+                ViewRequest.addObjectView(new WyrmBulletView(position ,id));
                 break;
         }
     }

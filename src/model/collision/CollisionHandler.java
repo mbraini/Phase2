@@ -29,6 +29,7 @@ public class CollisionHandler {
     }
 
     public void handle() {
+        ///////////epsilon and anotherModel
         if (model1 instanceof EpsilonModel || model2 instanceof EpsilonModel){
             if (model1 instanceof EpsilonModel){
                 epsilonHandler((EpsilonModel) model1 ,model2);
@@ -37,6 +38,8 @@ public class CollisionHandler {
                 epsilonHandler((EpsilonModel) model2 ,model1);
             }
         }
+
+        ///////////
     }
 
     private void epsilonHandler(EpsilonModel epsilon ,ObjectModel object) {
@@ -49,9 +52,13 @@ public class CollisionHandler {
             epsilon.meleeAttack((EnemyModel) object);
             pullOut(epsilon ,object);
             new Impact(collisionPoint).MakeImpact();
-            if (object instanceof CollisionDetector){
-                ((CollisionDetector) object).detect();
-            }
+        }
+        if (object instanceof BulletModel){
+            epsilon.setHP(epsilon.getHP() - ((BulletModel) object).getDamage());
+            object.die();
+        }
+        if (object instanceof CollisionDetector){
+            ((CollisionDetector) object).detect();
         }
     }
 

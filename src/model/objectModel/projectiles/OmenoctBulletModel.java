@@ -29,8 +29,4 @@ public class OmenoctBulletModel extends BulletModel implements IsCircle {
         return position;
     }
 
-    @Override
-    public void die() {
-        new Impact(position).MakeImpact();
-    }
 }

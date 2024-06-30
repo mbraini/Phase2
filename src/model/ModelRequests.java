@@ -61,27 +61,27 @@ public class ModelRequests {
     }
 
 
-    public static void addObjectModel(ObjectModel objectModel){
+    public synchronized static void addObjectModel(ObjectModel objectModel){
         addedObjectModel.add(objectModel);
     }
 
-    public static void addFrameModel(FrameModel frameModel){
+    public synchronized static void addFrameModel(FrameModel frameModel){
         addedFrameModel.add(frameModel);
     }
 
-    public static void removeObjectModel(String id){
+    public synchronized static void removeObjectModel(String id){
         removeObjectModelReq.add(id);
     }
 
-    public static void removeFrameModel(String id){
+    public synchronized static void removeFrameModel(String id){
         removeFrameModelReq.add(id);
     }
 
-    public static void addEffectModel(EffectModel effectModel){
+    public synchronized static void addEffectModel(EffectModel effectModel){
         addedEffectModel.add(effectModel);
     }
 
-    public static void removeEffectModel(String id){
+    public synchronized static void removeEffectModel(String id){
         removeEffectModelReq.add(id);
     }
 

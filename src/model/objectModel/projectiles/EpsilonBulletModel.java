@@ -9,7 +9,7 @@ import model.logics.Impact;
 import utils.Math;
 import utils.Vector;
 
-public class EpsilonBulletModel extends BulletModel implements IsCircle, MoveAble {
+public class EpsilonBulletModel extends BulletModel implements IsCircle {
 
     public EpsilonBulletModel(Vector position , Vector direction , String id){
         this.position = position;
@@ -30,9 +30,5 @@ public class EpsilonBulletModel extends BulletModel implements IsCircle, MoveAbl
         return position;
     }
 
-    @Override
-    public void die() {
-        Controller.removeObject(this);
-        new Impact(position).MakeImpact();
-    }
+
 }

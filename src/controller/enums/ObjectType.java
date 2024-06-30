@@ -13,5 +13,6 @@ public enum ObjectType {
     archmire,
     wyrm,
     blackOrb,
-    orb
+    orb,
+    wyrmBullet
 }

@@ -1,8 +1,10 @@
 package model.objectModel.projectiles;
 
+import controller.Controller;
 import data.Constants;
 import model.interfaces.HasVertices;
 import model.interfaces.MoveAble;
+import model.logics.Impact;
 import utils.Math;
 
 public abstract class BulletModel extends ProjectileModel implements MoveAble {
@@ -15,4 +17,11 @@ public abstract class BulletModel extends ProjectileModel implements MoveAble {
         double yMoved = ((2 * velocity.y - acceleration.y * Constants.UPS) / 2) * Constants.UPS;
         setPosition(position.x + xMoved ,position.y + yMoved);
     }
+
+    @Override
+    public void die() {
+        Controller.removeObject(this);
+        new Impact(position).MakeImpact();
+    }
+
 }

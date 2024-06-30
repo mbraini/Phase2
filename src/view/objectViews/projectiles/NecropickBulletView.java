@@ -6,9 +6,8 @@ import utils.Vector;
 import java.awt.*;
 
 public class NecropickBulletView extends BulletView{
-    public NecropickBulletView(Vector position , double theta , String id){
+    public NecropickBulletView(Vector position , String id){
         this.position = position;
-        this.theta = theta;
         this.id = id;
     }
 

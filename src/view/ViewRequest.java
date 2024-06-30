@@ -64,27 +64,27 @@ public class ViewRequest {
         }
     }
 
-    public static void addObjectView(ObjectView objectView){
+    public synchronized static void addObjectView(ObjectView objectView){
         addedObjectViews.add(objectView);
     }
 
-    public static void addFrameView(FrameView frameView){
+    public synchronized static void addFrameView(FrameView frameView){
         addedFrameViews.add(frameView);
     }
 
-    public static void removeObjectView(String id){
+    public synchronized static void removeObjectView(String id){
         removeObjectViewReq.add(id);
     }
 
-    public static void removeFrameView(String id){
+    public synchronized static void removeFrameView(String id){
         removeFrameViewReq.add(id);
     }
 
-    public static void addEffectView(EffectView effectView){
+    public synchronized static void addEffectView(EffectView effectView){
         addedEffectViews.add(effectView);
     }
 
-    public static void removeEffectView(String id){
+    public synchronized static void removeEffectView(String id){
         removeEffectViewReq.add(id);
     }
 

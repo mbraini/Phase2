@@ -35,6 +35,6 @@ public class WyrmShooter implements ActionListener {
                 )
         );
 
-        Spawner.addProjectile(bulletPosition ,direction , ObjectType.omenoctBullet);
+        Spawner.addProjectile(bulletPosition ,direction , ObjectType.wyrmBullet);
     }
 }
