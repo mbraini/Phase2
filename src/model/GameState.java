@@ -1,5 +1,9 @@
 package model;
 
+import model.objectModel.ObjectModel;
+
+import java.util.ArrayList;
+
 public class GameState {
 
     private static double time;
@@ -69,5 +73,9 @@ public class GameState {
 
     public static void setOver(boolean isOver) {
         GameState.isOver = isOver;
+    }
+
+    public static void update(ArrayList<ObjectModel> models) {
+        setHp(models.getFirst().getHP());
     }
 }

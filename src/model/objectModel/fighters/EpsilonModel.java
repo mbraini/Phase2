@@ -20,7 +20,7 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
         this.acceleration = new Vector(0 ,0);
         this.id =  id;
         this.HP = 100;
-
+        this.meleeAttack = Constants.EPSILON_DAMAGE;
         this.isSolid = true;
         vertices = new ArrayList<>();
     }

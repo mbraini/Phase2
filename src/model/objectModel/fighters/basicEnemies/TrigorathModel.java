@@ -20,6 +20,8 @@ public class TrigorathModel extends BasicEnemyModel implements HasVertices, IsPo
         this.acceleration = new Vector(0 ,0);
         this.id = id;
         this.HP = 15;
+        this.meleeAttack = Constants.TRIGORATH_DAMAGE;
+        this.hasMeleeAttack = true;
         omega = Constants.ENEMY_ROTATION_SPEED;
         initVertices();
     }

@@ -43,6 +43,8 @@ public abstract class Controller {
             ArrayList<FrameModel> frameModels = (ArrayList<FrameModel>) ModelData.getFrames().clone();
             ArrayList<EffectView> effectViews = (ArrayList<EffectView>) ViewData.getEffectViews().clone();
             ArrayList<EffectModel> effectModels = (ArrayList<EffectModel>) ModelData.getEffectModels().clone();
+            HashMap<ObjectModel ,FrameModel> locals =
+                    (HashMap<ObjectModel, FrameModel>) ModelData.getLocalFrames().clone();
 
             ///////////////
 
@@ -65,6 +67,9 @@ public abstract class Controller {
                                     frame.getSize().height + Constants.barD.height
                             )
                     );
+                    if (locals.get(objectModels.getFirst()) == frame){
+                        ViewData.setEpsilonFrame(frameViews.get(i));
+                    }
                 }
 
                 for (int i = 0; i < objectViews.size(); i++) {
@@ -100,14 +105,11 @@ public abstract class Controller {
 
                 ViewData.setViews(objectViews);
                 ViewData.setFrames(frameViews);
-//        ViewData.setLocalViews(locals);
-
                 setVariables();
             }
             catch (Exception e){
                 System.out.println("update view exeption!");
             }
-            HashMap<ObjectView, FrameView> locals = new HashMap<>();
         }
     }
 
@@ -184,19 +186,19 @@ public abstract class Controller {
 //                ObjectType.archmire
 //        );
 //
-//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ObjectType.trigorath
-//        );
-//
-//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ObjectType.squarantine
-//        );
-//
-//
-        Spawner.addObject(
-                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
-                ObjectType.blackOrb
+        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+                ObjectType.trigorath
         );
+
+        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+                ObjectType.squarantine
+        );
+//
+//
+//        Spawner.addObject(
+//                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
+//                ObjectType.blackOrb
+//        );
 
         Spawner.addFrame(new Vector(0 ,0),
                 new Dimension(Constants.GAME_WIDTH ,Constants.GAME_HEIGHT)
@@ -220,7 +222,6 @@ public abstract class Controller {
     }
 
     private static void viewStarter() {
-        ViewData.setLocalViews(new HashMap<>());
         ViewData.setPanels(new ArrayList<>());
         ViewData.setViews(new ArrayList<>());
         ViewData.setFrames(new ArrayList<>());

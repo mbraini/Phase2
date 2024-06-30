@@ -54,7 +54,7 @@ public class Constants {
     public static final double EPSILON_BULLET_VELOCITY = 0.6;
     public static final double EPSILON_BULLET_DIAMETER = 10;
     public static final int ID_SIZE = 10;
-    public static final double EPSILON_DAMAGE = 5;
+    public static final int EPSILON_DAMAGE = 5;
     public static final int MELEI_ATTACK = 10;
     public static final Dimension MINIMUM_FRAME_DIMENSION = new Dimension(200 + barD.width ,200 + barD.height);
     public static final double IMPACT_AREA = 200;

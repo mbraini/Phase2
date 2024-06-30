@@ -43,22 +43,22 @@ public class ImaginaryPanel extends JPanel {
         if (epsilonFrame != null) {
             g.setColor(Color.MAGENTA);
             g.setFont(new Font(null, Font.BOLD, 10));
-            g.drawString("XP: " + (int) GameState.getXp(),
+            g.drawString("XP: " + (int) ViewData.getXp(),
                     3 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
                     20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
             );
             g.setColor(Color.GREEN);
-            g.drawString("HP: " + (int) GameState.getHp(),
+            g.drawString("HP: " + (int) ViewData.getHp(),
                     58 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
                     20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
             );
             g.setColor(Color.RED);
-            g.drawString("Wave: " + (int) GameState.getWave(),
+            g.drawString("Wave: " + ViewData.getWave(),
                     103 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
                     20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
             );
             g.setColor(Color.WHITE);
-            g.drawString("Time: " + (int) GameState.getTime(),
+            g.drawString("Time: " + (int) ViewData.getTime(),
                     151 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
                     20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
             );
@@ -77,7 +77,7 @@ public class ImaginaryPanel extends JPanel {
     }
 
     public void setVariables() {
-        FrameView epsilonFrame = ViewData.getLocalViews().get(ViewData.getViews().getFirst());
+        FrameView epsilonFrame = ViewData.getEpsilonFrame();
         this.epsilonFrame = epsilonFrame;
     }
 

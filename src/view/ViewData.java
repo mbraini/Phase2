@@ -16,12 +16,12 @@ public class ViewData {
     private static ArrayList<ImaginaryPanel> panels = new ArrayList<>();
     private static ArrayList<FrameView> frames = new ArrayList<>();
     private static ArrayList<ObjectView> views = new ArrayList<>();
-    private static HashMap<ObjectView ,FrameView> localViews = new HashMap<>();
     private static ArrayList<EffectView> effectViews = new ArrayList<>();
     private static double time;
     private static double hp;
     private static double xp;
     private static int wave;
+    private static FrameView epsilonFrame;
 
     public static ArrayList<FrameView> getFrames() {
         return frames;
@@ -98,13 +98,7 @@ public class ViewData {
         ViewData.wave = wave;
     }
 
-    public static HashMap<ObjectView, FrameView> getLocalViews() {
-        return localViews;
-    }
 
-    public static void setLocalViews(HashMap<ObjectView, FrameView> localViews) {
-        ViewData.localViews = localViews;
-    }
 
     public static ArrayList<EffectView> getEffectViews() {
         return effectViews;
@@ -145,4 +139,13 @@ public class ViewData {
     public static void addEffect(EffectView effectView) {
         effectViews.add(effectView);
     }
+
+    public static FrameView getEpsilonFrame() {
+        return epsilonFrame;
+    }
+
+    public static void setEpsilonFrame(FrameView frameView) {
+        ViewData.epsilonFrame = frameView;
+    }
+
 }
