@@ -13,8 +13,10 @@ import java.awt.event.ActionListener;
 public class GameManager {
 
     private Timer spawner;
+    private GameManagerThread gameManager;
 
     public GameManager(){
+        gameManager = new GameManagerThread();
         spawner = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,4 +39,11 @@ public class GameManager {
         spawner.start();
     }
 
+    public GameManagerThread getGameManager() {
+        return gameManager;
+    }
+
+    public void setGameManager(GameManagerThread gameManager) {
+        this.gameManager = gameManager;
+    }
 }
