@@ -4,6 +4,7 @@ package model.collision;
 import controller.configs.Configs;
 import data.Constants;
 import model.GameState;
+import model.interfaces.CollisionDetector;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
 import model.logics.Impact;
@@ -48,6 +49,9 @@ public class CollisionHandler {
             epsilon.meleeAttack((EnemyModel) object);
             pullOut(epsilon ,object);
             new Impact(collisionPoint).MakeImpact();
+            if (object instanceof CollisionDetector){
+                ((CollisionDetector) object).detect();
+            }
         }
     }
 

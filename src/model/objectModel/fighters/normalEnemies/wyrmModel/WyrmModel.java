@@ -12,13 +12,14 @@ import utils.Vector;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class WyrmModel extends NormalEnemyModel implements Navigator , FrameSticker , MoveAble ,IsPolygon {
+public class WyrmModel extends NormalEnemyModel implements Navigator , FrameSticker , MoveAble ,IsPolygon ,HasVertices ,CollisionDetector {
 
     private FrameModel frameModel;
     private boolean isInRange;
     private ArrayList<Vector> vertices;
     private Timer shooter;
     private WyrmThread wyrmThread;
+    private boolean positiveDirection;
 
     public WyrmModel(Vector position ,String id){
         this.id = id;
@@ -27,6 +28,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         this.acceleration = new Vector(0 ,0);
         this.HP = 20;
         vulnerableToEpsilonBullet = true;
+        initVertices();
         setFrame();
         setPosition(Math.VectorAdd(
                 position,
@@ -85,6 +87,14 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         return isInRange;
     }
 
+    public boolean isPositiveDirection() {
+        return positiveDirection;
+    }
+
+    public void setPositiveDirection(boolean positiveDirection) {
+        this.positiveDirection = positiveDirection;
+    }
+
     @Override
     public void navigate() {
         WyrmNavigator navigator = new WyrmNavigator(this);
@@ -97,8 +107,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
 
             wyrmThread = new WyrmThread(
                     this ,
-                    ModelData.getModels().getFirst().getPosition(),
-                    true
+                    ModelData.getModels().getFirst().getPosition()
             );
             wyrmThread.start();
         }
@@ -141,4 +150,36 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         double cosTheta = dotProduct / Math.VectorSize(distance);
         setTheta(java.lang.Math.acos(cosTheta));
     }
+
+    void initVertices(){
+        vertices = new ArrayList<>();
+        vertices.add(new Vector(
+                position.x ,
+                position.y - (java.lang.Math.sqrt(3) * Constants.TRIGORATH_DIMENTION.width / 3d))
+        );
+        vertices.add(new Vector(
+                position.x - Constants.TRIGORATH_DIMENTION.width / 2d ,
+                position.y + (java.lang.Math.sqrt(3) * Constants.TRIGORATH_DIMENTION.width / 6d))
+        );
+        vertices.add(new Vector(
+                position.x + Constants.TRIGORATH_DIMENTION.width / 2d ,
+                position.y + (java.lang.Math.sqrt(3) * Constants.TRIGORATH_DIMENTION.width / 6d))
+        );
+    }
+
+    @Override
+    public void UpdateVertices(double xMoved ,double yMoved ,double theta) {
+        for (int i = 0 ;i < vertices.size() ;i++){
+            vertices.set(i ,new Vector(vertices.get(i).getX() + xMoved ,vertices.get(i).getY() + yMoved));
+            vertices.set(i , Math.RotateByTheta(vertices.get(i) ,position ,theta));
+        }
+    }
+
+    @Override
+    public void detect() {
+        positiveDirection = !positiveDirection;
+    }
+
+
+
 }

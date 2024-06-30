@@ -9,11 +9,9 @@ public class WyrmThread extends Thread{
     private final static double thetaD = java.lang.Math.PI / Constants.WYRM_THETA_UPDATE_COUNT;
     private WyrmModel wyrmModel;
     private Vector origin;
-    private boolean isInPositiveDirection;
-    public WyrmThread(WyrmModel wyrmModel , Vector origin ,boolean isInPositiveDirection){
+    public WyrmThread(WyrmModel wyrmModel , Vector origin){
         this.wyrmModel = wyrmModel;
         this.origin = origin.clone();
-        this.isInPositiveDirection = isInPositiveDirection;
     }
 
     @Override
@@ -35,7 +33,7 @@ public class WyrmThread extends Thread{
 
     private void rotateModel() {
         Vector newPosition;
-        if (isInPositiveDirection) {
+        if (wyrmModel.isPositiveDirection()) {
             newPosition = Math.RotateByTheta(wyrmModel.getPosition(), origin, thetaD);
             wyrmModel.setTheta(wyrmModel.getTheta() + thetaD);
         }
@@ -49,5 +47,6 @@ public class WyrmThread extends Thread{
                 newPosition,
                 Math.ScalarInVector(-1 ,previousPosition)
         );
+        wyrmModel.UpdateVertices(moved.x ,moved.y ,thetaD);
     }
 }
