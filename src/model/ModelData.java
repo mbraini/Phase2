@@ -1,6 +1,7 @@
 package model;
 
 import model.objectModel.EffectModel;
+import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
 
@@ -13,6 +14,15 @@ public class ModelData {
     private static ArrayList<ObjectModel> models = new ArrayList<>();
     private static HashMap<ObjectModel ,FrameModel> localFrames = new HashMap<>();
     private static ArrayList<EffectModel> effectModels = new ArrayList<>();
+    private static ArrayList<AbstractEnemy> abstractEnemies = new ArrayList<>();
+
+    public static ArrayList<AbstractEnemy> getAbstractEnemies() {
+        return abstractEnemies;
+    }
+
+    public static void setAbstractEnemies(ArrayList<AbstractEnemy> abstractEnemies) {
+        ModelData.abstractEnemies = abstractEnemies;
+    }
 
     public static ArrayList<FrameModel> getFrames() {
         return frames;
@@ -84,4 +94,18 @@ public class ModelData {
     public static void addEffect(EffectModel effectModel) {
         effectModels.add(effectModel);
     }
+
+    public static void removeAbstractEnemy(String id){
+        for (AbstractEnemy abstractEnemy : abstractEnemies){
+            if (abstractEnemy.getId().equals(id)){
+                abstractEnemies.remove(abstractEnemy);
+                return;
+            }
+        }
+    }
+
+    public static void addAbstractEnemy(AbstractEnemy abstractEnemy){
+        abstractEnemies.add(abstractEnemy);
+    }
+
 }

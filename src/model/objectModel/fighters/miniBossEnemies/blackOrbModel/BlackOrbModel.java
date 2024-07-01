@@ -1,6 +1,7 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
 import data.Constants;
+import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.projectiles.BlackOrbLaserModel;
 import utils.Vector;
@@ -8,7 +9,7 @@ import utils.Vector;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class BlackOrbModel {
+public class BlackOrbModel extends AbstractEnemy {
 
     private Timer orbSpawner;
     private Timer frameSpawner;
@@ -22,7 +23,8 @@ public class BlackOrbModel {
     private int frameCount;
     private int orbCount;
 
-    public BlackOrbModel(Vector center){
+    public BlackOrbModel(Vector center ,String id){
+        this.id = id;
         frameModels = new ArrayList<>();
         orbModels = new ArrayList<>();
         lasers = new ArrayList<>();

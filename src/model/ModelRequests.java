@@ -2,6 +2,7 @@ package model;
 
 import model.objectModel.ObjectModel;
 import model.objectModel.EffectModel;
+import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.frameModel.FrameModel;
 
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ public class ModelRequests {
     private static ArrayList<String> removeObjectModelReq = new ArrayList<>();
     private static ArrayList<String> removeFrameModelReq = new ArrayList<>();
     private static ArrayList<String> removeEffectModelReq = new ArrayList<>();
+    private static ArrayList<String> removeAbstractEnemyReq = new ArrayList<>();
+    private static ArrayList<AbstractEnemy> addedAbstractEnemy = new ArrayList<>();
     private static ArrayList<EffectModel> addedEffectModel = new ArrayList<>();
     private static ArrayList<ObjectModel> addedObjectModel = new ArrayList<>();
     private static ArrayList<FrameModel> addedFrameModel = new ArrayList<>();
@@ -19,6 +22,20 @@ public class ModelRequests {
         checkObjects();
         checkFrames();
         checkEffects();
+        checkAbstractEnemies();
+    }
+
+    private static void checkAbstractEnemies() {
+        for (int i = 0 ;i < addedAbstractEnemy.size() ;i++){
+            ModelData.addAbstractEnemy(addedAbstractEnemy.get(i));
+            addedAbstractEnemy.remove(i);
+            i--;
+        }
+        for (int i = 0 ;i < removeAbstractEnemyReq.size() ;i++){
+            ModelData.removeAbstractEnemy(removeAbstractEnemyReq.get(i));
+            removeAbstractEnemyReq.remove(i);
+            i--;
+        }
     }
 
     private static void checkEffects() {
@@ -83,6 +100,14 @@ public class ModelRequests {
 
     public synchronized static void removeEffectModel(String id){
         removeEffectModelReq.add(id);
+    }
+
+    public synchronized static void addAbstractEnemy(AbstractEnemy abstractEnemy){
+        addedAbstractEnemy.add(abstractEnemy);
+    }
+
+    public synchronized static void removeAbstractEnemy(String id){
+        removeAbstractEnemyReq.add(id);
     }
 
 

@@ -98,7 +98,12 @@ public abstract class Spawner {
                 addFrame(wyrmModel.getFrameModel());
                 break;
             case blackOrb :
-                new BlackOrbModel(position).spawn();
+                BlackOrbModel blackOrbModel = new BlackOrbModel(
+                        position,
+                        Helper.RandomStringGenerator(Constants.ID_SIZE)
+                );
+                ModelRequests.addAbstractEnemy(blackOrbModel);
+                blackOrbModel.spawn();
                 break;
             case orb:
                 ModelRequests.addObjectModel(new OrbModel(position ,id));
