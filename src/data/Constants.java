@@ -18,13 +18,16 @@ public class Constants {
     public static final int OMENOCT_FIRING_TIME = 2000;
     public static final double OMENOCT_NAVIGATE_VELOCITY = 0.1;
     public static final double OMENOCT_BULLET_VELOCITY = 0.6;
-    public static final double OMENOCT_RADIOS = 30;
     public static final double OMENOCT_BULLET_RADIOUS = 8;
     public static final double FRAME_SHRINKAGE_DISTANCE = 50;
     public static final double NECROPICK_SPAWN_RADIOS = 300;
     public static final double NECROPCIK_NAVIGATION_VELOCITY = 1;
     public static final Dimension NECROPICK_DIMENSION = new Dimension(50 ,50);
-    public static final Dimension OMENOCT_DIMENTION = new Dimension(50 ,50);
+    public static final Dimension OMENOCT_DIMENTION = new Dimension(100 ,100);
+    public static final double OMENOCT_RADIOS = (
+            Constants.OMENOCT_DIMENTION.width / (Math.sqrt(2) + 1)
+    ) / Math.sqrt(2 - Math.sqrt(2));
+
     public static final Object NECROPCIK_BULLET_RADIOS = 5;
     public static final Dimension ARCHMIRE_DIMENSION = new Dimension(100 ,100);
     public static final int ARCHMIRE_AOE_TIME_LIMIT = 5000;
@@ -45,7 +48,7 @@ public class Constants {
     public static final double BLACK_ORB_DISTANCE = 400;
     public static final Dimension BLACK_ORB_FRAME_DIMENSION = new Dimension(100 ,100);
     public static final double BLACK_ORB_DIAGONAL_SIZE = BLACK_ORB_DISTANCE / (2 * Math.sin(Math.toRadians(36)));
-    public static final Dimension ORB_DIMENSION = new Dimension(40 ,40);
+    public static final Dimension ORB_DIMENSION = new Dimension(70 ,70);
     public static final int BLACK_ORB_THEAD_REFRESH_RATE = 100;
     public static final double WYRM_RANGE_DAMAGE = 8;
     public static final double WYRM_BULLET_RADIOUS = 6;
@@ -102,6 +105,7 @@ public class Constants {
     public static Image aceso;
     public static Image proteus;
     public static Image omenoct;
+    public static Image orb;
     public static String winSound;
     public static String endSound;
 

@@ -33,6 +33,7 @@ public class Application implements Runnable{
             Constants.proteus = ImageIO.read(new File("src/view/objectViews/images/Proteus.png"));
             Constants.endGameImage = ImageIO.read(new File("src/view/objectViews/images/GameOver.png"));
             Constants.omenoct = ImageIO.read(new File("src/view/objectViews/images/omenoct.png"));
+            Constants.orb = ImageIO.read(new File("src/view/objectViews/images/orb.png"));
         }
         catch (Exception e){
             System.out.println("File Not Found!");

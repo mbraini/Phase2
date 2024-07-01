@@ -6,13 +6,14 @@ import data.Constants;
 import model.interfaces.*;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.fighters.normalEnemies.NormalEnemyModel;
+import utils.Helper;
 import utils.Math;
 import utils.Vector;
 
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble, FrameAttacher {
+public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble, FrameAttacher ,IsPolygon ,HasVertices {
 
     /////////////////////// Fix the Ability interface with Navigator interface
 
@@ -34,8 +35,26 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         hasMeleeAttack = true;
         meleeAttack = Constants.OMENOCT_MELEE_ATTACK;
         omega = Constants.ENEMY_ROTATION_SPEED;
+        initVertices();
     }
 
+    private void initVertices() {
+        vertices = new ArrayList<>();
+        Vector initVector = new Vector(
+                java.lang.Math.cos(java.lang.Math.PI / 8),
+                java.lang.Math.sin(java.lang.Math.PI / 8)
+        );
+        initVector = Math.VectorWithSize(initVector ,Constants.OMENOCT_RADIOS);
+        for (int i = 0 ;i < 8 ;i++){
+            vertices.add(
+                    Math.VectorAdd(
+                            position,
+                            initVector
+                    )
+            );
+            initVector = Math.RotateByTheta(initVector ,new Vector() ,java.lang.Math.PI / 4);
+        }
+    }
 
 
     @Override
@@ -125,5 +144,18 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
     public void die() {
         Controller.removeObject(this);
         Spawner.addCollectives(position ,8 ,4);
+    }
+
+    @Override
+    public void UpdateVertices(double xMoved, double yMoved, double theta) {
+        for (int i = 0 ;i < vertices.size() ;i++){
+            vertices.set(i ,new Vector(vertices.get(i).getX() + xMoved ,vertices.get(i).getY() + yMoved));
+            vertices.set(i , Math.RotateByTheta(vertices.get(i) ,position ,theta));
+        }
+    }
+
+    @Override
+    public ArrayList<Vector> getVertices() {
+        return vertices;
     }
 }
