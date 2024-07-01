@@ -1,5 +1,7 @@
 package data;
 
+
+
 import java.awt.*;
 
 public class Constants {
@@ -57,6 +59,9 @@ public class Constants {
     public static final double NECROPICK_BULLET_DAMAGE = 5;
     public static final double MANAGER_THREAD_REFRESH_TIME = 100;
     public static final double COLLECTIVE_FADE_TIME = 7000;
+    public static final Dimension HAND_DIMENSION = new Dimension(300 ,300);
+    public static final Dimension HEAD_DIMENSION = new Dimension(300 ,300);
+    public static final Dimension PUNCH_DIMENSION = new Dimension(300 ,300);
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);
@@ -109,4 +114,7 @@ public class Constants {
     public static String winSound;
     public static String endSound;
 
+    public static Image smiley;
+    public static Image hand;
+    public static Image punch;
 }
