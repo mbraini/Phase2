@@ -15,6 +15,7 @@ public class Boss extends AbstractEnemy {
     private HandModel rightHand;
     private HeadModel head;
     private PunchModel punch;
+    private BossThread bossThread;
 
     public Boss(){
         head = new HeadModel(

@@ -9,6 +9,7 @@ import java.awt.*;
 public abstract class BossHelper extends EnemyModel implements ImageChanger {
     protected FrameModel frame;
     protected Image image;
+    protected boolean isInUse;
     protected abstract void initFrame();
 
     public FrameModel getFrame() {
@@ -25,5 +26,13 @@ public abstract class BossHelper extends EnemyModel implements ImageChanger {
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    public boolean isInUse() {
+        return isInUse;
+    }
+
+    public void setInUse(boolean inUse) {
+        isInUse = inUse;
     }
 }
