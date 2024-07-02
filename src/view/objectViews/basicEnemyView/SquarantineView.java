@@ -10,6 +10,7 @@ public class SquarantineView extends BasicEnemyView{
     public SquarantineView(Vector position, String id){
         this.position = position;
         this.id = id;
+        this.image = Constants.squarantineImage;
     }
     @Override
     public void draw(Graphics2D g2d) {

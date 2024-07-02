@@ -10,6 +10,7 @@ public class OrbView extends MiniBossEnemyView{
     public OrbView(Vector position ,String id){
         this.position = position;
         this.id = id;
+        this.image = Constants.orb;
     }
 
     @Override
@@ -20,7 +21,7 @@ public class OrbView extends MiniBossEnemyView{
                 position.getY() + Constants.SCREEN_SIZE.height
         );
         g2d.drawImage(
-                Constants.orb ,
+                image ,
                 (int) position.getX() - Constants.ORB_DIMENSION.width / 2 + Constants.SCREEN_SIZE.width ,
                 (int) position.getY() - Constants.ORB_DIMENSION.height / 2 + Constants.SCREEN_SIZE.height,
                 Constants.ORB_DIMENSION.width ,

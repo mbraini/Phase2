@@ -10,6 +10,7 @@ public class NecropickView extends NormalEnemyView{
     public NecropickView(Vector position , String id){
         this.position = position;
         this.id = id;
+        this.image = Constants.omenoct;
     }
 
     @Override
@@ -21,7 +22,7 @@ public class NecropickView extends NormalEnemyView{
                     position.getY() + Constants.SCREEN_SIZE.height
             );
             g2d.drawImage(
-                    Constants.omenoct,
+                    image,
                     (int) position.getX() - Constants.NECROPICK_DIMENSION.width / 2 + Constants.SCREEN_SIZE.width,
                     (int) position.getY() - Constants.NECROPICK_DIMENSION.height / 2 + Constants.SCREEN_SIZE.height,
                     Constants.NECROPICK_DIMENSION.width,

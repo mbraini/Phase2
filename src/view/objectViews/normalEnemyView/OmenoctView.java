@@ -10,6 +10,7 @@ public class OmenoctView extends NormalEnemyView{
     public OmenoctView(Vector position ,String id){
         this.position = position;
         this.id = id;
+        this.image = Constants.omenoct;
     }
 
     @Override
@@ -20,7 +21,7 @@ public class OmenoctView extends NormalEnemyView{
                 position.getY() + Constants.SCREEN_SIZE.height
         );
         g2d.drawImage(
-                Constants.omenoct ,
+                image ,
                 (int) position.getX() - Constants.OMENOCT_DIMENTION.width / 2 + Constants.SCREEN_SIZE.width ,
                 (int) position.getY() - Constants.OMENOCT_DIMENTION.height / 2 + Constants.SCREEN_SIZE.height,
                 Constants.OMENOCT_DIMENTION.width ,

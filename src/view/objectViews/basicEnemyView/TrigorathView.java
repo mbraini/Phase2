@@ -10,6 +10,7 @@ public class TrigorathView extends BasicEnemyView{
     public TrigorathView(Vector position, String id){
         this.position = position;
         this.id = id;
+        this.image = Constants.trigorathImage;
     }
     @Override
     public void draw(Graphics2D g2d) {
@@ -19,7 +20,7 @@ public class TrigorathView extends BasicEnemyView{
                 position.getY() + Constants.SCREEN_SIZE.height
         );
         g2d.drawImage(
-                Constants.trigorathImage ,
+                image ,
                 (int) position.x - Constants.TRIGORATH_DIMENTION.width / 2 + Constants.SCREEN_SIZE.width,
                 (int) position.y - (Constants.TRIGORATH_DIMENTION.height * 2) / 3 + Constants.SCREEN_SIZE.height,
                 Constants.TRIGORATH_DIMENTION.width ,Constants.TRIGORATH_DIMENTION.height ,
