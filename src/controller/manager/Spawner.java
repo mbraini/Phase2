@@ -5,6 +5,9 @@ import data.Constants;
 import model.ModelRequests;
 import model.objectModel.CollectiveModel;
 import model.objectModel.fighters.EpsilonModel;
+import model.objectModel.fighters.finalBoss.Boss;
+import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
+import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
@@ -28,6 +31,8 @@ import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
 import view.objectViews.basicEnemyView.SquarantineView;
 import view.objectViews.basicEnemyView.TrigorathView;
+import view.objectViews.bossView.HandView;
+import view.objectViews.bossView.HeadView;
 import view.objectViews.miniBossEnemyView.BlackOrbLaserEffectView;
 import view.objectViews.miniBossEnemyView.OrbView;
 import view.objectViews.normalEnemyView.NecropickView;
@@ -182,6 +187,37 @@ public abstract class Spawner {
         String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
         ModelRequests.addObjectModel(new CollectiveModel(position,id ,value));
         ViewRequest.addObjectView(new CollectiveView(position ,id));
+    }
+
+    public static synchronized void spawnBoss(){
+        Boss boss = new Boss();
+        ModelRequests.addAbstractEnemy(boss);
+        boss.spawnHelpers();
+    }
+
+
+    public synchronized static void spawnHead(HeadModel head) {
+        ModelRequests.addObjectModel(head);
+        ViewRequest.addObjectView(new HeadView(head.getPosition() ,head.getId()));
+
+        ModelRequests.addFrameModel(head.getFrame());
+        ViewRequest.addFrameView(new FrameView(
+                head.getFrame().getPosition(),
+                head.getFrame().getSize(),
+                head.getFrame().getId()
+        ));
+    }
+
+    public synchronized static void spawnHand(HandModel hand){
+        ModelRequests.addObjectModel(hand);
+        ViewRequest.addObjectView(new HandView(hand.getPosition() ,hand.getId()));
+
+        ModelRequests.addFrameModel(hand.getFrame());
+        ViewRequest.addFrameView(new FrameView(
+                hand.getFrame().getPosition(),
+                hand.getFrame().getSize(),
+                hand.getFrame().getId()
+        ));
     }
 
 }

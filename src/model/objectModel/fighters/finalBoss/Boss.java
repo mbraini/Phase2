@@ -1,5 +1,6 @@
 package model.objectModel.fighters.finalBoss;
 
+import controller.manager.Spawner;
 import data.Constants;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
@@ -18,7 +19,7 @@ public class Boss extends AbstractEnemy {
     public Boss(){
         head = new HeadModel(
                 new Vector(
-                        Constants.SCREEN_SIZE.width,
+                        Constants.SCREEN_SIZE.width / 2d,
                         Constants.HEAD_DIMENSION.height / 2d
                 ),
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
@@ -38,5 +39,12 @@ public class Boss extends AbstractEnemy {
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
     }
+
+    public void spawnHelpers(){
+        Spawner.spawnHead(head);
+        Spawner.spawnHand(leftHand);
+        Spawner.spawnHand(rightHand);
+    }
+
 
 }

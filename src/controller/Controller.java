@@ -5,6 +5,7 @@ import controller.manager.GameManager;
 import controller.manager.Spawner;
 import data.Constants;
 import model.ModelRequests;
+import model.interfaces.ImageChanger;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.EffectModel;
 import model.objectModel.frameModel.FrameModelBuilder;
@@ -84,6 +85,8 @@ public abstract class Controller {
                     objectViews.get(i).setPosition(model.getPosition());
                     objectViews.get(i).setTheta(model.getTheta());
                     objectViews.get(i).setHovering(model.isHovering());
+                    if (model instanceof ImageChanger)
+                        objectViews.get(i).setImage(((ImageChanger) model).getImage());
                 }
 
                 for (int i = 0; i < effectViews.size(); i++) {
@@ -209,30 +212,31 @@ public abstract class Controller {
 //                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
 //                ObjectType.blackOrb
 //        );
-
-        FrameModelBuilder builder1 = new FrameModelBuilder(
-                new Vector(
-                        10 ,
-                        10
-                ),
-                new Dimension(200,200),
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
-        );
-        builder1.setSolid(true);
-        FrameModel frameModel1 = builder1.create();
-        Spawner.addFrame(frameModel1);
-
-        FrameModelBuilder builder2 = new FrameModelBuilder(
-                new Vector(
-                        Constants.SCREEN_SIZE.width - 200 ,
-                        Constants.SCREEN_SIZE.height - 200
-                ),
-                new Dimension(200,200),
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
-        );
-        builder2.setSolid(true);
-        FrameModel frameModel2 = builder2.create();
-        Spawner.addFrame(frameModel2);
+//
+//        FrameModelBuilder builder1 = new FrameModelBuilder(
+//                new Vector(
+//                        10 ,
+//                        10
+//                ),
+//                new Dimension(200,200),
+//                Helper.RandomStringGenerator(Constants.ID_SIZE)
+//        );
+//        builder1.setSolid(true);
+//        FrameModel frameModel1 = builder1.create();
+//        Spawner.addFrame(frameModel1);
+//
+//        FrameModelBuilder builder2 = new FrameModelBuilder(
+//                new Vector(
+//                        Constants.SCREEN_SIZE.width - 200 ,
+//                        Constants.SCREEN_SIZE.height - 200
+//                ),
+//                new Dimension(200,200),
+//                Helper.RandomStringGenerator(Constants.ID_SIZE)
+//        );
+//        builder2.setSolid(true);
+//        FrameModel frameModel2 = builder2.create();
+//        Spawner.addFrame(frameModel2);
+        Spawner.spawnBoss();
     }
 
     public static void threadsStarter() {
