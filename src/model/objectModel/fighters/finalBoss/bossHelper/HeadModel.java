@@ -13,6 +13,8 @@ public class HeadModel extends BossHelper{
         this.position = position;
         this.id = id;
         this.image = Constants.smiley;
+        this.velocity = new Vector();
+        this.acceleration = new Vector();
         initFrame();
     }
 
@@ -36,4 +38,16 @@ public class HeadModel extends BossHelper{
         );
         frame = builder.create();
     }
+
+    @Override
+    public void setStuckFramePosition() {
+        frame.transfer(Math.VectorAdd(
+                position,
+                new Vector(
+                        -Constants.HEAD_DIMENSION.width / 2d,
+                        -Constants.HEAD_DIMENSION.height / 2d
+                )
+        ));
+    }
+
 }

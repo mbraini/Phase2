@@ -13,6 +13,8 @@ public class PunchModel extends BossHelper{
         this.position = position;
         this.id = id;
         this.image = Constants.punch;
+        this.velocity = new Vector();
+        this.acceleration = new Vector();
         initFrame();
     }
 
@@ -35,6 +37,17 @@ public class PunchModel extends BossHelper{
                 id
         );
         frame = builder.create();
+    }
+
+    @Override
+    public void setStuckFramePosition() {
+        frame.transfer(Math.VectorAdd(
+                position,
+                new Vector(
+                        -Constants.PUNCH_DIMENSION.width / 2d,
+                        -Constants.PUNCH_DIMENSION.height / 2d
+                )
+        ));
     }
 
 }

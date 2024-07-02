@@ -39,6 +39,8 @@ public class Boss extends AbstractEnemy {
                 ),
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
+        bossThread = new BossThread(this);
+        bossThread.start();
     }
 
     public void spawnHelpers(){
@@ -48,4 +50,35 @@ public class Boss extends AbstractEnemy {
     }
 
 
+    public HandModel getLeftHand() {
+        return leftHand;
+    }
+
+    public void setLeftHand(HandModel leftHand) {
+        this.leftHand = leftHand;
+    }
+
+    public HandModel getRightHand() {
+        return rightHand;
+    }
+
+    public void setRightHand(HandModel rightHand) {
+        this.rightHand = rightHand;
+    }
+
+    public HeadModel getHead() {
+        return head;
+    }
+
+    public void setHead(HeadModel head) {
+        this.head = head;
+    }
+
+    public PunchModel getPunch() {
+        return punch;
+    }
+
+    public void setPunch(PunchModel punch) {
+        this.punch = punch;
+    }
 }

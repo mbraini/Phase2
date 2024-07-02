@@ -13,6 +13,8 @@ public class HandModel extends BossHelper{
         this.position = position;
         this.id = id;
         this.image = Constants.hand;
+        this.velocity = new Vector();
+        this.acceleration = new Vector();
         initFrame();
     }
 
@@ -36,4 +38,16 @@ public class HandModel extends BossHelper{
         );
         frame = builder.create();
     }
+
+    @Override
+    public void setStuckFramePosition() {
+        frame.transfer(Math.VectorAdd(
+                position,
+                new Vector(
+                        -Constants.HAND_DIMENSION.width / 2d,
+                        -Constants.HAND_DIMENSION.height / 2d
+                )
+        ));
+    }
+
 }

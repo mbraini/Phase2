@@ -58,8 +58,6 @@ public class FrameThread extends Thread{
         setDisablesForSolidFrames();
         checkSolidObjectBounds();
         resize(frames);
-        Collision.resetFramePairs();
-        Collision.checkFrameCollisions(frames);
         updatePreviousLocals();
     }
 

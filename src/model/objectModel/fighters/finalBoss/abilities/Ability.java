@@ -4,6 +4,6 @@ public abstract class Ability {
 
     protected abstract void ownHelpers();
     public abstract void activate();
-    protected abstract void disownHelpers();
+    protected abstract void endAbility();
 
 }

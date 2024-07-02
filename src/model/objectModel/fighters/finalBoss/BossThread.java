@@ -4,15 +4,21 @@ import data.Constants;
 import model.GameState;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
+import model.objectModel.fighters.finalBoss.abilities.squeeze.Squeeze;
+import model.objectModel.frameModel.FrameModel;
 
 public class BossThread extends Thread {
 
     private EpsilonModel epsilon;
+    private FrameModel epsilonFrame;
+    private Boss boss;
 
-    public BossThread(){
+    public BossThread(Boss boss){
         synchronized (ModelData.getModels()) {
             epsilon = (EpsilonModel) ModelData.getModels().getFirst();
+            epsilonFrame = ModelData.getFrames().get(0);
         }
+        this.boss = boss;
     }
 
 
@@ -27,7 +33,7 @@ public class BossThread extends Thread {
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= Constants.BOSS_THREAD_REFRESH_RATE) {
+            if (deltaModel >= 10000) {
                 updateAbilities();
                 deltaModel = 0;
             }
@@ -36,8 +42,7 @@ public class BossThread extends Thread {
     }
 
     private void updateAbilities() {
-
-
-
+        Squeeze squeeze = new Squeeze(boss ,epsilonFrame);
+        squeeze.activate();
     }
 }
