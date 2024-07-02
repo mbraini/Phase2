@@ -205,15 +205,34 @@ public abstract class Controller {
 //        );
 ////
 ////
-        Spawner.addObject(
-                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
-                ObjectType.blackOrb
-        );
+//        Spawner.addObject(
+//                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
+//                ObjectType.blackOrb
+//        );
 
-        Spawner.addFrame(new Vector(0 ,0),
-                new Dimension(Constants.GAME_WIDTH ,Constants.GAME_HEIGHT)
+        FrameModelBuilder builder1 = new FrameModelBuilder(
+                new Vector(
+                        10 ,
+                        10
+                ),
+                new Dimension(200,200),
+                Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
+        builder1.setSolid(true);
+        FrameModel frameModel1 = builder1.create();
+        Spawner.addFrame(frameModel1);
 
+        FrameModelBuilder builder2 = new FrameModelBuilder(
+                new Vector(
+                        Constants.SCREEN_SIZE.width - 200 ,
+                        Constants.SCREEN_SIZE.height - 200
+                ),
+                new Dimension(200,200),
+                Helper.RandomStringGenerator(Constants.ID_SIZE)
+        );
+        builder2.setSolid(true);
+        FrameModel frameModel2 = builder2.create();
+        Spawner.addFrame(frameModel2);
     }
 
     public static void threadsStarter() {

@@ -6,7 +6,6 @@ import model.interfaces.IsCircle;
 import model.interfaces.IsPolygon;
 import model.objectModel.*;
 import model.objectModel.frameModel.FrameModel;
-import model.objectModel.projectiles.BulletModel;
 import utils.Helper;
 import utils.Math;
 import utils.Pair;
@@ -16,7 +15,8 @@ import java.util.ArrayList;
 
 public class Collision {
     private Vector collisionPoint;
-    private static ArrayList<Pair> collisionPairs = new ArrayList<>();
+    private static ArrayList<Pair> collisionModelPairs = new ArrayList<>();
+    private static ArrayList<Pair> collisionFramePairs = new ArrayList<>();
 
     public static boolean IsColliding(ObjectModel a , ObjectModel b){
         if (a instanceof IsPolygon && b instanceof IsPolygon){
@@ -59,24 +59,49 @@ public class Collision {
         model.setPosition(Math.VectorAdd(model.getPosition() ,solution));
     }
 
-    public static void resetPairs() {
-        collisionPairs = new ArrayList<>();
+    public static void resetModelPairs() {
+        collisionModelPairs = new ArrayList<>();
     }
 
-    public static void checkCollisions(ArrayList<ObjectModel> models){
+    public static void resetFramePairs() {
+        collisionFramePairs = new ArrayList<>();
+    }
+
+    public static void checkModelCollisions(ArrayList<ObjectModel> models){
         for (int i = 0; i < models.size() ; i++){
             for (int j = 0 ;j < models.size() ;j++){
                 if (i == j)
                     continue;
                 Pair pair = new Pair(i ,j);
-                if (Pair.Contains(collisionPairs ,pair))
+                if (Pair.Contains(collisionModelPairs,pair))
                     continue;
                 if (Collision.IsColliding(models.get(i) ,models.get(j))){
                     new CollisionHandler(
                             models.get(i) ,
                             models.get(j)
                     ).handle();
-                    collisionPairs.add(new Pair(i ,j));
+                    collisionModelPairs.add(new Pair(i ,j));
+                }
+            }
+        }
+    }
+
+    public static void checkFrameCollisions(ArrayList<FrameModel> frames){
+        for (int i = 0; i < frames.size() ; i++){
+            for (int j = 0 ;j < frames.size() ;j++){
+                if (i == j)
+                    continue;
+                if (!frames.get(i).isSolid() || !frames.get(j).isSolid())
+                    continue;
+                Pair pair = new Pair(i ,j);
+                if (Pair.Contains(collisionFramePairs,pair))
+                    continue;
+                if (Collision.IsColliding(frames.get(i) ,frames.get(j))){
+                    new CollisionHandler(
+                            frames.get(i) ,
+                            frames.get(j)
+                    ).handle();
+                    collisionFramePairs.add(new Pair(i ,j));
                 }
             }
         }
@@ -312,4 +337,13 @@ public class Collision {
     }
 
 
+    public static boolean IsCollidingWithSolidFrames(FrameModel frameModel ,ArrayList<FrameModel> frames) {
+        for (FrameModel frame : frames){
+            if (frame == frameModel)
+                continue;
+            if (frame.isSolid() && frameModel.isSolid() && IsColliding(frame ,frameModel))
+                return true;
+        }
+        return false;
+    }
 }

@@ -14,6 +14,7 @@ import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.ObjectModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
+import model.objectModel.frameModel.FrameModel;
 import model.objectModel.projectiles.BulletModel;
 import model.objectModel.projectiles.EpsilonBulletModel;
 import utils.Math;
@@ -67,7 +68,7 @@ public class CollisionHandler {
     private void enemyHandler(EnemyModel enemy1, EnemyModel enemy2) {
         if (enemy1.isHovering() || enemy2.isHovering())
             return;
-        pullOut(enemy1 ,enemy2);
+        pullOutObject(enemy1 ,enemy2);
         new Impact(collisionPoint).MakeImpact();
         if (enemy1 instanceof CollisionDetector)
             ((CollisionDetector) enemy1).detect();
@@ -83,7 +84,7 @@ public class CollisionHandler {
         if (object instanceof EnemyModel){
             ((EnemyModel) object).meleeAttack(epsilon);
             epsilon.meleeAttack((EnemyModel) object);
-            pullOut(epsilon ,object);
+            pullOutObject(epsilon ,object);
             new Impact(collisionPoint).MakeImpact();
         }
         if (object instanceof BulletModel){
@@ -94,40 +95,6 @@ public class CollisionHandler {
             ((CollisionDetector) object).detect();
         }
     }
-
-
-//    public void CollisionResponse(ObjectModel a, ObjectModel b) {
-//        if (collisionPoint == null)
-//            return;
-//
-//        /////epsilon enemy
-//        if (a instanceof EpsilonModel && b instanceof EnemyModel){
-//            collisionHandler.EpsilonEnemy((EpsilonModel)a ,(EnemyModel) b);
-//        }
-//        else if (b instanceof EpsilonModel && a instanceof EnemyModel){
-//            collisionHandler.EpsilonEnemy((EpsilonModel)b ,(EnemyModel) a);
-//        }
-//
-//        /////enemy enemy
-//        else if (a instanceof EnemyModel && b instanceof EnemyModel){
-//            collisionHandler.EnemyEnemy((EnemyModel) a ,(EnemyModel) b);
-//        }
-//
-//        /////enemy bullet
-//        else if (a instanceof EnemyModel && b instanceof BulletModel){
-//            collisionHandler.EnemyBullet((EnemyModel)a ,(BulletModel)b);
-//        }
-//        else if (b instanceof EnemyModel && a instanceof BulletModel){
-//            collisionHandler.EnemyBullet((EnemyModel)b ,(BulletModel)a);
-//        }
-//        /////Collectives
-//        else if (a instanceof EpsilonModel && b instanceof CollectiveModel){
-//            collisionHandler.EpsilonCollective((EpsilonModel) a ,(CollectiveModel) b);
-//        }
-//        else if (b instanceof EpsilonModel && a instanceof CollectiveModel){
-//            collisionHandler.EpsilonCollective((EpsilonModel) b ,(CollectiveModel) a);
-//        }
-//    }
 
 
 
@@ -147,7 +114,7 @@ public class CollisionHandler {
                 break;
             }
         }
-        pullOut(epsilon ,enemy);
+        pullOutObject(epsilon ,enemy);
         new Impact(collisionPoint).MakeImpact();
     }
 
@@ -159,7 +126,7 @@ public class CollisionHandler {
                 defender = a;
             }
         }
-        pullOut(attacker, defender);
+        pullOutObject(attacker, defender);
         new Impact(collisionPoint).MakeImpact();
     }
 
@@ -169,18 +136,17 @@ public class CollisionHandler {
     }
 
 
-    private void pullOut(ObjectModel attacker, ObjectModel defender) {
+    private void pullOutObject(ObjectModel attacker, ObjectModel defender) {
         Vector attackerP = Math.VectorAdd(Math.ScalarInVector(-1, collisionPoint), attacker.getPosition());
         attackerP = Math.VectorWithSize(attackerP, 1);
         while (Collision.IsColliding(attacker, defender)) {
             attacker.setPosition(Math.VectorAdd(attackerP, attacker.getPosition()));
-//            collisionPoint = Math.VectorAdd(collisionPoint ,attackerP);
             if (attacker instanceof HasVertices){
                 ((HasVertices) attacker).UpdateVertices(attackerP.x ,attackerP.y ,0);
             }
         }
-
     }
+
 
     public void EpsilonCollective(EpsilonModel epsilon, CollectiveModel collective) {
         collective.setHP(-1);

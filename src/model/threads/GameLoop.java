@@ -45,8 +45,8 @@ public class GameLoop extends Thread {
             }
         }
         interfaceObjects(models);
-        Collision.resetPairs();
-        Collision.checkCollisions(models);
+        Collision.resetModelPairs();
+        Collision.checkModelCollisions(models);
 
     }
 

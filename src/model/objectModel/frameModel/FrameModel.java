@@ -1,16 +1,19 @@
 package model.objectModel.frameModel;
 
+import controller.Controller;
 import data.Constants;
+import model.interfaces.HasVertices;
+import model.interfaces.IsPolygon;
+import model.objectModel.ObjectModel;
 import utils.Math;
 import utils.Vector;
 
 import java.awt.*;
+import java.util.ArrayList;
 
-public class FrameModel {
+public class FrameModel extends ObjectModel implements IsPolygon , HasVertices {
 
-    private Vector position;
     private Dimension size;
-    private String id;
     private Vector upDownA = new Vector();
     private Vector leftRightA = new Vector();
     private Vector upDownV = new Vector();
@@ -18,7 +21,8 @@ public class FrameModel {
     private Vector upDownP = new Vector();
     private Vector leftRightP = new Vector();
     private Vector positionInit;
-    private final Dimension dimensionInit;
+    private ArrayList<Vector> vertices;
+    private Dimension dimensionInit;
     private boolean isResizing;
     private boolean isIsometric;
     private boolean isSolid;
@@ -29,19 +33,26 @@ public class FrameModel {
     private boolean isShrinking;
 
     public FrameModel(Vector positionInit ,Dimension dimensionInit ,String id){
-        this.position = positionInit;
+        this.position = positionInit.clone();
         this.size = dimensionInit;
         this.id = id;
-        this.positionInit = positionInit;
+        this.positionInit = positionInit.clone();
         this.dimensionInit = dimensionInit;
+        initVertices();
     }
 
-    public Vector getPosition() {
-        return position;
+    private void initVertices() {
+        vertices = new ArrayList<>();
+        vertices.add(new Vector(position.x ,position.y));
+        vertices.add(new Vector(position.x + size.width ,position.y));
+        vertices.add(new Vector(position.x + size.width ,position.y + size.height));
+        vertices.add(new Vector(position.x ,position.y + size.height));
     }
 
-    public void setPosition(Vector position) {
-        this.position = position;
+
+    @Override
+    public void die() {
+        Controller.removeFrame(this);
     }
 
     public Dimension getSize() {
@@ -52,57 +63,48 @@ public class FrameModel {
         this.size = size;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public void resize() {
-        setUpDownV(
-                getUpDownV().x + upDownA.x * Constants.FRAME_ANIMATION_REFRESH_RATE ,
-                getUpDownV().y + upDownA.y * Constants.FRAME_ANIMATION_REFRESH_RATE
-        );
-        setLeftRightV(
-                getLeftRightV().x + leftRightA.x * Constants.FRAME_ANIMATION_REFRESH_RATE ,
-                getLeftRightV().y + leftRightA.y * Constants.FRAME_ANIMATION_REFRESH_RATE
-        );
-        Vector upDownMoved = new Vector();
-        Vector leftRightMoved = new Vector();
-        if (canTopResize){
-            upDownMoved.setX((2 * getUpDownV().x - upDownA.x * Constants.FRAME_ANIMATION_REFRESH_RATE)
-                    * Constants.FRAME_ANIMATION_REFRESH_RATE / 2);
-        }
-        if (canBottomResize){
-            upDownMoved.setY((2 * getUpDownV().y - upDownA.y * Constants.FRAME_ANIMATION_REFRESH_RATE)
-                    * Constants.FRAME_ANIMATION_REFRESH_RATE / 2);
-        }
-        if (canLeftResize){
-            leftRightMoved.setX((2 * getLeftRightV().x - leftRightA.x
-                    * Constants.FRAME_ANIMATION_REFRESH_RATE) * Constants.FRAME_ANIMATION_REFRESH_RATE / 2);
-        }
-        if (canRightResize){
-            leftRightMoved.setY((2 * getLeftRightV().y - leftRightA.y * Constants.FRAME_ANIMATION_REFRESH_RATE)
-                    * Constants.FRAME_ANIMATION_REFRESH_RATE / 2);
-        }
-        setUpDownP(Math.VectorAdd(upDownMoved ,getUpDownP()));
-        setLeftRightP(Math.VectorAdd(leftRightMoved ,getLeftRightP()));
-
-        revalidate();
+        new FrameResizer(this).resize();
     }
 
-    private void revalidate() {
-        setSize(new Dimension((int)(leftRightP.y + leftRightP.x + dimensionInit.width) ,(int)(upDownP.y + upDownP.x + dimensionInit.height)));
+    public void revalidate(Vector upDownMoved ,Vector leftRightMoved) {
+        setSize(new Dimension(
+                (int)(leftRightP.y + leftRightP.x + dimensionInit.width) ,
+                (int)(upDownP.y + upDownP.x + dimensionInit.height))
+        );
         setPosition(new Vector(-leftRightP.x + positionInit.x, -upDownP.x + positionInit.y));
+        transferVertices(upDownMoved ,leftRightMoved);
     }
 
-    public void transfer(Vector vector){
-        positionInit = vector.clone();
-        position = vector.clone();
-        setLeftRightP(0 ,0);
-        setUpDownP(0 ,0);
+    private void transferVertices(Vector upDownMoved, Vector leftRightMoved) {
+        vertices.set(0 ,
+                Math.VectorAdd(
+                        vertices.get(0) ,
+                        new Vector(-leftRightMoved.x ,-upDownMoved.x)
+                )
+        );
+        vertices.set(1 ,
+                Math.VectorAdd(
+                        vertices.get(1) ,
+                        new Vector(leftRightMoved.y ,-upDownMoved.x)
+                )
+        );
+        vertices.set(2 ,
+                Math.VectorAdd(
+                        vertices.get(2) ,
+                        new Vector(leftRightMoved.y ,upDownMoved.y)
+                )
+        );
+        vertices.set(3 ,
+                Math.VectorAdd(
+                        vertices.get(3) ,
+                        new Vector(-leftRightMoved.x ,upDownMoved.y)
+                )
+        );
+    }
+
+    public void transfer(Vector newPosition){
+        new FrameTransferer(this).transfer(newPosition);
     }
 
     public Vector getUpDownV() {
@@ -239,5 +241,33 @@ public class FrameModel {
 
     public void setCanLeftResize(boolean canLeftResize) {
         this.canLeftResize = canLeftResize;
+    }
+
+    public Vector getPositionInit() {
+        return positionInit;
+    }
+
+    public void setPositionInit(Vector positionInit) {
+        this.positionInit = positionInit;
+    }
+
+    public Dimension getDimensionInit() {
+        return dimensionInit;
+    }
+
+    public void setDimensionInit(Dimension dimensionInit) {
+        this.dimensionInit = dimensionInit;
+    }
+
+    @Override
+    public void UpdateVertices(double xMoved, double yMoved, double theta) {
+        for (int i = 0 ;i < vertices.size() ;i++){
+            vertices.set(i ,new Vector(vertices.get(i).getX() + xMoved ,vertices.get(i).getY() + yMoved));
+        }
+    }
+
+    @Override
+    public ArrayList<Vector> getVertices() {
+        return vertices;
     }
 }
