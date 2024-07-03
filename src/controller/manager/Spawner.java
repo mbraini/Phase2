@@ -19,10 +19,7 @@ import model.objectModel.fighters.normalEnemies.archmireModel.ArchmireEffectMode
 import model.objectModel.fighters.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.fighters.normalEnemies.omenoctModel.OmenoctModel;
 import model.objectModel.fighters.normalEnemies.wyrmModel.WyrmModel;
-import model.objectModel.projectiles.EpsilonBulletModel;
-import model.objectModel.projectiles.NecropickBulletModel;
-import model.objectModel.projectiles.OmenoctBulletModel;
-import model.objectModel.projectiles.WyrmBulletModel;
+import model.objectModel.projectiles.*;
 import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
@@ -40,10 +37,7 @@ import view.objectViews.normalEnemyView.OmenoctView;
 import view.objectViews.normalEnemyView.WyrmView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireEffectView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireView;
-import view.objectViews.projectiles.EpsilonBulletView;
-import view.objectViews.projectiles.NecropickBulletView;
-import view.objectViews.projectiles.OmenoctBulletView;
-import view.objectViews.projectiles.WyrmBulletView;
+import view.objectViews.projectiles.*;
 
 import java.awt.*;
 import java.util.Random;
@@ -154,6 +148,9 @@ public abstract class Spawner {
                 ModelRequests.addObjectModel(new WyrmBulletModel(position ,direction ,id));
                 ViewRequest.addObjectView(new WyrmBulletView(position ,id));
                 break;
+            case bossBullet:
+                ModelRequests.addObjectModel(new BossBulletModel(position ,direction ,id));
+                ViewRequest.addObjectView(new BossBulletView(position ,id));
         }
     }
 

@@ -1,13 +1,19 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
 import data.Constants;
+import model.interfaces.HasVertices;
+import model.interfaces.IsPolygon;
 import model.objectModel.frameModel.FrameModelBuilder;
 import utils.Math;
 import utils.Vector;
 
 import java.awt.*;
+import java.util.ArrayList;
 
-public class HandModel extends BossHelper{
+public class HandModel extends BossHelper implements IsPolygon , HasVertices {
+
+    private ArrayList<Vector> vertices;
+
 
     public HandModel(Vector position ,String id){
         this.position = position;
@@ -15,7 +21,26 @@ public class HandModel extends BossHelper{
         this.image = Constants.hand;
         this.velocity = new Vector();
         this.acceleration = new Vector();
+        setHovering(true);
         initFrame();
+        initVertices();
+    }
+
+    private void initVertices() {
+        vertices = new ArrayList<>();
+        vertices.add(getFrame().getPosition().clone());
+        vertices.add(Math.VectorAdd(
+                getFrame().getPosition(),
+                new Vector(Constants.HAND_DIMENSION.width ,0)
+        ));
+        vertices.add(Math.VectorAdd(
+                getFrame().getPosition(),
+                new Vector(Constants.HAND_DIMENSION.width ,Constants.HAND_DIMENSION.height)
+        ));
+        vertices.add(Math.VectorAdd(
+                getFrame().getPosition(),
+                new Vector(0 ,Constants.HAND_DIMENSION.height)
+        ));
     }
 
     @Override
@@ -51,4 +76,16 @@ public class HandModel extends BossHelper{
         ));
     }
 
+    @Override
+    public void UpdateVertices(double xMoved, double yMoved, double theta) {
+        for (int i = 0 ;i < vertices.size() ;i++){
+            vertices.set(i ,new Vector(vertices.get(i).getX() + xMoved ,vertices.get(i).getY() + yMoved));
+            vertices.set(i , Math.RotateByTheta(vertices.get(i) ,position ,theta));
+        }
+    }
+
+    @Override
+    public ArrayList<Vector> getVertices() {
+        return vertices;
+    }
 }

@@ -67,8 +67,10 @@ public class Constants {
     public static final int SQEEZE_THREAD_REFRESH_RATE = 10;
     public static final double SQUEEZE_DURATON = 5000;
     public static final double PROJECTILE_NAVIGATE_VELOCITY = 2;
-    public static final double PROJECTILE_NAVIGATE_RADIOS = 300;
+    public static final double PROJECTILE_NAVIGATE_RADIOS = 500;
     public static final int PROJECTILE_THREAD_REFRESH_RATE = 10;
+    public static final double BOSS_BULLET_RADIOS = 20;
+    public static final double PROJECTILE_DURATION = 5000;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);

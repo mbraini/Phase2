@@ -15,6 +15,7 @@ public class HeadModel extends BossHelper{
         this.image = Constants.smiley;
         this.velocity = new Vector();
         this.acceleration = new Vector();
+        setHovering(true);
         initFrame();
     }
 

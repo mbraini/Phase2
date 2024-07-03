@@ -9,36 +9,39 @@ public class AbilityCaster {
     private AbilityType abilityType;
     private Boss boss;
 
-    public AbilityCaster(Boss boss ,AbilityType abilityType){
-        this.abilityType = abilityType;
+    public AbilityCaster(Boss boss){
         this.boss = boss;
     }
 
     public void cast(){
         switch (abilityType){
             case squeeze :
-                if (canSqueeze()) {
-                    new Squeeze(boss).activate();
-                }
+                new Squeeze(boss).activate();
                 break;
             case projectile:
-                if (canProjectile()) {
-                    new Projectile(boss).activate();
-                }
+                new Projectile(boss).activate();
                 break;
         }
     }
 
-    private boolean canProjectile() {
-        if (!boss.getHead().isInUse())
-            return true;
+    public boolean canCast(){
+        switch (abilityType){
+            case squeeze :
+                if (!boss.getLeftHand().isInUse() && !boss.getRightHand().isInUse())
+                    return true;
+            case projectile:
+                if (!boss.getHead().isInUse() && !boss.getLeftHand().isInUse() && !boss.getRightHand().isInUse())
+                    return true;
+        }
         return false;
     }
 
-    private boolean canSqueeze(){
-        if (!boss.getLeftHand().isInUse() && !boss.getRightHand().isInUse())
-            return true;
-        return false;
+
+    public AbilityType getAbilityType() {
+        return abilityType;
     }
 
+    public void setAbilityType(AbilityType abilityType) {
+        this.abilityType = abilityType;
+    }
 }

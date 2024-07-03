@@ -15,6 +15,7 @@ public class BossThread extends Thread {
     private EpsilonModel epsilon;
     private FrameModel epsilonFrame;
     private Boss boss;
+    private final AbilityCaster abilityCaster;
 
     public BossThread(Boss boss){
         synchronized (ModelData.getModels()) {
@@ -22,6 +23,7 @@ public class BossThread extends Thread {
             epsilonFrame = ModelData.getFrames().get(0);
         }
         this.boss = boss;
+        abilityCaster = new AbilityCaster(boss);
     }
 
 
@@ -36,7 +38,7 @@ public class BossThread extends Thread {
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= 10000) {
+            if (deltaModel >= 2000) {
                 updateAbilities();
                 deltaModel = 0;
             }
@@ -45,7 +47,14 @@ public class BossThread extends Thread {
     }
 
     private void updateAbilities() {
-        new AbilityCaster(boss , AbilityType.projectile).cast();
-        new AbilityCaster(boss ,AbilityType.squeeze).cast();
+        abilityCaster.setAbilityType(AbilityType.projectile);
+        if (abilityCaster.canCast()) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            abilityCaster.cast();
+        }
     }
 }
