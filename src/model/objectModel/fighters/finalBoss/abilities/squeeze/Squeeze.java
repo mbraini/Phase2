@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities.squeeze;
 
 import data.Constants;
+import model.ModelData;
 import model.animations.DashAnimation;
 import model.interfaces.Navigator;
 import model.objectModel.fighters.finalBoss.Boss;
@@ -17,8 +18,10 @@ public class Squeeze extends Ability implements Navigator {
     private boolean arrived;
     private final SqueezeNavigator navigator;
 
-    public Squeeze(Boss boss, FrameModel epsilonFrame){
-        this.epsilonFrame = epsilonFrame;
+    public Squeeze(Boss boss){
+        synchronized (ModelData.getModels()) {
+            this.epsilonFrame = ModelData.getLocalFrames().get(ModelData.getModels().getFirst());
+        }
         this.boss = boss;
         thread = new SqueezeThread(this);
         navigator = new SqueezeNavigator(epsilonFrame ,boss.getLeftHand() ,boss.getRightHand());
@@ -85,7 +88,7 @@ public class Squeeze extends Ability implements Navigator {
 
     @Override
     public void navigate() {
-        new SqueezeNavigator(epsilonFrame ,boss.getLeftHand() ,boss.getRightHand()).navigate();
+        navigator.navigate();
     }
 
 

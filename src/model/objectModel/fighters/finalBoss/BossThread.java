@@ -4,6 +4,9 @@ import data.Constants;
 import model.GameState;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
+import model.objectModel.fighters.finalBoss.abilities.AbilityCaster;
+import model.objectModel.fighters.finalBoss.abilities.AbilityType;
+import model.objectModel.fighters.finalBoss.abilities.projectile.Projectile;
 import model.objectModel.fighters.finalBoss.abilities.squeeze.Squeeze;
 import model.objectModel.frameModel.FrameModel;
 
@@ -42,7 +45,6 @@ public class BossThread extends Thread {
     }
 
     private void updateAbilities() {
-        Squeeze squeeze = new Squeeze(boss ,epsilonFrame);
-        squeeze.activate();
+        new AbilityCaster(boss , AbilityType.squeeze).cast();
     }
 }
