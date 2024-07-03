@@ -52,6 +52,19 @@ public class Projectile extends Ability implements Navigator {
 
     public void checkArrived() {
         arrived = navigator.hasArrived();
+        if (arrived){
+            setUpArrive();
+        }
+    }
+
+    private void setUpArrive() {
+        thread.setOrigin(epsilon.getPosition().clone());
+        boss.getHead().setVelocity(0 ,0);
+    }
+
+
+    public Boss getBoss() {
+        return boss;
     }
 
 }

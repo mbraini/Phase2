@@ -45,6 +45,7 @@ public class BossThread extends Thread {
     }
 
     private void updateAbilities() {
-        new AbilityCaster(boss , AbilityType.squeeze).cast();
+        new AbilityCaster(boss , AbilityType.projectile).cast();
+        new AbilityCaster(boss ,AbilityType.squeeze).cast();
     }
 }

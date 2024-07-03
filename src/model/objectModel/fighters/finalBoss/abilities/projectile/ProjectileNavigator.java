@@ -39,7 +39,9 @@ public class ProjectileNavigator {
                 epsilon.getPosition(),
                 Math.ScalarInVector(-1 ,head.getPosition())
         );
-        if (Math.VectorSize(distance) <= Constants.PROJECTILE_NAVIGATE_VELOCITY * Constants.UPS)
+        double dist = Constants.PROJECTILE_NAVIGATE_VELOCITY * Constants.UPS
+                + Constants.PROJECTILE_NAVIGATE_RADIOS;
+        if (Math.VectorSize(distance) <= dist)
             return true;
         return false;
     }

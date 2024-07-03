@@ -17,12 +17,28 @@ public class AbilityCaster {
     public void cast(){
         switch (abilityType){
             case squeeze :
-                new Squeeze(boss).activate();
+                if (canSqueeze()) {
+                    new Squeeze(boss).activate();
+                }
                 break;
             case projectile:
-                new Projectile(boss).activate();
+                if (canProjectile()) {
+                    new Projectile(boss).activate();
+                }
                 break;
         }
+    }
+
+    private boolean canProjectile() {
+        if (!boss.getHead().isInUse())
+            return true;
+        return false;
+    }
+
+    private boolean canSqueeze(){
+        if (!boss.getLeftHand().isInUse() && !boss.getRightHand().isInUse())
+            return true;
+        return false;
     }
 
 }

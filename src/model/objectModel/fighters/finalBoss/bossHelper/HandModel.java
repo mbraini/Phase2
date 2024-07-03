@@ -36,6 +36,7 @@ public class HandModel extends BossHelper{
                 new Dimension(Constants.HAND_DIMENSION),
                 id
         );
+        builder.setIsometric(true);
         frame = builder.create();
     }
 

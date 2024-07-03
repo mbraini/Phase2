@@ -36,6 +36,7 @@ public class HeadModel extends BossHelper{
                 new Dimension(Constants.HEAD_DIMENSION),
                 id
         );
+        builder.setIsometric(true);
         frame = builder.create();
     }
 
