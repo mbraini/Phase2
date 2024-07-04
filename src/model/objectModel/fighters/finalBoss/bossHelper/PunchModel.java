@@ -36,6 +36,7 @@ public class PunchModel extends BossHelper{
                 new Dimension(Constants.PUNCH_DIMENSION),
                 id
         );
+        builder.setIsometric(true);
         frame = builder.create();
     }
 

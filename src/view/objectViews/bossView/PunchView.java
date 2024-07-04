@@ -11,7 +11,7 @@ public class PunchView extends EnemyView {
     public PunchView(Vector position , String id){
         this.position = position;
         this.id = id;
-        this.image = Constants.omenoct;
+        this.image = Constants.punch;
     }
 
 
@@ -21,7 +21,7 @@ public class PunchView extends EnemyView {
                 image ,
                 (int) position.x - Constants.PUNCH_DIMENSION.width / 2 + Constants.SCREEN_SIZE.width,
                 (int) position.y - Constants.PUNCH_DIMENSION.height / 2  + Constants.SCREEN_SIZE.height,
-                Constants.PUNCH_DIMENSION.width / 2 ,Constants.PUNCH_DIMENSION.height ,
+                Constants.PUNCH_DIMENSION.width ,Constants.PUNCH_DIMENSION.height ,
                 null
         );
     }

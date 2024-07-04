@@ -39,6 +39,13 @@ public class Boss extends AbstractEnemy {
                 ),
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
+        punch = new PunchModel(
+                new Vector(
+                        Constants.SCREEN_SIZE.width / 2d,
+                        Constants.SCREEN_SIZE.height - Constants.PUNCH_DIMENSION.height / 2d
+                ),
+                Helper.RandomStringGenerator(Constants.ID_SIZE)
+        );
         bossThread = new BossThread(this);
         bossThread.start();
     }
@@ -47,6 +54,10 @@ public class Boss extends AbstractEnemy {
         Spawner.spawnHead(head);
         Spawner.spawnHand(leftHand);
         Spawner.spawnHand(rightHand);
+    }
+
+    public void spawnPunch(){
+        Spawner.addPunch(punch);
     }
 
 

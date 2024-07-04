@@ -9,6 +9,7 @@ import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.vomit.BossAoeEffectModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
+import model.objectModel.fighters.finalBoss.bossHelper.PunchModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
@@ -32,6 +33,7 @@ import view.objectViews.basicEnemyView.TrigorathView;
 import view.objectViews.bossView.BossAoeEffectView;
 import view.objectViews.bossView.HandView;
 import view.objectViews.bossView.HeadView;
+import view.objectViews.bossView.PunchView;
 import view.objectViews.miniBossEnemyView.BlackOrbLaserEffectView;
 import view.objectViews.miniBossEnemyView.OrbView;
 import view.objectViews.normalEnemyView.NecropickView;
@@ -192,6 +194,7 @@ public abstract class Spawner {
         Boss boss = new Boss();
         ModelRequests.addAbstractEnemy(boss);
         boss.spawnHelpers();
+        boss.spawnPunch();
     }
 
 
@@ -222,5 +225,24 @@ public abstract class Spawner {
     public static void addBossEffect(BossAoeEffectModel effectModel) {
         ModelRequests.addEffectModel(effectModel);
         ViewRequest.addEffectView(new BossAoeEffectView(effectModel.getArea() ,effectModel.getId()));
+    }
+
+    public static void addPunch(PunchModel punch) {
+        ModelRequests.addObjectModel(punch);
+        ViewRequest.addObjectView(
+                new PunchView(
+                        punch.getPosition(),
+                        punch.getId()
+                )
+        );
+
+        ModelRequests.addFrameModel(punch.getFrame());
+        ViewRequest.addFrameView(
+                new FrameView(
+                        punch.getFrame().getPosition(),
+                        punch.getFrame().getSize(),
+                        punch.getFrame().getId()
+                )
+        );
     }
 }
