@@ -2,6 +2,8 @@ package model.objectModel.fighters.finalBoss.abilities.squeeze;
 
 import data.Constants;
 import model.GameState;
+import utils.Math;
+import utils.Vector;
 
 public class SqueezeThread extends Thread {
 
@@ -22,10 +24,10 @@ public class SqueezeThread extends Thread {
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= Constants.SQEEZE_THREAD_REFRESH_RATE) {
+            if (deltaModel >= Constants.SQUEEZE_THREAD_REFRESH_RATE) {
                 squeeze();
                 deltaModel = 0;
-                time += Constants.SQEEZE_THREAD_REFRESH_RATE;
+                time += Constants.SQUEEZE_THREAD_REFRESH_RATE;
             }
         }
     }
@@ -45,6 +47,30 @@ public class SqueezeThread extends Thread {
     }
 
     private void placeHands() {
+        Vector leftFrameCenter = new Vector(
+                squeeze.getEpsilonFrame().getPosition().x,
+                squeeze.getEpsilonFrame().getPosition().y + squeeze.getEpsilonFrame().getSize().height / 2d
+        );
+        Vector rightFrameCenter = new Vector(
+                squeeze.getEpsilonFrame().getPosition().x + squeeze.getEpsilonFrame().getSize().width,
+                squeeze.getEpsilonFrame().getPosition().y + squeeze.getEpsilonFrame().getSize().height / 2d
+        );
+        Vector leftHandPlacer = Math.VectorAdd(
+                leftFrameCenter,
+                new Vector(
+                        -Constants.HAND_DIMENSION.width / 2d - 1,
+                        0
+                )
+        );
 
+        Vector rightHandPlacer = Math.VectorAdd(
+                rightFrameCenter,
+                new Vector(
+                        Constants.HAND_DIMENSION.width / 2d + 1,
+                        0
+                )
+        );
+        squeeze.getBoss().getLeftHand().setPosition(leftHandPlacer);
+        squeeze.getBoss().getRightHand().setPosition(rightHandPlacer);
     }
 }

@@ -64,7 +64,7 @@ public class Constants {
     public static final Dimension PUNCH_DIMENSION = new Dimension(200 ,200);
     public static final int BOSS_THREAD_REFRESH_RATE = 100;
     public static final double HAND_SQUEEZE_NAVIGAE_VELOCITY = 1;
-    public static final int SQEEZE_THREAD_REFRESH_RATE = 10;
+    public static final int SQUEEZE_THREAD_REFRESH_RATE = 10;
     public static final double SQUEEZE_DURATON = 5000;
     public static final double PROJECTILE_NAVIGATE_VELOCITY = 2;
     public static final double PROJECTILE_NAVIGATE_RADIOS = 500;

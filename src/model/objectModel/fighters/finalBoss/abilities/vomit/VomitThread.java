@@ -29,10 +29,10 @@ public class VomitThread extends Thread{
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= Constants.SQEEZE_THREAD_REFRESH_RATE) {
+            if (deltaModel >= Constants.SQUEEZE_THREAD_REFRESH_RATE) {
                 update();
                 deltaModel = 0;
-                time += Constants.SQEEZE_THREAD_REFRESH_RATE;
+                time += Constants.SQUEEZE_THREAD_REFRESH_RATE;
             }
         }
     }
@@ -48,7 +48,6 @@ public class VomitThread extends Thread{
                     Helper.RandomStringGenerator(Constants.ID_SIZE)
             );
             Spawner.addBossEffect(effectModel);
-            System.out.println("VOMIT FIRE");
         }
         if (time >= Constants.VOMIT_DURATION_TIME){
             vomit.endAbility();

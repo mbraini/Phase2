@@ -109,4 +109,12 @@ public class Squeeze extends Ability implements Navigator {
         boss.getLeftHand().getFrame().setSolid(true);
         boss.getRightHand().getFrame().setSolid(true);
     }
+
+    public FrameModel getEpsilonFrame(){
+        return epsilonFrame;
+    }
+
+    public Boss getBoss() {
+        return boss;
+    }
 }
