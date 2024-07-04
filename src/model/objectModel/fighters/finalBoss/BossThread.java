@@ -47,7 +47,7 @@ public class BossThread extends Thread {
     }
 
     private void updateAbilities() {
-        abilityCaster.setAbilityType(AbilityType.powerPunch);
+        abilityCaster.setAbilityType(AbilityType.rapidFire);
         if (abilityCaster.canCast()) {
             try {
                 Thread.sleep(1000);

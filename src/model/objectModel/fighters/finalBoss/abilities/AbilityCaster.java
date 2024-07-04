@@ -3,6 +3,7 @@ package model.objectModel.fighters.finalBoss.abilities;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.powerPunch.PowerPunch;
 import model.objectModel.fighters.finalBoss.abilities.projectile.Projectile;
+import model.objectModel.fighters.finalBoss.abilities.rapidFire.RapidFire;
 import model.objectModel.fighters.finalBoss.abilities.squeeze.Squeeze;
 import model.objectModel.fighters.finalBoss.abilities.vomit.Vomit;
 import model.objectModel.frameModel.FrameModel;
@@ -32,6 +33,8 @@ public class AbilityCaster {
             case powerPunch:
                 new PowerPunch(boss ,epsilonFrame).activate();
                 break;
+            case rapidFire:
+                new RapidFire(boss).activate();
         }
     }
 
@@ -48,6 +51,9 @@ public class AbilityCaster {
                     return true;
             case powerPunch:
                 if (!boss.getPunch().isInUse())
+                    return true;
+            case rapidFire:
+                if (!boss.getHead().isInUse())
                     return true;
         }
         return false;
