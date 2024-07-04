@@ -16,6 +16,9 @@ public class BossThread extends Thread {
     private FrameModel epsilonFrame;
     private Boss boss;
     private final AbilityCaster abilityCaster;
+    private AbilityType abilityType;
+    private final BossAI bossAI;
+    private int ability;
 
     public BossThread(Boss boss){
         synchronized (ModelData.getModels()) {
@@ -23,6 +26,7 @@ public class BossThread extends Thread {
             epsilonFrame = ModelData.getFrames().get(0);
         }
         this.boss = boss;
+        bossAI = new BossAI(boss ,epsilon);
         abilityCaster = new AbilityCaster(boss ,epsilonFrame ,epsilon);
     }
 
@@ -38,7 +42,7 @@ public class BossThread extends Thread {
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= 5000) {
+            if (deltaModel >= 1000) {
                 updateAbilities();
                 deltaModel = 0;
             }
@@ -47,14 +51,34 @@ public class BossThread extends Thread {
     }
 
     private void updateAbilities() {
-        abilityCaster.setAbilityType(AbilityType.slap);
-        if (abilityCaster.canCast()) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+        defineAbility();
+        if (abilityType != null) {
+            abilityCaster.setAbilityType(abilityType);
+            if (abilityCaster.canCast()) {
+                abilityCaster.cast();
+                System.out.println("CASTING!");
             }
-            abilityCaster.cast();
         }
     }
+
+    private void defineAbility() {
+        if (bossAI.isInSqueezePosition()){
+            abilityType = AbilityType.squeeze;
+            return;
+        }
+        if (bossAI.isInProjectileRange()){
+            abilityType = AbilityType.projectile;
+            return;
+        }
+        if (ability >= 6)
+            ability = ability - 6;
+        if (ability == 0 || ability == 1) {
+            abilityType = null;
+            ability++;
+            return;
+        }
+        abilityType = AbilityType.values()[ability];
+        ability++;
+    }
+
 }

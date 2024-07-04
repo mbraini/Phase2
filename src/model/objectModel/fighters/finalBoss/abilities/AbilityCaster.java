@@ -49,21 +49,29 @@ public class AbilityCaster {
             case squeeze :
                 if (!boss.getLeftHand().isInUse() && !boss.getRightHand().isInUse())
                     return true;
+                break;
             case projectile:
                 if (!boss.getHead().isInUse() && !boss.getLeftHand().isInUse() && !boss.getRightHand().isInUse())
                     return true;
+                break;
             case vomit:
                 if (!boss.getHead().isInUse())
                     return true;
+                break;
             case powerPunch:
                 if (!boss.getPunch().isInUse())
                     return true;
+                break;
             case rapidFire:
                 if (!boss.getHead().isInUse())
                     return true;
+                break;
             case slap:
                 if (!boss.getLeftHand().isInUse() || !boss.getRightHand().isInUse() || !boss.getPunch().isInUse())
                     return true;
+                break;
+            case null:
+                return false;
         }
         return false;
     }

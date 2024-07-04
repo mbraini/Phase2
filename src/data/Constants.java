@@ -75,6 +75,7 @@ public class Constants {
     public static final double PUNCH_FRAME_PUSH_DISTANCE = 100;
     public static final int BOSS_BULLET_DELAY_TIME = 3000;
     public static final double RAPID_FIRE_DURATION_TIME = 12000;
+    public static final double PROJECTILE_ACTIVATION_RADIOS = 700;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);

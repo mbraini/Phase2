@@ -28,21 +28,21 @@ public class Boss extends AbstractEnemy {
         leftHand = new HandModel(
                 new Vector(
                         Constants.HAND_DIMENSION.width / 2d,
-                        Constants.HAND_DIMENSION.height / 2d
+                        Constants.SCREEN_SIZE.height / 2d
                 ),
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
         rightHand = new HandModel(
                 new Vector(
                         Constants.SCREEN_SIZE.width - Constants.HAND_DIMENSION.width / 2d,
-                        Constants.HAND_DIMENSION.height / 2d
+                        Constants.SCREEN_SIZE.height / 2d
                 ),
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
         punch = new PunchModel(
                 new Vector(
                         Constants.PUNCH_DIMENSION.width / 2d,
-                        Constants.SCREEN_SIZE.height / 2d
+                        Constants.SCREEN_SIZE.height - Constants.PUNCH_DIMENSION.height /2d
                 ),
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
