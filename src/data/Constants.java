@@ -30,7 +30,7 @@ public class Constants {
             Constants.OMENOCT_DIMENTION.width / (Math.sqrt(2) + 1)
     ) / Math.sqrt(2 - Math.sqrt(2));
 
-    public static final Object NECROPCIK_BULLET_RADIOS = 5;
+    public static final double NECROPICIK_BULLET_RADIOS = 5;
     public static final Dimension ARCHMIRE_DIMENSION = new Dimension(100 ,100);
     public static final int ARCHMIRE_AOE_TIME_LIMIT = 5000;
     public static final int ARCHMIRE_THREAD_REFRESH_RATE = ARCHMIRE_AOE_TIME_LIMIT / 50;

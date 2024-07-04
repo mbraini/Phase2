@@ -15,10 +15,10 @@ public class NecropickBulletView extends BulletView{
     public void draw(Graphics2D g2d) {
         g2d.setColor(Color.RED);
         g2d.fillOval(
-                (int) position.x + Constants.SCREEN_SIZE.width,
-                (int) position.y + Constants.SCREEN_SIZE.height,
-                (int) Constants.NECROPCIK_BULLET_RADIOS * 2,
-                (int) Constants.NECROPCIK_BULLET_RADIOS * 2
+                (int) (position.x - Constants.NECROPICIK_BULLET_RADIOS) + Constants.SCREEN_SIZE.width,
+                (int) (position.y - Constants.NECROPICIK_BULLET_RADIOS) + Constants.SCREEN_SIZE.height,
+                (int) Constants.NECROPICIK_BULLET_RADIOS * 2,
+                (int) Constants.NECROPICIK_BULLET_RADIOS * 2
         );
     }
 }

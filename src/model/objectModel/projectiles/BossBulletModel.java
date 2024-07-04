@@ -20,7 +20,7 @@ public class BossBulletModel extends BulletModel implements IsCircle {
 
     @Override
     public double getRadios() {
-        return Constants.OMENOCT_BULLET_RADIOUS;
+        return Constants.BOSS_BULLET_RADIOS;
     }
 
     @Override
