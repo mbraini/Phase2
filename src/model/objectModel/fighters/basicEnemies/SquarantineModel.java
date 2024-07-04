@@ -78,7 +78,8 @@ public class SquarantineModel extends BasicEnemyModel implements HasVertices, Is
                 ) ,
                 700 ,
                 90 ,
-                java.lang.Math.PI
+                java.lang.Math.PI,
+                false
         ).StartAnimation();
     }
 

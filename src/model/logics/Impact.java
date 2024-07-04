@@ -45,9 +45,22 @@ public class Impact {
                 if (distance == 0)
                     continue;
                 if (!(ModelData.getModels().get(i) instanceof EpsilonModel))
-                    new DashAnimation(ModelData.getModels().get(i), direction ,Constants.DASH_TIME  ,Constants.DASH_DISTANCE ,Constants.DASH_ROTATION).StartAnimation();
+                    new DashAnimation(
+                            ModelData.getModels().get(i),
+                            direction ,Constants.DASH_TIME,
+                            Constants.DASH_DISTANCE ,
+                            Constants.DASH_ROTATION,
+                            false
+                    ).StartAnimation();
                 else
-                    new DashAnimation(ModelData.getModels().get(i), direction ,Constants.DASH_TIME ,100 ,0).StartAnimation();
+                    new DashAnimation(
+                            ModelData.getModels().get(i),
+                            direction ,
+                            Constants.DASH_TIME ,
+                            100 ,
+                            0 ,
+                            false
+                    ).StartAnimation();
             }
         }
     }

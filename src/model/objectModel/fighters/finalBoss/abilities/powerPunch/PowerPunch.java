@@ -49,7 +49,8 @@ public class PowerPunch extends Ability {
                 direction,
                 1000,
                 Math.VectorSize(direction),
-                0
+                0,
+                true
         ).StartAnimation();
     }
 
@@ -131,7 +132,7 @@ public class PowerPunch extends Ability {
 
     @Override
     protected void endAbility() {
-
+        boss.getPunch().setInUse(false);
     }
 
     public Timer getTimer() {

@@ -60,7 +60,8 @@ public class Projectile extends Ability {
                 distance,
                 2000,
                 Math.VectorSize(distance),
-                0
+                0,
+                false
         ).StartAnimation();
     }
 
@@ -83,7 +84,8 @@ public class Projectile extends Ability {
                 leftDistance,
                 2000,
                 Math.VectorSize(leftDistance),
-                0
+                0,
+                false
         ).StartAnimation();
         Vector rightDestination = Math.RotateByTheta(
                 destination ,
@@ -99,7 +101,8 @@ public class Projectile extends Ability {
                 rightDistance,
                 2000,
                 Math.VectorSize(rightDistance),
-                0
+                0,
+                false
         ).StartAnimation();
     }
 
@@ -125,7 +128,8 @@ public class Projectile extends Ability {
                 leftD,
                 1000,
                 Math.VectorSize(leftD),
-                0
+                0,
+                false
         ).StartAnimation();
         Vector rightD = Math.VectorAdd(
                 new Vector(
@@ -139,7 +143,8 @@ public class Projectile extends Ability {
                 rightD,
                 1000,
                 Math.VectorSize(rightD),
-                0
+                0,
+                false
         ).StartAnimation();
     }
 

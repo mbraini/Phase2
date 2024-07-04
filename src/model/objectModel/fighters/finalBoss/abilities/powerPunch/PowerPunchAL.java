@@ -65,6 +65,7 @@ public class PowerPunchAL implements ActionListener {
                 ).StartAnimation();
                 break;
         }
+        powerPunch.endAbility();
         powerPunch.getTimer().removeActionListener(this);
         powerPunch.getTimer().stop();
     }

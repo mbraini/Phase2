@@ -61,7 +61,8 @@ public class Squeeze extends Ability implements Navigator {
                 leftD,
                 1000,
                 Math.VectorSize(leftD),
-                0
+                0,
+                false
         ).StartAnimation();
         Vector rightD = Math.VectorAdd(
                 new Vector(
@@ -75,7 +76,8 @@ public class Squeeze extends Ability implements Navigator {
                 rightD,
                 1000,
                 Math.VectorSize(rightD),
-                0
+                0,
+                false
         ).StartAnimation();
     }
 

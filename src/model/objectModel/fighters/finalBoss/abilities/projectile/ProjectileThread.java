@@ -77,7 +77,8 @@ public class ProjectileThread extends Thread{
                 new Vector(0 ,y - leftHand.getPosition().y),
                 1000,
                 java.lang.Math.abs(y - leftHand.getPosition().y),
-                0
+                0,
+                false
         ).StartAnimation();
 
         new DashAnimation(
@@ -85,7 +86,8 @@ public class ProjectileThread extends Thread{
                 new Vector(0 ,y - rightHand.getPosition().y),
                 1000,
                 java.lang.Math.abs(y - rightHand.getPosition().y),
-                0
+                0,
+                false
         ).StartAnimation();
     }
 

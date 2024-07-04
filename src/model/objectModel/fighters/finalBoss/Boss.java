@@ -41,8 +41,8 @@ public class Boss extends AbstractEnemy {
         );
         punch = new PunchModel(
                 new Vector(
-                        Constants.SCREEN_SIZE.width / 2d,
-                        Constants.SCREEN_SIZE.height - Constants.PUNCH_DIMENSION.height / 2d
+                        Constants.PUNCH_DIMENSION.width / 2d,
+                        Constants.SCREEN_SIZE.height / 2d
                 ),
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
