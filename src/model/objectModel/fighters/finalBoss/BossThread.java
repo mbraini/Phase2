@@ -23,7 +23,7 @@ public class BossThread extends Thread {
             epsilonFrame = ModelData.getFrames().get(0);
         }
         this.boss = boss;
-        abilityCaster = new AbilityCaster(boss ,epsilonFrame);
+        abilityCaster = new AbilityCaster(boss ,epsilonFrame ,epsilon);
     }
 
 
@@ -47,7 +47,7 @@ public class BossThread extends Thread {
     }
 
     private void updateAbilities() {
-        abilityCaster.setAbilityType(AbilityType.rapidFire);
+        abilityCaster.setAbilityType(AbilityType.slap);
         if (abilityCaster.canCast()) {
             try {
                 Thread.sleep(1000);

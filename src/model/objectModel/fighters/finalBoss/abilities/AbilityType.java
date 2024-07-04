@@ -6,6 +6,7 @@ public enum AbilityType {
     projectile,
     vomit,
     powerPunch,
-    rapidFire
+    rapidFire,
+    slap
 
 }
