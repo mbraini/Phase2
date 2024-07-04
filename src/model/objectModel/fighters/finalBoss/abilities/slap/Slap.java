@@ -26,6 +26,7 @@ public class Slap extends Ability {
     @Override
     protected void ownHelpers() {
         helper.setInUse(true);
+        helper.setHovering(false);
     }
 
     @Override
@@ -70,5 +71,7 @@ public class Slap extends Ability {
     @Override
     protected void endAbility() {
         helper.setInUse(false);
+        helper.setAcceleration(0 ,0);
+        helper.setVelocity(0 ,0);
     }
 }

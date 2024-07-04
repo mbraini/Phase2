@@ -14,6 +14,7 @@ import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.ObjectModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
+import model.objectModel.fighters.finalBoss.bossHelper.BossHelper;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.projectiles.BulletModel;
 import model.objectModel.projectiles.EpsilonBulletModel;
@@ -86,6 +87,10 @@ public class CollisionHandler {
             epsilon.meleeAttack((EnemyModel) object);
             pullOutObject(epsilon ,object);
             new Impact(collisionPoint).MakeImpact();
+            if (object instanceof BossHelper){
+                object.setAcceleration(0 ,0);
+                object.setVelocity(0 ,0);
+            }
         }
         if (object instanceof BulletModel){
             epsilon.setHP(epsilon.getHP() - ((BulletModel) object).getDamage());
@@ -98,44 +103,6 @@ public class CollisionHandler {
 
 
 
-    public void EpsilonEnemy(EpsilonModel epsilon , EnemyModel enemy){
-        for (int i = 0 ;i < ((IsPolygon)enemy).getVertices().size() ;i++){
-            if (Collision.IsInCircle(epsilon ,((IsPolygon)enemy).getVertices().get(i))){
-                if (enemy instanceof TrigorathModel)
-                    GameState.setHp(GameState.getHp() - Constants.TRIGORATH_DAMAGE);
-                else if (enemy instanceof SquarantineModel)
-                    GameState.setHp(GameState.getHp() - Constants.SQURANTINE_DAMAGE);
-                break;
-            }
-        }
-        for (int i = 0; i < EpsilonModel.getVertices().size() ; i++){
-            if (Collision.IsColliding(EpsilonModel.getVertices().get(i) ,enemy)){
-                enemy.setHP(enemy.getHP() - Constants.MELEI_ATTACK - Configs.EXTRA_DAMAGE);
-                break;
-            }
-        }
-        pullOutObject(epsilon ,enemy);
-        new Impact(collisionPoint).MakeImpact();
-    }
-
-    public void EnemyEnemy(EnemyModel a, EnemyModel b) {
-        ObjectModel attacker = a, defender = b;
-        for (int i = 0; i < ((IsPolygon) b).getVertices().size(); i++) {
-            if (collisionPoint.Equals(((IsPolygon) b).getVertices().get(i))) {
-                attacker = b;
-                defender = a;
-            }
-        }
-        pullOutObject(attacker, defender);
-        new Impact(collisionPoint).MakeImpact();
-    }
-
-    public void EnemyBullet(EnemyModel enemy, BulletModel bullet) {
-        bullet.setHP(-1);
-        enemy.setHP(enemy.getHP() - Constants.EPSILON_DAMAGE - Configs.EXTRA_DAMAGE);
-    }
-
-
     private void pullOutObject(ObjectModel attacker, ObjectModel defender) {
         Vector attackerP = Math.VectorAdd(Math.ScalarInVector(-1, collisionPoint), attacker.getPosition());
         attackerP = Math.VectorWithSize(attackerP, 1);
@@ -145,11 +112,6 @@ public class CollisionHandler {
                 ((HasVertices) attacker).UpdateVertices(attackerP.x ,attackerP.y ,0);
             }
         }
-    }
-
-
-    public void EpsilonCollective(EpsilonModel epsilon, CollectiveModel collective) {
-        collective.setHP(-1);
     }
 
 }

@@ -245,6 +245,7 @@ public abstract class Controller {
 //        builder2.setSolid(true);
 //        FrameModel frameModel2 = builder2.create();
 //        Spawner.addFrame(frameModel2);
+
         Spawner.spawnBoss();
     }
 
