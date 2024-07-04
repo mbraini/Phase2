@@ -4,6 +4,7 @@ public enum AbilityType {
 
     squeeze,
     projectile,
-    vomit
+    vomit,
+    powerPunch
 
 }

@@ -38,7 +38,7 @@ public class BossThread extends Thread {
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= 2000) {
+            if (deltaModel >= 5000) {
                 updateAbilities();
                 deltaModel = 0;
             }
@@ -47,7 +47,7 @@ public class BossThread extends Thread {
     }
 
     private void updateAbilities() {
-        abilityCaster.setAbilityType(AbilityType.vomit);
+        abilityCaster.setAbilityType(AbilityType.powerPunch);
         if (abilityCaster.canCast()) {
             try {
                 Thread.sleep(1000);

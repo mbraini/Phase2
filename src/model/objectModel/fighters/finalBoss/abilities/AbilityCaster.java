@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities;
 
 import model.objectModel.fighters.finalBoss.Boss;
+import model.objectModel.fighters.finalBoss.abilities.powerPunch.PowerPunch;
 import model.objectModel.fighters.finalBoss.abilities.projectile.Projectile;
 import model.objectModel.fighters.finalBoss.abilities.squeeze.Squeeze;
 import model.objectModel.fighters.finalBoss.abilities.vomit.Vomit;
@@ -28,6 +29,9 @@ public class AbilityCaster {
             case vomit:
                 new Vomit(boss ,epsilonFrame).activate();
                 break;
+            case powerPunch:
+                new PowerPunch(boss ,epsilonFrame).activate();
+                break;
         }
     }
 
@@ -41,6 +45,9 @@ public class AbilityCaster {
                     return true;
             case vomit:
                 if (!boss.getHead().isInUse())
+                    return true;
+            case powerPunch:
+                if (!boss.getPunch().isInUse())
                     return true;
         }
         return false;
