@@ -48,6 +48,10 @@ public class VomitThread extends Thread{
                     Helper.RandomStringGenerator(Constants.ID_SIZE)
             );
             Spawner.addBossEffect(effectModel);
+            System.out.println("VOMIT FIRE");
+        }
+        if (time >= Constants.VOMIT_DURATION_TIME){
+            vomit.endAbility();
         }
     }
 }

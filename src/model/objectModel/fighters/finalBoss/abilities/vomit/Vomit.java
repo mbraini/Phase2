@@ -27,6 +27,7 @@ public class Vomit extends Ability {
 
     @Override
     protected void endAbility() {
-
+        boss.getHead().setInUse(false);
+        thread.interrupt();
     }
 }

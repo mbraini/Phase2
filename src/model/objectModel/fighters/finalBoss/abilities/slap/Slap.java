@@ -9,6 +9,9 @@ import model.objectModel.fighters.finalBoss.bossHelper.BossHelper;
 import utils.Math;
 import utils.Vector;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -17,6 +20,7 @@ public class Slap extends Ability {
     private Boss boss;
     private BossHelper helper;
     private EpsilonModel epsilonModel;
+    private Timer timer;
 
     public Slap(Boss boss ,EpsilonModel epsilonModel){
         this.boss = boss;
@@ -34,6 +38,14 @@ public class Slap extends Ability {
         chooseHelper();
         ownHelpers();
         slapAnimation();
+        timer = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                endAbility();
+                timer.stop();
+            }
+        });
+        timer.start();
     }
 
     private void slapAnimation() {
