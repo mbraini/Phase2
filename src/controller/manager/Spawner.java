@@ -6,6 +6,7 @@ import model.ModelRequests;
 import model.objectModel.CollectiveModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.finalBoss.Boss;
+import model.objectModel.fighters.finalBoss.abilities.vomit.BossAoeEffectModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
 import model.objectModel.frameModel.FrameModel;
@@ -28,6 +29,7 @@ import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
 import view.objectViews.basicEnemyView.SquarantineView;
 import view.objectViews.basicEnemyView.TrigorathView;
+import view.objectViews.bossView.BossAoeEffectView;
 import view.objectViews.bossView.HandView;
 import view.objectViews.bossView.HeadView;
 import view.objectViews.miniBossEnemyView.BlackOrbLaserEffectView;
@@ -217,4 +219,8 @@ public abstract class Spawner {
         ));
     }
 
+    public static void addBossEffect(BossAoeEffectModel effectModel) {
+        ModelRequests.addEffectModel(effectModel);
+        ViewRequest.addEffectView(new BossAoeEffectView(effectModel.getArea() ,effectModel.getId()));
+    }
 }

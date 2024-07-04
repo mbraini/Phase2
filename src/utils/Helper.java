@@ -41,28 +41,13 @@ public class Helper {
 
     public static Vector createRandomPosition(FrameModel frameModel) {
         int x = random.nextInt(
-                -Constants.ENEMY_SPAWN_MARGIN ,
-                frameModel.getSize().width + Constants.ENEMY_SPAWN_MARGIN
+                (int) frameModel.getPosition().x ,
+                (int) frameModel.getPosition().x + frameModel.getSize().width
         );
-        int y = 0;
-        if (x < -Constants.ENEMY_SPAWN_MARGIN || x > frameModel.getSize().width + Constants.ENEMY_SPAWN_MARGIN){
-            y = random.nextInt(
-                    -Constants.ENEMY_SPAWN_MARGIN ,
-                    frameModel.getSize().height + Constants.ENEMY_SPAWN_MARGIN
-            );
-        }
-        else {
-            int rand = random.nextInt(2);
-            if (rand == 0){
-                y = random.nextInt(-Constants.ENEMY_SPAWN_MARGIN ,0);
-            }
-            else {
-                y = random.nextInt(frameModel.getSize().height + Constants.ENEMY_SPAWN_MARGIN ,
-                        frameModel.getSize().height + Constants.ENEMY_SPAWN_MARGIN
-                                + Constants.TRIGORATH_DIMENTION.height
-                );
-            }
-        }
+        int y = random.nextInt(
+                (int) frameModel.getPosition().y ,
+                (int) frameModel.getPosition().y + frameModel.getSize().height
+        );
         return new Vector(x ,y);
     }
 }

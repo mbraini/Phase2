@@ -18,10 +18,8 @@ public class Squeeze extends Ability implements Navigator {
     private boolean arrived;
     private final SqueezeNavigator navigator;
 
-    public Squeeze(Boss boss){
-        synchronized (ModelData.getModels()) {
-            this.epsilonFrame = ModelData.getLocalFrames().get(ModelData.getModels().getFirst());
-        }
+    public Squeeze(Boss boss ,FrameModel epsilonFrame){
+        this.epsilonFrame = epsilonFrame;
         this.boss = boss;
         thread = new SqueezeThread(this);
         navigator = new SqueezeNavigator(epsilonFrame ,boss.getLeftHand() ,boss.getRightHand());

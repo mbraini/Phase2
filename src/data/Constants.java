@@ -71,6 +71,7 @@ public class Constants {
     public static final int PROJECTILE_THREAD_REFRESH_RATE = 10;
     public static final double BOSS_BULLET_RADIOS = 20;
     public static final double PROJECTILE_DURATION = 5000;
+    public static final double VOMIT_RADIOS = 50;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);
@@ -126,4 +127,5 @@ public class Constants {
     public static Image smiley;
     public static Image hand;
     public static Image punch;
+    public static Image bossAoe;
 }
