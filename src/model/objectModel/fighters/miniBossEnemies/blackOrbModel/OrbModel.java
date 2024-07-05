@@ -12,13 +12,15 @@ public class OrbModel extends MiniBossModel implements IsCircle {
 
     private BlackOrbModel blackOrbModel;
     private FrameModel frameModel;
+    private int number;
 
-    public OrbModel(Vector position ,BlackOrbModel blackOrbModel ,String id){
+    public OrbModel(Vector position ,BlackOrbModel blackOrbModel ,int number ,String id){
         this.position = position;
         this.id = id;
         this.blackOrbModel = blackOrbModel;
         this.HP = 30;
-        this.frameModel = blackOrbModel.getFrameModels().get(blackOrbModel.getOrbModels().size());
+        this.number = number;
+        this.frameModel = blackOrbModel.getFrameModels().get(number);
         vulnerableToEpsilonMelee = true;
         vulnerableToEpsilonBullet = true;
     }

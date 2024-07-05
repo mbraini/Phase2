@@ -243,10 +243,11 @@ public abstract class Spawner {
         );
     }
 
-    public static void addOrb(Vector position, BlackOrbModel blackOrbModel, String id) {
+    public static void addOrb(Vector position, BlackOrbModel blackOrbModel, int number, String id) {
         ModelRequests.addObjectModel(new OrbModel(
                 position,
                 blackOrbModel,
+                number,
                 id
         ));
         ViewRequest.addObjectView(new OrbView(

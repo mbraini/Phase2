@@ -28,6 +28,7 @@ public class OrbSpawner implements ActionListener {
                         )
                 ),
                 blackOrbModel,
+                counter,
                 blackOrbModel.getFrameModels().get(counter).getId()
         );
         blackOrbModel.addOrb(new OrbModel(
@@ -39,6 +40,7 @@ public class OrbSpawner implements ActionListener {
                         )
                 ),
                 blackOrbModel,
+                counter,
                 blackOrbModel.getFrameModels().get(counter).getId()
         ));
         blackOrbModel.getBlackOrbThread().connectLasers(blackOrbModel.getOrbModels().size() - 1);

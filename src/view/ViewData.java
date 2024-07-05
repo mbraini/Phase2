@@ -120,6 +120,7 @@ public class ViewData {
     public static void removeFrame(String id) {
         for (int i = 0; i < frames.size(); i++){
             if (frames.get(i).getId().equals(id)){
+                frames.get(i).dispose();
                 frames.remove(i);
                 panels.remove(i);
                 return;
