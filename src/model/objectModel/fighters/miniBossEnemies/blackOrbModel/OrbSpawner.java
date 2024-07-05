@@ -46,7 +46,6 @@ public class OrbSpawner implements ActionListener {
         blackOrbModel.getBlackOrbThread().connectLasers(blackOrbModel.getOrbModels().size() - 1);
         counter++;
         if (counter == 5){
-            blackOrbModel.getBlackOrbThread().start();
             blackOrbModel.getOrbSpawner().stop();
         }
     }

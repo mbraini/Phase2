@@ -62,6 +62,7 @@ public class FrameSpawner implements ActionListener {
         if (counter == 5){
             blackOrbModel.setAllFramesSpawned(true);
             blackOrbModel.getOrbSpawner().start();
+            blackOrbModel.getBlackOrbThread().start();
             blackOrbModel.getFrameSpawner().stop();
         }
     }
