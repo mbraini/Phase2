@@ -5,6 +5,7 @@ import data.Constants;
 import model.ModelRequests;
 import model.objectModel.CollectiveModel;
 import model.objectModel.effects.ArchmireAoeEffectModel;
+import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.vomit.BossAoeEffectModel;
@@ -14,7 +15,6 @@ import model.objectModel.fighters.finalBoss.bossHelper.PunchModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
-import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbLaserEffectModel;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.OrbModel;
 import model.objectModel.fighters.normalEnemies.archmireModel.ArchmireModel;
@@ -108,9 +108,6 @@ public abstract class Spawner {
                 ModelRequests.addAbstractEnemy(blackOrbModel);
                 blackOrbModel.spawn();
                 break;
-            case orb:
-                ModelRequests.addObjectModel(new OrbModel(position ,id));
-                ViewRequest.addObjectView(new OrbView(position ,id));
         }
     }
 
@@ -164,7 +161,7 @@ public abstract class Spawner {
         ViewRequest.addEffectView(new ArchmireEffectView(archmireEffectModel.getArea() ,id));
     }
 
-    public static void addBlackOrbEffectModel(BlackOrbLaserEffectModel effectModel) {
+    public static void addBlackOrbEffectModel(BlackOrbAoeEffectModel effectModel) {
         ModelRequests.addEffectModel(effectModel);
         ViewRequest.addEffectView(new BlackOrbLaserEffectView(effectModel.getArea() ,effectModel.getId()));
     }
@@ -244,5 +241,17 @@ public abstract class Spawner {
                         punch.getFrame().getId()
                 )
         );
+    }
+
+    public static void addOrb(Vector position, BlackOrbModel blackOrbModel, String id) {
+        ModelRequests.addObjectModel(new OrbModel(
+                position,
+                blackOrbModel,
+                id
+        ));
+        ViewRequest.addObjectView(new OrbView(
+                position,
+                id
+        ));
     }
 }

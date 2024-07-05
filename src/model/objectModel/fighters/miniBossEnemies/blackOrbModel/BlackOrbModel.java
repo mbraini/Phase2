@@ -1,6 +1,8 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
+import controller.manager.Spawner;
 import data.Constants;
+import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.frameModel.FrameModel;
 import utils.Vector;
@@ -15,6 +17,7 @@ public class BlackOrbModel extends AbstractEnemy {
     private BlackOrbThread blackOrbThread;
     private ArrayList<OrbModel> orbModels;
     private ArrayList<FrameModel> frameModels;
+    private ArrayList<BlackOrbAoeEffectModel> effectModels = new ArrayList<>();
     private Vector center;
     private boolean allFramesSpawned;
     private boolean allOrbsSpawned;
@@ -123,4 +126,27 @@ public class BlackOrbModel extends AbstractEnemy {
         this.blackOrbThread = blackOrbThread;
     }
 
+    public ArrayList<BlackOrbAoeEffectModel> getEffectModels() {
+        return effectModels;
+    }
+
+    public void addEffect(BlackOrbModel blackOrbModel ,OrbModel orbOrigin, OrbModel orbDestination, String id) {
+        BlackOrbAoeEffectModel effectModel = new BlackOrbAoeEffectModel(
+                blackOrbModel ,
+                orbOrigin ,
+                orbDestination ,
+                id
+        );
+        effectModels.add(effectModel);
+        Spawner.addBlackOrbEffectModel(effectModel);
+    }
+
+    public void removeOrb(String id) {
+        for (OrbModel orbModel : orbModels){
+            if (orbModel.getId().equals(id)){
+                orbModels.remove(orbModel);
+                return;
+            }
+        }
+    }
 }

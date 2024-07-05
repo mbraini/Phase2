@@ -2,17 +2,28 @@ package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
 import data.Constants;
 import model.GameState;
+import model.ModelData;
+import model.collision.Collision;
+import model.objectModel.ObjectModel;
+import model.objectModel.effects.BlackOrbAoeEffectModel;
+import model.objectModel.fighters.EnemyModel;
+import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
+import utils.Helper;
 
 import java.util.ArrayList;
 
 public class BlackOrbThread extends Thread{
     private BlackOrbModel blackOrbModel;
+    private ArrayList<OrbModel> models;
+    private ArrayList<OrbModel> orbModels;
+    ArrayList<BlackOrbAoeEffectModel> effects;
     private double time;
 
     public BlackOrbThread(BlackOrbModel blackOrbModel){
         this.blackOrbModel = blackOrbModel;
     }
+
 
     @Override
     public void run() {
@@ -34,13 +45,70 @@ public class BlackOrbThread extends Thread{
     }
 
     private void updateBlackOrb() {
-        ArrayList<FrameModel> frames = blackOrbModel.getFrameModels();
-        ArrayList<OrbModel> orbs = blackOrbModel.getOrbModels();
+        updateVariables();
+        checkAoeDamage();
+    }
 
+    private void updateVariables() {
+        synchronized (ModelData.getModels()){
+            models = (ArrayList<OrbModel>) ModelData.getModels().clone();
+        }
+        synchronized (blackOrbModel.getEffectModels()) {
+            effects =
+                    (ArrayList<BlackOrbAoeEffectModel>) blackOrbModel.getEffectModels().clone();
+            orbModels = (ArrayList<OrbModel>) blackOrbModel.getOrbModels().clone();
+        }
+    }
 
+    private void checkAoeDamage() {
+        if (time % 1000 != 0)
+            return;
+        ArrayList<ObjectModel> collidedObjects = new ArrayList<>();
+
+        for (ObjectModel model : models){
+            if (isCollided(model)){
+                collidedObjects.add(model);
+            }
+        }
+
+        for (ObjectModel model : collidedObjects){
+            if (model instanceof OrbModel)
+                continue;
+            model.setHP(model.getHP() - Constants.BLACK_ORB_LASER_DAMAGE);
+        }
+    }
+
+    private boolean isCollided(ObjectModel model) {
+        updateVariables();
+        for (BlackOrbAoeEffectModel effectModel : effects){
+            if (Collision.IsColliding(effectModel ,model))
+                if (model instanceof EpsilonModel || model instanceof EnemyModel)
+                    return true;
+        }
+        return false;
     }
 
     public void connectLasers(int index) {
+        updateVariables();
+        for (int i = 0; i < orbModels.size() ;i++){
+            if (i == index)
+                continue;
+            blackOrbModel.addEffect(
+                    blackOrbModel,
+                    orbModels.get(i),
+                    orbModels.get(index),
+                    Helper.RandomStringGenerator(Constants.ID_SIZE)
+            );
+        }
+    }
 
+    public void disconnectLasers(OrbModel orbModel) {
+        ArrayList<BlackOrbAoeEffectModel> effectModels =
+                (ArrayList<BlackOrbAoeEffectModel>) blackOrbModel.getEffectModels().clone();
+        for (BlackOrbAoeEffectModel effect : effectModels){
+            if (effect.getOrbDestination().getId().equals(orbModel.getId())
+                    || effect.getOrbOrigin().getId().equals(orbModel.getId()))
+                effect.die();
+        }
     }
 }
