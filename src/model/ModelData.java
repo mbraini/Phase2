@@ -1,6 +1,6 @@
 package model;
 
-import model.objectModel.EffectModel;
+import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;

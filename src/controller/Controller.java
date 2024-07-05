@@ -7,7 +7,7 @@ import data.Constants;
 import model.ModelRequests;
 import model.interfaces.ImageChanger;
 import model.objectModel.fighters.EpsilonModel;
-import model.objectModel.EffectModel;
+import model.objectModel.effects.EffectModel;
 import model.objectModel.frameModel.FrameModelBuilder;
 import model.threads.FrameThread;
 import model.threads.GameLoop;
@@ -198,9 +198,9 @@ public abstract class Controller {
 //                ObjectType.omenoct
 //        );
 //
-//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ObjectType.archmire
-//        );
+        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+                ObjectType.archmire
+        );
 //
 //
 //        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
@@ -227,7 +227,7 @@ public abstract class Controller {
 //                        10 ,
 //                        10
 //                ),
-//                new Dimension(200,200),
+//                new Dimension(800,800),
 //                Helper.RandomStringGenerator(Constants.ID_SIZE)
 //        );
 //        builder1.setSolid(true);
@@ -246,7 +246,7 @@ public abstract class Controller {
 //        FrameModel frameModel2 = builder2.create();
 //        Spawner.addFrame(frameModel2);
 
-        Spawner.spawnBoss();
+//        Spawner.spawnBoss();
     }
 
     public static void threadsStarter() {

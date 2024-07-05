@@ -1,7 +1,7 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
 import data.Constants;
-import model.objectModel.EffectModel;
+import model.objectModel.effects.EffectModel;
 import utils.Math;
 import utils.Vector;
 import utils.area.Polygon;

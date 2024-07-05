@@ -1,4 +1,4 @@
-package model.objectModel;
+package model.objectModel.effects;
 
 import model.objectModel.ObjectModel;
 import utils.area.Area;

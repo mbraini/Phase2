@@ -8,7 +8,8 @@ import model.interfaces.Ability;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
 import model.interfaces.MoveAble;
-import model.logics.aoe.OverTimeAOE;
+import model.objectModel.effects.ArchmireAoeEffectModel;
+import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.normalEnemies.NormalEnemyModel;
 import utils.Math;
 import utils.Vector;
@@ -16,12 +17,11 @@ import utils.Vector;
 import java.util.ArrayList;
 
 public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPolygon , Ability ,HasVertices {
-    private OverTimeAOE aoe;
     private ArchmireThread thread;
     private ArrayList<Vector> vertices = new ArrayList<>();
+    private ArrayList<ArchmireAoeEffectModel> aoeEffects = new ArrayList<>();
 
     public ArchmireModel(Vector position ,String id){
-        aoe = new OverTimeAOE();
         thread = new ArchmireThread(this);
         this.position = position;
         this.velocity = new Vector(0 ,0);
@@ -32,7 +32,6 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
         vulnerableToEpsilonBullet = true;
         omega = Constants.ENEMY_ROTATION_SPEED;
         initVertices();
-        thread.setPriority(3);
         thread.start();
     }
 
@@ -61,10 +60,6 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
         thread.interrupt();
     }
 
-    public OverTimeAOE getAOE(){
-        return aoe;
-    }
-
     @Override
     public void move() {
         velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(Constants.UPS ,acceleration));
@@ -76,8 +71,7 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
         omega += alpha * Constants.UPS;
         double thetaMoved = ((2 * omega - alpha * Constants.UPS) / 2) * Constants.UPS;
         theta = theta + thetaMoved;
-        if (this instanceof HasVertices)
-            ((HasVertices) this).UpdateVertices(xMoved ,yMoved ,thetaMoved);
+        UpdateVertices(xMoved ,yMoved ,thetaMoved);
     }
 
     @Override
@@ -107,5 +101,14 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
             vertices.set(i ,new Vector(vertices.get(i).getX() + xMoved ,vertices.get(i).getY() + yMoved));
             vertices.set(i , Math.RotateByTheta(vertices.get(i) ,position ,theta));
         }
+    }
+
+    public ArrayList<ArchmireAoeEffectModel> getAoeEffects() {
+        return aoeEffects;
+    }
+
+    public void killEffect(ArchmireAoeEffectModel archmireAoeEffectModel) {
+        thread.getRemovedAoe().add(archmireAoeEffectModel.getId());
+        Controller.removeEffect(archmireAoeEffectModel);
     }
 }

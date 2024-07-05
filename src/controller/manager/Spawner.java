@@ -4,6 +4,7 @@ import controller.enums.ObjectType;
 import data.Constants;
 import model.ModelRequests;
 import model.objectModel.CollectiveModel;
+import model.objectModel.effects.ArchmireAoeEffectModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.vomit.BossAoeEffectModel;
@@ -17,7 +18,6 @@ import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbLaserEff
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.OrbModel;
 import model.objectModel.fighters.normalEnemies.archmireModel.ArchmireModel;
-import model.objectModel.fighters.normalEnemies.archmireModel.ArchmireEffectModel;
 import model.objectModel.fighters.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.fighters.normalEnemies.omenoctModel.OmenoctModel;
 import model.objectModel.fighters.normalEnemies.wyrmModel.WyrmModel;
@@ -158,7 +158,7 @@ public abstract class Spawner {
         }
     }
 
-    public synchronized static void addArchmireEffect(ArchmireEffectModel archmireEffectModel){
+    public synchronized static void addArchmireEffect(ArchmireAoeEffectModel archmireEffectModel){
         String id = archmireEffectModel.getId();
         ModelRequests.addEffectModel(archmireEffectModel);
         ViewRequest.addEffectView(new ArchmireEffectView(archmireEffectModel.getArea() ,id));

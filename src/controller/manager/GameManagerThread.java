@@ -4,10 +4,13 @@ import data.Constants;
 import model.GameState;
 import model.ModelData;
 import model.interfaces.Fader;
-import model.objectModel.EffectModel;
+import model.objectModel.effects.AoeEffectModel;
+import model.objectModel.effects.EffectModel;
 import model.objectModel.ObjectModel;
+import model.objectModel.fighters.EnemyModel;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class GameManagerThread extends Thread{
     private ArrayList<ObjectModel> models;
@@ -40,7 +43,12 @@ public class GameManagerThread extends Thread{
         }
         interfaces();
         killObjects();
+        checkAoeDamage();
         GameState.update(models ,time);
+    }
+
+    private void checkAoeDamage() {
+
     }
 
     private void interfaces() {

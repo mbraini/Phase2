@@ -1,7 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities.vomit;
 
 import data.Constants;
-import model.objectModel.EffectModel;
+import model.objectModel.effects.EffectModel;
 import utils.Vector;
 import utils.area.Circle;
 

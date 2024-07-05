@@ -4,21 +4,25 @@ import controller.manager.Spawner;
 import data.Constants;
 import model.GameState;
 import model.ModelData;
+import model.collision.Collision;
 import model.objectModel.ObjectModel;
-import model.objectModel.EffectModel;
+import model.objectModel.effects.ArchmireAoeEffectModel;
+import model.objectModel.fighters.EnemyModel;
+import model.objectModel.fighters.EpsilonModel;
 import utils.Helper;
 
-import java.awt.*;
 import java.util.ArrayList;
 
+
 public class ArchmireThread extends Thread{
+
     private double time;
-    private ArrayList<ObjectModel> models;
-    private ArrayList<EffectModel> effects;
     private ArchmireModel archmire;
-    ArchmireThread(ArchmireModel archmire){
+    private ArrayList<String> removedAoe = new ArrayList<>();
+    private ArrayList<ObjectModel> models;
+
+    public ArchmireThread(ArchmireModel archmire){
         this.archmire = archmire;
-        time = 0;
     }
 
     @Override
@@ -40,27 +44,74 @@ public class ArchmireThread extends Thread{
     }
 
     private void updateAOE() {
-        synchronized (ModelData.getModels()) {
+        synchronized (ModelData.getModels()){
             models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
-            effects = (ArrayList<EffectModel>) ModelData.getEffectModels().clone();
         }
-        addNewShapes();
-        checkForDamage();
+        checkRemovedAOEs();
+        addEffect();
+        checkDamage();
     }
 
-    private void checkForDamage() {
-        if (time % 1 == 0){
-            archmire.getAOE().dealDamage(models);
+    private void checkDamage() {
+        if (time % 1000 != 0)
+            return;
+
+        ArrayList<ObjectModel> collidedModels = new ArrayList<>();
+
+        for (ObjectModel model : models){
+            if (isCollided(model)){
+                collidedModels.add(model);
+            }
+        }
+
+        for (ObjectModel model : collidedModels){
+            if (model instanceof ArchmireModel)
+                continue;
+            if (Collision.IsColliding(model ,archmire)){
+                model.setHP(model.getHP() - Constants.ARCHMIRE_DROWN_DAMAGE_PER_SECOND);
+            }
+            else {
+                model.setHP(model.getHP() - Constants.ARCHMIRE_AOE_DAMAGE_PER_SECOND);
+            }
+        }
+
+    }
+
+    private boolean isCollided(ObjectModel model) {
+        for (ArchmireAoeEffectModel effectModel : archmire.getAoeEffects()){
+            if (Collision.IsColliding(effectModel ,model)) {
+                if (model instanceof EnemyModel || model instanceof EpsilonModel)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    private void checkRemovedAOEs() {
+        for (String id : removedAoe){
+            removeAoe(id);
         }
     }
 
+    private void removeAoe(String id) {
+        for (ArchmireAoeEffectModel effectModel : archmire.getAoeEffects()){
+            if (effectModel.getId().equals(id)){
+                archmire.getAoeEffects().remove(effectModel);
+                return;
+            }
+        }
+    }
 
-    private void addNewShapes() {
-        ArchmireEffectModel archmireEffectModel = new ArchmireEffectModel(archmire ,
+    private void addEffect() {
+        ArchmireAoeEffectModel effectModel = new ArchmireAoeEffectModel(
+                archmire,
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
-        archmire.getAOE().addShape(archmireEffectModel);
-        Spawner.addArchmireEffect(archmireEffectModel);
+        Spawner.addArchmireEffect(effectModel);
+        archmire.getAoeEffects().add(effectModel);
     }
 
+    public ArrayList<String> getRemovedAoe() {
+        return removedAoe;
+    }
 }
