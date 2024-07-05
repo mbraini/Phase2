@@ -47,6 +47,8 @@ public class SqueezeThread extends Thread {
     }
 
     private void placeHands() {
+        Vector lastLeftPosition = squeeze.getBoss().getLeftHand().getPosition().clone();
+        Vector lastRightPosition = squeeze.getBoss().getRightHand().getPosition().clone();
         Vector leftFrameCenter = new Vector(
                 squeeze.getEpsilonFrame().getPosition().x,
                 squeeze.getEpsilonFrame().getPosition().y + squeeze.getEpsilonFrame().getSize().height / 2d
@@ -72,5 +74,17 @@ public class SqueezeThread extends Thread {
         );
         squeeze.getBoss().getLeftHand().setPosition(leftHandPlacer);
         squeeze.getBoss().getRightHand().setPosition(rightHandPlacer);
+        Vector newLeftPosition = squeeze.getBoss().getLeftHand().getPosition().clone();
+        Vector newRightPosition = squeeze.getBoss().getRightHand().getPosition().clone();
+        squeeze.getBoss().getLeftHand().UpdateVertices(
+                newLeftPosition.x - lastLeftPosition.x,
+                newLeftPosition.y - lastLeftPosition.y,
+                0
+        );
+        squeeze.getBoss().getRightHand().UpdateVertices(
+                newRightPosition.x - lastRightPosition.x,
+                newRightPosition.y - lastRightPosition.y,
+                0
+        );
     }
 }
