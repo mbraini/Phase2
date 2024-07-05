@@ -217,10 +217,10 @@ public abstract class Controller {
 //        );
 ////
 ////
-        Spawner.addObject(
-                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
-                ObjectType.blackOrb
-        );
+//        Spawner.addObject(
+//                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
+//                ObjectType.blackOrb
+//        );
 //
 //        FrameModelBuilder builder1 = new FrameModelBuilder(
 //                new Vector(
@@ -246,7 +246,7 @@ public abstract class Controller {
 //        FrameModel frameModel2 = builder2.create();
 //        Spawner.addFrame(frameModel2);
 
-//        Spawner.spawnBoss();
+        Spawner.spawnBoss();
     }
 
     public static void threadsStarter() {

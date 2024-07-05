@@ -1,15 +1,18 @@
 package model.objectModel.fighters.finalBoss.abilities.vomit;
 
-import controller.manager.Spawner;
 import data.Constants;
 import model.GameState;
+import model.ModelData;
+import model.collision.Collision;
+import model.objectModel.ObjectModel;
+import model.objectModel.effects.EffectModel;
+import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
-import utils.Helper;
 
 import java.util.ArrayList;
 
 public class VomitThread extends Thread{
-    private ArrayList<BossAoeEffectModel> aoeEffectModels;
+    private ArrayList<ObjectModel> models;
     private Vomit vomit;
     private double time;
     private FrameModel epsilonFrame;
@@ -38,19 +41,39 @@ public class VomitThread extends Thread{
     }
 
     private void update() {
+        updateVariables();
         fireIf();
+    }
+
+    private void updateVariables() {
+        synchronized (ModelData.getModels()){
+            models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
+        }
     }
 
     private void fireIf() {
         if (time % 1000 == 0){
-            BossAoeEffectModel effectModel = new BossAoeEffectModel(
-                    Helper.createRandomPosition(epsilonFrame),
-                    Helper.RandomStringGenerator(Constants.ID_SIZE)
-            );
-            Spawner.addBossEffect(effectModel);
+            vomit.addEffect(epsilonFrame);
         }
         if (time >= Constants.VOMIT_DURATION_TIME){
             vomit.endAbility();
         }
+    }
+
+    public void dealDamage(BossAoeEffectModel effect) {
+        updateVariables();
+
+        ArrayList<ObjectModel> collidedModels = new ArrayList<>();
+
+        for (ObjectModel model : models){
+            if (Collision.IsColliding(model ,effect)){
+                collidedModels.add(model);
+            }
+        }
+
+        for (ObjectModel model : collidedModels){
+            model.setHP(model.getHP() - Constants.VOMIT_AOE_DAMAGE);
+        }
+
     }
 }

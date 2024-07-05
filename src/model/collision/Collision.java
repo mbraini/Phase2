@@ -37,8 +37,8 @@ public class Collision {
     private static boolean TwoCirclesCheck(IsCircle circle1 ,IsCircle circle2) {
         double r1 = circle1.getRadios();
         double r2 = circle2.getRadios();
-        Vector position1 = ((ObjectModel)circle1).getPosition();
-        Vector position2 = ((ObjectModel)circle2).getPosition();
+        Vector position1 = circle1.getCenter();
+        Vector position2 = circle2.getCenter();
         if (Math.VectorSize(Math.VectorAdd(position1 ,Math.ScalarInVector(-1 ,position2))) <= r1 + r2){
             return true;
         }
