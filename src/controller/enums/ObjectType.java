@@ -15,5 +15,6 @@ public enum ObjectType {
     blackOrb,
     orb,
     wyrmBullet,
-    bossBullet
+    bossBullet,
+    barricados
 }

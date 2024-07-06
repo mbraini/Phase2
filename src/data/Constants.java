@@ -81,6 +81,8 @@ public class Constants {
     public static final double ARCHMIRE_DROWN_DAMAGE_PER_SECOND = 10;
     public static final double BLACK_ORB_LASER_DAMAGE = 8;
     public static final double VOMIT_AOE_DAMAGE = 15;
+    public static final double BARRICADOS_DURATION_TIME = 120000;
+    public static final Dimension BARRICADOS_DIMENSION = new Dimension(300 ,300);
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);

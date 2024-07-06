@@ -12,6 +12,9 @@ import model.objectModel.fighters.finalBoss.abilities.vomit.BossAoeEffectModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
 import model.objectModel.fighters.finalBoss.bossHelper.PunchModel;
+import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosFirstModel;
+import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosModel;
+import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosSecondModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
@@ -34,6 +37,7 @@ import view.objectViews.bossView.BossAoeEffectView;
 import view.objectViews.bossView.HandView;
 import view.objectViews.bossView.HeadView;
 import view.objectViews.bossView.PunchView;
+import view.objectViews.miniBossEnemyView.BarricadosView;
 import view.objectViews.miniBossEnemyView.BlackOrbLaserEffectView;
 import view.objectViews.miniBossEnemyView.OrbView;
 import view.objectViews.normalEnemyView.NecropickView;
@@ -108,6 +112,28 @@ public abstract class Spawner {
                 ModelRequests.addAbstractEnemy(blackOrbModel);
                 blackOrbModel.spawn();
                 break;
+            case barricados:
+                int randomInteger = (new Random()).nextInt(0 ,2);
+                if (randomInteger == 0){
+                    BarricadosFirstModel barricadosModel = new BarricadosFirstModel(position ,id);
+                    ModelRequests.addObjectModel(barricadosModel);
+                }
+                else {
+                    BarricadosSecondModel barricadosModel = new BarricadosSecondModel(position ,id);
+                    ModelRequests.addObjectModel(barricadosModel);
+                    ModelRequests.addFrameModel(barricadosModel.getFrameModel());
+                    ViewRequest.addFrameView(
+                            new FrameView(
+                                    barricadosModel.getFrameModel().getPosition(),
+                                    barricadosModel.getFrameModel().getSize(),
+                                    barricadosModel.getId()
+                            )
+                    );
+                }
+                ViewRequest.addObjectView(new BarricadosView(
+                        position,
+                        id
+                ));
         }
     }
 

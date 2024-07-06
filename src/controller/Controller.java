@@ -183,18 +183,18 @@ public abstract class Controller {
         ViewData.addImaginaryPanel(new ImaginaryPanel(frameModel.getId()));
 
 
-         Spawner.addObject(new Vector(0 ,0),
-                ObjectType.necropick
+         Spawner.addObject(new Vector(200 ,200),
+                ObjectType.barricados
         );
-        Spawner.addObject(new Vector(300 ,300),
-                ObjectType.necropick
-        );
-        Spawner.addObject(new Vector(0 ,600),
-                ObjectType.necropick
-        );
-        Spawner.addObject(new Vector(600 ,300),
-                ObjectType.necropick
-        );
+//        Spawner.addObject(new Vector(300 ,300),
+//                ObjectType.necropick
+//        );
+//        Spawner.addObject(new Vector(0 ,600),
+//                ObjectType.necropick
+//        );
+//        Spawner.addObject(new Vector(600 ,300),
+//                ObjectType.necropick
+//        );
 //        Spawner.addObject(new Vector(0 ,0),
 //                ObjectType.wyrm
 //        );
