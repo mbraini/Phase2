@@ -9,6 +9,7 @@ import model.ModelRequests;
 import model.collision.Collision;
 import model.interfaces.*;
 import model.objectModel.ObjectModel;
+import utils.Vector;
 
 import java.util.ArrayList;
 
@@ -47,7 +48,21 @@ public class GameLoop extends Thread {
         interfaceObjects(models);
         Collision.resetModelPairs();
         Collision.checkModelCollisions(models);
+        checkGarbage(models);
 
+    }
+
+    private void checkGarbage(ArrayList<ObjectModel> models) {
+        for (ObjectModel model : models){
+            Vector position = model.getPosition();
+            if (position.x <= -Constants.SCREEN_SIZE.width || position.x >= 2 * Constants.SCREEN_SIZE.width){
+                ModelRequests.removeObjectModel(model.getId());
+                continue;
+            }
+            if (position.y <= -Constants.SCREEN_SIZE.height || position.y >= 2 * Constants.SCREEN_SIZE.height){
+                ModelRequests.removeObjectModel(model.getId());
+            }
+        }
     }
 
     private void interfaceObjects(ArrayList<ObjectModel> models) {

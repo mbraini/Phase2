@@ -183,9 +183,18 @@ public abstract class Controller {
         ViewData.addImaginaryPanel(new ImaginaryPanel(frameModel.getId()));
 
 
-//         Spawner.addObject(new Vector(0 ,0),
-//                ObjectType.necropick
-//        );
+         Spawner.addObject(new Vector(0 ,0),
+                ObjectType.necropick
+        );
+        Spawner.addObject(new Vector(300 ,300),
+                ObjectType.necropick
+        );
+        Spawner.addObject(new Vector(0 ,600),
+                ObjectType.necropick
+        );
+        Spawner.addObject(new Vector(600 ,300),
+                ObjectType.necropick
+        );
 //        Spawner.addObject(new Vector(0 ,0),
 //                ObjectType.wyrm
 //        );
@@ -246,7 +255,7 @@ public abstract class Controller {
 //        FrameModel frameModel2 = builder2.create();
 //        Spawner.addFrame(frameModel2);
 
-        Spawner.spawnBoss();
+//        Spawner.spawnBoss();
     }
 
     public static void threadsStarter() {
