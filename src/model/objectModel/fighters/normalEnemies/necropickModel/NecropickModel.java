@@ -3,6 +3,7 @@ package model.objectModel.fighters.normalEnemies.necropickModel;
 import controller.Controller;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
+import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.ModelData;
 import model.interfaces.Ability;
@@ -19,8 +20,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class NecropickModel extends NormalEnemyModel implements MoveAble ,Ability , IsPolygon ,HasVertices {
-    private Timer timer;
+    @SkippedByJson
+    private Timer hoveringTimer;
+    @SkippedByJson
     private Timer abilityTimer;
+    private double hoveringTime;
+    private double abilityTime;
     private boolean hasAbility;
     private ArrayList<Vector> vertices;
     private boolean isArrived;
@@ -35,27 +40,44 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
         vulnerableToEpsilonBullet = true;
         vulnerableToEpsilonMelee = true;
         initVertices();
-        timer = new Timer(8000, new ActionListener() {
+        start();
+    }
+
+    public void start() {
+        hoveringTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setHovering(true);
-                hasAbility = true;
-                abilityTimer.start();
-                timer.stop();
+                if (!isHovering())
+                    hoveringTime += 1000;
+                if (hoveringTime >= 8000) {
+                    hoveringTime = 0;
+                    setHovering(true);
+                    hasAbility = true;
+                    abilityTimer.start();
+                    hoveringTimer.stop();
+                }
             }
         });
-        abilityTimer = new Timer(4000, new ActionListener() {
+        abilityTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new NecropickShooter(position).shoot();
-                setHovering(false);
-                hasAbility = false;
-                velocity = new Vector();
-                timer.start();
-                abilityTimer.stop();
+                if (isHovering())
+                    abilityTime += 1000;
+                if (abilityTime >= 4000) {
+                    abilityTime = 0;
+                    new NecropickShooter(position).shoot();
+                    setHovering(false);
+                    hasAbility = false;
+                    velocity = new Vector();
+                    hoveringTimer.start();
+                    abilityTimer.stop();
+                }
             }
         });
-        timer.start();
+        if (abilityTime == 0)
+            hoveringTimer.start();
+        else
+            abilityTimer.start();
     }
 
 

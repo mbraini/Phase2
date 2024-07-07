@@ -190,9 +190,9 @@ public abstract class Controller {
 //        Spawner.addObject(new Vector(0 ,600),
 //                ModelType.necropick
 //        );
-//        Spawner.addObject(new Vector(600 ,300),
-//                ModelType.necropick
-//        );
+        Spawner.spawnObject(new Vector(600 ,300),
+                ModelType.necropick
+        );
 //        Spawner.spawnObject(new Vector(0 ,0),
 //                ModelType.wyrm
 //        );
@@ -201,9 +201,9 @@ public abstract class Controller {
 //                ModelType.wyrm
 //        );
 //
-        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d - 150 ,Constants.SCREEN_SIZE.height / 2d - 150),
-                ModelType.omenoct
-        );
+//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d - 150 ,Constants.SCREEN_SIZE.height / 2d - 150),
+//                ModelType.omenoct
+//        );
 //
 //        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
 //                ModelType.archmire

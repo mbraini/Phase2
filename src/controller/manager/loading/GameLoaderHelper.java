@@ -14,6 +14,7 @@ import model.objectModel.fighters.basicEnemies.TrigorathModel;
 import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosSecondModel;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
 import model.objectModel.fighters.normalEnemies.archmireModel.ArchmireModel;
+import model.objectModel.fighters.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.fighters.normalEnemies.omenoctModel.OmenoctModel;
 import model.objectModel.frameModel.FrameModel;
 import view.ViewRequest;
@@ -86,11 +87,14 @@ public class GameLoaderHelper {
                         model.getPosition(),
                         model.getId()
                 ));
-//            case necropick:
-//                ViewRequest.addObjectView(new NecropickView(
-//                        model.getPosition(),
-//                        model.getId()
-//                ));
+            case necropick:
+                model = gson.fromJson(jsonString , NecropickModel.class);
+                ModelRequests.addObjectModel(model);
+                ((NecropickModel) model).start();
+                ViewRequest.addObjectView(new NecropickView(
+                        model.getPosition(),
+                        model.getId()
+                ));
 //            case archmire:
 //                ViewRequest.addObjectView(new ArchmireView(
 //                        model.getPosition(),
