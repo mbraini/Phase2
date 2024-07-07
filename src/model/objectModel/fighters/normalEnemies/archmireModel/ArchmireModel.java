@@ -1,6 +1,7 @@
 package model.objectModel.fighters.normalEnemies.archmireModel;
 
 import controller.Controller;
+import controller.enums.ObjectType;
 import controller.manager.Spawner;
 import data.Constants;
 import model.ModelData;
@@ -28,6 +29,7 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
         this.acceleration = new Vector(0 ,0);
         this.id = id;
         this.HP = 30;
+        type = ObjectType.archmire;
         setHovering(true);
         vulnerableToEpsilonBullet = true;
         omega = Constants.ENEMY_ROTATION_SPEED;

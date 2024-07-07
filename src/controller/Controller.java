@@ -3,6 +3,7 @@ package controller;
 import controller.enums.ObjectType;
 import controller.manager.GameManager;
 import controller.manager.Spawner;
+import controller.manager.loading.GameLoader;
 import data.Constants;
 import model.ModelRequests;
 import model.interfaces.ImageChanger;
@@ -148,10 +149,7 @@ public abstract class Controller {
 
 
     public static void startGame(){
-        modelStarter();
-        viewStarter();
-        addEpsilonAndFrame();
-        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
+        new GameLoader().load();
         Controller.threadsStarter();
     }
 
@@ -183,9 +181,9 @@ public abstract class Controller {
         ViewData.addImaginaryPanel(new ImaginaryPanel(frameModel.getId()));
 
 
-         Spawner.addObject(new Vector(200 ,200),
-                ObjectType.barricados
-        );
+//        Spawner.addObject(new Vector(200 ,200),
+//                ObjectType.barricados
+//        );
 //        Spawner.addObject(new Vector(300 ,300),
 //                ObjectType.necropick
 //        );
@@ -199,9 +197,9 @@ public abstract class Controller {
 //                ObjectType.wyrm
 //        );
 
-//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 100),
-//                ObjectType.trigorath
-//        );
+        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 100),
+                ObjectType.trigorath
+        );
 //
 //        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d - 150 ,Constants.SCREEN_SIZE.height / 2d - 150),
 //                ObjectType.omenoct

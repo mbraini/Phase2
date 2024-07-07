@@ -1,0 +1,27 @@
+[
+  {
+    "isImpacted": false,
+    "hasMeleeAttack": false,
+    "meleeAttack": 5,
+    "position": {
+      "x": 697.3143600297482,
+      "y": 124.2355852714583
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "�d;��{Wn",
+    "HP": 85.0,
+    "isHovering": false,
+    "isSolid": true,
+    "type": "epsilon"
+  }
+]

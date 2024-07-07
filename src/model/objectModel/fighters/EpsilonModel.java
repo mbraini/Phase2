@@ -2,6 +2,7 @@ package model.objectModel.fighters;
 
 
 import controller.configs.Configs;
+import controller.enums.ObjectType;
 import data.Constants;
 import model.collision.Collision;
 import model.interfaces.*;
@@ -22,6 +23,7 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
         this.HP = 100;
         this.meleeAttack = Constants.EPSILON_DAMAGE;
         this.isSolid = true;
+        type = ObjectType.epsilon;
         vertices = new ArrayList<>();
     }
 

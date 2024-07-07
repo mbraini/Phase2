@@ -1,6 +1,7 @@
 package model.objectModel.fighters.normalEnemies.necropickModel;
 
 import controller.Controller;
+import controller.enums.ObjectType;
 import controller.manager.Spawner;
 import data.Constants;
 import model.ModelData;
@@ -22,6 +23,7 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
     private Timer abilityTimer;
     private boolean hasAbility;
     private ArrayList<Vector> vertices;
+    private boolean isArrived;
 
     public NecropickModel(Vector position ,String id){
         this.position = position;
@@ -29,6 +31,7 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
         this.acceleration = new Vector(0 ,0);
         this.id = id;
         this.HP = 10;
+        type = ObjectType.necropick;
         vulnerableToEpsilonBullet = true;
         vulnerableToEpsilonMelee = true;
         initVertices();

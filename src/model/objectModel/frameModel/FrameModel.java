@@ -25,7 +25,6 @@ public class FrameModel extends ObjectModel implements IsPolygon , HasVertices {
     private Dimension dimensionInit;
     private boolean isResizing;
     private boolean isIsometric;
-    private boolean isSolid;
     private boolean canTopResize = true;
     private boolean canBottomResize = true;
     private boolean canRightResize = true;

@@ -1,5 +1,6 @@
 package model.objectModel.fighters.miniBossEnemies.barricadosModel;
 
+import controller.enums.ObjectType;
 import model.interfaces.Fader;
 import utils.Vector;
 
@@ -13,6 +14,7 @@ public class BarricadosFirstModel extends BarricadosModel {
         this.id = id;
         this.vulnerableToEpsilonBullet = false;
         this.vulnerableToEpsilonMelee = false;
+        type = ObjectType.barricados;
         initVertices();
     }
 

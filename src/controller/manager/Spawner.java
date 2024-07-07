@@ -142,6 +142,7 @@ public abstract class Spawner {
     }
 
 
+
     public synchronized static void addProjectile(Vector position ,Vector direction ,ObjectType objectType){
         String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
         addProjectileWithId(position ,direction ,objectType ,id);

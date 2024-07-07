@@ -1,5 +1,6 @@
 package controller.manager;
 
+import controller.manager.saving.GameSaver;
 import data.Constants;
 import model.GameState;
 import model.ModelData;
@@ -7,7 +8,9 @@ import model.interfaces.Fader;
 import model.objectModel.effects.AoeEffectModel;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.ObjectModel;
+import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.fighters.EnemyModel;
+import model.objectModel.frameModel.FrameModel;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,6 +18,8 @@ import java.util.HashSet;
 public class GameManagerThread extends Thread{
     private ArrayList<ObjectModel> models;
     private ArrayList<EffectModel> effects;
+    private ArrayList<FrameModel> frames;
+    private ArrayList<AbstractEnemy> abstractEnemies;
     private double time;
 
     @Override
@@ -40,10 +45,14 @@ public class GameManagerThread extends Thread{
         synchronized (ModelData.getModels()){
             models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
             effects = (ArrayList<EffectModel>) ModelData.getEffectModels().clone();
+            frames = (ArrayList<FrameModel>) ModelData.getFrames().clone();
+            abstractEnemies = (ArrayList<AbstractEnemy>) ModelData.getAbstractEnemies().clone();
         }
         interfaces();
         killObjects();
         checkAoeDamage();
+        if (time % 100 == 0)
+            new GameSaver(models ,effects ,frames ,abstractEnemies).save();
         GameState.update(models ,time);
     }
 

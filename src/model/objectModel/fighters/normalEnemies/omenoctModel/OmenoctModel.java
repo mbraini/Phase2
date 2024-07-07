@@ -1,6 +1,7 @@
 package model.objectModel.fighters.normalEnemies.omenoctModel;
 
 import controller.Controller;
+import controller.enums.ObjectType;
 import controller.manager.Spawner;
 import data.Constants;
 import model.interfaces.*;
@@ -30,6 +31,7 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         this.acceleration = new Vector(0 ,0);
         this.id = id;
         this.HP = 20;
+        type = ObjectType.omenoct;
         vulnerableToEpsilonBullet = true;
         vulnerableToEpsilonMelee = true;
         hasMeleeAttack = true;

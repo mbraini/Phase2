@@ -1,6 +1,7 @@
 package model.objectModel.fighters.normalEnemies.wyrmModel;
 
 import controller.Controller;
+import controller.enums.ObjectType;
 import controller.manager.Spawner;
 import data.Constants;
 import model.ModelData;
@@ -29,6 +30,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         this.velocity = new Vector(0 ,0);
         this.acceleration = new Vector(0 ,0);
         this.HP = 12;
+        type = ObjectType.wyrm;
         vulnerableToEpsilonBullet = true;
         initVertices();
         setFrame();

@@ -1,5 +1,6 @@
 package model.objectModel.fighters.miniBossEnemies.barricadosModel;
 
+import controller.enums.ObjectType;
 import data.Constants;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
@@ -17,6 +18,7 @@ public class BarricadosSecondModel extends BarricadosModel{
         this.id = id;
         this.vulnerableToEpsilonBullet = false;
         this.vulnerableToEpsilonMelee = false;
+        type = ObjectType.barricados;
         initVertices();
         initFrame();
     }
