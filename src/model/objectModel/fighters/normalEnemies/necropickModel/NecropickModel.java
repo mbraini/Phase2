@@ -1,7 +1,7 @@
 package model.objectModel.fighters.normalEnemies.necropickModel;
 
 import controller.Controller;
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import controller.manager.Spawner;
 import data.Constants;
 import model.ModelData;
@@ -31,7 +31,7 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
         this.acceleration = new Vector(0 ,0);
         this.id = id;
         this.HP = 10;
-        type = ObjectType.necropick;
+        type = ModelType.necropick;
         vulnerableToEpsilonBullet = true;
         vulnerableToEpsilonMelee = true;
         initVertices();

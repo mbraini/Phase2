@@ -1,10 +1,12 @@
 package model.objectModel.fighters.normalEnemies.wyrmModel;
 
+import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.GameState;
 import utils.Math;
 import utils.Vector;
 
+@SkippedByJson
 public class WyrmThread extends Thread{
     private final static double thetaD = java.lang.Math.PI / Constants.WYRM_THETA_UPDATE_COUNT;
     private WyrmModel wyrmModel;

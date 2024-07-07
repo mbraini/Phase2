@@ -1,7 +1,7 @@
 package controller.listeners;
 
 
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import controller.manager.Spawner;
 import data.Constants;
 import model.GameState;
@@ -40,13 +40,13 @@ public class EpsilonAiming implements MouseListener {
             Vector direction = Math.VectorAdd(Math.ScalarInVector(-1 ,epsilon.getPosition()) ,clickedPoint);
             Vector position = Math.VectorAdd(Math.VectorWithSize(direction ,Constants.EPSILON_BULLET_DIAMETER / 2 + Constants.EPSILON_DIMENSION.width) ,epsilon.getPosition());
             int constant = -1;
-        Spawner.addProjectile(position, direction , ObjectType.epsilonBullet);
+        Spawner.addProjectile(position, direction , ModelType.epsilonBullet);
             for (int i = 0; i < extraAim ;i++) {
                 constant = constant * (-1);
                 Vector direction2 = Math.RotateByTheta(direction, new Vector(0 ,0), java.lang.Math.PI / 12 * constant);
                 if (i / 2 == 1)
                     constant -= 1;
-                Spawner.addProjectile(position, direction , ObjectType.epsilonBullet);
+                Spawner.addProjectile(position, direction , ModelType.epsilonBullet);
             }
 
 

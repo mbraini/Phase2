@@ -1,8 +1,9 @@
 package model.objectModel.fighters.normalEnemies.wyrmModel;
 
 import controller.Controller;
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import controller.manager.Spawner;
+import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.ModelData;
 import model.interfaces.*;
@@ -20,7 +21,6 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
     private FrameModel frameModel;
     private boolean isInRange;
     private ArrayList<Vector> vertices;
-    private Timer shooter;
     private WyrmThread wyrmThread;
     private boolean positiveDirection;
 
@@ -30,7 +30,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         this.velocity = new Vector(0 ,0);
         this.acceleration = new Vector(0 ,0);
         this.HP = 12;
-        type = ObjectType.wyrm;
+        type = ModelType.wyrm;
         vulnerableToEpsilonBullet = true;
         initVertices();
         setFrame();
@@ -108,8 +108,6 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         isInRange = navigator.hasArrived();
         if (isInRange){
             setVelocity(0 ,0);
-            shooter = new Timer(Constants.WYRM_SHOOTING_TIME ,new WyrmShooter(this));
-            shooter.start();
 
             wyrmThread = new WyrmThread(
                     this ,

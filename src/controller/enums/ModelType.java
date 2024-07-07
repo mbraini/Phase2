@@ -1,6 +1,6 @@
 package controller.enums;
 
-public enum ObjectType {
+public enum ModelType {
     epsilon,
     squarantine,
     trigorath,

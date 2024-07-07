@@ -1,6 +1,5 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
-import controller.enums.ObjectType;
 import controller.manager.Spawner;
 import data.Constants;
 import utils.Math;
@@ -19,7 +18,7 @@ public class OrbSpawner implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Spawner.addOrb(
+        Spawner.spawnOrb(
                 Math.VectorAdd(
                         blackOrbModel.getFrameModels().get(counter).getPosition(),
                         new Vector(

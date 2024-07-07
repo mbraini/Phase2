@@ -1,6 +1,6 @@
 package model.objectModel.fighters.normalEnemies.omenoctModel;
 
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import controller.manager.Spawner;
 import data.Constants;
 import model.ModelData;
@@ -35,7 +35,7 @@ public class OmenoctShooter implements ActionListener {
                         Constants.OMENOCT_BULLET_RADIOUS + Constants.OMENOCT_RADIOS
                 )
         );
-        Spawner.addProjectile(bulletPosition ,direction , ObjectType.omenoctBullet);
+        Spawner.addProjectile(bulletPosition ,direction , ModelType.omenoctBullet);
     }
 
 }

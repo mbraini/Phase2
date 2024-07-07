@@ -1,5 +1,7 @@
 package controller.enums;
 
 public enum EffectType {
-    archmirePoint
+    archmireEffecr,
+    BlackOrbEffect,
+    VomitEffect
 }

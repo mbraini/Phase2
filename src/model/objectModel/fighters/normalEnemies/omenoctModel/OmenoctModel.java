@@ -1,13 +1,14 @@
 package model.objectModel.fighters.normalEnemies.omenoctModel;
 
+import com.google.gson.annotations.Expose;
 import controller.Controller;
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import controller.manager.Spawner;
+import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.interfaces.*;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.fighters.normalEnemies.NormalEnemyModel;
-import utils.Helper;
 import utils.Math;
 import utils.Vector;
 
@@ -23,7 +24,9 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
     private FrameLocations frameLocation;
     private FrameLocations willAttachTo;
     private Vector destination;
+    @SkippedByJson
     private Timer shooter;
+    private final OmenoctNavigater navigater;
 
     public OmenoctModel(Vector position ,String id){
         this.position = position;
@@ -31,12 +34,18 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         this.acceleration = new Vector(0 ,0);
         this.id = id;
         this.HP = 20;
-        type = ObjectType.omenoct;
+        type = ModelType.omenoct;
         vulnerableToEpsilonBullet = true;
         vulnerableToEpsilonMelee = true;
         hasMeleeAttack = true;
         meleeAttack = Constants.OMENOCT_MELEE_ATTACK;
         omega = Constants.ENEMY_ROTATION_SPEED;
+        navigater = new OmenoctNavigater(position);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         initVertices();
     }
 
@@ -61,8 +70,7 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
 
     @Override
     public void ability() {
-        OmenoctNavigater navigater = new OmenoctNavigater(position);
-
+        navigater.reset(position);
         navigater.navigateFrame();
         destination = navigater.getDestination();
         willAttachTo = navigater.getWillAttachTo();

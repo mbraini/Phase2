@@ -1,10 +1,8 @@
 package model.objectModel;
 
 
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import utils.Vector;
-
-import java.util.ArrayList;
 
 public abstract class ObjectModel {
     protected Vector position;
@@ -17,7 +15,7 @@ public abstract class ObjectModel {
     protected double HP;
     protected boolean isHovering;
     protected boolean isSolid;
-    protected ObjectType type;
+    protected ModelType type;
 
     public Vector getPosition() {
         return position;
@@ -117,11 +115,11 @@ public abstract class ObjectModel {
         isSolid = solid;
     }
 
-    public ObjectType getType() {
+    public ModelType getType() {
         return type;
     }
 
-    public void setType(ObjectType type) {
+    public void setType(ModelType type) {
         this.type = type;
     }
 

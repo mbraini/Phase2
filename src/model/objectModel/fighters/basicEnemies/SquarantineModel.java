@@ -2,7 +2,7 @@ package model.objectModel.fighters.basicEnemies;
 
 
 import controller.Controller;
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import controller.manager.Spawner;
 import data.Constants;
 import model.ModelData;
@@ -29,7 +29,7 @@ public class SquarantineModel extends BasicEnemyModel implements HasVertices, Is
         this.hasMeleeAttack = true;
         this.vulnerableToEpsilonMelee = true;
         this.vulnerableToEpsilonBullet = true;
-        type = ObjectType.squarantine;
+        type = ModelType.squarantine;
         omega = Constants.ENEMY_ROTATION_SPEED;
         initVertices();
     }

@@ -1,9 +1,10 @@
 package controller.manager;
 
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import data.Constants;
 import model.ModelRequests;
 import model.objectModel.CollectiveModel;
+import model.objectModel.ObjectModel;
 import model.objectModel.effects.ArchmireAoeEffectModel;
 import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.fighters.EpsilonModel;
@@ -13,7 +14,6 @@ import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
 import model.objectModel.fighters.finalBoss.bossHelper.PunchModel;
 import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosFirstModel;
-import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosModel;
 import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosSecondModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
@@ -47,10 +47,10 @@ import view.objectViews.normalEnemyView.archmireView.ArchmireEffectView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireView;
 import view.objectViews.projectiles.*;
 
-import java.awt.*;
 import java.util.Random;
 
 public abstract class Spawner {
+
 
     public synchronized static void addFrame(FrameModel frameModel){
         ModelRequests.addFrameModel(frameModel);
@@ -61,19 +61,8 @@ public abstract class Spawner {
         ));
     }
 
-    public synchronized static void addFrame(Vector position , Dimension size){
-        String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
-        addFrameWithId(position ,size ,id);
-    }
-
-    public synchronized static void addFrameWithId(Vector position ,Dimension size ,String id){
-        ModelRequests.addFrameModel(new FrameModel(position ,size ,id));
-        ViewRequest.addFrameView(new FrameView(position ,size ,id));
-    }
-
-
-    public synchronized static void addObjectWithId(Vector position, ObjectType objectType ,String id){
-        switch (objectType) {
+    public synchronized static void spawnObjectWithId(Vector position, ModelType modelType, String id){
+        switch (modelType) {
             case epsilon:
                 ModelRequests.addObjectModel(new EpsilonModel(position, id));
                 ViewRequest.addObjectView(new EpsilonView(position, id));
@@ -107,7 +96,7 @@ public abstract class Spawner {
             case blackOrb :
                 BlackOrbModel blackOrbModel = new BlackOrbModel(
                         position,
-                        Helper.RandomStringGenerator(Constants.ID_SIZE)
+                        id
                 );
                 ModelRequests.addAbstractEnemy(blackOrbModel);
                 blackOrbModel.spawn();
@@ -121,14 +110,7 @@ public abstract class Spawner {
                 else {
                     BarricadosSecondModel barricadosModel = new BarricadosSecondModel(position ,id);
                     ModelRequests.addObjectModel(barricadosModel);
-                    ModelRequests.addFrameModel(barricadosModel.getFrameModel());
-                    ViewRequest.addFrameView(
-                            new FrameView(
-                                    barricadosModel.getFrameModel().getPosition(),
-                                    barricadosModel.getFrameModel().getSize(),
-                                    barricadosModel.getId()
-                            )
-                    );
+                    addFrame(barricadosModel.getFrameModel());
                 }
                 ViewRequest.addObjectView(new BarricadosView(
                         position,
@@ -137,19 +119,19 @@ public abstract class Spawner {
         }
     }
 
-    public synchronized static void addObject(Vector position ,ObjectType objectType){
-        addObjectWithId(position ,objectType ,Helper.RandomStringGenerator(Constants.ID_SIZE));
+    public synchronized static void spawnObject(Vector position , ModelType modelType){
+        spawnObjectWithId(position , modelType,Helper.RandomStringGenerator(Constants.ID_SIZE));
     }
 
 
 
-    public synchronized static void addProjectile(Vector position ,Vector direction ,ObjectType objectType){
+    public synchronized static void addProjectile(Vector position , Vector direction , ModelType modelType){
         String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
-        addProjectileWithId(position ,direction ,objectType ,id);
+        addProjectileWithId(position ,direction , modelType,id);
     }
 
-    public synchronized static void addProjectileWithId(Vector position ,Vector direction ,ObjectType objectType ,String id){
-        switch (objectType) {
+    public synchronized static void addProjectileWithId(Vector position , Vector direction , ModelType modelType, String id){
+        switch (modelType) {
             case epsilonBullet:
                 ModelRequests.addObjectModel(new EpsilonBulletModel(
                                 position,
@@ -270,7 +252,7 @@ public abstract class Spawner {
         );
     }
 
-    public static void addOrb(Vector position, BlackOrbModel blackOrbModel, int number, String id) {
+    public static void spawnOrb(Vector position, BlackOrbModel blackOrbModel, int number, String id) {
         ModelRequests.addObjectModel(new OrbModel(
                 position,
                 blackOrbModel,

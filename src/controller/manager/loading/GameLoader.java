@@ -1,7 +1,7 @@
 package controller.manager.loading;
 
 import com.google.gson.*;
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import controller.manager.Spawner;
 import model.objectModel.frameModel.FrameModel;
 import org.json.JSONArray;
@@ -64,11 +64,8 @@ public class GameLoader {
             for (int i = 0; i <jModels.length() ;i++){
                 JSONObject jModel = jModels.getJSONObject(i);
                 String jType = jModel.get("type").toString();
-                ObjectType type = gson.fromJson(jType , ObjectType.class);
-
-                String jPosition = jModel.getJSONObject("position").toString();
-                Vector position = gson.fromJson(jPosition ,Vector.class);
-                Spawner.addObject(position ,type);
+                ModelType type = gson.fromJson(jType , ModelType.class);
+                GameLoaderHelper.addModel(jModel.toString() ,type);
             }
             JSONArray jFrames = (JSONArray) new JSONTokener(frameString.toString()).nextValue();
             for (int i = 0; i <jFrames.length() ;i++){

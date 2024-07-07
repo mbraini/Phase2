@@ -1,7 +1,7 @@
 package model.objectModel.fighters.basicEnemies;
 
 import controller.Controller;
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import controller.manager.Spawner;
 import data.Constants;
 import model.ModelData;
@@ -27,7 +27,7 @@ public class TrigorathModel extends BasicEnemyModel implements HasVertices, IsPo
         this.hasMeleeAttack = true;
         this.vulnerableToEpsilonMelee = true;
         this.vulnerableToEpsilonBullet = true;
-        type = ObjectType.trigorath;
+        type = ModelType.trigorath;
         omega = Constants.ENEMY_ROTATION_SPEED;
         initVertices();
     }

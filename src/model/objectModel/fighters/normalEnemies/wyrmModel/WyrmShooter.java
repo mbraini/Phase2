@@ -1,6 +1,6 @@
 package model.objectModel.fighters.normalEnemies.wyrmModel;
 
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import controller.manager.Spawner;
 import data.Constants;
 import model.ModelData;
@@ -35,6 +35,6 @@ public class WyrmShooter implements ActionListener {
                 )
         );
 
-        Spawner.addProjectile(bulletPosition ,direction , ObjectType.wyrmBullet);
+        Spawner.addProjectile(bulletPosition ,direction , ModelType.wyrmBullet);
     }
 }

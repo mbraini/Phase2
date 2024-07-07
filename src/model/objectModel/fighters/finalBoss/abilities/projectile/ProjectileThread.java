@@ -1,6 +1,6 @@
 package model.objectModel.fighters.finalBoss.abilities.projectile;
 
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import controller.manager.Spawner;
 import data.Constants;
 import model.GameState;
@@ -114,7 +114,7 @@ public class ProjectileThread extends Thread{
                 )
         );
 
-        Spawner.addProjectile(bulletPosition ,direction , ObjectType.bossBullet);
+        Spawner.addProjectile(bulletPosition ,direction , ModelType.bossBullet);
     }
 
     private void turnAround() {

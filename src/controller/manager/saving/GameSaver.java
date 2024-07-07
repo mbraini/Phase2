@@ -1,13 +1,17 @@
 package controller.manager.saving;
 
 
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import controller.manager.loading.SkippedByJson;
 import model.objectModel.ObjectModel;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.frameModel.FrameModel;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -66,6 +70,19 @@ public class GameSaver {
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
         builder.serializeNulls();
+        builder.setExclusionStrategies(new ExclusionStrategy() {
+            @Override
+            public boolean shouldSkipField(FieldAttributes fieldAttributes) {
+                return fieldAttributes.getAnnotation(SkippedByJson.class) != null;
+            }
+
+            @Override
+            public boolean shouldSkipClass(Class<?> aClass) {
+                if (aClass.getAnnotation(SkippedByJson.class) == null)
+                    return false;
+                return true;
+            }
+        });
         gson = builder.create();
         return gson;
     }

@@ -1,6 +1,6 @@
 package model.objectModel.fighters.normalEnemies.necropickModel;
 
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import controller.manager.Spawner;
 import data.Constants;
 import utils.Math;
@@ -28,7 +28,7 @@ public class NecropickShooter {
             Spawner.addProjectile(
                     spawnPosition,
                     direction,
-                    ObjectType.necropickBullet
+                    ModelType.necropickBullet
             );
         }
     }

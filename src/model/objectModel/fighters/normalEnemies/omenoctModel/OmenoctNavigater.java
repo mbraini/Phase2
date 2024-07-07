@@ -19,6 +19,10 @@ public class OmenoctNavigater {
         destination = position.clone();
     }
 
+    public void reset(Vector position){
+        this.position = position;
+        destination = position.clone();
+    }
 
 
     public void navigateFrame() {

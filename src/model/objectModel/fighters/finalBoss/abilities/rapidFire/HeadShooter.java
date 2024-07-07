@@ -1,6 +1,6 @@
 package model.objectModel.fighters.finalBoss.abilities.rapidFire;
 
-import controller.enums.ObjectType;
+import controller.enums.ModelType;
 import controller.manager.Spawner;
 import data.Constants;
 import utils.Math;
@@ -33,7 +33,7 @@ public class HeadShooter implements ActionListener {
             Spawner.addProjectile(
                     spawnPosition,
                     direction,
-                    ObjectType.bossBullet
+                    ModelType.bossBullet
             );
         }
 
