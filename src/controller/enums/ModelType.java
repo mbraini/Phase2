@@ -16,5 +16,7 @@ public enum ModelType {
     orb,
     wyrmBullet,
     bossBullet,
-    barricados
+    barricados,
+    barricadosTheFirst,
+    barricadosTheSecond,
 }

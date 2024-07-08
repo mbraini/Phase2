@@ -16,6 +16,7 @@ import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
+import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosFirstModel;
 import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosSecondModel;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.OrbModel;
@@ -103,6 +104,7 @@ public class GameLoaderHelper {
                         model.getPosition(),
                         model.getId()
                 ));
+                break;
             case necropick:
                 model = gson.fromJson(jsonString , NecropickModel.class);
                 ModelRequests.addObjectModel(model);
@@ -111,6 +113,7 @@ public class GameLoaderHelper {
                         model.getPosition(),
                         model.getId()
                 ));
+                break;
             case archmire:
                 model = gson.fromJson(jsonString , ArchmireModel.class);
                 try {
@@ -130,6 +133,7 @@ public class GameLoaderHelper {
                         model.getPosition(),
                         model.getId()
                 ));
+                break;
             case wyrm:
                 model = gson.fromJson(jsonString , WyrmModel.class);
                 ModelRequests.addObjectModel(model);
@@ -139,6 +143,24 @@ public class GameLoaderHelper {
                         model.getPosition(),
                         model.getId()
                 ));
+                break;
+            case barricadosTheFirst:
+                model = gson.fromJson(jsonString , BarricadosFirstModel.class);
+                ModelRequests.addObjectModel(model);
+                ViewRequest.addObjectView(new BarricadosView(
+                        model.getPosition(),
+                        model.getId()
+                ));
+                break;
+            case barricadosTheSecond:
+                model = gson.fromJson(jsonString ,BarricadosSecondModel.class);
+                GameLoader.addFrame(((BarricadosSecondModel) model).getFrameModel());
+                ModelRequests.addObjectModel(model);
+                ViewRequest.addObjectView(new BarricadosView(
+                        model.getPosition(),
+                        model.getId()
+                ));
+                break;
         }
     }
 

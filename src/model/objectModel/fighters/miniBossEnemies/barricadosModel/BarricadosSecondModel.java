@@ -15,7 +15,7 @@ public class BarricadosSecondModel extends BarricadosModel{
         this.id = id;
         this.vulnerableToEpsilonBullet = false;
         this.vulnerableToEpsilonMelee = false;
-        type = ModelType.barricados;
+        type = ModelType.barricadosTheSecond;
         initVertices();
         initFrame();
     }

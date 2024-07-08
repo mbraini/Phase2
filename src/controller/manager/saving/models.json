@@ -4,8 +4,8 @@
     "hasMeleeAttack": false,
     "meleeAttack": 5,
     "position": {
-      "x": 469.17816853182836,
-      "y": 348.40612551950204
+      "x": 599.9093729732832,
+      "y": 446.32101781111754
     },
     "velocity": {
       "x": 0.0,
@@ -18,10 +18,126 @@
     "theta": 0.0,
     "omega": 0.0,
     "alpha": 0.0,
-    "id": "\u000b�\u001e)�\u001b��8�",
-    "HP": 12.0,
+    "id": "\u001f����\u0012X͈\u001f",
+    "HP": 100.0,
     "isHovering": false,
     "isSolid": true,
     "type": "epsilon"
+  },
+  {
+    "frameModel": {
+      "size": {
+        "width": 300,
+        "height": 300
+      },
+      "upDownA": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightA": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "upDownV": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightV": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "upDownP": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightP": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "positionInit": {
+        "x": 50.0,
+        "y": 50.0
+      },
+      "vertices": [
+        {
+          "x": 50.0,
+          "y": 50.0
+        },
+        {
+          "x": 350.0,
+          "y": 50.0
+        },
+        {
+          "x": 350.0,
+          "y": 350.0
+        },
+        {
+          "x": 50.0,
+          "y": 350.0
+        }
+      ],
+      "dimensionInit": {
+        "width": 300,
+        "height": 300
+      },
+      "isResizing": false,
+      "isIsometric": true,
+      "canTopResize": true,
+      "canBottomResize": true,
+      "canRightResize": true,
+      "canLeftResize": true,
+      "isShrinking": false,
+      "position": {
+        "x": 50.0,
+        "y": 50.0
+      },
+      "velocity": null,
+      "acceleration": null,
+      "theta": 0.0,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "�\u0006��H�tl��",
+      "HP": 0.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": null
+    },
+    "time": 28500.0,
+    "vertices": [
+      {
+        "x": 50.0,
+        "y": 50.0
+      },
+      {
+        "x": 350.0,
+        "y": 50.0
+      },
+      {
+        "x": 350.0,
+        "y": 350.0
+      },
+      {
+        "x": 50.0,
+        "y": 350.0
+      }
+    ],
+    "vulnerableToEpsilonMelee": false,
+    "vulnerableToEpsilonBullet": false,
+    "hasMeleeAttack": false,
+    "meleeAttack": 0,
+    "position": {
+      "x": 200.0,
+      "y": 200.0
+    },
+    "velocity": null,
+    "acceleration": null,
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "�\u0006��H�tl��",
+    "HP": 9999965.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": "barricadosTheSecond"
   }
 ]
