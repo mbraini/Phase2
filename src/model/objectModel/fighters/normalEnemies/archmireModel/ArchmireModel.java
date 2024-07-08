@@ -3,6 +3,8 @@ package model.objectModel.fighters.normalEnemies.archmireModel;
 import controller.Controller;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
+import controller.manager.loading.GameLoaderHelper;
+import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.ModelData;
 import model.interfaces.Ability;
@@ -17,12 +19,12 @@ import utils.Vector;
 import java.util.ArrayList;
 
 public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPolygon , Ability ,HasVertices {
+    @SkippedByJson
     private ArchmireThread thread;
     private ArrayList<Vector> vertices = new ArrayList<>();
     private ArrayList<ArchmireAoeEffectModel> aoeEffects = new ArrayList<>();
 
     public ArchmireModel(Vector position ,String id){
-        thread = new ArchmireThread(this);
         this.position = position;
         this.velocity = new Vector(0 ,0);
         this.acceleration = new Vector(0 ,0);
@@ -33,7 +35,7 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
         vulnerableToEpsilonBullet = true;
         omega = Constants.ENEMY_ROTATION_SPEED;
         initVertices();
-        thread.start();
+        start();
     }
 
     private void initVertices() {
@@ -111,5 +113,13 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
     public void killEffect(ArchmireAoeEffectModel archmireAoeEffectModel) {
         thread.getRemovedAoe().add(archmireAoeEffectModel.getId());
         Controller.removeEffect(archmireAoeEffectModel);
+    }
+
+    public void start() {
+        for (int i = 0 ;i < aoeEffects.size() ;i++){
+            GameLoaderHelper.addEffect(aoeEffects.get(i) ,aoeEffects.get(i).getEffectType());
+        }
+        thread = new ArchmireThread(this);
+        thread.start();
     }
 }

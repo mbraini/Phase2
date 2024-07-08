@@ -1,5 +1,7 @@
 package model.objectModel.effects;
 
+import controller.enums.EffectType;
+import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.interfaces.Fader;
 import model.interfaces.HasVertices;
@@ -15,14 +17,16 @@ import java.util.ArrayList;
 public class ArchmireAoeEffectModel extends AoeEffectModel implements Fader , IsPolygon , HasVertices {
 
     private double fadeTime;
+    @SkippedByJson
     private ArchmireModel archmire;
     private ArrayList<Vector> vertices;
 
 
     public ArchmireAoeEffectModel(ArchmireModel archmire ,String id){
         this.id = id;
-        this.color = Color.RED;
+        this.R = 255;
         this.archmire = archmire;
+        effectType = EffectType.archmireEffect;
         setUpArea(archmire);
         initVertices();
     }
@@ -71,7 +75,7 @@ public class ArchmireAoeEffectModel extends AoeEffectModel implements Fader , Is
             return;
         int R;
         R =(int) (255 - (this.fadeTime / Constants.ARCHMIRE_AOE_TIME_LIMIT) * 255);
-        color = new Color(R ,0 ,0);
+        this.R = R;
         fadeTime += time;
     }
 
@@ -92,5 +96,9 @@ public class ArchmireAoeEffectModel extends AoeEffectModel implements Fader , Is
     @Override
     public ArrayList<Vector> getVertices() {
         return vertices;
+    }
+
+    public void setArchmire(ArchmireModel archmire) {
+        this.archmire = archmire;
     }
 }

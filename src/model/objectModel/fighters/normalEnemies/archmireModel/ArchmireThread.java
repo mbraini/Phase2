@@ -36,6 +36,7 @@ public class ArchmireThread extends Thread{
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
             if (deltaModel >= Constants.ARCHMIRE_THREAD_REFRESH_RATE) {
+                System.out.println("ARCHMIRE_THREAD");
                 updateAOE();
                 deltaModel = 0;
                 time += Constants.ARCHMIRE_THREAD_REFRESH_RATE;
@@ -91,6 +92,7 @@ public class ArchmireThread extends Thread{
         for (String id : removedAoe){
             removeAoe(id);
         }
+        removedAoe = new ArrayList<>();
     }
 
     private void removeAoe(String id) {

@@ -4,10 +4,13 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import controller.enums.EffectType;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import model.ModelRequests;
 import model.objectModel.ObjectModel;
+import model.objectModel.effects.ArchmireAoeEffectModel;
+import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
@@ -17,6 +20,10 @@ import model.objectModel.fighters.normalEnemies.archmireModel.ArchmireModel;
 import model.objectModel.fighters.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.fighters.normalEnemies.omenoctModel.OmenoctModel;
 import model.objectModel.frameModel.FrameModel;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import utils.area.Polygon;
 import view.ViewRequest;
 import view.objectViews.EpsilonView;
 import view.objectViews.basicEnemyView.SquarantineView;
@@ -26,6 +33,7 @@ import view.objectViews.miniBossEnemyView.OrbView;
 import view.objectViews.normalEnemyView.NecropickView;
 import view.objectViews.normalEnemyView.OmenoctView;
 import view.objectViews.normalEnemyView.WyrmView;
+import view.objectViews.normalEnemyView.archmireView.ArchmireEffectView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireView;
 
 public class GameLoaderHelper {
@@ -51,7 +59,8 @@ public class GameLoaderHelper {
         return builder.create();
     }
 
-    public synchronized static void addModel(String jsonString, ModelType type){
+    public synchronized static void addModel(JSONObject jsonObject, ModelType type){
+        String jsonString = jsonObject.toString();
         ObjectModel model;
         switch (type){
             case epsilon :
@@ -95,11 +104,25 @@ public class GameLoaderHelper {
                         model.getPosition(),
                         model.getId()
                 ));
-//            case archmire:
-//                ViewRequest.addObjectView(new ArchmireView(
-//                        model.getPosition(),
-//                        model.getId()
-//                ));
+            case archmire:
+                model = gson.fromJson(jsonString , ArchmireModel.class);
+                try {
+                    JSONArray aoeArray = jsonObject.getJSONArray("aoeEffects");
+                    for (int i = 0 ;i < aoeArray.length() ;i++){
+                        String area = aoeArray.getJSONObject(i).get("area").toString();
+                        Polygon polygon = gson.fromJson(area ,Polygon.class);
+                        ((ArchmireModel) model).getAoeEffects().get(i).setArchmire((ArchmireModel) model);
+                        ((ArchmireModel) model).getAoeEffects().get(i).setArea(polygon);
+                    }
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+                ((ArchmireModel)model).start();
+                ModelRequests.addObjectModel((ArchmireModel)model);
+                ViewRequest.addObjectView(new ArchmireView(
+                        model.getPosition(),
+                        model.getId()
+                ));
 //            case orb:
 //                ViewRequest.addObjectView(new OrbView(
 //                        model.getPosition(),
@@ -140,4 +163,16 @@ public class GameLoaderHelper {
         Spawner.addFrame(frameModel);
     }
 
+    public static void addEffect(EffectModel effect, EffectType effectType) {
+        switch (effectType){
+            case archmireEffect :
+                effect.setArea((Polygon) effect.getArea());
+                ModelRequests.addEffectModel(effect);
+                ViewRequest.addEffectView(new ArchmireEffectView(
+                        effect.getArea(),
+                        effect.getId()
+                ));
+                break;
+        }
+    }
 }

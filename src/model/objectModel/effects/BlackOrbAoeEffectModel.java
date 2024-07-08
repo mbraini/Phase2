@@ -23,7 +23,9 @@ public class BlackOrbAoeEffectModel extends AoeEffectModel implements IsPolygon 
 
     public BlackOrbAoeEffectModel (BlackOrbModel blackOrbModel ,OrbModel orbOrigin ,OrbModel orbDestination ,String id){
         this.id = id;
-        this.color = Color.MAGENTA;
+        R =255;
+        G = 0;
+        B = 255;
         this.orbOrigin = orbOrigin;
         this.orbDestination = orbDestination;
         this.blackOrbModel = blackOrbModel;

@@ -30,7 +30,7 @@ public class GameLoader {
         effects = new ArrayList<>();
     }
 
-    public void load() {
+    public synchronized void load() {
 
         Gson gson = getGson();
 
@@ -65,7 +65,7 @@ public class GameLoader {
                 JSONObject jModel = jModels.getJSONObject(i);
                 String jType = jModel.get("type").toString();
                 ModelType type = gson.fromJson(jType , ModelType.class);
-                GameLoaderHelper.addModel(jModel.toString() ,type);
+                GameLoaderHelper.addModel(jModel ,type);
             }
             JSONArray jFrames = (JSONArray) new JSONTokener(frameString.toString()).nextValue();
             for (int i = 0; i <jFrames.length() ;i++){

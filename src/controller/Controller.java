@@ -103,7 +103,11 @@ public abstract class Controller {
                     EffectModel effectModel = effectModels.get(index);
                     effectViews.get(i).setArea(effectModel.getArea());
                     effectViews.get(i).setTheta(effectModel.getTheta());
-                    effectViews.get(i).setColor(effectModel.getColor());
+                    effectViews.get(i).setColor(new Color(
+                            effectModel.getR(),
+                            effectModel.getG(),
+                            effectModel.getB()
+                    ));
                 }
 
 
@@ -149,7 +153,10 @@ public abstract class Controller {
 
 
     public static void startGame(){
-        new GameLoader().load();
+        modelStarter();
+        viewStarter();
+        addEpsilonAndFrame();
+        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
         Controller.threadsStarter();
     }
 
@@ -190,9 +197,9 @@ public abstract class Controller {
 //        Spawner.addObject(new Vector(0 ,600),
 //                ModelType.necropick
 //        );
-        Spawner.spawnObject(new Vector(600 ,300),
-                ModelType.necropick
-        );
+//        Spawner.spawnObject(new Vector(600 ,300),
+//                ModelType.necropick
+//        );
 //        Spawner.spawnObject(new Vector(0 ,0),
 //                ModelType.wyrm
 //        );
@@ -205,9 +212,9 @@ public abstract class Controller {
 //                ModelType.omenoct
 //        );
 //
-//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.archmire
-//        );
+        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+                ModelType.archmire
+        );
 //
 //
 //        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),

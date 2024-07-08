@@ -4,8 +4,8 @@
     "hasMeleeAttack": false,
     "meleeAttack": 5,
     "position": {
-      "x": 722.8429825356623,
-      "y": 453.2354829961467
+      "x": 1060.6046225830223,
+      "y": 232.41741750814782
     },
     "velocity": {
       "x": 0.0,
@@ -18,8 +18,8 @@
     "theta": 0.0,
     "omega": 0.0,
     "alpha": 0.0,
-    "id": "\u0018�\u0017�T����",
-    "HP": 95.0,
+    "id": "�j����c���",
+    "HP": -50.0,
     "isHovering": false,
     "isSolid": true,
     "type": "epsilon"

@@ -51,8 +51,11 @@ public class GameManagerThread extends Thread{
         interfaces();
         killObjects();
         checkAoeDamage();
-        if (time % 100 == 0)
-            new GameSaver(models ,effects ,frames ,abstractEnemies).save();
+        if (time % 100 == 0) {
+            synchronized (ModelData.getFrames()) {
+                new GameSaver(models, effects, frames, abstractEnemies).save();
+            }
+        }
         GameState.update(models ,time);
     }
 
