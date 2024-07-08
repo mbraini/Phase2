@@ -123,6 +123,7 @@ public class GameLoaderHelper {
                         Polygon polygon = gson.fromJson(area ,Polygon.class);
                         ((ArchmireModel) model).getAoeEffects().get(i).setArchmire((ArchmireModel) model);
                         ((ArchmireModel) model).getAoeEffects().get(i).setArea(polygon);
+                        addEffect(((ArchmireModel) model).getAoeEffects().get(i) ,EffectType.archmireEffect);
                     }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
@@ -194,7 +195,7 @@ public class GameLoaderHelper {
             } catch (JSONException e) {
                 throw new RuntimeException(e);
             }
-            addBlackOrbEffect(effectModel);
+            addEffect(effectModel ,EffectType.BlackOrbEffect);
         }
 
         ModelRequests.addAbstractEnemy(blackOrbModel);
@@ -239,9 +240,15 @@ public class GameLoaderHelper {
     public static void addEffect(EffectModel effect, EffectType effectType) {
         switch (effectType){
             case archmireEffect :
-                effect.setArea((Polygon) effect.getArea());
                 ModelRequests.addEffectModel(effect);
                 ViewRequest.addEffectView(new ArchmireEffectView(
+                        effect.getArea(),
+                        effect.getId()
+                ));
+                break;
+            case BlackOrbEffect:
+                ModelRequests.addEffectModel(effect);
+                ViewRequest.addEffectView(new BlackOrbLaserEffectView(
                         effect.getArea(),
                         effect.getId()
                 ));

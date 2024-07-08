@@ -2,10 +2,11 @@ package controller.manager.loading;
 
 import com.google.gson.*;
 import controller.enums.AbstractEnemyType;
+import controller.enums.EffectType;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import model.ModelData;
-import model.ModelRequests;
+import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
 import model.objectModel.frameModel.FrameModel;
 import org.json.JSONArray;

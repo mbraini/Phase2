@@ -184,9 +184,9 @@ public abstract class Controller {
         ViewData.addImaginaryPanel(new ImaginaryPanel(frameModel.getId()));
 
 
-        Spawner.spawnObject(new Vector(200 ,200),
-                ModelType.barricados
-        );
+//        Spawner.spawnObject(new Vector(200 ,200),
+//                ModelType.barricados
+//        );
 //        Spawner.addObject(new Vector(300 ,300),
 //                ModelType.necropick
 //        );
@@ -208,9 +208,9 @@ public abstract class Controller {
 //                ModelType.omenoct
 //        );
 //
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.archmire
-//        );
+        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+                ModelType.archmire
+        );
 //
 //
 //        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
