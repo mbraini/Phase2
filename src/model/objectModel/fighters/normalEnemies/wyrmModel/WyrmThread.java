@@ -6,11 +6,11 @@ import model.GameState;
 import utils.Math;
 import utils.Vector;
 
-@SkippedByJson
 public class WyrmThread extends Thread{
     private final static double thetaD = java.lang.Math.PI / Constants.WYRM_THETA_UPDATE_COUNT;
     private WyrmModel wyrmModel;
     private Vector origin;
+    private double time;
     public WyrmThread(WyrmModel wyrmModel , Vector origin){
         this.wyrmModel = wyrmModel;
         this.origin = origin.clone();
@@ -22,15 +22,23 @@ public class WyrmThread extends Thread{
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
-        while (!GameState.isPause() && !GameState.isOver()) {
+        while (!GameState.isPause() && !GameState.isOver() && !isInterrupted()) {
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
             if (deltaModel >= Constants.WYRM_THREAD_REFRESH_RATE) {
                 rotateModel();
+                shootIf();
                 deltaModel = 0;
+                time += Constants.WYRM_THREAD_REFRESH_RATE;
             }
         }
+    }
+
+    private void shootIf() {
+        if (time % Constants.WYRM_SHOOTING_TIME != 0)
+            return;
+        new WyrmShooter(wyrmModel).shoot();
     }
 
     private void rotateModel() {

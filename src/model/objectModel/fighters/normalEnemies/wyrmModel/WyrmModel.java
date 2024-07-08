@@ -21,8 +21,10 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
     private FrameModel frameModel;
     private boolean isInRange;
     private ArrayList<Vector> vertices;
+    @SkippedByJson
     private WyrmThread wyrmThread;
     private boolean positiveDirection;
+    private Vector origin;
 
     public WyrmModel(Vector position ,String id){
         this.id = id;
@@ -77,6 +79,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
     public void die() {
         Controller.removeObject(this);
         Controller.removeFrame(frameModel);
+        wyrmThread.interrupt();
         Spawner.addCollectives(position ,2 ,8);
     }
 
@@ -108,12 +111,8 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         isInRange = navigator.hasArrived();
         if (isInRange){
             setVelocity(0 ,0);
-
-            wyrmThread = new WyrmThread(
-                    this ,
-                    ModelData.getModels().getFirst().getPosition()
-            );
-            wyrmThread.start();
+            origin = ModelData.getModels().getFirst().getPosition().clone();
+            start();
         }
     }
 
@@ -184,6 +183,13 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         positiveDirection = !positiveDirection;
     }
 
+
+    public void start(){
+        if (isInRange) {
+            wyrmThread = new WyrmThread(this, origin);
+            wyrmThread.start();
+        }
+    }
 
 
 }

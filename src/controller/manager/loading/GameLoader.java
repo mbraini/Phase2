@@ -8,7 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import utils.Vector;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,6 +20,8 @@ public class GameLoader {
     private ArrayList<Object> models;
     private ArrayList<Object> abstractEnemies;
     private ArrayList<Object> effects;
+    private GameLoaderHelper helper;
+    private static ArrayList<FrameModel> framesSpawnedByObjects;
     private static Gson gson;
 
     public GameLoader(){
@@ -28,6 +29,7 @@ public class GameLoader {
         frames = new ArrayList<>();
         abstractEnemies = new ArrayList<>();
         effects = new ArrayList<>();
+        framesSpawnedByObjects = new ArrayList<>();
     }
 
     public synchronized void load() {
@@ -68,14 +70,26 @@ public class GameLoader {
                 GameLoaderHelper.addModel(jModel ,type);
             }
             JSONArray jFrames = (JSONArray) new JSONTokener(frameString.toString()).nextValue();
-            for (int i = 0; i <jFrames.length() ;i++){
+            for (int i = 0; i < jFrames.length() ;i++){/////////////only one frame!
                 JSONObject jModel = jFrames.getJSONObject(i);
-                Spawner.addFrame(gson.fromJson(jModel.toString() , FrameModel.class));
+                FrameModel frameModel = gson.fromJson(jModel.toString() , FrameModel.class);
+                if (!spawnedByObjects(frameModel.getId()))
+                    Spawner.addFrame(frameModel);
             }
+            for (FrameModel frameModel : framesSpawnedByObjects)
+                Spawner.addFrame(frameModel);
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
 
+    }
+
+    private boolean spawnedByObjects(String id) {
+        for (FrameModel frameModel : framesSpawnedByObjects){
+            if (frameModel.getId().equals(id))
+                return true;
+        }
+        return false;
     }
 
     private Gson getGson() {
@@ -86,6 +100,10 @@ public class GameLoader {
         builder.serializeNulls();
         gson = builder.create();
         return gson;
+    }
+
+    public static void addFrame(FrameModel frameModel){
+        framesSpawnedByObjects.add(frameModel);
     }
 
 

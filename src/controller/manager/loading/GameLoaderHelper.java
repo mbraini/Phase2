@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 import controller.enums.EffectType;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
+import model.ModelData;
 import model.ModelRequests;
 import model.objectModel.ObjectModel;
 import model.objectModel.effects.ArchmireAoeEffectModel;
@@ -19,6 +20,7 @@ import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
 import model.objectModel.fighters.normalEnemies.archmireModel.ArchmireModel;
 import model.objectModel.fighters.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.fighters.normalEnemies.omenoctModel.OmenoctModel;
+import model.objectModel.fighters.normalEnemies.wyrmModel.WyrmModel;
 import model.objectModel.frameModel.FrameModel;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,7 +67,7 @@ public class GameLoaderHelper {
         switch (type){
             case epsilon :
                 model = gson.fromJson(jsonString , EpsilonModel.class);
-                ModelRequests.addObjectModel(model);
+                ModelData.addModel(model);
                 ViewRequest.addObjectView(
                         new EpsilonView(
                                 model.getPosition() ,
@@ -123,11 +125,15 @@ public class GameLoaderHelper {
                         model.getPosition(),
                         model.getId()
                 ));
-//            case orb:
-//                ViewRequest.addObjectView(new OrbView(
-//                        model.getPosition(),
-//                        model.getId()
-//                ));
+            case wyrm:
+                model = gson.fromJson(jsonString , WyrmModel.class);
+                ModelRequests.addObjectModel(model);
+                GameLoader.addFrame(((WyrmModel) model).getFrameModel());
+                ((WyrmModel) model).start();
+                ViewRequest.addObjectView(new WyrmView(
+                        model.getPosition(),
+                        model.getId()
+                ));
         }
     }
 

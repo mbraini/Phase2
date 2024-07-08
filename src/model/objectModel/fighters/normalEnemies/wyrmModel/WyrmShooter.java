@@ -11,14 +11,13 @@ import utils.Vector;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class WyrmShooter implements ActionListener {
+public class WyrmShooter {
 
     private WyrmModel wyrmModel;
     WyrmShooter(WyrmModel wyrmModel){
         this.wyrmModel = wyrmModel;
     }
-    @Override
-    public void actionPerformed(ActionEvent e) {
+    public void shoot() {
         Vector position = wyrmModel.getPosition();
         EpsilonModel epsilon = (EpsilonModel) ModelData.getModels().getFirst();
 

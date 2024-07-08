@@ -62,7 +62,6 @@ public abstract class Controller {
 
                     FrameModel frame = frameModels.get(index);
                     frameViews.get(i).setPosition(frame.getPosition());
-                    frameViews.get(i).setDimension(frame.getSize());
                     frameViews.get(i).setDimension(
                             new Dimension(
                                     frame.getSize().width + Constants.barD.width,
@@ -153,10 +152,7 @@ public abstract class Controller {
 
 
     public static void startGame(){
-        modelStarter();
-        viewStarter();
-        addEpsilonAndFrame();
-        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
+        new GameLoader().load();
         Controller.threadsStarter();
     }
 
@@ -200,9 +196,9 @@ public abstract class Controller {
 //        Spawner.spawnObject(new Vector(600 ,300),
 //                ModelType.necropick
 //        );
-//        Spawner.spawnObject(new Vector(0 ,0),
-//                ModelType.wyrm
-//        );
+        Spawner.spawnObject(new Vector(0 ,0),
+                ModelType.wyrm
+        );
 
 //        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 100),
 //                ModelType.wyrm
@@ -212,9 +208,9 @@ public abstract class Controller {
 //                ModelType.omenoct
 //        );
 //
-        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-                ModelType.archmire
-        );
+//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ModelType.archmire
+//        );
 //
 //
 //        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
