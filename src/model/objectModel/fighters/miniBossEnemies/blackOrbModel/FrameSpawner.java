@@ -12,17 +12,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class FrameSpawner implements ActionListener {
+public class FrameSpawner  {
     private ArrayList<FrameModel> frameModels;
     private BlackOrbModel blackOrbModel;
     private int counter;
-    public FrameSpawner(BlackOrbModel blackOrbModel){
+    public FrameSpawner(BlackOrbModel blackOrbModel ,int count){
         this.blackOrbModel = blackOrbModel;
+        this.counter = count;
     }
 
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
+    public void spawn() {
         double theta = counter * java.lang.Math.PI * 2 / 5;
         Vector initialPosition = Math.VectorAdd(
                 blackOrbModel.getCenter(),
@@ -55,16 +55,9 @@ public class FrameSpawner implements ActionListener {
         builder.setIsometric(true);
         builder.setSolid(false);
         FrameModel frameModel = builder.create();
-        blackOrbModel.addFrame(frameModel);
-        Spawner.addFrame(frameModel);
 
-        counter++;
-        if (counter == 5){
-            blackOrbModel.setAllFramesSpawned(true);
-            blackOrbModel.getOrbSpawner().start();
-            blackOrbModel.getBlackOrbThread().start();
-            blackOrbModel.getFrameSpawner().stop();
-        }
+        Spawner.addFrame(frameModel);
+        blackOrbModel.addFrame(frameModel);
     }
 
 }

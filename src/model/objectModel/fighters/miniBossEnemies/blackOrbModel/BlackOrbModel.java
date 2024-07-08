@@ -1,6 +1,8 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
+import controller.enums.AbstractEnemyType;
 import controller.manager.Spawner;
+import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.fighters.AbstractEnemy;
@@ -12,15 +14,12 @@ import java.util.ArrayList;
 
 public class BlackOrbModel extends AbstractEnemy {
 
-    private Timer orbSpawner;
-    private Timer frameSpawner;
+    @SkippedByJson
     private BlackOrbThread blackOrbThread;
     private ArrayList<OrbModel> orbModels;
     private ArrayList<FrameModel> frameModels;
     private ArrayList<BlackOrbAoeEffectModel> effectModels = new ArrayList<>();
     private Vector center;
-    private boolean allFramesSpawned;
-    private boolean allOrbsSpawned;
     private int frameCount;
     private int orbCount;
 
@@ -29,6 +28,7 @@ public class BlackOrbModel extends AbstractEnemy {
         frameModels = new ArrayList<>();
         orbModels = new ArrayList<>();
         blackOrbThread = new BlackOrbThread(this);
+        type = AbstractEnemyType.blackOrb;
         this.center = center;
     }
 
@@ -48,21 +48,6 @@ public class BlackOrbModel extends AbstractEnemy {
         this.frameModels = frameModels;
     }
 
-    public boolean isAllFramesSpawned() {
-        return allFramesSpawned;
-    }
-
-    public void setAllFramesSpawned(boolean allFramesSpawned) {
-        this.allFramesSpawned = allFramesSpawned;
-    }
-
-    public boolean isAllOrbsSpawned() {
-        return allOrbsSpawned;
-    }
-
-    public void setAllOrbsSpawned(boolean allOrbsSpawned) {
-        this.allOrbsSpawned = allOrbsSpawned;
-    }
 
     public int getFrameCount() {
         return frameCount;
@@ -82,6 +67,7 @@ public class BlackOrbModel extends AbstractEnemy {
 
     public void addFrame(FrameModel frameModel){
         frameModels.add(frameModel);
+        frameCount++;
     }
 
     public void addOrb(OrbModel orbModel){
@@ -96,27 +82,11 @@ public class BlackOrbModel extends AbstractEnemy {
         this.center = center;
     }
 
-    public Timer getFrameSpawner() {
-        return frameSpawner;
-    }
-
-    public void setFrameSpawner(Timer frameSpawner) {
-        this.frameSpawner = frameSpawner;
-    }
 
     public void spawn() {
-        frameSpawner = new Timer(Constants.BLACK_ORB_SPAWN_DELAY ,new FrameSpawner(this));
-        orbSpawner = new Timer(Constants.BLACK_ORB_SPAWN_DELAY ,new OrbSpawner(this));
-        frameSpawner.start();
+        start();
     }
 
-    public Timer getOrbSpawner() {
-        return orbSpawner;
-    }
-
-    public void setOrbSpawner(Timer orbSpawner) {
-        this.orbSpawner = orbSpawner;
-    }
 
     public BlackOrbThread getBlackOrbThread() {
         return blackOrbThread;
@@ -149,4 +119,12 @@ public class BlackOrbModel extends AbstractEnemy {
             }
         }
     }
+
+
+    public void start(){
+        blackOrbThread = new BlackOrbThread(this);
+        blackOrbThread.start();
+    }
+
+
 }

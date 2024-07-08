@@ -19,6 +19,9 @@ public class BlackOrbThread extends Thread{
     private ArrayList<OrbModel> orbModels;
     ArrayList<BlackOrbAoeEffectModel> effects;
     private double time;
+    private double frameTime;
+    private double orbTime;
+    private boolean spawningDone;
 
     public BlackOrbThread(BlackOrbModel blackOrbModel){
         this.blackOrbModel = blackOrbModel;
@@ -45,8 +48,40 @@ public class BlackOrbThread extends Thread{
     }
 
     private void updateBlackOrb() {
+        if (!spawningDone) {
+            spawn();
+        }
         updateVariables();
         checkAoeDamage();
+    }
+
+    private void spawn() {
+        if (blackOrbModel.getOrbCount() == 5 && blackOrbModel.getFrameCount() == 5){
+            spawningDone = true;
+        }
+        if (blackOrbModel.getFrameCount() < 5){
+            frameTime += Constants.BLACK_ORB_THEAD_REFRESH_RATE;
+            spawnFrameIf();
+            return;
+        }
+        if (blackOrbModel.getOrbCount() < 5){
+            orbTime += Constants.BLACK_ORB_THEAD_REFRESH_RATE;
+            spawnOrbIf();
+        }
+    }
+
+    private void spawnOrbIf() {
+        if (orbTime >= 1000){
+            orbTime = 0;
+            new OrbSpawner(blackOrbModel ,blackOrbModel.getOrbCount()).spawn();
+        }
+    }
+
+    private void spawnFrameIf() {
+        if (frameTime >= 1000){
+            frameTime = 0;
+            new FrameSpawner(blackOrbModel ,blackOrbModel.getFrameCount()).spawn();
+        }
     }
 
     private void updateVariables() {
@@ -110,5 +145,9 @@ public class BlackOrbThread extends Thread{
                     || effect.getOrbOrigin().getId().equals(orbModel.getId()))
                 effect.die();
         }
+    }
+
+    public void setBlackOrbModel(BlackOrbModel blackOrbModel) {
+        this.blackOrbModel = blackOrbModel;
     }
 }

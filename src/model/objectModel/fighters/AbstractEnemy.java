@@ -1,7 +1,10 @@
 package model.objectModel.fighters;
 
+import controller.enums.AbstractEnemyType;
+
 public abstract class AbstractEnemy {
     protected String id;
+    protected AbstractEnemyType type;
 
     public String getId() {
         return id;

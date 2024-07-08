@@ -2,6 +2,7 @@ package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
 import controller.Controller;
 import controller.manager.Spawner;
+import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.interfaces.IsCircle;
 import model.objectModel.fighters.miniBossEnemies.MiniBossModel;
@@ -10,6 +11,7 @@ import utils.Vector;
 
 public class OrbModel extends MiniBossModel implements IsCircle {
 
+    @SkippedByJson
     private BlackOrbModel blackOrbModel;
     private FrameModel frameModel;
     private int number;
@@ -49,4 +51,7 @@ public class OrbModel extends MiniBossModel implements IsCircle {
     }
 
 
+    public void setBlackOrbModel(BlackOrbModel blackOrbModel) {
+        this.blackOrbModel = blackOrbModel;
+    }
 }

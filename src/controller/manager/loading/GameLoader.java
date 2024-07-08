@@ -1,13 +1,19 @@
 package controller.manager.loading;
 
 import com.google.gson.*;
+import controller.enums.AbstractEnemyType;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
+import model.ModelData;
+import model.ModelRequests;
+import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
 import model.objectModel.frameModel.FrameModel;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import view.ViewRequest;
+import view.objectViews.FrameView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -73,11 +79,30 @@ public class GameLoader {
             for (int i = 0; i < jFrames.length() ;i++){/////////////only one frame!
                 JSONObject jModel = jFrames.getJSONObject(i);
                 FrameModel frameModel = gson.fromJson(jModel.toString() , FrameModel.class);
+                if (i == 0){
+                    ModelData.addFrame(frameModel);
+                    ViewRequest.addFrameView(new FrameView(
+                            frameModel.getPosition(),
+                            frameModel.getSize(),
+                            frameModel.getId()
+                    ));
+                    continue;
+                }
                 if (!spawnedByObjects(frameModel.getId()))
                     Spawner.addFrame(frameModel);
             }
             for (FrameModel frameModel : framesSpawnedByObjects)
                 Spawner.addFrame(frameModel);
+            JSONArray jAbstractEnemies = (JSONArray) new JSONTokener(abstractEnemyString.toString()).nextValue();
+            for (int i = 0; i < jAbstractEnemies.length() ; i++){/////////////only one frame!
+                JSONObject jAbstract = jAbstractEnemies.getJSONObject(i);
+                String jType = jAbstract.get("type").toString();
+                AbstractEnemyType type = gson.fromJson(jType , AbstractEnemyType.class);
+                GameLoaderHelper.addBlackOrb(
+                        gson.fromJson(jAbstract.toString() , BlackOrbModel.class) ,
+                        jAbstract
+                );
+            }
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
@@ -98,8 +123,20 @@ public class GameLoader {
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
         builder.serializeNulls();
-        gson = builder.create();
-        return gson;
+        builder.setExclusionStrategies(new ExclusionStrategy() {
+            @Override
+            public boolean shouldSkipField(FieldAttributes fieldAttributes) {
+                return fieldAttributes.getAnnotation(SkippedByJson.class) != null;
+            }
+
+            @Override
+            public boolean shouldSkipClass(Class<?> aClass) {
+                if (aClass.getAnnotation(SkippedByJson.class) == null)
+                    return false;
+                return true;
+            }
+        });
+        return builder.create();
     }
 
     public static void addFrame(FrameModel frameModel){

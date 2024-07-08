@@ -1,6 +1,7 @@
 package model.objectModel.effects;
 
 import controller.Controller;
+import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
@@ -14,7 +15,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class BlackOrbAoeEffectModel extends AoeEffectModel implements IsPolygon , HasVertices {
-
+    @SkippedByJson
     private BlackOrbModel blackOrbModel;
     private OrbModel orbDestination;
     private OrbModel orbOrigin;
@@ -97,5 +98,9 @@ public class BlackOrbAoeEffectModel extends AoeEffectModel implements IsPolygon 
 
     public OrbModel getOrbOrigin() {
         return orbOrigin;
+    }
+
+    public void setBlackOrbModel(BlackOrbModel blackOrbModel) {
+        this.blackOrbModel = blackOrbModel;
     }
 }

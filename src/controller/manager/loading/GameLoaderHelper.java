@@ -11,12 +11,14 @@ import model.ModelData;
 import model.ModelRequests;
 import model.objectModel.ObjectModel;
 import model.objectModel.effects.ArchmireAoeEffectModel;
+import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
 import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosSecondModel;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
+import model.objectModel.fighters.miniBossEnemies.blackOrbModel.OrbModel;
 import model.objectModel.fighters.normalEnemies.archmireModel.ArchmireModel;
 import model.objectModel.fighters.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.fighters.normalEnemies.omenoctModel.OmenoctModel;
@@ -31,6 +33,7 @@ import view.objectViews.EpsilonView;
 import view.objectViews.basicEnemyView.SquarantineView;
 import view.objectViews.basicEnemyView.TrigorathView;
 import view.objectViews.miniBossEnemyView.BarricadosView;
+import view.objectViews.miniBossEnemyView.BlackOrbLaserEffectView;
 import view.objectViews.miniBossEnemyView.OrbView;
 import view.objectViews.normalEnemyView.NecropickView;
 import view.objectViews.normalEnemyView.OmenoctView;
@@ -64,6 +67,8 @@ public class GameLoaderHelper {
     public synchronized static void addModel(JSONObject jsonObject, ModelType type){
         String jsonString = jsonObject.toString();
         ObjectModel model;
+        if (type == null)
+            return;
         switch (type){
             case epsilon :
                 model = gson.fromJson(jsonString , EpsilonModel.class);
@@ -147,8 +152,48 @@ public class GameLoaderHelper {
         Spawner.addFrame(frameModel);
     }
 
-    public synchronized static void addBlackOrb(BlackOrbModel blackOrbModel){
+    public synchronized static void addBlackOrb(BlackOrbModel blackOrbModel ,JSONObject jsonObject){
+        blackOrbModel.start();
+        blackOrbModel.getBlackOrbThread().setBlackOrbModel(blackOrbModel);
+        for (OrbModel orbModel : blackOrbModel.getOrbModels()) {
+            orbModel.setBlackOrbModel(blackOrbModel);
+            addOrb(orbModel);
+        }
+        for (BlackOrbAoeEffectModel effectModel : blackOrbModel.getEffectModels()) {
+            effectModel.setBlackOrbModel(blackOrbModel);
+            JSONArray aoeArray = null;
+            try {
+                aoeArray = jsonObject.getJSONArray("effectModels");
+                for (int i = 0 ;i < aoeArray.length() ;i++){
+                    String area = aoeArray.getJSONObject(i).get("area").toString();
+                    Polygon polygon = gson.fromJson(area ,Polygon.class);
+                    blackOrbModel.getEffectModels().get(i).setArea(polygon);
+                }
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+            addBlackOrbEffect(effectModel);
+        }
+
         ModelRequests.addAbstractEnemy(blackOrbModel);
+    }
+
+    public synchronized static void addOrb(OrbModel orbModel){
+        ModelRequests.addObjectModel(orbModel);
+        ViewRequest.addObjectView(
+                new OrbView(
+                        orbModel.getPosition(),
+                        orbModel.getId()
+                )
+        );
+    }
+
+    public synchronized static void addBlackOrbEffect(BlackOrbAoeEffectModel effectModel){
+        ModelRequests.addEffectModel(effectModel);
+        ViewRequest.addEffectView(new BlackOrbLaserEffectView(
+                effectModel.getArea(),
+                effectModel.getId()
+        ));
     }
 
     public synchronized static void addBarricadosTheFirst(BarricadosSecondModel barricados){

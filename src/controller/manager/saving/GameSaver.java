@@ -35,7 +35,7 @@ public class GameSaver {
     }
 
 
-    public void save() {
+    public synchronized void save() {
         Gson gson = getGson();
 
         String modelString = gson.toJson(models);

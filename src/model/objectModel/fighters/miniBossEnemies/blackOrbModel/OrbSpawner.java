@@ -8,45 +8,37 @@ import utils.Vector;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class OrbSpawner implements ActionListener {
+public class OrbSpawner {
 
     private BlackOrbModel blackOrbModel;
     private int counter;
-    public OrbSpawner(BlackOrbModel blackOrbModel){
+    public OrbSpawner(BlackOrbModel blackOrbModel ,int count){
         this.blackOrbModel = blackOrbModel;
+        this.counter = count;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        Spawner.spawnOrb(
+    public void spawn() {
+        OrbModel orbModel = new OrbModel(
                 Math.VectorAdd(
-                        blackOrbModel.getFrameModels().get(counter).getPosition(),
+                        blackOrbModel.getFrameModels().get(blackOrbModel.getOrbCount()).getPosition(),
                         new Vector(
                                 Constants.BLACK_ORB_FRAME_DIMENSION.width / 2d,
                                 Constants.BLACK_ORB_FRAME_DIMENSION.height / 2d
                         )
                 ),
                 blackOrbModel,
-                counter,
-                blackOrbModel.getFrameModels().get(counter).getId()
+                blackOrbModel.getOrbCount(),
+                blackOrbModel.getFrameModels().get(blackOrbModel.getOrbCount()).getId()
         );
-        blackOrbModel.addOrb(new OrbModel(
-                Math.VectorAdd(
-                        blackOrbModel.getFrameModels().get(counter).getPosition(),
-                        new Vector(
-                                Constants.BLACK_ORB_FRAME_DIMENSION.width / 2d,
-                                Constants.BLACK_ORB_FRAME_DIMENSION.height / 2d
-                        )
-                ),
+        Spawner.spawnOrb(
+                orbModel.getPosition(),
                 blackOrbModel,
-                counter,
-                blackOrbModel.getFrameModels().get(counter).getId()
-        ));
+                blackOrbModel.getOrbCount(),
+                orbModel.getId()
+        );
+        blackOrbModel.addOrb(orbModel);
         blackOrbModel.getBlackOrbThread().connectLasers(blackOrbModel.getOrbModels().size() - 1);
-        counter++;
-        if (counter == 5){
-            blackOrbModel.getOrbSpawner().stop();
-        }
+        blackOrbModel.setOrbCount(blackOrbModel.getOrbCount() + 1);
     }
 
 }
