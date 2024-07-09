@@ -1,6 +1,7 @@
 package controller.listeners;
 
 
+import controller.Controller;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
@@ -24,7 +25,7 @@ public class EpsilonCirculation implements MouseMotionListener {
     public void mouseMoved(MouseEvent e) {
 
         Vector mousePosition = new Vector(e.getX() ,e.getY());
-        Vector epsilonPosition = epsilon.getPosition().clone();
+        Vector epsilonPosition = epsilon.getPosition();
         if (mousePosition.Equals(epsilonPosition))
             return;
         Vector direction = Math.VectorAdd(Math.ScalarInVector(-1 ,epsilonPosition) ,mousePosition);

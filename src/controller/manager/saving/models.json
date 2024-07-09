@@ -4,8 +4,8 @@
     "hasMeleeAttack": false,
     "meleeAttack": 5,
     "position": {
-      "x": 568.9591746615806,
-      "y": 175.50539039611692
+      "x": 824.5255819134627,
+      "y": 837.5999999999999
     },
     "velocity": {
       "x": 0.0,
@@ -15,13 +15,307 @@
       "x": 0.0,
       "y": 0.0
     },
-    "theta": 0.0,
+    "theta": -2.1362827885656737,
     "omega": 0.0,
     "alpha": 0.0,
-    "id": "���\u0007��c�\u0026\u0012",
-    "HP": 4.0,
+    "id": "��z\u0000����Y\u001b",
+    "HP": 44.0,
     "isHovering": false,
     "isSolid": true,
     "type": "epsilon"
+  },
+  {
+    "frameModel": {
+      "size": {
+        "width": 100,
+        "height": 100
+      },
+      "upDownA": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightA": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "upDownV": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightV": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "upDownP": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightP": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "positionInit": {
+        "x": 718.0,
+        "y": 770.260323340816
+      },
+      "vertices": [
+        {
+          "x": 718.0,
+          "y": 770.260323340816
+        },
+        {
+          "x": 818.0,
+          "y": 770.260323340816
+        },
+        {
+          "x": 818.0,
+          "y": 870.260323340816
+        },
+        {
+          "x": 718.0,
+          "y": 870.260323340816
+        }
+      ],
+      "dimensionInit": {
+        "width": 100,
+        "height": 100
+      },
+      "isResizing": false,
+      "isIsometric": true,
+      "canTopResize": true,
+      "canBottomResize": true,
+      "canRightResize": true,
+      "canLeftResize": true,
+      "isShrinking": false,
+      "position": {
+        "x": 718.0,
+        "y": 770.260323340816
+      },
+      "velocity": null,
+      "acceleration": null,
+      "theta": 0.0,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "M׻c�[+\u0011��",
+      "HP": 0.0,
+      "isHovering": false,
+      "isSolid": false,
+      "type": null
+    },
+    "number": 0,
+    "vulnerableToEpsilonMelee": true,
+    "vulnerableToEpsilonBullet": true,
+    "hasMeleeAttack": false,
+    "meleeAttack": 0,
+    "position": {
+      "x": 768.0,
+      "y": 820.260323340816
+    },
+    "velocity": null,
+    "acceleration": null,
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "M׻c�[+\u0011��",
+    "HP": 30.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": null
+  },
+  {
+    "frameModel": {
+      "size": {
+        "width": 100,
+        "height": 100
+      },
+      "upDownA": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightA": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "upDownV": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightV": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "upDownP": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightP": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "positionInit": {
+        "x": 1041.6067977499788,
+        "y": 535.1462224238268
+      },
+      "vertices": [
+        {
+          "x": 1041.6067977499788,
+          "y": 535.1462224238268
+        },
+        {
+          "x": 1141.6067977499788,
+          "y": 535.1462224238268
+        },
+        {
+          "x": 1141.6067977499788,
+          "y": 635.1462224238268
+        },
+        {
+          "x": 1041.6067977499788,
+          "y": 635.1462224238268
+        }
+      ],
+      "dimensionInit": {
+        "width": 100,
+        "height": 100
+      },
+      "isResizing": false,
+      "isIsometric": true,
+      "canTopResize": true,
+      "canBottomResize": true,
+      "canRightResize": true,
+      "canLeftResize": true,
+      "isShrinking": false,
+      "position": {
+        "x": 1041.6067977499788,
+        "y": 535.1462224238268
+      },
+      "velocity": null,
+      "acceleration": null,
+      "theta": 0.0,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": " �\u0015�\u0015\u0017�7.�",
+      "HP": 0.0,
+      "isHovering": false,
+      "isSolid": false,
+      "type": null
+    },
+    "number": 1,
+    "vulnerableToEpsilonMelee": true,
+    "vulnerableToEpsilonBullet": true,
+    "hasMeleeAttack": false,
+    "meleeAttack": 0,
+    "position": {
+      "x": 1091.6067977499788,
+      "y": 585.1462224238268
+    },
+    "velocity": null,
+    "acceleration": null,
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": " �\u0015�\u0015\u0017�7.�",
+    "HP": 30.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": null
+  },
+  {
+    "frameModel": {
+      "size": {
+        "width": 100,
+        "height": 100
+      },
+      "upDownA": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightA": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "upDownV": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightV": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "upDownP": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightP": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "positionInit": {
+        "x": 394.39320225002103,
+        "y": 535.1462224238267
+      },
+      "vertices": [
+        {
+          "x": 394.39320225002103,
+          "y": 535.1462224238267
+        },
+        {
+          "x": 494.39320225002103,
+          "y": 535.1462224238267
+        },
+        {
+          "x": 494.39320225002103,
+          "y": 635.1462224238267
+        },
+        {
+          "x": 394.39320225002103,
+          "y": 635.1462224238267
+        }
+      ],
+      "dimensionInit": {
+        "width": 100,
+        "height": 100
+      },
+      "isResizing": false,
+      "isIsometric": true,
+      "canTopResize": true,
+      "canBottomResize": true,
+      "canRightResize": true,
+      "canLeftResize": true,
+      "isShrinking": false,
+      "position": {
+        "x": 394.39320225002103,
+        "y": 535.1462224238267
+      },
+      "velocity": null,
+      "acceleration": null,
+      "theta": 0.0,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "�\u001fs�X�\u000f�.\\",
+      "HP": 0.0,
+      "isHovering": false,
+      "isSolid": false,
+      "type": null
+    },
+    "number": 4,
+    "vulnerableToEpsilonMelee": true,
+    "vulnerableToEpsilonBullet": true,
+    "hasMeleeAttack": false,
+    "meleeAttack": 0,
+    "position": {
+      "x": 444.39320225002103,
+      "y": 585.1462224238267
+    },
+    "velocity": null,
+    "acceleration": null,
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "�\u001fs�X�\u000f�.\\",
+    "HP": 30.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": null
   }
 ]
