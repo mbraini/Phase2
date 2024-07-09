@@ -1,5 +1,6 @@
 package view.gamePanels;
 
+import controller.Controller;
 import data.Constants;
 import model.GameState;
 import view.ViewData;
@@ -9,6 +10,8 @@ import view.objectViews.effectView.EffectView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class ImaginaryPanel extends JPanel {
@@ -19,9 +22,25 @@ public class ImaginaryPanel extends JPanel {
     public ImaginaryPanel(String id){
         this.setLayout(null);
         this.setBackground(Color.BLACK);
-        this.setBounds(-Constants.SCREEN_SIZE.width ,-Constants.SCREEN_SIZE.height , Constants.SCREEN_SIZE.width * 3 ,Constants.SCREEN_SIZE.height * 3);
-
+        this.setBounds(
+                -Constants.SCREEN_SIZE.width ,
+                -Constants.SCREEN_SIZE.height ,
+                Constants.SCREEN_SIZE.width * 3 ,
+                Constants.SCREEN_SIZE.height * 3
+        );
+        initKeyListener();
         setVisible(true);
+    }
+
+    private void initKeyListener() {
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if (e.getKeyChar() == 'p'){
+                    Controller.pause();
+                }
+            }
+        });
     }
 
 

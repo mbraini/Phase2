@@ -1,6 +1,7 @@
 package view.gamePanels;
 
 
+import controller.Controller;
 import data.Constants;
 import model.GameState;
 import view.menuPanels.PIG;
@@ -30,28 +31,22 @@ public class Shop extends PIG {
         initEmpower();
         initHeal();
         initLabels();
-        this.addKeyListener(new KeyListener() {
+        initKeyListener();
+        this.grabFocus();
+        this.setFocusable(true);
+        initBack();
+        this.setVisible(true);
+    }
+
+    private void initKeyListener() {
+        this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 if (e.getKeyChar() == 'p' && GameState.isPause()){
                     end();
                 }
             }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-            }
         });
-        this.grabFocus();
-        this.setFocusable(true);
-        initBack();
-        this.setVisible(true);
     }
 
     private void initLabels() {
@@ -114,7 +109,7 @@ public class Shop extends PIG {
 
     private void initHeal() {
         banish.setBounds(getWidth() / 10 ,getHeight() / 10 * 3 ,getWidth() / 10 * 2 ,getHeight() / 10 * 2);
-        banish.addMouseListener(new MouseListener() {
+        banish.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
 //                if (GameState.xp >= 50) {
@@ -123,32 +118,12 @@ public class Shop extends PIG {
 //                    xp.setText("XP :" +(int) GameState.xp);
 //                }
             }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
         });
     }
 
     private void initEmpower() {
         empower.setBounds(getWidth() / 10 * 4 ,getHeight() / 10 * 3 ,getWidth() / 10 * 2 ,getHeight() / 10 * 2);
-        empower.addMouseListener(new MouseListener() {
+        empower.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
 //                if (GameState.xp >= 75) {
@@ -157,32 +132,12 @@ public class Shop extends PIG {
 //                    xp.setText("XP :" +(int) GameState.xp);
 //                }
             }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
         });
     }
 
     private void initBanish() {
         heal.setBounds(getWidth() / 10 * 7 ,getHeight() / 10 * 3 ,getWidth() / 10 * 2 ,getHeight() / 10 * 2);
-        heal.addMouseListener(new MouseListener() {
+        heal.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
 //                if (GameState.xp >= 100) {
@@ -190,26 +145,6 @@ public class Shop extends PIG {
 //                    GameState.xp -= 100;
 //                    xp.setText("XP :" + (int)GameState.xp);
 //                }
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
             }
         });
     }
@@ -249,16 +184,6 @@ public class Shop extends PIG {
 
     @Override
     public void end() {
-//        WindowKill.shop.setVisible(false);
-//        GameFrame.gamePanel.remove(WindowKill.shop);
-//        GameState.isPause = false;
-//        GameFrame.windowKill.setVisible(true);
-//        GameFrame.windowKill.setFocusable(true);
-//        GameFrame.windowKill.grabFocus();
-//        WindowKill.gameLoop = new GameLoop(Application.gameFrame);
-//        WindowKill.frameResizeThread = new FrameResizeThread(Application.gameFrame);
-//        WindowKill.gameLoop.start();
-//        WindowKill.frameResizeThread.start();
-//        shopFrame.dispose();
+        Controller.resume();
     }
 }

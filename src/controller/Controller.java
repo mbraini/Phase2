@@ -139,6 +139,14 @@ public abstract class Controller {
         ViewRequest.removeFrameView(frameModel.getId());
     }
 
+    public static void resume() {
+
+    }
+
+    public static void pause() {
+        GameState.setPause(true);
+    }
+
     private void updateObjectViews(){
 
     }
