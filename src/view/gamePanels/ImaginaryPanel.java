@@ -36,8 +36,9 @@ public class ImaginaryPanel extends JPanel {
         this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if (e.getKeyChar() == 'p'){
+                if (e.getKeyChar() == 'p' && !GameState.isPause()){
                     Controller.pause();
+                    new Shop(new ShopFrame());
                 }
             }
         });

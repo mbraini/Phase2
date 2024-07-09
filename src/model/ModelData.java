@@ -5,6 +5,7 @@ import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -107,5 +108,4 @@ public class ModelData {
     public static void addAbstractEnemy(AbstractEnemy abstractEnemy){
         abstractEnemies.add(abstractEnemy);
     }
-
 }

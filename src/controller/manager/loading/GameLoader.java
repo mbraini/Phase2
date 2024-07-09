@@ -1,9 +1,12 @@
 package controller.manager.loading;
 
 import com.google.gson.*;
+import controller.Controller;
 import controller.enums.AbstractEnemyType;
 import controller.enums.EffectType;
 import controller.enums.ModelType;
+import controller.manager.GameManager;
+import controller.manager.GameManagerThread;
 import controller.manager.Spawner;
 import model.ModelData;
 import model.objectModel.effects.EffectModel;

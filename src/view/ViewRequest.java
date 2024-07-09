@@ -24,7 +24,7 @@ public class ViewRequest {
         checkEffects();
     }
 
-    private static void checkObjects() {
+    private synchronized static void checkObjects() {
         for (int i = 0; i < addedObjectViews.size() ;i++){
             ViewData.addObject(addedObjectViews.get(i));
             addedObjectViews.remove(i);
@@ -37,7 +37,7 @@ public class ViewRequest {
         }
     }
 
-    private static void checkFrames() {
+    private synchronized static void checkFrames() {
         for (int i = 0 ;i < addedFrameViews.size() ;i++){
             ViewData.addFrame(addedFrameViews.get(i));
             ViewData.addImaginaryPanel(new ImaginaryPanel(addedFrameViews.get(i).getId()));
@@ -51,7 +51,7 @@ public class ViewRequest {
         }
     }
 
-    private static void checkEffects(){
+    private synchronized static void checkEffects(){
         for (int i = 0 ;i < addedEffectViews.size() ;i++){
             ViewData.addEffect(addedEffectViews.get(i));
             addedEffectViews.remove(i);

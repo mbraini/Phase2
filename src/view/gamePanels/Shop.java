@@ -32,6 +32,7 @@ public class Shop extends PIG {
         initHeal();
         initLabels();
         initKeyListener();
+        shopFrame.add(this);
         this.grabFocus();
         this.setFocusable(true);
         initBack();
@@ -185,5 +186,6 @@ public class Shop extends PIG {
     @Override
     public void end() {
         Controller.resume();
+        shopFrame.dispose();
     }
 }

@@ -108,7 +108,7 @@ public class ViewData {
         ViewData.effectViews = effectViews;
     }
 
-    public static void removeView(String id) {
+    public synchronized static void removeView(String id) {
         for (ObjectView view : views){
             if (view.getId().equals(id)) {
                 views.remove(view);
@@ -117,7 +117,7 @@ public class ViewData {
         }
     }
 
-    public static void removeFrame(String id) {
+    public synchronized static void removeFrame(String id) {
         for (int i = 0; i < frames.size(); i++){
             if (frames.get(i).getId().equals(id)){
                 frames.get(i).dispose();
@@ -128,7 +128,7 @@ public class ViewData {
         }
     }
 
-    public static void removeEffect(String id){
+    public synchronized static void removeEffect(String id){
         for (int i = 0 ;i < effectViews.size() ;i++){
             if (effectViews.get(i).getId().equals(id)){
                 effectViews.remove(i);

@@ -21,6 +21,7 @@ public class GameManagerThread extends Thread{
     private ArrayList<FrameModel> frames;
     private ArrayList<AbstractEnemy> abstractEnemies;
     private double time;
+    private final static Object jsonLock = new Object();
 
     @Override
     public void run() {
@@ -28,7 +29,11 @@ public class GameManagerThread extends Thread{
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
-        while (!GameState.isPause() && !GameState.isOver()) {
+        while (true) {
+            if (GameState.isPause()) {
+                lastTime = System.nanoTime();
+                continue;
+            }
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
@@ -52,7 +57,7 @@ public class GameManagerThread extends Thread{
         killObjects();
         checkAoeDamage();
         if (time % 100 == 0) {
-            synchronized (ModelData.getFrames()) {
+            synchronized (jsonLock) {
                 new GameSaver(models, effects, frames, abstractEnemies).save();
             }
         }
@@ -83,6 +88,10 @@ public class GameManagerThread extends Thread{
             if (model.getHP() <= 0)
                 model.die();
         }
+    }
+
+    public static Object getJsonLock() {
+        return jsonLock;
     }
 
 }

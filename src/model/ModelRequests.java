@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ModelRequests {
 
-    private static ArrayList<String> removeObjectModelReq = new ArrayList<>();
+    public static ArrayList<String> removeObjectModelReq = new ArrayList<>();
     private static ArrayList<String> removeFrameModelReq = new ArrayList<>();
     private static ArrayList<String> removeEffectModelReq = new ArrayList<>();
     private static ArrayList<String> removeAbstractEnemyReq = new ArrayList<>();

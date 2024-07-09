@@ -21,7 +21,11 @@ public class GameLoop extends Thread {
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
-        while (!GameState.isPause() && !GameState.isOver()) {
+        while (true) {
+            if (GameState.isPause()){
+                lastTime = System.nanoTime();
+                continue;
+            }
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
@@ -32,7 +36,7 @@ public class GameLoop extends Thread {
         }
     }
 
-    private void UpdateModel() {
+    public void UpdateModel() {
         ///////concurrent
         synchronized (ModelData.getModels()) {
             ModelRequests.checkRequests();

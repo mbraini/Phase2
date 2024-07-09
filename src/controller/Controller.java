@@ -2,6 +2,7 @@ package controller;
 
 import controller.enums.ModelType;
 import controller.manager.GameManager;
+import controller.manager.GameManagerThread;
 import controller.manager.Spawner;
 import controller.manager.loading.GameLoader;
 import data.Constants;
@@ -140,7 +141,14 @@ public abstract class Controller {
     }
 
     public static void resume() {
+        GameState.setPause(false);
+    }
 
+    private static void load(){
+        synchronized (GameManagerThread.getJsonLock()) {
+            new GameLoader().load();
+        }
+        threadsStarter();
     }
 
     public static void pause() {
@@ -160,7 +168,10 @@ public abstract class Controller {
 
 
     public static void startGame(){
-        new GameLoader().load();
+        modelStarter();
+        viewStarter();
+        addEpsilonAndFrame();
+        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
         Controller.threadsStarter();
     }
 
@@ -216,29 +227,29 @@ public abstract class Controller {
 //                ModelType.omenoct
 //        );
 //
-        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-                ModelType.archmire
+//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ModelType.archmire
+//        );
+//
+//
+//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ModelType.squarantine
+//        );
+//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ModelType.squarantine
+//        );
+//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ModelType.trigorath
+//        );
+//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ModelType.trigorath
+//        );
+////
+////
+        Spawner.spawnObject(
+                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
+                ModelType.blackOrb
         );
-//
-//
-//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.squarantine
-//        );
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.squarantine
-//        );
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.trigorath
-//        );
-//        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.trigorath
-//        );
-////
-////
-//        Spawner.spawnObject(
-//                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
-//                ModelType.blackOrb
-//        );
 //
 //        FrameModelBuilder builder1 = new FrameModelBuilder(
 //                new Vector(
@@ -268,11 +279,14 @@ public abstract class Controller {
     }
 
     public static void threadsStarter() {
-        new FrameThread().start();
-        new GameLoop().start();
+        FrameThread frameThread = new FrameThread();
+        GameLoop gameLoop = new GameLoop();
         new Render().start();
         GameManager manager = new GameManager();
-        manager.getGameManager().start();
+        GameManagerThread gameManagerThread = manager.getGameManager();
+        frameThread.start();
+        gameLoop.start();
+        gameManagerThread.start();
     }
 
     private static void controllerStarter() {

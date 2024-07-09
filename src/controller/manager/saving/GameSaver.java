@@ -5,6 +5,8 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import controller.manager.GameManager;
+import controller.manager.GameManagerThread;
 import controller.manager.loading.SkippedByJson;
 import model.objectModel.ObjectModel;
 import model.objectModel.effects.EffectModel;
