@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class GameState {
 
     private static double time;
-    private static double xp;
+    private static double xp = 1000;
     private static double hp;
     private static int wave;
     private static boolean isPause;

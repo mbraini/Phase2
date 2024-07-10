@@ -23,6 +23,10 @@ public class WyrmNavigator {
                         Constants.WYRM_NAVIGATION_VELOCITY
                 )
         );
+        double Moving = Math.VectorSize(wyrmModel.getVelocity()) * Constants.UPS;
+        if (Math.VectorSize(direction) <= Constants.WYRM_NAVIGATION_RADIOS + Moving){
+            wyrmModel.setVelocity(Math.ScalarInVector(-1 ,wyrmModel.getVelocity()));
+        }
         wyrmModel.setThetaRelativeToOrigin(direction);
     }
 

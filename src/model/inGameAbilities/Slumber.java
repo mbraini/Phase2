@@ -14,8 +14,8 @@ public class Slumber extends InGameAbility{
     private Timer timer;
 
     public Slumber(){
-        type = InGameAbilityType.dismay;
-        xpCost = 120;
+        type = InGameAbilityType.slumber;
+        xpCost = 150;
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

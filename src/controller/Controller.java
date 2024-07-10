@@ -207,9 +207,9 @@ public abstract class Controller {
 //        Spawner.spawnObject(new Vector(200 ,200),
 //                ModelType.barricados
 //        );
-//        Spawner.addObject(new Vector(300 ,300),
-//                ModelType.necropick
-//        );
+        Spawner.spawnObject(new Vector(300 ,300),
+                ModelType.necropick
+        );
 //        Spawner.addObject(new Vector(0 ,600),
 //                ModelType.necropick
 //        );
@@ -239,18 +239,18 @@ public abstract class Controller {
 //        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
 //                ModelType.squarantine
 //        );
-        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-                ModelType.trigorath
-        );
+//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ModelType.trigorath
+//        );
 //        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
 //                ModelType.trigorath
 //        );
 ////
 ////
-        Spawner.spawnObject(
-                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
-                ModelType.blackOrb
-        );
+//        Spawner.spawnObject(
+//                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
+//                ModelType.blackOrb
+//        );
 //
 //        FrameModelBuilder builder1 = new FrameModelBuilder(
 //                new Vector(

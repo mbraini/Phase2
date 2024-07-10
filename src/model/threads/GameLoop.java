@@ -9,6 +9,7 @@ import model.ModelRequests;
 import model.collision.Collision;
 import model.interfaces.*;
 import model.objectModel.ObjectModel;
+import model.objectModel.fighters.EnemyModel;
 import utils.Vector;
 
 import java.util.ArrayList;
@@ -72,14 +73,23 @@ public class GameLoop extends Thread {
     private void interfaceObjects(ArrayList<ObjectModel> models) {
         for (ObjectModel model : models){
             if (model instanceof Ability){
-                if (((Ability) model).hasAbility())
+                if (((Ability) model).hasAbility()) {
+                    if (model instanceof EnemyModel && GameState.isDizzy())
+                        continue;
                     ((Ability) model).ability();
+                }
             }
-            if (model instanceof MoveAble)
+            if (model instanceof MoveAble) {
+                if (model instanceof EnemyModel && GameState.isDizzy())
+                    continue;
                 ((MoveAble) model).move();
+            }
             if (model instanceof Navigator){
-                if (!((Navigator) model).hasArrived())
+                if (!((Navigator) model).hasArrived()) {
+                    if (model instanceof EnemyModel && GameState.isDizzy())
+                        continue;
                     ((Navigator) model).navigate();
+                }
             }
             if (model instanceof FrameSticker)
                 ((FrameSticker) model).setStuckFramePosition();

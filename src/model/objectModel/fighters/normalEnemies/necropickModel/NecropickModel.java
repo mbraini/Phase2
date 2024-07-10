@@ -5,6 +5,7 @@ import controller.enums.ModelType;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
 import data.Constants;
+import model.GameState;
 import model.ModelData;
 import model.interfaces.Ability;
 import model.interfaces.HasVertices;
@@ -47,6 +48,8 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
         hoveringTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (GameState.isPause() || GameState.isDizzy())
+                    return;
                 if (!isHovering())
                     hoveringTime += 1000;
                 if (hoveringTime >= 8000) {
@@ -61,6 +64,8 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
         abilityTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (GameState.isPause() || GameState.isDizzy())
+                    return;
                 if (isHovering())
                     abilityTime += 1000;
                 if (abilityTime >= 4000) {

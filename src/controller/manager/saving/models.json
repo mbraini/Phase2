@@ -4,8 +4,8 @@
     "hasMeleeAttack": false,
     "meleeAttack": 5,
     "position": {
-      "x": 1191.9412133168553,
-      "y": 266.65774612400037
+      "x": 632.7482577336123,
+      "y": 386.26187013369344
     },
     "velocity": {
       "x": 0.0,
@@ -15,13 +15,129 @@
       "x": 0.0,
       "y": 0.0
     },
-    "theta": 2.7681812236748367,
+    "theta": -2.165862292164884,
     "omega": 0.0,
     "alpha": 0.0,
-    "id": "R��O�\u001e�p�8",
-    "HP": 92.0,
+    "id": "\u000f*�\u00107��\u0019q\\",
+    "HP": 100.0,
     "isHovering": false,
     "isSolid": true,
     "type": "epsilon"
+  },
+  {
+    "hoveringTime": 3000.0,
+    "abilityTime": 0.0,
+    "hasAbility": false,
+    "vertices": [
+      {
+        "x": 351.593906963408,
+        "y": 270.14128332606884
+      },
+      {
+        "x": 326.593906963408,
+        "y": 313.4425535152908
+      },
+      {
+        "x": 376.593906963408,
+        "y": 313.4425535152908
+      }
+    ],
+    "isArrived": false,
+    "vulnerableToEpsilonMelee": true,
+    "vulnerableToEpsilonBullet": true,
+    "hasMeleeAttack": false,
+    "meleeAttack": 0,
+    "position": {
+      "x": 351.593906963408,
+      "y": 299.00879678555015
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "V�q���9\u0027͟",
+    "HP": 5.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": "necropick"
+  },
+  {
+    "hp": 1.0,
+    "damage": 5.0,
+    "position": {
+      "x": 1934.8059900400985,
+      "y": 1882.22087986224
+    },
+    "velocity": {
+      "x": 0.4242640687119285,
+      "y": 0.42426406871192845
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "��H3�\u003c�¥E",
+    "HP": 1.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": null
+  },
+  {
+    "hp": 1.0,
+    "damage": 5.0,
+    "position": {
+      "x": -1231.6181761132764,
+      "y": 1882.22087986224
+    },
+    "velocity": {
+      "x": -0.42426406871192845,
+      "y": 0.4242640687119285
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "��\u0002DBa\u0019��\u0012",
+    "HP": 1.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": null
+  },
+  {
+    "hp": 1.0,
+    "damage": 5.0,
+    "position": {
+      "x": 2590.593906963408,
+      "y": 299.00879678555015
+    },
+    "velocity": {
+      "x": 0.6,
+      "y": -1.4695761589768238E-16
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "g�\u000b$�i\u001d\u0004��",
+    "HP": 1.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": null
   }
 ]

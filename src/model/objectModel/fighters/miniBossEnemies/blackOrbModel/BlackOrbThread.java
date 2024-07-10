@@ -39,16 +39,41 @@ public class BlackOrbThread extends Thread{
                 lastTime = System.nanoTime();
                 continue;
             }
+            if (isInterrupted())
+                return;
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
             if (deltaModel >= Constants.BLACK_ORB_THEAD_REFRESH_RATE) {
+                if (GameState.isDizzy()){
+                    setUpDizzy();
+                    continue;
+                }
+                else {
+                    unSetUpDizzy();
+                }
                 updateBlackOrb();
                 deltaModel = 0;
                 time += Constants.BLACK_ORB_THEAD_REFRESH_RATE;
             }
         }
 
+    }
+
+    private void setUpDizzy() {
+        for (BlackOrbAoeEffectModel effectModel : blackOrbModel.getEffectModels()){
+            effectModel.setR(0);
+            effectModel.setG(0);
+            effectModel.setB(0);
+        }
+    }
+
+    private void unSetUpDizzy(){
+        for (BlackOrbAoeEffectModel effectModel : blackOrbModel.getEffectModels()){
+            effectModel.setR(255);
+            effectModel.setG(0);
+            effectModel.setB(255);
+        }
     }
 
     private void updateBlackOrb() {

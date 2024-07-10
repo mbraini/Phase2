@@ -36,6 +36,8 @@ public class ArchmireThread extends Thread{
                 lastTime = System.nanoTime();
                 continue;
             }
+            if (isInterrupted())
+                return;
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
@@ -48,6 +50,8 @@ public class ArchmireThread extends Thread{
     }
 
     private void updateAOE() {
+        if (GameState.isDizzy())
+            return;
         synchronized (ModelData.getModels()){
             models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
         }

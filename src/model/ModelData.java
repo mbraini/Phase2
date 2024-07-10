@@ -1,11 +1,8 @@
 package model;
 
 import controller.enums.InGameAbilityType;
-import model.inGameAbilities.Banish;
+import model.inGameAbilities.*;
 import model.inGameAbilities.Dismay.Dismay;
-import model.inGameAbilities.Empower;
-import model.inGameAbilities.Heal;
-import model.inGameAbilities.InGameAbility;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.fighters.EpsilonModel;
@@ -124,6 +121,7 @@ public class ModelData {
         inGameAbilities.add(new Empower());
         inGameAbilities.add(new Heal((EpsilonModel) ModelData.getModels().getFirst()));
         inGameAbilities.add(new Dismay((EpsilonModel) ModelData.getModels().getFirst()));
+        inGameAbilities.add(new Slumber());
     }
 
     public static void activateInGameAbility(InGameAbilityType type) {

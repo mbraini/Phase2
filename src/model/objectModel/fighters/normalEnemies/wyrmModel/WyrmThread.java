@@ -23,10 +23,12 @@ public class WyrmThread extends Thread{
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
         while (true) {
-            if (GameState.isPause()){
+            if (GameState.isPause() || GameState.isDizzy()){
                 lastTime = System.nanoTime();
                 continue;
             }
+            if (isInterrupted())
+                return;
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
