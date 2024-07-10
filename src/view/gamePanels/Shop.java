@@ -2,8 +2,12 @@ package view.gamePanels;
 
 
 import controller.Controller;
+import controller.ViewInGameAbilityRequests;
+import controller.enums.InGameAbilityType;
 import data.Constants;
 import model.GameState;
+import model.ModelData;
+import model.inGameAbilities.Banish;
 import view.menuPanels.PIG;
 
 import javax.swing.*;
@@ -113,11 +117,7 @@ public class Shop extends PIG {
         banish.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                if (GameState.xp >= 50) {
-//                    RegularAbility.sendRequest(RegularAbilitiesEnum.heal);
-//                    GameState.xp -= 50;
-//                    xp.setText("XP :" +(int) GameState.xp);
-//                }
+                ViewInGameAbilityRequests.abilityRequest(InGameAbilityType.heal);
             }
         });
     }
@@ -127,11 +127,7 @@ public class Shop extends PIG {
         empower.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                if (GameState.xp >= 75) {
-//                    RegularAbility.sendRequest(RegularAbilitiesEnum.empower);
-//                    GameState.xp -= 75;
-//                    xp.setText("XP :" +(int) GameState.xp);
-//                }
+                ViewInGameAbilityRequests.abilityRequest(InGameAbilityType.empower);
             }
         });
     }
@@ -141,11 +137,7 @@ public class Shop extends PIG {
         heal.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                if (GameState.xp >= 100) {
-//                    RegularAbility.sendRequest(RegularAbilitiesEnum.banish);
-//                    GameState.xp -= 100;
-//                    xp.setText("XP :" + (int)GameState.xp);
-//                }
+                ViewInGameAbilityRequests.abilityRequest(InGameAbilityType.banish);
             }
         });
     }

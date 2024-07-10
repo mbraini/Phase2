@@ -1,4 +1,4 @@
-package model.inGameAbilities;
+package controller.enums;
 
 public enum InGameAbilityType {
 

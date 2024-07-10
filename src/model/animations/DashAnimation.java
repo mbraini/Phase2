@@ -1,6 +1,7 @@
 package model.animations;
 
 
+import data.Constants;
 import model.GameState;
 import model.interfaces.ImpactAble;
 import model.objectModel.ObjectModel;
@@ -16,6 +17,7 @@ public class DashAnimation extends Animation implements ActionListener {
     ObjectModel oigModel;
     Vector direction;
     int time;
+    int timePassed;
     double distance;
     double theta;
     Timer timer;
@@ -59,16 +61,19 @@ public class DashAnimation extends Animation implements ActionListener {
             ((ImpactAble) oigModel).setImpacted(true);
         }
 
-        timer = new Timer(time, this);
+        timer = new Timer(Constants.DASH_TIMER_REFRESH_RATE, this);
         dashes.put(oigModel ,timer);
         timer.start();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (GameState.isPause())
+        if (GameState.isPause()) {
             return;
-        StopTimer(timer);
+        }
+        timePassed += Constants.DASH_TIMER_REFRESH_RATE;
+        if (timePassed >= time)
+            StopTimer(timer);
     }
 
     void StopTimer(Timer timer){

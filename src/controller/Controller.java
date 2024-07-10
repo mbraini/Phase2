@@ -172,6 +172,7 @@ public abstract class Controller {
         viewStarter();
         addEpsilonAndFrame();
         new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
+        ModelData.initInGameAbilities();
         Controller.threadsStarter();
     }
 
@@ -238,9 +239,9 @@ public abstract class Controller {
 //        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
 //                ModelType.squarantine
 //        );
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.trigorath
-//        );
+        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+                ModelType.trigorath
+        );
 //        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
 //                ModelType.trigorath
 //        );

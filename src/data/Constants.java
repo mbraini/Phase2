@@ -83,6 +83,7 @@ public class Constants {
     public static final double VOMIT_AOE_DAMAGE = 15;
     public static final double BARRICADOS_DURATION_TIME = 120000;
     public static final Dimension BARRICADOS_DIMENSION = new Dimension(300 ,300);
+    public static final int DASH_TIMER_REFRESH_RATE = 100;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);
@@ -90,7 +91,7 @@ public class Constants {
     public static final double EPSILON_BULLET_VELOCITY = 0.6;
     public static final double EPSILON_BULLET_DIAMETER = 10;
     public static final int ID_SIZE = 10;
-    public static final int EPSILON_DAMAGE = 5;
+    public static int EPSILON_DAMAGE = 5;
     public static final int MELEI_ATTACK = 10;
     public static final Dimension MINIMUM_FRAME_DIMENSION = new Dimension(200 + barD.width ,200 + barD.height);
     public static final double IMPACT_AREA = 200;

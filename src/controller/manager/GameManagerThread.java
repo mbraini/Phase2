@@ -56,7 +56,7 @@ public class GameManagerThread extends Thread{
         interfaces();
         killObjects();
         checkAoeDamage();
-        if (time % 100 == 0) {
+        if (time % 500 == 0) {
             synchronized (jsonLock) {
                 new GameSaver(models, effects, frames, abstractEnemies).save();
             }
