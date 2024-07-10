@@ -4,6 +4,7 @@ package model.collision;
 import controller.configs.Configs;
 import data.Constants;
 import model.GameState;
+import model.inGameAbilities.Dismay.EpsilonProtectorModel;
 import model.interfaces.CollisionDetector;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
@@ -58,7 +59,20 @@ public class CollisionHandler {
             BulletToEnemyHandler((EnemyModel) model2 ,(EpsilonBulletModel) model1);
             return;
         }
+        //////////epsilon protector handler
+        if (model1 instanceof EpsilonProtectorModel && model2 instanceof EnemyModel){
+            EpsilonProtectorHandler((EpsilonProtectorModel) model1 ,(EnemyModel) model2);
+            return;
+        }
+        if (model2 instanceof EpsilonProtectorModel && model1 instanceof EnemyModel){
+            EpsilonProtectorHandler((EpsilonProtectorModel) model2 ,(EnemyModel) model1);
+            return;
+        }
 
+    }
+
+    private void EpsilonProtectorHandler(EpsilonProtectorModel protectorModel, EnemyModel enemyModel) {
+        pullOutObject(enemyModel ,protectorModel);
     }
 
     private void BulletToEnemyHandler(EnemyModel enemy, EpsilonBulletModel epsilonBullet) {

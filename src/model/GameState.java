@@ -12,6 +12,7 @@ public class GameState {
     private static int wave;
     private static boolean isPause;
     private static boolean isOver;
+    private static boolean isDizzy;
 
     public GameState(){
         /////todo
@@ -79,4 +80,13 @@ public class GameState {
         setHp(models.getFirst().getHP());
         setTime(time);
     }
+
+    public static boolean isDizzy() {
+        return isDizzy;
+    }
+
+    public static void setDizzy(boolean isDizzy) {
+        GameState.isDizzy = isDizzy;
+    }
+
 }

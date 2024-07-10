@@ -84,6 +84,7 @@ public class Constants {
     public static final double BARRICADOS_DURATION_TIME = 120000;
     public static final Dimension BARRICADOS_DIMENSION = new Dimension(300 ,300);
     public static final int DASH_TIMER_REFRESH_RATE = 100;
+    public static final int DISMAY_RADIOS = 300;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);

@@ -1,6 +1,7 @@
 package model.objectModel.fighters.basicEnemies;
 
 import data.Constants;
+import model.GameState;
 import model.interfaces.HasVertices;
 import model.interfaces.MoveAble;
 import model.objectModel.fighters.EnemyModel;
@@ -9,6 +10,8 @@ import utils.Math;
 public abstract class BasicEnemyModel extends EnemyModel implements MoveAble {
     @Override
     public void move() {
+        if (GameState.isDizzy())
+            return;
 
         velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(Constants.UPS ,acceleration));
         double xMoved = ((2 * velocity.x - acceleration.x * Constants.UPS) / 2) * Constants.UPS;

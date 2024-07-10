@@ -3,6 +3,7 @@ package controller.manager;
 import controller.enums.ModelType;
 import data.Constants;
 import model.ModelRequests;
+import model.inGameAbilities.Dismay.EpsilonProtectorModel;
 import model.objectModel.CollectiveModel;
 import model.objectModel.ObjectModel;
 import model.objectModel.effects.ArchmireAoeEffectModel;
@@ -29,6 +30,7 @@ import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
 import view.objectViews.CollectiveView;
+import view.objectViews.EpsilonProtectorView;
 import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
 import view.objectViews.basicEnemyView.SquarantineView;
@@ -262,6 +264,14 @@ public abstract class Spawner {
         ViewRequest.addObjectView(new OrbView(
                 position,
                 id
+        ));
+    }
+
+    public static synchronized void spawnProtector(EpsilonProtectorModel protectorModel) {
+        ModelRequests.addObjectModel(protectorModel);
+        ViewRequest.addObjectView(new EpsilonProtectorView(
+                protectorModel.getPosition(),
+                protectorModel.getId()
         ));
     }
 }

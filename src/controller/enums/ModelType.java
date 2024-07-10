@@ -19,4 +19,5 @@ public enum ModelType {
     barricados,
     barricadosTheFirst,
     barricadosTheSecond,
+    epsilonProtector
 }

@@ -1,203 +1,6 @@
 [
   {
-    "orbModels": [
-      {
-        "frameModel": {
-          "size": {
-            "width": 100,
-            "height": 100
-          },
-          "upDownA": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "leftRightA": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "upDownV": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "leftRightV": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "upDownP": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "leftRightP": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "positionInit": {
-            "x": 518.0,
-            "y": 154.72361590576526
-          },
-          "vertices": [
-            {
-              "x": 518.0,
-              "y": 154.72361590576526
-            },
-            {
-              "x": 618.0,
-              "y": 154.72361590576526
-            },
-            {
-              "x": 618.0,
-              "y": 254.72361590576526
-            },
-            {
-              "x": 518.0,
-              "y": 254.72361590576526
-            }
-          ],
-          "dimensionInit": {
-            "width": 100,
-            "height": 100
-          },
-          "isResizing": false,
-          "isIsometric": true,
-          "canTopResize": true,
-          "canBottomResize": true,
-          "canRightResize": true,
-          "canLeftResize": true,
-          "isShrinking": false,
-          "position": {
-            "x": 518.0,
-            "y": 154.72361590576526
-          },
-          "velocity": null,
-          "acceleration": null,
-          "theta": 0.0,
-          "omega": 0.0,
-          "alpha": 0.0,
-          "id": "gH��?\u0003c\u0027hN",
-          "HP": 0.0,
-          "isHovering": false,
-          "isSolid": false,
-          "type": null
-        },
-        "number": 3,
-        "vulnerableToEpsilonMelee": true,
-        "vulnerableToEpsilonBullet": true,
-        "hasMeleeAttack": false,
-        "meleeAttack": 0,
-        "position": {
-          "x": 568.0,
-          "y": 204.72361590576526
-        },
-        "velocity": null,
-        "acceleration": null,
-        "theta": 0.0,
-        "omega": 0.0,
-        "alpha": 0.0,
-        "id": "gH��?\u0003c\u0027hN",
-        "HP": 30.0,
-        "isHovering": false,
-        "isSolid": false,
-        "type": null
-      },
-      {
-        "frameModel": {
-          "size": {
-            "width": 100,
-            "height": 100
-          },
-          "upDownA": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "leftRightA": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "upDownV": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "leftRightV": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "upDownP": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "leftRightP": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "positionInit": {
-            "x": 394.39320225002103,
-            "y": 535.1462224238267
-          },
-          "vertices": [
-            {
-              "x": 394.39320225002103,
-              "y": 535.1462224238267
-            },
-            {
-              "x": 494.39320225002103,
-              "y": 535.1462224238267
-            },
-            {
-              "x": 494.39320225002103,
-              "y": 635.1462224238267
-            },
-            {
-              "x": 394.39320225002103,
-              "y": 635.1462224238267
-            }
-          ],
-          "dimensionInit": {
-            "width": 100,
-            "height": 100
-          },
-          "isResizing": false,
-          "isIsometric": true,
-          "canTopResize": true,
-          "canBottomResize": true,
-          "canRightResize": true,
-          "canLeftResize": true,
-          "isShrinking": false,
-          "position": {
-            "x": 394.39320225002103,
-            "y": 535.1462224238267
-          },
-          "velocity": null,
-          "acceleration": null,
-          "theta": 0.0,
-          "omega": 0.0,
-          "alpha": 0.0,
-          "id": "��@�1��fB[",
-          "HP": 0.0,
-          "isHovering": false,
-          "isSolid": false,
-          "type": null
-        },
-        "number": 4,
-        "vulnerableToEpsilonMelee": true,
-        "vulnerableToEpsilonBullet": true,
-        "hasMeleeAttack": false,
-        "meleeAttack": 0,
-        "position": {
-          "x": 444.39320225002103,
-          "y": 585.1462224238267
-        },
-        "velocity": null,
-        "acceleration": null,
-        "theta": 0.0,
-        "omega": 0.0,
-        "alpha": 0.0,
-        "id": "��@�1��fB[",
-        "HP": 30.0,
-        "isHovering": false,
-        "isSolid": false,
-        "type": null
-      }
-    ],
+    "orbModels": [],
     "frameModels": [
       {
         "size": {
@@ -270,7 +73,7 @@
         "theta": 0.0,
         "omega": 0.0,
         "alpha": 0.0,
-        "id": "po�\u0019՛sټ�",
+        "id": "3v�\u0011��o��\u0005",
         "HP": 0.0,
         "isHovering": false,
         "isSolid": false,
@@ -347,7 +150,7 @@
         "theta": 0.0,
         "omega": 0.0,
         "alpha": 0.0,
-        "id": "v�%�\u0010��\u0003\"\u000b",
+        "id": "-v+\u0000���\u0007�",
         "HP": 0.0,
         "isHovering": false,
         "isSolid": false,
@@ -424,7 +227,7 @@
         "theta": 0.0,
         "omega": 0.0,
         "alpha": 0.0,
-        "id": "9P\u001d\u003cw�\u0000~��",
+        "id": "\t9�#\u000e\u00178\bmv",
         "HP": 0.0,
         "isHovering": false,
         "isSolid": false,
@@ -501,7 +304,7 @@
         "theta": 0.0,
         "omega": 0.0,
         "alpha": 0.0,
-        "id": "gH��?\u0003c\u0027hN",
+        "id": "\u001e�Q\u0004Ҥ��~?",
         "HP": 0.0,
         "isHovering": false,
         "isSolid": false,
@@ -578,270 +381,21 @@
         "theta": 0.0,
         "omega": 0.0,
         "alpha": 0.0,
-        "id": "��@�1��fB[",
+        "id": "\bY\u0017\u001a@�EK��",
         "HP": 0.0,
         "isHovering": false,
         "isSolid": false,
         "type": null
       }
     ],
-    "effectModels": [
-      {
-        "orbDestination": {
-          "frameModel": {
-            "size": {
-              "width": 100,
-              "height": 100
-            },
-            "upDownA": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "leftRightA": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "upDownV": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "leftRightV": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "upDownP": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "leftRightP": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "positionInit": {
-              "x": 394.39320225002103,
-              "y": 535.1462224238267
-            },
-            "vertices": [
-              {
-                "x": 394.39320225002103,
-                "y": 535.1462224238267
-              },
-              {
-                "x": 494.39320225002103,
-                "y": 535.1462224238267
-              },
-              {
-                "x": 494.39320225002103,
-                "y": 635.1462224238267
-              },
-              {
-                "x": 394.39320225002103,
-                "y": 635.1462224238267
-              }
-            ],
-            "dimensionInit": {
-              "width": 100,
-              "height": 100
-            },
-            "isResizing": false,
-            "isIsometric": true,
-            "canTopResize": true,
-            "canBottomResize": true,
-            "canRightResize": true,
-            "canLeftResize": true,
-            "isShrinking": false,
-            "position": {
-              "x": 394.39320225002103,
-              "y": 535.1462224238267
-            },
-            "velocity": null,
-            "acceleration": null,
-            "theta": 0.0,
-            "omega": 0.0,
-            "alpha": 0.0,
-            "id": "��@�1��fB[",
-            "HP": 0.0,
-            "isHovering": false,
-            "isSolid": false,
-            "type": null
-          },
-          "number": 4,
-          "vulnerableToEpsilonMelee": true,
-          "vulnerableToEpsilonBullet": true,
-          "hasMeleeAttack": false,
-          "meleeAttack": 0,
-          "position": {
-            "x": 444.39320225002103,
-            "y": 585.1462224238267
-          },
-          "velocity": null,
-          "acceleration": null,
-          "theta": 0.0,
-          "omega": 0.0,
-          "alpha": 0.0,
-          "id": "��@�1��fB[",
-          "HP": 30.0,
-          "isHovering": false,
-          "isSolid": false,
-          "type": null
-        },
-        "orbOrigin": {
-          "frameModel": {
-            "size": {
-              "width": 100,
-              "height": 100
-            },
-            "upDownA": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "leftRightA": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "upDownV": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "leftRightV": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "upDownP": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "leftRightP": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "positionInit": {
-              "x": 518.0,
-              "y": 154.72361590576526
-            },
-            "vertices": [
-              {
-                "x": 518.0,
-                "y": 154.72361590576526
-              },
-              {
-                "x": 618.0,
-                "y": 154.72361590576526
-              },
-              {
-                "x": 618.0,
-                "y": 254.72361590576526
-              },
-              {
-                "x": 518.0,
-                "y": 254.72361590576526
-              }
-            ],
-            "dimensionInit": {
-              "width": 100,
-              "height": 100
-            },
-            "isResizing": false,
-            "isIsometric": true,
-            "canTopResize": true,
-            "canBottomResize": true,
-            "canRightResize": true,
-            "canLeftResize": true,
-            "isShrinking": false,
-            "position": {
-              "x": 518.0,
-              "y": 154.72361590576526
-            },
-            "velocity": null,
-            "acceleration": null,
-            "theta": 0.0,
-            "omega": 0.0,
-            "alpha": 0.0,
-            "id": "gH��?\u0003c\u0027hN",
-            "HP": 0.0,
-            "isHovering": false,
-            "isSolid": false,
-            "type": null
-          },
-          "number": 3,
-          "vulnerableToEpsilonMelee": true,
-          "vulnerableToEpsilonBullet": true,
-          "hasMeleeAttack": false,
-          "meleeAttack": 0,
-          "position": {
-            "x": 568.0,
-            "y": 204.72361590576526
-          },
-          "velocity": null,
-          "acceleration": null,
-          "theta": 0.0,
-          "omega": 0.0,
-          "alpha": 0.0,
-          "id": "gH��?\u0003c\u0027hN",
-          "HP": 30.0,
-          "isHovering": false,
-          "isSolid": false,
-          "type": null
-        },
-        "vertices": [
-          {
-            "x": 534.7130219296696,
-            "y": 193.9080211026421
-          },
-          {
-            "x": 411.1062241796907,
-            "y": 574.3306276207035
-          },
-          {
-            "x": 477.6801803203514,
-            "y": 595.9618172269498
-          },
-          {
-            "x": 601.2869780703304,
-            "y": 215.53921070888842
-          }
-        ],
-        "damage": 0.0,
-        "damageTime": 0.0,
-        "R": 255,
-        "G": 0,
-        "B": 255,
-        "area": {
-          "n": 4,
-          "x": [
-            534,
-            411,
-            477,
-            601
-          ],
-          "y": [
-            193,
-            574,
-            595,
-            215
-          ]
-        },
-        "effectType": null,
-        "position": null,
-        "velocity": null,
-        "acceleration": null,
-        "theta": 0.0,
-        "omega": 0.0,
-        "alpha": 0.0,
-        "id": "դ�S�\"��+S",
-        "HP": 0.0,
-        "isHovering": false,
-        "isSolid": false,
-        "type": null
-      }
-    ],
+    "effectModels": [],
     "center": {
       "x": 768.0,
       "y": 480.0
     },
     "frameCount": 5,
     "orbCount": 5,
-    "id": "\u0027`p��}v�",
+    "id": "\u0018�����A�1W",
     "type": "blackOrb"
   }
 ]
