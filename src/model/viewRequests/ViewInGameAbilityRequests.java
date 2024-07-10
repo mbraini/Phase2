@@ -1,4 +1,4 @@
-package controller;
+package model.viewRequests;
 
 import controller.enums.InGameAbilityType;
 import model.GameState;

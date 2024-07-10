@@ -2,12 +2,10 @@ package view.gamePanels;
 
 
 import controller.Controller;
-import controller.ViewInGameAbilityRequests;
+import model.viewRequests.ViewInGameAbilityRequests;
 import controller.enums.InGameAbilityType;
 import data.Constants;
 import model.GameState;
-import model.ModelData;
-import model.inGameAbilities.Banish;
 import view.menuPanels.PIG;
 
 import javax.swing.*;
@@ -117,7 +115,7 @@ public class Shop extends PIG {
         banish.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ViewInGameAbilityRequests.abilityRequest(InGameAbilityType.slumber);
+                Controller.abilityRequest(InGameAbilityType.slumber);
             }
         });
     }
@@ -127,7 +125,7 @@ public class Shop extends PIG {
         empower.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ViewInGameAbilityRequests.abilityRequest(InGameAbilityType.empower);
+                Controller.abilityRequest(InGameAbilityType.empower);
             }
         });
     }
@@ -137,7 +135,7 @@ public class Shop extends PIG {
         heal.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ViewInGameAbilityRequests.abilityRequest(InGameAbilityType.banish);
+                Controller.abilityRequest(InGameAbilityType.banish);
             }
         });
     }

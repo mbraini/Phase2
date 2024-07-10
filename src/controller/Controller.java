@@ -1,5 +1,6 @@
 package controller;
 
+import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
 import controller.manager.GameManager;
 import controller.manager.GameManagerThread;
@@ -19,6 +20,8 @@ import model.GameState;
 import model.ModelData;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
+import model.viewRequests.ShootRequest;
+import model.viewRequests.ViewInGameAbilityRequests;
 import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
@@ -308,6 +311,20 @@ public abstract class Controller {
 
     public static void setUpManager(){
         new GameManager();
+    }
+
+
+
+    public static boolean shootRequest(Vector clickedPoint){
+        if (ShootRequest.canShoot()){
+            new ShootRequest((EpsilonModel) ModelData.getModels().getFirst()).shoot(clickedPoint);
+            return true;
+        }
+        return false;
+    }
+
+    public static void abilityRequest(InGameAbilityType type){
+        ViewInGameAbilityRequests.abilityRequest(type);
     }
 
 
