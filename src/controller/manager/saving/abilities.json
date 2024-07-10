@@ -1,0 +1,165 @@
+[
+  {
+    "epsilon": {
+      "isImpacted": false,
+      "hasMeleeAttack": false,
+      "meleeAttack": 5,
+      "position": {
+        "x": 641.2219860978119,
+        "y": 333.60086146029374
+      },
+      "velocity": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "acceleration": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "theta": -2.503159941556487,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "��/S��t�\u001d�",
+      "HP": 85.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": "epsilon"
+    },
+    "type": "banish",
+    "isAvailable": true,
+    "isActive": false,
+    "xpCost": 100
+  },
+  {
+    "timePassed": 0,
+    "type": "empower",
+    "isAvailable": true,
+    "isActive": false,
+    "xpCost": 75
+  },
+  {
+    "epsilon": {
+      "isImpacted": false,
+      "hasMeleeAttack": false,
+      "meleeAttack": 5,
+      "position": {
+        "x": 641.2219860978119,
+        "y": 333.60086146029374
+      },
+      "velocity": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "acceleration": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "theta": -2.503159941556487,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "��/S��t�\u001d�",
+      "HP": 85.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": "epsilon"
+    },
+    "type": "heal",
+    "isAvailable": true,
+    "isActive": false,
+    "xpCost": 50
+  },
+  {
+    "timePassed": 0,
+    "protectorModel": {
+      "epsilon": {
+        "isImpacted": false,
+        "hasMeleeAttack": false,
+        "meleeAttack": 5,
+        "position": {
+          "x": 641.2219860978119,
+          "y": 333.60086146029374
+        },
+        "velocity": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "acceleration": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "theta": -2.503159941556487,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "��/S��t�\u001d�",
+        "HP": 85.0,
+        "isHovering": false,
+        "isSolid": true,
+        "type": "epsilon"
+      },
+      "position": {
+        "x": 914.1170778441982,
+        "y": 487.24335264465276
+      },
+      "velocity": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "acceleration": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "theta": 0.0,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "R,�E�q4�I\u0011",
+      "HP": 20000.0,
+      "isHovering": false,
+      "isSolid": false,
+      "type": "epsilonProtector"
+    },
+    "epsilon": {
+      "isImpacted": false,
+      "hasMeleeAttack": false,
+      "meleeAttack": 5,
+      "position": {
+        "x": 641.2219860978119,
+        "y": 333.60086146029374
+      },
+      "velocity": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "acceleration": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "theta": -2.503159941556487,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "��/S��t�\u001d�",
+      "HP": 85.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": "epsilon"
+    },
+    "type": "dismay",
+    "isAvailable": true,
+    "isActive": false,
+    "xpCost": 120
+  },
+  {
+    "timePassed": 0,
+    "type": "slumber",
+    "isAvailable": true,
+    "isActive": false,
+    "xpCost": 150
+  },
+  {
+    "timePassed": 0,
+    "isUsed": false,
+    "type": "slaughter",
+    "isAvailable": true,
+    "isActive": false,
+    "xpCost": 200
+  }
+]

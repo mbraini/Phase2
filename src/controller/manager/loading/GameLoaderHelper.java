@@ -5,10 +5,14 @@ import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import controller.enums.EffectType;
+import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import model.ModelData;
 import model.ModelRequests;
+import model.inGameAbilities.*;
+import model.inGameAbilities.Dismay.Dismay;
+import model.inGameAbilities.Dismay.EpsilonProtectorModel;
 import model.objectModel.ObjectModel;
 import model.objectModel.effects.ArchmireAoeEffectModel;
 import model.objectModel.effects.BlackOrbAoeEffectModel;
@@ -16,6 +20,7 @@ import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
+import model.objectModel.fighters.finalBoss.abilities.AbilityType;
 import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosFirstModel;
 import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosSecondModel;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
@@ -30,6 +35,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import utils.area.Polygon;
 import view.ViewRequest;
+import view.objectViews.EpsilonProtectorView;
 import view.objectViews.EpsilonView;
 import view.objectViews.basicEnemyView.SquarantineView;
 import view.objectViews.basicEnemyView.TrigorathView;
@@ -255,4 +261,31 @@ public class GameLoaderHelper {
                 break;
         }
     }
+
+    public static void addAbility(JSONObject jAbility, InGameAbilityType type) {
+        String abilityString = jAbility.toString();
+        InGameAbility ability;
+        switch (type){
+            case banish :
+                ability = gson.fromJson(abilityString ,Banish.class);
+                break;
+            case empower:
+                ability = gson.fromJson(abilityString ,Empower.class);
+                break;
+            case heal:
+                ability = gson.fromJson(abilityString ,Heal.class);
+                break;
+            case dismay:
+                ability = gson.fromJson(abilityString , Dismay.class);
+                break;
+            case slaughter:
+                ability = gson.fromJson(abilityString ,Slaughter.class);
+                break;
+            default:
+                ability = gson.fromJson(abilityString ,Slumber.class);
+        }
+        ability.setUp();
+        InGameAbilityHandler.addAbility(ability);
+    }
+
 }

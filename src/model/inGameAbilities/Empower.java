@@ -2,6 +2,7 @@ package model.inGameAbilities;
 
 import controller.enums.InGameAbilityType;
 import controller.listeners.EpsilonAiming;
+import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.GameState;
 import model.viewRequests.ShootRequest;
@@ -11,20 +12,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Empower extends InGameAbility{
-
+    @SkippedByJson
     private Timer timer;
     private int timePassed;
 
     public Empower(){
         type = InGameAbilityType.empower;
         xpCost = 75;
-        timer = new Timer(1000, new ActionListener() {
+        initTimer();
+    }
+
+    private void initTimer() {
+        timer = new Timer(Constants.IN_GAME_ABILITY_TIMER_REFRESH_RATE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (GameState.isPause())
                     return;
-                timePassed += 1000;
-                if (timePassed >= 10000) {
+                timePassed += Constants.IN_GAME_ABILITY_TIMER_REFRESH_RATE;
+                if (timePassed >= Constants.EMPOWER_DURATION) {
                     isAvailable = true;
                     isActive = false;
                     ShootRequest.setExtraAim(0);
@@ -41,5 +46,14 @@ public class Empower extends InGameAbility{
         isActive = true;
         isAvailable = false;
         timer.start();
+    }
+
+    @Override
+    public void setUp() {
+        initTimer();
+        if (timePassed <= Constants.EMPOWER_DURATION && isActive) {
+            ShootRequest.setExtraAim(2);
+            timer.start();
+        }
     }
 }

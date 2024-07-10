@@ -57,4 +57,9 @@ public class InGameAbilityHandler {
         for (InGameAbility inGameAbility : inGameAbilities)
             inGameAbility.setAvailable(true);
     }
+
+    public static void addAbility(InGameAbility ability) {
+        ArrayList<InGameAbility> inGameAbilities = ModelData.getInGameAbilities();
+        inGameAbilities.add(ability);
+    }
 }

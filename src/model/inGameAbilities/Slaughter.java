@@ -1,6 +1,8 @@
 package model.inGameAbilities;
 
 import controller.enums.InGameAbilityType;
+import controller.manager.loading.SkippedByJson;
+import data.Constants;
 import model.GameState;
 import model.viewRequests.ShootRequest;
 
@@ -11,18 +13,24 @@ import java.awt.event.ActionListener;
 public class Slaughter extends InGameAbility{
 
     private int timePassed;
+    private boolean isUsed;
+    @SkippedByJson
     private Timer timer;
 
     public Slaughter(){
         type = InGameAbilityType.slaughter;
         xpCost = 200;
-        timer = new Timer(1000, new ActionListener() {
+        initTimer();
+    }
+
+    private void initTimer() {
+        timer = new Timer(Constants.IN_GAME_ABILITY_TIMER_REFRESH_RATE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (GameState.isPause())
                     return;
-                timePassed += 1000;
-                if (timePassed >= 120000){
+                timePassed += Constants.IN_GAME_ABILITY_TIMER_REFRESH_RATE;
+                if (timePassed >= Constants.SLAUGHTER_COOLDOWN){
                     isAvailable = true;
                     isActive = false;
                     timePassed = 0;
@@ -37,7 +45,29 @@ public class Slaughter extends InGameAbility{
     public void performAbility() {
         isActive = true;
         isAvailable = false;
+        isUsed = false;
         ShootRequest.setSlaughterBulletCount(1);
         timer.start();
+    }
+
+    @Override
+    public void setUp() {
+        initTimer();
+        if (timePassed <= Constants.SLAUGHTER_COOLDOWN && isActive){
+            if (!isUsed){
+                ShootRequest.setSlaughterBulletCount(
+                        ShootRequest.getSlaughterBulletCount() + 1
+                );
+            }
+            timer.start();
+        }
+    }
+
+    public boolean isUsed() {
+        return isUsed;
+    }
+
+    public void setUsed(boolean used) {
+        isUsed = used;
     }
 }

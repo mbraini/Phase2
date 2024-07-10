@@ -2,11 +2,12 @@ package model.inGameAbilities;
 
 import controller.enums.InGameAbilityType;
 import model.GameState;
+import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 
 public class Heal extends InGameAbility{
 
-    EpsilonModel epsilon;
+    private EpsilonModel epsilon;
 
     public Heal(EpsilonModel epsilon){
         type = InGameAbilityType.heal;
@@ -20,6 +21,11 @@ public class Heal extends InGameAbility{
         if (epsilon.getHP() > 100)
             epsilon.setHP(100);
         isActive = false;
+    }
+
+    @Override
+    public void setUp() {
+        epsilon = (EpsilonModel) ModelData.getModels().getFirst();
     }
 
 

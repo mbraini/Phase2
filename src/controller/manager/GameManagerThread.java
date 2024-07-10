@@ -4,6 +4,7 @@ import controller.manager.saving.GameSaver;
 import data.Constants;
 import model.GameState;
 import model.ModelData;
+import model.inGameAbilities.InGameAbility;
 import model.interfaces.Fader;
 import model.objectModel.effects.AoeEffectModel;
 import model.objectModel.effects.EffectModel;
@@ -20,6 +21,7 @@ public class GameManagerThread extends Thread{
     private ArrayList<EffectModel> effects;
     private ArrayList<FrameModel> frames;
     private ArrayList<AbstractEnemy> abstractEnemies;
+    private ArrayList<InGameAbility> abilities;
     private double time;
     private final static Object jsonLock = new Object();
 
@@ -52,13 +54,14 @@ public class GameManagerThread extends Thread{
             effects = (ArrayList<EffectModel>) ModelData.getEffectModels().clone();
             frames = (ArrayList<FrameModel>) ModelData.getFrames().clone();
             abstractEnemies = (ArrayList<AbstractEnemy>) ModelData.getAbstractEnemies().clone();
+            abilities = (ArrayList<InGameAbility>) ModelData.getInGameAbilities().clone();
         }
         interfaces();
         killObjects();
         checkAoeDamage();
         if (time % 500 == 0) {
             synchronized (jsonLock) {
-                new GameSaver(models, effects, frames, abstractEnemies).save();
+                new GameSaver(models, effects, frames, abstractEnemies ,abilities).save();
             }
         }
         GameState.update(models ,time);

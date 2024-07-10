@@ -49,4 +49,8 @@ public class EpsilonProtectorModel extends ObjectModel implements IsCircle , Abi
     public boolean hasAbility() {
         return true;
     }
+
+    public void setEpsilon(EpsilonModel epsilon) {
+        this.epsilon = epsilon;
+    }
 }

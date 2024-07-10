@@ -87,6 +87,11 @@ public class Constants {
     public static final int DISMAY_RADIOS = 300;
     public static final double SLAUGHTER_BULLET_RADIOS = 5 ;
     public static final double SLAUGHTER_DAMAGE = 50;
+    public static final int EMPOWER_DURATION = 10000;
+    public static final int IN_GAME_ABILITY_TIMER_REFRESH_RATE = 1000;
+    public static final int SLAUGHTER_COOLDOWN = 120000;
+    public static final int SLUMBER_DURATION = 10000;
+    public static final int DISMAY_DURATION = 10000;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);

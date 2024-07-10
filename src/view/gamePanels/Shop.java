@@ -135,7 +135,7 @@ public class Shop extends PIG {
         heal.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.abilityRequest(InGameAbilityType.banish);
+                Controller.abilityRequest(InGameAbilityType.dismay);
             }
         });
     }

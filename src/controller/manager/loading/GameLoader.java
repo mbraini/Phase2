@@ -4,12 +4,15 @@ import com.google.gson.*;
 import controller.Controller;
 import controller.enums.AbstractEnemyType;
 import controller.enums.EffectType;
+import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
 import controller.manager.GameManager;
 import controller.manager.GameManagerThread;
 import controller.manager.Spawner;
 import model.ModelData;
+import model.inGameAbilities.InGameAbility;
 import model.objectModel.effects.EffectModel;
+import model.objectModel.fighters.finalBoss.abilities.AbilityType;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
 import model.objectModel.frameModel.FrameModel;
 import org.json.JSONArray;
@@ -26,25 +29,45 @@ import java.util.Scanner;
 
 public class GameLoader {
 
-    private ArrayList<Object> frames;
-    private ArrayList<Object> models;
-    private ArrayList<Object> abstractEnemies;
-    private ArrayList<Object> effects;
-    private GameLoaderHelper helper;
     private static ArrayList<FrameModel> framesSpawnedByObjects;
     private static Gson gson;
 
     public GameLoader(){
-        models = new ArrayList<>();
-        frames = new ArrayList<>();
-        abstractEnemies = new ArrayList<>();
-        effects = new ArrayList<>();
         framesSpawnedByObjects = new ArrayList<>();
     }
 
     public synchronized void load() {
+        loadGame();
+        loadAbilities();
+    }
 
-        Gson gson = getGson();
+    private void loadAbilities() {
+        gson = getGson();
+
+        StringBuilder abilityString = new StringBuilder();
+        try {
+            Scanner abilityScanner = new Scanner(new File("src/controller/manager/saving/abilities.json"));
+            while (abilityScanner.hasNextLine())
+                abilityString.append(abilityScanner.nextLine());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        ArrayList<InGameAbility> abilities;
+        try {
+            JSONArray jAbilities = (JSONArray) new JSONTokener(abilityString.toString()).nextValue();
+            for (int i = 0; i <jAbilities.length() ;i++){
+                JSONObject jAbility = jAbilities.getJSONObject(i);
+                String jType = jAbility.get("type").toString();
+                InGameAbilityType type = gson.fromJson(jType , InGameAbilityType.class);
+                GameLoaderHelper.addAbility(jAbility ,type);
+            }
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void loadGame() {
+        gson = getGson();
 
         StringBuilder modelString = new StringBuilder();
         StringBuilder frameString = new StringBuilder();
@@ -110,7 +133,6 @@ public class GameLoader {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     private boolean spawnedByObjects(String id) {

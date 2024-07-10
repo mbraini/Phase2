@@ -4,8 +4,8 @@
     "hasMeleeAttack": false,
     "meleeAttack": 5,
     "position": {
-      "x": 1006.5373953271622,
-      "y": 499.30392960917874
+      "x": 641.2219860978119,
+      "y": 333.60086146029374
     },
     "velocity": {
       "x": 0.0,
@@ -15,11 +15,11 @@
       "x": 0.0,
       "y": 0.0
     },
-    "theta": 2.4784073752332803,
+    "theta": -2.503159941556487,
     "omega": 0.0,
     "alpha": 0.0,
-    "id": "��f\u0005\n�6��[",
-    "HP": 100.0,
+    "id": "��/S��t�\u001d�",
+    "HP": 85.0,
     "isHovering": false,
     "isSolid": true,
     "type": "epsilon"

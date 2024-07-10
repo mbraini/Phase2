@@ -9,6 +9,7 @@ public abstract class InGameAbility {
     protected boolean isActive = false;
     protected int xpCost;
     public abstract void performAbility();
+    public abstract void setUp();
 
     public InGameAbilityType getType() {
         return type;

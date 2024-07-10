@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder;
 import controller.manager.GameManager;
 import controller.manager.GameManagerThread;
 import controller.manager.loading.SkippedByJson;
+import model.inGameAbilities.InGameAbility;
 import model.objectModel.ObjectModel;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.AbstractEnemy;
@@ -25,19 +26,41 @@ public class GameSaver {
     private ArrayList<ObjectModel> models;
     private ArrayList<AbstractEnemy> abstractEnemies;
     private ArrayList<EffectModel> effects;
+    private ArrayList<InGameAbility> abilities;
     private static Gson gson;
 
     public GameSaver(ArrayList<ObjectModel> models, ArrayList<EffectModel> effects,
-                     ArrayList<FrameModel> frames, ArrayList<AbstractEnemy> abstractEnemies)
+                     ArrayList<FrameModel> frames, ArrayList<AbstractEnemy> abstractEnemies,
+                     ArrayList<InGameAbility> abilities)
     {
         this.models = models;
         this.effects = effects;
         this.frames = frames;
         this.abstractEnemies = abstractEnemies;
+        this.abilities = abilities;
     }
 
 
     public synchronized void save() {
+        saveGame();
+        saveAbilities();
+    }
+
+    private void saveAbilities() {
+        Gson gson = getGson();
+        String abilityString = gson.toJson(abilities);
+        PrintWriter modelWriter = null;
+        try {
+            modelWriter = new PrintWriter("src/controller/manager/saving/abilities.json");
+            modelWriter.write(abilityString);
+            modelWriter.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private void saveGame() {
         Gson gson = getGson();
 
         String modelString = gson.toJson(models);
@@ -63,7 +86,6 @@ public class GameSaver {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     private Gson getGson() {

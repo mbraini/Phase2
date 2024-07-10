@@ -1,8 +1,12 @@
 package model.viewRequests;
 
+import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import data.Constants;
+import model.ModelData;
+import model.inGameAbilities.InGameAbilityHandler;
+import model.inGameAbilities.Slaughter;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
 import utils.Vector;
@@ -42,6 +46,8 @@ public class ShootRequest {
         if (slaughterBulletCount >= 1){
             Spawner.addProjectile(position ,direction ,ModelType.slaughterBullet);
             slaughterBulletCount -= 1;
+            Slaughter slaughter = (Slaughter) InGameAbilityHandler.getInGameAbility(InGameAbilityType.slaughter);
+            slaughter.setUsed(true);
         }
         else {
             Spawner.addProjectile(position, direction, ModelType.epsilonBullet);
@@ -63,5 +69,9 @@ public class ShootRequest {
                     ModelType.epsilonBullet
             );
         }
+    }
+
+    public static int getSlaughterBulletCount() {
+        return slaughterBulletCount;
     }
 }
