@@ -8,6 +8,7 @@ import controller.manager.loading.GameLoader;
 import data.Constants;
 import model.ModelRequests;
 import model.animations.GameStartAnimation;
+import model.inGameAbilities.InGameAbilityHandler;
 import model.interfaces.ImageChanger;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.effects.EffectModel;
@@ -172,7 +173,7 @@ public abstract class Controller {
         viewStarter();
         addEpsilonAndFrame();
         new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
-        ModelData.initInGameAbilities();
+        InGameAbilityHandler.initInGameAbilities();
         Controller.threadsStarter();
     }
 

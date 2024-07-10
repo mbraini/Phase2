@@ -89,6 +89,8 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
     @Override
     public void die() {
         Controller.removeObject(this);
+        abilityTimer.stop();
+        hoveringTimer.stop();
         Spawner.addCollectives(position ,4 ,2);
     }
 

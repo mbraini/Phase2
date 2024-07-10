@@ -114,28 +114,11 @@ public class ModelData {
         abstractEnemies.add(abstractEnemy);
     }
 
-    public static void initInGameAbilities() {
-        inGameAbilities.add(new Banish(
-                (EpsilonModel) ModelData.getModels().getFirst()
-        ));
-        inGameAbilities.add(new Empower());
-        inGameAbilities.add(new Heal((EpsilonModel) ModelData.getModels().getFirst()));
-        inGameAbilities.add(new Dismay((EpsilonModel) ModelData.getModels().getFirst()));
-        inGameAbilities.add(new Slumber());
+    public static ArrayList<InGameAbility> getInGameAbilities() {
+        return inGameAbilities;
     }
 
-    public static void activateInGameAbility(InGameAbilityType type) {
-        for (InGameAbility inGameAbility : inGameAbilities){
-            if (inGameAbility.getType() == type)
-                inGameAbility.performAbility();
-        }
-    }
-
-    public static InGameAbility getInGameAbility(InGameAbilityType type) {
-        for (InGameAbility inGameAbility : inGameAbilities){
-            if (inGameAbility.getType() == type)
-                return inGameAbility;
-        }
-        return null;
+    public static void setInGameAbilities(ArrayList<InGameAbility> inGameAbilities) {
+        ModelData.inGameAbilities = inGameAbilities;
     }
 }

@@ -1,7 +1,6 @@
 package model.inGameAbilities;
 
 import controller.enums.InGameAbilityType;
-import controller.manager.Spawner;
 import model.GameState;
 
 import javax.swing.*;
@@ -27,6 +26,7 @@ public class Slumber extends InGameAbility{
                     isActive = false;
                     timePassed = 0;
                     GameState.setDizzy(false);
+                    InGameAbilityHandler.permitAll();
                     timer.stop();
                 }
             }
@@ -39,6 +39,7 @@ public class Slumber extends InGameAbility{
         isActive = true;
         isAvailable = false;
         GameState.setDizzy(true);
+        InGameAbilityHandler.disableAll();
         timer.start();
     }
 }

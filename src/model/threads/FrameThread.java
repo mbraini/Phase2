@@ -145,6 +145,8 @@ public class FrameThread extends Thread{
     }
 
     private void resize(ArrayList<FrameModel> frameModels) {
+        if (GameState.isDizzy())
+            return;
         for (FrameModel frame : frameModels){
             if (!frame.isIsometric()){
                 frame.resize();
