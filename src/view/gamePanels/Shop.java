@@ -2,10 +2,10 @@ package view.gamePanels;
 
 
 import controller.Controller;
-import model.viewRequests.ViewInGameAbilityRequests;
 import controller.enums.InGameAbilityType;
 import data.Constants;
 import model.GameState;
+import view.ViewData;
 import view.menuPanels.PIG;
 
 import javax.swing.*;
@@ -115,7 +115,7 @@ public class Shop extends PIG {
         banish.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.abilityRequest(InGameAbilityType.slumber);
+                Controller.abilityRequest(InGameAbilityType.slaughter);
             }
         });
     }
@@ -163,6 +163,7 @@ public class Shop extends PIG {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        xp.setText(ViewData.getXp() + "");
         g.drawImage(Constants.heal ,getWidth() / 10 ,getHeight() / 10 * 3 ,getWidth() / 10 * 2 ,getHeight() / 10 * 2 ,null);
         g.drawImage(Constants.empower ,getWidth() / 10 * 4 ,getHeight() / 10 * 3 ,getWidth() / 10 * 2 ,getHeight() / 10 * 2 ,null);
         g.drawImage(Constants.banish ,getWidth() / 10 * 7 ,getHeight() / 10 * 3 ,getWidth() / 10 * 2 ,getHeight() / 10 * 2 ,null);

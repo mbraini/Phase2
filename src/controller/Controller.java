@@ -21,7 +21,7 @@ import model.ModelData;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
 import model.viewRequests.ShootRequest;
-import model.viewRequests.ViewInGameAbilityRequests;
+import model.viewRequests.InGameAbilityRequests;
 import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
@@ -324,7 +324,7 @@ public abstract class Controller {
     }
 
     public static void abilityRequest(InGameAbilityType type){
-        ViewInGameAbilityRequests.abilityRequest(type);
+        InGameAbilityRequests.abilityRequest(type);
     }
 
 

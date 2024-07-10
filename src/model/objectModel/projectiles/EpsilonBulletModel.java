@@ -1,11 +1,8 @@
 package model.objectModel.projectiles;
 
 
-import controller.Controller;
 import data.Constants;
 import model.interfaces.IsCircle;
-import model.interfaces.MoveAble;
-import model.logics.Impact;
 import utils.Math;
 import utils.Vector;
 
@@ -23,7 +20,7 @@ public class EpsilonBulletModel extends BulletModel implements IsCircle {
 
     @Override
     public double getRadios() {
-        return Constants.EPSILON_BULLET_DIAMETER / 2;
+        return Constants.EPSILON_BULLET_RADIOS;
     }
 
     @Override

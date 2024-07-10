@@ -11,6 +11,7 @@ public class ShootRequest {
 
     private EpsilonModel epsilon;
     private static int extraAim;
+    private static int slaughterBulletCount;
 
     public ShootRequest(EpsilonModel epsilon){
         this.epsilon = epsilon;
@@ -24,17 +25,27 @@ public class ShootRequest {
         ShootRequest.extraAim = extraAim;
     }
 
+    public static void setSlaughterBulletCount(int slaughterBulletCount) {
+        ShootRequest.slaughterBulletCount = slaughterBulletCount;
+    }
+
     public void shoot(Vector clickedPoint) {
         Vector direction = Math.VectorAdd(Math.ScalarInVector(-1 ,epsilon.getPosition()) ,clickedPoint);
         Vector position = Math.VectorAdd(
                 Math.VectorWithSize(
                         direction ,
-                        Constants.EPSILON_BULLET_DIAMETER / 2 + Constants.EPSILON_DIMENSION.width / 2d + 1
+                        Constants.EPSILON_BULLET_RADIOS + Constants.EPSILON_DIMENSION.width / 2d + 1
                 )
                 ,epsilon.getPosition()
         );
         int constant = -1;
-        Spawner.addProjectile(position, direction , ModelType.epsilonBullet);
+        if (slaughterBulletCount >= 1){
+            Spawner.addProjectile(position ,direction ,ModelType.slaughterBullet);
+            slaughterBulletCount -= 1;
+        }
+        else {
+            Spawner.addProjectile(position, direction, ModelType.epsilonBullet);
+        }
         for (int i = 0; i < extraAim ;i++) {
             constant = constant * (-1);
             Vector direction2 = Math.RotateByTheta(
@@ -43,7 +54,7 @@ public class ShootRequest {
                     java.lang.Math.PI / 12 * constant
             );
             Vector spawnPosition = Math.VectorAdd(
-                    Math.VectorWithSize(direction2 , Constants.EPSILON_BULLET_DIAMETER / 2d + 1),
+                    Math.VectorWithSize(direction2 , Constants.EPSILON_BULLET_RADIOS + 1),
                     position
             );
             Spawner.addProjectile(

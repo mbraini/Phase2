@@ -2,11 +2,10 @@ package model.viewRequests;
 
 import controller.enums.InGameAbilityType;
 import model.GameState;
-import model.ModelData;
 import model.inGameAbilities.InGameAbility;
 import model.inGameAbilities.InGameAbilityHandler;
 
-public class ViewInGameAbilityRequests {
+public class InGameAbilityRequests {
 
 
     public static void abilityRequest(InGameAbilityType type){

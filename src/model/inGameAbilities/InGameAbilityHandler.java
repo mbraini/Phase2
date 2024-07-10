@@ -19,6 +19,7 @@ public class InGameAbilityHandler {
         inGameAbilities.add(new Heal((EpsilonModel) ModelData.getModels().getFirst()));
         inGameAbilities.add(new Dismay((EpsilonModel) ModelData.getModels().getFirst()));
         inGameAbilities.add(new Slumber());
+        inGameAbilities.add(new Slaughter());
     }
 
     public synchronized static void activateInGameAbility(InGameAbilityType type) {

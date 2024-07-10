@@ -2,6 +2,7 @@ package model.inGameAbilities;
 
 import controller.enums.InGameAbilityType;
 import model.GameState;
+import model.viewRequests.ShootRequest;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,7 @@ public class Slaughter extends InGameAbility{
 
     public Slaughter(){
         type = InGameAbilityType.slaughter;
+        xpCost = 200;
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -35,6 +37,7 @@ public class Slaughter extends InGameAbility{
     public void performAbility() {
         isActive = true;
         isAvailable = false;
+        ShootRequest.setSlaughterBulletCount(1);
         timer.start();
     }
 }
