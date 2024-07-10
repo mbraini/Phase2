@@ -9,17 +9,13 @@ import utils.Math;
 import utils.Vector;
 
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
 
-public class EpsilonCirculation implements MouseMotionListener {
+public class EpsilonCirculation extends MouseMotionAdapter {
     private EpsilonModel epsilon;
     public EpsilonCirculation(){
         this.epsilon = (EpsilonModel) ModelData.getModels().getFirst();
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-
     }
 
     @Override

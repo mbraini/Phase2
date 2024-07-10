@@ -4,6 +4,7 @@ import controller.enums.InGameAbilityType;
 import controller.listeners.EpsilonAiming;
 import data.Constants;
 import model.GameState;
+import model.viewRequests.ShootRequest;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -26,7 +27,7 @@ public class Empower extends InGameAbility{
                 if (timePassed >= 10000) {
                     isAvailable = true;
                     isActive = false;
-                    EpsilonAiming.extraAim = 0;
+                    ShootRequest.setExtraAim(0);
                     timePassed = 0;
                     timer.stop();
                 }
@@ -36,7 +37,7 @@ public class Empower extends InGameAbility{
 
     @Override
     public void performAbility() {
-        EpsilonAiming.extraAim = 2;
+        ShootRequest.setExtraAim(2);
         isActive = true;
         isAvailable = false;
         timer.start();

@@ -10,11 +10,12 @@ import controller.listeners.epsilonMovementALs.xStopperAL;
 import controller.listeners.epsilonMovementALs.yStopperAL;
 
 import javax.swing.*;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashSet;
 
-public class EpsilonMovement implements KeyListener {
+public class EpsilonMovement extends KeyAdapter {
     HashSet<Integer> keys = new HashSet<>();
     EpsilonModel epsilon;
     Vector direction = new Vector(0 ,0);
@@ -25,11 +26,6 @@ public class EpsilonMovement implements KeyListener {
         this.epsilon = (EpsilonModel) (ModelData.getModels().getFirst());
         xStopper = new Timer(Configs.EPSILON_DECELERATION_TIME, new xStopperAL(epsilon));
         yStopper = new Timer(Configs.EPSILON_DECELERATION_TIME, new yStopperAL(epsilon));
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
     }
 
     @Override

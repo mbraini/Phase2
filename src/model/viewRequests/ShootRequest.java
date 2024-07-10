@@ -20,6 +20,10 @@ public class ShootRequest {
         return true;
     }
 
+    public static void setExtraAim(int extraAim) {
+        ShootRequest.extraAim = extraAim;
+    }
+
     public void shoot(Vector clickedPoint) {
         Vector direction = Math.VectorAdd(Math.ScalarInVector(-1 ,epsilon.getPosition()) ,clickedPoint);
         Vector position = Math.VectorAdd(

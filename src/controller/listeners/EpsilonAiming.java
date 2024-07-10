@@ -22,10 +22,8 @@ import java.io.IOException;
 public class EpsilonAiming extends MouseAdapter {
 
     double timer;
-    static public double extraAim;
     public EpsilonAiming(){
         timer = 0;
-        extraAim = 0;
     }
 
     @Override
@@ -53,20 +51,5 @@ public class EpsilonAiming extends MouseAdapter {
         } catch (LineUnavailableException ex) {
             throw new RuntimeException(ex);
         }
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
     }
 }
