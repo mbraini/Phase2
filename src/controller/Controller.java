@@ -172,13 +172,13 @@ public abstract class Controller {
 
 
     public static void startGame(){
-        load();
-//        modelStarter();
-//        viewStarter();
-//        addEpsilonAndFrame();
-//        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
-//        InGameAbilityHandler.initInGameAbilities();
-//        Controller.threadsStarter();
+//        load();
+        modelStarter();
+        viewStarter();
+        addEpsilonAndFrame();
+        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
+        InGameAbilityHandler.initInGameAbilities();
+        Controller.threadsStarter();
     }
 
     private static void addEpsilonAndFrame() {
@@ -212,18 +212,18 @@ public abstract class Controller {
 //        Spawner.spawnObject(new Vector(200 ,200),
 //                ModelType.barricados
 //        );
-        Spawner.spawnObject(new Vector(300 ,300),
-                ModelType.necropick
-        );
+//        Spawner.spawnObject(new Vector(300 ,300),
+//                ModelType.necropick
+//        );
 //        Spawner.addObject(new Vector(0 ,600),
 //                ModelType.necropick
 //        );
 //        Spawner.spawnObject(new Vector(600 ,300),
 //                ModelType.necropick
 //        );
-//        Spawner.spawnObject(new Vector(0 ,0),
-//                ModelType.wyrm
-//        );
+        Spawner.spawnObject(new Vector(0 ,0),
+                ModelType.wyrm
+        );
 
 //        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 100),
 //                ModelType.wyrm
@@ -244,9 +244,9 @@ public abstract class Controller {
 //        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
 //                ModelType.squarantine
 //        );
-        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-                ModelType.trigorath
-        );
+//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ModelType.trigorath
+//        );
 //        Spawner.addObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
 //                ModelType.trigorath
 //        );

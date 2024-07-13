@@ -13,15 +13,21 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Shop extends PIG {
-    ShopFrame shopFrame;
-    JButton back;
-    JPanel banish;
-    JPanel empower;
-    JPanel heal;
-    JLabel xp;
-    JLabel healL;
-    JLabel banishL;
-    JLabel empowerL;
+    private ShopFrame shopFrame;
+    private JButton back;
+    private JPanel banish;
+    private JPanel empower;
+    private JPanel heal;
+    private JPanel dismay;
+    private JPanel slumber;
+    private JPanel slaughter;
+    private JLabel xp;
+    private JLabel healL;
+    private JLabel banishL;
+    private JLabel empowerL;
+    private JLabel dismayL;
+    private JLabel slumberL;
+    private JLabel slaughterL;
 
     public Shop(ShopFrame shopFrame){
         this.setLayout(null);
@@ -32,6 +38,9 @@ public class Shop extends PIG {
         initBanish();
         initEmpower();
         initHeal();
+        initDismay();
+        initSlumber();
+        initSlaughter();
         initLabels();
         initKeyListener();
         shopFrame.add(this);
@@ -39,6 +48,42 @@ public class Shop extends PIG {
         this.setFocusable(true);
         initBack();
         this.setVisible(true);
+    }
+
+    private void initSlaughter() {
+        slaughter.setBounds(getWidth() / 10 * 7 ,(int)(getHeight() / 16 * 8.5) ,getWidth() / 10 * 2 ,getHeight() / 16 * 3);
+        slaughter.setFont(new Font(null,Font.BOLD ,15));
+        slaughter.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+        slaughter.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Controller.abilityRequest(InGameAbilityType.slaughter);
+            }
+        });
+    }
+
+    private void initSlumber() {
+        slumber.setBounds(getWidth() / 10 * 4 ,(int)(getHeight() / 16 * 8.5) ,getWidth() / 10 * 2 ,getHeight() / 16 * 3);
+        slumber.setFont(new Font(null,Font.BOLD ,15));
+        slumber.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+        slumber.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Controller.abilityRequest(InGameAbilityType.slumber);
+            }
+        });
+    }
+
+    private void initDismay() {
+        dismay.setBounds(getWidth() / 10 ,(int)(getHeight() / 16 * 8.5) ,getWidth() / 10 * 2 ,getHeight() / 16 * 3);
+        dismay.setFont(new Font(null,Font.BOLD ,15));
+        dismay.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+        dismay.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Controller.abilityRequest(InGameAbilityType.dismay);
+            }
+        });
     }
 
     private void initKeyListener() {
@@ -53,8 +98,57 @@ public class Shop extends PIG {
     }
 
     private void initLabels() {
+        initXPL();
+        initHealL();
+        initBanishL();
+        initEmpowerL();
+        initDismayL();
+        initSlumberL();
+        initSlaughterL();
+    }
+
+    private void initSlaughterL() {
+        slaughterL = new JLabel();
+        slaughterL.setBounds(Constants.GAME_WIDTH / 10 * 7 ,Constants.GAME_HEIGHT / 16 * 12 ,Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16);
+        slaughterL.setText("slaughter");
+        slaughterL.setBackground(Color.WHITE);
+        slaughterL.setOpaque(true);
+        slaughterL.setFont(new Font(null,Font.BOLD ,15));
+        slaughterL.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+        slaughterL.setHorizontalAlignment(JLabel.CENTER);
+        slaughterL.setVerticalAlignment(JLabel.CENTER);
+        this.add(slaughterL);
+    }
+
+    private void initSlumberL() {
+        slumberL = new JLabel();
+        slumberL.setBounds(Constants.GAME_WIDTH / 10 * 4 ,Constants.GAME_HEIGHT / 16 * 12 ,Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16);
+        slumberL.setText("slumber");
+        slumberL.setBackground(Color.WHITE);
+        slumberL.setOpaque(true);
+        slumberL.setFont(new Font(null,Font.BOLD ,15));
+        slumberL.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+        slumberL.setHorizontalAlignment(JLabel.CENTER);
+        slumberL.setVerticalAlignment(JLabel.CENTER);
+        this.add(slumberL);
+    }
+
+    private void initDismayL() {
+        dismayL = new JLabel();
+        dismayL.setBounds(Constants.GAME_WIDTH / 10 ,Constants.GAME_HEIGHT / 16 * 12 ,Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16);
+        dismayL.setText("dismay");
+        dismayL.setBackground(Color.WHITE);
+        dismayL.setOpaque(true);
+        dismayL.setFont(new Font(null,Font.BOLD ,15));
+        dismayL.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+        dismayL.setHorizontalAlignment(JLabel.CENTER);
+        dismayL.setVerticalAlignment(JLabel.CENTER);
+        this.add(dismayL);
+    }
+
+    private void initXPL() {
         xp = new JLabel();
-        xp.setBounds(Constants.GAME_WIDTH / 5 * 2 ,Constants.GAME_HEIGHT / 12 ,Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 12);
+        xp.setBounds(Constants.GAME_WIDTH / 10 * 4 ,Constants.GAME_HEIGHT / 16 ,Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16);
         xp.setText("XP :" +(int) GameState.getXp());
         xp.setBackground(Color.WHITE);
         xp.setOpaque(true);
@@ -63,10 +157,12 @@ public class Shop extends PIG {
         xp.setHorizontalAlignment(JLabel.CENTER);
         xp.setVerticalAlignment(JLabel.CENTER);
         this.add(xp);
+    }
 
+    private void initHealL() {
         healL = new JLabel();
-        healL.setBounds(Constants.GAME_WIDTH / 10 ,Constants.GAME_HEIGHT / 12 * 7 ,Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 12);
-        healL.setText("Ares");
+        healL.setBounds(Constants.GAME_WIDTH / 10 ,(int) (Constants.GAME_HEIGHT / 16 * 6.5) ,Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16);
+        healL.setText("heal");
         healL.setBackground(Color.WHITE);
         healL.setOpaque(true);
         healL.setFont(new Font(null,Font.BOLD ,15));
@@ -74,10 +170,12 @@ public class Shop extends PIG {
         healL.setHorizontalAlignment(JLabel.CENTER);
         healL.setVerticalAlignment(JLabel.CENTER);
         this.add(healL);
+    }
 
+    private void initBanishL() {
         banishL = new JLabel();
-        banishL.setBounds(Constants.GAME_WIDTH / 10 * 4 ,Constants.GAME_HEIGHT / 12 * 7 ,Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 12);
-        banishL.setText("Aceso");
+        banishL.setBounds(Constants.GAME_WIDTH / 10 * 4 ,(int) (Constants.GAME_HEIGHT / 16 * 6.5) ,Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16);
+        banishL.setText("empower");
         banishL.setBackground(Color.WHITE);
         banishL.setOpaque(true);
         banishL.setFont(new Font(null,Font.BOLD ,15));
@@ -85,10 +183,12 @@ public class Shop extends PIG {
         banishL.setHorizontalAlignment(JLabel.CENTER);
         banishL.setVerticalAlignment(JLabel.CENTER);
         this.add(banishL);
+    }
 
+    private void initEmpowerL() {
         empowerL = new JLabel();
-        empowerL.setBounds(Constants.GAME_WIDTH / 10 * 7 ,Constants.GAME_HEIGHT / 12 * 7 ,Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 12);
-        empowerL.setText("Proteus");
+        empowerL.setBounds(Constants.GAME_WIDTH / 10 * 7 ,(int) (Constants.GAME_HEIGHT / 16 * 6.5) ,Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16);
+        empowerL.setText("banish");
         empowerL.setBackground(Color.WHITE);
         empowerL.setOpaque(true);
         empowerL.setFont(new Font(null,Font.BOLD ,15));
@@ -102,26 +202,39 @@ public class Shop extends PIG {
         banish = new JPanel();
         empower = new JPanel();
         heal = new JPanel();
+        dismay = new JPanel();
+        slumber = new JPanel();
+        slaughter = new JPanel();
         banish.setOpaque(false);
         empower.setOpaque(false);
         heal.setOpaque(false);
+        dismay.setOpaque(false);
+        slumber.setOpaque(false);
+        slaughter.setOpaque(false);
         this.add(banish);
         this.add(empower);
         this.add(heal);
+        this.add(dismay);
+        this.add(slumber);
+        this.add(slaughter);
     }
 
     private void initHeal() {
-        banish.setBounds(getWidth() / 10 ,getHeight() / 10 * 3 ,getWidth() / 10 * 2 ,getHeight() / 10 * 2);
-        banish.addMouseListener(new MouseAdapter() {
+        heal.setBounds(getWidth() / 10 ,getHeight() / 16 * 3 ,getWidth() / 10 * 2 ,getHeight() / 16 * 3);
+        heal.setFont(new Font(null,Font.BOLD ,15));
+        heal.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+        heal.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.abilityRequest(InGameAbilityType.slaughter);
+                Controller.abilityRequest(InGameAbilityType.heal);
             }
         });
     }
 
     private void initEmpower() {
-        empower.setBounds(getWidth() / 10 * 4 ,getHeight() / 10 * 3 ,getWidth() / 10 * 2 ,getHeight() / 10 * 2);
+        empower.setBounds(getWidth() / 10 * 4 ,getHeight() / 16 * 3 ,getWidth() / 10 * 2 ,getHeight() / 16 * 3);
+        empower.setFont(new Font(null,Font.BOLD ,15));
+        empower.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
         empower.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -131,18 +244,20 @@ public class Shop extends PIG {
     }
 
     private void initBanish() {
-        heal.setBounds(getWidth() / 10 * 7 ,getHeight() / 10 * 3 ,getWidth() / 10 * 2 ,getHeight() / 10 * 2);
-        heal.addMouseListener(new MouseAdapter() {
+        banish.setBounds(getWidth() / 10 * 7 ,getHeight() / 16 * 3 ,getWidth() / 10 * 2 ,getHeight() / 16 * 3);
+        banish.setFont(new Font(null,Font.BOLD ,15));
+        banish.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+        banish.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.abilityRequest(InGameAbilityType.dismay);
+                Controller.abilityRequest(InGameAbilityType.banish);
             }
         });
     }
 
     void initBack(){
         back = new JButton();
-        back.setBounds(getWidth() / 3 ,getHeight() / 10 * 8 ,getWidth() / 3 ,getHeight() / 10);
+        back.setBounds(getWidth() / 10 * 4 ,getHeight() / 16 * 14 ,getWidth() / 10 * 2 ,getHeight() / 16);
         back.setText("Back");
         back.setBackground(Color.WHITE);
         back.setOpaque(true);
@@ -164,9 +279,9 @@ public class Shop extends PIG {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         xp.setText(ViewData.getXp() + "");
-        g.drawImage(Constants.heal ,getWidth() / 10 ,getHeight() / 10 * 3 ,getWidth() / 10 * 2 ,getHeight() / 10 * 2 ,null);
-        g.drawImage(Constants.empower ,getWidth() / 10 * 4 ,getHeight() / 10 * 3 ,getWidth() / 10 * 2 ,getHeight() / 10 * 2 ,null);
-        g.drawImage(Constants.banish ,getWidth() / 10 * 7 ,getHeight() / 10 * 3 ,getWidth() / 10 * 2 ,getHeight() / 10 * 2 ,null);
+        g.drawImage(Constants.heal ,heal.getX() ,heal.getY() ,heal.getWidth() ,heal.getHeight() ,null);
+        g.drawImage(Constants.empower ,empower.getX() ,empower.getY() ,empower.getWidth() ,empower.getHeight() ,null);
+        g.drawImage(Constants.banish ,banish.getX() ,banish.getY() ,banish.getWidth() ,banish.getHeight() ,null);
     }
 
     @Override
