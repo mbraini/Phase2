@@ -59,6 +59,17 @@ public class Shop extends PIG {
             public void mouseClicked(MouseEvent e) {
                 Controller.abilityRequest(InGameAbilityType.slaughter);
             }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                slaughter.setFont(new Font(null,Font.BOLD ,15));
+                slaughter.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                slaughter.setFont(new Font(null,Font.BOLD ,15));
+                slaughter.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+            }
         });
     }
 
@@ -71,6 +82,17 @@ public class Shop extends PIG {
             public void mouseClicked(MouseEvent e) {
                 Controller.abilityRequest(InGameAbilityType.slumber);
             }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                slumber.setFont(new Font(null,Font.BOLD ,15));
+                slumber.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                slumber.setFont(new Font(null,Font.BOLD ,15));
+                slumber.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+            }
         });
     }
 
@@ -82,6 +104,17 @@ public class Shop extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.abilityRequest(InGameAbilityType.dismay);
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                dismay.setFont(new Font(null,Font.BOLD ,15));
+                dismay.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                dismay.setFont(new Font(null,Font.BOLD ,15));
+                dismay.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
             }
         });
     }
@@ -228,6 +261,18 @@ public class Shop extends PIG {
             public void mouseClicked(MouseEvent e) {
                 Controller.abilityRequest(InGameAbilityType.heal);
             }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                heal.setFont(new Font(null,Font.BOLD ,15));
+                heal.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                heal.setFont(new Font(null,Font.BOLD ,15));
+                heal.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+            }
         });
     }
 
@@ -239,6 +284,17 @@ public class Shop extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.abilityRequest(InGameAbilityType.empower);
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                empower.setFont(new Font(null,Font.BOLD ,15));
+                empower.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                empower.setFont(new Font(null,Font.BOLD ,15));
+                empower.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
             }
         });
     }
@@ -252,6 +308,17 @@ public class Shop extends PIG {
             public void mouseClicked(MouseEvent e) {
                 Controller.abilityRequest(InGameAbilityType.banish);
             }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                banish.setFont(new Font(null,Font.BOLD ,15));
+                banish.setBorder(BorderFactory.createLineBorder(Color.RED,2));
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                banish.setFont(new Font(null,Font.BOLD ,15));
+                banish.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+            }
         });
     }
 
@@ -261,6 +328,8 @@ public class Shop extends PIG {
         back.setText("Back");
         back.setBackground(Color.WHITE);
         back.setOpaque(true);
+        back.setFont(new Font(null,Font.BOLD ,15));
+        back.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
         back.setHorizontalTextPosition(JLabel.RIGHT);
         back.setVerticalTextPosition(JLabel.TOP);
         back.setFocusable(false);

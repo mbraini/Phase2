@@ -4,8 +4,8 @@
     "hasMeleeAttack": false,
     "meleeAttack": 5,
     "position": {
-      "x": 1136.3745401590795,
-      "y": 178.30682751267415
+      "x": 821.6922999356925,
+      "y": 587.2683674364581
     },
     "velocity": {
       "x": 0.0,
@@ -15,13 +15,61 @@
       "x": 0.0,
       "y": 0.0
     },
-    "theta": 2.942440036955785,
+    "theta": -2.412251361830967,
     "omega": 0.0,
     "alpha": 0.0,
-    "id": "��:zD|��\r�",
-    "HP": -28.0,
+    "id": "�^r_cfb/ɘ",
+    "HP": 20.0,
     "isHovering": false,
     "isSolid": true,
     "type": "epsilon"
+  },
+  {
+    "hp": 1.0,
+    "damage": 8.0,
+    "position": {
+      "x": 2507.9103526013937,
+      "y": -896.5387916103974
+    },
+    "velocity": {
+      "x": 0.2832831667819647,
+      "y": -0.2824015712031036
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "�\t\b��X�/3�",
+    "HP": 1.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": null
+  },
+  {
+    "hp": 1.0,
+    "damage": 8.0,
+    "position": {
+      "x": 2504.9460845504013,
+      "y": 967.7717688186561
+    },
+    "velocity": {
+      "x": 0.3684125308348051,
+      "y": 0.15579540148506885
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "cC\u000e�ү���`",
+    "HP": 1.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": null
   }
 ]
