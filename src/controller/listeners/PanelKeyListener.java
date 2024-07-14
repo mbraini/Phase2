@@ -46,5 +46,8 @@ public class PanelKeyListener extends KeyAdapter {
         if (e.getKeyChar() == MELAMPUS_KEY) {
             Controller.skillTreeAbilityRequest(SkillTreeAbilityType.melampus);
         }
+        if (e.getKeyChar() == CHIRON_KEY) {
+            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.chiron);
+        }
     }
 }

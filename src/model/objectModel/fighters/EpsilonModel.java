@@ -18,6 +18,7 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
     private int epsilonBulletDamage;
     private int epsilonDamageOnCollision;
     private int chanceOfSurvival;
+    private int lifeSteal;
     public EpsilonModel(Vector position , String id){
         this.position = position;
         this.velocity = new Vector();
@@ -115,6 +116,7 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
         for (EpsilonVertexModel vertex : vertices){
             if (Collision.IsColliding(vertex ,enemyModel)){
                 enemyModel.setHP(enemyModel.getHP() - meleeAttack);
+                setHP(getHP() + lifeSteal);
                 return;
             }
         }
@@ -142,5 +144,13 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
 
     public void setChanceOfSurvival(int chanceOfSurvival) {
         this.chanceOfSurvival = chanceOfSurvival;
+    }
+
+    public int getLifeSteal() {
+        return lifeSteal;
+    }
+
+    public void setLifeSteal(int lifeSteal) {
+        this.lifeSteal = lifeSteal;
     }
 }

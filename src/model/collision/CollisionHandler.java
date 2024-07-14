@@ -1,6 +1,7 @@
 package model.collision;
 
 
+import model.ModelData;
 import model.inGameAbilities.Dismay.EpsilonProtectorModel;
 import model.interfaces.CollisionDetector;
 import model.interfaces.HasVertices;
@@ -85,6 +86,8 @@ public class CollisionHandler {
 
     private void BulletToEnemyHandler(EnemyModel enemy, EpsilonBulletModel epsilonBullet) {
         enemy.setHP(enemy.getHP() - epsilonBullet.getDamage());
+        EpsilonModel epsilonModel = ModelData.getEpsilon();
+        epsilonModel.setHP(epsilonModel.getHP() + epsilonModel.getLifeSteal());
         epsilonBullet.die();
     }
 
@@ -101,8 +104,6 @@ public class CollisionHandler {
 
     private void epsilonHandler(EpsilonModel epsilon ,ObjectModel object) {
         if (object.isHovering()){
-            if (object instanceof EnemyModel)
-                epsilon.meleeAttack((EnemyModel) object);
             return;
         }
         if (object instanceof EnemyModel){
