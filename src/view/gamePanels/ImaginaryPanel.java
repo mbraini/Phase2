@@ -1,8 +1,10 @@
 package view.gamePanels;
 
 import controller.Controller;
+import controller.enums.SkillTreeAbilityType;
 import data.Constants;
 import model.GameState;
+import model.skillTreeAbilities.SkillTreeAbility;
 import view.ViewData;
 import view.objectViews.FrameView;
 import view.objectViews.ObjectView;
@@ -39,6 +41,9 @@ public class ImaginaryPanel extends JPanel {
                 if (e.getKeyChar() == 'p' && !GameState.isPause()){
                     Controller.pause();
                     new Shop(new ShopFrame());
+                }
+                if (e.getKeyChar() == 'q' && !GameState.isPause()){
+                    Controller.skillTreeAbilityRequest(SkillTreeAbilityType.ares);
                 }
             }
         });

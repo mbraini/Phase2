@@ -57,7 +57,7 @@ public class Shop extends PIG {
         slaughter.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.abilityRequest(InGameAbilityType.slaughter);
+                Controller.inGameAbilityRequest(InGameAbilityType.slaughter);
             }
             @Override
             public void mousePressed(MouseEvent e) {
@@ -80,7 +80,7 @@ public class Shop extends PIG {
         slumber.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.abilityRequest(InGameAbilityType.slumber);
+                Controller.inGameAbilityRequest(InGameAbilityType.slumber);
             }
             @Override
             public void mousePressed(MouseEvent e) {
@@ -103,7 +103,7 @@ public class Shop extends PIG {
         dismay.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.abilityRequest(InGameAbilityType.dismay);
+                Controller.inGameAbilityRequest(InGameAbilityType.dismay);
             }
             @Override
             public void mousePressed(MouseEvent e) {
@@ -259,7 +259,7 @@ public class Shop extends PIG {
         heal.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.abilityRequest(InGameAbilityType.heal);
+                Controller.inGameAbilityRequest(InGameAbilityType.heal);
             }
 
             @Override
@@ -283,7 +283,7 @@ public class Shop extends PIG {
         empower.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.abilityRequest(InGameAbilityType.empower);
+                Controller.inGameAbilityRequest(InGameAbilityType.empower);
             }
             @Override
             public void mousePressed(MouseEvent e) {
@@ -306,7 +306,7 @@ public class Shop extends PIG {
         banish.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.abilityRequest(InGameAbilityType.banish);
+                Controller.inGameAbilityRequest(InGameAbilityType.banish);
             }
             @Override
             public void mousePressed(MouseEvent e) {

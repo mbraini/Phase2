@@ -2,6 +2,7 @@ package controller;
 
 import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
+import controller.enums.SkillTreeAbilityType;
 import controller.manager.GameManager;
 import controller.manager.GameManagerThread;
 import controller.manager.Spawner;
@@ -22,6 +23,7 @@ import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
 import model.viewRequests.ShootRequest;
 import model.viewRequests.InGameAbilityRequests;
+import model.viewRequests.SkillTreeAbilityRequests;
 import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
@@ -189,6 +191,7 @@ public abstract class Controller {
                 ,Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
         ModelData.addModel(epsilon);
+        ModelData.setEpsilon(epsilon);
         ViewData.addObject(new EpsilonView(epsilon.getPosition() ,epsilon.getId()));
         FrameModelBuilder builder = new FrameModelBuilder(
                 new Vector(
@@ -324,8 +327,12 @@ public abstract class Controller {
         return false;
     }
 
-    public static void abilityRequest(InGameAbilityType type){
+    public static void inGameAbilityRequest(InGameAbilityType type){
         InGameAbilityRequests.abilityRequest(type);
+    }
+
+    public static void skillTreeAbilityRequest(SkillTreeAbilityType type) {
+        SkillTreeAbilityRequests.abilityRequest(type);
     }
 
 

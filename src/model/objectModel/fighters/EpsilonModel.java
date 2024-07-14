@@ -15,13 +15,15 @@ import java.util.ArrayList;
 public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, HasVertices , ImpactAble {
     private static ArrayList<EpsilonVertexModel> vertices = new ArrayList<>();
     private boolean isImpacted = false;
+    private int epsilonBulletDamage;
     public EpsilonModel(Vector position , String id){
         this.position = position;
         this.velocity = new Vector();
         this.acceleration = new Vector(0 ,0);
         this.id =  id;
         this.HP = 100;
-        this.meleeAttack = Constants.EPSILON_DAMAGE;
+        this.epsilonBulletDamage = Constants.INITIAL_EPSILON_DAMAGE;
+        this.meleeAttack = Constants.INITIAL_EPSILON_DAMAGE;
         this.isSolid = true;
         type = ModelType.epsilon;
         vertices = new ArrayList<>();
@@ -115,4 +117,11 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
         }
     }
 
+    public int getEpsilonBulletDamage() {
+        return epsilonBulletDamage;
+    }
+
+    public void setEpsilonBulletDamage(int epsilonBulletDamage) {
+        this.epsilonBulletDamage = epsilonBulletDamage;
+    }
 }

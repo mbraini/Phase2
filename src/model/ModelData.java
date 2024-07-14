@@ -8,6 +8,7 @@ import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
+import model.skillTreeAbilities.SkillTreeAbility;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -21,10 +22,11 @@ public class ModelData {
     private static ArrayList<EffectModel> effectModels = new ArrayList<>();
     private static ArrayList<AbstractEnemy> abstractEnemies = new ArrayList<>();
     private static ArrayList<InGameAbility> inGameAbilities = new ArrayList<>();
-
+    private static ArrayList<SkillTreeAbility> skillTreeAbilities = new ArrayList<>();
     public static ArrayList<AbstractEnemy> getAbstractEnemies() {
         return abstractEnemies;
     }
+    private static EpsilonModel epsilon;
 
     public static void setAbstractEnemies(ArrayList<AbstractEnemy> abstractEnemies) {
         ModelData.abstractEnemies = abstractEnemies;
@@ -120,5 +122,21 @@ public class ModelData {
 
     public static void setInGameAbilities(ArrayList<InGameAbility> inGameAbilities) {
         ModelData.inGameAbilities = inGameAbilities;
+    }
+
+    public static ArrayList<SkillTreeAbility> getSkillTreeAbilities() {
+        return skillTreeAbilities;
+    }
+
+    public static void setSkillTreeAbilities(ArrayList<SkillTreeAbility> skillTreeAbilities) {
+        ModelData.skillTreeAbilities = skillTreeAbilities;
+    }
+
+    public static EpsilonModel getEpsilon() {
+        return epsilon;
+    }
+
+    public static void setEpsilon(EpsilonModel epsilon) {
+        ModelData.epsilon = epsilon;
     }
 }

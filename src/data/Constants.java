@@ -92,6 +92,8 @@ public class Constants {
     public static final int SLAUGHTER_COOLDOWN = 120000;
     public static final int SLUMBER_DURATION = 10000;
     public static final int DISMAY_DURATION = 10000;
+    public static final int INITIAL_EPSILON_DAMAGE = 5;
+    public static final int SKILL_TREE_ABILITY_TIMER_REFRESH_RATE = 1000;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);
@@ -99,7 +101,6 @@ public class Constants {
     public static final double EPSILON_BULLET_VELOCITY = 0.6;
     public static final double EPSILON_BULLET_RADIOS = 5;
     public static final int ID_SIZE = 10;
-    public static int EPSILON_DAMAGE = 5;
     public static final int MELEI_ATTACK = 10;
     public static final Dimension MINIMUM_FRAME_DIMENSION = new Dimension(200 + barD.width ,200 + barD.height);
     public static final double IMPACT_AREA = 200;
@@ -133,6 +134,13 @@ public class Constants {
     public static String waveSpawnSound;
     public static final int WIN_ANIMATION_TIME = 3000;
     public static final int WIN_ANIMATION_REFRESH_RATE = 10;
+
+
+
+    public static char ARES_KEY = 'q';
+
+
+
     public static String enemyOnDeathSound;
     public static String impactSound;
     public static Image endGameImage;

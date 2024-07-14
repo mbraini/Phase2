@@ -2,6 +2,7 @@ package model.objectModel.projectiles;
 
 
 import data.Constants;
+import model.ModelData;
 import model.interfaces.IsCircle;
 import utils.Math;
 import utils.Vector;
@@ -12,7 +13,7 @@ public class EpsilonBulletModel extends BulletModel implements IsCircle {
         this.position = position;
         this.velocity = Math.VectorWithSize(direction , Constants.EPSILON_BULLET_VELOCITY);
         this.acceleration = new Vector(0 ,0);
-        damage = Constants.EPSILON_DAMAGE;
+        damage = ModelData.getEpsilon().getEpsilonBulletDamage();
         setSolid(true);
         this.id = id;
         this.HP = 1;

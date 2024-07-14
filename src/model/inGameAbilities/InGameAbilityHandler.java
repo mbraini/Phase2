@@ -23,12 +23,8 @@ public class InGameAbilityHandler {
     }
 
     public synchronized static void activateInGameAbility(InGameAbilityType type) {
-        ArrayList<InGameAbility> inGameAbilities = ModelData.getInGameAbilities();
-
-        for (InGameAbility inGameAbility : inGameAbilities){
-            if (inGameAbility.getType() == type)
-                inGameAbility.performAbility();
-        }
+        InGameAbility inGameAbility = getInGameAbility(type);
+        inGameAbility.performAbility();
     }
 
     public synchronized static InGameAbility getInGameAbility(InGameAbilityType type) {

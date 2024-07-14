@@ -80,6 +80,7 @@ public class GameLoaderHelper {
             case epsilon :
                 model = gson.fromJson(jsonString , EpsilonModel.class);
                 ModelData.addModel(model);
+                ModelData.setEpsilon((EpsilonModel) model);
                 ViewRequest.addObjectView(
                         new EpsilonView(
                                 model.getPosition() ,
