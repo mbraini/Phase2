@@ -7,6 +7,7 @@ import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.ModelData;
 import model.interfaces.*;
+import model.objectModel.FighterModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.frameModel.FrameModelBuilder;
 import model.objectModel.fighters.normalEnemies.NormalEnemyModel;

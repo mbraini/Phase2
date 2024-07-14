@@ -26,13 +26,11 @@ import model.objectModel.fighters.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.fighters.normalEnemies.omenoctModel.OmenoctModel;
 import model.objectModel.fighters.normalEnemies.wyrmModel.WyrmModel;
 import model.objectModel.projectiles.*;
+import model.skillTreeAbilities.Cerberus.CerberusModel;
 import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
-import view.objectViews.CollectiveView;
-import view.objectViews.EpsilonProtectorView;
-import view.objectViews.EpsilonView;
-import view.objectViews.FrameView;
+import view.objectViews.*;
 import view.objectViews.basicEnemyView.SquarantineView;
 import view.objectViews.basicEnemyView.TrigorathView;
 import view.objectViews.bossView.BossAoeEffectView;
@@ -118,6 +116,11 @@ public abstract class Spawner {
                         position,
                         id
                 ));
+                break;
+            case cerberus:
+                 ModelRequests.addObjectModel(new CerberusModel(position ,id));
+                 ViewRequest.addObjectView(new CerberusView(position ,id));
+                 break;
         }
     }
 

@@ -2,12 +2,12 @@
   {
     "isImpacted": false,
     "epsilonBulletDamage": 5,
-    "epsilonDamageOnCollision": 4,
+    "epsilonDamageOnCollision": 0,
     "hasMeleeAttack": false,
     "meleeAttack": 5,
     "position": {
-      "x": 614.9536862571207,
-      "y": 511.66197604441
+      "x": 816.486469140336,
+      "y": 478.05759702467066
     },
     "velocity": {
       "x": 0.0,
@@ -17,13 +17,91 @@
       "x": 0.0,
       "y": 0.0
     },
-    "theta": -0.711373792387939,
+    "theta": -2.69554870488943,
     "omega": 0.0,
     "alpha": 0.0,
-    "id": "\u0010\u000b�\u0015�\u001fM��\u0014",
-    "HP": 90.0,
+    "id": "\u003dw��S���\u0014",
+    "HP": 100.0,
     "isHovering": false,
     "isSolid": true,
     "type": "epsilon"
+  },
+  {
+    "timePassed": 12000,
+    "coolDown": 15000,
+    "hasMeleeAttack": false,
+    "meleeAttack": 10,
+    "position": {
+      "x": 793.7300445543382,
+      "y": 425.1087317188329
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "\u0000�k��\u00261�KY",
+    "HP": 100000.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": null
+  },
+  {
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 821.8758701773324,
+      "y": 376.3587317188329
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "��J�A��3t�",
+    "HP": 100000.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": null
+  },
+  {
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 765.5842189313439,
+      "y": 376.3587317188329
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "��z\u0027�Jc�#",
+    "HP": 100000.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": null
   }
 ]

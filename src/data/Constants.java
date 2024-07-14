@@ -94,6 +94,8 @@ public class Constants {
     public static final int DISMAY_DURATION = 10000;
     public static final int INITIAL_EPSILON_DAMAGE = 5;
     public static final int SKILL_TREE_ABILITY_TIMER_REFRESH_RATE = 1000;
+    public static final double CERBERUS_RADIOS = 20;
+    public static final int CERBERUS_COOLDOWN = 15000;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);

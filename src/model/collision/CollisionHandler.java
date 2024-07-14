@@ -19,6 +19,8 @@ import model.objectModel.fighters.finalBoss.bossHelper.BossHelper;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.projectiles.BulletModel;
 import model.objectModel.projectiles.EpsilonBulletModel;
+import model.skillTreeAbilities.Cerberus.Cerberus;
+import model.skillTreeAbilities.Cerberus.CerberusModel;
 import utils.Math;
 import utils.Vector;
 
@@ -68,7 +70,20 @@ public class CollisionHandler {
             EpsilonProtectorHandler((EpsilonProtectorModel) model2 ,(EnemyModel) model1);
             return;
         }
+        ////////cerberus enemy handler
+        if (model1 instanceof CerberusModel && model2 instanceof EnemyModel){
+            CerberusEnemyHandler((CerberusModel)model1 ,(EnemyModel)model2);
+            return;
+        }
+        if (model2 instanceof CerberusModel && model1 instanceof EnemyModel){
+            CerberusEnemyHandler((CerberusModel)model2 ,(EnemyModel)model1);
+            return;
+        }
 
+    }
+
+    private void CerberusEnemyHandler(CerberusModel cerberusModel, EnemyModel enemyModel) {
+        cerberusModel.damageIf(enemyModel);
     }
 
     private void EpsilonProtectorHandler(EpsilonProtectorModel protectorModel, EnemyModel enemyModel) {
@@ -93,7 +108,8 @@ public class CollisionHandler {
 
     private void epsilonHandler(EpsilonModel epsilon ,ObjectModel object) {
         if (object.isHovering()){
-            epsilon.meleeAttack((EnemyModel) object);
+            if (object instanceof EnemyModel)
+                epsilon.meleeAttack((EnemyModel) object);
             return;
         }
         if (object instanceof EnemyModel){

@@ -2,6 +2,7 @@ package model.skillTreeAbilities;
 
 import controller.enums.SkillTreeAbilityType;
 import model.ModelData;
+import model.skillTreeAbilities.Cerberus.Cerberus;
 
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ public class SkillTreeAbilityHandler {
         ArrayList<SkillTreeAbility> abilities = ModelData.getSkillTreeAbilities();
         abilities.add(new Ares());
         abilities.add(new Astrape());
+        abilities.add(new Cerberus());
         ModelData.setSkillTreeAbilities(abilities);
     }
 

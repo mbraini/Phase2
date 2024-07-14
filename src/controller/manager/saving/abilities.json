@@ -3,12 +3,12 @@
     "epsilon": {
       "isImpacted": false,
       "epsilonBulletDamage": 5,
-      "epsilonDamageOnCollision": 4,
+      "epsilonDamageOnCollision": 0,
       "hasMeleeAttack": false,
       "meleeAttack": 5,
       "position": {
-        "x": 614.9536862571207,
-        "y": 511.66197604441
+        "x": 816.486469140336,
+        "y": 478.05759702467066
       },
       "velocity": {
         "x": 0.0,
@@ -18,11 +18,11 @@
         "x": 0.0,
         "y": 0.0
       },
-      "theta": -0.711373792387939,
+      "theta": -2.69554870488943,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "\u0010\u000b�\u0015�\u001fM��\u0014",
-      "HP": 90.0,
+      "id": "\u003dw��S���\u0014",
+      "HP": 100.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"
@@ -43,12 +43,12 @@
     "epsilon": {
       "isImpacted": false,
       "epsilonBulletDamage": 5,
-      "epsilonDamageOnCollision": 4,
+      "epsilonDamageOnCollision": 0,
       "hasMeleeAttack": false,
       "meleeAttack": 5,
       "position": {
-        "x": 614.9536862571207,
-        "y": 511.66197604441
+        "x": 816.486469140336,
+        "y": 478.05759702467066
       },
       "velocity": {
         "x": 0.0,
@@ -58,11 +58,11 @@
         "x": 0.0,
         "y": 0.0
       },
-      "theta": -0.711373792387939,
+      "theta": -2.69554870488943,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "\u0010\u000b�\u0015�\u001fM��\u0014",
-      "HP": 90.0,
+      "id": "\u003dw��S���\u0014",
+      "HP": 100.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"
@@ -78,12 +78,12 @@
       "epsilon": {
         "isImpacted": false,
         "epsilonBulletDamage": 5,
-        "epsilonDamageOnCollision": 4,
+        "epsilonDamageOnCollision": 0,
         "hasMeleeAttack": false,
         "meleeAttack": 5,
         "position": {
-          "x": 614.9536862571207,
-          "y": 511.66197604441
+          "x": 816.486469140336,
+          "y": 478.05759702467066
         },
         "velocity": {
           "x": 0.0,
@@ -93,18 +93,18 @@
           "x": 0.0,
           "y": 0.0
         },
-        "theta": -0.711373792387939,
+        "theta": -2.69554870488943,
         "omega": 0.0,
         "alpha": 0.0,
-        "id": "\u0010\u000b�\u0015�\u001fM��\u0014",
-        "HP": 90.0,
+        "id": "\u003dw��S���\u0014",
+        "HP": 100.0,
         "isHovering": false,
         "isSolid": true,
         "type": "epsilon"
       },
       "position": {
-        "x": 768.0,
-        "y": 480.0
+        "x": 763.6800445543381,
+        "y": 370.5587317188329
       },
       "velocity": {
         "x": 0.0,
@@ -117,7 +117,7 @@
       "theta": 0.0,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "9�SN$9��Z�",
+      "id": "�$?��\u0014�[�*",
       "HP": 20000.0,
       "isHovering": false,
       "isSolid": false,
@@ -126,12 +126,12 @@
     "epsilon": {
       "isImpacted": false,
       "epsilonBulletDamage": 5,
-      "epsilonDamageOnCollision": 4,
+      "epsilonDamageOnCollision": 0,
       "hasMeleeAttack": false,
       "meleeAttack": 5,
       "position": {
-        "x": 614.9536862571207,
-        "y": 511.66197604441
+        "x": 816.486469140336,
+        "y": 478.05759702467066
       },
       "velocity": {
         "x": 0.0,
@@ -141,11 +141,11 @@
         "x": 0.0,
         "y": 0.0
       },
-      "theta": -0.711373792387939,
+      "theta": -2.69554870488943,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "\u0010\u000b�\u0015�\u001fM��\u0014",
-      "HP": 90.0,
+      "id": "\u003dw��S���\u0014",
+      "HP": 100.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"

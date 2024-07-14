@@ -34,5 +34,8 @@ public class PanelKeyListener extends KeyAdapter {
         if (e.getKeyChar() == ASTRAPE_KEY) {
             Controller.skillTreeAbilityRequest(SkillTreeAbilityType.astrape);
         }
+        if (e.getKeyChar() == CERBERUS_KEY) {
+            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.cerberus);
+        }
     }
 }
