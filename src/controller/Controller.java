@@ -257,10 +257,10 @@ public abstract class Controller {
 //        );
 ////
 ////
-//        Spawner.spawnObject(
-//                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
-//                ModelType.blackOrb
-//        );
+        Spawner.spawnObject(
+                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
+                ModelType.blackOrb
+        );
 //
 //        FrameModelBuilder builder1 = new FrameModelBuilder(
 //                new Vector(

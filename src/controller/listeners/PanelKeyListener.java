@@ -16,6 +16,9 @@ public class PanelKeyListener extends KeyAdapter {
     public static char ARES_KEY = 'q';
     public static char ASTRAPE_KEY = 'a';
     public static char CERBERUS_KEY = 'z';
+    public static char ACESO_KEY = 'w';
+    public static char MELAMPUS_KEY = 's';
+    public static char CHIRON_KEY = 'x';
 
     public PanelKeyListener(){
         SHOP_KEY = KeyConfigs.SHOP_KEY;
@@ -36,6 +39,9 @@ public class PanelKeyListener extends KeyAdapter {
         }
         if (e.getKeyChar() == CERBERUS_KEY) {
             Controller.skillTreeAbilityRequest(SkillTreeAbilityType.cerberus);
+        }
+        if (e.getKeyChar() == ACESO_KEY) {
+            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.aceso);
         }
     }
 }
