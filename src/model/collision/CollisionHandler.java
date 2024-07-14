@@ -1,28 +1,21 @@
 package model.collision;
 
 
-import controller.configs.Configs;
-import data.Constants;
-import model.GameState;
 import model.inGameAbilities.Dismay.EpsilonProtectorModel;
 import model.interfaces.CollisionDetector;
 import model.interfaces.HasVertices;
-import model.interfaces.IsPolygon;
 import model.logics.Impact;
-import model.objectModel.CollectiveModel;
 import model.objectModel.fighters.EnemyModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.ObjectModel;
-import model.objectModel.fighters.basicEnemies.SquarantineModel;
-import model.objectModel.fighters.basicEnemies.TrigorathModel;
 import model.objectModel.fighters.finalBoss.bossHelper.BossHelper;
-import model.objectModel.frameModel.FrameModel;
 import model.objectModel.projectiles.BulletModel;
 import model.objectModel.projectiles.EpsilonBulletModel;
-import model.skillTreeAbilities.Cerberus.Cerberus;
 import model.skillTreeAbilities.Cerberus.CerberusModel;
 import utils.Math;
 import utils.Vector;
+
+import java.util.Random;
 
 public class CollisionHandler {
     ObjectModel model1;
@@ -113,8 +106,7 @@ public class CollisionHandler {
             return;
         }
         if (object instanceof EnemyModel){
-            ((EnemyModel) object).meleeAttack(epsilon);
-            epsilon.meleeAttack((EnemyModel) object);
+            epsilonEnemyMeleeHandler(epsilon ,(EnemyModel)object);
             pullOutObject(epsilon ,object);
             new Impact(collisionPoint).MakeImpact();
             if (object instanceof BossHelper){
@@ -131,6 +123,13 @@ public class CollisionHandler {
         }
     }
 
+    private void epsilonEnemyMeleeHandler(EpsilonModel epsilon, EnemyModel enemy) {
+        Random random = new Random();
+        int attackChance = random.nextInt(1 ,101);
+        if (attackChance >= epsilon.getChanceOfSurvival())
+            (enemy).meleeAttack(epsilon);
+        epsilon.meleeAttack(enemy);
+    }
 
 
     private void pullOutObject(ObjectModel attacker, ObjectModel defender) {

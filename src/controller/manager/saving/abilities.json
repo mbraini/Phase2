@@ -1,28 +1,29 @@
 [
   {
     "epsilon": {
-      "isImpacted": false,
-      "epsilonBulletDamage": 7,
-      "epsilonDamageOnCollision": 2,
+      "isImpacted": true,
+      "epsilonBulletDamage": 5,
+      "epsilonDamageOnCollision": 0,
+      "chanceOfSurvival": 150,
       "hasMeleeAttack": false,
-      "meleeAttack": 7,
+      "meleeAttack": 5,
       "position": {
-        "x": 971.9612612226547,
-        "y": 639.8674247828828
+        "x": 826.1630785403684,
+        "y": 158.1683950850513
       },
       "velocity": {
-        "x": 0.0,
-        "y": 0.0
+        "x": -0.014183237722649306,
+        "y": -0.028685114043747906
       },
       "acceleration": {
-        "x": 0.0,
-        "y": 0.0
+        "x": 3.545809430662306E-4,
+        "y": 7.171278510936963E-4
       },
-      "theta": -2.906496717529066,
+      "theta": -2.8637167971306585,
       "omega": 0.0,
-      "alpha": 0.0,
-      "id": "Y\u003ec�|��BO",
-      "HP": 100.0,
+      "alpha": -0.0,
+      "id": "\u001a�E\b\u00128,E\u000b�",
+      "HP": 50.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"
@@ -41,28 +42,29 @@
   },
   {
     "epsilon": {
-      "isImpacted": false,
-      "epsilonBulletDamage": 7,
-      "epsilonDamageOnCollision": 2,
+      "isImpacted": true,
+      "epsilonBulletDamage": 5,
+      "epsilonDamageOnCollision": 0,
+      "chanceOfSurvival": 150,
       "hasMeleeAttack": false,
-      "meleeAttack": 7,
+      "meleeAttack": 5,
       "position": {
-        "x": 971.9612612226547,
-        "y": 639.8674247828828
+        "x": 826.1630785403684,
+        "y": 158.1683950850513
       },
       "velocity": {
-        "x": 0.0,
-        "y": 0.0
+        "x": -0.014183237722649306,
+        "y": -0.028685114043747906
       },
       "acceleration": {
-        "x": 0.0,
-        "y": 0.0
+        "x": 3.545809430662306E-4,
+        "y": 7.171278510936963E-4
       },
-      "theta": -2.906496717529066,
+      "theta": -2.8637167971306585,
       "omega": 0.0,
-      "alpha": 0.0,
-      "id": "Y\u003ec�|��BO",
-      "HP": 100.0,
+      "alpha": -0.0,
+      "id": "\u001a�E\b\u00128,E\u000b�",
+      "HP": 50.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"
@@ -76,28 +78,29 @@
     "timePassed": 0,
     "protectorModel": {
       "epsilon": {
-        "isImpacted": false,
-        "epsilonBulletDamage": 7,
-        "epsilonDamageOnCollision": 2,
+        "isImpacted": true,
+        "epsilonBulletDamage": 5,
+        "epsilonDamageOnCollision": 0,
+        "chanceOfSurvival": 150,
         "hasMeleeAttack": false,
-        "meleeAttack": 7,
+        "meleeAttack": 5,
         "position": {
-          "x": 971.9612612226547,
-          "y": 639.8674247828828
+          "x": 826.1630785403684,
+          "y": 158.1683950850513
         },
         "velocity": {
-          "x": 0.0,
-          "y": 0.0
+          "x": -0.014183237722649306,
+          "y": -0.028685114043747906
         },
         "acceleration": {
-          "x": 0.0,
-          "y": 0.0
+          "x": 3.545809430662306E-4,
+          "y": 7.171278510936963E-4
         },
-        "theta": -2.906496717529066,
+        "theta": -2.8637167971306585,
         "omega": 0.0,
-        "alpha": 0.0,
-        "id": "Y\u003ec�|��BO",
-        "HP": 100.0,
+        "alpha": -0.0,
+        "id": "\u001a�E\b\u00128,E\u000b�",
+        "HP": 50.0,
         "isHovering": false,
         "isSolid": true,
         "type": "epsilon"
@@ -117,35 +120,36 @@
       "theta": 0.0,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "�0q�\\{\u001e��",
+      "id": "]���\u0015�]��-",
       "HP": 20000.0,
       "isHovering": false,
       "isSolid": false,
       "type": "epsilonProtector"
     },
     "epsilon": {
-      "isImpacted": false,
-      "epsilonBulletDamage": 7,
-      "epsilonDamageOnCollision": 2,
+      "isImpacted": true,
+      "epsilonBulletDamage": 5,
+      "epsilonDamageOnCollision": 0,
+      "chanceOfSurvival": 150,
       "hasMeleeAttack": false,
-      "meleeAttack": 7,
+      "meleeAttack": 5,
       "position": {
-        "x": 971.9612612226547,
-        "y": 639.8674247828828
+        "x": 826.1630785403684,
+        "y": 158.1683950850513
       },
       "velocity": {
-        "x": 0.0,
-        "y": 0.0
+        "x": -0.014183237722649306,
+        "y": -0.028685114043747906
       },
       "acceleration": {
-        "x": 0.0,
-        "y": 0.0
+        "x": 3.545809430662306E-4,
+        "y": 7.171278510936963E-4
       },
-      "theta": -2.906496717529066,
+      "theta": -2.8637167971306585,
       "omega": 0.0,
-      "alpha": 0.0,
-      "id": "Y\u003ec�|��BO",
-      "HP": 100.0,
+      "alpha": -0.0,
+      "id": "\u001a�E\b\u00128,E\u000b�",
+      "HP": 50.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"

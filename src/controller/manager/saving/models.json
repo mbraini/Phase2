@@ -1,263 +1,75 @@
 [
   {
-    "isImpacted": false,
-    "epsilonBulletDamage": 7,
-    "epsilonDamageOnCollision": 2,
+    "isImpacted": true,
+    "epsilonBulletDamage": 5,
+    "epsilonDamageOnCollision": 0,
+    "chanceOfSurvival": 150,
     "hasMeleeAttack": false,
-    "meleeAttack": 7,
+    "meleeAttack": 5,
     "position": {
-      "x": 971.9612612226547,
-      "y": 639.8674247828828
+      "x": 826.1630785403684,
+      "y": 158.1683950850513
     },
     "velocity": {
-      "x": 0.0,
-      "y": 0.0
+      "x": -0.014183237722649306,
+      "y": -0.028685114043747906
     },
     "acceleration": {
-      "x": 0.0,
-      "y": 0.0
+      "x": 3.545809430662306E-4,
+      "y": 7.171278510936963E-4
     },
-    "theta": -2.906496717529066,
+    "theta": -2.8637167971306585,
     "omega": 0.0,
-    "alpha": 0.0,
-    "id": "Y\u003ec�|��BO",
-    "HP": 100.0,
+    "alpha": -0.0,
+    "id": "\u001a�E\b\u00128,E\u000b�",
+    "HP": 50.0,
     "isHovering": false,
     "isSolid": true,
     "type": "epsilon"
   },
   {
-    "timePassed": 0,
-    "coolDown": 15000,
+    "vertices": [
+      {
+        "x": 900.7334102794977,
+        "y": 353.4573520828845
+      },
+      {
+        "x": 913.8386069223253,
+        "y": 401.70933464269933
+      },
+      {
+        "x": 962.09058948214,
+        "y": 388.6041379998749
+      },
+      {
+        "x": 948.9853928393148,
+        "y": 340.3521554400523
+      }
+    ],
+    "isImpacted": true,
+    "vulnerableToEpsilonMelee": true,
+    "vulnerableToEpsilonBullet": true,
     "hasMeleeAttack": true,
     "meleeAttack": 10,
     "position": {
-      "x": 839.7010942974235,
-      "y": 297.67153774805695
+      "x": 931.4119998808194,
+      "y": 371.0307450413756
     },
     "velocity": {
-      "x": 0.0,
-      "y": 0.0
+      "x": 0.014183237722649095,
+      "y": 0.02868511404374815
     },
     "acceleration": {
-      "x": 0.0,
-      "y": 0.0
+      "x": -3.5458094306622674E-4,
+      "y": -7.171278510936983E-4
     },
-    "theta": 0.0,
-    "omega": 0.0,
-    "alpha": 0.0,
-    "id": "���ڙ��M��",
-    "HP": 100000.0,
-    "isHovering": true,
+    "theta": 575.1766573181984,
+    "omega": 0.0010053096491487463,
+    "alpha": -2.5132741228718347E-5,
+    "id": "gM���/F~�",
+    "HP": 5.0,
+    "isHovering": false,
     "isSolid": false,
-    "type": null
-  },
-  {
-    "timePassed": 0,
-    "coolDown": 15000,
-    "hasMeleeAttack": true,
-    "meleeAttack": 10,
-    "position": {
-      "x": 867.8469199204178,
-      "y": 248.92153774805695
-    },
-    "velocity": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "acceleration": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "theta": 0.0,
-    "omega": 0.0,
-    "alpha": 0.0,
-    "id": "�+\u001d*�\u0027ԙ*�",
-    "HP": 100000.0,
-    "isHovering": true,
-    "isSolid": false,
-    "type": null
-  },
-  {
-    "timePassed": 0,
-    "coolDown": 15000,
-    "hasMeleeAttack": true,
-    "meleeAttack": 10,
-    "position": {
-      "x": 811.5552686744293,
-      "y": 248.92153774805695
-    },
-    "velocity": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "acceleration": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "theta": 0.0,
-    "omega": 0.0,
-    "alpha": 0.0,
-    "id": "���\u001c�\u001dj.\u000bd",
-    "HP": 100000.0,
-    "isHovering": true,
-    "isSolid": false,
-    "type": null
-  },
-  {
-    "timePassed": 0,
-    "coolDown": 15000,
-    "hasMeleeAttack": true,
-    "meleeAttack": 10,
-    "position": {
-      "x": 512.3737989748646,
-      "y": 604.0793835068835
-    },
-    "velocity": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "acceleration": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "theta": 0.0,
-    "omega": 0.0,
-    "alpha": 0.0,
-    "id": "�B��P�8�,�",
-    "HP": 100000.0,
-    "isHovering": true,
-    "isSolid": false,
-    "type": null
-  },
-  {
-    "timePassed": 0,
-    "coolDown": 15000,
-    "hasMeleeAttack": true,
-    "meleeAttack": 10,
-    "position": {
-      "x": 540.5196245978589,
-      "y": 555.3293835068835
-    },
-    "velocity": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "acceleration": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "theta": 0.0,
-    "omega": 0.0,
-    "alpha": 0.0,
-    "id": "�d\u0016~$��h��",
-    "HP": 100000.0,
-    "isHovering": true,
-    "isSolid": false,
-    "type": null
-  },
-  {
-    "timePassed": 0,
-    "coolDown": 15000,
-    "hasMeleeAttack": true,
-    "meleeAttack": 10,
-    "position": {
-      "x": 484.22797335187033,
-      "y": 555.3293835068835
-    },
-    "velocity": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "acceleration": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "theta": 0.0,
-    "omega": 0.0,
-    "alpha": 0.0,
-    "id": "��ZTpMN�Fz",
-    "HP": 100000.0,
-    "isHovering": true,
-    "isSolid": false,
-    "type": null
-  },
-  {
-    "timePassed": 7000,
-    "coolDown": 15000,
-    "hasMeleeAttack": false,
-    "meleeAttack": 10,
-    "position": {
-      "x": 404.0196380961509,
-      "y": 588.8581139247518
-    },
-    "velocity": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "acceleration": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "theta": 0.0,
-    "omega": 0.0,
-    "alpha": 0.0,
-    "id": "(�s�h\u001bg���",
-    "HP": 100000.0,
-    "isHovering": true,
-    "isSolid": false,
-    "type": null
-  },
-  {
-    "timePassed": 7000,
-    "coolDown": 15000,
-    "hasMeleeAttack": false,
-    "meleeAttack": 10,
-    "position": {
-      "x": 432.1654637191452,
-      "y": 540.1081139247518
-    },
-    "velocity": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "acceleration": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "theta": 0.0,
-    "omega": 0.0,
-    "alpha": 0.0,
-    "id": "d�M\u003d�{@�R",
-    "HP": 100000.0,
-    "isHovering": true,
-    "isSolid": false,
-    "type": null
-  },
-  {
-    "timePassed": 0,
-    "coolDown": 15000,
-    "hasMeleeAttack": true,
-    "meleeAttack": 10,
-    "position": {
-      "x": 375.87381247315665,
-      "y": 540.1081139247518
-    },
-    "velocity": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "acceleration": {
-      "x": 0.0,
-      "y": 0.0
-    },
-    "theta": 0.0,
-    "omega": 0.0,
-    "alpha": 0.0,
-    "id": "�����\u000f\u0007�\n�",
-    "HP": 100000.0,
-    "isHovering": true,
-    "isSolid": false,
-    "type": null
+    "type": "squarantine"
   }
 ]

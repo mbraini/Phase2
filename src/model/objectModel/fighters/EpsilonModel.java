@@ -17,6 +17,7 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
     private boolean isImpacted = false;
     private int epsilonBulletDamage;
     private int epsilonDamageOnCollision;
+    private int chanceOfSurvival;
     public EpsilonModel(Vector position , String id){
         this.position = position;
         this.velocity = new Vector();
@@ -133,5 +134,13 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
 
     public void setEpsilonDamageOnCollision(int epsilonDamageOnCollision) {
         this.epsilonDamageOnCollision = epsilonDamageOnCollision;
+    }
+
+    public int getChanceOfSurvival() {
+        return chanceOfSurvival;
+    }
+
+    public void setChanceOfSurvival(int chanceOfSurvival) {
+        this.chanceOfSurvival = chanceOfSurvival;
     }
 }

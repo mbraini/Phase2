@@ -14,6 +14,7 @@ public class SkillTreeAbilityHandler {
         abilities.add(new Astrape());
         abilities.add(new Cerberus());
         abilities.add(new Aceso());
+        abilities.add(new Melapmus());
         ModelData.setSkillTreeAbilities(abilities);
     }
 

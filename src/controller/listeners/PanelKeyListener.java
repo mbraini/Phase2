@@ -43,5 +43,8 @@ public class PanelKeyListener extends KeyAdapter {
         if (e.getKeyChar() == ACESO_KEY) {
             Controller.skillTreeAbilityRequest(SkillTreeAbilityType.aceso);
         }
+        if (e.getKeyChar() == MELAMPUS_KEY) {
+            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.melampus);
+        }
     }
 }
