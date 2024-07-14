@@ -9,6 +9,7 @@ import model.objectModel.ObjectModel;
 import model.objectModel.effects.ArchmireAoeEffectModel;
 import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.fighters.EpsilonModel;
+import model.objectModel.fighters.EpsilonVertexModel;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.vomit.BossAoeEffectModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
@@ -279,5 +280,15 @@ public abstract class Spawner {
                 protectorModel.getPosition(),
                 protectorModel.getId()
         ));
+    }
+
+    public static void spawnVertex(EpsilonVertexModel epsilonVertexModel) {
+        ModelRequests.addObjectModel(epsilonVertexModel);
+        ViewRequest.addObjectView(
+                new EpsilonVertexView(
+                        epsilonVertexModel.getPosition(),
+                        epsilonVertexModel.getId()
+                )
+        );
     }
 }

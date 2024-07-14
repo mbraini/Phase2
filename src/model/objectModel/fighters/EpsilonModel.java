@@ -3,10 +3,12 @@ package model.objectModel.fighters;
 
 import controller.configs.Configs;
 import controller.enums.ModelType;
+import controller.manager.Spawner;
 import data.Constants;
 import model.collision.Collision;
 import model.interfaces.*;
 import model.objectModel.FighterModel;
+import utils.Helper;
 import utils.Math;
 import utils.Vector;
 
@@ -65,19 +67,41 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
     }
 
     public void addVertex(){
-        theta = 0;
-        vertices = new ArrayList<>();
-        double theta = 2 * java.lang.Math.PI / Configs.VERTICES;
-        for (int i = 0; i < Configs.VERTICES ;i++){
-            vertices.add(new EpsilonVertexModel(this ,theta * i));
+        this.theta = 0;
+        int vertexCount = vertices.size() + 1;
+        double degree = java.lang.Math.PI * 2 / vertexCount;
+        for (int i = 0; i < vertexCount - 1 ;i++){
+            vertices.get(i).rotateTo(degree * i);
         }
+        degree = degree * (vertexCount - 1);
+        Vector direction = new Vector(java.lang.Math.cos(degree) , java.lang.Math.sin(degree));
+        direction = Math.VectorWithSize(
+                direction,
+                Constants.EPSILON_DIMENSION.width / 2d + Constants.EPSILON_VERTICES_RADIOS
+        );
+        EpsilonVertexModel epsilonVertexModel = new EpsilonVertexModel(
+                Math.VectorAdd(direction ,position),
+                position.clone(),
+                degree,
+                Helper.RandomStringGenerator(Constants.ID_SIZE)
+        );
+        Spawner.spawnVertex(epsilonVertexModel);
+        vertices.add(epsilonVertexModel);
     }
 
     @Override
     public void UpdateVertices(double xMoved ,double yMoved ,double theta) {
         for (int i = 0 ;i < vertices.size() ;i++){
-            vertices.get(i).setTheta(vertices.get(i).getTheta() + theta);
-            vertices.get(i).Update();
+            vertices.get(i).rotateBy(theta);
+            Vector origin = new Vector(
+                    getPosition().x + getRadios() + Constants.EPSILON_VERTICES_RADIOS,
+                    getPosition().y
+            );
+            vertices.get(i).setPosition(Math.RotateByTheta(
+                    origin ,
+                    getPosition() ,
+                    vertices.get(i).getTheta())
+            );
         }
     }
 

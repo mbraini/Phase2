@@ -1,10 +1,17 @@
 package view.objectViews;
 
 import data.Constants;
+import utils.Vector;
 
 import java.awt.*;
 
 public class EpsilonVertexView extends ObjectView{
+
+    public EpsilonVertexView(Vector position ,String id){
+        this.position = position;
+        this.id = id;
+    }
+
     @Override
     public void draw(Graphics2D g2d) {
         g2d.setColor(Color.WHITE);

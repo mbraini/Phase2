@@ -19,6 +19,9 @@ public class PanelKeyListener extends KeyAdapter {
     public static char ACESO_KEY = 'w';
     public static char MELAMPUS_KEY = 's';
     public static char CHIRON_KEY = 'x';
+    public static char PROTEUS_KEY = 'e';
+    public static char EMPUSA_KEY = 'd';
+    public static char DOLUS_KEY = 'c';
 
     public PanelKeyListener(){
         SHOP_KEY = KeyConfigs.SHOP_KEY;
@@ -48,6 +51,9 @@ public class PanelKeyListener extends KeyAdapter {
         }
         if (e.getKeyChar() == CHIRON_KEY) {
             Controller.skillTreeAbilityRequest(SkillTreeAbilityType.chiron);
+        }
+        if (e.getKeyChar() == PROTEUS_KEY) {
+            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.proteus);
         }
     }
 }

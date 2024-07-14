@@ -10,12 +10,15 @@ import utils.Vector;
 
 
 public class EpsilonVertexModel extends ObjectModel implements IsCircle {
-    EpsilonModel epsilon;
-    public EpsilonVertexModel(EpsilonModel epsilon , double theta){
-        this.epsilon = epsilon;
+
+    private Vector epsilonPosition;
+
+    public EpsilonVertexModel(Vector position ,Vector epsilonPosition ,double theta ,String id){
+        this.position = position;
+        this.id = id;
         this.theta = theta;
-        this.position = new Vector();
-        this.HP = 1;
+        this.epsilonPosition = epsilonPosition.clone();
+        this.HP = 1000000;
     }
     @Override
     public double getRadios() {
@@ -26,17 +29,21 @@ public class EpsilonVertexModel extends ObjectModel implements IsCircle {
     public Vector getCenter() {
         return position;
     }
-
-    public void Update() {
-        Vector origin = new Vector(
-                epsilon.getPosition().x ,
-                epsilon.getPosition().y - epsilon.getRadios() - getRadios()
-        );
-        position = Math.RotateByTheta(origin ,epsilon.getPosition() ,theta);
-    }
-
     @Override
     public void die() {
         ////////////doNothing
+    }
+
+    public void rotateTo(double theta) {
+        Vector direction = new Vector(
+                Constants.EPSILON_VERTICES_RADIOS + Constants.EPSILON_DIMENSION.width / 2d,
+                0
+        );
+        position = Math.RotateByTheta(Math.VectorAdd(epsilonPosition ,direction) ,epsilonPosition ,theta);
+        this.theta = theta;
+    }
+
+    public void rotateBy(double theta) {
+        this.theta += theta;
     }
 }

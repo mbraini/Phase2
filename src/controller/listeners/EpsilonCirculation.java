@@ -33,10 +33,11 @@ public class EpsilonCirculation extends MouseMotionAdapter {
         if (mousePosition.Equals(epsilonPosition))
             return;
         Vector direction = Math.VectorAdd(Math.ScalarInVector(-1 ,epsilonPosition) ,mousePosition);
-        double cosTheta = Math.DotProduct(direction ,new Vector(0 ,-1)) / (Math.VectorSize(direction));
+        double cosTheta = Math.DotProduct(direction ,new Vector(1 ,0)) / (Math.VectorSize(direction));
         double theta = java.lang.Math.acos(cosTheta);
-        if ((direction.getX() >= 0 && direction.getY() >= 0) || (direction.getX() >= 0 && direction.getY() <= 0))
-            theta *= -1;
-        epsilon.Rotate(theta);
+        if (direction.getY() <= 0){
+            theta = -theta;
+        }
+        epsilon.Rotate(-theta);
     }
 }

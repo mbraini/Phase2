@@ -16,11 +16,15 @@ import java.awt.event.KeyListener;
 import java.util.HashSet;
 
 public class EpsilonMovement extends KeyAdapter {
-    HashSet<Integer> keys = new HashSet<>();
-    EpsilonModel epsilon;
-    Vector direction = new Vector(0 ,0);
+    private HashSet<Integer> keys = new HashSet<>();
+    private EpsilonModel epsilon;
+    private Vector direction = new Vector(0 ,0);
     public static Timer xStopper;
     public static Timer yStopper;
+    public static int LEFT_KEY = 37;
+    public static int UP_KEY = 38;
+    public static int RIGHT_KEY = 39;
+    public static int DOWN_KEY = 40;
 
     public EpsilonMovement(){
         this.epsilon = (EpsilonModel) (ModelData.getModels().getFirst());
@@ -37,16 +41,16 @@ public class EpsilonMovement extends KeyAdapter {
 
     private void CalculateDirection() {
         Vector newDirection = new Vector(0 ,0);
-        if (keys.contains(37)){
+        if (keys.contains(LEFT_KEY)){
             newDirection.setX(newDirection.getX() - 1);
         }
-        if (keys.contains(38)){
+        if (keys.contains(UP_KEY)){
             newDirection.setY(newDirection.getY() - 1);
         }
-        if (keys.contains(39)){
+        if (keys.contains(RIGHT_KEY)){
             newDirection.setX(newDirection.getX() + 1);
         }
-        if (keys.contains(40)){
+        if (keys.contains(DOWN_KEY)){
             newDirection.setY(newDirection.getY() + 1);
         }
         direction = new Vector(newDirection.x ,newDirection.y);
