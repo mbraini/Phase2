@@ -7,18 +7,19 @@ import model.skillTreeAbilities.SkillTreeAbilityHandler;
 
 public class SkillTreeAbilityRequests {
 
+    public static void abilityRequest(SkillTreeAbilityType type) {
+        if (canUse(type)) {
+            GameState.setXp(GameState.getXp() - SkillTreeAbilityHandler.getAbility(type).getInGameXpCost());
+            SkillTreeAbilityHandler.activateSkillTreeAbility(type);
+        }
+    }
+
     private static boolean canUse(SkillTreeAbilityType type) {
         SkillTreeAbility ability = SkillTreeAbilityHandler.getAbility(type);
-        if (ability.isBought() && ability.isCanCast() && GameState.getXp() >= ability.getInGameXpCost()){
+        if (ability.isBought() && ability.CanCast() && GameState.getXp() >= ability.getInGameXpCost()){
             return true;
         }
         return false;
     }
 
-    public static void abilityRequest(SkillTreeAbilityType type) {
-        if (canUse(type)) {
-            SkillTreeAbilityHandler.activateSkillTreeAbility(type);
-            GameState.setXp(GameState.getXp() - SkillTreeAbilityHandler.getAbility(type).getInGameXpCost());
-        }
-    }
 }

@@ -1,0 +1,38 @@
+package controller.listeners;
+
+import controller.Controller;
+import controller.configs.KeyConfigs;
+import controller.enums.SkillTreeAbilityType;
+import model.GameState;
+import view.gamePanels.Shop;
+import view.gamePanels.ShopFrame;
+
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+public class PanelKeyListener extends KeyAdapter {
+
+    public static char SHOP_KEY = 'p';
+    public static char ARES_KEY = 'q';
+    public static char ASTRAPE_KEY = 'a';
+    public static char CERBERUS_KEY = 'z';
+
+    public PanelKeyListener(){
+        SHOP_KEY = KeyConfigs.SHOP_KEY;
+        ARES_KEY = KeyConfigs.ARES_KEY;
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        if (e.getKeyChar() == SHOP_KEY && !GameState.isPause()){
+            Controller.pause();
+            new Shop(new ShopFrame());
+        }
+        if (e.getKeyChar() == ARES_KEY) {
+            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.ares);
+        }
+        if (e.getKeyChar() == ASTRAPE_KEY) {
+            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.astrape);
+        }
+    }
+}

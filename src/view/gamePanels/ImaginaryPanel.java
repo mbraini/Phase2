@@ -2,6 +2,7 @@ package view.gamePanels;
 
 import controller.Controller;
 import controller.enums.SkillTreeAbilityType;
+import controller.listeners.PanelKeyListener;
 import data.Constants;
 import model.GameState;
 import model.skillTreeAbilities.SkillTreeAbility;
@@ -35,18 +36,7 @@ public class ImaginaryPanel extends JPanel {
     }
 
     private void initKeyListener() {
-        this.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                if (e.getKeyChar() == 'p' && !GameState.isPause()){
-                    Controller.pause();
-                    new Shop(new ShopFrame());
-                }
-                if (e.getKeyChar() == 'q' && !GameState.isPause()){
-                    Controller.skillTreeAbilityRequest(SkillTreeAbilityType.ares);
-                }
-            }
-        });
+        this.addKeyListener(new PanelKeyListener());
     }
 
 

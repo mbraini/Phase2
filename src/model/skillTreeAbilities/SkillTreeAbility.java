@@ -6,10 +6,10 @@ import javax.swing.*;
 
 public abstract class SkillTreeAbility {
 
-    protected boolean isBought;
+    protected boolean isBought = true;       /////////////////////// fix later !
     protected int inGameXpCost = 100;
-    protected int inGameCoolDownTime = 300000;
-    protected boolean canCast;
+    protected int inGameCoolDownTime = 10000;
+    protected boolean canCast = true;         ////////////////////// fix later !
     protected Timer coolDownTimer;
     protected int coolDownTimePassed;
     protected int unlockXpCost;
@@ -41,7 +41,7 @@ public abstract class SkillTreeAbility {
         this.inGameCoolDownTime = inGameCoolDownTime;
     }
 
-    public boolean isCanCast() {
+    public boolean CanCast() {
         return canCast;
     }
 

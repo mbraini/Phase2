@@ -16,6 +16,7 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
     private static ArrayList<EpsilonVertexModel> vertices = new ArrayList<>();
     private boolean isImpacted = false;
     private int epsilonBulletDamage;
+    private int epsilonDamageOnCollision;
     public EpsilonModel(Vector position , String id){
         this.position = position;
         this.velocity = new Vector();
@@ -107,6 +108,7 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
     }
 
     public void meleeAttack(EnemyModel enemyModel){
+        enemyModel.setHP(enemyModel.getHP() - epsilonDamageOnCollision);
         if (!enemyModel.isVulnerableToEpsilonMelee())
             return;
         for (EpsilonVertexModel vertex : vertices){
@@ -123,5 +125,13 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
 
     public void setEpsilonBulletDamage(int epsilonBulletDamage) {
         this.epsilonBulletDamage = epsilonBulletDamage;
+    }
+
+    public int getEpsilonDamageOnCollision() {
+        return epsilonDamageOnCollision;
+    }
+
+    public void setEpsilonDamageOnCollision(int epsilonDamageOnCollision) {
+        this.epsilonDamageOnCollision = epsilonDamageOnCollision;
     }
 }

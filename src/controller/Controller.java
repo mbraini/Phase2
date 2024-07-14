@@ -15,6 +15,7 @@ import model.interfaces.ImageChanger;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.frameModel.FrameModelBuilder;
+import model.skillTreeAbilities.SkillTreeAbilityHandler;
 import model.threads.FrameThread;
 import model.threads.GameLoop;
 import model.GameState;
@@ -180,6 +181,7 @@ public abstract class Controller {
         addEpsilonAndFrame();
         new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
         InGameAbilityHandler.initInGameAbilities();
+        SkillTreeAbilityHandler.initAbilities();
         Controller.threadsStarter();
     }
 
@@ -224,9 +226,9 @@ public abstract class Controller {
 //        Spawner.spawnObject(new Vector(600 ,300),
 //                ModelType.necropick
 //        );
-        Spawner.spawnObject(new Vector(0 ,0),
-                ModelType.wyrm
-        );
+//        Spawner.spawnObject(new Vector(0 ,0),
+//                ModelType.wyrm
+//        );
 
 //        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 100),
 //                ModelType.wyrm
@@ -244,9 +246,9 @@ public abstract class Controller {
 //        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
 //                ModelType.squarantine
 //        );
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.squarantine
-//        );
+        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+                ModelType.squarantine
+        );
 //        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
 //                ModelType.trigorath
 //        );

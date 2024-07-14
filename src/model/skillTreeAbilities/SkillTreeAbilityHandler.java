@@ -10,6 +10,8 @@ public class SkillTreeAbilityHandler {
     public synchronized static void initAbilities(){
         ArrayList<SkillTreeAbility> abilities = ModelData.getSkillTreeAbilities();
         abilities.add(new Ares());
+        abilities.add(new Astrape());
+        ModelData.setSkillTreeAbilities(abilities);
     }
 
     public static SkillTreeAbility getAbility(SkillTreeAbilityType type) {
