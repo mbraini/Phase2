@@ -34,7 +34,7 @@ public class Proteus extends SkillTreeAbility{
     }
 
     @Override
-    protected void setUp() {
+    public void setUp() {
         super.setUp();
         epsilonModel = ModelData.getEpsilon();
     }

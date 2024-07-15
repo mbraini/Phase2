@@ -35,4 +35,9 @@ public class SkillTreeAbilityHandler {
         SkillTreeAbility skillTreeAbility = getAbility(type);
         skillTreeAbility.cast();
     }
+
+    public static void addSkillTree(SkillTreeAbility skillTreeAbility) {
+        ArrayList<SkillTreeAbility> skillTreeAbilities = ModelData.getSkillTreeAbilities();
+        skillTreeAbilities.add(skillTreeAbility);
+    }
 }

@@ -178,14 +178,14 @@ public abstract class Controller {
 
 
     public static void startGame(){
-//        load();
-        modelStarter();
-        viewStarter();
-        addEpsilonAndFrame();
-        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
-        InGameAbilityHandler.initInGameAbilities();
-        SkillTreeAbilityHandler.initAbilities();
-        Controller.threadsStarter();
+        load();
+//        modelStarter();
+//        viewStarter();
+//        addEpsilonAndFrame();
+//        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
+//        InGameAbilityHandler.initInGameAbilities();
+//        SkillTreeAbilityHandler.initAbilities();
+//        Controller.threadsStarter();
     }
 
     private static void addEpsilonAndFrame() {
@@ -241,17 +241,17 @@ public abstract class Controller {
 //                ModelType.omenoct
 //        );
 //
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.archmire
-//        );
+        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+                ModelType.archmire
+        );
 //
 //
 //        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
 //                ModelType.squarantine
 //        );
-        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-                ModelType.squarantine
-        );
+//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ModelType.squarantine
+//        );
 //        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
 //                ModelType.trigorath
 //        );

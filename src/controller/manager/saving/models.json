@@ -12,8 +12,8 @@
     "hasMeleeAttack": false,
     "meleeAttack": 5,
     "position": {
-      "x": 742.8994932614048,
-      "y": 480.2599999999997
+      "x": 797.4813109778011,
+      "y": 385.8558695947708
     },
     "velocity": {
       "x": 0.0,
@@ -23,53 +23,325 @@
       "x": 0.0,
       "y": 0.0
     },
-    "theta": 0.9559005944905526,
+    "theta": -0.8029378271608034,
     "omega": 0.0,
     "alpha": 0.0,
-    "id": "\u0013/�͑��\"W�",
-    "HP": 100.0,
+    "id": "A��:r8Ie\u001b)",
+    "HP": -60.0,
     "isHovering": false,
     "isSolid": true,
     "type": "epsilon"
   },
   {
-    "epsilonPosition": {
-      "x": 742.8994932614048,
-      "y": 480.2599999999997
-    },
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
     "position": {
-      "x": 751.8410302803983,
-      "y": 467.5990791907549
+      "x": 733.6658780845461,
+      "y": 510.7177670443073
     },
-    "velocity": null,
-    "acceleration": null,
-    "theta": 0.9559005944905518,
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
     "omega": 0.0,
     "alpha": 0.0,
-    "id": "��t`T\u0018�y�",
-    "HP": 1000000.0,
-    "isHovering": false,
+    "id": "�\u003c����5G",
+    "HP": 100000.0,
+    "isHovering": true,
     "isSolid": false,
-    "type": "epsilonVertex"
+    "type": "cerberus"
   },
   {
-    "epsilonPosition": {
-      "x": 742.8994932614048,
-      "y": 480.2599999999997
-    },
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
     "position": {
-      "x": 733.9579562424113,
-      "y": 492.9209208092446
+      "x": 761.8117037075403,
+      "y": 461.9677670443073
     },
-    "velocity": null,
-    "acceleration": null,
-    "theta": 4.097493248080347,
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
     "omega": 0.0,
     "alpha": 0.0,
-    "id": "I�x���\t�\u0017\f",
-    "HP": 1000000.0,
-    "isHovering": false,
+    "id": "\u001f���\u003c%!\u003e�3",
+    "HP": 100000.0,
+    "isHovering": true,
     "isSolid": false,
-    "type": "epsilonVertex"
+    "type": "cerberus"
+  },
+  {
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 705.5200524615518,
+      "y": 461.9677670443073
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "e�\u0013F\u001c˛ �9",
+    "HP": 100000.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": "cerberus"
+  },
+  {
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 797.0813109778011,
+      "y": 522.7058695947707
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "�z$`6`��b\"",
+    "HP": 100000.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": "cerberus"
+  },
+  {
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 825.2271366007953,
+      "y": 473.95586959477066
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "����PI#�G",
+    "HP": 100000.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": "cerberus"
+  },
+  {
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 768.9354853548068,
+      "y": 473.95586959477066
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "�W�,�X���@",
+    "HP": 100000.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": "cerberus"
+  },
+  {
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 650.4313109778011,
+      "y": 416.0558695947708
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "\u000f�\u0000+\u0010j���",
+    "HP": 100000.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": "cerberus"
+  },
+  {
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 678.5771366007954,
+      "y": 367.3058695947708
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "J!ct@�r�R*",
+    "HP": 100000.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": "cerberus"
+  },
+  {
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 622.2854853548068,
+      "y": 367.3058695947708
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "}��}Q���ѿ",
+    "HP": 100000.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": "cerberus"
+  },
+  {
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 797.4813109778011,
+      "y": 418.3558695947708
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "��/)\"\u0026A��g",
+    "HP": 100000.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": "cerberus"
+  },
+  {
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 825.6271366007953,
+      "y": 369.6058695947708
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "����\u001a\u0013]$��",
+    "HP": 100000.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": "cerberus"
+  },
+  {
+    "timePassed": 0,
+    "coolDown": 15000,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 769.3354853548068,
+      "y": 369.6058695947708
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "\"������\u00075k",
+    "HP": 100000.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": "cerberus"
   }
 ]

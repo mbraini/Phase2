@@ -56,7 +56,7 @@ public class Aceso extends SkillTreeAbility{
     }
 
     @Override
-    protected void setUp() {
+    public void setUp() {
         super.setUp();
         initHealTimer();
         if (healAmount != 0) {

@@ -1,20 +1,16 @@
 package controller.manager.loading;
 
 import com.google.gson.*;
-import controller.Controller;
 import controller.enums.AbstractEnemyType;
-import controller.enums.EffectType;
 import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
-import controller.manager.GameManager;
-import controller.manager.GameManagerThread;
+import controller.enums.SkillTreeAbilityType;
 import controller.manager.Spawner;
 import model.ModelData;
 import model.inGameAbilities.InGameAbility;
-import model.objectModel.effects.EffectModel;
-import model.objectModel.fighters.finalBoss.abilities.AbilityType;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
 import model.objectModel.frameModel.FrameModel;
+import model.skillTreeAbilities.SkillTreeAbility;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,6 +35,32 @@ public class GameLoader {
     public synchronized void load() {
         loadGame();
         loadAbilities();
+        loadSkillTree();
+    }
+
+    private void loadSkillTree() {
+        gson = getGson();
+
+        StringBuilder skillTreeString = new StringBuilder();
+        try {
+            Scanner abilityScanner = new Scanner(new File("src/controller/manager/saving/skillTree.json"));
+            while (abilityScanner.hasNextLine())
+                skillTreeString.append(abilityScanner.nextLine());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        ArrayList<SkillTreeAbility> abilities;
+        try {
+            JSONArray jAbilities = (JSONArray) new JSONTokener(skillTreeString.toString()).nextValue();
+            for (int i = 0; i <jAbilities.length() ;i++){
+                JSONObject jAbility = jAbilities.getJSONObject(i);
+                String jType = jAbility.get("type").toString();
+                SkillTreeAbilityType type = gson.fromJson(jType , SkillTreeAbilityType.class);
+                GameLoaderHelper.addSkillTree(jAbility ,type);
+            }
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void loadAbilities() {

@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 import controller.enums.EffectType;
 import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
+import controller.enums.SkillTreeAbilityType;
 import controller.manager.Spawner;
 import model.ModelData;
 import model.ModelRequests;
@@ -30,11 +31,17 @@ import model.objectModel.fighters.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.fighters.normalEnemies.omenoctModel.OmenoctModel;
 import model.objectModel.fighters.normalEnemies.wyrmModel.WyrmModel;
 import model.objectModel.frameModel.FrameModel;
+import model.skillTreeAbilities.Cerberus.Cerberus;
+import model.skillTreeAbilities.Cerberus.CerberusModel;
+import model.skillTreeAbilities.Proteus;
+import model.skillTreeAbilities.SkillTreeAbility;
+import model.skillTreeAbilities.SkillTreeAbilityHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.area.Polygon;
 import view.ViewRequest;
+import view.objectViews.CerberusView;
 import view.objectViews.EpsilonProtectorView;
 import view.objectViews.EpsilonView;
 import view.objectViews.basicEnemyView.SquarantineView;
@@ -169,6 +176,15 @@ public class GameLoaderHelper {
                         model.getId()
                 ));
                 break;
+            case cerberus:
+                model = gson.fromJson(jsonString , CerberusModel.class);
+                ((CerberusModel) model).start();
+                ModelData.addModel(model);
+                ViewRequest.addObjectView(new CerberusView(
+                        model.getPosition(),
+                        model.getId()
+                ));
+                break;
         }
     }
 
@@ -289,4 +305,17 @@ public class GameLoaderHelper {
         InGameAbilityHandler.addAbility(ability);
     }
 
+    public static void addSkillTree(JSONObject jAbility, SkillTreeAbilityType type) {
+        String abilityString = jAbility.toString();
+        SkillTreeAbility skillTreeAbility;
+        switch (type) {
+            case cerberus :
+                skillTreeAbility = gson.fromJson(abilityString , Cerberus.class);
+                break;
+            default:
+                skillTreeAbility = gson.fromJson(abilityString , Proteus.class);
+        }
+        skillTreeAbility.setUp();
+        SkillTreeAbilityHandler.addSkillTree(skillTreeAbility);
+    }
 }

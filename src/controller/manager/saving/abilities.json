@@ -13,8 +13,8 @@
       "hasMeleeAttack": false,
       "meleeAttack": 5,
       "position": {
-        "x": 742.8994932614048,
-        "y": 480.2599999999997
+        "x": 797.4813109778011,
+        "y": 385.8558695947708
       },
       "velocity": {
         "x": 0.0,
@@ -24,11 +24,11 @@
         "x": 0.0,
         "y": 0.0
       },
-      "theta": 0.9559005944905526,
+      "theta": -0.8029378271608034,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "\u0013/�͑��\"W�",
-      "HP": 100.0,
+      "id": "A��:r8Ie\u001b)",
+      "HP": -60.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"
@@ -59,8 +59,8 @@
       "hasMeleeAttack": false,
       "meleeAttack": 5,
       "position": {
-        "x": 742.8994932614048,
-        "y": 480.2599999999997
+        "x": 797.4813109778011,
+        "y": 385.8558695947708
       },
       "velocity": {
         "x": 0.0,
@@ -70,11 +70,11 @@
         "x": 0.0,
         "y": 0.0
       },
-      "theta": 0.9559005944905526,
+      "theta": -0.8029378271608034,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "\u0013/�͑��\"W�",
-      "HP": 100.0,
+      "id": "A��:r8Ie\u001b)",
+      "HP": -60.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"
@@ -100,8 +100,8 @@
         "hasMeleeAttack": false,
         "meleeAttack": 5,
         "position": {
-          "x": 742.8994932614048,
-          "y": 480.2599999999997
+          "x": 797.4813109778011,
+          "y": 385.8558695947708
         },
         "velocity": {
           "x": 0.0,
@@ -111,11 +111,11 @@
           "x": 0.0,
           "y": 0.0
         },
-        "theta": 0.9559005944905526,
+        "theta": -0.8029378271608034,
         "omega": 0.0,
         "alpha": 0.0,
-        "id": "\u0013/�͑��\"W�",
-        "HP": 100.0,
+        "id": "A��:r8Ie\u001b)",
+        "HP": -60.0,
         "isHovering": false,
         "isSolid": true,
         "type": "epsilon"
@@ -135,7 +135,7 @@
       "theta": 0.0,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "��CKzP���",
+      "id": "E]�\n��S�\u0011\u0012",
       "HP": 20000.0,
       "isHovering": false,
       "isSolid": false,
@@ -154,8 +154,8 @@
       "hasMeleeAttack": false,
       "meleeAttack": 5,
       "position": {
-        "x": 742.8994932614048,
-        "y": 480.2599999999997
+        "x": 797.4813109778011,
+        "y": 385.8558695947708
       },
       "velocity": {
         "x": 0.0,
@@ -165,11 +165,11 @@
         "x": 0.0,
         "y": 0.0
       },
-      "theta": 0.9559005944905526,
+      "theta": -0.8029378271608034,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "\u0013/�͑��\"W�",
-      "HP": 100.0,
+      "id": "A��:r8Ie\u001b)",
+      "HP": -60.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"

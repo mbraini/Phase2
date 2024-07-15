@@ -92,7 +92,7 @@ public abstract class SkillTreeAbility {
         canCast = true;
     }
 
-    protected void setUp(){
+    public void setUp(){
         initTimer();
         if (coolDownTimePassed >= 0 && !canCast) {
             coolDownTimer.start();
