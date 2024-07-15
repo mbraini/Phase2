@@ -1,6 +1,7 @@
 package model.objectModel.fighters;
 
 
+import controller.enums.ModelType;
 import data.Constants;
 import model.interfaces.IsCircle;
 import model.objectModel.ObjectModel;
@@ -18,6 +19,7 @@ public class EpsilonVertexModel extends ObjectModel implements IsCircle {
         this.id = id;
         this.theta = theta;
         this.epsilonPosition = epsilonPosition.clone();
+        type = ModelType.epsilonVertex;
         this.HP = 1000000;
     }
     @Override

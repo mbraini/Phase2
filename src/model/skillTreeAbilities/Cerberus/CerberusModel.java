@@ -1,5 +1,6 @@
 package model.skillTreeAbilities.Cerberus;
 
+import controller.enums.ModelType;
 import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.GameState;
@@ -27,6 +28,7 @@ public class CerberusModel extends FighterModel implements IsCircle {
         hasMeleeAttack = true;
         meleeAttack = 10;
         coolDown = Constants.CERBERUS_COOLDOWN;
+        type = ModelType.cerberus;
         setHP(100000);
         initTimer();
     }

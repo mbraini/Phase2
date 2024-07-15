@@ -3,6 +3,7 @@ package model.objectModel.fighters;
 
 import controller.configs.Configs;
 import controller.enums.ModelType;
+import controller.interfaces.SizeChanger;
 import controller.manager.Spawner;
 import data.Constants;
 import model.collision.Collision;
@@ -12,10 +13,12 @@ import utils.Helper;
 import utils.Math;
 import utils.Vector;
 
+import java.awt.*;
 import java.util.ArrayList;
 
-public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, HasVertices , ImpactAble {
+public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, HasVertices , ImpactAble , SizeChanger {
     private static ArrayList<EpsilonVertexModel> vertices = new ArrayList<>();
+    private Dimension size;
     private boolean isImpacted = false;
     private int epsilonBulletDamage;
     private int epsilonDamageOnCollision;
@@ -25,6 +28,10 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
         this.position = position;
         this.velocity = new Vector();
         this.acceleration = new Vector(0 ,0);
+        this.size = new Dimension(
+                Constants.EPSILON_DIMENSION.width,
+                Constants.EPSILON_DIMENSION.height
+        );
         this.id =  id;
         this.HP = 100;
         this.epsilonBulletDamage = Constants.INITIAL_EPSILON_DAMAGE;
@@ -58,7 +65,7 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
 
     @Override
     public double getRadios() {
-        return Constants.EPSILON_DIMENSION.height / 2d;
+        return size.height / 2d;
     }
 
     @Override
@@ -176,5 +183,15 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
 
     public void setLifeSteal(int lifeSteal) {
         this.lifeSteal = lifeSteal;
+    }
+
+    @Override
+    public void setSize(Dimension size) {
+        this.size = size;
+    }
+
+    @Override
+    public Dimension getSize() {
+        return size;
     }
 }

@@ -1,5 +1,9 @@
 [
   {
+    "size": {
+      "width": 25,
+      "height": 25
+    },
     "isImpacted": false,
     "epsilonBulletDamage": 5,
     "epsilonDamageOnCollision": 0,
@@ -8,8 +12,8 @@
     "hasMeleeAttack": false,
     "meleeAttack": 5,
     "position": {
-      "x": 1108.0249999999996,
-      "y": 513.8491631835786
+      "x": 999.4486561950313,
+      "y": 571.045
     },
     "velocity": {
       "x": 0.0,
@@ -19,53 +23,13 @@
       "x": 0.0,
       "y": 0.0
     },
-    "theta": -2.5923528473770827,
+    "theta": -2.0198835451911616,
     "omega": 0.0,
     "alpha": 0.0,
-    "id": "?��}tõv�",
-    "HP": 100.0,
+    "id": "��f�զ����",
+    "HP": 80.0,
     "isHovering": false,
     "isSolid": true,
     "type": "epsilon"
-  },
-  {
-    "epsilonPosition": {
-      "x": 838.7909557206008,
-      "y": 473.9094309155318
-    },
-    "position": {
-      "x": 1094.8047149013034,
-      "y": 521.9407675924207
-    },
-    "velocity": null,
-    "acceleration": null,
-    "theta": -2.5923528473770827,
-    "omega": 0.0,
-    "alpha": 0.0,
-    "id": "K���܂\b@��",
-    "HP": 1000000.0,
-    "isHovering": false,
-    "isSolid": false,
-    "type": null
-  },
-  {
-    "epsilonPosition": {
-      "x": 638.5650000000002,
-      "y": 436.95209172237304
-    },
-    "position": {
-      "x": 1121.2452850986958,
-      "y": 505.75755877473654
-    },
-    "velocity": null,
-    "acceleration": null,
-    "theta": 0.5492398062127144,
-    "omega": 0.0,
-    "alpha": 0.0,
-    "id": "\u0019\u001b|��\u001bp5",
-    "HP": 1000000.0,
-    "isHovering": false,
-    "isSolid": false,
-    "type": null
   }
 ]

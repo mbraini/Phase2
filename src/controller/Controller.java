@@ -3,6 +3,7 @@ package controller;
 import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
 import controller.enums.SkillTreeAbilityType;
+import controller.interfaces.SizeChanger;
 import controller.manager.GameManager;
 import controller.manager.GameManagerThread;
 import controller.manager.Spawner;
@@ -95,6 +96,8 @@ public abstract class Controller {
                     objectViews.get(i).setHovering(model.isHovering());
                     if (model instanceof ImageChanger)
                         objectViews.get(i).setImage(((ImageChanger) model).getImage());
+                    if (model instanceof SizeChanger && objectViews.get(i) instanceof SizeChanger)
+                        ((SizeChanger) objectViews.get(i)).setSize(((SizeChanger) model).getSize());
                 }
 
                 for (int i = 0; i < effectViews.size(); i++) {

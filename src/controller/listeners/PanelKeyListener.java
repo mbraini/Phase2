@@ -55,5 +55,8 @@ public class PanelKeyListener extends KeyAdapter {
         if (e.getKeyChar() == PROTEUS_KEY) {
             Controller.skillTreeAbilityRequest(SkillTreeAbilityType.proteus);
         }
+        if (e.getKeyChar() == EMPUSA_KEY) {
+            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.empusa);
+        }
     }
 }
