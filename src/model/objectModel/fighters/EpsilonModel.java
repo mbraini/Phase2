@@ -17,7 +17,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, HasVertices , ImpactAble , SizeChanger {
-    private static ArrayList<EpsilonVertexModel> vertices = new ArrayList<>();
+    private ArrayList<EpsilonVertexModel> vertices = new ArrayList<>();
     private Dimension size;
     private boolean isImpacted = false;
     private int epsilonBulletDamage;
@@ -112,7 +112,7 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
         }
     }
 
-    public static ArrayList<EpsilonVertexModel> getVertices(){
+    public ArrayList<EpsilonVertexModel> getVertices(){
         return vertices;
     }
     public void Rotate(double theta){
@@ -130,8 +130,8 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
         isImpacted = impact;
     }
 
-    public static void setVertices(ArrayList<EpsilonVertexModel> vertices) {
-        EpsilonModel.vertices = vertices;
+    public void setVertices(ArrayList<EpsilonVertexModel> vertices) {
+        this.vertices = vertices;
     }
 
     @Override

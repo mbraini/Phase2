@@ -19,6 +19,7 @@ import model.objectModel.effects.ArchmireAoeEffectModel;
 import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.EpsilonModel;
+import model.objectModel.fighters.EpsilonVertexModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
 import model.objectModel.fighters.finalBoss.abilities.AbilityType;
@@ -52,6 +53,8 @@ import view.objectViews.normalEnemyView.OmenoctView;
 import view.objectViews.normalEnemyView.WyrmView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireEffectView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireView;
+
+import java.util.ArrayList;
 
 public class GameLoaderHelper {
     private static final Gson gson = getGson();
@@ -92,6 +95,8 @@ public class GameLoaderHelper {
                                 model.getId()
                         )
                 );
+                for (EpsilonVertexModel epsilonVertexModel : ((EpsilonModel) model).getVertices())
+                    Spawner.spawnVertex(epsilonVertexModel);
                 break;
             case squarantine:
                 model = gson.fromJson(jsonString , SquarantineModel.class);
