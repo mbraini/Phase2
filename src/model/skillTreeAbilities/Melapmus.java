@@ -36,6 +36,6 @@ public class Melapmus extends SkillTreeAbility{
     @Override
     public void setUp() {
         super.setUp();
-        epsilonModel = ModelData.getEpsilon();
+        initEpsilon();
     }
 }
