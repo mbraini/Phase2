@@ -36,12 +36,12 @@
       "epsilonBulletDamage": 5,
       "epsilonDamageOnCollision": 0,
       "chanceOfSurvival": 0,
-      "lifeSteal": 6,
+      "lifeSteal": 0,
       "hasMeleeAttack": false,
       "meleeAttack": 5,
       "position": {
-        "x": 996.6052334458853,
-        "y": 707.7239020107959
+        "x": 1039.9501026165897,
+        "y": 448.21424755386363
       },
       "velocity": {
         "x": 0.0,
@@ -51,16 +51,16 @@
         "x": 0.0,
         "y": 0.0
       },
-      "theta": -0.9499361024104797,
+      "theta": -1.5822193850781823,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "l��\u0013�\u000f5v\r�",
-      "HP": 126.0,
+      "id": "��sK+��\nW�",
+      "HP": 76.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"
     },
-    "healAmount": 0,
+    "healAmount": 2,
     "isBought": true,
     "inGameXpCost": 100,
     "inGameCoolDownTime": 10000,
@@ -79,12 +79,12 @@
       "epsilonBulletDamage": 5,
       "epsilonDamageOnCollision": 0,
       "chanceOfSurvival": 0,
-      "lifeSteal": 6,
+      "lifeSteal": 0,
       "hasMeleeAttack": false,
       "meleeAttack": 5,
       "position": {
-        "x": 996.6052334458853,
-        "y": 707.7239020107959
+        "x": 1039.9501026165897,
+        "y": 448.21424755386363
       },
       "velocity": {
         "x": 0.0,
@@ -94,11 +94,11 @@
         "x": 0.0,
         "y": 0.0
       },
-      "theta": -0.9499361024104797,
+      "theta": -1.5822193850781823,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "l��\u0013�\u000f5v\r�",
-      "HP": 126.0,
+      "id": "��sK+��\nW�",
+      "HP": 76.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"
@@ -121,12 +121,12 @@
       "epsilonBulletDamage": 5,
       "epsilonDamageOnCollision": 0,
       "chanceOfSurvival": 0,
-      "lifeSteal": 6,
+      "lifeSteal": 0,
       "hasMeleeAttack": false,
       "meleeAttack": 5,
       "position": {
-        "x": 996.6052334458853,
-        "y": 707.7239020107959
+        "x": 1039.9501026165897,
+        "y": 448.21424755386363
       },
       "velocity": {
         "x": 0.0,
@@ -136,11 +136,11 @@
         "x": 0.0,
         "y": 0.0
       },
-      "theta": -0.9499361024104797,
+      "theta": -1.5822193850781823,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "l��\u0013�\u000f5v\r�",
-      "HP": 126.0,
+      "id": "��sK+��\nW�",
+      "HP": 76.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"
@@ -163,12 +163,12 @@
       "epsilonBulletDamage": 5,
       "epsilonDamageOnCollision": 0,
       "chanceOfSurvival": 0,
-      "lifeSteal": 6,
+      "lifeSteal": 0,
       "hasMeleeAttack": false,
       "meleeAttack": 5,
       "position": {
-        "x": 996.6052334458853,
-        "y": 707.7239020107959
+        "x": 1039.9501026165897,
+        "y": 448.21424755386363
       },
       "velocity": {
         "x": 0.0,
@@ -178,11 +178,11 @@
         "x": 0.0,
         "y": 0.0
       },
-      "theta": -0.9499361024104797,
+      "theta": -1.5822193850781823,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "l��\u0013�\u000f5v\r�",
-      "HP": 126.0,
+      "id": "��sK+��\nW�",
+      "HP": 76.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"
@@ -205,12 +205,12 @@
       "epsilonBulletDamage": 5,
       "epsilonDamageOnCollision": 0,
       "chanceOfSurvival": 0,
-      "lifeSteal": 6,
+      "lifeSteal": 0,
       "hasMeleeAttack": false,
       "meleeAttack": 5,
       "position": {
-        "x": 996.6052334458853,
-        "y": 707.7239020107959
+        "x": 1039.9501026165897,
+        "y": 448.21424755386363
       },
       "velocity": {
         "x": 0.0,
@@ -220,11 +220,11 @@
         "x": 0.0,
         "y": 0.0
       },
-      "theta": -0.9499361024104797,
+      "theta": -1.5822193850781823,
       "omega": 0.0,
       "alpha": 0.0,
-      "id": "l��\u0013�\u000f5v\r�",
-      "HP": 126.0,
+      "id": "��sK+��\nW�",
+      "HP": 76.0,
       "isHovering": false,
       "isSolid": true,
       "type": "epsilon"
@@ -238,8 +238,8 @@
     "type": "empusa"
   },
   {
-    "firstAbility": null,
-    "secondAbility": null,
+    "firstAbility": "proteus",
+    "secondAbility": "aceso",
     "isBought": true,
     "inGameXpCost": 100,
     "inGameCoolDownTime": 10000,
