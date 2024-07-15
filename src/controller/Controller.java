@@ -178,14 +178,14 @@ public abstract class Controller {
 
 
     public static void startGame(){
-//        load();
-        modelStarter();
-        viewStarter();
-        addEpsilonAndFrame();
-        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
-        InGameAbilityHandler.initInGameAbilities();
-        SkillTreeAbilityHandler.initAbilities();
-        Controller.threadsStarter();
+        load();
+//        modelStarter();
+//        viewStarter();
+//        addEpsilonAndFrame();
+//        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
+//        InGameAbilityHandler.initInGameAbilities();
+//        SkillTreeAbilityHandler.initAbilities();
+//        Controller.threadsStarter();
     }
 
     private static void addEpsilonAndFrame() {
