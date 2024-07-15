@@ -88,6 +88,7 @@ public class CollisionHandler {
         enemy.setHP(enemy.getHP() - epsilonBullet.getDamage());
         EpsilonModel epsilonModel = ModelData.getEpsilon();
         epsilonModel.setHP(epsilonModel.getHP() + epsilonModel.getLifeSteal());
+        epsilonModel.checkHP();
         epsilonBullet.die();
     }
 

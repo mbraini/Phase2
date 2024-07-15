@@ -148,9 +148,15 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
             if (Collision.IsColliding(vertex ,enemyModel)){
                 enemyModel.setHP(enemyModel.getHP() - meleeAttack);
                 setHP(getHP() + lifeSteal);
+                checkHP();
                 return;
             }
         }
+    }
+
+    public void checkHP() {
+        if (HP > 100)
+            HP = 100;
     }
 
     public int getEpsilonBulletDamage() {

@@ -36,8 +36,7 @@ public class Aceso extends SkillTreeAbility{
                 if (GameState.isPause())
                     return;
                 epsilon.setHP(epsilon.getHP() + healAmount);
-                if (epsilon.getHP() > 100)
-                    epsilon.setHP(100);
+                epsilon.checkHP();
             }
         });
     }
