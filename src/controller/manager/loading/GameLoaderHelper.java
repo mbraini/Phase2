@@ -31,12 +31,9 @@ import model.objectModel.fighters.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.fighters.normalEnemies.omenoctModel.OmenoctModel;
 import model.objectModel.fighters.normalEnemies.wyrmModel.WyrmModel;
 import model.objectModel.frameModel.FrameModel;
-import model.skillTreeAbilities.Aceso;
+import model.skillTreeAbilities.*;
 import model.skillTreeAbilities.Cerberus.Cerberus;
 import model.skillTreeAbilities.Cerberus.CerberusModel;
-import model.skillTreeAbilities.Proteus;
-import model.skillTreeAbilities.SkillTreeAbility;
-import model.skillTreeAbilities.SkillTreeAbilityHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -315,6 +312,27 @@ public class GameLoaderHelper {
                 break;
             case aceso:
                 skillTreeAbility = gson.fromJson(abilityString , Aceso.class);
+                break;
+            case ares:
+                skillTreeAbility = gson.fromJson(abilityString , Ares.class);
+                break;
+            case astrape:
+                skillTreeAbility = gson.fromJson(abilityString , Astrape.class);
+                break;
+            case chiron:
+                skillTreeAbility = gson.fromJson(abilityString , Chiron.class);
+                break;
+            case dolus:
+                skillTreeAbility = gson.fromJson(abilityString , Dolus.class);
+                break;
+            case empusa:
+                skillTreeAbility = gson.fromJson(abilityString , Empusa.class);
+                break;
+            case melampus:
+                skillTreeAbility = gson.fromJson(abilityString , Melapmus.class);
+                break;
+            case proteus:
+                skillTreeAbility = gson.fromJson(abilityString , Proteus.class);
                 break;
             default:
                 skillTreeAbility = gson.fromJson(abilityString , Proteus.class);

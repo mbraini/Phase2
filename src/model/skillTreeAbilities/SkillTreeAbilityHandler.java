@@ -39,5 +39,6 @@ public class SkillTreeAbilityHandler {
     public static void addSkillTree(SkillTreeAbility skillTreeAbility) {
         ArrayList<SkillTreeAbility> skillTreeAbilities = ModelData.getSkillTreeAbilities();
         skillTreeAbilities.add(skillTreeAbility);
+        ModelData.setSkillTreeAbilities(skillTreeAbilities);
     }
 }
