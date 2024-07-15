@@ -72,4 +72,10 @@ public class CerberusModel extends FighterModel implements IsCircle {
             timer.start();
         }
     }
+
+    public void start() {
+        initTimer();
+        timer.start();
+    }
+
 }

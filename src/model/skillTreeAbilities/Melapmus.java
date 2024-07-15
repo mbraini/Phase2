@@ -25,26 +25,17 @@ public class Melapmus extends SkillTreeAbility{
         epsilonModel = ModelData.getEpsilon();
     }
 
-    private void initTimer() {
-        coolDownTimer = new Timer(Constants.SKILL_TREE_ABILITY_TIMER_REFRESH_RATE, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (GameState.isPause())
-                    return;
-                coolDownTimePassed += Constants.SKILL_TREE_ABILITY_TIMER_REFRESH_RATE;
-                if (coolDownTimePassed >= inGameCoolDownTime){
-                    canCast = true;
-                    coolDownTimePassed = 0;
-                    coolDownTimer.stop();
-                }
-            }
-        });
-    }
 
     @Override
     protected void cast() {
         canCast = false;
         epsilonModel.setChanceOfSurvival(epsilonModel.getChanceOfSurvival() + 5);
         coolDownTimer.start();
+    }
+
+    @Override
+    protected void setUp() {
+        super.setUp();
+        epsilonModel = ModelData.getEpsilon();
     }
 }

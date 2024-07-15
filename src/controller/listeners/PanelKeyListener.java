@@ -58,5 +58,8 @@ public class PanelKeyListener extends KeyAdapter {
         if (e.getKeyChar() == EMPUSA_KEY) {
             Controller.skillTreeAbilityRequest(SkillTreeAbilityType.empusa);
         }
+        if (e.getKeyChar() == DOLUS_KEY) {
+            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.dolus);
+        }
     }
 }

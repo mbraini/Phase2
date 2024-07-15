@@ -18,6 +18,7 @@ public class SkillTreeAbilityHandler {
         abilities.add(new Chiron());
         abilities.add(new Proteus());
         abilities.add(new Empusa());
+        abilities.add(new Dolus());
         ModelData.setSkillTreeAbilities(abilities);
     }
 

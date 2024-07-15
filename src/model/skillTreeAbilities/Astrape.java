@@ -18,21 +18,6 @@ public class Astrape extends SkillTreeAbility{
         initTimer();
     }
 
-    private void initTimer() {
-        coolDownTimer = new Timer(Constants.SKILL_TREE_ABILITY_TIMER_REFRESH_RATE, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (GameState.isPause())
-                    return;
-                coolDownTimePassed += Constants.SKILL_TREE_ABILITY_TIMER_REFRESH_RATE;
-                if (coolDownTimePassed >= inGameCoolDownTime){
-                    canCast = true;
-                    coolDownTimePassed = 0;
-                    coolDownTimer.stop();
-                }
-            }
-        });
-    }
 
     @Override
     protected void cast() {

@@ -13,6 +13,7 @@ import model.objectModel.ObjectModel;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.frameModel.FrameModel;
+import model.skillTreeAbilities.SkillTreeAbility;
 
 import javax.swing.*;
 import java.io.File;
@@ -27,23 +28,39 @@ public class GameSaver {
     private ArrayList<AbstractEnemy> abstractEnemies;
     private ArrayList<EffectModel> effects;
     private ArrayList<InGameAbility> abilities;
+    private ArrayList<SkillTreeAbility> skillTreeAbilities;
     private static Gson gson;
 
     public GameSaver(ArrayList<ObjectModel> models, ArrayList<EffectModel> effects,
                      ArrayList<FrameModel> frames, ArrayList<AbstractEnemy> abstractEnemies,
-                     ArrayList<InGameAbility> abilities)
+                     ArrayList<InGameAbility> abilities ,ArrayList<SkillTreeAbility> skillTreeAbilities)
     {
         this.models = models;
         this.effects = effects;
         this.frames = frames;
         this.abstractEnemies = abstractEnemies;
         this.abilities = abilities;
+        this.skillTreeAbilities = skillTreeAbilities;
     }
 
 
     public synchronized void save() {
         saveGame();
         saveAbilities();
+        saveSkillTree();
+    }
+
+    private void saveSkillTree() {
+        Gson gson = getGson();
+        String skillTreeString = gson.toJson(skillTreeAbilities);
+        PrintWriter modelWriter = null;
+        try {
+            modelWriter = new PrintWriter("src/controller/manager/saving/skillTree.json");
+            modelWriter.write(skillTreeString);
+            modelWriter.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void saveAbilities() {

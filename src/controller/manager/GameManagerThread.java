@@ -12,6 +12,7 @@ import model.objectModel.ObjectModel;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.fighters.EnemyModel;
 import model.objectModel.frameModel.FrameModel;
+import model.skillTreeAbilities.SkillTreeAbility;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,6 +23,7 @@ public class GameManagerThread extends Thread{
     private ArrayList<FrameModel> frames;
     private ArrayList<AbstractEnemy> abstractEnemies;
     private ArrayList<InGameAbility> abilities;
+    private ArrayList<SkillTreeAbility> skillTreeAbilities;
     private double time;
     private final static Object jsonLock = new Object();
 
@@ -55,13 +57,14 @@ public class GameManagerThread extends Thread{
             frames = (ArrayList<FrameModel>) ModelData.getFrames().clone();
             abstractEnemies = (ArrayList<AbstractEnemy>) ModelData.getAbstractEnemies().clone();
             abilities = (ArrayList<InGameAbility>) ModelData.getInGameAbilities().clone();
+            skillTreeAbilities =(ArrayList<SkillTreeAbility>) ModelData.getSkillTreeAbilities().clone();
         }
         interfaces();
         killObjects();
         checkAoeDamage();
         if (time % 500 == 0) {
             synchronized (jsonLock) {
-                new GameSaver(models, effects, frames, abstractEnemies ,abilities).save();
+                new GameSaver(models, effects, frames, abstractEnemies ,abilities ,skillTreeAbilities).save();
             }
         }
         GameState.update(models ,time);

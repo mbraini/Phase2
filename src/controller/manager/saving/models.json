@@ -12,8 +12,8 @@
     "hasMeleeAttack": false,
     "meleeAttack": 5,
     "position": {
-      "x": 999.4486561950313,
-      "y": 571.045
+      "x": 742.8994932614048,
+      "y": 480.2599999999997
     },
     "velocity": {
       "x": 0.0,
@@ -23,13 +23,53 @@
       "x": 0.0,
       "y": 0.0
     },
-    "theta": -2.0198835451911616,
+    "theta": 0.9559005944905526,
     "omega": 0.0,
     "alpha": 0.0,
-    "id": "��f�զ����",
-    "HP": 80.0,
+    "id": "\u0013/�͑��\"W�",
+    "HP": 100.0,
     "isHovering": false,
     "isSolid": true,
     "type": "epsilon"
+  },
+  {
+    "epsilonPosition": {
+      "x": 742.8994932614048,
+      "y": 480.2599999999997
+    },
+    "position": {
+      "x": 751.8410302803983,
+      "y": 467.5990791907549
+    },
+    "velocity": null,
+    "acceleration": null,
+    "theta": 0.9559005944905518,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "��t`T\u0018�y�",
+    "HP": 1000000.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": "epsilonVertex"
+  },
+  {
+    "epsilonPosition": {
+      "x": 742.8994932614048,
+      "y": 480.2599999999997
+    },
+    "position": {
+      "x": 733.9579562424113,
+      "y": 492.9209208092446
+    },
+    "velocity": null,
+    "acceleration": null,
+    "theta": 4.097493248080347,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "I�x���\t�\u0017\f",
+    "HP": 1000000.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": "epsilonVertex"
   }
 ]
