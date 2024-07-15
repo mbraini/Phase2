@@ -31,6 +31,7 @@ import model.objectModel.fighters.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.fighters.normalEnemies.omenoctModel.OmenoctModel;
 import model.objectModel.fighters.normalEnemies.wyrmModel.WyrmModel;
 import model.objectModel.frameModel.FrameModel;
+import model.skillTreeAbilities.Aceso;
 import model.skillTreeAbilities.Cerberus.Cerberus;
 import model.skillTreeAbilities.Cerberus.CerberusModel;
 import model.skillTreeAbilities.Proteus;
@@ -311,6 +312,9 @@ public class GameLoaderHelper {
         switch (type) {
             case cerberus :
                 skillTreeAbility = gson.fromJson(abilityString , Cerberus.class);
+                break;
+            case aceso:
+                skillTreeAbility = gson.fromJson(abilityString , Aceso.class);
                 break;
             default:
                 skillTreeAbility = gson.fromJson(abilityString , Proteus.class);

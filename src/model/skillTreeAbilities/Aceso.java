@@ -23,7 +23,6 @@ public class Aceso extends SkillTreeAbility{
         initTimer();
         initEpsilon();
         initHealTimer();
-        healTimer.start();
     }
 
     private void initEpsilon() {
@@ -46,6 +45,8 @@ public class Aceso extends SkillTreeAbility{
     protected void cast() {
         canCast = false;
         healAmount++;
+        if (healAmount == 1)
+            healTimer.start();
         coolDownTimer.start();
     }
 
@@ -59,6 +60,7 @@ public class Aceso extends SkillTreeAbility{
     public void setUp() {
         super.setUp();
         initHealTimer();
+        initEpsilon();
         if (healAmount != 0) {
             healTimer.start();
         }
