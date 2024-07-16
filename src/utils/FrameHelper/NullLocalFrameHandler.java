@@ -29,14 +29,58 @@ public class NullLocalFrameHandler {
         this.previousLocals = previousLocals;
     }
 
+    public void epsilonHandler() {
+        EpsilonModel epsilon = (EpsilonModel)model;
+        Vector top = Math.VectorAdd(
+                epsilon.getPosition(),
+                new Vector(0 ,-epsilon.getRadios())
+        );
+        if (isInNoFrame(top)) {
+            new Impact(top).MakeImpact();
+        }
+
+        Vector right = Math.VectorAdd(
+                epsilon.getPosition(),
+                new Vector(epsilon.getRadios() ,0)
+        );
+        if (isInNoFrame(right)) {
+            new Impact(right).MakeImpact();
+        }
+
+        Vector bottom = Math.VectorAdd(
+                epsilon.getPosition(),
+                new Vector(0 ,epsilon.getRadios())
+        );
+        if (isInNoFrame(bottom)) {
+            new Impact(bottom).MakeImpact();
+        }
+
+        Vector left = Math.VectorAdd(
+                epsilon.getPosition(),
+                new Vector(-epsilon.getRadios() ,0)
+        );
+        if (isInNoFrame(left)) {
+            new Impact(left).MakeImpact();
+        }
+
+    }
+
+    private boolean isInNoFrame(Vector position) {
+        for (FrameModel frameModel : frames) {
+            if (Collision.isInFrame(frameModel ,position))
+                return false;
+        }
+        return true;
+    }
+
     public void handle() {
         if (model instanceof BulletModel)
             bulletHandler();
         else if (model instanceof EpsilonModel)
-            epsilonHandler();
+            epsilonNullHandler();
     }
 
-    private void epsilonHandler() {
+    private void epsilonNullHandler() {
         Vector impactPoint = model.getPosition().clone();
         HashMap<Double ,FrameModel> map = new HashMap<>();
         double min = FrameCalculationHelper.findClosestDistanceToFrameEdges(

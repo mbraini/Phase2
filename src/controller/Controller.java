@@ -179,13 +179,13 @@ public abstract class Controller {
 
     public static void startGame(){
         GameState.setXp(3000);
-        load();
-//        modelStarter();
-//        viewStarter();
-//        addEpsilonAndFrame();
-//        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
-//        InGameAbilityHandler.initInGameAbilities();
-//        SkillTreeAbilityHandler.initAbilities();
+//        load();
+        modelStarter();
+        viewStarter();
+        addEpsilonAndFrame();
+        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
+        InGameAbilityHandler.initInGameAbilities();
+        SkillTreeAbilityHandler.initAbilities();
         Controller.threadsStarter();
     }
 

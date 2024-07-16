@@ -5,6 +5,7 @@ import data.Constants;
 import model.GameState;
 import model.ModelData;
 import model.collision.Collision;
+import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
 import utils.FrameHelper.NullLocalFrameHandler;
@@ -117,6 +118,9 @@ public class FrameThread extends Thread{
             FrameModel frame = localFrames.get(model);
             if (frame == null && model.isSolid())
                 new NullLocalFrameHandler(model ,frames ,previousLocals).handle();
+            if (model instanceof EpsilonModel) {
+                new NullLocalFrameHandler(model ,frames ,localFrames).epsilonHandler();
+            }
         }
     }
 
