@@ -68,7 +68,7 @@ public class BossThread extends Thread {
     }
 
     private void defineAbility() {
-        abilityType = AbilityType.vomit;
+        abilityType = AbilityType.quake;
 //        if (bossAI.isInSqueezePosition()){
 //            abilityType = AbilityType.squeeze;
 //            return;

@@ -1,9 +1,11 @@
 package controller;
 
+import com.google.gson.Gson;
 import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
 import controller.enums.SkillTreeAbilityType;
 import controller.interfaces.SizeChanger;
+import controller.listeners.keyHelper.KeyHelper;
 import controller.manager.GameManager;
 import controller.manager.GameManagerThread;
 import controller.manager.Spawner;
@@ -162,6 +164,14 @@ public abstract class Controller {
 
     public static void pause() {
         GameState.setPause(true);
+    }
+
+    public static void randomizeKeys() {
+        KeyHelper.randomize();
+    }
+
+    public static void reorderKeys() {
+        KeyHelper.reorder();
     }
 
 

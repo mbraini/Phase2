@@ -4,6 +4,7 @@ import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.powerPunch.PowerPunch;
 import model.objectModel.fighters.finalBoss.abilities.projectile.Projectile;
+import model.objectModel.fighters.finalBoss.abilities.quake.Quake;
 import model.objectModel.fighters.finalBoss.abilities.rapidFire.RapidFire;
 import model.objectModel.fighters.finalBoss.abilities.slap.Slap;
 import model.objectModel.fighters.finalBoss.abilities.squeeze.Squeeze;
@@ -43,6 +44,9 @@ public class AbilityCaster {
             case slap:
                 new Slap(boss ,epsilonModel).activate();
                 break;
+            case quake:
+                new Quake(boss ,epsilonFrame).activate();
+                break;
         }
     }
 
@@ -70,6 +74,10 @@ public class AbilityCaster {
                 break;
             case slap:
                 if (!boss.getLeftHand().isInUse() || !boss.getRightHand().isInUse() || !boss.getPunch().isInUse())
+                    return true;
+                break;
+            case quake:
+                if (!boss.getPunch().isInUse())
                     return true;
                 break;
             case null:

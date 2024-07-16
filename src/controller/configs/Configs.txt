@@ -1,4 +1,0 @@
-XP: 0
-Ares: 0
-Aceso: 3
-Proteus: 0

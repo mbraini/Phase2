@@ -22,6 +22,7 @@ public class PanelKeyListener extends KeyAdapter {
     public static char PROTEUS_KEY = 'e';
     public static char EMPUSA_KEY = 'd';
     public static char DOLUS_KEY = 'c';
+    public static char ATHENA_KEY = 'r';
 
     public PanelKeyListener(){
         SHOP_KEY = KeyConfigs.SHOP_KEY;

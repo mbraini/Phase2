@@ -22,12 +22,16 @@ import java.io.IOException;
 public class EpsilonAiming extends MouseAdapter {
 
     double timer;
+    public static int AIM_CODE = 1;
     public EpsilonAiming(){
         timer = 0;
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if (e.getButton() != AIM_CODE) {
+            return;
+        }
         if (GameState.isPause())
             return;
         timer = GameState.getTime();

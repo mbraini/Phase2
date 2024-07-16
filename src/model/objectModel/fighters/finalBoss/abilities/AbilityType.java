@@ -7,7 +7,8 @@ public enum AbilityType {
     vomit(2),
     powerPunch(3),
     rapidFire(4),
-    slap(5);
+    slap(5),
+    quake(6);
 
     final int number;
     AbilityType(int number){
