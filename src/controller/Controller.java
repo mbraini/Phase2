@@ -154,16 +154,20 @@ public abstract class Controller {
         GameState.setPause(false);
     }
 
-    private static void load(){
+    public static void load(){
         synchronized (GameManagerThread.getJsonLock()) {
             new GameLoader().load();
         }
-        threadsStarter();
     }
 
     public static void pause() {
         GameState.setPause(true);
     }
+
+    public static void skillTreeBuyRequest(SkillTreeAbilityType skillTreeAbilityType) {
+        SkillTreeAbilityHandler.buyIf(skillTreeAbilityType);
+    }
+
 
     private void updateObjectViews(){
 
@@ -178,6 +182,7 @@ public abstract class Controller {
 
 
     public static void startGame(){
+        GameState.setXp(3000);
         load();
 //        modelStarter();
 //        viewStarter();
@@ -185,7 +190,7 @@ public abstract class Controller {
 //        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
 //        InGameAbilityHandler.initInGameAbilities();
 //        SkillTreeAbilityHandler.initAbilities();
-//        Controller.threadsStarter();
+        Controller.threadsStarter();
     }
 
     private static void addEpsilonAndFrame() {

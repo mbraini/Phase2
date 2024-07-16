@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public abstract class SkillTreeAbility {
 
-    protected boolean isBought = true;       /////////////////////// fix later !
+    protected boolean isBought;       /////////////////////// fix later !
     protected int inGameXpCost = 100;
     protected int inGameCoolDownTime = 10000;
     protected boolean canCast = true;

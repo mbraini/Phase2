@@ -1,6 +1,7 @@
 package model.skillTreeAbilities;
 
 import controller.enums.SkillTreeAbilityType;
+import model.GameState;
 import model.ModelData;
 import model.skillTreeAbilities.Cerberus.Cerberus;
 
@@ -40,5 +41,13 @@ public class SkillTreeAbilityHandler {
         ArrayList<SkillTreeAbility> skillTreeAbilities = ModelData.getSkillTreeAbilities();
         skillTreeAbilities.add(skillTreeAbility);
         ModelData.setSkillTreeAbilities(skillTreeAbilities);
+    }
+
+    public static void buyIf(SkillTreeAbilityType skillTreeAbilityType) {
+        SkillTreeAbility skillTreeAbility = getAbility(skillTreeAbilityType);
+        if (GameState.getXp() > skillTreeAbility.getUnlockXpCost()) {
+            GameState.setXp(GameState.getXp() - skillTreeAbility.getUnlockXpCost());
+            skillTreeAbility.setBought(true);
+        }
     }
 }

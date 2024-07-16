@@ -38,7 +38,7 @@ public class GameLoader {
         loadSkillTree();
     }
 
-    private void loadSkillTree() {
+    public void loadSkillTree() {
         gson = getGson();
 
         StringBuilder skillTreeString = new StringBuilder();
@@ -63,7 +63,7 @@ public class GameLoader {
         }
     }
 
-    private void loadAbilities() {
+    public void loadAbilities() {
         gson = getGson();
 
         StringBuilder abilityString = new StringBuilder();
@@ -88,7 +88,7 @@ public class GameLoader {
         }
     }
 
-    private void loadGame() {
+    public void loadGame() {
         gson = getGson();
 
         StringBuilder modelString = new StringBuilder();
