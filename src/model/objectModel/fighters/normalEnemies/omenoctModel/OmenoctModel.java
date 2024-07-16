@@ -74,6 +74,7 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         navigater.navigateFrame();
         destination = navigater.getDestination();
         willAttachTo = navigater.getWillAttachTo();
+        System.out.println(willAttachTo);
         setNavigationVelocity();
         checkAttached();
     }

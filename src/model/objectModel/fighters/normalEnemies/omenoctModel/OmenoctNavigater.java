@@ -27,6 +27,8 @@ public class OmenoctNavigater {
 
     public void navigateFrame() {
         FrameModel epsilonFrame = ModelData.getLocalFrames().get(ModelData.getModels().getFirst());
+        if (epsilonFrame == null)
+            return;
 
         double top = epsilonFrame.getPosition().getY();
         double bottom = epsilonFrame.getPosition().getY() + epsilonFrame.getSize().height;

@@ -58,35 +58,10 @@ public class FrameThread extends Thread{
         synchronized (ModelData.getModels()) {
             localFrames = (HashMap<ObjectModel, FrameModel>) ModelData.getLocalFrames().clone();
         }
-        resetDisables();
         setDisablesForSolidObjects();
-        setDisablesForSolidFrames();
         checkSolidObjectBounds();
         resize(frames);
         updatePreviousLocals();
-    }
-
-    private void resetDisables() {
-        for (FrameModel frameModel : frames){
-            frameModel.setCanTopResize(true);
-            frameModel.setCanBottomResize(true);
-            frameModel.setCanLeftResize(true);
-            frameModel.setCanRightResize(true);
-        }
-    }
-
-    private void setDisablesForSolidFrames() {
-        for (int i = 0; i < frames.size(); i++){
-            for (int j = 0; j < frames.size(); j++){
-                if (i == j)
-                    continue;
-                if (frames.get(i).isSolid() && frames.get(j).isSolid())
-                    FrameCalculationHelper.setFrameDisables(
-                            frames.get(i),
-                            frames.get(j)
-                    );
-            }
-        }
     }
 
     private void updatePreviousLocals() {
