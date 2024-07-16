@@ -438,7 +438,7 @@ public class SkillTreePanel extends PIG {
         proteus.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.skillTreeBuyRequest(SkillTreeAbilityType.proteus);
+//
             }
         });
         proteusL = new JLabel();

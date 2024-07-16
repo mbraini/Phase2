@@ -164,10 +164,6 @@ public abstract class Controller {
         GameState.setPause(true);
     }
 
-    public static void skillTreeBuyRequest(SkillTreeAbilityType skillTreeAbilityType) {
-        SkillTreeAbilityHandler.buyIf(skillTreeAbilityType);
-    }
-
 
     private void updateObjectViews(){
 
