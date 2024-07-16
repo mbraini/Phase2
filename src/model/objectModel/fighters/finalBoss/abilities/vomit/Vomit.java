@@ -21,20 +21,26 @@ public class Vomit extends Ability {
         thread = new VomitThread(this ,epsilonFrame);
     }
 
+
     @Override
-    protected void ownHelpers() {
-        boss.getHead().setInUse(true);
+    protected void setUp() {
+        ownHelper(boss.getHead());
+    }
+
+    @Override
+    protected void unsetUp() {
+        disownHelper(boss.getHead());
     }
 
     @Override
     public void activate() {
-        ownHelpers();
+        super.activate();
         thread.start();
     }
 
     @Override
     protected void endAbility() {
-        boss.getHead().setInUse(false);
+        super.endAbility();
         thread.interrupt();
     }
 

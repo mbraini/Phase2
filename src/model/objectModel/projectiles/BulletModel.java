@@ -21,7 +21,6 @@ public abstract class BulletModel extends ProjectileModel implements MoveAble {
     @Override
     public void die() {
         Controller.removeObject(this);
-        new Impact(position).MakeImpact();
     }
 
 }

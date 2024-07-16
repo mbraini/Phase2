@@ -89,6 +89,7 @@ public class CollisionHandler {
         EpsilonModel epsilonModel = ModelData.getEpsilon();
         epsilonModel.setHP(epsilonModel.getHP() + epsilonModel.getLifeSteal());
         epsilonModel.checkHP();
+        new Impact(epsilonBullet.getPosition()).MakeImpact();
         epsilonBullet.die();
     }
 

@@ -12,7 +12,6 @@ public class BossBulletModel extends BulletModel implements IsCircle {
         this.velocity = Math.VectorWithSize(direction , Constants.OMENOCT_BULLET_VELOCITY);
         this.acceleration = new Vector(0 ,0);
         damage = Constants.OMENOCT_BULLET_DAMAGE;
-        setSolid(false);
 
         this.id = id;
         this.HP = 1;

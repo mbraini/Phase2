@@ -10,6 +10,8 @@ import model.objectModel.frameModel.FrameModel;
 import utils.Math;
 import utils.Vector;
 
+import javax.swing.*;
+
 public class Squeeze extends Ability implements Navigator {
 
     private SqueezeThread thread;
@@ -27,25 +29,37 @@ public class Squeeze extends Ability implements Navigator {
 
 
     @Override
-    protected void ownHelpers() {
-        boss.getLeftHand().setInUse(true);
-        boss.getRightHand().setInUse(true);
+    protected void setUp() {
+        ownHelper(boss.getRightHand());
+        ownHelper(boss.getLeftHand());
+        boss.getRightHand().setHovering(false);
+        boss.getLeftHand().setHovering(false);
+    }
+
+    @Override
+    protected void unsetUp() {
+        disownHelper(boss.getRightHand());
+        disownHelper(boss.getLeftHand());
+        boss.getRightHand().setHovering(false);
+        boss.getLeftHand().setHovering(false);
     }
 
     @Override
     public void activate() {
-        ownHelpers();
+        super.activate();
         thread.start();
     }
 
     @Override
     protected void endAbility() {
-        boss.getRightHand().setInUse(false);
-        boss.getLeftHand().setInUse(false);
-        boss.getLeftHand().getFrame().setSolid(false);
-        boss.getRightHand().getFrame().setSolid(false);
         doAnimation();
+        try {
+            Thread.sleep(Constants.ABILITY_UNSETUP_DELAY);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         thread.interrupt();
+        unsetUp();
     }
 
     private void doAnimation() {

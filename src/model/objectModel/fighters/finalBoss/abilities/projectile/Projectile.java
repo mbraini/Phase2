@@ -7,6 +7,7 @@ import model.interfaces.Navigator;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.Ability;
+import model.objectModel.fighters.finalBoss.bossHelper.BossHelper;
 import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
 import utils.Math;
 import utils.Vector;
@@ -30,19 +31,44 @@ public class Projectile extends Ability {
 
 
     @Override
-    protected void ownHelpers() {
-        boss.getHead().setInUse(true);
-        boss.getLeftHand().setInUse(true);
-        boss.getRightHand().setInUse(true);
+    protected void setUp() {
+        ownHelper(boss.getHead());
+        ownHelper(boss.getLeftHand());
+        ownHelper(boss.getRightHand());
+        boss.getHead().setHovering(true);
+        boss.getLeftHand().setHovering(true);
+        boss.getRightHand().setHovering(true);
+    }
+
+    @Override
+    protected void unsetUp() {
+        disownHelper(boss.getHead());
+        disownHelper(boss.getLeftHand());
+        disownHelper(boss.getRightHand());
+        boss.getHead().setHovering(false);
+        boss.getLeftHand().setHovering(false);
+        boss.getRightHand().setHovering(false);
+
     }
 
     @Override
     public void activate() {
-        ownHelpers();
+        super.activate();
         bossHandsAnimations();
         bossHeadAnimation();
         thread.setOrigin(epsilon.getPosition().clone());
         thread.start();
+    }
+    @Override
+    protected void endAbility() {
+        endAnimations();
+        try {
+            Thread.sleep(Constants.ABILITY_UNSETUP_DELAY);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        thread.interrupt();
+        unsetUp();
     }
 
     private void bossHeadAnimation() {
@@ -58,7 +84,7 @@ public class Projectile extends Ability {
         new DashAnimation(
                 headModel,
                 distance,
-                2000,
+                Constants.ABILITY_SETUP_DELAY,
                 Math.VectorSize(distance),
                 0,
                 false
@@ -82,7 +108,7 @@ public class Projectile extends Ability {
         new DashAnimation(
                 boss.getLeftHand(),
                 leftDistance,
-                2000,
+                Constants.ABILITY_SETUP_DELAY,
                 Math.VectorSize(leftDistance),
                 0,
                 false
@@ -99,50 +125,38 @@ public class Projectile extends Ability {
         new DashAnimation(
                 boss.getRightHand(),
                 rightDistance,
-                2000,
+                Constants.ABILITY_SETUP_DELAY,
                 Math.VectorSize(rightDistance),
                 0,
                 false
         ).StartAnimation();
     }
 
-    @Override
-    protected void endAbility() {
-        thread.interrupt();
-        boss.getLeftHand().setInUse(false);
-        boss.getRightHand().setInUse(false);
-        boss.getHead().setInUse(false);
-        backAnimation();
+
+    private void endAnimations() {
+        Vector headDirection = Math.VectorAdd(
+                new Vector(Constants.SCREEN_SIZE.width / 2d ,0),
+                Math.ScalarInVector(-1 ,boss.getHead().getPosition())
+        );
+        Vector leftHandDirection = Math.VectorAdd(
+                new Vector(0,Constants.SCREEN_SIZE.height / 2d),
+                Math.ScalarInVector(-1 ,boss.getLeftHand().getPosition())
+        );
+        Vector rightHandDirection = Math.VectorAdd(
+                new Vector(Constants.SCREEN_SIZE.width - Constants.HAND_DIMENSION.width ,Constants.SCREEN_SIZE.height / 2d),
+                Math.ScalarInVector(-1 ,boss.getRightHand().getPosition())
+        );
+        helperAnimation(boss.getHead() ,headDirection);
+        helperAnimation(boss.getLeftHand() ,leftHandDirection);
+        helperAnimation(boss.getRightHand() ,rightHandDirection);
     }
 
-    private void backAnimation() {
-        Vector leftD = Math.VectorAdd(
-                new Vector(
-                        Constants.HAND_DIMENSION.width / 2d,
-                        Constants.SCREEN_SIZE.height / 2d
-                ),
-                Math.ScalarInVector(-1, boss.getLeftHand().getPosition())
-        );
+    private void helperAnimation(BossHelper helper, Vector direction) {
         new DashAnimation(
-                boss.getLeftHand(),
-                leftD,
+                helper,
+                direction,
                 1000,
-                Math.VectorSize(leftD),
-                0,
-                false
-        ).StartAnimation();
-        Vector rightD = Math.VectorAdd(
-                new Vector(
-                        Constants.SCREEN_SIZE.width - Constants.HAND_DIMENSION.width / 2d,
-                        Constants.SCREEN_SIZE.height / 2d
-                ),
-                Math.ScalarInVector(-1, boss.getRightHand().getPosition())
-        );
-        new DashAnimation(
-                boss.getRightHand(),
-                rightD,
-                1000,
-                Math.VectorSize(rightD),
+                Math.VectorSize(direction),
                 0,
                 false
         ).StartAnimation();

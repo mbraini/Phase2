@@ -97,6 +97,8 @@ public class Constants {
     public static final double CERBERUS_RADIOS = 20;
     public static final int CERBERUS_COOLDOWN = 15000;
     public static final int FRAME_THREAD_REFRESH_RATE = 10;
+    public static final int ABILITY_SETUP_DELAY = 1000;
+    public static final int ABILITY_UNSETUP_DELAY = 1000;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);

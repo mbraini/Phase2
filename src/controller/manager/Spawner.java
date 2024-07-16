@@ -167,9 +167,11 @@ public abstract class Spawner {
             case bossBullet:
                 ModelRequests.addObjectModel(new BossBulletModel(position ,direction ,id));
                 ViewRequest.addObjectView(new BossBulletView(position ,id));
+                break;
             case slaughterBullet:
                 ModelRequests.addObjectModel(new SlaughterBulletModel(position, direction ,id));
                 ViewRequest.addObjectView(new SlaughterBulletView(position ,id));
+                break;
         }
     }
 

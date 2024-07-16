@@ -21,24 +21,35 @@ public class Slap extends Ability {
     private BossHelper helper;
     private EpsilonModel epsilonModel;
     private Timer timer;
+    private Timer unsetUptimer;
 
     public Slap(Boss boss ,EpsilonModel epsilonModel){
         this.boss = boss;
         this.epsilonModel = epsilonModel;
+        chooseHelper();
     }
 
     @Override
-    protected void ownHelpers() {
-        helper.setInUse(true);
+    protected void setUp() {
+        ownHelper(helper);
         helper.setHovering(false);
+        helper.setHasMeleeAttack(true);
+        helper.setMeleeAttack(10);
+    }
+
+    @Override
+    protected void unsetUp() {
+        disownHelper(helper);
+        helper.setHovering(false);
+        helper.setHasMeleeAttack(false);
+        helper.setMeleeAttack(0);
     }
 
     @Override
     public void activate() {
-        chooseHelper();
-        ownHelpers();
+        super.activate();
         slapAnimation();
-        timer = new Timer(2000, new ActionListener() {
+        timer = new Timer(Constants.ABILITY_SETUP_DELAY * 3 / 2, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 endAbility();
@@ -47,6 +58,66 @@ public class Slap extends Ability {
         });
         timer.start();
     }
+
+    @Override
+    protected void endAbility() {
+        helper.setAcceleration(0 ,0);
+        helper.setVelocity(0 ,0);
+        endAnimation();
+        unsetUpTimer();
+    }
+
+    private void unsetUpTimer() {
+        unsetUptimer = new Timer(Constants.ABILITY_UNSETUP_DELAY * 3 / 4, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                unsetUp();
+                unsetUptimer.stop();
+            }
+        });
+        unsetUptimer.start();
+    }
+
+    private void endAnimation() {
+        helper.setHovering(true);
+        Vector direction;
+        Vector destination;
+        if (helper == boss.getLeftHand()) {
+            destination = new Vector(
+                    Constants.HAND_DIMENSION.width / 2d,
+                    Constants.SCREEN_SIZE.height / 2d
+            );
+        }
+        else if (helper == boss.getRightHand()) {
+            destination = new Vector(
+                    Constants.SCREEN_SIZE.width - Constants.HAND_DIMENSION.width / 2d ,
+                    Constants.SCREEN_SIZE.height / 2d
+            );
+        }
+        else {
+            destination = new Vector(
+                    Constants.SCREEN_SIZE.width / 2d,
+                    Constants.SCREEN_SIZE.height - Constants.HAND_DIMENSION.height / 2d
+            );
+        }
+        direction = Math.VectorAdd(
+                destination,
+                Math.ScalarInVector(-1 ,helper.getPosition())
+        );
+        HelperAnimation(helper ,direction);
+    }
+
+    private void HelperAnimation(BossHelper helper, Vector direction) {
+        new DashAnimation(
+                helper,
+                direction,
+                Constants.ABILITY_UNSETUP_DELAY,
+                Math.VectorSize(direction),
+                0,
+                false
+        ).StartAnimation();
+    }
+
 
     private void slapAnimation() {
 
@@ -59,7 +130,7 @@ public class Slap extends Ability {
         new DashAnimation(
                 helper,
                 direction,
-                2000,
+                Constants.ABILITY_SETUP_DELAY,
                 distance,
                 0,
                 true
@@ -78,12 +149,5 @@ public class Slap extends Ability {
         Random random = new Random();
         int index = random.nextInt(0 ,helpers.size());
         helper = helpers.get(index);
-    }
-
-    @Override
-    protected void endAbility() {
-        helper.setInUse(false);
-        helper.setAcceleration(0 ,0);
-        helper.setVelocity(0 ,0);
     }
 }

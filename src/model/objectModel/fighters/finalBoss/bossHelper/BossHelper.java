@@ -1,11 +1,13 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
+import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.interfaces.FrameSticker;
 import model.interfaces.HasVertices;
 import model.interfaces.ImageChanger;
 import model.interfaces.MoveAble;
 import model.objectModel.fighters.EnemyModel;
+import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import utils.Math;
 
@@ -13,9 +15,15 @@ import java.awt.*;
 
 public abstract class BossHelper extends EnemyModel implements ImageChanger , MoveAble , FrameSticker {
     protected FrameModel frame;
+    @SkippedByJson
     protected Image image;
     protected boolean isInUse;
     protected abstract void initFrame();
+
+    @Override
+    public void meleeAttack(EpsilonModel epsilon) {
+        epsilon.setHP(epsilon.getHP() - meleeAttack);
+    }
 
     public FrameModel getFrame() {
         return frame;

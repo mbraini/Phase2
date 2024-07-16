@@ -242,9 +242,9 @@ public abstract class Controller {
 //                ModelType.omenoct
 //        );
 //
-        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-                ModelType.archmire
-        );
+//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
+//                ModelType.archmire
+//        );
 //
 //
 //        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
@@ -274,7 +274,7 @@ public abstract class Controller {
                 new Dimension(200,200),
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
-        builder1.setSolid(true);
+        builder1.setSolid(false);
         FrameModel frameModel1 = builder1.create();
         Spawner.addFrame(frameModel1);
 //
@@ -290,7 +290,7 @@ public abstract class Controller {
         FrameModel frameModel2 = builder2.create();
         Spawner.addFrame(frameModel2);
 
-//        Spawner.spawnBoss();
+        Spawner.spawnBoss();
     }
 
     public static void threadsStarter() {

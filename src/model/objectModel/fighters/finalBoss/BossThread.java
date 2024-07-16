@@ -55,6 +55,12 @@ public class BossThread extends Thread {
         if (abilityType != null) {
             abilityCaster.setAbilityType(abilityType);
             if (abilityCaster.canCast()) {
+                try {
+                    System.out.println("SLEEPING");
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 abilityCaster.cast();
                 System.out.println("CASTING!");
             }
@@ -62,23 +68,24 @@ public class BossThread extends Thread {
     }
 
     private void defineAbility() {
-        if (bossAI.isInSqueezePosition()){
-            abilityType = AbilityType.squeeze;
-            return;
-        }
-        if (bossAI.isInProjectileRange()){
-            abilityType = AbilityType.projectile;
-            return;
-        }
-        if (ability >= 6)
-            ability = ability - 6;
-        if (ability == 0 || ability == 1) {
-            abilityType = null;
-            ability++;
-            return;
-        }
-        abilityType = AbilityType.values()[ability];
-        ability++;
+        abilityType = AbilityType.vomit;
+//        if (bossAI.isInSqueezePosition()){
+//            abilityType = AbilityType.squeeze;
+//            return;
+//        }
+//        if (bossAI.isInProjectileRange()){
+//            abilityType = AbilityType.projectile;
+//            return;
+//        }
+//        if (ability >= 6)
+//            ability = ability - 6;
+//        if (ability == 0 || ability == 1) {
+//            abilityType = null;
+//            ability++;
+//            return;
+//        }
+//        abilityType = AbilityType.values()[ability];
+//        ability++;
     }
 
 }

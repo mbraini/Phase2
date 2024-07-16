@@ -39,8 +39,10 @@ public class AbilityCaster {
                 break;
             case rapidFire:
                 new RapidFire(boss).activate();
+                break;
             case slap:
                 new Slap(boss ,epsilonModel).activate();
+                break;
         }
     }
 

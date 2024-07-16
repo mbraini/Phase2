@@ -16,21 +16,26 @@ public class RapidFire extends Ability {
         this.boss = boss;
     }
 
+    @Override
+    protected void setUp() {
+        ownHelper(boss.getHead());
+    }
 
-    protected void ownHelpers() {
-        boss.getHead().setInUse(true);
+    @Override
+    protected void unsetUp() {
+        disownHelper(boss.getHead());
     }
 
     @Override
     public void activate() {
-        ownHelpers();
+        super.activate();
         shooter = new Timer(Constants.BOSS_BULLET_DELAY_TIME,new HeadShooter(this));
         shooter.start();
     }
 
     @Override
     protected void endAbility() {
-        boss.getHead().setInUse(false);
+        super.endAbility();
     }
 
     public Timer getShooter() {

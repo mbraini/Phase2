@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities.vomit;
 
 import controller.Controller;
+import controller.manager.loading.SkippedByJson;
 import data.Constants;
 import model.interfaces.Fader;
 import model.interfaces.IsCircle;
@@ -12,7 +13,9 @@ import utils.area.Circle;
 
 public class BossAoeEffectModel extends AoeEffectModel implements Fader , IsCircle {
     private double time;
+    @SkippedByJson
     private Vomit vomit;
+    @SkippedByJson
     private VomitThread thread;
 
     public BossAoeEffectModel(Vector center ,VomitThread thread ,Vomit vomit, String id){

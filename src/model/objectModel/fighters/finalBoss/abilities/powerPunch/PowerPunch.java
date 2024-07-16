@@ -4,6 +4,7 @@ import data.Constants;
 import model.animations.DashAnimation;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.Ability;
+import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
 import model.objectModel.fighters.finalBoss.bossHelper.PunchModel;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.frameModel.FrameModel;
@@ -25,17 +26,29 @@ public class PowerPunch extends Ability {
 
 
     @Override
-    protected void ownHelpers() {
-        boss.getPunch().setInUse(true);
+    protected void setUp() {
+        ownHelper(boss.getPunch());
+        boss.getPunch().setHovering(true);
+    }
+
+    @Override
+    protected void unsetUp() {
+        disownHelper(boss.getPunch());
+        boss.getPunch().setHovering(false);
     }
 
     @Override
     public void activate() {
-        ownHelpers();
+        super.activate();
         chooseFrameLocation();
         PunchAnimation();
-        timer = new Timer(1000 ,new PowerPunchAL(epsilonFrame ,frameLocation ,this));
+        timer = new Timer(Constants.ABILITY_SETUP_DELAY ,new PowerPunchAL(epsilonFrame ,frameLocation ,this));
         timer.start();
+    }
+
+    @Override
+    protected void endAbility() {
+        super.endAbility();
     }
 
     private void PunchAnimation() {
@@ -128,11 +141,6 @@ public class PowerPunch extends Ability {
             return;
         }
         frameLocation = FrameLocations.bottom;
-    }
-
-    @Override
-    protected void endAbility() {
-        boss.getPunch().setInUse(false);
     }
 
     public Timer getTimer() {

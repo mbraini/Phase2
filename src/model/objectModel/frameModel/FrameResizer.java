@@ -65,6 +65,30 @@ public class FrameResizer {
                     Math.ScalarInVector(-1 ,leftRightMoved)
             );
         }
+
+        if (frameModel.getSize().width < Constants.MINIMUM_FRAME_DIMENSION.width) {
+            frameModel.setLeftRightP(Math.VectorAdd(
+                    frameModel.getLeftRightP() ,
+                    Math.ScalarInVector(-1 ,leftRightMoved))
+            );
+            frameModel.revalidate(
+                    new Vector() ,
+                    Math.ScalarInVector(-1 ,leftRightMoved)
+            );
+        }
+
+        if (frameModel.getSize().height < Constants.MINIMUM_FRAME_DIMENSION.height) {
+            frameModel.setUpDownP(Math.VectorAdd(
+                    frameModel.getUpDownP() ,
+                    Math.ScalarInVector(-1 ,upDownMoved))
+            );
+            frameModel.revalidate(
+                    Math.ScalarInVector(-1 ,upDownMoved) ,
+                    new Vector()
+            );
+        }
+
     }
+
 
 }
