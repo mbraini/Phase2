@@ -41,7 +41,7 @@ public class FrameThread extends Thread{
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
-            if (delta >= Constants.UPS){
+            if (delta >= Constants.FRAME_THREAD_REFRESH_RATE) {
                 updateFrames();
                 delta = 0;
             }
@@ -58,10 +58,21 @@ public class FrameThread extends Thread{
         synchronized (ModelData.getModels()) {
             localFrames = (HashMap<ObjectModel, FrameModel>) ModelData.getLocalFrames().clone();
         }
+        resetDisables();
         setDisablesForSolidObjects();
         checkSolidObjectBounds();
         resize(frames);
         updatePreviousLocals();
+        framePressure(frames.getFirst());
+    }
+
+    private void resetDisables() {
+        for (FrameModel frameModel : frames){
+            frameModel.setCanTopResize(true);
+            frameModel.setCanBottomResize(true);
+            frameModel.setCanLeftResize(true);
+            frameModel.setCanRightResize(true);
+        }
     }
 
     private void updatePreviousLocals() {

@@ -16,7 +16,6 @@ public class FrameAnimation extends Animation{
     private double downAcceleration;
     private double rightAcceleration;
     private double leftAcceleration;
-    private Timer timer;
 
     public FrameAnimation(FrameModel frame , double up ,double down ,double right ,double left ,double time){
         this.frame = frame;
@@ -28,19 +27,6 @@ public class FrameAnimation extends Animation{
         leftAcceleration = -2 * left / (Math.pow(this.time ,2));
         this.frame.setUpDownV(-this.time * upAcceleration ,-this.time * downAcceleration);
         this.frame.setLeftRightV(-this.time * leftAcceleration ,-this.time * rightAcceleration);
-        timer = new Timer((int) this.time, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.setUpDownA(0 ,0);
-                frame.setLeftRightA(0 ,0);
-                frame.setUpDownV(0 ,0);
-                frame.setLeftRightV(0 ,0);
-                frame.setResizing(false);
-                Controller.setUpManager();
-                timer.stop();
-                timer.removeActionListener(this);
-            }
-        });
     }
 
 
@@ -49,7 +35,22 @@ public class FrameAnimation extends Animation{
         frame.setUpDownA(new Vector(upAcceleration ,downAcceleration));
         frame.setLeftRightA(new Vector(leftAcceleration ,rightAcceleration));
         frame.setResizing(true);
-        timer.start();
+        start();
+    }
+
+    @Override
+    public void run() {
+        try {
+            sleep((int)time);
+        }
+        catch (Exception e) {
+
+        }
+        frame.setUpDownA(0 ,0);
+        frame.setLeftRightA(0 ,0);
+        frame.setUpDownV(0 ,0);
+        frame.setLeftRightV(0 ,0);
+        frame.setResizing(false);
     }
 
     public boolean isDone(){
