@@ -1,7 +1,7 @@
 package model.animations;
 
 
-import data.Constants;
+import constants.Constants;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 

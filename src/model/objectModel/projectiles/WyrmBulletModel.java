@@ -1,6 +1,6 @@
 package model.objectModel.projectiles;
 
-import data.Constants;
+import constants.Constants;
 import model.interfaces.IsCircle;
 import utils.Math;
 import utils.Vector;

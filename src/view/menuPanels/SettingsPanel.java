@@ -2,7 +2,7 @@ package view.menuPanels;
 
 
 import controller.configs.Configs;
-import data.Constants;
+import constants.Constants;
 import view.soundEffects.Sound;
 
 import javax.swing.*;

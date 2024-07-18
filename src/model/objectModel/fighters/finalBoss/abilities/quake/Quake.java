@@ -1,7 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities.quake;
 
 import controller.Controller;
-import data.Constants;
+import constants.Constants;
 import model.animations.DashAnimation;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.Ability;

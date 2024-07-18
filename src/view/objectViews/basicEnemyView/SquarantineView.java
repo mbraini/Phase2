@@ -1,7 +1,7 @@
 package view.objectViews.basicEnemyView;
 
 
-import data.Constants;
+import constants.Constants;
 import utils.Vector;
 
 import java.awt.*;

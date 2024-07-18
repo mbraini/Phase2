@@ -1,6 +1,6 @@
 package model.objectModel.fighters.finalBoss.abilities.slap;
 
-import data.Constants;
+import constants.Constants;
 import model.animations.DashAnimation;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.finalBoss.Boss;

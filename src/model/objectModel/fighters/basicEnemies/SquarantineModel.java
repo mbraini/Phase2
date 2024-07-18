@@ -4,7 +4,7 @@ package model.objectModel.fighters.basicEnemies;
 import controller.Controller;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
-import data.Constants;
+import constants.Constants;
 import model.ModelData;
 import model.animations.DashAnimation;
 import model.interfaces.Ability;
@@ -17,7 +17,7 @@ import utils.Vector;
 import java.util.ArrayList;
 
 public class SquarantineModel extends BasicEnemyModel implements HasVertices, IsPolygon, Ability , ImpactAble {
-    ArrayList<Vector> vertices;
+    private ArrayList<Vector> vertices;
     boolean isImpacted = false;
     public SquarantineModel(Vector position , String id){
         this.position = position;
@@ -102,7 +102,7 @@ public class SquarantineModel extends BasicEnemyModel implements HasVertices, Is
 
     @Override
     public void die() {
-        Controller.removeObject(this);
+        super.die();
         Spawner.addCollectives(position ,1 ,5);
     }
 }

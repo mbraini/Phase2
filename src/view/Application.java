@@ -1,7 +1,6 @@
 package view;
 
-import controller.Controller;
-import data.Constants;
+import constants.Constants;
 import view.soundEffects.Sound;
 import view.menuPanels.MainFrame;
 

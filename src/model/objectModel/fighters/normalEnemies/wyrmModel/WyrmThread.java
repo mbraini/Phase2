@@ -1,8 +1,7 @@
 package model.objectModel.fighters.normalEnemies.wyrmModel;
 
-import controller.manager.loading.SkippedByJson;
-import data.Constants;
-import model.GameState;
+import constants.Constants;
+import controller.manager.GameState;
 import utils.Math;
 import utils.Vector;
 

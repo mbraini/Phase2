@@ -1,6 +1,6 @@
 package model.objectModel.fighters.finalBoss;
 
-import data.Constants;
+import constants.Constants;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
 import utils.Vector;

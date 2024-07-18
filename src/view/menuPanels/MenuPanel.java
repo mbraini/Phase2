@@ -1,7 +1,7 @@
 package view.menuPanels;
 
 import controller.Controller;
-import data.Constants;
+import constants.Constants;
 import view.Application;
 
 

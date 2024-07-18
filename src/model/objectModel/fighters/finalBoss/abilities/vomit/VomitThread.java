@@ -1,12 +1,10 @@
 package model.objectModel.fighters.finalBoss.abilities.vomit;
 
-import data.Constants;
-import model.GameState;
+import constants.Constants;
+import controller.manager.GameState;
 import model.ModelData;
 import model.collision.Collision;
 import model.objectModel.ObjectModel;
-import model.objectModel.effects.EffectModel;
-import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 
 import java.util.ArrayList;

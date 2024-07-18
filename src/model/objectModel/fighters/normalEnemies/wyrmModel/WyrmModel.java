@@ -4,17 +4,15 @@ import controller.Controller;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
-import data.Constants;
+import constants.Constants;
 import model.ModelData;
 import model.interfaces.*;
-import model.objectModel.FighterModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.frameModel.FrameModelBuilder;
 import model.objectModel.fighters.normalEnemies.NormalEnemyModel;
 import utils.Math;
 import utils.Vector;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class WyrmModel extends NormalEnemyModel implements Navigator , FrameSticker , MoveAble ,IsPolygon ,HasVertices ,CollisionDetector {
@@ -78,9 +76,10 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
 
     @Override
     public void die() {
-        Controller.removeObject(this);
+        super.die();
         Controller.removeFrame(frameModel);
-        wyrmThread.interrupt();
+        if (wyrmThread != null)
+            wyrmThread.interrupt();
         Spawner.addCollectives(position ,2 ,8);
     }
 
@@ -187,9 +186,13 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
 
     public void start(){
         if (isInRange) {
-            wyrmThread = new WyrmThread(this, origin);
+            initWyrmThread();
             wyrmThread.start();
         }
+    }
+
+    private void initWyrmThread() {
+        wyrmThread = new WyrmThread(this, origin);
     }
 
 

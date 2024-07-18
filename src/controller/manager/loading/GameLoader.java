@@ -130,6 +130,7 @@ public class GameLoader {
                 FrameModel frameModel = gson.fromJson(jModel.toString() , FrameModel.class);
                 if (i == 0){
                     ModelData.addFrame(frameModel);
+                    ModelData.setEpsilonFrame(frameModel);
                     ViewRequest.addFrameView(new FrameView(
                             frameModel.getPosition(),
                             frameModel.getSize(),

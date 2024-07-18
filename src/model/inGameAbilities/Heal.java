@@ -1,7 +1,6 @@
 package model.inGameAbilities;
 
 import controller.enums.InGameAbilityType;
-import model.GameState;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 

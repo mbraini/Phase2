@@ -1,8 +1,7 @@
 package controller.listeners;
 
 
-import controller.Controller;
-import data.Constants;
+import constants.Constants;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
@@ -10,7 +9,6 @@ import utils.Vector;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseMotionListener;
 
 public class EpsilonCirculation extends MouseMotionAdapter {
     private EpsilonModel epsilon;

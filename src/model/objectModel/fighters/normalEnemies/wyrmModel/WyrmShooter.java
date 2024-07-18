@@ -2,14 +2,11 @@ package model.objectModel.fighters.normalEnemies.wyrmModel;
 
 import controller.enums.ModelType;
 import controller.manager.Spawner;
-import data.Constants;
+import constants.Constants;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
 import utils.Vector;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class WyrmShooter {
 

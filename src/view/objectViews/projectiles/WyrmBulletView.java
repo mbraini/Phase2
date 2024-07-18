@@ -1,6 +1,6 @@
 package view.objectViews.projectiles;
 
-import data.Constants;
+import constants.Constants;
 import utils.Vector;
 
 import java.awt.*;

@@ -1,9 +1,8 @@
 package view.gamePanels;
 
 
-import data.Constants;
-import model.GameState;
-import view.menuPanels.MainFrame;
+import constants.Constants;
+import controller.manager.GameState;
 import view.menuPanels.PIG;
 
 import javax.swing.*;

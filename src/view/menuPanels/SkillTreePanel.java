@@ -1,9 +1,7 @@
 package view.menuPanels;
 
 
-import controller.Controller;
-import controller.enums.SkillTreeAbilityType;
-import data.Constants;
+import constants.Constants;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,10 +1,9 @@
 package model.objectModel.fighters.finalBoss.abilities.powerPunch;
 
-import data.Constants;
+import constants.Constants;
 import model.animations.DashAnimation;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.Ability;
-import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
 import model.objectModel.fighters.finalBoss.bossHelper.PunchModel;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.frameModel.FrameModel;

@@ -2,8 +2,8 @@ package model.objectModel.fighters.finalBoss.abilities.projectile;
 
 import controller.enums.ModelType;
 import controller.manager.Spawner;
-import data.Constants;
-import model.GameState;
+import constants.Constants;
+import controller.manager.GameState;
 import model.animations.DashAnimation;
 import model.interfaces.HasVertices;
 import model.objectModel.fighters.EpsilonModel;

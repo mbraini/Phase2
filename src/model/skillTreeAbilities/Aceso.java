@@ -2,8 +2,7 @@ package model.skillTreeAbilities;
 
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.loading.SkippedByJson;
-import data.Constants;
-import model.GameState;
+import controller.manager.GameState;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 

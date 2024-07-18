@@ -1,7 +1,7 @@
 package view.menuPanels;
 
 
-import data.Constants;
+import constants.Constants;
 
 import javax.swing.*;
 

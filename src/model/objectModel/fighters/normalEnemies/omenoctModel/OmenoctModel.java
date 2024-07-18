@@ -1,11 +1,10 @@
 package model.objectModel.fighters.normalEnemies.omenoctModel;
 
-import com.google.gson.annotations.Expose;
 import controller.Controller;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
-import data.Constants;
+import constants.Constants;
 import model.interfaces.*;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.fighters.normalEnemies.NormalEnemyModel;
@@ -152,7 +151,7 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
 
     @Override
     public void die() {
-        Controller.removeObject(this);
+        super.die();
         Spawner.addCollectives(position ,8 ,4);
     }
 

@@ -1,11 +1,10 @@
 package controller.manager;
 
 import controller.enums.ModelType;
-import data.Constants;
+import constants.Constants;
 import model.ModelRequests;
 import model.inGameAbilities.Dismay.EpsilonProtectorModel;
 import model.objectModel.CollectiveModel;
-import model.objectModel.ObjectModel;
 import model.objectModel.effects.ArchmireAoeEffectModel;
 import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.fighters.EpsilonModel;

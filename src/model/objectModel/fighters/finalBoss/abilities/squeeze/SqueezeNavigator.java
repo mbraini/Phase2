@@ -1,6 +1,6 @@
 package model.objectModel.fighters.finalBoss.abilities.squeeze;
 
-import data.Constants;
+import constants.Constants;
 import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
 import model.objectModel.frameModel.FrameModel;
 import utils.Math;

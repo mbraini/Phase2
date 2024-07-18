@@ -1,6 +1,6 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
-import data.Constants;
+import constants.Constants;
 import model.objectModel.frameModel.FrameModelBuilder;
 import utils.Math;
 import utils.Vector;

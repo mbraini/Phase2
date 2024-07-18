@@ -1,14 +1,13 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
-import data.Constants;
-import model.GameState;
+import constants.Constants;
+import controller.manager.GameState;
 import model.ModelData;
 import model.collision.Collision;
 import model.objectModel.ObjectModel;
 import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.fighters.EnemyModel;
 import model.objectModel.fighters.EpsilonModel;
-import model.objectModel.frameModel.FrameModel;
 import utils.Helper;
 
 import java.util.ArrayList;
@@ -60,7 +59,7 @@ public class BlackOrbThread extends Thread{
 
     }
 
-    private void setUpDizzy() {
+    private synchronized void setUpDizzy() {
         for (BlackOrbAoeEffectModel effectModel : blackOrbModel.getEffectModels()){
             effectModel.setR(0);
             effectModel.setG(0);
@@ -68,7 +67,7 @@ public class BlackOrbThread extends Thread{
         }
     }
 
-    private void unSetUpDizzy(){
+    private synchronized void unSetUpDizzy(){
         for (BlackOrbAoeEffectModel effectModel : blackOrbModel.getEffectModels()){
             effectModel.setR(255);
             effectModel.setG(0);

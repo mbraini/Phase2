@@ -2,10 +2,9 @@ package model.objectModel.fighters;
 
 
 import controller.enums.ModelType;
-import data.Constants;
+import constants.Constants;
 import model.interfaces.IsCircle;
 import model.objectModel.ObjectModel;
-import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
 import utils.Vector;
 

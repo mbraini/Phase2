@@ -1,9 +1,8 @@
 package model.objectModel.fighters.finalBoss.abilities.projectile;
 
-import data.Constants;
+import constants.Constants;
 import model.ModelData;
 import model.animations.DashAnimation;
-import model.interfaces.Navigator;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.Ability;

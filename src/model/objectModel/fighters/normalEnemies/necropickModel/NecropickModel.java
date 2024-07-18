@@ -4,8 +4,8 @@ import controller.Controller;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
-import data.Constants;
-import model.GameState;
+import constants.Constants;
+import controller.manager.GameState;
 import model.ModelData;
 import model.interfaces.Ability;
 import model.interfaces.HasVertices;
@@ -88,7 +88,7 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
 
     @Override
     public void die() {
-        Controller.removeObject(this);
+        super.die();
         abilityTimer.stop();
         hoveringTimer.stop();
         Spawner.addCollectives(position ,4 ,2);

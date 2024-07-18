@@ -1,7 +1,6 @@
 package model.objectModel.frameModel;
 
 import controller.Controller;
-import data.Constants;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
 import model.objectModel.ObjectModel;

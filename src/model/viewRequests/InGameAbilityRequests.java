@@ -1,7 +1,7 @@
 package model.viewRequests;
 
 import controller.enums.InGameAbilityType;
-import model.GameState;
+import controller.manager.GameState;
 import model.inGameAbilities.InGameAbility;
 import model.inGameAbilities.InGameAbilityHandler;
 

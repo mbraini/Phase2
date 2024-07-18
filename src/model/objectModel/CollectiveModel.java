@@ -2,8 +2,8 @@ package model.objectModel;
 
 
 import controller.Controller;
-import data.Constants;
-import model.GameState;
+import constants.Constants;
+import controller.manager.GameState;
 import model.ModelData;
 import model.interfaces.*;
 import utils.Math;

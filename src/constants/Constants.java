@@ -1,4 +1,4 @@
-package data;
+package constants;
 
 
 
@@ -41,7 +41,7 @@ public class Constants {
     public static final double WYRM_NAVIGATION_VELOCITY = 0.3;
     public static final double WYRM_NAVIGATION_RADIOS = 500;
     public static final int WYRM_SHOOTING_TIME = 1000;
-    public static final double WYRM_ANGULAR_VELOCITY = 2;
+    public static final double WYRM_ANGULAR_VELOCITY = 1.3;
     public static final int WYRM_CIRCULAR_T = (int)(Math.PI * 2 * WYRM_NAVIGATION_RADIOS / WYRM_ANGULAR_VELOCITY);
     public static final int WYRM_THETA_UPDATE_COUNT = 360;
     public static final int WYRM_THREAD_REFRESH_RATE = WYRM_CIRCULAR_T / WYRM_THETA_UPDATE_COUNT;
@@ -82,7 +82,7 @@ public class Constants {
     public static final double BLACK_ORB_LASER_DAMAGE = 8;
     public static final double VOMIT_AOE_DAMAGE = 15;
     public static final double BARRICADOS_DURATION_TIME = 120000;
-    public static final Dimension BARRICADOS_DIMENSION = new Dimension(300 ,300);
+    public static final Dimension BARRICADOS_DIMENSION = new Dimension(200 ,200);
     public static final int DASH_TIMER_REFRESH_RATE = 100;
     public static final int DISMAY_RADIOS = 300;
     public static final double SLAUGHTER_BULLET_RADIOS = 5 ;

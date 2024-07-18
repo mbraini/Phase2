@@ -1,11 +1,7 @@
 package view.painter;
 
 import controller.Controller;
-import controller.listeners.EpsilonAiming;
-import controller.listeners.EpsilonCirculation;
-import controller.listeners.EpsilonMovement;
-import data.Constants;
-import model.ModelData;
+import constants.Constants;
 import utils.Vector;
 import view.ViewData;
 import view.ViewRequest;

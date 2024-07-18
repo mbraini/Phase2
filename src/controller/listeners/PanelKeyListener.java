@@ -3,7 +3,7 @@ package controller.listeners;
 import controller.Controller;
 import controller.configs.KeyConfigs;
 import controller.enums.SkillTreeAbilityType;
-import model.GameState;
+import controller.manager.GameState;
 import view.gamePanels.Shop;
 import view.gamePanels.ShopFrame;
 

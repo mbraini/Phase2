@@ -2,8 +2,7 @@ package model.inGameAbilities.Dismay;
 
 import controller.Controller;
 import controller.enums.ModelType;
-import data.Constants;
-import model.ModelRequests;
+import constants.Constants;
 import model.interfaces.Ability;
 import model.interfaces.IsCircle;
 import model.objectModel.ObjectModel;

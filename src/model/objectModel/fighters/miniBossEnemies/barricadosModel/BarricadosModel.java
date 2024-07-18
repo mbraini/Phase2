@@ -1,6 +1,6 @@
 package model.objectModel.fighters.miniBossEnemies.barricadosModel;
 
-import data.Constants;
+import constants.Constants;
 import model.interfaces.Fader;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;

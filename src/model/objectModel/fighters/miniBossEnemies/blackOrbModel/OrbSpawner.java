@@ -1,12 +1,9 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
 import controller.manager.Spawner;
-import data.Constants;
+import constants.Constants;
 import utils.Math;
 import utils.Vector;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class OrbSpawner {
 

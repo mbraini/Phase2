@@ -2,12 +2,11 @@ package model.objectModel.fighters.finalBoss.abilities.vomit;
 
 import controller.Controller;
 import controller.manager.loading.SkippedByJson;
-import data.Constants;
+import constants.Constants;
 import model.interfaces.Fader;
 import model.interfaces.IsCircle;
 import model.logics.Impact;
 import model.objectModel.effects.AoeEffectModel;
-import model.objectModel.effects.EffectModel;
 import utils.Vector;
 import utils.area.Circle;
 

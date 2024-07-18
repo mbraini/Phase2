@@ -1,10 +1,9 @@
 package model.inGameAbilities;
 
 import controller.enums.InGameAbilityType;
-import controller.listeners.EpsilonAiming;
 import controller.manager.loading.SkippedByJson;
-import data.Constants;
-import model.GameState;
+import constants.Constants;
+import controller.manager.GameState;
 import model.viewRequests.ShootRequest;
 
 import javax.swing.*;

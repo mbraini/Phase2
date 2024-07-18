@@ -1,7 +1,7 @@
 package model.viewRequests;
 
 import controller.enums.SkillTreeAbilityType;
-import model.GameState;
+import controller.manager.GameState;
 import model.skillTreeAbilities.SkillTreeAbility;
 import model.skillTreeAbilities.SkillTreeAbilityHandler;
 

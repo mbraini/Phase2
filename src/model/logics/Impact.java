@@ -1,7 +1,7 @@
 package model.logics;
 
 
-import data.Constants;
+import constants.Constants;
 import model.ModelData;
 import model.animations.DashAnimation;
 import model.interfaces.ImpactAble;

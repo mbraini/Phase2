@@ -1,7 +1,7 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
 import controller.manager.loading.SkippedByJson;
-import data.Constants;
+import constants.Constants;
 import model.interfaces.FrameSticker;
 import model.interfaces.HasVertices;
 import model.interfaces.ImageChanger;

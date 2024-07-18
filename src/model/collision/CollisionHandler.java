@@ -29,6 +29,8 @@ public class CollisionHandler {
     }
 
     public void handle() {
+        if (collisionPoint == null)
+            return;
         ///////////epsilon and anotherModel
         if (model1 instanceof EpsilonModel || model2 instanceof EpsilonModel){
             if (model1 instanceof EpsilonModel){
@@ -117,7 +119,7 @@ public class CollisionHandler {
                 object.setVelocity(0 ,0);
             }
         }
-        if (object instanceof BulletModel){
+        if (object instanceof BulletModel && !(object instanceof EpsilonBulletModel)){
             epsilon.setHP(epsilon.getHP() - ((BulletModel) object).getDamage());
             object.die();
         }

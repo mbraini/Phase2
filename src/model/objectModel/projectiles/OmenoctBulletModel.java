@@ -1,8 +1,7 @@
 package model.objectModel.projectiles;
 
-import data.Constants;
+import constants.Constants;
 import model.interfaces.IsCircle;
-import model.logics.Impact;
 import utils.Math;
 import utils.Vector;
 

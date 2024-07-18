@@ -2,9 +2,8 @@ package model.skillTreeAbilities.Cerberus;
 
 import controller.enums.ModelType;
 import controller.manager.loading.SkippedByJson;
-import data.Constants;
-import model.GameState;
-import model.interfaces.CollisionDetector;
+import constants.Constants;
+import controller.manager.GameState;
 import model.interfaces.IsCircle;
 import model.objectModel.FighterModel;
 import model.objectModel.fighters.EnemyModel;

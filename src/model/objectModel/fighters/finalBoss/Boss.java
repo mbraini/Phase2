@@ -2,7 +2,7 @@ package model.objectModel.fighters.finalBoss;
 
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
-import data.Constants;
+import constants.Constants;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;

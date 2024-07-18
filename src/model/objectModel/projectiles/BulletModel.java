@@ -1,10 +1,8 @@
 package model.objectModel.projectiles;
 
 import controller.Controller;
-import data.Constants;
-import model.interfaces.HasVertices;
+import constants.Constants;
 import model.interfaces.MoveAble;
-import model.logics.Impact;
 import utils.Math;
 
 public abstract class BulletModel extends ProjectileModel implements MoveAble {

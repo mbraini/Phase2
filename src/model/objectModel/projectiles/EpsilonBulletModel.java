@@ -1,7 +1,7 @@
 package model.objectModel.projectiles;
 
 
-import data.Constants;
+import constants.Constants;
 import model.ModelData;
 import model.interfaces.IsCircle;
 import utils.Math;

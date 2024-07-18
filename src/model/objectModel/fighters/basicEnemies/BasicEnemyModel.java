@@ -1,7 +1,7 @@
 package model.objectModel.fighters.basicEnemies;
 
-import data.Constants;
-import model.GameState;
+import constants.Constants;
+import controller.manager.GameState;
 import model.interfaces.HasVertices;
 import model.interfaces.MoveAble;
 import model.objectModel.fighters.EnemyModel;

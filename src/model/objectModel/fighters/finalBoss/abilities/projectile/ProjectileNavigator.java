@@ -1,6 +1,6 @@
 package model.objectModel.fighters.finalBoss.abilities.projectile;
 
-import data.Constants;
+import constants.Constants;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
 import utils.Math;

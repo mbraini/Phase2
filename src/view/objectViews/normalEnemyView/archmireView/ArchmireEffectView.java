@@ -1,6 +1,6 @@
 package view.objectViews.normalEnemyView.archmireView;
 
-import data.Constants;
+import constants.Constants;
 import utils.area.Area;
 import utils.area.Polygon;
 import view.objectViews.effectView.EffectView;

@@ -3,8 +3,8 @@ package view.gamePanels;
 
 import controller.Controller;
 import controller.enums.InGameAbilityType;
-import data.Constants;
-import model.GameState;
+import constants.Constants;
+import controller.manager.GameState;
 import view.ViewData;
 import view.menuPanels.PIG;
 

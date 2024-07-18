@@ -1,29 +1,28 @@
 package model.animations;
 
 
-import data.Constants;
-import model.GameState;
+import constants.Constants;
+import controller.manager.GameState;
 import model.interfaces.ImpactAble;
 import model.objectModel.ObjectModel;
 import utils.Math;
 import utils.Vector;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 
-public class DashAnimation extends Animation implements ActionListener {
-    ObjectModel oigModel;
-    Vector direction;
-    int time;
-    int timePassed;
-    double distance;
-    double theta;
-    Timer timer;
-    static HashMap<ObjectModel ,Timer> dashes = new HashMap<>();
-    boolean grow;
+public class DashAnimation extends Animation {
+    private ObjectModel oigModel;
+    private Vector direction;
+    private int time;
+    private int timePassed;
 
+    private double distance;
+
+    private double theta;
+    static HashMap<ObjectModel ,DashAnimation> dashes = new HashMap<>();
+    private boolean grow;
+    private boolean stopBoolean;
     public DashAnimation(ObjectModel oigModel, Vector direction, int time, double distance ,double theta ,boolean grow) {
         this.oigModel = oigModel;
         this.direction = Math.VectorWithSize(direction ,1);
@@ -34,9 +33,26 @@ public class DashAnimation extends Animation implements ActionListener {
     }
 
     @Override
+    public void run() {
+        while (!getStopBoolean()) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            if (!GameState.isPause()) {
+                timePassed += 100;
+                if (timePassed == time) {
+                    stopDash(this);
+                }
+            }
+        }
+    }
+
+    @Override
     public void StartAnimation() {
         if (dashes.containsKey(oigModel)){
-            StopTimer(dashes.get(oigModel));
+            stopDash(dashes.get(oigModel));
             dashes.remove(oigModel);
         }
 
@@ -61,24 +77,12 @@ public class DashAnimation extends Animation implements ActionListener {
             ((ImpactAble) oigModel).setImpacted(true);
         }
 
-        timer = new Timer(Constants.DASH_TIMER_REFRESH_RATE, this);
-        dashes.put(oigModel ,timer);
-        timer.start();
+        dashes.put(oigModel ,this);
+        start();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (GameState.isPause()) {
-            return;
-        }
-        timePassed += Constants.DASH_TIMER_REFRESH_RATE;
-        if (timePassed >= time)
-            StopTimer(timer);
-    }
-
-    void StopTimer(Timer timer){
-        timer.removeActionListener(this);
-        timer.stop();
+    void stopDash(DashAnimation dashAnimation){
+        dashAnimation.setStopBoolean(true);
         if (oigModel instanceof ImpactAble) {
             ((ImpactAble) oigModel).setImpacted(false);
         }
@@ -87,5 +91,13 @@ public class DashAnimation extends Animation implements ActionListener {
 
         oigModel.setAlpha(0);
         oigModel.setOmega(0);
+    }
+
+    public boolean getStopBoolean() {
+        return stopBoolean;
+    }
+
+    public void setStopBoolean(boolean stopBoolean) {
+        this.stopBoolean = stopBoolean;
     }
 }

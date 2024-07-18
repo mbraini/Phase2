@@ -2,7 +2,7 @@ package view.objectViews;
 
 
 import controller.interfaces.SizeChanger;
-import data.Constants;
+import constants.Constants;
 import utils.Vector;
 
 import java.awt.*;

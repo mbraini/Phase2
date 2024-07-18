@@ -2,13 +2,10 @@ package controller.listeners;
 
 
 import controller.Controller;
-import controller.enums.ModelType;
-import controller.manager.Spawner;
-import data.Constants;
-import model.GameState;
+import constants.Constants;
+import controller.manager.GameState;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
-import utils.Math;
 import utils.Vector;
 import view.soundEffects.Sound;
 
@@ -16,7 +13,6 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 
 public class EpsilonAiming extends MouseAdapter {

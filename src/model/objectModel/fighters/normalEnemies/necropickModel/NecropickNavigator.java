@@ -1,6 +1,6 @@
 package model.objectModel.fighters.normalEnemies.necropickModel;
 
-import data.Constants;
+import constants.Constants;
 import utils.Math;
 import utils.Vector;
 

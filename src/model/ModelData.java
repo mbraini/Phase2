@@ -27,6 +27,7 @@ public class ModelData {
         return abstractEnemies;
     }
     private static EpsilonModel epsilon;
+    private static FrameModel epsilonFrame;
 
     public static void setAbstractEnemies(ArrayList<AbstractEnemy> abstractEnemies) {
         ModelData.abstractEnemies = abstractEnemies;
@@ -138,5 +139,13 @@ public class ModelData {
 
     public static void setEpsilon(EpsilonModel epsilon) {
         ModelData.epsilon = epsilon;
+    }
+
+    public static FrameModel getEpsilonFrame() {
+        return epsilonFrame;
+    }
+
+    public static void setEpsilonFrame(FrameModel epsilonFrame) {
+        ModelData.epsilonFrame = epsilonFrame;
     }
 }

@@ -1,6 +1,6 @@
 package view.objectViews.normalEnemyView.archmireView;
 
-import data.Constants;
+import constants.Constants;
 import utils.Vector;
 import view.objectViews.normalEnemyView.NormalEnemyView;
 

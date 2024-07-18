@@ -3,17 +3,12 @@ package model.skillTreeAbilities.Cerberus;
 import controller.enums.ModelType;
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.Spawner;
-import data.Constants;
-import model.GameState;
+import constants.Constants;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 import model.skillTreeAbilities.SkillTreeAbility;
 import utils.Math;
 import utils.Vector;
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Cerberus extends SkillTreeAbility {
 

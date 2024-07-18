@@ -1,6 +1,6 @@
 package model.objectModel.fighters.finalBoss.abilities.powerPunch;
 
-import data.Constants;
+import constants.Constants;
 import model.animations.FrameAnimation;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.frameModel.FrameModel;

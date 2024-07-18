@@ -1,7 +1,7 @@
 package model.objectModel.fighters.miniBossEnemies.barricadosModel;
 
 import controller.enums.ModelType;
-import data.Constants;
+import constants.Constants;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.frameModel.FrameModelBuilder;
 import utils.Math;

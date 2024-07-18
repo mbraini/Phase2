@@ -1,7 +1,6 @@
 package model.objectModel.fighters.finalBoss.abilities.squeeze;
 
-import data.Constants;
-import model.ModelData;
+import constants.Constants;
 import model.animations.DashAnimation;
 import model.interfaces.Navigator;
 import model.objectModel.fighters.finalBoss.Boss;
@@ -9,8 +8,6 @@ import model.objectModel.fighters.finalBoss.abilities.Ability;
 import model.objectModel.frameModel.FrameModel;
 import utils.Math;
 import utils.Vector;
-
-import javax.swing.*;
 
 public class Squeeze extends Ability implements Navigator {
 

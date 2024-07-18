@@ -1,7 +1,7 @@
 package model.collision;
 
 
-import data.Constants;
+import constants.Constants;
 import model.interfaces.IsCircle;
 import model.interfaces.IsPolygon;
 import model.objectModel.*;

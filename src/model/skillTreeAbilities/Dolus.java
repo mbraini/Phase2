@@ -1,13 +1,8 @@
 package model.skillTreeAbilities;
 
 import controller.enums.SkillTreeAbilityType;
-import data.Constants;
-import model.GameState;
 import model.ModelData;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 

@@ -1,6 +1,8 @@
 package model.objectModel.fighters;
 
 
+import controller.Controller;
+import controller.manager.GameState;
 import model.collision.Collision;
 import model.interfaces.IsCircle;
 import model.interfaces.IsPolygon;
@@ -23,6 +25,13 @@ public abstract class EnemyModel extends FighterModel {
                 }
             }
         }
+    }
+
+    @Override
+    public void die() {
+        Controller.removeObject(this);
+        GameState.setEnemyCount(GameState.getEnemyCount() - 1);
+        GameState.setEnemyKilled(GameState.getEnemyKilled() + 1);
     }
 
     public boolean isVulnerableToEpsilonMelee() {

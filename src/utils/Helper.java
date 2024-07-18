@@ -1,9 +1,10 @@
 package utils;
 
 
-import data.Constants;
+import constants.Constants;
 import model.objectModel.frameModel.FrameModel;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -39,15 +40,81 @@ public class Helper {
         return new String(str);
     }
 
-    public static Vector createRandomPosition(FrameModel frameModel) {
-        int x = random.nextInt(
-                (int) frameModel.getPosition().x ,
-                (int) frameModel.getPosition().x + frameModel.getSize().width
-        );
-        int y = random.nextInt(
-                (int) frameModel.getPosition().y ,
-                (int) frameModel.getPosition().y + frameModel.getSize().height
-        );
-        return new Vector(x ,y);
+    public static Vector createRandomPosition(FrameModel frameModel ,boolean inFrame) {
+        if (inFrame) {
+            int x = random.nextInt(
+                    (int) frameModel.getPosition().x,
+                    (int) frameModel.getPosition().x + frameModel.getSize().width
+            );
+            int y = random.nextInt(
+                    (int) frameModel.getPosition().y,
+                    (int) frameModel.getPosition().y + frameModel.getSize().height
+            );
+            return new Vector(x, y);
+        }
+        else {
+            int x = random.nextInt(
+                    -Constants.ENEMY_SPAWN_MARGIN ,
+                    frameModel.getSize().width + Constants.ENEMY_SPAWN_MARGIN
+            );
+            int y = 0;
+            if (x < -Constants.ENEMY_SPAWN_MARGIN || x > frameModel.getSize().width + Constants.ENEMY_SPAWN_MARGIN){
+                y = random.nextInt(-Constants.ENEMY_SPAWN_MARGIN ,frameModel.getSize().height + Constants.ENEMY_SPAWN_MARGIN);
+            }
+            else {
+                int rand = random.nextInt(2);
+                if (rand == 0){
+                    y = random.nextInt(-Constants.ENEMY_SPAWN_MARGIN ,0);
+                }
+                else {
+                    y = random.nextInt(
+                            frameModel.getSize().height + Constants.ENEMY_SPAWN_MARGIN ,
+                            frameModel.getSize().height + Constants.ENEMY_SPAWN_MARGIN + Constants.TRIGORATH_DIMENTION.height
+                    );
+                }
+            }
+            return new Vector(x ,y);
+        }
+    }
+
+    public static Vector createRandomPositionSeparately(FrameModel epsilonFrame, Dimension size) {
+        Vector solution;
+
+        double frameRightX = Constants.SCREEN_SIZE.width - epsilonFrame.getPosition().getX() - epsilonFrame.getSize().width;
+        double frameLeftX = epsilonFrame.getPosition().getX();
+        double frameTopY = epsilonFrame.getPosition().getY();
+        double frameBottomY = Constants.SCREEN_SIZE.height - epsilonFrame.getPosition().getY() - epsilonFrame.getSize().height;
+        frameRightX = java.lang.Math.abs(frameRightX);
+        frameLeftX = java.lang.Math.abs(frameLeftX);
+        frameTopY = java.lang.Math.abs(frameTopY);
+        frameBottomY = java.lang.Math.abs(frameBottomY);
+        double max = java.lang.Math.max((java.lang.Math.max(frameRightX ,frameLeftX)) , java.lang.Math.max(frameTopY ,frameBottomY));
+
+        if (max == frameLeftX) {
+            solution = new Vector(
+                    epsilonFrame.getPosition().x - size.width,
+                    (2 * epsilonFrame.getPosition().y + epsilonFrame.getSize().height) / 2d
+            );
+        }
+        else if (max == frameRightX) {
+            solution = new Vector(
+                    epsilonFrame.getPosition().x + epsilonFrame.getSize().width + size.width,
+                    (2 * epsilonFrame.getPosition().y + epsilonFrame.getSize().height) / 2d
+            );
+        }
+
+        else if (max == frameTopY) {
+            solution = new Vector(
+                    (2 * epsilonFrame.getPosition().x + epsilonFrame.getSize().width) / 2d,
+                    epsilonFrame.getPosition().y - size.height
+            );
+        }
+
+        else {
+            solution = new Vector(
+                    (2 * epsilonFrame.getPosition().x + epsilonFrame.getSize().width) / 2d,
+                    epsilonFrame.getPosition().y + epsilonFrame.getSize().height + size.height            );
+        }
+        return solution;
     }
 }

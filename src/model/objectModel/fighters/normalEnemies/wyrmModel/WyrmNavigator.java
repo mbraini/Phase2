@@ -1,6 +1,6 @@
 package model.objectModel.fighters.normalEnemies.wyrmModel;
 
-import data.Constants;
+import constants.Constants;
 import model.ModelData;
 import utils.Math;
 import utils.Vector;

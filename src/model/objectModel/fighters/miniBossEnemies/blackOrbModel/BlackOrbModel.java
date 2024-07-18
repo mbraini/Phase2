@@ -3,13 +3,11 @@ package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 import controller.enums.AbstractEnemyType;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
-import data.Constants;
 import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.frameModel.FrameModel;
 import utils.Vector;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class BlackOrbModel extends AbstractEnemy {

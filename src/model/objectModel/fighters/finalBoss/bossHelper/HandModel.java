@@ -1,6 +1,6 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
-import data.Constants;
+import constants.Constants;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
 import model.objectModel.frameModel.FrameModelBuilder;

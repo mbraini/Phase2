@@ -1,11 +1,7 @@
 package view.gamePanels;
 
-import controller.Controller;
-import controller.enums.SkillTreeAbilityType;
 import controller.listeners.PanelKeyListener;
-import data.Constants;
-import model.GameState;
-import model.skillTreeAbilities.SkillTreeAbility;
+import constants.Constants;
 import view.ViewData;
 import view.objectViews.FrameView;
 import view.objectViews.ObjectView;
@@ -13,8 +9,6 @@ import view.objectViews.effectView.EffectView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class ImaginaryPanel extends JPanel {

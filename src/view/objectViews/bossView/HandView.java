@@ -1,6 +1,6 @@
 package view.objectViews.bossView;
 
-import data.Constants;
+import constants.Constants;
 import utils.Vector;
 import view.objectViews.EnemyView;
 

@@ -1,6 +1,6 @@
 package model.objectModel.fighters.finalBoss.abilities.rapidFire;
 
-import data.Constants;
+import constants.Constants;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.Ability;
 

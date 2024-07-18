@@ -5,7 +5,7 @@ import controller.configs.Configs;
 import controller.enums.ModelType;
 import controller.interfaces.SizeChanger;
 import controller.manager.Spawner;
-import data.Constants;
+import constants.Constants;
 import model.collision.Collision;
 import model.interfaces.*;
 import model.objectModel.FighterModel;

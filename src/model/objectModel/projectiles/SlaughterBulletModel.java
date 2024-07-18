@@ -1,6 +1,6 @@
 package model.objectModel.projectiles;
 
-import data.Constants;
+import constants.Constants;
 import utils.Vector;
 
 public class SlaughterBulletModel extends EpsilonBulletModel {

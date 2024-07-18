@@ -1,4 +1,4 @@
-package model;
+package controller.manager;
 
 import model.objectModel.ObjectModel;
 
@@ -9,7 +9,11 @@ public class GameState {
     private static double time;
     private static double xp = 1000;
     private static double hp;
-    private static int wave;
+    private static int wave = 1;
+    private static int enemyKilled;
+    private static int totalBullets;
+    private static int successfulBullets;
+    private static int enemyCount;
     private static boolean isPause;
     private static boolean isOver;
     private static boolean isDizzy;
@@ -87,6 +91,38 @@ public class GameState {
 
     public static void setDizzy(boolean isDizzy) {
         GameState.isDizzy = isDizzy;
+    }
+
+    public static int getEnemyKilled() {
+        return enemyKilled;
+    }
+
+    public static void setEnemyKilled(int enemyKilled) {
+        GameState.enemyKilled = enemyKilled;
+    }
+
+    public static int getTotalBullets() {
+        return totalBullets;
+    }
+
+    public static void setTotalBullets(int totalBullets) {
+        GameState.totalBullets = totalBullets;
+    }
+
+    public static int getSuccessfulBullets() {
+        return successfulBullets;
+    }
+
+    public static void setSuccessfulBullets(int successfulBullets) {
+        GameState.successfulBullets = successfulBullets;
+    }
+
+    public static int getEnemyCount() {
+        return enemyCount;
+    }
+
+    public static void setEnemyCount(int enemyCount) {
+        GameState.enemyCount = enemyCount;
     }
 
 }

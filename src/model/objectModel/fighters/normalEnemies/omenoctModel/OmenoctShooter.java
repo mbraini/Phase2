@@ -2,7 +2,7 @@ package model.objectModel.fighters.normalEnemies.omenoctModel;
 
 import controller.enums.ModelType;
 import controller.manager.Spawner;
-import data.Constants;
+import constants.Constants;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Helper;

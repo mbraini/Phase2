@@ -6,31 +6,12 @@ import java.awt.event.ActionListener;
 
 public class GameManager {
 
-    private Timer spawner;
+    private WaveSpawner waveSpawner;
     private GameManagerThread gameManager;
 
     public GameManager(){
         gameManager = new GameManagerThread();
-        spawner = new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-
-//                Spawner.addObject(
-//                        Helper.createRandomPosition(ModelData.getLocalFrames().get(ModelData.getModels().getFirst())),
-//                        Helper.RandomStringGenerator(Constants.ID_SIZE),
-//                        ModelType.trigorath
-//                );
-//
-//                Spawner.addObject(
-//                        Helper.createRandomPosition(ModelData.getLocalFrames().get(ModelData.getModels().getFirst())),
-//                        Helper.RandomStringGenerator(Constants.ID_SIZE),
-//                        ModelType.squarantine
-//                );
-
-            }
-        });
-        spawner.start();
+        this.waveSpawner = new WaveSpawner();
     }
 
     public GameManagerThread getGameManager() {

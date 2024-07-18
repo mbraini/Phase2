@@ -1,15 +1,13 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
 import controller.manager.Spawner;
-import data.Constants;
+import constants.Constants;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.frameModel.FrameModelBuilder;
 import utils.Helper;
 import utils.Math;
 import utils.Vector;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class FrameSpawner  {

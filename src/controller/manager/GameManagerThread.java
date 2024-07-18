@@ -1,12 +1,10 @@
 package controller.manager;
 
 import controller.manager.saving.GameSaver;
-import data.Constants;
-import model.GameState;
+import constants.Constants;
 import model.ModelData;
 import model.inGameAbilities.InGameAbility;
 import model.interfaces.Fader;
-import model.objectModel.effects.AoeEffectModel;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.ObjectModel;
 import model.objectModel.fighters.AbstractEnemy;
@@ -15,7 +13,6 @@ import model.objectModel.frameModel.FrameModel;
 import model.skillTreeAbilities.SkillTreeAbility;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class GameManagerThread extends Thread{
     private ArrayList<ObjectModel> models;
@@ -62,7 +59,7 @@ public class GameManagerThread extends Thread{
         interfaces();
         killObjects();
         checkAoeDamage();
-        if (time % 500 == 0) {
+        if (time % 1000 == 0) {
             synchronized (jsonLock) {
                 new GameSaver(models, effects, frames, abstractEnemies ,abilities ,skillTreeAbilities).save();
             }
@@ -91,8 +88,9 @@ public class GameManagerThread extends Thread{
 
     private void killObjects() {
         for (ObjectModel model : models){
-            if (model.getHP() <= 0)
+            if (model.getHP() <= 0) {
                 model.die();
+            }
         }
     }
 

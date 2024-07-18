@@ -1,16 +1,13 @@
 package controller;
 
-import com.google.gson.Gson;
 import controller.enums.InGameAbilityType;
-import controller.enums.ModelType;
 import controller.enums.SkillTreeAbilityType;
 import controller.interfaces.SizeChanger;
 import controller.listeners.keyHelper.KeyHelper;
 import controller.manager.GameManager;
 import controller.manager.GameManagerThread;
-import controller.manager.Spawner;
 import controller.manager.loading.GameLoader;
-import data.Constants;
+import constants.Constants;
 import model.ModelRequests;
 import model.animations.GameStartAnimation;
 import model.inGameAbilities.InGameAbilityHandler;
@@ -21,7 +18,7 @@ import model.objectModel.frameModel.FrameModelBuilder;
 import model.skillTreeAbilities.SkillTreeAbilityHandler;
 import model.threads.FrameThread;
 import model.threads.GameLoop;
-import model.GameState;
+import controller.manager.GameState;
 import model.ModelData;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
@@ -220,6 +217,7 @@ public abstract class Controller {
         builder.setSolid(true);
         FrameModel frameModel = builder.create();
         ModelData.addFrame(frameModel);
+        ModelData.setEpsilonFrame(frameModel);
         ViewData.addFrame(new FrameView(
                 frameModel.getPosition(),
                 frameModel.getSize(),
@@ -234,7 +232,7 @@ public abstract class Controller {
 //        Spawner.spawnObject(new Vector(300 ,300),
 //                ModelType.necropick
 //        );
-//        Spawner.addObject(new Vector(0 ,600),
+//        Spawner.spawnObject(new Vector(0 ,600),
 //                ModelType.necropick
 //        );
 //        Spawner.spawnObject(new Vector(600 ,300),
@@ -276,31 +274,31 @@ public abstract class Controller {
 //                ModelType.blackOrb
 //        );
 //
-        FrameModelBuilder builder1 = new FrameModelBuilder(
-                new Vector(
-                        0 ,
-                        0
-                ),
-                new Dimension(200,200),
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
-        );
-        builder1.setSolid(false);
-        FrameModel frameModel1 = builder1.create();
-        Spawner.addFrame(frameModel1);
+//        FrameModelBuilder builder1 = new FrameModelBuilder(
+//                new Vector(
+//                        0 ,
+//                        0
+//                ),
+//                new Dimension(200,200),
+//                Helper.RandomStringGenerator(Constants.ID_SIZE)
+//        );
+//        builder1.setSolid(false);
+//        FrameModel frameModel1 = builder1.create();
+//        Spawner.addFrame(frameModel1);
+////
+//        FrameModelBuilder builder2 = new FrameModelBuilder(
+//                new Vector(
+//                        Constants.SCREEN_SIZE.width - 200 ,
+//                        Constants.SCREEN_SIZE.height - 200
+//                ),
+//                new Dimension(200,200),
+//                Helper.RandomStringGenerator(Constants.ID_SIZE)
+//        );
+//        builder2.setSolid(true);
+//        FrameModel frameModel2 = builder2.create();
+//        Spawner.addFrame(frameModel2);
 //
-        FrameModelBuilder builder2 = new FrameModelBuilder(
-                new Vector(
-                        Constants.SCREEN_SIZE.width - 200 ,
-                        Constants.SCREEN_SIZE.height - 200
-                ),
-                new Dimension(200,200),
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
-        );
-        builder2.setSolid(true);
-        FrameModel frameModel2 = builder2.create();
-        Spawner.addFrame(frameModel2);
-
-        Spawner.spawnBoss();
+//        Spawner.spawnBoss();
     }
 
     public static void threadsStarter() {

@@ -1,6 +1,6 @@
 package model.objectModel.frameModel;
 
-import data.Constants;
+import constants.Constants;
 import model.ModelData;
 import model.collision.Collision;
 import utils.Math;

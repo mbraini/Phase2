@@ -5,7 +5,7 @@ import controller.enums.ModelType;
 import controller.manager.Spawner;
 import controller.manager.loading.GameLoaderHelper;
 import controller.manager.loading.SkippedByJson;
-import data.Constants;
+import constants.Constants;
 import model.ModelData;
 import model.interfaces.Ability;
 import model.interfaces.HasVertices;
@@ -57,8 +57,7 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
 
     @Override
     public void die() {
-        //////todo
-        Controller.removeObject(this);
+        super.die();
         Spawner.addCollectives(position ,5 ,6);
         thread.interrupt();
     }

@@ -1,6 +1,6 @@
 package model.logics;
 
-import data.Constants;
+import constants.Constants;
 import model.animations.FrameAnimation;
 import model.objectModel.ObjectModel;
 import model.objectModel.frameModel.FrameLocations;

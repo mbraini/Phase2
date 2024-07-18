@@ -2,7 +2,7 @@ package model.objectModel.effects;
 
 import controller.enums.EffectType;
 import controller.manager.loading.SkippedByJson;
-import data.Constants;
+import constants.Constants;
 import model.interfaces.Fader;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
@@ -11,7 +11,6 @@ import utils.Math;
 import utils.Vector;
 import utils.area.Polygon;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class ArchmireAoeEffectModel extends AoeEffectModel implements Fader , IsPolygon , HasVertices {

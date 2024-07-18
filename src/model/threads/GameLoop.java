@@ -2,8 +2,8 @@ package model.threads;
 
 
 import controller.Controller;
-import data.Constants;
-import model.GameState;
+import constants.Constants;
+import controller.manager.GameState;
 import model.ModelData;
 import model.ModelRequests;
 import model.collision.Collision;

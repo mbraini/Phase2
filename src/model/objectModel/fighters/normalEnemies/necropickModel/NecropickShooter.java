@@ -2,7 +2,7 @@ package model.objectModel.fighters.normalEnemies.necropickModel;
 
 import controller.enums.ModelType;
 import controller.manager.Spawner;
-import data.Constants;
+import constants.Constants;
 import utils.Math;
 import utils.Vector;
 

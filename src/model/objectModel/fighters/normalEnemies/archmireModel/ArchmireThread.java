@@ -1,8 +1,8 @@
 package model.objectModel.fighters.normalEnemies.archmireModel;
 
 import controller.manager.Spawner;
-import data.Constants;
-import model.GameState;
+import constants.Constants;
+import controller.manager.GameState;
 import model.ModelData;
 import model.collision.Collision;
 import model.objectModel.ObjectModel;
