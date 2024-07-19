@@ -5,8 +5,8 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import controller.manager.GameManager;
-import controller.manager.GameManagerThread;
+import controller.manager.GameState;
+import controller.manager.WaveSpawner;
 import controller.manager.loading.SkippedByJson;
 import model.inGameAbilities.InGameAbility;
 import model.objectModel.ObjectModel;
@@ -15,8 +15,6 @@ import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.frameModel.FrameModel;
 import model.skillTreeAbilities.SkillTreeAbility;
 
-import javax.swing.*;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -35,12 +33,12 @@ public class GameSaver {
                      ArrayList<FrameModel> frames, ArrayList<AbstractEnemy> abstractEnemies,
                      ArrayList<InGameAbility> abilities ,ArrayList<SkillTreeAbility> skillTreeAbilities)
     {
-        this.models = models;
-        this.effects = effects;
-        this.frames = frames;
-        this.abstractEnemies = abstractEnemies;
-        this.abilities = abilities;
-        this.skillTreeAbilities = skillTreeAbilities;
+        this.models = (ArrayList<ObjectModel>) models.clone();
+        this.effects = (ArrayList<EffectModel>) effects.clone();
+        this.frames = (ArrayList<FrameModel>) frames.clone();
+        this.abstractEnemies = (ArrayList<AbstractEnemy>) abstractEnemies.clone();
+        this.abilities = (ArrayList<InGameAbility>) abilities.clone();
+        this.skillTreeAbilities = (ArrayList<SkillTreeAbility>) skillTreeAbilities.clone();
     }
 
 
@@ -48,6 +46,34 @@ public class GameSaver {
         saveGame();
         saveAbilities();
         saveSkillTree();
+        saveGameState();
+    }
+
+    private void saveGameState() {
+        GameManagerHelperSaver gameState = new GameManagerHelperSaver();
+        gameState.time = GameState.getTime();
+        gameState.xp = GameState.getXp();
+        gameState.hp = GameState.getHp();
+        gameState.wave = GameState.getWave();
+        gameState.enemyKilled = GameState.getEnemyKilled();
+        gameState.totalBullets = GameState.getTotalBullets();
+        gameState.successfulBullets = GameState.getSuccessfulBullets();
+        gameState.enemyCount = GameState.getEnemyCount();
+        gameState.isPause = GameState.isPause();
+        gameState.isOver = GameState.isOver();
+        gameState.repeatedCount = WaveSpawner.repeatedCount;
+        gameState.isDizzy = GameState.isDizzy();
+
+        Gson gson = getGson();
+        String gameStateString = gson.toJson(gameState);
+        PrintWriter modelWriter = null;
+        try {
+            modelWriter = new PrintWriter("src/controller/manager/saving/gameState.json");
+            modelWriter.write(gameStateString);
+            modelWriter.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void saveSkillTree() {

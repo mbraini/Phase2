@@ -9,7 +9,6 @@ import model.interfaces.Fader;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.ObjectModel;
 import model.objectModel.fighters.AbstractEnemy;
-import model.objectModel.fighters.EnemyModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import model.skillTreeAbilities.SkillTreeAbility;

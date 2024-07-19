@@ -5,7 +5,10 @@ import controller.enums.AbstractEnemyType;
 import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
 import controller.enums.SkillTreeAbilityType;
+import controller.manager.GameState;
 import controller.manager.Spawner;
+import controller.manager.WaveSpawner;
+import controller.manager.saving.GameManagerHelperSaver;
 import model.ModelData;
 import model.inGameAbilities.InGameAbility;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
@@ -36,6 +39,34 @@ public class GameLoader {
         loadGame();
         loadAbilities();
         loadSkillTree();
+        loadGameState();
+    }
+
+
+    private void loadGameState() {
+        gson = getGson();
+
+        StringBuilder gameStateString = new StringBuilder();
+        try {
+            Scanner gameStateScanner = new Scanner(new File("src/controller/manager/saving/gameState.json"));
+            while (gameStateScanner.hasNextLine())
+                gameStateString.append(gameStateScanner.nextLine());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        GameManagerHelperSaver gameState = gson.fromJson(gameStateString.toString() ,GameManagerHelperSaver.class);
+        GameState.setTime(gameState.time);
+        GameState.setXp(gameState.xp);
+        GameState.setHp(gameState.hp);
+        GameState.setWave(gameState.wave);
+        GameState.setEnemyKilled(gameState.enemyKilled);
+        GameState.setEnemyCount(gameState.enemyCount);
+        GameState.setTotalBullets(gameState.totalBullets);
+        GameState.setSuccessfulBullets(gameState.successfulBullets);
+        GameState.setOver(gameState.isOver);
+        GameState.setDizzy(gameState.isDizzy);
+        GameState.setPause(gameState.isPause);
+        WaveSpawner.repeatedCount = gameState.repeatedCount;
     }
 
     public void loadSkillTree() {

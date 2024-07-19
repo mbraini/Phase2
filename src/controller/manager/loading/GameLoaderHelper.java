@@ -14,6 +14,7 @@ import model.ModelRequests;
 import model.inGameAbilities.*;
 import model.inGameAbilities.Dismay.Dismay;
 import model.inGameAbilities.Dismay.EpsilonProtectorModel;
+import model.interfaces.ImpactAble;
 import model.objectModel.ObjectModel;
 import model.objectModel.effects.ArchmireAoeEffectModel;
 import model.objectModel.effects.BlackOrbAoeEffectModel;
@@ -81,7 +82,7 @@ public class GameLoaderHelper {
 
     public synchronized static void addModel(JSONObject jsonObject, ModelType type){
         String jsonString = jsonObject.toString();
-        ObjectModel model;
+        ObjectModel model = null;
         if (type == null)
             return;
         switch (type){
@@ -188,6 +189,9 @@ public class GameLoaderHelper {
                         model.getId()
                 ));
                 break;
+        }
+        if (model instanceof ImpactAble) {
+            ((ImpactAble) model).setImpacted(false);
         }
     }
 

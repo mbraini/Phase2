@@ -17,7 +17,7 @@ public class WaveSpawner {
     private FrameModel epsilonFrame;
     private int timePassed;
     private int spawnDelay;
-    private int repeatedCount;
+    public static int repeatedCount;
     private int lastWaveKilled;
 
     public WaveSpawner() {
@@ -109,11 +109,14 @@ public class WaveSpawner {
             Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.wyrm);
             GameState.setEnemyCount(GameState.getEnemyCount() + 1);
         }
+        if (repeatedCount == 1) {
+            Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.archmire);
+            GameState.setEnemyCount(GameState.getEnemyCount() + 1);
+        }
 
         if (enemyKilled > lastWaveKilled + 1 && enemyKilled <= lastWaveKilled + 4 ) {
-            Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.archmire);
             Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.trigorath);
-            GameState.setEnemyCount(GameState.getEnemyCount() + 2);
+            GameState.setEnemyCount(GameState.getEnemyCount() + 1);
         }
 
         if (enemyKilled > lastWaveKilled + 4 && GameState.getWave() == 3 && GameState.getEnemyCount() == 0) {

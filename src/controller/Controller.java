@@ -193,9 +193,9 @@ public abstract class Controller {
     public static void startGame(){
         GameState.setOver(false);
         GameState.setXp(3000);
-//        load();
         modelStarter();
         viewStarter();
+//        load();
         addEpsilonAndFrame();
         new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
         InGameAbilityHandler.initInGameAbilities();
