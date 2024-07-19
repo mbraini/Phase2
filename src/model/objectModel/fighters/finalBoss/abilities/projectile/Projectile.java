@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities.projectile;
 
 import constants.Constants;
+import controller.Controller;
 import model.ModelData;
 import model.animations.DashAnimation;
 import model.objectModel.fighters.EpsilonModel;
@@ -21,8 +22,8 @@ public class Projectile extends Ability {
 
     public Projectile(Boss boss){
         this.boss = boss;
-        synchronized (ModelData.getModels()) {
-            this.epsilon = (EpsilonModel) ModelData.getModels().getFirst();
+        synchronized (Controller.getController(Controller.getIP()).getModelData().getModels()) {
+            this.epsilon = (EpsilonModel) Controller.getController(Controller.getIP()).getModelData().getModels().getFirst();
         }
         navigator = new ProjectileNavigator(epsilon ,boss.getHead());
         thread = new ProjectileThread(this ,epsilon);

@@ -111,7 +111,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         isInRange = navigator.hasArrived();
         if (isInRange){
             setVelocity(0 ,0);
-            origin = ModelData.getModels().getFirst().getPosition().clone();
+            origin = Controller.getController(Controller.getIP()).getModelData().getModels().getFirst().getPosition().clone();
             start();
         }
     }

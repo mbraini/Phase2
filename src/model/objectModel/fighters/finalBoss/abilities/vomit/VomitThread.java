@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities.vomit;
 
 import constants.Constants;
+import controller.Controller;
 import controller.manager.GameState;
 import model.ModelData;
 import model.collision.Collision;
@@ -48,8 +49,8 @@ public class VomitThread extends Thread{
     }
 
     private void updateVariables() {
-        synchronized (ModelData.getModels()){
-            models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
+        synchronized (Controller.getController(Controller.getIP()).getModelData().getModels()){
+            models = (ArrayList<ObjectModel>) Controller.getController(Controller.getIP()).getModelData().getModels().clone();
         }
     }
 

@@ -1,5 +1,6 @@
 package model.skillTreeAbilities.Cerberus;
 
+import controller.Controller;
 import controller.enums.ModelType;
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.Spawner;
@@ -21,7 +22,7 @@ public class Cerberus extends SkillTreeAbility {
     @Override
     protected void cast() {
         canCast = false;
-        EpsilonModel epsilon = (EpsilonModel) ModelData.getModels().getFirst();
+        EpsilonModel epsilon = (EpsilonModel) Controller.getController(Controller.getIP()).getModelData().getModels().getFirst();
 
         Vector direction = new Vector(0 ,1);
         direction = Math.VectorWithSize(

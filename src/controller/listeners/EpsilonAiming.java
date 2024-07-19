@@ -31,14 +31,11 @@ public class EpsilonAiming extends MouseAdapter {
         if (GameState.isPause())
             return;
         timer = GameState.getTime();
-        EpsilonModel epsilon =(EpsilonModel) ModelData.getModels().getFirst();
         Vector clickedPoint = new Vector(
                 e.getX() - Constants.SCREEN_SIZE.width ,
                 e.getY() - Constants.SCREEN_SIZE.height
         );
-        if (clickedPoint.Equals(epsilon.getPosition()))
-            return;
-        if (!Controller.shootRequest(clickedPoint))
+        if (!Controller.getController(Controller.getIP()).shootRequest(clickedPoint))
             return;
 
         try {

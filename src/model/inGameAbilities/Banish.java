@@ -1,5 +1,6 @@
 package model.inGameAbilities;
 
+import controller.Controller;
 import controller.enums.InGameAbilityType;
 import model.ModelData;
 import model.logics.Impact;
@@ -24,6 +25,6 @@ public class Banish extends InGameAbility{
 
     @Override
     public void setUp() {
-        epsilon = (EpsilonModel) ModelData.getModels().getFirst();
+        epsilon = (EpsilonModel) Controller.getController(Controller.getIP()).getModelData().getModels().getFirst();
     }
 }

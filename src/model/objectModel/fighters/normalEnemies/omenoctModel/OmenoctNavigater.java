@@ -1,5 +1,6 @@
 package model.objectModel.fighters.normalEnemies.omenoctModel;
 
+import controller.Controller;
 import model.ModelData;
 import model.collision.Collision;
 import model.objectModel.frameModel.FrameLocations;
@@ -26,7 +27,9 @@ public class OmenoctNavigater {
 
 
     public void navigateFrame() {
-        FrameModel epsilonFrame = ModelData.getLocalFrames().get(ModelData.getModels().getFirst());
+        FrameModel epsilonFrame = Controller.getController(Controller.getIP()).getModelData().getLocalFrames().get(
+                Controller.getController(Controller.getIP()).getModelData().getModels().getFirst()
+        );
         if (epsilonFrame == null)
             return;
 

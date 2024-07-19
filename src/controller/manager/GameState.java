@@ -6,24 +6,24 @@ import java.util.ArrayList;
 
 public class GameState {
 
-    private static double time;
-    private static double xp = 1000;
-    private static double hp;
-    private static int wave = 1;
-    private static int enemyKilled;
-    private static int totalBullets;
-    private static int successfulBullets;
-    private static int enemyCount;
-    private static boolean isPause;
-    private static boolean isOver;
-    private static boolean isDizzy;
+    private double time;
+    private double xp = 1000;
+    private double hp;
+    private int wave = 1;
+    private int enemyKilled;
+    private int totalBullets;
+    private int successfulBullets;
+    private int enemyCount;
+    private boolean isPause;
+    private boolean isOver;
+    private boolean isDizzy;
 
     public GameState(){
         /////todo
     }
 
 
-    public static void reset(){
+    public void reset(){
         time = 0;
         hp = 100;
         wave = 1;
@@ -32,97 +32,97 @@ public class GameState {
     }
 
 
-    public static double getTime() {
+    public double getTime() {
         return time;
     }
 
-    public static void setTime(double time) {
-        GameState.time = time;
+    public void setTime(double time) {
+        this.time = time;
     }
 
-    public static double getXp() {
+    public double getXp() {
         return xp;
     }
 
-    public static void setXp(double xp) {
-        GameState.xp = xp;
+    public void setXp(double xp) {
+        this.xp = xp;
     }
 
-    public static double getHp() {
+    public double getHp() {
         return hp;
     }
 
-    public static void setHp(double hp) {
-        GameState.hp = hp;
+    public void setHp(double hp) {
+        this.hp = hp;
     }
 
-    public static int getWave() {
+    public int getWave() {
         return wave;
     }
 
-    public static void setWave(int wave) {
-        GameState.wave = wave;
+    public void setWave(int wave) {
+        this.wave = wave;
     }
 
-    public static boolean isPause() {
+    public boolean isPause() {
         return isPause;
     }
 
-    public static void setPause(boolean isPause) {
-        GameState.isPause = isPause;
+    public void setPause(boolean isPause) {
+        this.isPause = isPause;
     }
 
-    public static boolean isOver() {
+    public boolean isOver() {
         return isOver;
     }
 
-    public static void setOver(boolean isOver) {
-        GameState.isOver = isOver;
+    public void setOver(boolean isOver) {
+        this.isOver = isOver;
     }
 
-    public static void update(ArrayList<ObjectModel> models ,double time) {
+    public void update(ArrayList<ObjectModel> models ,double time) {
         setHp(models.getFirst().getHP());
         setTime(time);
     }
 
-    public static boolean isDizzy() {
+    public boolean isDizzy() {
         return isDizzy;
     }
 
-    public static void setDizzy(boolean isDizzy) {
-        GameState.isDizzy = isDizzy;
+    public void setDizzy(boolean isDizzy) {
+        this.isDizzy = isDizzy;
     }
 
-    public static int getEnemyKilled() {
+    public int getEnemyKilled() {
         return enemyKilled;
     }
 
-    public static void setEnemyKilled(int enemyKilled) {
-        GameState.enemyKilled = enemyKilled;
+    public void setEnemyKilled(int enemyKilled) {
+        this.enemyKilled = enemyKilled;
     }
 
-    public static int getTotalBullets() {
+    public int getTotalBullets() {
         return totalBullets;
     }
 
-    public static void setTotalBullets(int totalBullets) {
-        GameState.totalBullets = totalBullets;
+    public void setTotalBullets(int totalBullets) {
+        this.totalBullets = totalBullets;
     }
 
-    public static int getSuccessfulBullets() {
+    public int getSuccessfulBullets() {
         return successfulBullets;
     }
 
-    public static void setSuccessfulBullets(int successfulBullets) {
-        GameState.successfulBullets = successfulBullets;
+    public void setSuccessfulBullets(int successfulBullets) {
+        this.successfulBullets = successfulBullets;
     }
 
-    public static int getEnemyCount() {
+    public int getEnemyCount() {
         return enemyCount;
     }
 
-    public static void setEnemyCount(int enemyCount) {
-        GameState.enemyCount = enemyCount;
+    public void setEnemyCount(int enemyCount) {
+        this.enemyCount = enemyCount;
     }
 
 }

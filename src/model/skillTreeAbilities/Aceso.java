@@ -1,5 +1,6 @@
 package model.skillTreeAbilities;
 
+import controller.Controller;
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.loading.SkippedByJson;
 import controller.manager.GameState;
@@ -25,7 +26,7 @@ public class Aceso extends SkillTreeAbility{
     }
 
     private void initEpsilon() {
-        epsilon = ModelData.getEpsilon();
+        epsilon = Controller.getController(Controller.getIP()).getModelData().getEpsilon();
     }
 
     private void initHealTimer() {

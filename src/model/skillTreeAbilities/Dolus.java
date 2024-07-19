@@ -1,5 +1,6 @@
 package model.skillTreeAbilities;
 
+import controller.Controller;
 import controller.enums.SkillTreeAbilityType;
 import model.ModelData;
 
@@ -42,7 +43,7 @@ public class Dolus extends SkillTreeAbility{
     }
 
     private void defineAbilities() {
-        ArrayList<SkillTreeAbility> abilities = (ArrayList<SkillTreeAbility>) ModelData.getSkillTreeAbilities().clone();
+        ArrayList<SkillTreeAbility> abilities = (ArrayList<SkillTreeAbility>) Controller.getController(Controller.getIP()).getModelData().getSkillTreeAbilities().clone();
         Random random = new Random();
         int firstRandom = random.nextInt(0 ,abilities.size());
         firstAbility = abilities.get(firstRandom).getType();

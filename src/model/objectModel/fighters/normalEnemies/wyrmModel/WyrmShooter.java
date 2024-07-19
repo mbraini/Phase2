@@ -1,5 +1,6 @@
 package model.objectModel.fighters.normalEnemies.wyrmModel;
 
+import controller.Controller;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import constants.Constants;
@@ -16,7 +17,7 @@ public class WyrmShooter {
     }
     public void shoot() {
         Vector position = wyrmModel.getPosition();
-        EpsilonModel epsilon = (EpsilonModel) ModelData.getModels().getFirst();
+        EpsilonModel epsilon = (EpsilonModel) Controller.getController(Controller.getIP()).getModelData().getModels().getFirst();
 
         Vector direction = Math.VectorAdd(
                 Math.ScalarInVector(-1 ,position),

@@ -1,5 +1,6 @@
 package model.skillTreeAbilities;
 
+import controller.Controller;
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.GameState;
 import model.ModelData;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 public class SkillTreeAbilityHandler {
 
     public synchronized static void initAbilities(){
-        ArrayList<SkillTreeAbility> abilities = ModelData.getSkillTreeAbilities();
+        ArrayList<SkillTreeAbility> abilities = Controller.getController(Controller.getIP()).getModelData().getSkillTreeAbilities();
         abilities.add(new Ares());
         abilities.add(new Astrape());
         abilities.add(new Cerberus());
@@ -20,11 +21,11 @@ public class SkillTreeAbilityHandler {
         abilities.add(new Proteus());
         abilities.add(new Empusa());
         abilities.add(new Dolus());
-        ModelData.setSkillTreeAbilities(abilities);
+        Controller.getController(Controller.getIP()).getModelData().setSkillTreeAbilities(abilities);
     }
 
     public static SkillTreeAbility getAbility(SkillTreeAbilityType type) {
-        ArrayList<SkillTreeAbility> abilities = ModelData.getSkillTreeAbilities();
+        ArrayList<SkillTreeAbility> abilities = Controller.getController(Controller.getIP()).getModelData().getSkillTreeAbilities();
         for (SkillTreeAbility ability : abilities){
             if (ability.getType().equals(type))
                 return ability;
@@ -38,9 +39,9 @@ public class SkillTreeAbilityHandler {
     }
 
     public static void addSkillTree(SkillTreeAbility skillTreeAbility) {
-        ArrayList<SkillTreeAbility> skillTreeAbilities = ModelData.getSkillTreeAbilities();
+        ArrayList<SkillTreeAbility> skillTreeAbilities = Controller.getController(Controller.getIP()).getModelData().getSkillTreeAbilities();
         skillTreeAbilities.add(skillTreeAbility);
-        ModelData.setSkillTreeAbilities(skillTreeAbilities);
+        Controller.getController(Controller.getIP()).getModelData().setSkillTreeAbilities(skillTreeAbilities);
     }
 
     public static void buyIf(SkillTreeAbilityType skillTreeAbilityType) {

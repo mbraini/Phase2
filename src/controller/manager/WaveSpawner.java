@@ -1,6 +1,7 @@
 package controller.manager;
 
 import constants.Constants;
+import controller.Controller;
 import controller.enums.ModelType;
 import model.ModelData;
 import model.objectModel.frameModel.FrameModel;
@@ -32,7 +33,7 @@ public class WaveSpawner {
                     timePassed = 0;
                     int enemyKilled = GameState.getEnemyKilled();
                     int wave = GameState.getWave();
-                    epsilonFrame = ModelData.getEpsilonFrame();
+                    epsilonFrame = Controller.getController(Controller.getIP()).getModelData().getEpsilonFrame();
                     spawnEnemies(enemyKilled ,wave);
                 }
                 if (GameState.isOver())

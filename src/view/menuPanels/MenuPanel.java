@@ -52,7 +52,7 @@ public class MenuPanel extends PIG {
                     throw new RuntimeException(ex);
                 }
                 Application.endMainFrame();
-                Controller.startGame();
+                Controller.getController(Controller.getIP()).startGame();
             }
         });
         settings.addActionListener(new ActionListener() {

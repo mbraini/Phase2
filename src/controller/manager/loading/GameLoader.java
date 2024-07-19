@@ -1,6 +1,7 @@
 package controller.manager.loading;
 
 import com.google.gson.*;
+import controller.Controller;
 import controller.enums.AbstractEnemyType;
 import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
@@ -129,8 +130,8 @@ public class GameLoader {
                 JSONObject jModel = jFrames.getJSONObject(i);
                 FrameModel frameModel = gson.fromJson(jModel.toString() , FrameModel.class);
                 if (i == 0){
-                    ModelData.addFrame(frameModel);
-                    ModelData.setEpsilonFrame(frameModel);
+                    Controller.getController(Controller.getIP()).getModelData().addFrame(frameModel);
+                    Controller.getController(Controller.getIP()).getModelData().setEpsilonFrame(frameModel);
                     ViewRequest.addFrameView(new FrameView(
                             frameModel.getPosition(),
                             frameModel.getSize(),

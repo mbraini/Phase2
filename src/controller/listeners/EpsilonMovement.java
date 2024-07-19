@@ -1,6 +1,7 @@
 package controller.listeners;
 
 
+import controller.Controller;
 import controller.configs.Configs;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
@@ -27,7 +28,7 @@ public class EpsilonMovement extends KeyAdapter {
     public static int DOWN_KEY = 40;
 
     public EpsilonMovement(){
-        this.epsilon = (EpsilonModel) (ModelData.getModels().getFirst());
+        this.epsilon = (EpsilonModel) (Controller.getController(Controller.getIP()).getModelData().getModels().getFirst());
         xStopper = new Timer(Configs.EPSILON_DECELERATION_TIME, new xStopperAL(epsilon));
         yStopper = new Timer(Configs.EPSILON_DECELERATION_TIME, new yStopperAL(epsilon));
     }

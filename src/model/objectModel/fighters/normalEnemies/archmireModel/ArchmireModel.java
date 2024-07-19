@@ -83,8 +83,8 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
 
     @Override
     public void ability() {
-        synchronized (ModelData.getModels()) {
-            Vector epsilonPosition = ModelData.getModels().getFirst().getPosition();
+        synchronized (Controller.getController(Controller.getIP()).getModelData().getModels()) {
+            Vector epsilonPosition = Controller.getController(Controller.getIP()).getModelData().getModels().getFirst().getPosition();
             velocity = Math.VectorWithSize(Math.VectorAdd(
                     epsilonPosition,
                     Math.ScalarInVector(-1 ,position)

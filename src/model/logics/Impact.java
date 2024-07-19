@@ -2,6 +2,7 @@ package model.logics;
 
 
 import constants.Constants;
+import controller.Controller;
 import model.ModelData;
 import model.animations.DashAnimation;
 import model.interfaces.ImpactAble;
@@ -32,10 +33,10 @@ public class Impact {
             throw new RuntimeException(e);
         }
         double distance;
-        for (int i = 0; i < ModelData.getModels().size() ; i++){
-            if (ModelData.getModels().get(i) instanceof ImpactAble) {
+        for (int i = 0; i < Controller.getController(Controller.getIP()).getModelData().getModels().size() ; i++){
+            if (Controller.getController(Controller.getIP()).getModelData().getModels().get(i) instanceof ImpactAble) {
                 Vector direction;
-                direction = Math.VectorAdd(Math.ScalarInVector(-1, collisionPoint), ModelData.getModels().get(i).getPosition());
+                direction = Math.VectorAdd(Math.ScalarInVector(-1, collisionPoint), Controller.getController(Controller.getIP()).getModelData().getModels().get(i).getPosition());
                 distance = Math.VectorSize(direction);
                 //////////////////todo
                 if (distance >= Constants.IMPACT_AREA) {
@@ -44,9 +45,9 @@ public class Impact {
                 //////////////////todo
                 if (distance == 0)
                     continue;
-                if (!(ModelData.getModels().get(i) instanceof EpsilonModel))
+                if (!(Controller.getController(Controller.getIP()).getModelData().getModels().get(i) instanceof EpsilonModel))
                     new DashAnimation(
-                            ModelData.getModels().get(i),
+                            Controller.getController(Controller.getIP()).getModelData().getModels().get(i),
                             direction ,Constants.DASH_TIME,
                             Constants.DASH_DISTANCE ,
                             Constants.DASH_ROTATION,
@@ -54,7 +55,7 @@ public class Impact {
                     ).StartAnimation();
                 else
                     new DashAnimation(
-                            ModelData.getModels().get(i),
+                            Controller.getController(Controller.getIP()).getModelData().getModels().get(i),
                             direction ,
                             Constants.DASH_TIME ,
                             100 ,

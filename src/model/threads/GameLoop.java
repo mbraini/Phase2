@@ -22,8 +22,8 @@ public class GameLoop extends Thread {
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
-        while (!GameState.isOver()) {
-            if (GameState.isPause()){
+        while (!Controller.getController(Controller.getIP()).getGameState().isOver()) {
+            if (Controller.getController(Controller.getIP()).getGameState().isPause()){
                 lastTime = System.nanoTime();
                 continue;
             }
@@ -39,17 +39,12 @@ public class GameLoop extends Thread {
 
     public void UpdateModel() {
         ///////concurrent
-        synchronized (ModelData.getModels()) {
-            ModelRequests.checkRequests();
+        synchronized (Controller.getController(Controller.getIP()).getModelData().getModels()) {
+            Controller.getController(Controller.getIP()).getModelRequests().checkRequests();
             Controller.sendViewUpdates();
         }
-        ArrayList<ObjectModel> models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
+        ArrayList<ObjectModel> models = (ArrayList<ObjectModel>) Controller.getController(Controller.getIP()).getModelData().getModels().clone();
 
-        for (int i = 0 ;i < models.size() ;i++){
-            if (models.get(i).getId() == null){
-                System.out.println("NULL :(");
-            }
-        }
         interfaceObjects(models);
         Collision.resetModelPairs();
         Collision.checkModelCollisions(models);
@@ -61,11 +56,11 @@ public class GameLoop extends Thread {
         for (ObjectModel model : models){
             Vector position = model.getPosition();
             if (position.x <= -Constants.SCREEN_SIZE.width || position.x >= 2 * Constants.SCREEN_SIZE.width){
-                ModelRequests.removeObjectModel(model.getId());
+                Controller.getController(Controller.getIP()).getModelRequests().removeObjectModel(model.getId());
                 continue;
             }
             if (position.y <= -Constants.SCREEN_SIZE.height || position.y >= 2 * Constants.SCREEN_SIZE.height){
-                ModelRequests.removeObjectModel(model.getId());
+                Controller.getController(Controller.getIP()).getModelRequests().removeObjectModel(model.getId());
             }
         }
     }
@@ -74,19 +69,19 @@ public class GameLoop extends Thread {
         for (ObjectModel model : models){
             if (model instanceof Ability){
                 if (((Ability) model).hasAbility()) {
-                    if (model instanceof EnemyModel && GameState.isDizzy())
+                    if (model instanceof EnemyModel && Controller.getController(Controller.getIP()).getGameState().isDizzy())
                         continue;
                     ((Ability) model).ability();
                 }
             }
             if (model instanceof MoveAble) {
-                if (model instanceof EnemyModel && GameState.isDizzy())
+                if (model instanceof EnemyModel && Controller.getController(Controller.getIP()).getGameState().isDizzy())
                     continue;
                 ((MoveAble) model).move();
             }
             if (model instanceof Navigator){
                 if (!((Navigator) model).hasArrived()) {
-                    if (model instanceof EnemyModel && GameState.isDizzy())
+                    if (model instanceof EnemyModel && Controller.getController(Controller.getIP()).getGameState().isDizzy())
                         continue;
                     ((Navigator) model).navigate();
                 }

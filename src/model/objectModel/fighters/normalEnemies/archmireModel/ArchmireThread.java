@@ -1,5 +1,6 @@
 package model.objectModel.fighters.normalEnemies.archmireModel;
 
+import controller.Controller;
 import controller.manager.Spawner;
 import constants.Constants;
 import controller.manager.GameState;
@@ -52,8 +53,8 @@ public class ArchmireThread extends Thread{
     private void updateAOE() {
         if (GameState.isDizzy())
             return;
-        synchronized (ModelData.getModels()){
-            models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
+        synchronized (Controller.getController(Controller.getIP()).getModelData().getModels()){
+            models = (ArrayList<ObjectModel>) Controller.getController(Controller.getIP()).getModelData().getModels().clone();
         }
         checkRemovedAOEs();
         addEffect();

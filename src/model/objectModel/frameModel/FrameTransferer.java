@@ -1,5 +1,6 @@
 package model.objectModel.frameModel;
 
+import controller.Controller;
 import model.ModelData;
 import model.collision.Collision;
 import utils.Math;
@@ -15,8 +16,8 @@ public class FrameTransferer {
 
     public FrameTransferer(FrameModel frameModel){
         this.frameModel = frameModel;
-        synchronized (ModelData.getModels()) {
-            frames = (ArrayList<FrameModel>) ModelData.getFrames().clone();
+        synchronized (Controller.getController(Controller.getIP()).getModelData().getModels()) {
+            frames = (ArrayList<FrameModel>) Controller.getController(Controller.getIP()).getModelData().getFrames().clone();
         }
     }
 

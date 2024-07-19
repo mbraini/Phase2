@@ -65,12 +65,12 @@ public class TrigorathModel extends BasicEnemyModel implements HasVertices, IsPo
 
     @Override
     public void ability() {
-        Vector epsilonPosition = ModelData.getModels().getFirst().getPosition();
+        Vector epsilonPosition = Controller.getController(Controller.getIP()).getModelData().getModels().getFirst().getPosition();
         velocity = new Vector(epsilonPosition.x - getPosition().x ,epsilonPosition.y - getPosition().y);
         double distance = Math.VectorSize(
                 Math.VectorAdd(
                         Math.ScalarInVector(-1 ,position) ,
-                        ModelData.getModels().getFirst().getPosition()
+                        Controller.getController(Controller.getIP()).getModelData().getModels().getFirst().getPosition()
                 )
         );
         /////////////todo

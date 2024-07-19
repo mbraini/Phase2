@@ -1,6 +1,7 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
 import constants.Constants;
+import controller.Controller;
 import controller.manager.GameState;
 import model.ModelData;
 import model.collision.Collision;
@@ -113,8 +114,8 @@ public class BlackOrbThread extends Thread{
     }
 
     private void updateVariables() {
-        synchronized (ModelData.getModels()){
-            models = (ArrayList<OrbModel>) ModelData.getModels().clone();
+        synchronized (Controller.getController(Controller.getIP()).getModelData().getModels()){
+            models = (ArrayList<OrbModel>) Controller.getController(Controller.getIP()).getModelData().getModels().clone();
         }
         synchronized (blackOrbModel.getEffectModels()) {
             effects =

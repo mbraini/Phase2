@@ -123,7 +123,7 @@ public class Shop extends PIG {
         this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if (e.getKeyChar() == 'p' && GameState.isPause()){
+                if (e.getKeyChar() == 'p'){
                     end();
                 }
             }
@@ -182,7 +182,7 @@ public class Shop extends PIG {
     private void initXPL() {
         xp = new JLabel();
         xp.setBounds(Constants.GAME_WIDTH / 10 * 4 ,Constants.GAME_HEIGHT / 16 ,Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16);
-        xp.setText("XP :" +(int) GameState.getXp());
+        xp.setText("XP :" );
         xp.setBackground(Color.WHITE);
         xp.setOpaque(true);
         xp.setFont(new Font(null,Font.BOLD ,15));
@@ -360,7 +360,7 @@ public class Shop extends PIG {
 
     @Override
     public void end() {
-        Controller.resume();
+        Controller.getController(Controller.getIP()).resume();
         shopFrame.dispose();
     }
 }

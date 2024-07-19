@@ -1,6 +1,7 @@
 package model.collision;
 
 
+import controller.Controller;
 import model.ModelData;
 import model.inGameAbilities.Dismay.EpsilonProtectorModel;
 import model.interfaces.CollisionDetector;
@@ -88,7 +89,7 @@ public class CollisionHandler {
 
     private void BulletToEnemyHandler(EnemyModel enemy, EpsilonBulletModel epsilonBullet) {
         enemy.setHP(enemy.getHP() - epsilonBullet.getDamage());
-        EpsilonModel epsilonModel = ModelData.getEpsilon();
+        EpsilonModel epsilonModel = Controller.getController(Controller.getIP()).getModelData().getEpsilon();
         epsilonModel.setHP(epsilonModel.getHP() + epsilonModel.getLifeSteal());
         epsilonModel.checkHP();
         new Impact(epsilonBullet.getPosition()).MakeImpact();

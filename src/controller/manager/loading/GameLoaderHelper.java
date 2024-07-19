@@ -4,6 +4,7 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import controller.Controller;
 import controller.enums.EffectType;
 import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
@@ -87,8 +88,8 @@ public class GameLoaderHelper {
         switch (type){
             case epsilon :
                 model = gson.fromJson(jsonString , EpsilonModel.class);
-                ModelData.addModel(model);
-                ModelData.setEpsilon((EpsilonModel) model);
+                Controller.getController(Controller.getIP()).getModelData().addModel(model);
+                Controller.getController(Controller.getIP()).getModelData().setEpsilon((EpsilonModel) model);
                 ViewRequest.addObjectView(
                         new EpsilonView(
                                 model.getPosition() ,
@@ -100,7 +101,7 @@ public class GameLoaderHelper {
                 break;
             case squarantine:
                 model = gson.fromJson(jsonString , SquarantineModel.class);
-                ModelRequests.addObjectModel(model);
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(model);
                 ViewRequest.addObjectView(new SquarantineView(
                         model.getPosition(),
                         model.getId()
@@ -108,7 +109,7 @@ public class GameLoaderHelper {
                 break;
             case trigorath:
                 model = gson.fromJson(jsonString , TrigorathModel.class);
-                ModelRequests.addObjectModel(model);
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(model);
                 ViewRequest.addObjectView(new TrigorathView(
                         model.getPosition(),
                         model.getId()
@@ -116,7 +117,7 @@ public class GameLoaderHelper {
                 break;
             case omenoct:
                 model = gson.fromJson(jsonString , OmenoctModel.class);
-                ModelRequests.addObjectModel(model);
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(model);
                 ViewRequest.addObjectView(new OmenoctView(
                         model.getPosition(),
                         model.getId()
@@ -124,7 +125,7 @@ public class GameLoaderHelper {
                 break;
             case necropick:
                 model = gson.fromJson(jsonString , NecropickModel.class);
-                ModelRequests.addObjectModel(model);
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(model);
                 ((NecropickModel) model).start();
                 ViewRequest.addObjectView(new NecropickView(
                         model.getPosition(),
@@ -146,7 +147,7 @@ public class GameLoaderHelper {
                     throw new RuntimeException(e);
                 }
                 ((ArchmireModel)model).start();
-                ModelRequests.addObjectModel((ArchmireModel)model);
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel((ArchmireModel)model);
                 ViewRequest.addObjectView(new ArchmireView(
                         model.getPosition(),
                         model.getId()
@@ -154,7 +155,7 @@ public class GameLoaderHelper {
                 break;
             case wyrm:
                 model = gson.fromJson(jsonString , WyrmModel.class);
-                ModelRequests.addObjectModel(model);
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(model);
                 GameLoader.addFrame(((WyrmModel) model).getFrameModel());
                 ((WyrmModel) model).start();
                 ViewRequest.addObjectView(new WyrmView(
@@ -164,7 +165,7 @@ public class GameLoaderHelper {
                 break;
             case barricadosTheFirst:
                 model = gson.fromJson(jsonString , BarricadosFirstModel.class);
-                ModelRequests.addObjectModel(model);
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(model);
                 ViewRequest.addObjectView(new BarricadosView(
                         model.getPosition(),
                         model.getId()
@@ -173,7 +174,7 @@ public class GameLoaderHelper {
             case barricadosTheSecond:
                 model = gson.fromJson(jsonString ,BarricadosSecondModel.class);
                 GameLoader.addFrame(((BarricadosSecondModel) model).getFrameModel());
-                ModelRequests.addObjectModel(model);
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(model);
                 ViewRequest.addObjectView(new BarricadosView(
                         model.getPosition(),
                         model.getId()
@@ -182,7 +183,7 @@ public class GameLoaderHelper {
             case cerberus:
                 model = gson.fromJson(jsonString , CerberusModel.class);
                 ((CerberusModel) model).start();
-                ModelData.addModel(model);
+                Controller.getController(Controller.getIP()).getModelData().addModel(model);
                 ViewRequest.addObjectView(new CerberusView(
                         model.getPosition(),
                         model.getId()
@@ -192,7 +193,7 @@ public class GameLoaderHelper {
     }
 
     public synchronized static void addWyrm(ArchmireModel wyrm, FrameModel frameModel){
-        ModelRequests.addObjectModel(wyrm);
+        Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(wyrm);
         ViewRequest.addObjectView(new WyrmView(
                 wyrm.getPosition(),
                 wyrm.getId()
@@ -224,11 +225,11 @@ public class GameLoaderHelper {
             addEffect(effectModel ,EffectType.BlackOrbEffect);
         }
 
-        ModelRequests.addAbstractEnemy(blackOrbModel);
+        Controller.getController(Controller.getIP()).getModelRequests().addAbstractEnemy(blackOrbModel);
     }
 
     public synchronized static void addOrb(OrbModel orbModel){
-        ModelRequests.addObjectModel(orbModel);
+        Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(orbModel);
         ViewRequest.addObjectView(
                 new OrbView(
                         orbModel.getPosition(),
@@ -238,7 +239,7 @@ public class GameLoaderHelper {
     }
 
     public synchronized static void addBlackOrbEffect(BlackOrbAoeEffectModel effectModel){
-        ModelRequests.addEffectModel(effectModel);
+        Controller.getController(Controller.getIP()).getModelRequests().addEffectModel(effectModel);
         ViewRequest.addEffectView(new BlackOrbLaserEffectView(
                 effectModel.getArea(),
                 effectModel.getId()
@@ -246,7 +247,7 @@ public class GameLoaderHelper {
     }
 
     public synchronized static void addBarricadosTheFirst(BarricadosSecondModel barricados){
-        ModelRequests.addObjectModel(barricados);
+        Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(barricados);
         ViewRequest.addObjectView(new BarricadosView(
                 barricados.getPosition(),
                 barricados.getId()
@@ -254,7 +255,7 @@ public class GameLoaderHelper {
     }
 
     public synchronized static void addBarricadosTheSecond(BarricadosSecondModel barricados ,FrameModel frameModel){
-        ModelRequests.addObjectModel(barricados);
+        Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(barricados);
         ViewRequest.addObjectView(new BarricadosView(
                 barricados.getPosition(),
                 barricados.getId()
@@ -266,14 +267,14 @@ public class GameLoaderHelper {
     public static void addEffect(EffectModel effect, EffectType effectType) {
         switch (effectType){
             case archmireEffect :
-                ModelRequests.addEffectModel(effect);
+                Controller.getController(Controller.getIP()).getModelRequests().addEffectModel(effect);
                 ViewRequest.addEffectView(new ArchmireEffectView(
                         effect.getArea(),
                         effect.getId()
                 ));
                 break;
             case BlackOrbEffect:
-                ModelRequests.addEffectModel(effect);
+                Controller.getController(Controller.getIP()).getModelRequests().addEffectModel(effect);
                 ViewRequest.addEffectView(new BlackOrbLaserEffectView(
                         effect.getArea(),
                         effect.getId()

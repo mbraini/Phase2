@@ -1,5 +1,6 @@
 package model.inGameAbilities;
 
+import controller.Controller;
 import controller.enums.InGameAbilityType;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
@@ -24,7 +25,7 @@ public class Heal extends InGameAbility{
 
     @Override
     public void setUp() {
-        epsilon = (EpsilonModel) ModelData.getModels().getFirst();
+        epsilon = (EpsilonModel) Controller.getController(Controller.getIP()).getModelData().getModels().getFirst();
     }
 
 

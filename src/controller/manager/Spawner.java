@@ -1,5 +1,6 @@
 package controller.manager;
 
+import controller.Controller;
 import controller.enums.ModelType;
 import constants.Constants;
 import model.ModelRequests;
@@ -53,7 +54,7 @@ public abstract class Spawner {
 
 
     public synchronized static void addFrame(FrameModel frameModel){
-        ModelRequests.addFrameModel(frameModel);
+        Controller.getController(Controller.getIP()).getModelRequests().addFrameModel(frameModel);
         ViewRequest.addFrameView(new FrameView(
                 frameModel.getPosition(),
                 frameModel.getSize(),
@@ -64,32 +65,32 @@ public abstract class Spawner {
     public synchronized static void spawnObjectWithId(Vector position, ModelType modelType, String id){
         switch (modelType) {
             case epsilon:
-                ModelRequests.addObjectModel(new EpsilonModel(position, id));
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new EpsilonModel(position, id));
                 ViewRequest.addObjectView(new EpsilonView(position, id));
                 break;
             case trigorath:
-                ModelRequests.addObjectModel(new TrigorathModel(position, id));
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new TrigorathModel(position, id));
                 ViewRequest.addObjectView(new TrigorathView(position, id));
                 break;
             case squarantine:
-                ModelRequests.addObjectModel(new SquarantineModel(position, id));
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new SquarantineModel(position, id));
                 ViewRequest.addObjectView(new SquarantineView(position, id));
                 break;
             case omenoct:
-                ModelRequests.addObjectModel(new OmenoctModel(position, id));
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new OmenoctModel(position, id));
                 ViewRequest.addObjectView(new OmenoctView(position, id));
                 break;
             case necropick:
-                ModelRequests.addObjectModel(new NecropickModel(position ,id));
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new NecropickModel(position ,id));
                 ViewRequest.addObjectView(new NecropickView(position ,id));
                 break;
             case archmire:
-                ModelRequests.addObjectModel(new ArchmireModel(position ,id));
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new ArchmireModel(position ,id));
                 ViewRequest.addObjectView(new ArchmireView(position ,id));
                 break;
             case wyrm:
                 WyrmModel wyrmModel = new WyrmModel(position ,id);
-                ModelRequests.addObjectModel(wyrmModel);
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(wyrmModel);
                 ViewRequest.addObjectView(new WyrmView(wyrmModel.getPosition() ,id));
                 addFrame(wyrmModel.getFrameModel());
                 break;
@@ -98,18 +99,18 @@ public abstract class Spawner {
                         position,
                         id
                 );
-                ModelRequests.addAbstractEnemy(blackOrbModel);
+                Controller.getController(Controller.getIP()).getModelRequests().addAbstractEnemy(blackOrbModel);
                 blackOrbModel.spawn();
                 break;
             case barricados:
                 int randomInteger = (new Random()).nextInt(0 ,2);
                 if (randomInteger == 0){
                     BarricadosFirstModel barricadosModel = new BarricadosFirstModel(position ,id);
-                    ModelRequests.addObjectModel(barricadosModel);
+                    Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(barricadosModel);
                 }
                 else {
                     BarricadosSecondModel barricadosModel = new BarricadosSecondModel(position ,id);
-                    ModelRequests.addObjectModel(barricadosModel);
+                    Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(barricadosModel);
                     addFrame(barricadosModel.getFrameModel());
                 }
                 ViewRequest.addObjectView(new BarricadosView(
@@ -118,7 +119,7 @@ public abstract class Spawner {
                 ));
                 break;
             case cerberus:
-                 ModelRequests.addObjectModel(new CerberusModel(position ,id));
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new CerberusModel(position ,id));
                  ViewRequest.addObjectView(new CerberusView(position ,id));
                  break;
         }
@@ -138,7 +139,7 @@ public abstract class Spawner {
     public synchronized static void addProjectileWithId(Vector position , Vector direction , ModelType modelType, String id){
         switch (modelType) {
             case epsilonBullet:
-                ModelRequests.addObjectModel(new EpsilonBulletModel(
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new EpsilonBulletModel(
                                 position,
                                 direction,
                                 id
@@ -147,7 +148,7 @@ public abstract class Spawner {
                 ViewRequest.addObjectView(new EpsilonBulletView(position, id));
                 break;
             case omenoctBullet:
-                ModelRequests.addObjectModel(new OmenoctBulletModel(
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new OmenoctBulletModel(
                                 position,
                                 direction,
                                 id
@@ -156,19 +157,19 @@ public abstract class Spawner {
                 ViewRequest.addObjectView(new OmenoctBulletView(position, id));
                 break;
             case necropickBullet:
-                ModelRequests.addObjectModel(new NecropickBulletModel(position ,direction ,id));
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new NecropickBulletModel(position ,direction ,id));
                 ViewRequest.addObjectView(new NecropickBulletView(position ,id));
                 break;
             case wyrmBullet:
-                ModelRequests.addObjectModel(new WyrmBulletModel(position ,direction ,id));
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new WyrmBulletModel(position ,direction ,id));
                 ViewRequest.addObjectView(new WyrmBulletView(position ,id));
                 break;
             case bossBullet:
-                ModelRequests.addObjectModel(new BossBulletModel(position ,direction ,id));
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new BossBulletModel(position ,direction ,id));
                 ViewRequest.addObjectView(new BossBulletView(position ,id));
                 break;
             case slaughterBullet:
-                ModelRequests.addObjectModel(new SlaughterBulletModel(position, direction ,id));
+                Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new SlaughterBulletModel(position, direction ,id));
                 ViewRequest.addObjectView(new SlaughterBulletView(position ,id));
                 break;
         }
@@ -176,12 +177,12 @@ public abstract class Spawner {
 
     public synchronized static void addArchmireEffect(ArchmireAoeEffectModel archmireEffectModel){
         String id = archmireEffectModel.getId();
-        ModelRequests.addEffectModel(archmireEffectModel);
+        Controller.getController(Controller.getIP()).getModelRequests().addEffectModel(archmireEffectModel);
         ViewRequest.addEffectView(new ArchmireEffectView(archmireEffectModel.getArea() ,id));
     }
 
     public static void addBlackOrbEffectModel(BlackOrbAoeEffectModel effectModel) {
-        ModelRequests.addEffectModel(effectModel);
+        Controller.getController(Controller.getIP()).getModelRequests().addEffectModel(effectModel);
         ViewRequest.addEffectView(new BlackOrbLaserEffectView(effectModel.getArea() ,effectModel.getId()));
     }
 
@@ -202,23 +203,23 @@ public abstract class Spawner {
 
     private static void addCollective(Vector position, int value) {
         String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
-        ModelRequests.addObjectModel(new CollectiveModel(position,id ,value));
+        Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new CollectiveModel(position,id ,value));
         ViewRequest.addObjectView(new CollectiveView(position ,id));
     }
 
     public static synchronized void spawnBoss(){
         Boss boss = new Boss();
-        ModelRequests.addAbstractEnemy(boss);
+        Controller.getController(Controller.getIP()).getModelRequests().addAbstractEnemy(boss);
         boss.spawnHelpers();
         boss.spawnPunch();
     }
 
 
     public synchronized static void spawnHead(HeadModel head) {
-        ModelRequests.addObjectModel(head);
+        Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(head);
         ViewRequest.addObjectView(new HeadView(head.getPosition() ,head.getId()));
 
-        ModelRequests.addFrameModel(head.getFrame());
+        Controller.getController(Controller.getIP()).getModelRequests().addFrameModel(head.getFrame());
         ViewRequest.addFrameView(new FrameView(
                 head.getFrame().getPosition(),
                 head.getFrame().getSize(),
@@ -227,10 +228,10 @@ public abstract class Spawner {
     }
 
     public synchronized static void spawnHand(HandModel hand){
-        ModelRequests.addObjectModel(hand);
+        Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(hand);
         ViewRequest.addObjectView(new HandView(hand.getPosition() ,hand.getId()));
 
-        ModelRequests.addFrameModel(hand.getFrame());
+        Controller.getController(Controller.getIP()).getModelRequests().addFrameModel(hand.getFrame());
         ViewRequest.addFrameView(new FrameView(
                 hand.getFrame().getPosition(),
                 hand.getFrame().getSize(),
@@ -239,12 +240,12 @@ public abstract class Spawner {
     }
 
     public static void addBossEffect(BossAoeEffectModel effectModel) {
-        ModelRequests.addEffectModel(effectModel);
+        Controller.getController(Controller.getIP()).getModelRequests().addEffectModel(effectModel);
         ViewRequest.addEffectView(new BossAoeEffectView(effectModel.getArea() ,effectModel.getId()));
     }
 
     public static void addPunch(PunchModel punch) {
-        ModelRequests.addObjectModel(punch);
+        Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(punch);
         ViewRequest.addObjectView(
                 new PunchView(
                         punch.getPosition(),
@@ -252,7 +253,7 @@ public abstract class Spawner {
                 )
         );
 
-        ModelRequests.addFrameModel(punch.getFrame());
+        Controller.getController(Controller.getIP()).getModelRequests().addFrameModel(punch.getFrame());
         ViewRequest.addFrameView(
                 new FrameView(
                         punch.getFrame().getPosition(),
@@ -263,7 +264,7 @@ public abstract class Spawner {
     }
 
     public static void spawnOrb(Vector position, BlackOrbModel blackOrbModel, int number, String id) {
-        ModelRequests.addObjectModel(new OrbModel(
+        Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(new OrbModel(
                 position,
                 blackOrbModel,
                 number,
@@ -276,7 +277,7 @@ public abstract class Spawner {
     }
 
     public static synchronized void spawnProtector(EpsilonProtectorModel protectorModel) {
-        ModelRequests.addObjectModel(protectorModel);
+        Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(protectorModel);
         ViewRequest.addObjectView(new EpsilonProtectorView(
                 protectorModel.getPosition(),
                 protectorModel.getId()
@@ -284,7 +285,7 @@ public abstract class Spawner {
     }
 
     public static void spawnVertex(EpsilonVertexModel epsilonVertexModel) {
-        ModelRequests.addObjectModel(epsilonVertexModel);
+        Controller.getController(Controller.getIP()).getModelRequests().addObjectModel(epsilonVertexModel);
         ViewRequest.addObjectView(
                 new EpsilonVertexView(
                         epsilonVertexModel.getPosition(),

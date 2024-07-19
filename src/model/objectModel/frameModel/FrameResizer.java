@@ -1,6 +1,7 @@
 package model.objectModel.frameModel;
 
 import constants.Constants;
+import controller.Controller;
 import model.ModelData;
 import model.collision.Collision;
 import utils.Math;
@@ -15,8 +16,8 @@ public class FrameResizer {
 
     public FrameResizer(FrameModel frameModel){
         this.frameModel = frameModel;
-        synchronized (ModelData.getModels()){
-            frames = (ArrayList<FrameModel>) ModelData.getFrames().clone();
+        synchronized (Controller.getController(Controller.getIP()).getModelData().getModels()){
+            frames = (ArrayList<FrameModel>) Controller.getController(Controller.getIP()).getModelData().getFrames().clone();
         }
     }
 

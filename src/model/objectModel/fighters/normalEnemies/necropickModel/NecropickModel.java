@@ -114,7 +114,7 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
     public void ability() {
         NecropickNavigator navigator = new NecropickNavigator(
                 position,
-                ModelData.getModels().getFirst().getPosition()
+                Controller.getController(Controller.getIP()).getModelData().getModels().getFirst().getPosition()
         );
         navigator.navigate();
         setVelocity(navigator.getVelocity());

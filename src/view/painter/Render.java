@@ -30,7 +30,7 @@ public class Render extends Thread {
             lastTime = now;
             if (deltaPaint >= Constants.FPS) {
                 ViewRequest.checkRequests();
-                Controller.updateView();
+                Controller.getController(Controller.getIP()).updateView();
                 paint();
                 deltaPaint = 0;
             }

@@ -2,6 +2,7 @@
 package model.threads;
 
 import constants.Constants;
+import controller.Controller;
 import controller.manager.GameState;
 import model.ModelData;
 import model.collision.Collision;
@@ -33,8 +34,8 @@ public class FrameThread extends Thread{
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0;
-        while (!GameState.isOver()){
-            if (GameState.isPause()) {
+        while (!Controller.getController(Controller.getIP()).getGameState().isOver()){
+            if (Controller.getController(Controller.getIP()).getGameState().isPause()) {
                 lastTime = System.nanoTime();
                 continue;
             }
@@ -49,14 +50,14 @@ public class FrameThread extends Thread{
     }
 
     private void updateFrames() {
-        synchronized (ModelData.getModels()) {
-            localFrames = (HashMap<ObjectModel, FrameModel>) ModelData.getLocalFrames().clone();
-            models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
-            frames = (ArrayList<FrameModel>) ModelData.getFrames().clone();
+        synchronized (Controller.getController(Controller.getIP()).getModelData().getModels()) {
+            localFrames = (HashMap<ObjectModel, FrameModel>) Controller.getController(Controller.getIP()).getModelData().getLocalFrames().clone();
+            models = (ArrayList<ObjectModel>) Controller.getController(Controller.getIP()).getModelData().getModels().clone();
+            frames = (ArrayList<FrameModel>) Controller.getController(Controller.getIP()).getModelData().getFrames().clone();
         }
         defineLocalFrames();
-        synchronized (ModelData.getModels()) {
-            localFrames = (HashMap<ObjectModel, FrameModel>) ModelData.getLocalFrames().clone();
+        synchronized (Controller.getController(Controller.getIP()).getModelData().getModels()) {
+            localFrames = (HashMap<ObjectModel, FrameModel>) Controller.getController(Controller.getIP()).getModelData().getLocalFrames().clone();
         }
         resetDisables();
         setDisablesForSolidObjects();
@@ -132,11 +133,11 @@ public class FrameThread extends Thread{
                 }
             }
         }
-        ModelData.setLocalFrames(newLocals);
+        Controller.getController(Controller.getIP()).getModelData().setLocalFrames(newLocals);
     }
 
     private void resize(ArrayList<FrameModel> frameModels) {
-        if (GameState.isDizzy())
+        if (Controller.getController(Controller.getIP()).getGameState().isDizzy())
             return;
         for (FrameModel frame : frameModels){
             if (!frame.isIsometric()){
@@ -154,7 +155,7 @@ public class FrameThread extends Thread{
 
     private ArrayList<FrameModel> defineFrame(ObjectModel model){
         ArrayList<FrameModel> frames = new ArrayList<>();
-        ArrayList<FrameModel> dataFrames = ModelData.getFrames();
+        ArrayList<FrameModel> dataFrames = Controller.getController(Controller.getIP()).getModelData().getFrames();
         for (int i = 0 ;i < dataFrames.size() ;i++){
             if (Collision.isInFrame(dataFrames.get(i) ,model.getPosition())){
                 frames.add(dataFrames.get(i));

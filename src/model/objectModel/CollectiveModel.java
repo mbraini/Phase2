@@ -43,7 +43,7 @@ public class CollectiveModel extends ObjectModel implements IsCircle, Ability, M
 
     @Override
     public void ability() {
-        Vector epsilonPosition = ModelData.getModels().getFirst().getPosition();
+        Vector epsilonPosition = Controller.getController(Controller.getIP()).getModelData().getModels().getFirst().getPosition();
         Vector distance = Math.VectorAdd(
                 epsilonPosition,
                 Math.ScalarInVector(-1 ,position)

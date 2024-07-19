@@ -1,6 +1,7 @@
 package view;
 
 import constants.Constants;
+import controller.Controller;
 import view.soundEffects.Sound;
 import view.menuPanels.MainFrame;
 
@@ -9,12 +10,24 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class Application implements Runnable{
     private static MainFrame mainFrame;
 
     @Override
     public void run() {
+        runView();
+        runModel();
+    }
+
+    private void runModel() {
+        HashMap<String ,Controller> map = new HashMap<>();
+        map.put(Controller.getIP() ,new Controller());
+        Controller.setControllerMap(map);
+    }
+
+    private void runView() {
         getImages();
         getAudios();
         startMainFrame();

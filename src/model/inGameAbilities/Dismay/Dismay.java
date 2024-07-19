@@ -1,5 +1,6 @@
 package model.inGameAbilities.Dismay;
 
+import controller.Controller;
 import controller.enums.InGameAbilityType;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
@@ -66,7 +67,7 @@ public class Dismay extends InGameAbility {
     @Override
     public void setUp() {
         initTimer();
-        this.epsilon = (EpsilonModel) ModelData.getModels().getFirst();
+        this.epsilon = (EpsilonModel) Controller.getController(Controller.getIP()).getModelData().getModels().getFirst();
         protectorModel.setEpsilon(epsilon);
         if (timePassed <= Constants.DISMAY_DURATION && isActive) {
             Spawner.spawnProtector(protectorModel);

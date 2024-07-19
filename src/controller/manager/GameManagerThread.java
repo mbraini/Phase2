@@ -50,13 +50,13 @@ public class GameManagerThread extends Thread{
 
     private void manage() {
 
-        synchronized (ModelData.getModels()){
-            models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
-            effects = (ArrayList<EffectModel>) ModelData.getEffectModels().clone();
-            frames = (ArrayList<FrameModel>) ModelData.getFrames().clone();
-            abstractEnemies = (ArrayList<AbstractEnemy>) ModelData.getAbstractEnemies().clone();
-            abilities = (ArrayList<InGameAbility>) ModelData.getInGameAbilities().clone();
-            skillTreeAbilities =(ArrayList<SkillTreeAbility>) ModelData.getSkillTreeAbilities().clone();
+        synchronized (Controller.getController(Controller.getIP()).getModelData().getModels()){
+            models = (ArrayList<ObjectModel>) Controller.getController(Controller.getIP()).getModelData().getModels().clone();
+            effects = (ArrayList<EffectModel>) Controller.getController(Controller.getIP()).getModelData().getEffectModels().clone();
+            frames = (ArrayList<FrameModel>) Controller.getController(Controller.getIP()).getModelData().getFrames().clone();
+            abstractEnemies = (ArrayList<AbstractEnemy>) Controller.getController(Controller.getIP()).getModelData().getAbstractEnemies().clone();
+            abilities = (ArrayList<InGameAbility>) Controller.getController(Controller.getIP()).getModelData().getInGameAbilities().clone();
+            skillTreeAbilities =(ArrayList<SkillTreeAbility>) Controller.getController(Controller.getIP()).getModelData().getSkillTreeAbilities().clone();
         }
         interfaces();
         killObjects();
@@ -93,7 +93,7 @@ public class GameManagerThread extends Thread{
             if (model.getHP() <= 0) {
                 model.die();
                 if (model instanceof EpsilonModel && !GameState.isOver()) {
-                    Controller.endGame();
+                    Controller.getController(Controller.getIP()).endGame();
                 }
             }
         }

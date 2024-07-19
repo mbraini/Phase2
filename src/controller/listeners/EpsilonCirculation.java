@@ -2,6 +2,7 @@ package controller.listeners;
 
 
 import constants.Constants;
+import controller.Controller;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
@@ -13,7 +14,7 @@ import java.awt.event.MouseMotionAdapter;
 public class EpsilonCirculation extends MouseMotionAdapter {
     private EpsilonModel epsilon;
     public EpsilonCirculation(){
-        this.epsilon = (EpsilonModel) ModelData.getModels().getFirst();
+        this.epsilon = (EpsilonModel) Controller.getController(Controller.getIP()).getModelData().getModels().getFirst();
     }
 
     @Override

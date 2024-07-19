@@ -76,7 +76,7 @@ public class SquarantineModel extends BasicEnemyModel implements HasVertices, Is
                 this ,
                 Math.VectorAdd(
                         Math.ScalarInVector(-1 ,position) ,
-                        ModelData.getModels().getFirst().getPosition()
+                        Controller.getController(Controller.getIP()).getModelData().getModels().getFirst().getPosition()
                 ) ,
                 700 ,
                 90 ,

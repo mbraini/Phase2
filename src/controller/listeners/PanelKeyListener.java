@@ -31,8 +31,8 @@ public class PanelKeyListener extends KeyAdapter {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        if (e.getKeyChar() == SHOP_KEY && !GameState.isPause()){
-            Controller.pause();
+        if (e.getKeyChar() == SHOP_KEY && !Controller.getController(Controller.getIP()).getGameState().isPause()){
+            Controller.getController(Controller.getIP()).pause();
             new Shop(new ShopFrame());
         }
         if (e.getKeyChar() == ARES_KEY) {

@@ -42,25 +42,40 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public abstract class Controller {
-    private static Render render;
-    private static GameLoop gameLoop;
-    private static FrameThread frameThread;
-    private static GameManager gameManager;
+public class Controller {
+    private static String IP = "MAHDI-BARANI";
+    private static HashMap<String ,Controller> controllerMap = new HashMap<>();
+    private Render render;
+    private GameLoop gameLoop;
+    private FrameThread frameThread;
+    private GameManager gameManager;
+    private GameState gameState;
+    private ModelData modelData;
+    private ModelRequests modelRequests;
+    private ViewData viewData;
+    private ViewRequest viewRequest;
 
-    public static void updateView(){
-        synchronized (ModelData.getModels()) {
+    public Controller() {
+        modelData = new ModelData();
+        modelRequests = new ModelRequests();
+        viewData = new ViewData();
+        viewRequest = new ViewRequest();
+        gameState = new GameState();
+    }
+
+    public void updateView(){
+        synchronized (getModelData().getModels()) {
 
             //////// syncronize them later !
 
-            ArrayList<ObjectView> objectViews = (ArrayList<ObjectView>) ViewData.getViews().clone();
-            ArrayList<FrameView> frameViews = (ArrayList<FrameView>) ViewData.getFrames().clone();
-            ArrayList<ObjectModel> objectModels = (ArrayList<ObjectModel>) ModelData.getModels().clone();
-            ArrayList<FrameModel> frameModels = (ArrayList<FrameModel>) ModelData.getFrames().clone();
-            ArrayList<EffectView> effectViews = (ArrayList<EffectView>) ViewData.getEffectViews().clone();
-            ArrayList<EffectModel> effectModels = (ArrayList<EffectModel>) ModelData.getEffectModels().clone();
+            ArrayList<ObjectView> objectViews = (ArrayList<ObjectView>) getViewData().getViews().clone();
+            ArrayList<FrameView> frameViews = (ArrayList<FrameView>) getViewData().getFrames().clone();
+            ArrayList<ObjectModel> objectModels = (ArrayList<ObjectModel>) getModelData().getModels().clone();
+            ArrayList<FrameModel> frameModels = (ArrayList<FrameModel>) getModelData().getFrames().clone();
+            ArrayList<EffectView> effectViews = (ArrayList<EffectView>) getViewData().getEffectViews().clone();
+            ArrayList<EffectModel> effectModels = (ArrayList<EffectModel>) getModelData().getEffectModels().clone();
             HashMap<ObjectModel ,FrameModel> locals =
-                    (HashMap<ObjectModel, FrameModel>) ModelData.getLocalFrames().clone();
+                    (HashMap<ObjectModel, FrameModel>) getModelData().getLocalFrames().clone();
 
             ///////////////
 
@@ -137,7 +152,7 @@ public abstract class Controller {
     }
 
     public synchronized static void removeObject(ObjectModel model) {
-        ModelRequests.removeObjectModel(model.getId());
+        Controller.getController(Controller.getIP()).getModelRequests().removeObjectModel(model.getId());
         ViewRequest.removeObjectView(model.getId());
     }
 
@@ -146,17 +161,17 @@ public abstract class Controller {
     }
 
     public synchronized static void removeEffect(EffectModel effectModel) {
-        ModelRequests.removeEffectModel(effectModel.getId());
+        Controller.getController(Controller.getIP()).getModelRequests().removeEffectModel(effectModel.getId());
         ViewRequest.removeEffectView(effectModel.getId());
     }
 
     public static void removeFrame(FrameModel frameModel) {
-        ModelRequests.removeFrameModel(frameModel.getId());
+        Controller.getController(Controller.getIP()).getModelRequests().removeFrameModel(frameModel.getId());
         ViewRequest.removeFrameView(frameModel.getId());
     }
 
-    public static void resume() {
-        GameState.setPause(false);
+    public void resume() {
+        getGameState().setPause(false);
     }
 
     public static void load(){
@@ -165,8 +180,8 @@ public abstract class Controller {
         }
     }
 
-    public static void pause() {
-        GameState.setPause(true);
+    public void pause() {
+        gameState.setPause(true);
     }
 
     public static void randomizeKeys() {
@@ -182,50 +197,50 @@ public abstract class Controller {
 
     }
 
-    private static void setVariables(){
-        ViewData.setTime(GameState.getTime());
-        ViewData.setHp(GameState.getHp());
-        ViewData.setXp(GameState.getXp());
-        ViewData.setWave(GameState.getWave());
+    private void setVariables(){
+        ViewData.setTime(getGameState().getTime());
+        ViewData.setHp(getGameState().getHp());
+        ViewData.setXp(getGameState().getXp());
+        ViewData.setWave(getGameState().getWave());
     }
 
 
-    public static void startGame(){
-        GameState.setOver(false);
-        GameState.setXp(3000);
+    public void startGame(){
+        getGameState().setOver(false);
+        getGameState().setXp(3000);
 //        load();
         modelStarter();
         viewStarter();
         addEpsilonAndFrame();
-        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
+        new GameStartAnimation(getModelData().getFrames().getFirst()).StartAnimation();
         InGameAbilityHandler.initInGameAbilities();
         SkillTreeAbilityHandler.initAbilities();
-        Controller.threadsStarter();
+        threadsStarter();
     }
 
-    public static void endGame() {
-        ModelRequests.endRequest();
+    public void endGame() {
+        Controller.getController(Controller.getIP()).getModelRequests().endRequest();
         ViewRequest.endRequest();
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        GameState.setOver(true);
+        getGameState().setOver(true);
         render.interrupt();
         new EndGamePanel(new EndGameFrame()).start();
     }
 
 
-    private static void addEpsilonAndFrame() {
+    private void addEpsilonAndFrame() {
         EpsilonModel epsilon = new EpsilonModel(
                 new Vector(Constants.SCREEN_SIZE.width / 2d ,
                         Constants.SCREEN_SIZE.height / 2d
                 )
                 ,Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
-        ModelData.addModel(epsilon);
-        ModelData.setEpsilon(epsilon);
+        getModelData().addModel(epsilon);
+        getModelData().setEpsilon(epsilon);
         ViewData.addObject(new EpsilonView(epsilon.getPosition() ,epsilon.getId()));
         FrameModelBuilder builder = new FrameModelBuilder(
                 new Vector(
@@ -237,92 +252,17 @@ public abstract class Controller {
         );
         builder.setSolid(true);
         FrameModel frameModel = builder.create();
-        ModelData.addFrame(frameModel);
-        ModelData.setEpsilonFrame(frameModel);
+        getModelData().addFrame(frameModel);
+        getModelData().setEpsilonFrame(frameModel);
         ViewData.addFrame(new FrameView(
                 frameModel.getPosition(),
                 frameModel.getSize(),
                 frameModel.getId())
         );
         ViewData.addImaginaryPanel(new ImaginaryPanel(frameModel.getId()));
-
-
-//        Spawner.spawnObject(new Vector(200 ,200),
-//                ModelType.barricados
-//        );
-//        Spawner.spawnObject(new Vector(300 ,300),
-//                ModelType.necropick
-//        );
-//        Spawner.spawnObject(new Vector(0 ,600),
-//                ModelType.necropick
-//        );
-//        Spawner.spawnObject(new Vector(600 ,300),
-//                ModelType.necropick
-//        );
-//        Spawner.spawnObject(new Vector(0 ,0),
-//                ModelType.wyrm
-//        );
-
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 100),
-//                ModelType.wyrm
-//        );
-//
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d - 150 ,Constants.SCREEN_SIZE.height / 2d - 150),
-//                ModelType.omenoct
-//        );
-//
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.archmire
-//        );
-//
-//
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.squarantine
-//        );
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.squarantine
-//        );
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.trigorath
-//        );
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.trigorath
-//        );
-////
-////
-//        Spawner.spawnObject(
-//                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
-//                ModelType.blackOrb
-//        );
-//
-//        FrameModelBuilder builder1 = new FrameModelBuilder(
-//                new Vector(
-//                        0 ,
-//                        0
-//                ),
-//                new Dimension(200,200),
-//                Helper.RandomStringGenerator(Constants.ID_SIZE)
-//        );
-//        builder1.setSolid(false);
-//        FrameModel frameModel1 = builder1.create();
-//        Spawner.addFrame(frameModel1);
-////
-//        FrameModelBuilder builder2 = new FrameModelBuilder(
-//                new Vector(
-//                        Constants.SCREEN_SIZE.width - 200 ,
-//                        Constants.SCREEN_SIZE.height - 200
-//                ),
-//                new Dimension(200,200),
-//                Helper.RandomStringGenerator(Constants.ID_SIZE)
-//        );
-//        builder2.setSolid(true);
-//        FrameModel frameModel2 = builder2.create();
-//        Spawner.addFrame(frameModel2);
-//
-//        Spawner.spawnBoss();
     }
 
-    public static void threadsStarter() {
+    public void threadsStarter() {
         frameThread = new FrameThread();
         gameLoop = new GameLoop();
         render = new Render();
@@ -338,9 +278,10 @@ public abstract class Controller {
         /////todo
     }
 
-    private static void modelStarter() {
-        ModelData.resetAll();
-        ModelRequests.resetAll();
+    private void modelStarter() {
+        getModelData().resetAll();
+        getModelRequests().resetAll();
+        getViewData().resetAll();
     }
 
     private static void viewStarter() {
@@ -354,9 +295,9 @@ public abstract class Controller {
 
 
 
-    public static boolean shootRequest(Vector clickedPoint){
+    public boolean shootRequest(Vector clickedPoint){
         if (ShootRequest.canShoot()){
-            new ShootRequest((EpsilonModel) ModelData.getModels().getFirst()).shoot(clickedPoint);
+            new ShootRequest((EpsilonModel) getModelData().getModels().getFirst()).shoot(clickedPoint);
             return true;
         }
         return false;
@@ -370,5 +311,59 @@ public abstract class Controller {
         SkillTreeAbilityRequests.abilityRequest(type);
     }
 
+    public static HashMap<String, Controller> getControllerMap() {
+        return controllerMap;
+    }
 
+    public static void setControllerMap(HashMap<String, Controller> controllerMap) {
+        Controller.controllerMap = controllerMap;
+    }
+
+    public static String getIP() {
+        return IP;
+    }
+
+    public static Controller getController(String ip) {
+        return controllerMap.get(ip);
+    }
+
+    public ModelData getModelData() {
+        return modelData;
+    }
+
+    public void setModelData(ModelData modelData) {
+        this.modelData = modelData;
+    }
+
+    public ModelRequests getModelRequests() {
+        return modelRequests;
+    }
+
+    public void setModelRequests(ModelRequests modelRequests) {
+        this.modelRequests = modelRequests;
+    }
+
+    public ViewData getViewData() {
+        return viewData;
+    }
+
+    public void setViewData(ViewData viewData) {
+        this.viewData = viewData;
+    }
+
+    public ViewRequest getViewRequest() {
+        return viewRequest;
+    }
+
+    public void setViewRequest(ViewRequest viewRequest) {
+        this.viewRequest = viewRequest;
+    }
+
+    public GameState getGameState() {
+        return gameState;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
 }

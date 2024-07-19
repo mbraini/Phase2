@@ -1,6 +1,7 @@
 package model.objectModel.fighters.normalEnemies.wyrmModel;
 
 import constants.Constants;
+import controller.Controller;
 import model.ModelData;
 import utils.Math;
 import utils.Vector;
@@ -12,7 +13,7 @@ public class WyrmNavigator {
     }
 
     public void navigate() {
-        Vector epsilonPosition = ModelData.getModels().getFirst().getPosition();
+        Vector epsilonPosition = Controller.getController(Controller.getIP()).getModelData().getModels().getFirst().getPosition();
         Vector direction = Math.VectorAdd(
                 Math.ScalarInVector(-1 ,wyrmModel.getPosition()),
                 epsilonPosition
@@ -31,7 +32,7 @@ public class WyrmNavigator {
     }
 
     public boolean hasArrived() {
-        Vector epsilonPosition = ModelData.getModels().getFirst().getPosition();
+        Vector epsilonPosition = Controller.getController(Controller.getIP()).getModelData().getModels().getFirst().getPosition();
         Vector distance = Math.VectorAdd(
                 epsilonPosition,
                 Math.ScalarInVector(-1 ,wyrmModel.getPosition())

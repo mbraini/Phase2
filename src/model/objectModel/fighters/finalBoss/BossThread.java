@@ -1,5 +1,6 @@
 package model.objectModel.fighters.finalBoss;
 
+import controller.Controller;
 import controller.manager.GameState;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
@@ -18,9 +19,9 @@ public class BossThread extends Thread {
     private int ability;
 
     public BossThread(Boss boss){
-        synchronized (ModelData.getModels()) {
-            epsilon = (EpsilonModel) ModelData.getModels().getFirst();
-            epsilonFrame = ModelData.getFrames().get(0);
+        synchronized (Controller.getController(Controller.getIP()).getModelData().getModels()) {
+            epsilon = (EpsilonModel) Controller.getController(Controller.getIP()).getModelData().getModels().getFirst();
+            epsilonFrame = Controller.getController(Controller.getIP()).getModelData().getFrames().getFirst();
         }
         this.boss = boss;
         bossAI = new BossAI(boss ,epsilon);

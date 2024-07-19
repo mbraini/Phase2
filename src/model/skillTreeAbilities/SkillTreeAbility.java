@@ -1,5 +1,6 @@
 package model.skillTreeAbilities;
 
+import controller.Controller;
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.loading.SkippedByJson;
 import constants.Constants;
@@ -103,7 +104,7 @@ public abstract class SkillTreeAbility {
         coolDownTimer = new Timer(Constants.SKILL_TREE_ABILITY_TIMER_REFRESH_RATE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (GameState.isPause())
+                if (Controller.getController(Controller.getIP()).getGameState().isPause())
                     return;
                 coolDownTimePassed += Constants.SKILL_TREE_ABILITY_TIMER_REFRESH_RATE;
                 if (coolDownTimePassed >= inGameCoolDownTime){

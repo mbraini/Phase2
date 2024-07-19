@@ -1,5 +1,6 @@
 package model.inGameAbilities;
 
+import controller.Controller;
 import controller.enums.InGameAbilityType;
 import model.ModelData;
 import model.inGameAbilities.Dismay.Dismay;
@@ -10,14 +11,14 @@ import java.util.ArrayList;
 public class InGameAbilityHandler {
 
     public synchronized static void initInGameAbilities() {
-        ArrayList<InGameAbility> inGameAbilities = ModelData.getInGameAbilities();
+        ArrayList<InGameAbility> inGameAbilities = Controller.getController(Controller.getIP()).getModelData().getInGameAbilities();
 
         inGameAbilities.add(new Banish(
-                (EpsilonModel) ModelData.getModels().getFirst()
+                (EpsilonModel) Controller.getController(Controller.getIP()).getModelData().getModels().getFirst()
         ));
         inGameAbilities.add(new Empower());
-        inGameAbilities.add(new Heal((EpsilonModel) ModelData.getModels().getFirst()));
-        inGameAbilities.add(new Dismay((EpsilonModel) ModelData.getModels().getFirst()));
+        inGameAbilities.add(new Heal((EpsilonModel) Controller.getController(Controller.getIP()).getModelData().getModels().getFirst()));
+        inGameAbilities.add(new Dismay((EpsilonModel) Controller.getController(Controller.getIP()).getModelData().getModels().getFirst()));
         inGameAbilities.add(new Slumber());
         inGameAbilities.add(new Slaughter());
     }
@@ -28,7 +29,7 @@ public class InGameAbilityHandler {
     }
 
     public synchronized static InGameAbility getInGameAbility(InGameAbilityType type) {
-        ArrayList<InGameAbility> inGameAbilities = ModelData.getInGameAbilities();
+        ArrayList<InGameAbility> inGameAbilities = Controller.getController(Controller.getIP()).getModelData().getInGameAbilities();
 
         for (InGameAbility inGameAbility : inGameAbilities){
             if (inGameAbility.getType() == type)
@@ -38,7 +39,7 @@ public class InGameAbilityHandler {
     }
 
     public synchronized static void disableAll(){
-        ArrayList<InGameAbility> inGameAbilities = ModelData.getInGameAbilities();
+        ArrayList<InGameAbility> inGameAbilities = Controller.getController(Controller.getIP()).getModelData().getInGameAbilities();
 
         for (InGameAbility inGameAbility : inGameAbilities){
             if (inGameAbility.getType() != InGameAbilityType.slumber)
@@ -48,14 +49,14 @@ public class InGameAbilityHandler {
 
 
     public static void permitAll() {
-        ArrayList<InGameAbility> inGameAbilities = ModelData.getInGameAbilities();
+        ArrayList<InGameAbility> inGameAbilities = Controller.getController(Controller.getIP()).getModelData().getInGameAbilities();
 
         for (InGameAbility inGameAbility : inGameAbilities)
             inGameAbility.setAvailable(true);
     }
 
     public static void addAbility(InGameAbility ability) {
-        ArrayList<InGameAbility> inGameAbilities = ModelData.getInGameAbilities();
+        ArrayList<InGameAbility> inGameAbilities = Controller.getController(Controller.getIP()).getModelData().getInGameAbilities();
         inGameAbilities.add(ability);
     }
 }

@@ -1,5 +1,6 @@
 package model.skillTreeAbilities;
 
+import controller.Controller;
 import controller.enums.SkillTreeAbilityType;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
@@ -16,7 +17,7 @@ public class Melapmus extends SkillTreeAbility{
     }
 
     private void initEpsilon() {
-        epsilonModel = ModelData.getEpsilon();
+        epsilonModel = Controller.getController(Controller.getIP()).getModelData().getEpsilon();
     }
 
 

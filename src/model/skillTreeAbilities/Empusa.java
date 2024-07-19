@@ -1,5 +1,6 @@
 package model.skillTreeAbilities;
 
+import controller.Controller;
 import controller.enums.SkillTreeAbilityType;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
@@ -17,7 +18,7 @@ public class Empusa extends SkillTreeAbility{
     }
 
     private void initEpsilon() {
-        this.epsilonModel = ModelData.getEpsilon();
+        this.epsilonModel = Controller.getController(Controller.getIP()).getModelData().getEpsilon();
     }
 
 
