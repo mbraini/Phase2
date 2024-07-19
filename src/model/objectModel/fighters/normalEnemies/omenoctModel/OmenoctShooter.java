@@ -38,4 +38,7 @@ public class OmenoctShooter implements ActionListener {
         Spawner.addProjectile(bulletPosition ,direction , ModelType.omenoctBullet);
     }
 
+    public void setPosition(Vector position) {
+        this.position = position;
+    }
 }

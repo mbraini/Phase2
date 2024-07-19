@@ -1,12 +1,12 @@
 package view.gamePanels;
 
-
 import constants.Constants;
 
 import javax.swing.*;
 
-public class ShopFrame extends JFrame {
-    public ShopFrame(){
+public class EndGameFrame extends JFrame {
+
+    public EndGameFrame(){
         this.setLayout(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

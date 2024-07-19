@@ -16,18 +16,29 @@ import java.util.HashMap;
 
 public class ModelData {
 
-    private static ArrayList<FrameModel> frames = new ArrayList<>();
-    private static ArrayList<ObjectModel> models = new ArrayList<>();
-    private static HashMap<ObjectModel ,FrameModel> localFrames = new HashMap<>();
-    private static ArrayList<EffectModel> effectModels = new ArrayList<>();
-    private static ArrayList<AbstractEnemy> abstractEnemies = new ArrayList<>();
-    private static ArrayList<InGameAbility> inGameAbilities = new ArrayList<>();
-    private static ArrayList<SkillTreeAbility> skillTreeAbilities = new ArrayList<>();
+    private static ArrayList<FrameModel> frames;
+    private static ArrayList<ObjectModel> models;
+    private static HashMap<ObjectModel ,FrameModel> localFrames;
+    private static ArrayList<EffectModel> effectModels;
+    private static ArrayList<AbstractEnemy> abstractEnemies;
+    private static ArrayList<InGameAbility> inGameAbilities;
+    private static ArrayList<SkillTreeAbility> skillTreeAbilities;
     public static ArrayList<AbstractEnemy> getAbstractEnemies() {
         return abstractEnemies;
     }
     private static EpsilonModel epsilon;
     private static FrameModel epsilonFrame;
+
+    public static void resetAll() {
+        frames = new ArrayList<>();
+        models = new ArrayList<>();
+        localFrames = new HashMap<>();
+        effectModels = new ArrayList<>();
+        abstractEnemies = new ArrayList<>();
+        inGameAbilities = new ArrayList<>();
+        skillTreeAbilities = new ArrayList<>();
+    }
+
 
     public static void setAbstractEnemies(ArrayList<AbstractEnemy> abstractEnemies) {
         ModelData.abstractEnemies = abstractEnemies;

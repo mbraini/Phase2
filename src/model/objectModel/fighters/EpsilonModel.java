@@ -33,7 +33,7 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
                 Constants.EPSILON_DIMENSION.height
         );
         this.id =  id;
-        this.HP = 100;
+        this.HP = 1;
         this.epsilonBulletDamage = Constants.INITIAL_EPSILON_DAMAGE;
         this.meleeAttack = Constants.INITIAL_EPSILON_DAMAGE;
         this.isSolid = true;

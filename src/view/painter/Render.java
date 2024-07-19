@@ -24,15 +24,12 @@ public class Render extends Thread {
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double deltaPaint = 0;
-        while (true){
+        while (!interrupted()){
             long now = System.nanoTime();
             deltaPaint += (now - lastTime) / ns;
             lastTime = now;
             if (deltaPaint >= Constants.FPS) {
                 ViewRequest.checkRequests();
-                ////////null problems
-//                checkIfNull();
-                /////////////////
                 Controller.updateView();
                 paint();
                 deltaPaint = 0;

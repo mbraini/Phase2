@@ -9,16 +9,33 @@ import java.util.ArrayList;
 
 public class ModelRequests {
 
-    public static ArrayList<String> removeObjectModelReq = new ArrayList<>();
-    private static ArrayList<String> removeFrameModelReq = new ArrayList<>();
-    private static ArrayList<String> removeEffectModelReq = new ArrayList<>();
-    private static ArrayList<String> removeAbstractEnemyReq = new ArrayList<>();
-    private static ArrayList<AbstractEnemy> addedAbstractEnemy = new ArrayList<>();
-    private static ArrayList<EffectModel> addedEffectModel = new ArrayList<>();
-    private static ArrayList<ObjectModel> addedObjectModel = new ArrayList<>();
-    private static ArrayList<FrameModel> addedFrameModel = new ArrayList<>();
+    public static ArrayList<String> removeObjectModelReq;
+    private static ArrayList<String> removeFrameModelReq;
+    private static ArrayList<String> removeEffectModelReq;
+    private static ArrayList<String> removeAbstractEnemyReq;
+    private static ArrayList<AbstractEnemy> addedAbstractEnemy;
+    private static ArrayList<EffectModel> addedEffectModel;
+    private static ArrayList<ObjectModel> addedObjectModel;
+    private static ArrayList<FrameModel> addedFrameModel;
+    private static boolean endRequest;
+
+    public static void resetAll() {
+        removeObjectModelReq = new ArrayList<>();
+        removeFrameModelReq = new ArrayList<>();
+        removeEffectModelReq = new ArrayList<>();
+        removeAbstractEnemyReq = new ArrayList<>();
+        addedAbstractEnemy = new ArrayList<>();
+        addedEffectModel = new ArrayList<>();
+        addedObjectModel = new ArrayList<>();
+        addedFrameModel = new ArrayList<>();
+    }
 
     public static void checkRequests(){
+        if (endRequest) {
+            endRequest = false;
+            resetAll();
+            ModelData.resetAll();
+        }
         checkObjects();
         checkFrames();
         checkEffects();
@@ -111,4 +128,7 @@ public class ModelRequests {
     }
 
 
+    public static void endRequest() {
+        endRequest = true;
+    }
 }

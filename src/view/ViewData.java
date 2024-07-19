@@ -13,15 +13,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ViewData {
-    private static ArrayList<ImaginaryPanel> panels = new ArrayList<>();
-    private static ArrayList<FrameView> frames = new ArrayList<>();
-    private static ArrayList<ObjectView> views = new ArrayList<>();
-    private static ArrayList<EffectView> effectViews = new ArrayList<>();
+    private static ArrayList<ImaginaryPanel> panels;
+    private static ArrayList<FrameView> frames;
+    private static ArrayList<ObjectView> views;
+    private static ArrayList<EffectView> effectViews;
     private static double time;
     private static double hp;
     private static double xp;
     private static int wave;
     private static FrameView epsilonFrame;
+
+    public static void resetAll() {
+        panels = new ArrayList<>();
+        if (frames != null) {
+            for (FrameView frameView : frames) {
+                frameView.dispose();
+            }
+        }
+        frames = new ArrayList<>();
+        views = new ArrayList<>();
+        effectViews = new ArrayList<>();
+    }
+
 
     public static ArrayList<FrameView> getFrames() {
         return frames;

@@ -1,5 +1,6 @@
 package controller.manager;
 
+import controller.Controller;
 import controller.manager.saving.GameSaver;
 import constants.Constants;
 import model.ModelData;
@@ -9,6 +10,7 @@ import model.objectModel.effects.EffectModel;
 import model.objectModel.ObjectModel;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.fighters.EnemyModel;
+import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import model.skillTreeAbilities.SkillTreeAbility;
 
@@ -30,7 +32,7 @@ public class GameManagerThread extends Thread{
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
-        while (true) {
+        while (!GameState.isOver()) {
             if (GameState.isPause()) {
                 lastTime = System.nanoTime();
                 continue;
@@ -90,6 +92,9 @@ public class GameManagerThread extends Thread{
         for (ObjectModel model : models){
             if (model.getHP() <= 0) {
                 model.die();
+                if (model instanceof EpsilonModel && !GameState.isOver()) {
+                    Controller.endGame();
+                }
             }
         }
     }

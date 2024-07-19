@@ -75,6 +75,13 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         willAttachTo = navigater.getWillAttachTo();
         setNavigationVelocity();
         checkAttached();
+        setOmenoctShooterPosition();
+    }
+
+    private void setOmenoctShooterPosition() {
+        if (shooter != null) {
+            ((OmenoctShooter)shooter.getActionListeners()[0]).setPosition(position);
+        }
     }
 
     private void setNavigationVelocity() {
@@ -102,20 +109,16 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
             frameLocation = willAttachTo;
             setUpShooter();
         }
-        else {
-            frameLocation = null;
-            if (shooter != null){
-                shooter.stop();
-            }
-        }
     }
 
     private void setUpShooter() {
         if (shooter != null){
-            shooter.stop();
+            shooter.start();
         }
-        shooter = new Timer(Constants.OMENOCT_FIRING_TIME ,new OmenoctShooter(position));
-        shooter.start();
+        else {
+            shooter = new Timer(Constants.OMENOCT_FIRING_TIME, new OmenoctShooter(position));
+            shooter.start();
+        }
     }
 
 
@@ -145,13 +148,15 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         omega += alpha * Constants.UPS;
         double thetaMoved = ((2 * omega - alpha * Constants.UPS) / 2) * Constants.UPS;
         theta = theta + thetaMoved;
-        if (this instanceof HasVertices)
-            ((HasVertices) this).UpdateVertices(xMoved ,yMoved ,thetaMoved);
+        UpdateVertices(xMoved ,yMoved ,thetaMoved);
     }
 
     @Override
     public void die() {
         super.die();
+        if (shooter != null) {
+            shooter.stop();
+        }
         Spawner.addCollectives(position ,8 ,4);
     }
 

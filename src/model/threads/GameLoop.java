@@ -22,7 +22,7 @@ public class GameLoop extends Thread {
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
-        while (true) {
+        while (!GameState.isOver()) {
             if (GameState.isPause()){
                 lastTime = System.nanoTime();
                 continue;

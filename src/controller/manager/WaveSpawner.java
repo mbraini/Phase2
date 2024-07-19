@@ -35,6 +35,8 @@ public class WaveSpawner {
                     epsilonFrame = ModelData.getEpsilonFrame();
                     spawnEnemies(enemyKilled ,wave);
                 }
+                if (GameState.isOver())
+                    spawner.stop();
             }
         });
         spawner.start();

@@ -26,7 +26,11 @@ public class VomitThread extends Thread{
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
-        while (!GameState.isPause() && !GameState.isOver() && !isInterrupted()) {
+        while (!GameState.isOver() && !isInterrupted()) {
+            if (GameState.isPause()){
+                lastTime = System.nanoTime();
+                continue;
+            }
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;

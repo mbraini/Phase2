@@ -29,6 +29,8 @@ import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
 import view.ViewData;
+import view.gamePanels.EndGameFrame;
+import view.gamePanels.EndGamePanel;
 import view.gamePanels.ImaginaryPanel;
 import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
@@ -41,6 +43,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class Controller {
+    private static Render render;
+    private static GameLoop gameLoop;
+    private static FrameThread frameThread;
+    private static GameManager gameManager;
 
     public static void updateView(){
         synchronized (ModelData.getModels()) {
@@ -185,6 +191,7 @@ public abstract class Controller {
 
 
     public static void startGame(){
+        GameState.setOver(false);
         GameState.setXp(3000);
 //        load();
         modelStarter();
@@ -195,6 +202,20 @@ public abstract class Controller {
         SkillTreeAbilityHandler.initAbilities();
         Controller.threadsStarter();
     }
+
+    public static void endGame() {
+        ModelRequests.endRequest();
+        ViewRequest.endRequest();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        GameState.setOver(true);
+        render.interrupt();
+        new EndGamePanel(new EndGameFrame()).start();
+    }
+
 
     private static void addEpsilonAndFrame() {
         EpsilonModel epsilon = new EpsilonModel(
@@ -302,11 +323,12 @@ public abstract class Controller {
     }
 
     public static void threadsStarter() {
-        FrameThread frameThread = new FrameThread();
-        GameLoop gameLoop = new GameLoop();
-        new Render().start();
-        GameManager manager = new GameManager();
-        GameManagerThread gameManagerThread = manager.getGameManager();
+        frameThread = new FrameThread();
+        gameLoop = new GameLoop();
+        render = new Render();
+        render.start();
+        gameManager = new GameManager();
+        GameManagerThread gameManagerThread = gameManager.getGameManager();
         frameThread.start();
         gameLoop.start();
         gameManagerThread.start();
@@ -317,14 +339,13 @@ public abstract class Controller {
     }
 
     private static void modelStarter() {
-        ModelData.setModels(new ArrayList<>());
-        ModelData.setFrames(new ArrayList<>());
+        ModelData.resetAll();
+        ModelRequests.resetAll();
     }
 
     private static void viewStarter() {
-        ViewData.setPanels(new ArrayList<>());
-        ViewData.setViews(new ArrayList<>());
-        ViewData.setFrames(new ArrayList<>());
+        ViewData.resetAll();
+        ViewRequest.resetAll();
     }
 
     public static void setUpManager(){

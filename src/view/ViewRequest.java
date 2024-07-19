@@ -11,14 +11,29 @@ import java.util.ArrayList;
 
 public class ViewRequest {
 
-    private static ArrayList<String> removeObjectViewReq = new ArrayList<>();
-    private static ArrayList<String> removeFrameViewReq = new ArrayList<>();
-    private static ArrayList<String> removeEffectViewReq = new ArrayList<>();
-    private static ArrayList<EffectView> addedEffectViews = new ArrayList<>();
-    private static ArrayList<ObjectView> addedObjectViews = new ArrayList<>();
-    private static ArrayList<FrameView> addedFrameViews = new ArrayList<>();
+    private static ArrayList<String> removeObjectViewReq;
+    private static ArrayList<String> removeFrameViewReq;
+    private static ArrayList<String> removeEffectViewReq;
+    private static ArrayList<EffectView> addedEffectViews;
+    private static ArrayList<ObjectView> addedObjectViews;
+    private static ArrayList<FrameView> addedFrameViews;
+    private static boolean endRequest;
+
+    public static void resetAll() {
+        removeObjectViewReq = new ArrayList<>();
+        removeFrameViewReq = new ArrayList<>();
+        removeEffectViewReq = new ArrayList<>();
+        addedEffectViews = new ArrayList<>();
+        addedObjectViews = new ArrayList<>();
+        addedFrameViews = new ArrayList<>();
+    }
 
     public static void checkRequests(){
+        if (endRequest) {
+            endRequest = false;
+            resetAll();
+            ViewData.resetAll();
+        }
         checkObjects();
         checkFrames();
         checkEffects();
@@ -86,6 +101,10 @@ public class ViewRequest {
 
     public synchronized static void removeEffectView(String id){
         removeEffectViewReq.add(id);
+    }
+
+    public synchronized static void endRequest() {
+        endRequest = true;
     }
 
 

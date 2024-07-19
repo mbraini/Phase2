@@ -21,7 +21,7 @@ public class WyrmThread extends Thread{
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
-        while (true) {
+        while (!GameState.isOver()) {
             if (GameState.isPause() || GameState.isDizzy()){
                 lastTime = System.nanoTime();
                 continue;

@@ -3,6 +3,7 @@ package view.gamePanels;
 
 import constants.Constants;
 import controller.manager.GameState;
+import view.Application;
 import view.menuPanels.PIG;
 
 import javax.swing.*;
@@ -13,13 +14,15 @@ import java.awt.event.ActionListener;
 public class EndGamePanel extends PIG {
     JLabel xp;
     JButton menu;
-    public EndGamePanel(){
+    private final EndGameFrame endGameFrame;
+    public EndGamePanel(EndGameFrame endGameFrame){
         this.setLayout(null);
         this.setBounds(0,0, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
         this.setBackground(Color.BLACK);
+        this.endGameFrame = endGameFrame;
         initMenu();
         initXP();
-        this.setVisible(false);
+        endGameFrame.add(this);
     }
 
     private void initXP() {
@@ -48,8 +51,8 @@ public class EndGamePanel extends PIG {
         menu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                Application.gameFrame.dispose();
-//                Application.mainFrame = new MainFrame();
+                endGameFrame.dispose();
+                Application.startMainFrame();
             }
         });
         this.add(menu);
@@ -58,14 +61,13 @@ public class EndGamePanel extends PIG {
     @Override
     public void start() {
         this.setVisible(true);
-//        Application.gameFrame.setSize(getSize());
-//        Application.gameFrame.revalidate();
-//        Application.gameFrame.setLocationRelativeTo(null);
+        setSize(getSize());
     }
 
     @Override
     public void end() {
         this.setVisible(false);
+        endGameFrame.dispose();
     }
 
     @Override

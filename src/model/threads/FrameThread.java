@@ -33,7 +33,7 @@ public class FrameThread extends Thread{
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0;
-        while (true){
+        while (!GameState.isOver()){
             if (GameState.isPause()) {
                 lastTime = System.nanoTime();
                 continue;
@@ -63,7 +63,8 @@ public class FrameThread extends Thread{
         checkSolidObjectBounds();
         resize(frames);
         updatePreviousLocals();
-        framePressure(frames.getFirst());
+        if (!frames.isEmpty())
+            framePressure(frames.getFirst());
     }
 
     private void resetDisables() {
