@@ -27,11 +27,14 @@ public class GameSaver {
     private ArrayList<EffectModel> effects;
     private ArrayList<InGameAbility> abilities;
     private ArrayList<SkillTreeAbility> skillTreeAbilities;
+    private String path;
     private static Gson gson;
 
     public GameSaver(ArrayList<ObjectModel> models, ArrayList<EffectModel> effects,
                      ArrayList<FrameModel> frames, ArrayList<AbstractEnemy> abstractEnemies,
-                     ArrayList<InGameAbility> abilities ,ArrayList<SkillTreeAbility> skillTreeAbilities)
+                     ArrayList<InGameAbility> abilities ,ArrayList<SkillTreeAbility> skillTreeAbilities,
+                     String path
+    )
     {
         this.models = (ArrayList<ObjectModel>) models.clone();
         this.effects = (ArrayList<EffectModel>) effects.clone();
@@ -39,6 +42,7 @@ public class GameSaver {
         this.abstractEnemies = (ArrayList<AbstractEnemy>) abstractEnemies.clone();
         this.abilities = (ArrayList<InGameAbility>) abilities.clone();
         this.skillTreeAbilities = (ArrayList<SkillTreeAbility>) skillTreeAbilities.clone();
+        this.path = path;
     }
 
 
@@ -68,7 +72,7 @@ public class GameSaver {
         String gameStateString = gson.toJson(gameState);
         PrintWriter modelWriter = null;
         try {
-            modelWriter = new PrintWriter("src/controller/manager/saving/gameState.json");
+            modelWriter = new PrintWriter(path + "/gameState.json");
             modelWriter.write(gameStateString);
             modelWriter.close();
         } catch (FileNotFoundException e) {
@@ -81,7 +85,7 @@ public class GameSaver {
         String skillTreeString = gson.toJson(skillTreeAbilities);
         PrintWriter modelWriter = null;
         try {
-            modelWriter = new PrintWriter("src/controller/manager/saving/skillTree.json");
+            modelWriter = new PrintWriter(path + "/skillTree.json");
             modelWriter.write(skillTreeString);
             modelWriter.close();
         } catch (FileNotFoundException e) {
@@ -94,7 +98,7 @@ public class GameSaver {
         String abilityString = gson.toJson(abilities);
         PrintWriter modelWriter = null;
         try {
-            modelWriter = new PrintWriter("src/controller/manager/saving/abilities.json");
+            modelWriter = new PrintWriter(path + "/abilities.json");
             modelWriter.write(abilityString);
             modelWriter.close();
         } catch (FileNotFoundException e) {
@@ -112,18 +116,18 @@ public class GameSaver {
         String effectString = gson.toJson(effects);
 
         try {
-            PrintWriter modelWriter = new PrintWriter("src/controller/manager/saving/models.json");
+            PrintWriter modelWriter = new PrintWriter(path + "/models.json");
             modelWriter.write(modelString);
             modelWriter.close();
-            PrintWriter frameWriter = new PrintWriter("src/controller/manager/saving/frames.json");
+            PrintWriter frameWriter = new PrintWriter(path + "/frames.json");
             frameWriter.write(frameString);
             frameWriter.close();
             PrintWriter abstractEnemyWriter = new PrintWriter(
-                    "src/controller/manager/saving/abstractEnemies.json"
+                    path + "/abstractEnemies.json"
             );
             abstractEnemyWriter.write(abstractEnemyString);
             abstractEnemyWriter.close();
-            PrintWriter effectWriter = new PrintWriter("src/controller/manager/saving/effects.json");
+            PrintWriter effectWriter = new PrintWriter(path + "/effects.json");
             effectWriter.write(effectString);
             effectWriter.close();
         } catch (FileNotFoundException e) {
@@ -153,4 +157,14 @@ public class GameSaver {
         gson = builder.create();
         return gson;
     }
+
+    public static boolean isPortalSaved() {
+        return true;
+    }
+
+    public static boolean isGameSaved() {
+        return false;
+    }
+
+
 }

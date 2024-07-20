@@ -24,6 +24,11 @@ public class GameManagerThread extends Thread{
     private ArrayList<SkillTreeAbility> skillTreeAbilities;
     private double time;
     private final static Object jsonLock = new Object();
+    private int epsilonDeath;
+
+    public GameManagerThread() {
+
+    }
 
     @Override
     public void run() {
@@ -31,7 +36,7 @@ public class GameManagerThread extends Thread{
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
-        while (!GameState.isOver()) {
+        while (!GameState.isOver() && epsilonDeath <= 0) {
             if (GameState.isPause()) {
                 lastTime = System.nanoTime();
                 continue;
@@ -58,14 +63,22 @@ public class GameManagerThread extends Thread{
             skillTreeAbilities =(ArrayList<SkillTreeAbility>) ModelData.getSkillTreeAbilities().clone();
         }
         interfaces();
-        killObjects();
         checkAoeDamage();
         if (time % 1000 == 0) {
             synchronized (jsonLock) {
-                new GameSaver(models, effects, frames, abstractEnemies ,abilities ,skillTreeAbilities).save();
+                new GameSaver(
+                        models,
+                        effects,
+                        frames,
+                        abstractEnemies ,
+                        abilities ,
+                        skillTreeAbilities,
+                        "src/controller/manager/saving/inGameSaved"
+                ).save();
             }
         }
-        GameState.update(models ,time);
+        GameState.update(models ,Constants.MANAGER_THREAD_REFRESH_TIME);
+        killObjects();
     }
 
     private void checkAoeDamage() {
@@ -90,10 +103,13 @@ public class GameManagerThread extends Thread{
     private void killObjects() {
         for (ObjectModel model : models){
             if (model.getHP() <= 0) {
-                model.die();
-                if (model instanceof EpsilonModel && !GameState.isOver()) {
-                    Controller.endGame();
+                if (model instanceof  EpsilonModel) {
+                    epsilonDeath++;
+                    if (epsilonDeath > 1) {
+                        return;
+                    }
                 }
+                model.die();
             }
         }
     }

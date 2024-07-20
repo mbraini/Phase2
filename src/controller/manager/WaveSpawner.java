@@ -27,6 +27,10 @@ public class WaveSpawner {
             public void actionPerformed(ActionEvent e) {
                 if (GameState.isPause() || GameState.isDizzy())
                     return;
+                if (GameState.isOver()) {
+                    spawner.stop();
+                    return;
+                }
                 timePassed += 1000;
                 if (timePassed >= spawnDelay) {
                     timePassed = 0;
@@ -35,8 +39,6 @@ public class WaveSpawner {
                     epsilonFrame = ModelData.getEpsilonFrame();
                     spawnEnemies(enemyKilled ,wave);
                 }
-                if (GameState.isOver())
-                    spawner.stop();
             }
         });
         spawner.start();
@@ -69,6 +71,15 @@ public class WaveSpawner {
     private void firstWave(int enemyKilled) {
         repeatedCount++;
         spawnDelay = 5000;
+        if (repeatedCount == 1) {
+            Spawner.spawnObject(
+                    new Vector(
+                            epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
+                            epsilonFrame.getPosition().y + epsilonFrame.getSize().height / 2d
+                    ),
+                    ModelType.portal
+            );
+        }
         if (enemyKilled >= 0 && enemyKilled <= 5) {
             Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.trigorath);
             Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.squarantine);
@@ -79,11 +90,21 @@ public class WaveSpawner {
             lastWaveKilled = GameState.getEnemyKilled();
             repeatedCount = 0;
             spawnDelay = 4000;
+            GameState.setLastWaveTime(GameState.getTime());
         }
     }
 
     private void secondWave(int enemyKilled) {
         repeatedCount++;
+        if (repeatedCount == 1) {
+            Spawner.spawnObject(
+                    new Vector(
+                            epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
+                            epsilonFrame.getPosition().y + epsilonFrame.getSize().height / 2d
+                    ),
+                    ModelType.portal
+            );
+        }
         if (enemyKilled >= lastWaveKilled && enemyKilled <= lastWaveKilled + 2) {
             Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.trigorath);
             Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.squarantine);
@@ -100,6 +121,7 @@ public class WaveSpawner {
             GameState.setWave(3);
             repeatedCount = 0;
             lastWaveKilled = GameState.getEnemyKilled();
+            GameState.setLastWaveTime(GameState.getTime());
         }
     }
 
@@ -111,6 +133,13 @@ public class WaveSpawner {
         }
         if (repeatedCount == 1) {
             Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.archmire);
+            Spawner.spawnObject(
+                    new Vector(
+                            epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
+                            epsilonFrame.getPosition().y + epsilonFrame.getSize().height / 2d
+                    ),
+                    ModelType.portal
+            );
             GameState.setEnemyCount(GameState.getEnemyCount() + 1);
         }
 
@@ -123,6 +152,7 @@ public class WaveSpawner {
             GameState.setWave(4);
             repeatedCount = 0;
             lastWaveKilled = GameState.getEnemyKilled();
+            GameState.setLastWaveTime(GameState.getTime());
         }
     }
 
@@ -135,6 +165,13 @@ public class WaveSpawner {
                             Constants.SCREEN_SIZE.height / 2d
                     ),
                     ModelType.blackOrb
+            );
+            Spawner.spawnObject(
+                    new Vector(
+                            epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
+                            epsilonFrame.getPosition().y + epsilonFrame.getSize().height / 2d
+                    ),
+                    ModelType.portal
             );
             GameState.setEnemyCount(GameState.getEnemyCount() + 5);
         }
@@ -164,6 +201,7 @@ public class WaveSpawner {
             GameState.setWave(5);
             repeatedCount = 0;
             lastWaveKilled = GameState.getEnemyKilled();
+            GameState.setLastWaveTime(GameState.getTime());
         }
     }
 
@@ -171,6 +209,13 @@ public class WaveSpawner {
         repeatedCount++;
         if (repeatedCount == 1) {
             Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.archmire);
+            Spawner.spawnObject(
+                    new Vector(
+                            epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
+                            epsilonFrame.getPosition().y + epsilonFrame.getSize().height / 2d
+                    ),
+                    ModelType.portal
+            );
             GameState.setEnemyCount(GameState.getEnemyCount() + 1);
         }
 
@@ -220,6 +265,7 @@ public class WaveSpawner {
             GameState.setWave(6);
             repeatedCount = 0;
             lastWaveKilled = GameState.getEnemyKilled();
+            GameState.setLastWaveTime(GameState.getTime());
         }
 
     }
@@ -231,4 +277,11 @@ public class WaveSpawner {
         }
     }
 
+    public Timer getSpawner() {
+        return spawner;
+    }
+
+    public void setSpawner(Timer spawner) {
+        this.spawner = spawner;
+    }
 }

@@ -23,6 +23,7 @@ public class EndGamePanel extends PIG {
         initMenu();
         initXP();
         endGameFrame.add(this);
+        endGameFrame.setVisible(true);
     }
 
     private void initXP() {

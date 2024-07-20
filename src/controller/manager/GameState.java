@@ -1,5 +1,6 @@
 package controller.manager;
 
+import model.ModelData;
 import model.objectModel.ObjectModel;
 
 import java.util.ArrayList;
@@ -14,21 +15,39 @@ public class GameState {
     private static int totalBullets;
     private static int successfulBullets;
     private static int enemyCount;
+    private static double lastWaveTime;
+    private static int xpGained;
+    private static int firstWavePR;
+    private static int secondWavePR;
+    private static int thirdWavePR;
+    private static int forthWavePR;
+    private static int fifthWavePR;
     private static boolean isPause;
     private static boolean isOver;
     private static boolean isDizzy;
-
     public GameState(){
         /////todo
     }
 
 
     public static void reset(){
+        enemyKilled = 0;
+        enemyCount = 0;
+        successfulBullets = 0;
+        totalBullets = 0;
+        lastWaveTime = 0;
+        xpGained = 0;
+        firstWavePR = 0;
+        secondWavePR = 0;
+        thirdWavePR = 0;
+        forthWavePR = 0;
+        fifthWavePR = 0;
         time = 0;
         hp = 100;
         wave = 1;
         isPause = false;
         isOver = false;
+        isDizzy = false;
     }
 
 
@@ -81,8 +100,23 @@ public class GameState {
     }
 
     public static void update(ArrayList<ObjectModel> models ,double time) {
-        setHp(models.getFirst().getHP());
-        setTime(time);
+        setHp(ModelData.getEpsilon().getHP());
+        setTime(getTime() + time);
+        if (wave == 1) {
+            firstWavePR = (int) (time - lastWaveTime) * wave / 1000;
+        }
+        else if (wave == 2) {
+            secondWavePR = (int) (time - lastWaveTime) * wave / 1000;
+        }
+        else if (wave == 3) {
+            thirdWavePR = (int) (time - lastWaveTime) * wave / 1000;
+        }
+        else if (wave == 4) {
+            forthWavePR = (int) (time - lastWaveTime) * wave / 1000;
+        }
+        else if (wave == 5) {
+            fifthWavePR = (int) (time - lastWaveTime) * wave / 1000;
+        }
     }
 
     public static boolean isDizzy() {
@@ -125,4 +159,63 @@ public class GameState {
         GameState.enemyCount = enemyCount;
     }
 
+    public static int getXpGained() {
+        return xpGained;
+    }
+
+    public static void setXpGained(int xpGained) {
+        GameState.xpGained = xpGained;
+    }
+
+    public static int getFirstWavePR() {
+        return firstWavePR;
+    }
+
+    public static void setFirstWavePR(int firstWavePR) {
+        GameState.firstWavePR = firstWavePR;
+    }
+
+    public static int getSecondWavePR() {
+        return secondWavePR;
+    }
+
+    public static void setSecondWavePR(int secondWavePR) {
+        GameState.secondWavePR = secondWavePR;
+    }
+
+    public static int getThirdWavePR() {
+        return thirdWavePR;
+    }
+
+    public static void setThirdWavePR(int thirdWavePR) {
+        GameState.thirdWavePR = thirdWavePR;
+    }
+
+    public static int getForthWavePR() {
+        return forthWavePR;
+    }
+
+    public static void setForthWavePR(int forthWavePR) {
+        GameState.forthWavePR = forthWavePR;
+    }
+
+    public static int getFifthWavePR() {
+        return fifthWavePR;
+    }
+
+    public static void setFifthWavePR(int fifthWavePR) {
+        GameState.fifthWavePR = fifthWavePR;
+    }
+
+    public static int getAllPR() {
+        return firstWavePR + secondWavePR + thirdWavePR + forthWavePR + fifthWavePR;
+    }
+
+    public static double getLastWaveTime() {
+        return lastWaveTime;
+    }
+
+    public static void setLastWaveTime(double lastWaveTime) {
+        GameState.lastWaveTime = lastWaveTime;
+    }
 }

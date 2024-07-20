@@ -19,4 +19,12 @@ public class GameManager {
     public void setGameManager(GameManagerThread gameManager) {
         this.gameManager = gameManager;
     }
+
+    public WaveSpawner getWaveSpawner() {
+        return waveSpawner;
+    }
+
+    public void setWaveSpawner(WaveSpawner waveSpawner) {
+        this.waveSpawner = waveSpawner;
+    }
 }

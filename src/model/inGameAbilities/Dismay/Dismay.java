@@ -66,7 +66,7 @@ public class Dismay extends InGameAbility {
     @Override
     public void setUp() {
         initTimer();
-        this.epsilon = (EpsilonModel) ModelData.getModels().getFirst();
+        this.epsilon =ModelData.getEpsilon();
         protectorModel.setEpsilon(epsilon);
         if (timePassed <= Constants.DISMAY_DURATION && isActive) {
             Spawner.spawnProtector(protectorModel);

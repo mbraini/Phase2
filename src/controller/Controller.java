@@ -8,10 +8,12 @@ import controller.manager.GameManager;
 import controller.manager.GameManagerThread;
 import controller.manager.loading.GameLoader;
 import constants.Constants;
+import controller.manager.saving.GameSaver;
 import model.ModelRequests;
 import model.animations.GameStartAnimation;
 import model.inGameAbilities.InGameAbilityHandler;
 import model.interfaces.ImageChanger;
+import model.objectModel.PortalModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.frameModel.FrameModelBuilder;
@@ -29,9 +31,7 @@ import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
 import view.ViewData;
-import view.gamePanels.EndGameFrame;
-import view.gamePanels.EndGamePanel;
-import view.gamePanels.ImaginaryPanel;
+import view.gamePanels.*;
 import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
 import view.objectViews.ObjectView;
@@ -47,6 +47,7 @@ public abstract class Controller {
     private static GameLoop gameLoop;
     private static FrameThread frameThread;
     private static GameManager gameManager;
+    private static PortalModel portalModel;
 
     public static void updateView(){
         synchronized (ModelData.getModels()) {
@@ -161,7 +162,7 @@ public abstract class Controller {
 
     public static void load(){
         synchronized (GameManagerThread.getJsonLock()) {
-            new GameLoader().load();
+            new GameLoader("src/controller/manager/saving/inGameSaved").load();
         }
     }
 
@@ -175,6 +176,42 @@ public abstract class Controller {
 
     public static void reorderKeys() {
         KeyHelper.reorder();
+    }
+
+    public static void portalWindow() {
+        pause();
+        Controller.removeObject(portalModel);
+        int totalPR = GameState.getAllPR();
+        int PR = (int) (totalPR * GameState.getXpGained() * 10 / GameState.getHp());
+        new PortalPanel(new PortalFrame() ,PR).start();
+    }
+
+    private static void removePortal() {
+
+    }
+
+    public static boolean addXP(int pr) {
+        GameState.setXp(GameState.getXp() + pr);
+        if (pr > 0) {
+            GameState.setXpGained(GameState.getXpGained() + pr);
+        }
+        if (GameState.getXp() < 0) {
+            GameState.setXp(GameState.getXp() - pr);
+            return false;
+        }
+        return true;
+    }
+
+    public static void saveGameInPortal() {
+        new GameSaver(
+                ModelData.getModels(),
+                ModelData.getEffectModels(),
+                ModelData.getFrames(),
+                ModelData.getAbstractEnemies(),
+                ModelData.getInGameAbilities(),
+                ModelData.getSkillTreeAbilities(),
+                "src/controller/manager/saving/portalSaved"
+        ).save();
     }
 
 
@@ -191,29 +228,44 @@ public abstract class Controller {
 
 
     public static void startGame(){
-        GameState.setOver(false);
-        GameState.setXp(3000);
-        modelStarter();
-        viewStarter();
-//        load();
-        addEpsilonAndFrame();
-        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
-        InGameAbilityHandler.initInGameAbilities();
-        SkillTreeAbilityHandler.initAbilities();
-        Controller.threadsStarter();
+        if (GameSaver.isGameSaved()) {
+            load();
+            Controller.threadsStarter();
+        }
+        else {
+            GameState.reset();
+            modelStarter();
+            viewStarter();
+            addEpsilonAndFrame();
+            new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
+            InGameAbilityHandler.initInGameAbilities();
+            SkillTreeAbilityHandler.initAbilities();
+            Controller.threadsStarter();
+        }
     }
 
     public static void endGame() {
-        ModelRequests.endRequest();
-        ViewRequest.endRequest();
+        GameState.setOver(true);
+        render.interrupt();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        GameState.setOver(true);
-        render.interrupt();
-        new EndGamePanel(new EndGameFrame()).start();
+        if (GameSaver.isPortalSaved()) {
+            GameState.reset();
+            ModelRequests.endRequest();
+            ViewRequest.endRequest();
+            new GameLoader("src/controller/manager/saving/portalSaved").load();
+            GameState.setOver(false);
+            GameState.setPause(false);
+            GameState.setDizzy(false);
+            ModelData.getEpsilon().setHP(10);
+            threadsStarter();
+        }
+        else {
+            new EndGamePanel(new EndGameFrame()).start();
+        }
     }
 
 
@@ -245,81 +297,6 @@ public abstract class Controller {
                 frameModel.getId())
         );
         ViewData.addImaginaryPanel(new ImaginaryPanel(frameModel.getId()));
-
-
-//        Spawner.spawnObject(new Vector(200 ,200),
-//                ModelType.barricados
-//        );
-//        Spawner.spawnObject(new Vector(300 ,300),
-//                ModelType.necropick
-//        );
-//        Spawner.spawnObject(new Vector(0 ,600),
-//                ModelType.necropick
-//        );
-//        Spawner.spawnObject(new Vector(600 ,300),
-//                ModelType.necropick
-//        );
-//        Spawner.spawnObject(new Vector(0 ,0),
-//                ModelType.wyrm
-//        );
-
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d + 100),
-//                ModelType.wyrm
-//        );
-//
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d - 150 ,Constants.SCREEN_SIZE.height / 2d - 150),
-//                ModelType.omenoct
-//        );
-//
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.archmire
-//        );
-//
-//
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.squarantine
-//        );
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.squarantine
-//        );
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.trigorath
-//        );
-//        Spawner.spawnObject(new Vector(Constants.SCREEN_SIZE.width / 2d + 150 ,Constants.SCREEN_SIZE.height / 2d + 150),
-//                ModelType.trigorath
-//        );
-////
-////
-//        Spawner.spawnObject(
-//                new Vector(Constants.SCREEN_SIZE.width / 2d ,Constants.SCREEN_SIZE.height / 2d),
-//                ModelType.blackOrb
-//        );
-//
-//        FrameModelBuilder builder1 = new FrameModelBuilder(
-//                new Vector(
-//                        0 ,
-//                        0
-//                ),
-//                new Dimension(200,200),
-//                Helper.RandomStringGenerator(Constants.ID_SIZE)
-//        );
-//        builder1.setSolid(false);
-//        FrameModel frameModel1 = builder1.create();
-//        Spawner.addFrame(frameModel1);
-////
-//        FrameModelBuilder builder2 = new FrameModelBuilder(
-//                new Vector(
-//                        Constants.SCREEN_SIZE.width - 200 ,
-//                        Constants.SCREEN_SIZE.height - 200
-//                ),
-//                new Dimension(200,200),
-//                Helper.RandomStringGenerator(Constants.ID_SIZE)
-//        );
-//        builder2.setSolid(true);
-//        FrameModel frameModel2 = builder2.create();
-//        Spawner.addFrame(frameModel2);
-//
-//        Spawner.spawnBoss();
     }
 
     public static void threadsStarter() {
@@ -328,10 +305,9 @@ public abstract class Controller {
         render = new Render();
         render.start();
         gameManager = new GameManager();
-        GameManagerThread gameManagerThread = gameManager.getGameManager();
         frameThread.start();
         gameLoop.start();
-        gameManagerThread.start();
+        gameManager.getGameManager().start();
     }
 
     private static void controllerStarter() {
@@ -356,7 +332,7 @@ public abstract class Controller {
 
     public static boolean shootRequest(Vector clickedPoint){
         if (ShootRequest.canShoot()){
-            new ShootRequest((EpsilonModel) ModelData.getModels().getFirst()).shoot(clickedPoint);
+            new ShootRequest(ModelData.getEpsilon()).shoot(clickedPoint);
             return true;
         }
         return false;
@@ -370,5 +346,11 @@ public abstract class Controller {
         SkillTreeAbilityRequests.abilityRequest(type);
     }
 
+    public static PortalModel getPortalModel() {
+        return portalModel;
+    }
 
+    public static void setPortalModel(PortalModel portalModel) {
+        Controller.portalModel = portalModel;
+    }
 }

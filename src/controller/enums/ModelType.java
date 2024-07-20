@@ -21,5 +21,7 @@ public enum ModelType {
     barricadosTheSecond,
     epsilonProtector,
     slaughterBullet,
-    epsilonVertex, cerberus
+    epsilonVertex,
+    portal,
+    cerberus
 }

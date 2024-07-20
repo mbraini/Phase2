@@ -1,10 +1,12 @@
 package controller.manager;
 
+import controller.Controller;
 import controller.enums.ModelType;
 import constants.Constants;
 import model.ModelRequests;
 import model.inGameAbilities.Dismay.EpsilonProtectorModel;
 import model.objectModel.CollectiveModel;
+import model.objectModel.PortalModel;
 import model.objectModel.effects.ArchmireAoeEffectModel;
 import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.fighters.EpsilonModel;
@@ -121,6 +123,12 @@ public abstract class Spawner {
                  ModelRequests.addObjectModel(new CerberusModel(position ,id));
                  ViewRequest.addObjectView(new CerberusView(position ,id));
                  break;
+            case portal:
+                PortalModel portalModel = new PortalModel(position ,id);
+                ModelRequests.addObjectModel(portalModel);
+                ViewRequest.addObjectView(new PortalView(position ,id));
+                Controller.setPortalModel(portalModel);
+                break;
         }
     }
 

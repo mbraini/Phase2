@@ -1,0 +1,414 @@
+[
+  {
+    "orbModels": [],
+    "frameModels": [
+      {
+        "size": {
+          "width": 100,
+          "height": 100
+        },
+        "upDownA": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightA": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "upDownV": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightV": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "upDownP": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightP": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "positionInit": {
+          "x": 718.0,
+          "y": 770.260323340816
+        },
+        "vertices": [
+          {
+            "x": 718.0,
+            "y": 770.260323340816
+          },
+          {
+            "x": 818.0,
+            "y": 770.260323340816
+          },
+          {
+            "x": 818.0,
+            "y": 870.260323340816
+          },
+          {
+            "x": 718.0,
+            "y": 870.260323340816
+          }
+        ],
+        "dimensionInit": {
+          "width": 100,
+          "height": 100
+        },
+        "isResizing": false,
+        "isIsometric": true,
+        "canTopResize": true,
+        "canBottomResize": true,
+        "canRightResize": true,
+        "canLeftResize": true,
+        "isShrinking": false,
+        "position": {
+          "x": 718.0,
+          "y": 770.260323340816
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "\u0014z�\u0027��O09�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "size": {
+          "width": 100,
+          "height": 100
+        },
+        "upDownA": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightA": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "upDownV": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightV": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "upDownP": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightP": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "positionInit": {
+          "x": 1041.6067977499788,
+          "y": 535.1462224238268
+        },
+        "vertices": [
+          {
+            "x": 1041.6067977499788,
+            "y": 535.1462224238268
+          },
+          {
+            "x": 1141.6067977499788,
+            "y": 535.1462224238268
+          },
+          {
+            "x": 1141.6067977499788,
+            "y": 635.1462224238268
+          },
+          {
+            "x": 1041.6067977499788,
+            "y": 635.1462224238268
+          }
+        ],
+        "dimensionInit": {
+          "width": 100,
+          "height": 100
+        },
+        "isResizing": false,
+        "isIsometric": true,
+        "canTopResize": true,
+        "canBottomResize": true,
+        "canRightResize": true,
+        "canLeftResize": true,
+        "isShrinking": false,
+        "position": {
+          "x": 1041.6067977499788,
+          "y": 535.1462224238268
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "���\u0005�\u0015�\f\u0017�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "size": {
+          "width": 100,
+          "height": 100
+        },
+        "upDownA": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightA": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "upDownV": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightV": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "upDownP": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightP": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "positionInit": {
+          "x": 918.0,
+          "y": 154.72361590576537
+        },
+        "vertices": [
+          {
+            "x": 918.0,
+            "y": 154.72361590576537
+          },
+          {
+            "x": 1018.0,
+            "y": 154.72361590576537
+          },
+          {
+            "x": 1018.0,
+            "y": 254.72361590576537
+          },
+          {
+            "x": 918.0,
+            "y": 254.72361590576537
+          }
+        ],
+        "dimensionInit": {
+          "width": 100,
+          "height": 100
+        },
+        "isResizing": false,
+        "isIsometric": true,
+        "canTopResize": true,
+        "canBottomResize": true,
+        "canRightResize": true,
+        "canLeftResize": true,
+        "isShrinking": false,
+        "position": {
+          "x": 918.0,
+          "y": 154.72361590576537
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "s�\u0002\u0027�\u0001��\u001f",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "size": {
+          "width": 100,
+          "height": 100
+        },
+        "upDownA": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightA": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "upDownV": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightV": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "upDownP": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightP": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "positionInit": {
+          "x": 518.0,
+          "y": 154.72361590576526
+        },
+        "vertices": [
+          {
+            "x": 518.0,
+            "y": 154.72361590576526
+          },
+          {
+            "x": 618.0,
+            "y": 154.72361590576526
+          },
+          {
+            "x": 618.0,
+            "y": 254.72361590576526
+          },
+          {
+            "x": 518.0,
+            "y": 254.72361590576526
+          }
+        ],
+        "dimensionInit": {
+          "width": 100,
+          "height": 100
+        },
+        "isResizing": false,
+        "isIsometric": true,
+        "canTopResize": true,
+        "canBottomResize": true,
+        "canRightResize": true,
+        "canLeftResize": true,
+        "isShrinking": false,
+        "position": {
+          "x": 518.0,
+          "y": 154.72361590576526
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "Щύ�\u003e���I",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "size": {
+          "width": 100,
+          "height": 100
+        },
+        "upDownA": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightA": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "upDownV": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightV": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "upDownP": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "leftRightP": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "positionInit": {
+          "x": 394.39320225002103,
+          "y": 535.1462224238267
+        },
+        "vertices": [
+          {
+            "x": 394.39320225002103,
+            "y": 535.1462224238267
+          },
+          {
+            "x": 494.39320225002103,
+            "y": 535.1462224238267
+          },
+          {
+            "x": 494.39320225002103,
+            "y": 635.1462224238267
+          },
+          {
+            "x": 394.39320225002103,
+            "y": 635.1462224238267
+          }
+        ],
+        "dimensionInit": {
+          "width": 100,
+          "height": 100
+        },
+        "isResizing": false,
+        "isIsometric": true,
+        "canTopResize": true,
+        "canBottomResize": true,
+        "canRightResize": true,
+        "canLeftResize": true,
+        "isShrinking": false,
+        "position": {
+          "x": 394.39320225002103,
+          "y": 535.1462224238267
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "��?�\u0019BL�\r�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      }
+    ],
+    "effectModels": [],
+    "center": {
+      "x": 768.0,
+      "y": 480.0
+    },
+    "frameCount": 5,
+    "orbCount": 5,
+    "id": "J/���!7\u0001�E",
+    "type": "blackOrb"
+  },
+  {
+    "orbModels": [],
+    "frameModels": [],
+    "effectModels": [],
+    "center": {
+      "x": 768.0,
+      "y": 480.0
+    },
+    "frameCount": 0,
+    "orbCount": 0,
+    "id": "DR\u003cJ��L�~�",
+    "type": "blackOrb"
+  }
+]

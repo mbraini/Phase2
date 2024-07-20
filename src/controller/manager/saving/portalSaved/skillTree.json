@@ -1,0 +1,256 @@
+[
+  {
+    "isBought": false,
+    "inGameXpCost": 100,
+    "inGameCoolDownTime": 10000,
+    "canCast": true,
+    "coolDownTimePassed": 0,
+    "unlockXpCost": 750,
+    "type": "ares"
+  },
+  {
+    "isBought": false,
+    "inGameXpCost": 100,
+    "inGameCoolDownTime": 10000,
+    "canCast": true,
+    "coolDownTimePassed": 0,
+    "unlockXpCost": 1000,
+    "type": "astrape"
+  },
+  {
+    "isBought": false,
+    "inGameXpCost": 100,
+    "inGameCoolDownTime": 10000,
+    "canCast": true,
+    "coolDownTimePassed": 0,
+    "unlockXpCost": 1500,
+    "type": "cerberus"
+  },
+  {
+    "epsilon": {
+      "vertices": [],
+      "size": {
+        "width": 25,
+        "height": 25
+      },
+      "isImpacted": false,
+      "epsilonBulletDamage": 5,
+      "epsilonDamageOnCollision": 0,
+      "chanceOfSurvival": 0,
+      "lifeSteal": 0,
+      "hasMeleeAttack": false,
+      "meleeAttack": 5,
+      "position": {
+        "x": 787.018311491209,
+        "y": 520.062659097635
+      },
+      "velocity": {
+        "x": -0.15,
+        "y": -0.4000000000000002
+      },
+      "acceleration": {
+        "x": 0.0,
+        "y": -0.001
+      },
+      "theta": 3.03395227881523,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "o\u0015�\u000bQ���A",
+      "HP": 44.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": "epsilon"
+    },
+    "healAmount": 0,
+    "isBought": false,
+    "inGameXpCost": 100,
+    "inGameCoolDownTime": 10000,
+    "canCast": true,
+    "coolDownTimePassed": 0,
+    "unlockXpCost": 500,
+    "type": "aceso"
+  },
+  {
+    "epsilonModel": {
+      "vertices": [],
+      "size": {
+        "width": 25,
+        "height": 25
+      },
+      "isImpacted": false,
+      "epsilonBulletDamage": 5,
+      "epsilonDamageOnCollision": 0,
+      "chanceOfSurvival": 0,
+      "lifeSteal": 0,
+      "hasMeleeAttack": false,
+      "meleeAttack": 5,
+      "position": {
+        "x": 787.018311491209,
+        "y": 520.062659097635
+      },
+      "velocity": {
+        "x": -0.15,
+        "y": -0.4000000000000002
+      },
+      "acceleration": {
+        "x": 0.0,
+        "y": -0.001
+      },
+      "theta": 3.03395227881523,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "o\u0015�\u000bQ���A",
+      "HP": 44.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": "epsilon"
+    },
+    "isBought": false,
+    "inGameXpCost": 100,
+    "inGameCoolDownTime": 10000,
+    "canCast": true,
+    "coolDownTimePassed": 0,
+    "unlockXpCost": 750,
+    "type": "melampus"
+  },
+  {
+    "epsilonModel": {
+      "vertices": [],
+      "size": {
+        "width": 25,
+        "height": 25
+      },
+      "isImpacted": false,
+      "epsilonBulletDamage": 5,
+      "epsilonDamageOnCollision": 0,
+      "chanceOfSurvival": 0,
+      "lifeSteal": 0,
+      "hasMeleeAttack": false,
+      "meleeAttack": 5,
+      "position": {
+        "x": 787.018311491209,
+        "y": 520.062659097635
+      },
+      "velocity": {
+        "x": -0.15,
+        "y": -0.4000000000000002
+      },
+      "acceleration": {
+        "x": 0.0,
+        "y": -0.001
+      },
+      "theta": 3.03395227881523,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "o\u0015�\u000bQ���A",
+      "HP": 44.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": "epsilon"
+    },
+    "isBought": false,
+    "inGameXpCost": 100,
+    "inGameCoolDownTime": 10000,
+    "canCast": true,
+    "coolDownTimePassed": 0,
+    "unlockXpCost": 900,
+    "type": "chiron"
+  },
+  {
+    "epsilonModel": {
+      "vertices": [],
+      "size": {
+        "width": 25,
+        "height": 25
+      },
+      "isImpacted": false,
+      "epsilonBulletDamage": 5,
+      "epsilonDamageOnCollision": 0,
+      "chanceOfSurvival": 0,
+      "lifeSteal": 0,
+      "hasMeleeAttack": false,
+      "meleeAttack": 5,
+      "position": {
+        "x": 787.018311491209,
+        "y": 520.062659097635
+      },
+      "velocity": {
+        "x": -0.15,
+        "y": -0.4000000000000002
+      },
+      "acceleration": {
+        "x": 0.0,
+        "y": -0.001
+      },
+      "theta": 3.03395227881523,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "o\u0015�\u000bQ���A",
+      "HP": 44.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": "epsilon"
+    },
+    "isBought": false,
+    "inGameXpCost": 100,
+    "inGameCoolDownTime": 10000,
+    "canCast": true,
+    "coolDownTimePassed": 0,
+    "unlockXpCost": 1000,
+    "type": "proteus"
+  },
+  {
+    "epsilonModel": {
+      "vertices": [],
+      "size": {
+        "width": 25,
+        "height": 25
+      },
+      "isImpacted": false,
+      "epsilonBulletDamage": 5,
+      "epsilonDamageOnCollision": 0,
+      "chanceOfSurvival": 0,
+      "lifeSteal": 0,
+      "hasMeleeAttack": false,
+      "meleeAttack": 5,
+      "position": {
+        "x": 787.018311491209,
+        "y": 520.062659097635
+      },
+      "velocity": {
+        "x": -0.15,
+        "y": -0.4000000000000002
+      },
+      "acceleration": {
+        "x": 0.0,
+        "y": -0.001
+      },
+      "theta": 3.03395227881523,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "o\u0015�\u000bQ���A",
+      "HP": 44.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": "epsilon"
+    },
+    "isBought": false,
+    "inGameXpCost": 100,
+    "inGameCoolDownTime": 10000,
+    "canCast": true,
+    "coolDownTimePassed": 0,
+    "unlockXpCost": 750,
+    "type": "empusa"
+  },
+  {
+    "firstAbility": null,
+    "secondAbility": null,
+    "isBought": false,
+    "inGameXpCost": 100,
+    "inGameCoolDownTime": 10000,
+    "canCast": true,
+    "coolDownTimePassed": 0,
+    "unlockXpCost": 1500,
+    "type": "dolus"
+  }
+]

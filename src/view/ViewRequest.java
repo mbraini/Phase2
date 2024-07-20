@@ -33,6 +33,7 @@ public class ViewRequest {
             endRequest = false;
             resetAll();
             ViewData.resetAll();
+            System.out.println("END VIEW");
         }
         checkObjects();
         checkFrames();
@@ -105,6 +106,7 @@ public class ViewRequest {
 
     public synchronized static void endRequest() {
         endRequest = true;
+        checkRequests();
     }
 
 

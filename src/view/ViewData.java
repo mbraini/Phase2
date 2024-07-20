@@ -56,7 +56,6 @@ public class ViewData {
         frames.getLast().add(imaginaryPanel);
 
         imaginaryPanel.addMouseListener(new EpsilonAiming());
-//        imaginaryPanel.addMouseMotionListener(new EpsilonCirculation());
         imaginaryPanel.addKeyListener(new EpsilonMovement());
         imaginaryPanel.addMouseMotionListener(new EpsilonCirculation());
         imaginaryPanel.grabFocus();

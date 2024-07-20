@@ -99,6 +99,8 @@ public class Constants {
     public static final int FRAME_THREAD_REFRESH_RATE = 10;
     public static final int ABILITY_SETUP_DELAY = 1000;
     public static final int ABILITY_UNSETUP_DELAY = 1000;
+    public static final double PORTAL_RADIOS = 100;
+    public static final double PORTAL_FADE_TIME = 4000;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);

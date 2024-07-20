@@ -50,6 +50,10 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
             public void actionPerformed(ActionEvent e) {
                 if (GameState.isPause() || GameState.isDizzy())
                     return;
+                if (GameState.isOver()) {
+                    hoveringTimer.stop();
+                    return;
+                }
                 if (!isHovering())
                     hoveringTime += 1000;
                 if (hoveringTime >= 8000) {
@@ -66,6 +70,10 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
             public void actionPerformed(ActionEvent e) {
                 if (GameState.isPause() || GameState.isDizzy())
                     return;
+                if (GameState.isOver()) {
+                    abilityTimer.stop();
+                    return;
+                }
                 if (isHovering())
                     abilityTime += 1000;
                 if (abilityTime >= 4000) {

@@ -82,6 +82,8 @@ public class DashAnimation extends Animation {
     }
 
     void stopDash(DashAnimation dashAnimation){
+        if (dashAnimation == null)
+            return;
         dashAnimation.setStopBoolean(true);
         if (oigModel instanceof ImpactAble) {
             ((ImpactAble) oigModel).setImpacted(false);

@@ -116,7 +116,7 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
             shooter.start();
         }
         else {
-            shooter = new Timer(Constants.OMENOCT_FIRING_TIME, new OmenoctShooter(position));
+            shooter = new Timer(Constants.OMENOCT_FIRING_TIME, new OmenoctShooter(position ,this));
             shooter.start();
         }
     }
@@ -171,5 +171,9 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
     @Override
     public ArrayList<Vector> getVertices() {
         return vertices;
+    }
+
+    public Timer getShooter() {
+        return shooter;
     }
 }

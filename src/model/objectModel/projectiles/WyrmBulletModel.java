@@ -1,6 +1,7 @@
 package model.objectModel.projectiles;
 
 import constants.Constants;
+import controller.enums.ModelType;
 import model.interfaces.IsCircle;
 import utils.Math;
 import utils.Vector;
@@ -11,6 +12,7 @@ public class WyrmBulletModel extends BulletModel implements IsCircle {
         this.position = position;
         this.velocity = Math.VectorWithSize(direction , Constants.WYRM_BULLET_VELOCITY);
         this.acceleration = new Vector(0 ,0);
+        type = ModelType.wyrmBullet;
         damage = Constants.WYRM_RANGE_DAMAGE;
         setSolid(false);
         this.id = id;

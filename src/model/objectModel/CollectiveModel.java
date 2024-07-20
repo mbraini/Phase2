@@ -54,7 +54,9 @@ public class CollectiveModel extends ObjectModel implements IsCircle, Ability, M
         );
         if (Math.VectorSize(distance) <= Constants.EPSILON_DIMENSION.width) {
             GameState.setXp(GameState.getXp() + value);
+            GameState.setXpGained(GameState.getXpGained() + value);
             die();
+            hasAbility = false;
         }
     }
 

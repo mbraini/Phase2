@@ -11,12 +11,12 @@ import utils.Vector;
 public class WyrmShooter {
 
     private WyrmModel wyrmModel;
-    WyrmShooter(WyrmModel wyrmModel){
+    public WyrmShooter(WyrmModel wyrmModel){
         this.wyrmModel = wyrmModel;
     }
     public void shoot() {
         Vector position = wyrmModel.getPosition();
-        EpsilonModel epsilon = (EpsilonModel) ModelData.getModels().getFirst();
+        EpsilonModel epsilon = ModelData.getEpsilon();
 
         Vector direction = Math.VectorAdd(
                 Math.ScalarInVector(-1 ,position),

@@ -30,8 +30,10 @@ public class GameLoader {
 
     private static ArrayList<FrameModel> framesSpawnedByObjects;
     private static Gson gson;
+    private String path;
 
-    public GameLoader(){
+    public GameLoader(String path){
+        this.path = path;
         framesSpawnedByObjects = new ArrayList<>();
     }
 
@@ -48,9 +50,10 @@ public class GameLoader {
 
         StringBuilder gameStateString = new StringBuilder();
         try {
-            Scanner gameStateScanner = new Scanner(new File("src/controller/manager/saving/gameState.json"));
+            Scanner gameStateScanner = new Scanner(new File(path + "/gameState.json"));
             while (gameStateScanner.hasNextLine())
                 gameStateString.append(gameStateScanner.nextLine());
+            gameStateScanner.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -74,9 +77,10 @@ public class GameLoader {
 
         StringBuilder skillTreeString = new StringBuilder();
         try {
-            Scanner abilityScanner = new Scanner(new File("src/controller/manager/saving/skillTree.json"));
+            Scanner abilityScanner = new Scanner(new File(path + "/skillTree.json"));
             while (abilityScanner.hasNextLine())
                 skillTreeString.append(abilityScanner.nextLine());
+            abilityScanner.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -99,9 +103,10 @@ public class GameLoader {
 
         StringBuilder abilityString = new StringBuilder();
         try {
-            Scanner abilityScanner = new Scanner(new File("src/controller/manager/saving/abilities.json"));
+            Scanner abilityScanner = new Scanner(new File(path + "/abilities.json"));
             while (abilityScanner.hasNextLine())
                 abilityString.append(abilityScanner.nextLine());
+            abilityScanner.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -127,10 +132,10 @@ public class GameLoader {
         StringBuilder abstractEnemyString = new StringBuilder();
         StringBuilder effectString = new StringBuilder();
         try {
-            Scanner modelScanner = new Scanner(new File("src/controller/manager/saving/models.json"));
-            Scanner frameScanner = new Scanner(new File("src/controller/manager/saving/frames.json"));
-            Scanner abstractEnemyScanner = new Scanner(new File("src/controller/manager/saving/abstractEnemies.json"));
-            Scanner effectScanner = new Scanner(new File("src/controller/manager/saving/effects.json"));
+            Scanner modelScanner = new Scanner(new File(path + "/models.json"));
+            Scanner frameScanner = new Scanner(new File(path + "/frames.json"));
+            Scanner abstractEnemyScanner = new Scanner(new File(path + "/abstractEnemies.json"));
+            Scanner effectScanner = new Scanner(new File(path + "/effects.json"));
             while (modelScanner.hasNextLine()){
                 modelString.append(modelScanner.nextLine());
             }
@@ -143,6 +148,10 @@ public class GameLoader {
             while (effectScanner.hasNextLine()){
                 effectString.append(effectScanner.nextLine());
             }
+            modelScanner.close();
+            frameScanner.close();
+            abstractEnemyScanner.close();
+            effectScanner.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

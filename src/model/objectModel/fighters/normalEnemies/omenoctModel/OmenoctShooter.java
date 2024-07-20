@@ -1,6 +1,7 @@
 package model.objectModel.fighters.normalEnemies.omenoctModel;
 
 import controller.enums.ModelType;
+import controller.manager.GameState;
 import controller.manager.Spawner;
 import constants.Constants;
 import model.ModelData;
@@ -15,14 +16,22 @@ import java.awt.event.ActionListener;
 public class OmenoctShooter implements ActionListener {
 
     private Vector position;
+    private OmenoctModel omenoctModel;
 
-    public OmenoctShooter(Vector position) {
+    public OmenoctShooter(Vector position ,OmenoctModel omenoctModel) {
         this.position = position;
+        this.omenoctModel = omenoctModel;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        EpsilonModel epsilon = (EpsilonModel) ModelData.getModels().getFirst();
+        if (GameState.isDizzy() || GameState.isPause())
+            return;
+        if (GameState.isOver()) {
+            omenoctModel.getShooter().stop();
+            return;
+        }
+        EpsilonModel epsilon = ModelData.getEpsilon();
         Vector direction = Math.VectorAdd(
                 Math.ScalarInVector(-1 ,position),
                 epsilon.getPosition()

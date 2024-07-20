@@ -1,0 +1,2041 @@
+[
+  {
+    "vertices": [],
+    "size": {
+      "width": 25,
+      "height": 25
+    },
+    "isImpacted": false,
+    "epsilonBulletDamage": 5,
+    "epsilonDamageOnCollision": 0,
+    "chanceOfSurvival": 0,
+    "lifeSteal": 0,
+    "hasMeleeAttack": false,
+    "meleeAttack": 5,
+    "position": {
+      "x": 777.22528146669,
+      "y": 304.07300000583
+    },
+    "velocity": {
+      "x": 0.4087005768508875,
+      "y": 0.26870057685088805
+    },
+    "acceleration": {
+      "x": 7.071067811865475E-4,
+      "y": 7.071067811865475E-4
+    },
+    "theta": -1.2568791082306414,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "o\u0015�\u000bQ���A",
+    "HP": 10.0,
+    "isHovering": false,
+    "isSolid": true,
+    "type": "epsilon"
+  },
+  {
+    "frameModel": {
+      "size": {
+        "width": 200,
+        "height": 200
+      },
+      "upDownA": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightA": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "upDownV": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightV": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "upDownP": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightP": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "positionInit": {
+        "x": 43.62499999997493,
+        "y": 434.92499999995823
+      },
+      "vertices": [
+        {
+          "x": 43.62499999997493,
+          "y": 434.92499999995823
+        },
+        {
+          "x": 243.62499999997493,
+          "y": 434.92499999995823
+        },
+        {
+          "x": 243.62499999997493,
+          "y": 634.9249999999582
+        },
+        {
+          "x": 43.62499999997493,
+          "y": 634.9249999999582
+        }
+      ],
+      "dimensionInit": {
+        "width": 200,
+        "height": 200
+      },
+      "isResizing": false,
+      "isIsometric": true,
+      "canTopResize": true,
+      "canBottomResize": true,
+      "canRightResize": true,
+      "canLeftResize": true,
+      "isShrinking": false,
+      "position": {
+        "x": 43.62499999997493,
+        "y": 434.92499999995823
+      },
+      "velocity": null,
+      "acceleration": null,
+      "theta": 0.0,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "�Eu\u0018t�\u0015��W",
+      "HP": 0.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": null
+    },
+    "time": 57700.0,
+    "vertices": [
+      {
+        "x": 41.50367965641527,
+        "y": 432.8036796563986
+      },
+      {
+        "x": 241.50367965641527,
+        "y": 432.8036796563986
+      },
+      {
+        "x": 241.50367965641527,
+        "y": 632.8036796563986
+      },
+      {
+        "x": 41.50367965641527,
+        "y": 632.8036796563986
+      }
+    ],
+    "vulnerableToEpsilonMelee": false,
+    "vulnerableToEpsilonBullet": false,
+    "hasMeleeAttack": false,
+    "meleeAttack": 0,
+    "position": {
+      "x": 141.50367965641527,
+      "y": 532.8036796563986
+    },
+    "velocity": null,
+    "acceleration": null,
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "�Eu\u0018t�\u0015��W",
+    "HP": 9999995.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": "barricadosTheSecond"
+  },
+  {
+    "vertices": [
+      {
+        "x": 673.4221853599405,
+        "y": 633.1197666334698
+      },
+      {
+        "x": 644.5190056654891,
+        "y": 537.3878168802598
+      },
+      {
+        "x": 576.0642950726159,
+        "y": 610.2846796224048
+      }
+    ],
+    "aoeEffects": [
+      {
+        "fadeTime": 3100.0,
+        "vertices": [
+          {
+            "x": 559.0,
+            "y": 858.7649730810374
+          },
+          {
+            "x": 509.0,
+            "y": 945.3675134594813
+          },
+          {
+            "x": 609.0,
+            "y": 945.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 102,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            600,
+            608,
+            518
+          ],
+          "y": [
+            945,
+            845,
+            888
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 559.0,
+          "y": 916.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "\r�$tV0��o�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 3000.0,
+        "vertices": [
+          {
+            "x": 580.0,
+            "y": 855.2649730810374
+          },
+          {
+            "x": 530.0,
+            "y": 941.8675134594813
+          },
+          {
+            "x": 630.0,
+            "y": 941.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 107,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            630,
+            579,
+            530
+          ],
+          "y": [
+            912,
+            826,
+            914
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 580.0,
+          "y": 913.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "����7�Ao%",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 2900.0,
+        "vertices": [
+          {
+            "x": 601.0,
+            "y": 839.7649730810374
+          },
+          {
+            "x": 551.0,
+            "y": 926.3675134594813
+          },
+          {
+            "x": 651.0,
+            "y": 926.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 112,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            641,
+            549,
+            561
+          ],
+          "y": [
+            867,
+            828,
+            928
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 601.0,
+          "y": 897.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "��9\u0000�\u001f��� ",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 2800.0,
+        "vertices": [
+          {
+            "x": 614.5,
+            "y": 815.2649730810374
+          },
+          {
+            "x": 564.5,
+            "y": 901.8675134594813
+          },
+          {
+            "x": 664.5,
+            "y": 901.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 117,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            629,
+            531,
+            600
+          ],
+          "y": [
+            825,
+            848,
+            921
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 614.5,
+          "y": 873.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "��\u001b��z(Y\u000f�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 2700.0,
+        "vertices": [
+          {
+            "x": 616.5,
+            "y": 787.7649730810374
+          },
+          {
+            "x": 566.5,
+            "y": 874.3675134594813
+          },
+          {
+            "x": 666.5,
+            "y": 874.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 122,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            600,
+            534,
+            633
+          ],
+          "y": [
+            798,
+            874,
+            893
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 616.5,
+          "y": 845.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "]*��~��#�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 2600.0,
+        "vertices": [
+          {
+            "x": 607.0,
+            "y": 763.7649730810374
+          },
+          {
+            "x": 557.0,
+            "y": 850.3675134594813
+          },
+          {
+            "x": 657.0,
+            "y": 850.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 127,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            566,
+            558,
+            648
+          ],
+          "y": [
+            793,
+            893,
+            850
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 607.0,
+          "y": 821.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "�J�+�\u0000��t",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 2500.0,
+        "vertices": [
+          {
+            "x": 592.0,
+            "y": 749.2649730810374
+          },
+          {
+            "x": 542.0,
+            "y": 835.8675134594813
+          },
+          {
+            "x": 642.0,
+            "y": 835.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 132,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            542,
+            594,
+            642
+          ],
+          "y": [
+            808,
+            893,
+            806
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 592.0,
+          "y": 807.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "��\\C\u0015�\u001d�G",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 2400.0,
+        "vertices": [
+          {
+            "x": 576.5,
+            "y": 744.7649730810374
+          },
+          {
+            "x": 526.5,
+            "y": 831.3675134594813
+          },
+          {
+            "x": 626.5,
+            "y": 831.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 137,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            537,
+            629,
+            616
+          ],
+          "y": [
+            833,
+            872,
+            772
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 576.5,
+          "y": 802.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "[)�����i�\u0002",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 2300.0,
+        "vertices": [
+          {
+            "x": 568.0,
+            "y": 749.7649730810374
+          },
+          {
+            "x": 518.0,
+            "y": 836.3675134594813
+          },
+          {
+            "x": 618.0,
+            "y": 836.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 142,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            554,
+            651,
+            582
+          ],
+          "y": [
+            855,
+            832,
+            760
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 568.0,
+          "y": 807.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "f\u000f��B�So�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 2200.0,
+        "vertices": [
+          {
+            "x": 570.5,
+            "y": 757.7649730810374
+          },
+          {
+            "x": 520.5,
+            "y": 844.3675134594813
+          },
+          {
+            "x": 620.5,
+            "y": 844.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 147,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            587,
+            652,
+            554
+          ],
+          "y": [
+            863,
+            787,
+            768
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 570.5,
+          "y": 815.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "@��\u001fn}.B��",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 2100.0,
+        "vertices": [
+          {
+            "x": 583.0,
+            "y": 761.7649730810374
+          },
+          {
+            "x": 533.0,
+            "y": 848.3675134594813
+          },
+          {
+            "x": 633.0,
+            "y": 848.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 153,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            624,
+            632,
+            542
+          ],
+          "y": [
+            848,
+            749,
+            791
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 583.0,
+          "y": 819.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "s��gA���\u0010�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 2000.0,
+        "vertices": [
+          {
+            "x": 602.0,
+            "y": 757.2649730810374
+          },
+          {
+            "x": 552.0,
+            "y": 843.8675134594813
+          },
+          {
+            "x": 652.0,
+            "y": 843.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 158,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            652,
+            600,
+            552
+          ],
+          "y": [
+            814,
+            729,
+            816
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 602.0,
+          "y": 815.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "�I���\u0000\u0000��3",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 1900.0,
+        "vertices": [
+          {
+            "x": 620.0,
+            "y": 741.7649730810374
+          },
+          {
+            "x": 570.0,
+            "y": 828.3675134594813
+          },
+          {
+            "x": 670.0,
+            "y": 828.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 163,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            660,
+            568,
+            580
+          ],
+          "y": [
+            769,
+            730,
+            830
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 620.0,
+          "y": 799.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "����\u0007�����",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 1800.0,
+        "vertices": [
+          {
+            "x": 632.5,
+            "y": 717.2649730810374
+          },
+          {
+            "x": 582.5,
+            "y": 803.8675134594813
+          },
+          {
+            "x": 682.5,
+            "y": 803.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 168,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            647,
+            549,
+            618
+          ],
+          "y": [
+            727,
+            750,
+            823
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 632.5,
+          "y": 775.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "5����B�MH�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 1700.0,
+        "vertices": [
+          {
+            "x": 633.5,
+            "y": 689.2649730810374
+          },
+          {
+            "x": 583.5,
+            "y": 775.8675134594813
+          },
+          {
+            "x": 683.5,
+            "y": 775.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 173,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            617,
+            552,
+            650
+          ],
+          "y": [
+            700,
+            776,
+            794
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 633.5,
+          "y": 747.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "z�h��r|U��",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 1600.0,
+        "vertices": [
+          {
+            "x": 624.0,
+            "y": 665.7649730810374
+          },
+          {
+            "x": 574.0,
+            "y": 752.3675134594813
+          },
+          {
+            "x": 674.0,
+            "y": 752.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 178,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            583,
+            575,
+            665
+          ],
+          "y": [
+            695,
+            794,
+            752
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 624.0,
+          "y": 723.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "����x����\u0012",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 1500.0,
+        "vertices": [
+          {
+            "x": 609.0,
+            "y": 650.2649730810374
+          },
+          {
+            "x": 559.0,
+            "y": 736.8675134594813
+          },
+          {
+            "x": 659.0,
+            "y": 736.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 183,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            559,
+            610,
+            659
+          ],
+          "y": [
+            709,
+            795,
+            707
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 609.0,
+          "y": 708.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "�\u0010L�X\\\u0004\u0014�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 1400.0,
+        "vertices": [
+          {
+            "x": 593.0,
+            "y": 646.2649730810374
+          },
+          {
+            "x": 543.0,
+            "y": 732.8675134594813
+          },
+          {
+            "x": 643.0,
+            "y": 732.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 188,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            553,
+            645,
+            633
+          ],
+          "y": [
+            734,
+            773,
+            674
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 593.0,
+          "y": 704.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "�cd�/#`�W\u0014",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 1300.0,
+        "vertices": [
+          {
+            "x": 583.5,
+            "y": 651.2649730810374
+          },
+          {
+            "x": 533.5,
+            "y": 737.8675134594813
+          },
+          {
+            "x": 633.5,
+            "y": 737.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 193,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            569,
+            666,
+            598
+          ],
+          "y": [
+            757,
+            734,
+            661
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 583.5,
+          "y": 709.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "8\u0013f�\f���",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 1200.0,
+        "vertices": [
+          {
+            "x": 584.5,
+            "y": 658.7649730810374
+          },
+          {
+            "x": 534.5,
+            "y": 745.3675134594813
+          },
+          {
+            "x": 634.5,
+            "y": 745.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 198,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            601,
+            667,
+            568
+          ],
+          "y": [
+            764,
+            688,
+            669
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 584.5,
+          "y": 716.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "\n\rL\u001e���\u0014�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 1100.0,
+        "vertices": [
+          {
+            "x": 597.0,
+            "y": 662.7649730810374
+          },
+          {
+            "x": 547.0,
+            "y": 749.3675134594813
+          },
+          {
+            "x": 647.0,
+            "y": 749.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 204,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            638,
+            646,
+            556
+          ],
+          "y": [
+            749,
+            650,
+            692
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 597.0,
+          "y": 720.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "��\u000frQ ��\u0007#",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 1000.0,
+        "vertices": [
+          {
+            "x": 615.0,
+            "y": 658.2649730810374
+          },
+          {
+            "x": 565.0,
+            "y": 744.8675134594813
+          },
+          {
+            "x": 665.0,
+            "y": 744.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 209,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            665,
+            613,
+            565
+          ],
+          "y": [
+            715,
+            629,
+            717
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 615.0,
+          "y": 716.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "�h\u0013�\u001a���\u001ct",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 900.0,
+        "vertices": [
+          {
+            "x": 633.0,
+            "y": 642.2649730810374
+          },
+          {
+            "x": 583.0,
+            "y": 728.8675134594813
+          },
+          {
+            "x": 683.0,
+            "y": 728.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 214,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            673,
+            580,
+            593
+          ],
+          "y": [
+            670,
+            631,
+            730
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 633.0,
+          "y": 700.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "����w@�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 800.0,
+        "vertices": [
+          {
+            "x": 644.0,
+            "y": 618.2649730810374
+          },
+          {
+            "x": 594.0,
+            "y": 704.8675134594813
+          },
+          {
+            "x": 694.0,
+            "y": 704.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 219,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            658,
+            561,
+            630
+          ],
+          "y": [
+            628,
+            651,
+            724
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 644.0,
+          "y": 676.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "y�`}?�Q�\u003dP",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 700.0,
+        "vertices": [
+          {
+            "x": 644.5,
+            "y": 590.2649730810374
+          },
+          {
+            "x": 594.5,
+            "y": 676.8675134594813
+          },
+          {
+            "x": 694.5,
+            "y": 676.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 224,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            628,
+            563,
+            661
+          ],
+          "y": [
+            601,
+            676,
+            695
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 644.5,
+          "y": 648.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "�\u0004|�.\u001e�I;�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 600.0,
+        "vertices": [
+          {
+            "x": 635.0,
+            "y": 565.7649730810374
+          },
+          {
+            "x": 585.0,
+            "y": 652.3675134594813
+          },
+          {
+            "x": 685.0,
+            "y": 652.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 229,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            594,
+            586,
+            676
+          ],
+          "y": [
+            595,
+            695,
+            652
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 635.0,
+          "y": 623.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "�\u0014�h�\u003e2��Z",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 500.0,
+        "vertices": [
+          {
+            "x": 619.0,
+            "y": 551.2649730810374
+          },
+          {
+            "x": 569.0,
+            "y": 637.8675134594813
+          },
+          {
+            "x": 669.0,
+            "y": 637.8675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 234,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            569,
+            621,
+            669
+          ],
+          "y": [
+            610,
+            695,
+            608
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 619.0,
+          "y": 609.0
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "���8�--1;\u0000",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 400.0,
+        "vertices": [
+          {
+            "x": 603.5,
+            "y": 546.7649730810374
+          },
+          {
+            "x": 553.5,
+            "y": 633.3675134594813
+          },
+          {
+            "x": 653.5,
+            "y": 633.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 239,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            564,
+            656,
+            643
+          ],
+          "y": [
+            635,
+            674,
+            574
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 603.5,
+          "y": 604.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "H\u0016;��y��\u0004�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 300.0,
+        "vertices": [
+          {
+            "x": 595.5,
+            "y": 551.7649730810374
+          },
+          {
+            "x": 545.5,
+            "y": 638.3675134594813
+          },
+          {
+            "x": 645.5,
+            "y": 638.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 244,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            581,
+            678,
+            610
+          ],
+          "y": [
+            657,
+            634,
+            562
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 595.5,
+          "y": 609.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "m;��9\fܠ\u003e�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 200.0,
+        "vertices": [
+          {
+            "x": 597.5,
+            "y": 559.7649730810374
+          },
+          {
+            "x": 547.5,
+            "y": 646.3675134594813
+          },
+          {
+            "x": 647.5,
+            "y": 646.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 249,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            614,
+            680,
+            581
+          ],
+          "y": [
+            665,
+            589,
+            570
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 597.5,
+          "y": 617.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "\u0000q\u001b�\f�%���",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      },
+      {
+        "fadeTime": 100.0,
+        "vertices": [
+          {
+            "x": 612.0,
+            "y": 564.7649730810374
+          },
+          {
+            "x": 562.0,
+            "y": 651.3675134594813
+          },
+          {
+            "x": 662.0,
+            "y": 651.3675134594813
+          }
+        ],
+        "damage": 0.0,
+        "damageTime": 0.0,
+        "R": 255,
+        "G": 0,
+        "B": 0,
+        "area": {
+          "n": 3,
+          "x": [
+            653,
+            661,
+            571
+          ],
+          "y": [
+            651,
+            551,
+            594
+          ]
+        },
+        "effectType": "archmireEffect",
+        "position": {
+          "x": 612.0,
+          "y": 622.5
+        },
+        "velocity": null,
+        "acceleration": null,
+        "theta": 0.0,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "�9�X��\u0005՘�",
+        "HP": 0.0,
+        "isHovering": false,
+        "isSolid": false,
+        "type": null
+      }
+    ],
+    "vulnerableToEpsilonMelee": false,
+    "vulnerableToEpsilonBullet": true,
+    "hasMeleeAttack": false,
+    "meleeAttack": 0,
+    "position": {
+      "x": 631.3351620326828,
+      "y": 593.5974210453799
+    },
+    "velocity": {
+      "x": 0.04499946371384099,
+      "y": -0.08930312573178338
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 41.65751858660099,
+    "omega": 0.006283185307179587,
+    "alpha": 0.0,
+    "id": "�8\u0004���B.�\u0026",
+    "HP": 30.0,
+    "isHovering": true,
+    "isSolid": false,
+    "type": "archmire"
+  },
+  {
+    "vertices": [
+      {
+        "x": 730.5293327009279,
+        "y": 239.32690573485954
+      },
+      {
+        "x": 746.2104899286588,
+        "y": 191.84952893285777
+      },
+      {
+        "x": 698.7331131266569,
+        "y": 176.16837170512713
+      },
+      {
+        "x": 683.0519558989278,
+        "y": 223.64574850712953
+      }
+    ],
+    "isImpacted": true,
+    "vulnerableToEpsilonMelee": true,
+    "vulnerableToEpsilonBullet": true,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 714.6312229137932,
+      "y": 207.74763871999366
+    },
+    "velocity": {
+      "x": -0.0523135013299849,
+      "y": 0.046203547475697236
+    },
+    "acceleration": {
+      "x": 2.7533421752623706E-4,
+      "y": -2.431765656615645E-4
+    },
+    "theta": 31.096920241873477,
+    "omega": 0.0024363371599267873,
+    "alpha": -1.282282715750936E-5,
+    "id": "|�\u000eu6,4\"��",
+    "HP": 10.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": "squarantine"
+  },
+  {
+    "frameModel": {
+      "size": {
+        "width": 200,
+        "height": 200
+      },
+      "upDownA": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightA": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "upDownV": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightV": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "upDownP": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "leftRightP": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "positionInit": {
+        "x": 1197.274999999962,
+        "y": 310.249999999948
+      },
+      "vertices": [
+        {
+          "x": 1197.274999999962,
+          "y": 310.249999999948
+        },
+        {
+          "x": 1397.274999999962,
+          "y": 310.249999999948
+        },
+        {
+          "x": 1397.274999999962,
+          "y": 510.249999999948
+        },
+        {
+          "x": 1197.274999999962,
+          "y": 510.249999999948
+        }
+      ],
+      "dimensionInit": {
+        "width": 200,
+        "height": 200
+      },
+      "isResizing": false,
+      "isIsometric": true,
+      "canTopResize": true,
+      "canBottomResize": true,
+      "canRightResize": true,
+      "canLeftResize": true,
+      "isShrinking": false,
+      "position": {
+        "x": 1197.274999999962,
+        "y": 310.249999999948
+      },
+      "velocity": null,
+      "acceleration": null,
+      "theta": 0.0,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "n.��8��d;",
+      "HP": 0.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": null
+    },
+    "time": 3600.0,
+    "vertices": [
+      {
+        "x": 1197.274999999962,
+        "y": 310.249999999948
+      },
+      {
+        "x": 1397.274999999962,
+        "y": 310.249999999948
+      },
+      {
+        "x": 1397.274999999962,
+        "y": 510.249999999948
+      },
+      {
+        "x": 1197.274999999962,
+        "y": 510.249999999948
+      }
+    ],
+    "vulnerableToEpsilonMelee": false,
+    "vulnerableToEpsilonBullet": false,
+    "hasMeleeAttack": false,
+    "meleeAttack": 0,
+    "position": {
+      "x": 1297.274999999962,
+      "y": 410.249999999948
+    },
+    "velocity": null,
+    "acceleration": null,
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "n.��8��d;",
+    "HP": 1.0E7,
+    "isHovering": false,
+    "isSolid": false,
+    "type": "barricadosTheSecond"
+  },
+  {
+    "vertices": [
+      {
+        "x": 843.9599524103313,
+        "y": 674.7224083574754
+      },
+      {
+        "x": 862.3959821674056,
+        "y": 721.1994221040167
+      },
+      {
+        "x": 908.8729959139473,
+        "y": 702.763392346942
+      },
+      {
+        "x": 890.4369661568724,
+        "y": 656.2863786003998
+      }
+    ],
+    "isImpacted": true,
+    "vulnerableToEpsilonMelee": true,
+    "vulnerableToEpsilonBullet": true,
+    "hasMeleeAttack": true,
+    "meleeAttack": 10,
+    "position": {
+      "x": 876.4164741621397,
+      "y": 688.7429003522088
+    },
+    "velocity": {
+      "x": -0.06819085187023204,
+      "y": -0.21730714260427503
+    },
+    "acceleration": {
+      "x": 1.0998524495198723E-4,
+      "y": 3.5049539129721776E-4
+    },
+    "theta": 16.08559552773765,
+    "omega": 0.007950152837655806,
+    "alpha": -1.282282715750936E-5,
+    "id": "��h8*Qg��\u0002",
+    "HP": 10.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": "squarantine"
+  },
+  {
+    "vertices": [
+      {
+        "x": 641.2230107517719,
+        "y": 443.20094906514737
+      },
+      {
+        "x": 686.1013297630107,
+        "y": 421.1569820282149
+      },
+      {
+        "x": 644.5715348032203,
+        "y": 393.31320120380633
+      }
+    ],
+    "isImpacted": false,
+    "vulnerableToEpsilonMelee": true,
+    "vulnerableToEpsilonBullet": true,
+    "hasMeleeAttack": true,
+    "meleeAttack": 15,
+    "position": {
+      "x": 657.2986251060007,
+      "y": 419.223710765723
+    },
+    "velocity": {
+      "x": 0.11541181657657917,
+      "y": -0.11081566944477683
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 27.68371446343329,
+    "omega": 0.00502654824574367,
+    "alpha": 0.0,
+    "id": "�;/�pNN\u0000C�",
+    "HP": 15.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": "trigorath"
+  },
+  {
+    "value": 5,
+    "time": 900.0,
+    "hasAbility": false,
+    "position": {
+      "x": 851.0,
+      "y": 473.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "�W\u0027��U^\t��",
+    "HP": 1.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": null
+  },
+  {
+    "value": 5,
+    "time": 900.0,
+    "hasAbility": false,
+    "position": {
+      "x": 912.0,
+      "y": 466.0
+    },
+    "velocity": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "acceleration": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "theta": 0.0,
+    "omega": 0.0,
+    "alpha": 0.0,
+    "id": "��b����\u0026]\u0019",
+    "HP": 1.0,
+    "isHovering": false,
+    "isSolid": false,
+    "type": null
+  }
+]

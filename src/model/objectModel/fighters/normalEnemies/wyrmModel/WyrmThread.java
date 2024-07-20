@@ -43,6 +43,8 @@ public class WyrmThread extends Thread{
     private void shootIf() {
         if (time % Constants.WYRM_SHOOTING_TIME != 0)
             return;
+        if (GameState.isOver())
+            return;
         new WyrmShooter(wyrmModel).shoot();
     }
 

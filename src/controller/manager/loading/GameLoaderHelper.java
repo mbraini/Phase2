@@ -340,11 +340,9 @@ public class GameLoaderHelper {
             case melampus:
                 skillTreeAbility = gson.fromJson(abilityString , Melapmus.class);
                 break;
-            case proteus:
-                skillTreeAbility = gson.fromJson(abilityString , Proteus.class);
-                break;
             default:
                 skillTreeAbility = gson.fromJson(abilityString , Proteus.class);
+                break;
         }
         skillTreeAbility.setUp();
         SkillTreeAbilityHandler.addSkillTree(skillTreeAbility);

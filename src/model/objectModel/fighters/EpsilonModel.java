@@ -1,11 +1,13 @@
 package model.objectModel.fighters;
 
 
+import controller.Controller;
 import controller.configs.Configs;
 import controller.enums.ModelType;
 import controller.interfaces.SizeChanger;
 import controller.manager.Spawner;
 import constants.Constants;
+import model.ModelData;
 import model.collision.Collision;
 import model.interfaces.*;
 import model.objectModel.FighterModel;
@@ -136,8 +138,7 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
 
     @Override
     public void die() {
-        //////////////// endGame
-        //////todo
+        Controller.endGame();
     }
 
     public void meleeAttack(EnemyModel enemyModel){

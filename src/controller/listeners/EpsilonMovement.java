@@ -27,7 +27,7 @@ public class EpsilonMovement extends KeyAdapter {
     public static int DOWN_KEY = 40;
 
     public EpsilonMovement(){
-        this.epsilon = (EpsilonModel) (ModelData.getModels().getFirst());
+        this.epsilon = ModelData.getEpsilon();
         xStopper = new Timer(Configs.EPSILON_DECELERATION_TIME, new xStopperAL(epsilon));
         yStopper = new Timer(Configs.EPSILON_DECELERATION_TIME, new yStopperAL(epsilon));
     }

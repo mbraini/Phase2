@@ -1,11 +1,13 @@
 package model.collision;
 
 
+import controller.Controller;
 import model.ModelData;
 import model.inGameAbilities.Dismay.EpsilonProtectorModel;
 import model.interfaces.CollisionDetector;
 import model.interfaces.HasVertices;
 import model.logics.Impact;
+import model.objectModel.PortalModel;
 import model.objectModel.fighters.EnemyModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.ObjectModel;
@@ -125,6 +127,9 @@ public class CollisionHandler {
         }
         if (object instanceof CollisionDetector){
             ((CollisionDetector) object).detect();
+        }
+        if (object instanceof PortalModel) {
+            Controller.portalWindow();
         }
     }
 

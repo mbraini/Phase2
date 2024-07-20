@@ -24,6 +24,6 @@ public class Banish extends InGameAbility{
 
     @Override
     public void setUp() {
-        epsilon = (EpsilonModel) ModelData.getModels().getFirst();
+        epsilon = ModelData.getEpsilon();
     }
 }

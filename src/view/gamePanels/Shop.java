@@ -43,7 +43,7 @@ public class Shop extends PIG {
         initSlaughter();
         initLabels();
         initKeyListener();
-        shopFrame.add(this);
+        this.shopFrame.add(this);
         this.grabFocus();
         this.setFocusable(true);
         initBack();

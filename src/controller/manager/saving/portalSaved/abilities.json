@@ -1,0 +1,201 @@
+[
+  {
+    "epsilon": {
+      "vertices": [],
+      "size": {
+        "width": 25,
+        "height": 25
+      },
+      "isImpacted": false,
+      "epsilonBulletDamage": 5,
+      "epsilonDamageOnCollision": 0,
+      "chanceOfSurvival": 0,
+      "lifeSteal": 0,
+      "hasMeleeAttack": false,
+      "meleeAttack": 5,
+      "position": {
+        "x": 787.018311491209,
+        "y": 520.062659097635
+      },
+      "velocity": {
+        "x": -0.15,
+        "y": -0.4000000000000002
+      },
+      "acceleration": {
+        "x": 0.0,
+        "y": -0.001
+      },
+      "theta": 3.03395227881523,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "o\u0015�\u000bQ���A",
+      "HP": 44.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": "epsilon"
+    },
+    "type": "banish",
+    "isAvailable": true,
+    "isActive": false,
+    "xpCost": 100
+  },
+  {
+    "timePassed": 0,
+    "type": "empower",
+    "isAvailable": true,
+    "isActive": false,
+    "xpCost": 75
+  },
+  {
+    "epsilon": {
+      "vertices": [],
+      "size": {
+        "width": 25,
+        "height": 25
+      },
+      "isImpacted": false,
+      "epsilonBulletDamage": 5,
+      "epsilonDamageOnCollision": 0,
+      "chanceOfSurvival": 0,
+      "lifeSteal": 0,
+      "hasMeleeAttack": false,
+      "meleeAttack": 5,
+      "position": {
+        "x": 787.018311491209,
+        "y": 520.062659097635
+      },
+      "velocity": {
+        "x": -0.15,
+        "y": -0.4000000000000002
+      },
+      "acceleration": {
+        "x": 0.0,
+        "y": -0.001
+      },
+      "theta": 3.03395227881523,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "o\u0015�\u000bQ���A",
+      "HP": 44.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": "epsilon"
+    },
+    "type": "heal",
+    "isAvailable": true,
+    "isActive": false,
+    "xpCost": 50
+  },
+  {
+    "timePassed": 0,
+    "protectorModel": {
+      "epsilon": {
+        "vertices": [],
+        "size": {
+          "width": 25,
+          "height": 25
+        },
+        "isImpacted": false,
+        "epsilonBulletDamage": 5,
+        "epsilonDamageOnCollision": 0,
+        "chanceOfSurvival": 0,
+        "lifeSteal": 0,
+        "hasMeleeAttack": false,
+        "meleeAttack": 5,
+        "position": {
+          "x": 787.018311491209,
+          "y": 520.062659097635
+        },
+        "velocity": {
+          "x": -0.15,
+          "y": -0.4000000000000002
+        },
+        "acceleration": {
+          "x": 0.0,
+          "y": -0.001
+        },
+        "theta": 3.03395227881523,
+        "omega": 0.0,
+        "alpha": 0.0,
+        "id": "o\u0015�\u000bQ���A",
+        "HP": 44.0,
+        "isHovering": false,
+        "isSolid": true,
+        "type": "epsilon"
+      },
+      "position": {
+        "x": 768.0,
+        "y": 480.0
+      },
+      "velocity": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "acceleration": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "theta": 0.0,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "�\u0017N�����",
+      "HP": 20000.0,
+      "isHovering": false,
+      "isSolid": false,
+      "type": "epsilonProtector"
+    },
+    "epsilon": {
+      "vertices": [],
+      "size": {
+        "width": 25,
+        "height": 25
+      },
+      "isImpacted": false,
+      "epsilonBulletDamage": 5,
+      "epsilonDamageOnCollision": 0,
+      "chanceOfSurvival": 0,
+      "lifeSteal": 0,
+      "hasMeleeAttack": false,
+      "meleeAttack": 5,
+      "position": {
+        "x": 787.018311491209,
+        "y": 520.062659097635
+      },
+      "velocity": {
+        "x": -0.15,
+        "y": -0.4000000000000002
+      },
+      "acceleration": {
+        "x": 0.0,
+        "y": -0.001
+      },
+      "theta": 3.03395227881523,
+      "omega": 0.0,
+      "alpha": 0.0,
+      "id": "o\u0015�\u000bQ���A",
+      "HP": 44.0,
+      "isHovering": false,
+      "isSolid": true,
+      "type": "epsilon"
+    },
+    "type": "dismay",
+    "isAvailable": true,
+    "isActive": false,
+    "xpCost": 120
+  },
+  {
+    "timePassed": 0,
+    "type": "slumber",
+    "isAvailable": true,
+    "isActive": false,
+    "xpCost": 150
+  },
+  {
+    "timePassed": 8000,
+    "isUsed": true,
+    "type": "slaughter",
+    "isAvailable": false,
+    "isActive": true,
+    "xpCost": 200
+  }
+]

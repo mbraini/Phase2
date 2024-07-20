@@ -1,0 +1,14 @@
+{
+  "time": 192700.0,
+  "xp": 278523.0,
+  "hp": 44.0,
+  "wave": 5,
+  "enemyKilled": 42,
+  "totalBullets": 0,
+  "successfulBullets": 0,
+  "enemyCount": 7,
+  "repeatedCount": 2,
+  "isPause": true,
+  "isOver": false,
+  "isDizzy": false
+}

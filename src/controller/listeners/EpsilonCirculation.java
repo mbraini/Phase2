@@ -13,7 +13,7 @@ import java.awt.event.MouseMotionAdapter;
 public class EpsilonCirculation extends MouseMotionAdapter {
     private EpsilonModel epsilon;
     public EpsilonCirculation(){
-        this.epsilon = (EpsilonModel) ModelData.getModels().getFirst();
+        this.epsilon = ModelData.getEpsilon();
     }
 
     @Override
