@@ -123,12 +123,6 @@ public abstract class Spawner {
                  ModelRequests.addObjectModel(new CerberusModel(position ,id));
                  ViewRequest.addObjectView(new CerberusView(position ,id));
                  break;
-            case portal:
-                PortalModel portalModel = new PortalModel(position ,id);
-                ModelRequests.addObjectModel(portalModel);
-                ViewRequest.addObjectView(new PortalView(position ,id));
-                Controller.setPortalModel(portalModel);
-                break;
         }
     }
 
@@ -299,5 +293,19 @@ public abstract class Spawner {
                         epsilonVertexModel.getId()
                 )
         );
+    }
+
+    public static void spawnPortal(Vector position, FrameModel epsilonFrame) {
+        String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
+        PortalModel portalModel = new PortalModel(
+                epsilonFrame,
+                id
+        );
+        ModelRequests.addObjectModel(portalModel);
+        ViewRequest.addObjectView(new PortalView(
+                portalModel.getPosition().clone(),
+                id
+        ));
+        Controller.setPortalModel(portalModel);
     }
 }

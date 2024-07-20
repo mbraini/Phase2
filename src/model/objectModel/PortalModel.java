@@ -6,14 +6,20 @@ import controller.enums.ModelType;
 import model.interfaces.Ability;
 import model.interfaces.Fader;
 import model.interfaces.IsCircle;
+import model.objectModel.frameModel.FrameModel;
 import utils.Vector;
 
-public class PortalModel extends ObjectModel implements IsCircle, Fader {
+public class PortalModel extends ObjectModel implements IsCircle, Fader ,Ability {
     private double fadeTime;
+    private FrameModel epsilonFrame;
 
-    public PortalModel(Vector position ,String id) {
-        this.position = position;
+    public PortalModel(FrameModel epsilonFrame, String id) {
         this.id = id;
+        this.epsilonFrame = epsilonFrame;
+        position = new Vector(
+                epsilonFrame.getPosition().x + epsilonFrame.getSize().width,
+                epsilonFrame.getPosition().y
+        );
         this.velocity = new Vector(0 ,0);
         this.acceleration = new Vector(0 ,0);
         HP = 1;
@@ -47,4 +53,16 @@ public class PortalModel extends ObjectModel implements IsCircle, Fader {
         }
     }
 
+    @Override
+    public void ability() {
+        position = new Vector(
+                epsilonFrame.getPosition().x + epsilonFrame.getSize().width,
+                epsilonFrame.getPosition().y
+        );
+    }
+
+    @Override
+    public boolean hasAbility() {
+        return true;
+    }
 }

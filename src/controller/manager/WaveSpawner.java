@@ -72,12 +72,12 @@ public class WaveSpawner {
         repeatedCount++;
         spawnDelay = 5000;
         if (repeatedCount == 1) {
-            Spawner.spawnObject(
+            Spawner.spawnPortal(
                     new Vector(
                             epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
                             epsilonFrame.getPosition().y + epsilonFrame.getSize().height / 2d
                     ),
-                    ModelType.portal
+                    ModelData.getEpsilonFrame()
             );
         }
         if (enemyKilled >= 0 && enemyKilled <= 5) {
@@ -97,12 +97,12 @@ public class WaveSpawner {
     private void secondWave(int enemyKilled) {
         repeatedCount++;
         if (repeatedCount == 1) {
-            Spawner.spawnObject(
+            Spawner.spawnPortal(
                     new Vector(
                             epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
                             epsilonFrame.getPosition().y + epsilonFrame.getSize().height / 2d
                     ),
-                    ModelType.portal
+                    ModelData.getEpsilonFrame()
             );
         }
         if (enemyKilled >= lastWaveKilled && enemyKilled <= lastWaveKilled + 2) {
@@ -133,12 +133,12 @@ public class WaveSpawner {
         }
         if (repeatedCount == 1) {
             Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.archmire);
-            Spawner.spawnObject(
+            Spawner.spawnPortal(
                     new Vector(
                             epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
                             epsilonFrame.getPosition().y + epsilonFrame.getSize().height / 2d
                     ),
-                    ModelType.portal
+                    ModelData.getEpsilonFrame()
             );
             GameState.setEnemyCount(GameState.getEnemyCount() + 1);
         }
@@ -166,12 +166,12 @@ public class WaveSpawner {
                     ),
                     ModelType.blackOrb
             );
-            Spawner.spawnObject(
+            Spawner.spawnPortal(
                     new Vector(
                             epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
                             epsilonFrame.getPosition().y + epsilonFrame.getSize().height / 2d
                     ),
-                    ModelType.portal
+                    ModelData.getEpsilonFrame()
             );
             GameState.setEnemyCount(GameState.getEnemyCount() + 5);
         }
@@ -209,12 +209,12 @@ public class WaveSpawner {
         repeatedCount++;
         if (repeatedCount == 1) {
             Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.archmire);
-            Spawner.spawnObject(
+            Spawner.spawnPortal(
                     new Vector(
                             epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
                             epsilonFrame.getPosition().y + epsilonFrame.getSize().height / 2d
                     ),
-                    ModelType.portal
+                    ModelData.getEpsilonFrame()
             );
             GameState.setEnemyCount(GameState.getEnemyCount() + 1);
         }
