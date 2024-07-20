@@ -41,6 +41,7 @@ import view.painter.Render;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public abstract class Controller {
     private static Render render;
@@ -48,6 +49,7 @@ public abstract class Controller {
     private static FrameThread frameThread;
     private static GameManager gameManager;
     private static PortalModel portalModel;
+    private static GameMode gameMode;
 
     public static void updateView(){
         synchronized (ModelData.getModels()) {
@@ -160,12 +162,6 @@ public abstract class Controller {
         GameState.setPause(false);
     }
 
-    public static void load(){
-        synchronized (GameManagerThread.getJsonLock()) {
-            new GameLoader("src/controller/manager/saving/inGameSaved").load();
-        }
-    }
-
     public static void pause() {
         GameState.setPause(true);
     }
@@ -228,8 +224,12 @@ public abstract class Controller {
 
 
     public static void startGame(){
+        gameMode = GameMode.inGame;
         if (GameSaver.isGameSaved()) {
-            load();
+            GameState.reset();
+            modelStarter();
+            viewStarter();
+            new GameLoader("src/controller/manager/saving/inGameSaved").load();
             Controller.threadsStarter();
         }
         else {
@@ -245,17 +245,9 @@ public abstract class Controller {
     }
 
     public static void endGame() {
-        GameState.setOver(true);
-        render.interrupt();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        endRequest();
         if (GameSaver.isPortalSaved()) {
-            GameState.reset();
-            ModelRequests.endRequest();
-            ViewRequest.endRequest();
+            gameMode = GameMode.portal;
             new GameLoader("src/controller/manager/saving/portalSaved").load();
             GameState.setOver(false);
             GameState.setPause(false);
@@ -265,6 +257,23 @@ public abstract class Controller {
         }
         else {
             new EndGamePanel(new EndGameFrame()).start();
+        }
+    }
+
+    private static void endRequest() {
+        GameState.setOver(true);
+        render.interrupt();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        GameState.reset();
+        ModelRequests.endRequest();
+        ViewRequest.endRequest();
+        Helper.resetAllJsons("src/controller/manager/saving/inGameSaved");
+        if (gameMode == GameMode.portal) {
+            Helper.resetAllJsons("src/controller/manager/saving/portalSaved");
         }
     }
 

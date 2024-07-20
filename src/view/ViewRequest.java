@@ -33,7 +33,6 @@ public class ViewRequest {
             endRequest = false;
             resetAll();
             ViewData.resetAll();
-            System.out.println("END VIEW");
         }
         checkObjects();
         checkFrames();

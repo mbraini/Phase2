@@ -5,8 +5,12 @@ import constants.Constants;
 import model.objectModel.frameModel.FrameModel;
 
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Helper {
     private static final Random random = new Random();
@@ -116,5 +120,16 @@ public class Helper {
                     epsilonFrame.getPosition().y + epsilonFrame.getSize().height + size.height            );
         }
         return solution;
+    }
+
+    public static void resetAllJsons(String path) {
+        try {
+            PrintWriter printWriter = new PrintWriter(new File(path + "/models.json"));
+            printWriter.write("");
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

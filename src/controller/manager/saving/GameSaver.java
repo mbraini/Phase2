@@ -15,9 +15,11 @@ import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.frameModel.FrameModel;
 import model.skillTreeAbilities.SkillTreeAbility;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GameSaver {
 
@@ -159,11 +161,37 @@ public class GameSaver {
     }
 
     public static boolean isPortalSaved() {
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new File("src/controller/manager/saving/portalSaved/models.json"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        while (scanner.hasNextLine()) {
+            stringBuilder.append(scanner.nextLine());
+        }
+        if (stringBuilder.toString().isEmpty()) {
+            return false;
+        }
         return true;
     }
 
     public static boolean isGameSaved() {
-        return false;
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new File("src/controller/manager/saving/inGameSaved/models.json"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        while (scanner.hasNextLine()) {
+            stringBuilder.append(scanner.nextLine());
+        }
+        if (stringBuilder.toString().isEmpty()) {
+            return false;
+        }
+        return true;
     }
 
 

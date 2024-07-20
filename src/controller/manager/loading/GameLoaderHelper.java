@@ -33,6 +33,7 @@ import model.objectModel.fighters.normalEnemies.necropickModel.NecropickModel;
 import model.objectModel.fighters.normalEnemies.omenoctModel.OmenoctModel;
 import model.objectModel.fighters.normalEnemies.wyrmModel.WyrmModel;
 import model.objectModel.frameModel.FrameModel;
+import model.objectModel.projectiles.*;
 import model.skillTreeAbilities.*;
 import model.skillTreeAbilities.Cerberus.Cerberus;
 import model.skillTreeAbilities.Cerberus.CerberusModel;
@@ -54,6 +55,7 @@ import view.objectViews.normalEnemyView.OmenoctView;
 import view.objectViews.normalEnemyView.WyrmView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireEffectView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireView;
+import view.objectViews.projectiles.*;
 
 import java.util.ArrayList;
 
@@ -185,6 +187,54 @@ public class GameLoaderHelper {
                 ((CerberusModel) model).start();
                 ModelData.addModel(model);
                 ViewRequest.addObjectView(new CerberusView(
+                        model.getPosition(),
+                        model.getId()
+                ));
+                break;
+            case epsilonBullet:
+                model = gson.fromJson(jsonString , EpsilonBulletModel.class);
+                ModelRequests.addObjectModel(model);
+                ViewRequest.addObjectView(new EpsilonBulletView(
+                        model.getPosition(),
+                        model.getId()
+                ));
+                break;
+            case wyrmBullet:
+                model = gson.fromJson(jsonString , WyrmBulletModel.class);
+                ModelRequests.addObjectModel(model);
+                ViewRequest.addObjectView(new WyrmBulletView(
+                        model.getPosition(),
+                        model.getId()
+                ));
+                break;
+            case slaughterBullet:
+                model = gson.fromJson(jsonString , SlaughterBulletModel.class);
+                ModelRequests.addObjectModel(model);
+                ViewRequest.addObjectView(new SlaughterBulletView(
+                        model.getPosition(),
+                        model.getId()
+                ));
+                break;
+            case necropickBullet:
+                model = gson.fromJson(jsonString , NecropickBulletModel.class);
+                ModelRequests.addObjectModel(model);
+                ViewRequest.addObjectView(new NecropickBulletView(
+                        model.getPosition(),
+                        model.getId()
+                ));
+                break;
+            case omenoctBullet:
+                model = gson.fromJson(jsonString , OmenoctBulletModel.class);
+                ModelRequests.addObjectModel(model);
+                ViewRequest.addObjectView(new OmenoctBulletView(
+                        model.getPosition(),
+                        model.getId()
+                ));
+                break;
+            case bossBullet:
+                model = gson.fromJson(jsonString , BossBulletModel.class);
+                ModelRequests.addObjectModel(model);
+                ViewRequest.addObjectView(new BossBulletView(
                         model.getPosition(),
                         model.getId()
                 ));
