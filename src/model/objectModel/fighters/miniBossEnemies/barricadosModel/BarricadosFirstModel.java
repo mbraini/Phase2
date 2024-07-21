@@ -11,6 +11,7 @@ public class BarricadosFirstModel extends BarricadosModel {
         this.id = id;
         this.vulnerableToEpsilonBullet = false;
         this.vulnerableToEpsilonMelee = false;
+        isMotionless = true;
         type = ModelType.barricadosTheFirst;
         initVertices();
     }

@@ -23,7 +23,7 @@ public class ArchmireAoeEffectModel extends AoeEffectModel implements Fader , Is
 
     public ArchmireAoeEffectModel(ArchmireModel archmire ,String id){
         this.id = id;
-        this.R = 255;
+        this.G = 255;
         this.archmire = archmire;
         effectType = EffectType.archmireEffect;
         setUpArea(archmire);
@@ -72,9 +72,9 @@ public class ArchmireAoeEffectModel extends AoeEffectModel implements Fader , Is
     public void addTime(double time) {
         if (time >= Constants.ARCHMIRE_AOE_TIME_LIMIT)
             return;
-        int R;
-        R =(int) (255 - (this.fadeTime / Constants.ARCHMIRE_AOE_TIME_LIMIT) * 255);
-        this.R = R;
+        int G;
+        G =(int) (255 - (this.fadeTime / Constants.ARCHMIRE_AOE_TIME_LIMIT) * 255);
+        this.G = G;
         fadeTime += time;
     }
 

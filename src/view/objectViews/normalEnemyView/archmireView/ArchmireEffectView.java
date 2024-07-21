@@ -15,7 +15,7 @@ public class ArchmireEffectView extends EffectView {
     public ArchmireEffectView(Area area, String id){
         this.area = area;
         this.id = id;
-        this.color = Color.RED;
+        this.color = Color.GREEN;
     }
 
     @Override

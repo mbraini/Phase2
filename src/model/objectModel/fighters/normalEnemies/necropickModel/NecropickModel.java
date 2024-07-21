@@ -60,6 +60,7 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
                     hoveringTime = 0;
                     setHovering(true);
                     hasAbility = true;
+                    isMotionless = true;
                     abilityTimer.start();
                     hoveringTimer.stop();
                 }
@@ -78,6 +79,7 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
                     abilityTime += 1000;
                 if (abilityTime >= 4000) {
                     abilityTime = 0;
+                    isMotionless = false;
                     new NecropickShooter(position).shoot();
                     setHovering(false);
                     hasAbility = false;

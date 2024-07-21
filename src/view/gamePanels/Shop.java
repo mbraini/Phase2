@@ -351,6 +351,9 @@ public class Shop extends PIG {
         g.drawImage(Constants.heal ,heal.getX() ,heal.getY() ,heal.getWidth() ,heal.getHeight() ,null);
         g.drawImage(Constants.empower ,empower.getX() ,empower.getY() ,empower.getWidth() ,empower.getHeight() ,null);
         g.drawImage(Constants.banish ,banish.getX() ,banish.getY() ,banish.getWidth() ,banish.getHeight() ,null);
+        g.drawImage(Constants.slumber ,slumber.getX() ,slumber.getY() ,slumber.getWidth() ,slumber.getHeight() ,null);
+//        g.drawImage(Constants.banish ,banish.getX() ,banish.getY() ,banish.getWidth() ,banish.getHeight() ,null);
+//        g.drawImage(Constants.banish ,banish.getX() ,banish.getY() ,banish.getWidth() ,banish.getHeight() ,null);
     }
 
     @Override

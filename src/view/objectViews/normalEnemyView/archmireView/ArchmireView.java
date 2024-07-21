@@ -11,7 +11,7 @@ public class ArchmireView extends NormalEnemyView {
     public ArchmireView(Vector position , String id){
         this.position = position;
         this.id = id;
-        this.image = Constants.omenoct;
+        this.image = Constants.archmire;
     }
 
     @Override

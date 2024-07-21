@@ -3,6 +3,7 @@ package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 import controller.enums.AbstractEnemyType;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
+import model.ModelRequests;
 import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.frameModel.FrameModel;
@@ -125,4 +126,9 @@ public class BlackOrbModel extends AbstractEnemy {
     }
 
 
+    public void checkDeath() {
+        if (orbModels.isEmpty()) {
+            ModelRequests.removeAbstractEnemy(id);
+        }
+    }
 }

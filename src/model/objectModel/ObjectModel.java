@@ -15,6 +15,7 @@ public abstract class ObjectModel {
     protected double HP;
     protected boolean isHovering;
     protected boolean isSolid;
+    protected boolean isMotionless;
     protected ModelType type;
 
     public Vector getPosition() {
@@ -123,4 +124,11 @@ public abstract class ObjectModel {
         this.type = type;
     }
 
+    public boolean isMotionless() {
+        return isMotionless;
+    }
+
+    public void setMotionless(boolean motionless) {
+        isMotionless = motionless;
+    }
 }

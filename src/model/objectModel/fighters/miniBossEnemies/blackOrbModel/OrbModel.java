@@ -23,6 +23,7 @@ public class OrbModel extends MiniBossModel implements IsCircle {
         this.HP = 30;
         this.number = number;
         this.frameModel = blackOrbModel.getFrameModels().get(number);
+        isMotionless = true;
         vulnerableToEpsilonMelee = true;
         vulnerableToEpsilonBullet = true;
     }
@@ -34,6 +35,7 @@ public class OrbModel extends MiniBossModel implements IsCircle {
             super.die();
             blackOrbModel.getBlackOrbThread().disconnectLasers(this);
             blackOrbModel.removeOrb(id);
+            blackOrbModel.checkDeath();
             Controller.removeFrame(frameModel);
             Spawner.addCollectives(position, 1, 30);
         }

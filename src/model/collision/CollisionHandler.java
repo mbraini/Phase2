@@ -85,6 +85,8 @@ public class CollisionHandler {
     }
 
     private void EpsilonProtectorHandler(EpsilonProtectorModel protectorModel, EnemyModel enemyModel) {
+        if (enemyModel.isHovering() || enemyModel.isMotionless())
+            return;
         pullOutObject(enemyModel ,protectorModel);
     }
 
@@ -100,7 +102,10 @@ public class CollisionHandler {
     private void enemyHandler(EnemyModel enemy1, EnemyModel enemy2) {
         if (enemy1.isHovering() || enemy2.isHovering())
             return;
-        pullOutObject(enemy1 ,enemy2);
+        if (enemy2.isMotionless())
+            pullOutObject(enemy1 ,enemy2);
+        else if (enemy1.isMotionless())
+            pullOutObject(enemy2 ,enemy1);
         new Impact(collisionPoint).MakeImpact();
         if (enemy1 instanceof CollisionDetector)
             ((CollisionDetector) enemy1).detect();
