@@ -138,6 +138,11 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
     }
 
     @Override
+    public void damage() {
+        HP = HP - Constants.OMENOCT_FRAME_DAMAGE;
+    }
+
+    @Override
     public void move() {
         velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(Constants.UPS ,acceleration));
         double xMoved = ((2 * velocity.x - acceleration.x * Constants.UPS) / 2) * Constants.UPS;

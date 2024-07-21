@@ -104,9 +104,9 @@ public class FrameThread extends Thread{
         for (ObjectModel model : models){
             FrameModel frame = localFrames.get(model);
             if (frame == null && model.isSolid())
-                new NullLocalFrameHandler(model ,frames ,previousLocals).handle();
+                new NullLocalFrameHandler(model,models ,frames ,previousLocals).handle();
             if (model instanceof EpsilonModel) {
-                new NullLocalFrameHandler(model ,frames ,localFrames).epsilonHandler();
+                new NullLocalFrameHandler(model ,models ,frames ,localFrames).epsilonHandler();
             }
         }
     }

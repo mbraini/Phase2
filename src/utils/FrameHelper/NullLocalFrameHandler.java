@@ -18,13 +18,16 @@ public class NullLocalFrameHandler {
     ObjectModel model;
     ArrayList<FrameModel> frames;
     HashMap<ObjectModel ,FrameModel> previousLocals;
+    ArrayList<ObjectModel> models;
     public NullLocalFrameHandler(
             ObjectModel model,
+            ArrayList<ObjectModel> models,
             ArrayList<FrameModel> frames ,
             HashMap<ObjectModel , FrameModel> previousLocals
     )
     {
         this.model = model;
+        this.models = models;
         this.frames = frames;
         this.previousLocals = previousLocals;
     }
@@ -124,10 +127,10 @@ public class NullLocalFrameHandler {
                 if (distance < min)
                     min = distance;
             }
-            new FrameHit(map.get(min) ,model).handle();
+            new FrameHit(map.get(min) ,model ,models).handle();
         }
         else {
-            new FrameHit(previousLocals.get(model), model).handle();
+            new FrameHit(previousLocals.get(model), model ,models).handle();
         }
         model.die();
     }
