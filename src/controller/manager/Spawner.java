@@ -4,6 +4,7 @@ import controller.Controller;
 import controller.enums.ModelType;
 import constants.Constants;
 import model.ModelRequests;
+import model.animations.BossSpawnAnimation;
 import model.inGameAbilities.Dismay.EpsilonProtectorModel;
 import model.objectModel.CollectiveModel;
 import model.objectModel.PortalModel;
@@ -209,10 +210,10 @@ public abstract class Spawner {
     }
 
     public static synchronized void spawnBoss(){
-        Boss boss = new Boss();
+        Boss boss = new Boss(Helper.RandomStringGenerator(Constants.ID_SIZE));
+        BossSpawnAnimation bossSpawnAnimation = new BossSpawnAnimation(boss);
+        bossSpawnAnimation.StartAnimation();
         ModelRequests.addAbstractEnemy(boss);
-        boss.spawnHelpers();
-        boss.spawnPunch();
     }
 
 

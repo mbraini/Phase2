@@ -71,7 +71,7 @@ public class Constants {
     public static final double PROJECTILE_NAVIGATE_RADIOS = 500;
     public static final int PROJECTILE_THREAD_REFRESH_RATE = 10;
     public static final double BOSS_BULLET_RADIOS = 20;
-    public static final double PROJECTILE_DURATION = 5000;
+    public static final double PROJECTILE_DURATION = 8000;
     public static final double VOMIT_RADIOS = 50;
     public static final double PUNCH_FRAME_PUSH_DISTANCE = 100;
     public static final int BOSS_BULLET_DELAY_TIME = 3000;
@@ -167,4 +167,5 @@ public class Constants {
     public static Image bossAoe;
     public static Image slumber;
     public static BufferedImage archmire;
+    public static Image skeleton;
 }

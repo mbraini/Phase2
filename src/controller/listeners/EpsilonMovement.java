@@ -16,7 +16,7 @@ import java.awt.event.KeyListener;
 import java.util.HashSet;
 
 public class EpsilonMovement extends KeyAdapter {
-    private HashSet<Integer> keys = new HashSet<>();
+    public static HashSet<Integer> keys = new HashSet<>();
     private EpsilonModel epsilon;
     private Vector direction = new Vector(0 ,0);
     public static Timer xStopper;
@@ -27,7 +27,7 @@ public class EpsilonMovement extends KeyAdapter {
     public static int DOWN_KEY = 40;
 
     public EpsilonMovement(){
-        this.epsilon = ModelData.getEpsilon();
+        this.epsilon = (EpsilonModel) (ModelData.getModels().getFirst());
         xStopper = new Timer(Configs.EPSILON_DECELERATION_TIME, new xStopperAL(epsilon));
         yStopper = new Timer(Configs.EPSILON_DECELERATION_TIME, new yStopperAL(epsilon));
     }

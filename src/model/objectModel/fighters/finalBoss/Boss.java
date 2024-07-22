@@ -16,17 +16,30 @@ public class Boss extends AbstractEnemy {
     private HandModel rightHand;
     private HeadModel head;
     private PunchModel punch;
+    private int attackPhase = 1;
     @SkippedByJson
     private BossThread bossThread;
 
-    public Boss(){
-        head = new HeadModel(
+    public Boss(String id){
+        this.id = id;
+        initHead();
+        initHands();
+        initPunch();
+        bossThread = new BossThread(this);
+        bossThread.start();
+    }
+
+    private void initPunch() {
+        punch = new PunchModel(
                 new Vector(
-                        Constants.SCREEN_SIZE.width / 2d,
-                        Constants.HEAD_DIMENSION.height / 2d
+                        Constants.PUNCH_DIMENSION.width / 2d,
+                        Constants.SCREEN_SIZE.height - Constants.PUNCH_DIMENSION.height /2d
                 ),
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
+    }
+
+    private void initHands() {
         leftHand = new HandModel(
                 new Vector(
                         Constants.HAND_DIMENSION.width / 2d,
@@ -41,25 +54,35 @@ public class Boss extends AbstractEnemy {
                 ),
                 Helper.RandomStringGenerator(Constants.ID_SIZE)
         );
-        punch = new PunchModel(
-                new Vector(
-                        Constants.PUNCH_DIMENSION.width / 2d,
-                        Constants.SCREEN_SIZE.height - Constants.PUNCH_DIMENSION.height /2d
-                ),
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
-        );
-        bossThread = new BossThread(this);
-        bossThread.start();
     }
 
-    public void spawnHelpers(){
+    private void initHead() {
+        head = new HeadModel(
+                new Vector(
+                        Constants.SCREEN_SIZE.width / 2d,
+                        -Constants.HEAD_DIMENSION.width
+                ),
+                this,
+                Helper.RandomStringGenerator(Constants.ID_SIZE)
+        );
+    }
+
+    public void spawnHead() {
         Spawner.spawnHead(head);
+        head.setInUse(false);
+    }
+    public void spawnLeftHand() {
         Spawner.spawnHand(leftHand);
+        leftHand.setInUse(false);
+    }
+    public void spawnRightHand() {
         Spawner.spawnHand(rightHand);
+        rightHand.setInUse(false);
     }
 
     public void spawnPunch(){
         Spawner.addPunch(punch);
+        punch.setInUse(false);
     }
 
 
@@ -93,5 +116,13 @@ public class Boss extends AbstractEnemy {
 
     public void setPunch(PunchModel punch) {
         this.punch = punch;
+    }
+
+    public int getAttackPhase() {
+        return attackPhase;
+    }
+
+    public void setPhaseAttack(int phaseAttack) {
+        this.attackPhase = phaseAttack;
     }
 }

@@ -1,7 +1,7 @@
 package model.objectModel.fighters.normalEnemies.omenoctModel;
 
 import model.ModelData;
-import model.collision.Collision;
+import model.logics.collision.Collision;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.frameModel.FrameModel;
 import utils.FrameHelper.FrameCalculationHelper;

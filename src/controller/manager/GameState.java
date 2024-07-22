@@ -25,6 +25,8 @@ public class GameState {
     private static boolean isPause;
     private static boolean isOver;
     private static boolean isDizzy;
+    private static volatile boolean isInAnimation;
+
     public GameState(){
         /////todo
     }
@@ -217,5 +219,13 @@ public class GameState {
 
     public static void setLastWaveTime(double lastWaveTime) {
         GameState.lastWaveTime = lastWaveTime;
+    }
+
+    public static void setIsInAnimation(boolean isInAnimation) {
+        GameState.isInAnimation = isInAnimation;
+    }
+
+    public static boolean isInAnimation() {
+        return isInAnimation;
     }
 }

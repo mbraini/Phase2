@@ -10,7 +10,7 @@ import utils.Vector;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class HandModel extends BossHelper implements IsPolygon , HasVertices {
+public class HandModel extends BossHelperModel implements IsPolygon , HasVertices {
 
     private ArrayList<Vector> vertices;
 
@@ -21,6 +21,11 @@ public class HandModel extends BossHelper implements IsPolygon , HasVertices {
         this.image = Constants.hand;
         this.velocity = new Vector();
         this.acceleration = new Vector();
+        size = new Dimension(
+                Constants.HAND_DIMENSION.width,
+                Constants.HAND_DIMENSION.height
+        );
+        HP = 100;
         setHovering(true);
         initFrame();
         initVertices();
@@ -43,10 +48,6 @@ public class HandModel extends BossHelper implements IsPolygon , HasVertices {
         ));
     }
 
-    @Override
-    public void die() {
-
-    }
 
     @Override
     protected void initFrame() {
@@ -63,17 +64,6 @@ public class HandModel extends BossHelper implements IsPolygon , HasVertices {
         );
         builder.setIsometric(true);
         frame = builder.create();
-    }
-
-    @Override
-    public void setStuckFramePosition() {
-        frame.transfer(Math.VectorAdd(
-                position,
-                new Vector(
-                        -Constants.HAND_DIMENSION.width / 2d,
-                        -Constants.HAND_DIMENSION.height / 2d
-                )
-        ));
     }
 
     @Override

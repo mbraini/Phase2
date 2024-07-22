@@ -3,7 +3,7 @@ package model.objectModel.fighters;
 
 import controller.Controller;
 import controller.manager.GameState;
-import model.collision.Collision;
+import model.logics.collision.Collision;
 import model.interfaces.IsCircle;
 import model.interfaces.IsPolygon;
 import model.objectModel.FighterModel;

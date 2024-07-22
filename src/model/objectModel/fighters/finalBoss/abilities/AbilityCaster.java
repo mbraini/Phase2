@@ -53,11 +53,11 @@ public class AbilityCaster {
     public boolean canCast(){
         switch (abilityType){
             case squeeze :
-                if (!boss.getLeftHand().isInUse() && !boss.getRightHand().isInUse())
+                if (!boss.getLeftHand().isInUse() && !boss.getRightHand().isInUse() && !boss.getLeftHand().isDead() && !boss.getRightHand().isDead())
                     return true;
                 break;
             case projectile:
-                if (!boss.getHead().isInUse() && !boss.getLeftHand().isInUse() && !boss.getRightHand().isInUse())
+                if (!boss.getHead().isInUse())
                     return true;
                 break;
             case vomit:
@@ -73,7 +73,11 @@ public class AbilityCaster {
                     return true;
                 break;
             case slap:
-                if (!boss.getLeftHand().isInUse() || !boss.getRightHand().isInUse() || !boss.getPunch().isInUse())
+                if (
+                        (!boss.getLeftHand().isInUse() && !boss.getLeftHand().isDead())
+                                || (!boss.getRightHand().isInUse() && !boss.getRightHand().isDead())
+                                || !boss.getPunch().isInUse()
+                )
                     return true;
                 break;
             case quake:

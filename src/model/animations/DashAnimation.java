@@ -42,7 +42,7 @@ public class DashAnimation extends Animation {
             }
             if (!GameState.isPause()) {
                 timePassed += 100;
-                if (timePassed == time) {
+                if (timePassed >= time) {
                     stopDash(this);
                 }
             }

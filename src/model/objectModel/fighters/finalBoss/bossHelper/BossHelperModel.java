@@ -1,5 +1,7 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
+import controller.Controller;
+import controller.interfaces.SizeChanger;
 import controller.manager.loading.SkippedByJson;
 import constants.Constants;
 import model.interfaces.FrameSticker;
@@ -10,14 +12,17 @@ import model.objectModel.fighters.EnemyModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import utils.Math;
+import utils.Vector;
 
 import java.awt.*;
 
-public abstract class BossHelper extends EnemyModel implements ImageChanger , MoveAble , FrameSticker {
+public abstract class BossHelperModel extends EnemyModel implements ImageChanger , MoveAble , FrameSticker , SizeChanger {
     protected FrameModel frame;
     @SkippedByJson
     protected Image image;
-    protected boolean isInUse;
+    protected Dimension size;
+    protected boolean isInUse = true;
+    protected boolean isDead;
     protected abstract void initFrame();
 
     @Override
@@ -49,6 +54,14 @@ public abstract class BossHelper extends EnemyModel implements ImageChanger , Mo
         isInUse = inUse;
     }
 
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
+
     @Override
     public void move() {
         velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(Constants.UPS ,acceleration));
@@ -62,6 +75,35 @@ public abstract class BossHelper extends EnemyModel implements ImageChanger , Mo
         theta = theta + thetaMoved;
         if (this instanceof HasVertices)
             ((HasVertices) this).UpdateVertices(xMoved ,yMoved ,thetaMoved);
+    }
+
+    @Override
+    public void setStuckFramePosition() {
+        frame.setSize(size);
+        frame.transfer(Math.VectorAdd(
+                position,
+                new Vector(
+                        -size.width / 2d,
+                        -size.height / 2d
+                )
+        ));
+    }
+
+    @Override
+    public void setSize(Dimension size) {
+        this.size = size;
+    }
+
+    @Override
+    public Dimension getSize() {
+        return size;
+    }
+
+    @Override
+    public void die() {
+        Controller.removeObject(this);
+        Controller.removeFrame(frame);
+        setDead(true);
     }
 
 }

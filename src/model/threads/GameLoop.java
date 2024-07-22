@@ -6,7 +6,7 @@ import constants.Constants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.ModelRequests;
-import model.collision.Collision;
+import model.logics.collision.Collision;
 import model.interfaces.*;
 import model.objectModel.ObjectModel;
 import model.objectModel.fighters.EnemyModel;

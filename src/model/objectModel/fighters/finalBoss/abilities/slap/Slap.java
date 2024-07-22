@@ -5,7 +5,7 @@ import model.animations.DashAnimation;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.Ability;
-import model.objectModel.fighters.finalBoss.bossHelper.BossHelper;
+import model.objectModel.fighters.finalBoss.bossHelper.BossHelperModel;
 import utils.Math;
 import utils.Vector;
 
@@ -18,7 +18,7 @@ import java.util.Random;
 public class Slap extends Ability {
 
     private Boss boss;
-    private BossHelper helper;
+    private BossHelperModel helper;
     private EpsilonModel epsilonModel;
     private Timer timer;
     private Timer unsetUptimer;
@@ -35,6 +35,8 @@ public class Slap extends Ability {
         helper.setHovering(false);
         helper.setHasMeleeAttack(true);
         helper.setMeleeAttack(10);
+        boss.getHead().setVulnerableToEpsilonMelee(true);
+        boss.getHead().setVulnerableToEpsilonBullet(true);
     }
 
     @Override
@@ -43,6 +45,8 @@ public class Slap extends Ability {
         helper.setHovering(false);
         helper.setHasMeleeAttack(false);
         helper.setMeleeAttack(0);
+        boss.getHead().setVulnerableToEpsilonMelee(false);
+        boss.getHead().setVulnerableToEpsilonBullet(false);
     }
 
     @Override
@@ -107,7 +111,7 @@ public class Slap extends Ability {
         HelperAnimation(helper ,direction);
     }
 
-    private void HelperAnimation(BossHelper helper, Vector direction) {
+    private void HelperAnimation(BossHelperModel helper, Vector direction) {
         new DashAnimation(
                 helper,
                 direction,
@@ -139,7 +143,7 @@ public class Slap extends Ability {
     }
 
     private void chooseHelper() {
-        ArrayList<BossHelper> helpers = new ArrayList<>();
+        ArrayList<BossHelperModel> helpers = new ArrayList<>();
         if (!boss.getLeftHand().isInUse())
             helpers.add(boss.getLeftHand());
         if (!boss.getRightHand().isInUse())

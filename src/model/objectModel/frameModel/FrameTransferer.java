@@ -1,7 +1,7 @@
 package model.objectModel.frameModel;
 
 import model.ModelData;
-import model.collision.Collision;
+import model.logics.collision.Collision;
 import utils.Math;
 import utils.Vector;
 

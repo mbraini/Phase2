@@ -3,7 +3,7 @@ package model.objectModel.fighters.finalBoss.abilities.vomit;
 import constants.Constants;
 import controller.manager.GameState;
 import model.ModelData;
-import model.collision.Collision;
+import model.logics.collision.Collision;
 import model.objectModel.ObjectModel;
 import model.objectModel.frameModel.FrameModel;
 

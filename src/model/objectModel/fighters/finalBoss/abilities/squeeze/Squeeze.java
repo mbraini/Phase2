@@ -31,6 +31,8 @@ public class Squeeze extends Ability implements Navigator {
         ownHelper(boss.getLeftHand());
         boss.getRightHand().setHovering(false);
         boss.getLeftHand().setHovering(false);
+        boss.getHead().setVulnerableToEpsilonMelee(true);
+        boss.getHead().setVulnerableToEpsilonBullet(true);
     }
 
     @Override
@@ -39,6 +41,10 @@ public class Squeeze extends Ability implements Navigator {
         disownHelper(boss.getLeftHand());
         boss.getRightHand().setHovering(false);
         boss.getLeftHand().setHovering(false);
+        boss.getLeftHand().getFrame().setSolid(false);
+        boss.getRightHand().getFrame().setSolid(false);
+        boss.getHead().setVulnerableToEpsilonMelee(false);
+        boss.getHead().setVulnerableToEpsilonBullet(false);
     }
 
     @Override

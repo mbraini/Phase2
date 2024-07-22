@@ -4,7 +4,7 @@ package model.threads;
 import constants.Constants;
 import controller.manager.GameState;
 import model.ModelData;
-import model.collision.Collision;
+import model.logics.collision.Collision;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.ObjectModel;
@@ -63,8 +63,8 @@ public class FrameThread extends Thread{
         checkSolidObjectBounds();
         resize(frames);
         updatePreviousLocals();
-        if (!frames.isEmpty())
-            framePressure(frames.getFirst());
+//        if (!frames.isEmpty())
+//            framePressure(frames.getFirst());
     }
 
     private void resetDisables() {

@@ -1,4 +1,4 @@
-package model.collision;
+package model.logics.collision;
 
 
 import controller.Controller;
@@ -11,7 +11,7 @@ import model.objectModel.PortalModel;
 import model.objectModel.fighters.EnemyModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.ObjectModel;
-import model.objectModel.fighters.finalBoss.bossHelper.BossHelper;
+import model.objectModel.fighters.finalBoss.bossHelper.BossHelperModel;
 import model.objectModel.projectiles.BulletModel;
 import model.objectModel.projectiles.EpsilonBulletModel;
 import model.skillTreeAbilities.Cerberus.CerberusModel;
@@ -91,7 +91,8 @@ public class CollisionHandler {
     }
 
     private void BulletToEnemyHandler(EnemyModel enemy, EpsilonBulletModel epsilonBullet) {
-        enemy.setHP(enemy.getHP() - epsilonBullet.getDamage());
+        if (enemy.isVulnerableToEpsilonBullet())
+            enemy.setHP(enemy.getHP() - epsilonBullet.getDamage());
         EpsilonModel epsilonModel = ModelData.getEpsilon();
         epsilonModel.setHP(epsilonModel.getHP() + epsilonModel.getLifeSteal());
         epsilonModel.checkHP();
@@ -102,9 +103,11 @@ public class CollisionHandler {
     private void enemyHandler(EnemyModel enemy1, EnemyModel enemy2) {
         if (enemy1.isHovering() || enemy2.isHovering())
             return;
+        if (enemy1 instanceof BossHelperModel && enemy2 instanceof BossHelperModel)
+            return;
         if (enemy2.isMotionless())
             pullOutObject(enemy1 ,enemy2);
-        else if (enemy1.isMotionless())
+        else
             pullOutObject(enemy2 ,enemy1);
         new Impact(collisionPoint).MakeImpact();
         if (enemy1 instanceof CollisionDetector)
@@ -121,7 +124,8 @@ public class CollisionHandler {
             epsilonEnemyMeleeHandler(epsilon ,(EnemyModel)object);
             pullOutObject(epsilon ,object);
             new Impact(collisionPoint).MakeImpact();
-            if (object instanceof BossHelper){
+            if (object instanceof BossHelperModel){
+                System.out.println("BOSS HELPER COLLISION");
                 object.setAcceleration(0 ,0);
                 object.setVelocity(0 ,0);
             }

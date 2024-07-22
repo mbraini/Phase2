@@ -28,12 +28,24 @@ public class PowerPunch extends Ability {
     protected void setUp() {
         ownHelper(boss.getPunch());
         boss.getPunch().setHovering(true);
+        boss.getHead().setVulnerableToEpsilonMelee(true);
+        boss.getHead().setVulnerableToEpsilonBullet(true);
+        boss.getLeftHand().setVulnerableToEpsilonMelee(true);
+        boss.getLeftHand().setVulnerableToEpsilonBullet(true);
+        boss.getRightHand().setVulnerableToEpsilonMelee(true);
+        boss.getRightHand().setVulnerableToEpsilonBullet(true);
     }
 
     @Override
     protected void unsetUp() {
         disownHelper(boss.getPunch());
         boss.getPunch().setHovering(false);
+        boss.getHead().setVulnerableToEpsilonMelee(false);
+        boss.getHead().setVulnerableToEpsilonBullet(false);
+        boss.getLeftHand().setVulnerableToEpsilonMelee(false);
+        boss.getLeftHand().setVulnerableToEpsilonBullet(false);
+        boss.getRightHand().setVulnerableToEpsilonMelee(false);
+        boss.getRightHand().setVulnerableToEpsilonBullet(false);
     }
 
     @Override

@@ -1,9 +1,8 @@
 package utils.FrameHelper;
 
-import model.collision.Collision;
+import model.logics.collision.Collision;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.frameModel.FrameModel;
-import utils.Math;
 import utils.Vector;
 
 public class FrameCalculationHelper {

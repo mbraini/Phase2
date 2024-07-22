@@ -25,6 +25,10 @@ public class SqueezeThread extends Thread {
                 lastTime = System.nanoTime();
                 continue;
             }
+            if (GameState.isInAnimation()) {
+                squeeze.endAbility();
+                return;
+            }
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;

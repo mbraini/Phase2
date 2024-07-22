@@ -11,5 +11,5 @@ public class Configs {
     public static int XP = 1000;
     public static double EPSILON_ACCELERATION = 0.001;
     public static double EPSILON_MAX_SPEED = 1;
-    public static int EPSILON_DECELERATION_TIME = 10;
+    public static int EPSILON_DECELERATION_TIME = 500;
 }

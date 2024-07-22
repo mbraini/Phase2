@@ -1,6 +1,6 @@
 package utils.FrameHelper;
 
-import model.collision.Collision;
+import model.logics.collision.Collision;
 import model.logics.FrameHit;
 import model.logics.Impact;
 import model.objectModel.fighters.EpsilonModel;

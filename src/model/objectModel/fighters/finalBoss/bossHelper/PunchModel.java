@@ -7,21 +7,22 @@ import utils.Vector;
 
 import java.awt.*;
 
-public class PunchModel extends BossHelper{
+public class PunchModel extends BossHelperModel {
 
     public PunchModel(Vector position ,String id){
         this.position = position;
         this.id = id;
         this.image = Constants.punch;
         this.velocity = new Vector();
+        size = new Dimension(
+                Constants.PUNCH_DIMENSION.width,
+                Constants.PUNCH_DIMENSION.height
+        );
+        HP = 100000;
         this.acceleration = new Vector();
         initFrame();
     }
 
-    @Override
-    public void die() {
-
-    }
 
     @Override
     protected void initFrame() {
@@ -40,15 +41,5 @@ public class PunchModel extends BossHelper{
         frame = builder.create();
     }
 
-    @Override
-    public void setStuckFramePosition() {
-        frame.transfer(Math.VectorAdd(
-                position,
-                new Vector(
-                        -Constants.PUNCH_DIMENSION.width / 2d,
-                        -Constants.PUNCH_DIMENSION.height / 2d
-                )
-        ));
-    }
 
 }

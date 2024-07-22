@@ -2,6 +2,7 @@ package model.objectModel.fighters.finalBoss;
 
 import controller.manager.GameState;
 import model.ModelData;
+import model.animations.BossPhase2Animation;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.finalBoss.abilities.AbilityCaster;
 import model.objectModel.fighters.finalBoss.abilities.AbilityType;
@@ -36,14 +37,14 @@ public class BossThread extends Thread {
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
         while (!GameState.isOver()) {
-            if (GameState.isPause()){
-                lastTime = System.nanoTime();
+            long now = System.nanoTime();
+            if (GameState.isPause() || GameState.isInAnimation()){
+                lastTime = now;
                 continue;
             }
-            long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= 1000) {
+            if (deltaModel >= 100) {
                 updateAbilities();
                 deltaModel = 0;
             }
@@ -52,6 +53,13 @@ public class BossThread extends Thread {
     }
 
     private void updateAbilities() {
+        System.out.println("HEAD HP : " + boss.getHead().getHP());
+        System.out.println("LEFT HAND HP : " + boss.getLeftHand().getHP());
+        System.out.println("RIGHT HAND HP : " + boss.getRightHand().getHP());
+        if (boss.getAttackPhase() != 2) {
+            if (phase2())
+                return;
+        }
         defineAbility();
         if (abilityType != null) {
             abilityCaster.setAbilityType(abilityType);
@@ -68,25 +76,41 @@ public class BossThread extends Thread {
         }
     }
 
+    private boolean phase2() {
+        if (boss.getHead().getHP() <= 200) {
+            new BossPhase2Animation(boss).StartAnimation();
+            boss.setPhaseAttack(2);
+            return true;
+        }
+        return false;
+    }
+
     private void defineAbility() {
-        abilityType = AbilityType.quake;
-//        if (bossAI.isInSqueezePosition()){
-//            abilityType = AbilityType.squeeze;
-//            return;
-//        }
-//        if (bossAI.isInProjectileRange()){
-//            abilityType = AbilityType.projectile;
-//            return;
-//        }
-//        if (ability >= 6)
-//            ability = ability - 6;
-//        if (ability == 0 || ability == 1) {
-//            abilityType = null;
-//            ability++;
-//            return;
-//        }
-//        abilityType = AbilityType.values()[ability];
-//        ability++;
+        abilityType = AbilityType.squeeze;
+        if (bossAI.isInSqueezePosition()){
+            abilityType = AbilityType.squeeze;
+            return;
+        }
+        if (bossAI.isInProjectileRange()){
+            abilityType = AbilityType.projectile;
+            return;
+        }
+        if (boss.getAttackPhase() == 1) {
+            if (ability >= 2)
+                ability = ability - 2;
+            abilityType = AbilityType.values()[ability];
+            ability++;
+            return;
+        }
+        if (ability >= 7)
+            ability = ability - 7;
+        if (ability == 0 || ability == 1) {
+            abilityType = null;
+            ability++;
+            return;
+        }
+        abilityType = AbilityType.values()[ability];
+        ability++;
     }
 
 }

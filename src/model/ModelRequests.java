@@ -33,7 +33,6 @@ public class ModelRequests {
     public static void checkRequests(){
         if (endRequest) {
             endRequest = false;
-            System.out.println("END REQUEST!");
             resetAll();
             ModelData.resetAll();
         }

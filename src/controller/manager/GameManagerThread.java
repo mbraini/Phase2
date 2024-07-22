@@ -10,6 +10,7 @@ import model.objectModel.effects.EffectModel;
 import model.objectModel.ObjectModel;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.fighters.EpsilonModel;
+import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
 import model.objectModel.frameModel.FrameModel;
 import model.skillTreeAbilities.SkillTreeAbility;
 
@@ -25,6 +26,7 @@ public class GameManagerThread extends Thread{
     private double time;
     private final static Object jsonLock = new Object();
     private int epsilonDeath;
+    private int bossDeath;
 
     public GameManagerThread() {
 
@@ -108,6 +110,11 @@ public class GameManagerThread extends Thread{
                     if (epsilonDeath > 1) {
                         return;
                     }
+                }
+                if (model instanceof HeadModel) {
+                    bossDeath++;
+                    if (bossDeath > 1)
+                        return;
                 }
                 model.die();
             }

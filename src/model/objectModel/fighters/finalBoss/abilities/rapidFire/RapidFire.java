@@ -19,11 +19,15 @@ public class RapidFire extends Ability {
     @Override
     protected void setUp() {
         ownHelper(boss.getHead());
+        boss.getHead().setVulnerableToEpsilonMelee(true);
+        boss.getHead().setVulnerableToEpsilonBullet(true);
     }
 
     @Override
     protected void unsetUp() {
         disownHelper(boss.getHead());
+        boss.getHead().setVulnerableToEpsilonMelee(false);
+        boss.getHead().setVulnerableToEpsilonBullet(false);
     }
 
     @Override

@@ -224,24 +224,25 @@ public abstract class Controller {
 
 
     public static void startGame(){
-        gameMode = GameMode.inGame;
-        if (GameSaver.isGameSaved()) {
-            GameState.reset();
-            modelStarter();
-            viewStarter();
-            new GameLoader("src/controller/manager/saving/inGameSaved").load();
-            Controller.threadsStarter();
-        }
-        else {
+//        gameMode = GameMode.inGame;
+//        if (GameSaver.isGameSaved()) {
+//            GameState.reset();
+//            modelStarter();
+//            viewStarter();
+//            new GameLoader("src/controller/manager/saving/inGameSaved").load();
+//            Controller.threadsStarter();
+//        }
+//        else {
+            GameState.setXp(100000);
             GameState.reset();
             modelStarter();
             viewStarter();
             addEpsilonAndFrame();
-            new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
+//            new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
             InGameAbilityHandler.initInGameAbilities();
             SkillTreeAbilityHandler.initAbilities();
             Controller.threadsStarter();
-        }
+//        }
     }
 
     public static void endGame() {
@@ -249,6 +250,7 @@ public abstract class Controller {
         if (GameSaver.isPortalSaved()) {
             gameMode = GameMode.portal;
             new GameLoader("src/controller/manager/saving/portalSaved").load();
+            Helper.resetAllJsons("src/controller/manager/saving/portalSaved");
             GameState.setOver(false);
             GameState.setPause(false);
             GameState.setDizzy(false);
@@ -272,9 +274,6 @@ public abstract class Controller {
         ModelRequests.endRequest();
         ViewRequest.endRequest();
         Helper.resetAllJsons("src/controller/manager/saving/inGameSaved");
-        if (gameMode == GameMode.portal) {
-            Helper.resetAllJsons("src/controller/manager/saving/portalSaved");
-        }
     }
 
 

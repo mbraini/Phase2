@@ -1,4 +1,4 @@
-package model.collision;
+package model.logics.collision;
 
 
 import constants.Constants;

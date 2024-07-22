@@ -40,6 +40,7 @@ public class Application implements Runnable{
             Constants.punch = ImageIO.read(new File("src/view/objectViews/images/punch.png"));
             Constants.slumber = ImageIO.read(new File("src/view/objectViews/images/slumber.png"));
             Constants.archmire = ImageIO.read(new File("src/view/objectViews/images/archmire.png"));
+            Constants.skeleton = ImageIO.read(new File("src/view/objectViews/images/skeleton.png"));
         }
         catch (Exception e){
             System.out.println("File Not Found!");

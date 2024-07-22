@@ -4,11 +4,10 @@ import controller.enums.ModelType;
 import controller.manager.Spawner;
 import constants.Constants;
 import controller.manager.GameState;
-import model.animations.DashAnimation;
 import model.interfaces.HasVertices;
 import model.objectModel.fighters.EpsilonModel;
-import model.objectModel.fighters.finalBoss.bossHelper.BossHelper;
 import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
+import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
 import utils.Math;
 import utils.Vector;
 
@@ -34,16 +33,18 @@ public class ProjectileThread extends Thread{
             throw new RuntimeException(e);
         }
 
-        setHelpers();
-
         long lastTime = System.nanoTime();
         double amountOfTicks = 1000;
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
         while (!GameState.isOver() && !isInterrupted()) {
-            if (GameState.isPause()){
+            if (GameState.isPause() || GameState.isDizzy()){
                 lastTime = System.nanoTime();
                 continue;
+            }
+            if (GameState.isInAnimation()) {
+                projectile.endAbility();
+                return;
             }
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
@@ -56,43 +57,11 @@ public class ProjectileThread extends Thread{
         }
     }
 
-    private void setHelpers() {
-        projectile.getBoss().getLeftHand().setHovering(true);
-        projectile.getBoss().getRightHand().setHovering(true);
-        projectile.getBoss().getHead().setHovering(true);
-    }
-
     private void update() {
         turnAround();
-        if (time % 2000 == 0)
-            moveHands();
         fireIf();
         if (time >= Constants.PROJECTILE_DURATION)
             projectile.endAbility();
-    }
-
-    private void moveHands() {
-        double y = epsilon.getPosition().y;
-        HandModel leftHand = projectile.getBoss().getLeftHand();
-        HandModel rightHand = projectile.getBoss().getRightHand();
-
-        new DashAnimation(
-                leftHand,
-                new Vector(0 ,y - leftHand.getPosition().y),
-                1000,
-                java.lang.Math.abs(y - leftHand.getPosition().y),
-                0,
-                false
-        ).StartAnimation();
-
-        new DashAnimation(
-                rightHand,
-                new Vector(0 ,y - rightHand.getPosition().y),
-                1000,
-                java.lang.Math.abs(y - rightHand.getPosition().y),
-                0,
-                false
-        ).StartAnimation();
     }
 
     private void fireIf() {
@@ -125,21 +94,24 @@ public class ProjectileThread extends Thread{
         if (origin == null)
             return;
         turnAroundObject(projectile.getBoss().getHead());
-        turnAroundObject(projectile.getBoss().getLeftHand());
-        turnAroundObject(projectile.getBoss().getRightHand());
     }
 
-    private void turnAroundObject(BossHelper bossHelper) {
+    private void turnAroundObject(HeadModel headModel) {
         Vector newPosition;
-        newPosition = Math.RotateByTheta(bossHelper.getPosition(), origin, thetaD);
-        Vector previousPosition = bossHelper.getPosition().clone();
-        bossHelper.setPosition(newPosition);
+        if (headModel.isInPositiveDirection()) {
+            newPosition = Math.RotateByTheta(headModel.getPosition(), origin, thetaD);
+        }
+        else {
+            newPosition = Math.RotateByTheta(headModel.getPosition(), origin, -thetaD);
+        }
+        Vector previousPosition = headModel.getPosition().clone();
+        headModel.setPosition(newPosition);
         Vector moved = Math.VectorAdd(
                 newPosition,
                 Math.ScalarInVector(-1 ,previousPosition)
         );
-        if (bossHelper instanceof HasVertices)
-            ((HasVertices) bossHelper).UpdateVertices(moved.x ,moved.y ,0);
+        if (headModel instanceof HasVertices)
+            ((HasVertices) headModel).UpdateVertices(moved.x ,moved.y ,0);
     }
 
     public Vector getOrigin() {

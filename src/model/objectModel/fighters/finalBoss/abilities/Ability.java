@@ -1,13 +1,13 @@
 package model.objectModel.fighters.finalBoss.abilities;
 
-import model.objectModel.fighters.finalBoss.bossHelper.BossHelper;
+import model.objectModel.fighters.finalBoss.bossHelper.BossHelperModel;
 
 public abstract class Ability {
 
-    protected void ownHelper(BossHelper helper) {
+    protected void ownHelper(BossHelperModel helper) {
         helper.setInUse(true);
     }
-    protected void disownHelper(BossHelper helper) {
+    protected void disownHelper(BossHelperModel helper) {
         helper.setInUse(false);
     }
     protected abstract void setUp();
