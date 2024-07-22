@@ -6,21 +6,19 @@ import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
 import utils.Vector;
-import controller.listeners.epsilonMovementALs.xStopperAL;
-import controller.listeners.epsilonMovementALs.yStopperAL;
+import controller.listeners.epsilonMovementALs.*;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.HashSet;
 
 public class EpsilonMovement extends KeyAdapter {
     public static HashSet<Integer> keys = new HashSet<>();
     private EpsilonModel epsilon;
     private Vector direction = new Vector(0 ,0);
-    public static Timer xStopper;
-    public static Timer yStopper;
+    public static xStopper xStopper;
+    public static  yStopper yStopper;
     public static int LEFT_KEY = 37;
     public static int UP_KEY = 38;
     public static int RIGHT_KEY = 39;
@@ -28,8 +26,6 @@ public class EpsilonMovement extends KeyAdapter {
 
     public EpsilonMovement(){
         this.epsilon = (EpsilonModel) (ModelData.getModels().getFirst());
-        xStopper = new Timer(Configs.EPSILON_DECELERATION_TIME, new xStopperAL(epsilon));
-        yStopper = new Timer(Configs.EPSILON_DECELERATION_TIME, new yStopperAL(epsilon));
     }
 
     @Override
@@ -72,10 +68,12 @@ public class EpsilonMovement extends KeyAdapter {
         double yVelocity = epsilon.getVelocity().y;
         if (xVelocity != 0 && direction.x == 0){
             epsilon.setAcceleration(-xVelocity / Configs.EPSILON_DECELERATION_TIME ,epsilon.getAcceleration().y);
+            xStopper = new xStopper(epsilon);
             xStopper.start();
         }
         if (yVelocity != 0 && direction.y == 0){
             epsilon.setAcceleration(epsilon.getAcceleration().x ,-yVelocity / Configs.EPSILON_DECELERATION_TIME);
+            yStopper = new yStopper(epsilon);
             yStopper.start();
         }
     }

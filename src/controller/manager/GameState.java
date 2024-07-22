@@ -46,6 +46,7 @@ public class GameState {
         thirdWavePR = 0;
         forthWavePR = 0;
         fifthWavePR = 0;
+        WaveSpawner.repeatedCount = 0;
         time = 0;
         hp = 100;
         wave = 1;
