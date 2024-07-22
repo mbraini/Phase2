@@ -61,14 +61,24 @@ public class GameSaver {
         gameState.xp = GameState.getXp();
         gameState.hp = GameState.getHp();
         gameState.wave = GameState.getWave();
+        gameState.shrinkageVelocity = GameState.getShrinkageVelocity();
         gameState.enemyKilled = GameState.getEnemyKilled();
         gameState.totalBullets = GameState.getTotalBullets();
         gameState.successfulBullets = GameState.getSuccessfulBullets();
         gameState.enemyCount = GameState.getEnemyCount();
+        gameState.lastWaveTime = GameState.getLastWaveTime();
+        gameState.xpGained = GameState.getXpGained();
+        gameState.firstWavePR = GameState.getFirstWavePR();
+        gameState.secondWavePR = GameState.getSecondWavePR();
+        gameState.thirdWavePR = GameState.getThirdWavePR();
+        gameState.forthWavePR = GameState.getForthWavePR();
+        gameState.fifthWavePR = GameState.getFifthWavePR();
         gameState.isPause = GameState.isPause();
         gameState.isOver = GameState.isOver();
         gameState.repeatedCount = WaveSpawner.repeatedCount;
         gameState.isDizzy = GameState.isDizzy();
+        gameState.isInAnimation = GameState.isInAnimation();
+        gameState.repeatedCount = WaveSpawner.repeatedCount;
 
         Gson gson = getGson();
         String gameStateString = gson.toJson(gameState);

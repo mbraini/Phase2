@@ -107,19 +107,19 @@ public class GameState {
         setHp(ModelData.getEpsilon().getHP());
         setTime(getTime() + time);
         if (wave == 1) {
-            firstWavePR = (int) (time - lastWaveTime) * wave / 1000;
+            firstWavePR = (int) (getTime() - lastWaveTime) * wave / 1000;
         }
         else if (wave == 2) {
-            secondWavePR = (int) (time - lastWaveTime) * wave / 1000;
+            secondWavePR = (int) (getTime() - lastWaveTime) * wave / 1000;
         }
         else if (wave == 3) {
-            thirdWavePR = (int) (time - lastWaveTime) * wave / 1000;
+            thirdWavePR = (int) (getTime() - lastWaveTime) * wave / 1000;
         }
         else if (wave == 4) {
-            forthWavePR = (int) (time - lastWaveTime) * wave / 1000;
+            forthWavePR = (int) (getTime() - lastWaveTime) * wave / 1000;
         }
         else if (wave == 5) {
-            fifthWavePR = (int) (time - lastWaveTime) * wave / 1000;
+            fifthWavePR = (int) (getTime() - lastWaveTime) * wave / 1000;
         }
     }
 

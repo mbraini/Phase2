@@ -70,29 +70,28 @@ public class WaveSpawner {
 
     private void firstWave(int enemyKilled) {
         repeatedCount++;
-//        spawnDelay = 5000;
+        spawnDelay = 5000;
         if (repeatedCount == 1) {
-//            Spawner.spawnPortal(
-//                    new Vector(
-//                            epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
-//                            epsilonFrame.getPosition().y + epsilonFrame.getSize().height / 2d
-//                    ),
-//                    ModelData.getEpsilonFrame()
-//            );
-            Spawner.spawnBoss();
+            Spawner.spawnPortal(
+                    new Vector(
+                            epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
+                            epsilonFrame.getPosition().y + epsilonFrame.getSize().height / 2d
+                    ),
+                    ModelData.getEpsilonFrame()
+            );
         }
-//        if (enemyKilled >= 0 && enemyKilled <= 5) {
-//            Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.trigorath);
-//            Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.squarantine);
-//            GameState.setEnemyCount(GameState.getEnemyCount() + 2);
-//        }
-//        if (enemyKilled > 5  && GameState.getEnemyCount() == 0) {
-//            GameState.setWave(2);
-//            lastWaveKilled = GameState.getEnemyKilled();
-//            repeatedCount = 0;
-//            spawnDelay = 4000;
-//            GameState.setLastWaveTime(GameState.getTime());
-//        }
+        if (enemyKilled >= 0 && enemyKilled <= 5) {
+            Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.trigorath);
+            Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.squarantine);
+            GameState.setEnemyCount(GameState.getEnemyCount() + 2);
+        }
+        if (enemyKilled > 5  && GameState.getEnemyCount() == 0) {
+            GameState.setWave(2);
+            lastWaveKilled = GameState.getEnemyKilled();
+            repeatedCount = 0;
+            spawnDelay = 4000;
+            GameState.setLastWaveTime(GameState.getTime());
+        }
     }
 
     private void secondWave(int enemyKilled) {

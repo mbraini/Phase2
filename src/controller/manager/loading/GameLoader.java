@@ -62,13 +62,23 @@ public class GameLoader {
         GameState.setXp(gameState.xp);
         GameState.setHp(gameState.hp);
         GameState.setWave(gameState.wave);
+        GameState.setShrinkageVelocity(gameState.shrinkageVelocity);
         GameState.setEnemyKilled(gameState.enemyKilled);
         GameState.setEnemyCount(gameState.enemyCount);
+        GameState.setLastWaveTime(gameState.lastWaveTime);
+        GameState.setXpGained(gameState.xpGained);
+        GameState.setFirstWavePR(gameState.firstWavePR);
+        GameState.setSecondWavePR(gameState.secondWavePR);
+        GameState.setThirdWavePR(gameState.thirdWavePR);
+        GameState.setForthWavePR(gameState.forthWavePR);
+        GameState.setFifthWavePR(gameState.fifthWavePR);
         GameState.setTotalBullets(gameState.totalBullets);
         GameState.setSuccessfulBullets(gameState.successfulBullets);
         GameState.setOver(gameState.isOver);
         GameState.setDizzy(gameState.isDizzy);
         GameState.setPause(gameState.isPause);
+        GameState.setIsInAnimation(gameState.isInAnimation);
+
         WaveSpawner.repeatedCount = gameState.repeatedCount;
     }
 
