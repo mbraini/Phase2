@@ -1,5 +1,6 @@
 package controller.manager;
 
+import constants.Constants;
 import model.ModelData;
 import model.objectModel.ObjectModel;
 
@@ -11,6 +12,7 @@ public class GameState {
     private static double xp = 1000;
     private static double hp;
     private static int wave = 1;
+    private static double shrinkageVelocity = Constants.FRAME_SHRINKAGE_VELOCITY;
     private static int enemyKilled;
     private static int totalBullets;
     private static int successfulBullets;
@@ -227,5 +229,13 @@ public class GameState {
 
     public static boolean isInAnimation() {
         return isInAnimation;
+    }
+
+    public static double getShrinkageVelocity() {
+        return shrinkageVelocity;
+    }
+
+    public static void setShrinkageVelocity(double shrinkageVelocity) {
+        GameState.shrinkageVelocity = shrinkageVelocity;
     }
 }

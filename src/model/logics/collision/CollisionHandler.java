@@ -1,6 +1,7 @@
 package model.logics.collision;
 
 
+import constants.Constants;
 import controller.Controller;
 import model.ModelData;
 import model.inGameAbilities.Dismay.EpsilonProtectorModel;
@@ -96,7 +97,7 @@ public class CollisionHandler {
         EpsilonModel epsilonModel = ModelData.getEpsilon();
         epsilonModel.setHP(epsilonModel.getHP() + epsilonModel.getLifeSteal());
         epsilonModel.checkHP();
-        new Impact(epsilonBullet.getPosition()).MakeImpact();
+        new Impact(epsilonBullet.getPosition() , Constants.REGULAR_IMPACT_RANGE).MakeImpact();
         epsilonBullet.die();
     }
 
@@ -109,7 +110,7 @@ public class CollisionHandler {
             pullOutObject(enemy1 ,enemy2);
         else
             pullOutObject(enemy2 ,enemy1);
-        new Impact(collisionPoint).MakeImpact();
+        new Impact(collisionPoint ,Constants.REGULAR_IMPACT_RANGE).MakeImpact();
         if (enemy1 instanceof CollisionDetector)
             ((CollisionDetector) enemy1).detect();
         if (enemy2 instanceof CollisionDetector)
@@ -123,9 +124,8 @@ public class CollisionHandler {
         if (object instanceof EnemyModel){
             epsilonEnemyMeleeHandler(epsilon ,(EnemyModel)object);
             pullOutObject(epsilon ,object);
-            new Impact(collisionPoint).MakeImpact();
+            new Impact(collisionPoint ,Constants.REGULAR_IMPACT_RANGE).MakeImpact();
             if (object instanceof BossHelperModel){
-                System.out.println("BOSS HELPER COLLISION");
                 object.setAcceleration(0 ,0);
                 object.setVelocity(0 ,0);
             }

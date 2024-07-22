@@ -1,5 +1,6 @@
 package model.inGameAbilities;
 
+import constants.Constants;
 import controller.enums.InGameAbilityType;
 import model.ModelData;
 import model.logics.Impact;
@@ -18,7 +19,7 @@ public class Banish extends InGameAbility{
 
     @Override
     public void performAbility() {
-        new Impact(epsilon.getPosition()).MakeImpact();
+        new Impact(epsilon.getPosition() , Constants.BANISH_IMPACT_RANGE ,2000 ,true).MakeImpact();
         isActive = false;
     }
 

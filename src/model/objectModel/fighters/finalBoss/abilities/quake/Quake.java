@@ -3,6 +3,7 @@ package model.objectModel.fighters.finalBoss.abilities.quake;
 import controller.Controller;
 import constants.Constants;
 import model.animations.DashAnimation;
+import model.logics.Impact;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.Ability;
 import model.objectModel.frameModel.FrameModel;
@@ -39,6 +40,12 @@ public class Quake extends Ability {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Controller.randomizeKeys();
+                new Impact(
+                        boss.getPunch().getPosition(),
+                        Constants.SCREEN_SIZE.height,
+                        3000,
+                        true
+                ).MakeImpact();
                 randomizeTimer.stop();
             }
         });

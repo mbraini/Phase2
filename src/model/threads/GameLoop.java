@@ -41,7 +41,6 @@ public class GameLoop extends Thread {
         ///////concurrent
         synchronized (ModelData.getModels()) {
             ModelRequests.checkRequests();
-            Controller.sendViewUpdates();
         }
         ArrayList<ObjectModel> models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
 

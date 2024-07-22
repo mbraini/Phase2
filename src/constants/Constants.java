@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 public class Constants {
 
-    public final static int FPS = 10;
+    public final static int FPS = 5;
     public static final int UPS = 10;
     public final static Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -103,6 +103,8 @@ public class Constants {
     public static final double PORTAL_RADIOS = 100;
     public static final double PORTAL_FADE_TIME = 4000;
     public static final double OMENOCT_FRAME_DAMAGE = 5;
+    public static final double BANISH_IMPACT_RANGE = 600;
+    public static final double REGULAR_IMPACT_RANGE = 170;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);

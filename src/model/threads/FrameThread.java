@@ -63,8 +63,8 @@ public class FrameThread extends Thread{
         checkSolidObjectBounds();
         resize(frames);
         updatePreviousLocals();
-//        if (!frames.isEmpty())
-//            framePressure(frames.getFirst());
+        if (!frames.isEmpty())
+            framePressure(frames.getFirst());
     }
 
     private void resetDisables() {
@@ -146,8 +146,8 @@ public class FrameThread extends Thread{
     }
     private void framePressure(FrameModel frame) {
         if (!frame.isResizing()){
-            frame.setUpDownV(-Constants.FRAME_SHRINKAGE_VELOCITY,-Constants.FRAME_SHRINKAGE_VELOCITY);
-            frame.setLeftRightV(-Constants.FRAME_SHRINKAGE_VELOCITY,-Constants.FRAME_SHRINKAGE_VELOCITY);
+            frame.setUpDownV(-GameState.getShrinkageVelocity(),-GameState.getShrinkageVelocity());
+            frame.setLeftRightV(-GameState.getShrinkageVelocity(),-GameState.getShrinkageVelocity());
         }
     }
 

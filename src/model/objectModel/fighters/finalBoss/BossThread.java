@@ -86,7 +86,6 @@ public class BossThread extends Thread {
     }
 
     private void defineAbility() {
-        abilityType = AbilityType.squeeze;
         if (bossAI.isInSqueezePosition()){
             abilityType = AbilityType.squeeze;
             return;

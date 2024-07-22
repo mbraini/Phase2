@@ -31,7 +31,7 @@ public class BossAoeEffectModel extends AoeEffectModel implements Fader , IsCirc
             vomit.removeEffect(id);
         }
         thread.dealDamage(this);
-        new Impact(((Circle)area).getCenter()).MakeImpact();
+        new Impact(((Circle)area).getCenter() ,Constants.REGULAR_IMPACT_RANGE).MakeImpact();
     }
 
     @Override

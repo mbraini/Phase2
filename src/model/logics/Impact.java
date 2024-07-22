@@ -15,10 +15,29 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class Impact {
-    Vector collisionPoint;
+    private final Vector collisionPoint;
+    private double distance;
+    private int time;
+    private boolean sameForce;
 
-    public Impact(Vector collisionPoint){
+    public Impact(Vector collisionPoint ,double distance){
         this.collisionPoint = collisionPoint;
+        this.distance = distance;
+        time = Constants.DASH_TIME;
+    }
+
+
+    public Impact(Vector collisionPoint ,double distance ,int time){
+        this.collisionPoint = collisionPoint;
+        this.distance = distance;
+        this.time = time;
+    }
+
+    public Impact(Vector collisionPoint ,double distance ,int time ,boolean sameForce){
+        this.collisionPoint = collisionPoint;
+        this.distance = distance;
+        this.time = time;
+        this.sameForce = sameForce;
     }
 
     public void MakeImpact(){
@@ -38,29 +57,51 @@ public class Impact {
                 direction = Math.VectorAdd(Math.ScalarInVector(-1, collisionPoint), ModelData.getModels().get(i).getPosition());
                 distance = Math.VectorSize(direction);
                 //////////////////todo
-                if (distance >= Constants.IMPACT_AREA) {
+                if (distance >= this.distance) {
                     continue;
                 }
                 //////////////////todo
                 if (distance == 0)
                     continue;
-                if (!(ModelData.getModels().get(i) instanceof EpsilonModel))
+                double dashDistance;
+                if (sameForce) {
+                    dashDistance = this.distance;
+                }
+                else {
+                    dashDistance = this.distance - distance;
+                }
+                if (!(ModelData.getModels().get(i) instanceof EpsilonModel)) {
                     new DashAnimation(
                             ModelData.getModels().get(i),
-                            direction ,Constants.DASH_TIME,
-                            Constants.DASH_DISTANCE ,
-                            Constants.DASH_ROTATION,
+                            direction,
+                            time,
+                            dashDistance,
+                            dashDistance / 100 * java.lang.Math.PI,
                             false
                     ).StartAnimation();
-                else
-                    new DashAnimation(
-                            ModelData.getModels().get(i),
-                            direction ,
-                            Constants.DASH_TIME ,
-                            100 ,
-                            0 ,
-                            false
-                    ).StartAnimation();
+                }
+                else {
+                    if (sameForce) {
+                        new DashAnimation(
+                                ModelData.getModels().get(i),
+                                direction,
+                                time,
+                                dashDistance,
+                                0,
+                                false
+                        ).StartAnimation();
+                    }
+                    else {
+                        new DashAnimation(
+                                ModelData.getModels().get(i),
+                                direction,
+                                time,
+                                100,
+                                0,
+                                false
+                        ).StartAnimation();
+                    }
+                }
             }
         }
     }
