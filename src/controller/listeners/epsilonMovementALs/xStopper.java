@@ -15,7 +15,7 @@ public class xStopper extends Thread {
     @Override
     public void run() {
         try {
-            Thread.sleep(Configs.EPSILON_DECELERATION_TIME);
+            Thread.sleep(Configs.GameConfigs.EPSILON_DECELERATION_TIME);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

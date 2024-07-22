@@ -56,10 +56,10 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
         double currentSpeed = java.lang.Math.sqrt(java.lang.Math.pow(velocity.x ,2)
                 + java.lang.Math.pow(velocity.y ,2));
         assert currentSpeed != 0;
-        if (currentSpeed > Configs.EPSILON_MAX_SPEED){
+        if (currentSpeed > Configs.GameConfigs.EPSILON_MAX_SPEED){
             setVelocity(
-                    getVelocity().x * Configs.EPSILON_MAX_SPEED / currentSpeed ,
-                    getVelocity().y * Configs.EPSILON_MAX_SPEED / currentSpeed
+                    getVelocity().x * Configs.GameConfigs.EPSILON_MAX_SPEED / currentSpeed ,
+                    getVelocity().y * Configs.GameConfigs.EPSILON_MAX_SPEED / currentSpeed
             );
         }
     }

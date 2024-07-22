@@ -22,7 +22,7 @@ public class ModelData {
     private static ArrayList<EffectModel> effectModels;
     private static ArrayList<AbstractEnemy> abstractEnemies;
     private static ArrayList<InGameAbility> inGameAbilities;
-    private static ArrayList<SkillTreeAbility> skillTreeAbilities;
+    private static ArrayList<SkillTreeAbility> skillTreeAbilities = new ArrayList<>();
     public static ArrayList<AbstractEnemy> getAbstractEnemies() {
         return abstractEnemies;
     }
@@ -36,7 +36,6 @@ public class ModelData {
         effectModels = new ArrayList<>();
         abstractEnemies = new ArrayList<>();
         inGameAbilities = new ArrayList<>();
-        skillTreeAbilities = new ArrayList<>();
     }
 
 

@@ -105,6 +105,16 @@ public class Constants {
     public static final double OMENOCT_FRAME_DAMAGE = 5;
     public static final double BANISH_IMPACT_RANGE = 600;
     public static final double REGULAR_IMPACT_RANGE = 170;
+    public static final int ARES_UNLOCK_COST = 750;
+    public static final int ACESO_UNLOCK_COST = 500;
+    public static final int CERBERUS_UNLOCK_COST = 1500;
+    public static final int ASTRAPE_UNLOCK_COST = 1000;
+    public static final int ATHENA_UNLOCK_COST = 1200;
+    public static final int CHIRON_UNLOCK_COST = 900;
+    public static final int DOLUS_UNLOCK_COST = 1500;
+    public static final int EMPUSA_UNLOCK_COST = 750;
+    public static final int MELAMPUS_UNLOCK_COST = 750;
+    public static final int PROTEUS_UNLOCK_COST = 1000;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);

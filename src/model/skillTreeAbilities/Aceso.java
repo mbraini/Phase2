@@ -1,5 +1,7 @@
 package model.skillTreeAbilities;
 
+import constants.Constants;
+import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.loading.SkippedByJson;
 import controller.manager.GameState;
@@ -17,7 +19,8 @@ public class Aceso extends SkillTreeAbility{
     private int healAmount;
 
     public Aceso(){
-        unlockXpCost = 500;
+        isBought = Configs.SkillTreeConfigs.acesoBought;
+        unlockXpCost = Constants.ACESO_UNLOCK_COST;
         type = SkillTreeAbilityType.aceso;
         initTimer();
         initEpsilon();

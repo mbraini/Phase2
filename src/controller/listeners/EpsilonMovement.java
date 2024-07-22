@@ -57,7 +57,7 @@ public class EpsilonMovement extends KeyAdapter {
             epsilon.setAcceleration(0 ,0);
             return;
         }
-        epsilon.setAcceleration(Math.VectorWithSize(direction , Configs.EPSILON_ACCELERATION));
+        epsilon.setAcceleration(Math.VectorWithSize(direction , Configs.GameConfigs.EPSILON_ACCELERATION));
     }
 
     @Override
@@ -67,12 +67,12 @@ public class EpsilonMovement extends KeyAdapter {
         double xVelocity = epsilon.getVelocity().x;
         double yVelocity = epsilon.getVelocity().y;
         if (xVelocity != 0 && direction.x == 0){
-            epsilon.setAcceleration(-xVelocity / Configs.EPSILON_DECELERATION_TIME ,epsilon.getAcceleration().y);
+            epsilon.setAcceleration(-xVelocity / Configs.GameConfigs.EPSILON_DECELERATION_TIME ,epsilon.getAcceleration().y);
             xStopper = new xStopper(epsilon);
             xStopper.start();
         }
         if (yVelocity != 0 && direction.y == 0){
-            epsilon.setAcceleration(epsilon.getAcceleration().x ,-yVelocity / Configs.EPSILON_DECELERATION_TIME);
+            epsilon.setAcceleration(epsilon.getAcceleration().x ,-yVelocity / Configs.GameConfigs.EPSILON_DECELERATION_TIME);
             yStopper = new yStopper(epsilon);
             yStopper.start();
         }

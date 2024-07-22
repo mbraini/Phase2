@@ -38,7 +38,7 @@ public class KeyHelper {
 
         Scanner scanner;
         try {
-            scanner = new Scanner(new File("src/controller/configs/configs.json"));
+            scanner = new Scanner(new File("src/controller/configs/keyConfigs.json"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -86,7 +86,7 @@ public class KeyHelper {
 
         Scanner scanner;
         try {
-            scanner = new Scanner(new File("src/controller/configs/configs.json"));
+            scanner = new Scanner(new File("src/controller/configs/keyConfigs.json"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

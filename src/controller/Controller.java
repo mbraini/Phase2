@@ -1,5 +1,9 @@
 package controller;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import controller.configs.Configs;
+import controller.configs.helper.GameConfigsJsonHelper;
 import controller.enums.InGameAbilityType;
 import controller.enums.SkillTreeAbilityType;
 import controller.interfaces.SizeChanger;
@@ -27,6 +31,10 @@ import model.objectModel.ObjectModel;
 import model.viewRequests.ShootRequest;
 import model.viewRequests.InGameAbilityRequests;
 import model.viewRequests.SkillTreeAbilityRequests;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
@@ -39,6 +47,8 @@ import view.objectViews.effectView.EffectView;
 import view.painter.Render;
 
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -210,6 +220,65 @@ public abstract class Controller {
         ).save();
     }
 
+    public static void rumModel() {
+        setModelConfigs();
+    }
+
+    private static void setModelConfigs() {
+        skillTreeConfigs();
+        gameConfigs();
+    }
+
+    private static void gameConfigs() {
+        Gson gson = new Gson();
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            Scanner scanner = new Scanner(new File("src/controller/configs/gameConfigs.json"));
+            while (scanner.hasNextLine())
+                stringBuilder.append(scanner.nextLine());
+            scanner.close();
+            GameConfigsJsonHelper helper = gson.fromJson(stringBuilder.toString() , GameConfigsJsonHelper.class);
+            Configs.GameConfigs.XP = helper.XP;
+            GameState.setXp(helper.XP);
+            Configs.GameConfigs.EPSILON_ACCELERATION = helper.EPSILON_ACCELERATION;
+            Configs.GameConfigs.EPSILON_DECELERATION_TIME = helper.EPSILON_DECELERATION_TIME;
+            Configs.GameConfigs.EPSILON_MAX_SPEED = helper.EPSILON_MAX_SPEED;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void skillTreeConfigs() {
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            Scanner scanner = new Scanner(new File("src/controller/configs/skillTree.json"));
+            while (scanner.hasNextLine())
+                stringBuilder.append(scanner.nextLine());
+            scanner.close();
+            try {
+                JSONObject jsonObject = (JSONObject) new JSONTokener(stringBuilder.toString()).nextValue();
+                Configs.SkillTreeConfigs.aresBought = (boolean)jsonObject.get("ares");
+                Configs.SkillTreeConfigs.astrapeBought = (boolean)jsonObject.get("astrape");
+                Configs.SkillTreeConfigs.cerberusBought = (boolean)jsonObject.get("cerberus");
+                Configs.SkillTreeConfigs.acesoBought = (boolean)jsonObject.get("aceso");
+                Configs.SkillTreeConfigs.melampusBought = (boolean)jsonObject.get("melampus");
+                Configs.SkillTreeConfigs.chironBought = (boolean)jsonObject.get("chiron");
+                Configs.SkillTreeConfigs.athenaBought = (boolean)jsonObject.get("athena");
+                Configs.SkillTreeConfigs.proteusBought = (boolean)jsonObject.get("proteus");
+                Configs.SkillTreeConfigs.empusaBought = (boolean)jsonObject.get("empusa");
+                Configs.SkillTreeConfigs.dolusBought = (boolean)jsonObject.get("dolus");
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void buySkillTreeRequest(SkillTreeAbilityType type) {
+        SkillTreeAbilityRequests.buyRequest(type);
+    }
+
 
     private void updateObjectViews(){
 
@@ -224,25 +293,24 @@ public abstract class Controller {
 
 
     public static void startGame(){
-//        gameMode = GameMode.inGame;
-//        if (GameSaver.isGameSaved()) {
-//            GameState.reset();
-//            modelStarter();
-//            viewStarter();
-//            new GameLoader("src/controller/manager/saving/inGameSaved").load();
-//            Controller.threadsStarter();
-//        }
-//        else {
-            GameState.setXp(100000);
+        gameMode = GameMode.inGame;
+        if (GameSaver.isGameSaved()) {
+            GameState.reset();
+            modelStarter();
+            viewStarter();
+            new GameLoader("src/controller/manager/saving/inGameSaved").load();
+            Controller.threadsStarter();
+        }
+        else {
             GameState.reset();
             modelStarter();
             viewStarter();
             addEpsilonAndFrame();
-//            new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
+            new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
             InGameAbilityHandler.initInGameAbilities();
             SkillTreeAbilityHandler.initAbilities();
             Controller.threadsStarter();
-//        }
+        }
     }
 
     public static void endGame() {

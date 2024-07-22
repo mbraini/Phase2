@@ -165,7 +165,7 @@ public class BlackOrbThread extends Thread{
         }
     }
 
-    public void disconnectLasers(OrbModel orbModel) {
+    public synchronized void disconnectLasers(OrbModel orbModel) {
         ArrayList<BlackOrbAoeEffectModel> effectModels =
                 (ArrayList<BlackOrbAoeEffectModel>) blackOrbModel.getEffectModels().clone();
         for (BlackOrbAoeEffectModel effect : effectModels){

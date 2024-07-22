@@ -11,11 +11,11 @@ import java.awt.event.ActionListener;
 
 public abstract class SkillTreeAbility {
 
-    protected boolean isBought;       /////////////////////// fix later !
+    protected boolean isBought;
     protected int inGameXpCost = 100;
-    protected int inGameCoolDownTime = 10000;
+    protected int inGameCoolDownTime = 300000;
     protected boolean canCast = true;
-    @SkippedByJson////////////////////// fix later !
+    @SkippedByJson
     protected Timer coolDownTimer;
     protected int coolDownTimePassed;
     protected int unlockXpCost;
@@ -105,9 +105,13 @@ public abstract class SkillTreeAbility {
             public void actionPerformed(ActionEvent e) {
                 if (GameState.isPause())
                     return;
+                if (GameState.isOver())
+                    coolDownTimer.stop();
                 coolDownTimePassed += Constants.SKILL_TREE_ABILITY_TIMER_REFRESH_RATE;
+                System.out.println(coolDownTimePassed);
                 if (coolDownTimePassed >= inGameCoolDownTime){
                     canCast = true;
+                    System.out.println("RELEASED!");
                     coolDownTimePassed = 0;
                     coolDownTimer.stop();
                 }

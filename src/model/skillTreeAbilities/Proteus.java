@@ -1,5 +1,7 @@
 package model.skillTreeAbilities;
 
+import constants.Constants;
+import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
@@ -9,7 +11,8 @@ public class Proteus extends SkillTreeAbility{
     private EpsilonModel epsilonModel;
 
     public Proteus(){
-        unlockXpCost = 1000;
+        isBought = Configs.SkillTreeConfigs.proteusBought;
+        unlockXpCost = Constants.PROTEUS_UNLOCK_COST;
         type = SkillTreeAbilityType.proteus;
         initTimer();
         initEpsilon();

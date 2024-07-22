@@ -1,7 +1,7 @@
 package controller.listeners;
 
 import controller.Controller;
-import controller.configs.KeyConfigs;
+import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.GameState;
 import view.gamePanels.Shop;
@@ -25,8 +25,8 @@ public class PanelKeyListener extends KeyAdapter {
     public static char ATHENA_KEY = 'r';
 
     public PanelKeyListener(){
-        SHOP_KEY = KeyConfigs.SHOP_KEY;
-        ARES_KEY = KeyConfigs.ARES_KEY;
+        SHOP_KEY = Configs.KeyConfigs.SHOP_KEY;
+        ARES_KEY = Configs.KeyConfigs.ARES_KEY;
     }
 
     @Override

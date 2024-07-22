@@ -116,7 +116,7 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
             shooter.start();
         }
         else {
-            shooter = new Timer(Constants.OMENOCT_FIRING_TIME, new OmenoctShooter(position ,this));
+            shooter = new Timer(1000, new OmenoctShooter(position ,this));
             shooter.start();
         }
     }

@@ -1,5 +1,6 @@
 package model.skillTreeAbilities;
 
+import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
@@ -7,6 +8,7 @@ import model.objectModel.fighters.EpsilonModel;
 public class Ares extends SkillTreeAbility{
 
     public Ares(){
+        isBought = Configs.SkillTreeConfigs.aresBought;
         unlockXpCost = 750;
         type = SkillTreeAbilityType.ares;
         initTimer();

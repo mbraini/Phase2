@@ -2,6 +2,8 @@ package view.menuPanels;
 
 
 import constants.Constants;
+import controller.Controller;
+import controller.enums.SkillTreeAbilityType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -70,12 +72,7 @@ public class SkillTreePanel extends PIG {
         athena.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                if (GameState.xp >= 500) {
-//                    GameState.xp -= 500;
-//                    Controller.updateConfigs();
-//                    athena.isAvailable ++;
-//                    xp.setText("XP :" +(int) GameState.xp);
-//                }
+                Controller.buySkillTreeRequest(SkillTreeAbilityType.athena);
             }
         });
         athenaL = new JLabel();
@@ -107,12 +104,7 @@ public class SkillTreePanel extends PIG {
         cerberus.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                if (GameState.xp >= 500) {
-//                    GameState.xp -= 500;
-//                    Controller.updateConfigs();
-//                    cerberus.isAvailable ++;
-//                    xp.setText("XP :" +(int) GameState.xp);
-//                }
+                Controller.buySkillTreeRequest(SkillTreeAbilityType.cerberus);
             }
         });
         cerberusL = new JLabel();
@@ -144,12 +136,7 @@ public class SkillTreePanel extends PIG {
         astrape.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                if (GameState.xp >= 500) {
-//                    GameState.xp -= 500;
-//                    Controller.updateConfigs();
-//                    astrape.isAvailable ++;
-//                    xp.setText("XP :" +(int) GameState.xp);
-//                }
+                Controller.buySkillTreeRequest(SkillTreeAbilityType.astrape);
             }
         });
         astrapeL = new JLabel();
@@ -181,12 +168,7 @@ public class SkillTreePanel extends PIG {
         dolus.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                if (GameState.xp >= 500) {
-//                    GameState.xp -= 500;
-//                    Controller.updateConfigs();
-//                    dolus.isAvailable ++;
-//                    xp.setText("XP :" +(int) GameState.xp);
-//                }
+                Controller.buySkillTreeRequest(SkillTreeAbilityType.dolus);
             }
         });
         dolusL = new JLabel();
@@ -218,12 +200,7 @@ public class SkillTreePanel extends PIG {
         empusa.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                if (GameState.xp >= 500) {
-//                    GameState.xp -= 500;
-//                    Controller.updateConfigs();
-//                    empusa.isAvailable ++;
-//                    xp.setText("XP :" +(int) GameState.xp);
-//                }
+                Controller.buySkillTreeRequest(SkillTreeAbilityType.empusa);
             }
         });
         empusaL = new JLabel();
@@ -255,12 +232,7 @@ public class SkillTreePanel extends PIG {
         chiron.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                if (GameState.xp >= 500) {
-//                    GameState.xp -= 500;
-//                    Controller.updateConfigs();
-//                    chiron.isAvailable ++;
-//                    xp.setText("XP :" +(int) GameState.xp);
-//                }
+                Controller.buySkillTreeRequest(SkillTreeAbilityType.chiron);
             }
         });
         chironL = new JLabel();
@@ -292,12 +264,7 @@ public class SkillTreePanel extends PIG {
         melampus.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                if (GameState.xp >= 500) {
-//                    GameState.xp -= 500;
-//                    Controller.updateConfigs();
-//                    melampus.isAvailable ++;
-//                    xp.setText("XP :" +(int) GameState.xp);
-//                }
+                Controller.buySkillTreeRequest(SkillTreeAbilityType.melampus);
             }
         });
         melampusL = new JLabel();
@@ -363,12 +330,7 @@ public class SkillTreePanel extends PIG {
         ares.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                if (GameState.xp >= 500) {
-//                    GameState.xp -= 500;
-//                    Controller.updateConfigs();
-//                    ares.isAvailable ++;
-//                    xp.setText("XP :" +(int) GameState.xp);
-//                }
+                Controller.buySkillTreeRequest(SkillTreeAbilityType.ares);
             }
         });
         aresL = new JLabel();
@@ -400,12 +362,7 @@ public class SkillTreePanel extends PIG {
         aceso.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                if (GameState.xp >= 500) {
-//                    GameState.xp -= 500;
-//                    Controller.updateConfigs();
-//                    Aceso.isAvailable ++;
-//                    xp.setText("XP :" +(int) GameState.xp);
-//                }
+                Controller.buySkillTreeRequest(SkillTreeAbilityType.aceso);
             }
         });
         acesoL = new JLabel();
@@ -436,7 +393,7 @@ public class SkillTreePanel extends PIG {
         proteus.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//
+                Controller.buySkillTreeRequest(SkillTreeAbilityType.proteus);
             }
         });
         proteusL = new JLabel();
@@ -501,7 +458,6 @@ public class SkillTreePanel extends PIG {
     @Override
     public void start() {
         this.setVisible(true);
-//        xp.setText("XP :" +(int) GameState.xp);
     }
 
     @Override

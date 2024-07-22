@@ -1,6 +1,7 @@
 package view;
 
 import constants.Constants;
+import controller.Controller;
 import view.soundEffects.Sound;
 import view.menuPanels.MainFrame;
 
@@ -15,6 +16,12 @@ public class Application implements Runnable{
 
     @Override
     public void run() {
+        Controller.rumModel();
+        runView();
+    }
+
+
+    private void runView() {
         getImages();
         getAudios();
         startMainFrame();

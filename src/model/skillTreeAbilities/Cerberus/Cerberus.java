@@ -1,5 +1,6 @@
 package model.skillTreeAbilities.Cerberus;
 
+import controller.configs.Configs;
 import controller.enums.ModelType;
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.Spawner;
@@ -13,7 +14,8 @@ import utils.Vector;
 public class Cerberus extends SkillTreeAbility {
 
     public Cerberus(){
-        unlockXpCost = 1500;
+        isBought = Configs.SkillTreeConfigs.cerberusBought;
+        unlockXpCost = Constants.CERBERUS_UNLOCK_COST;
         type = SkillTreeAbilityType.cerberus;
         initTimer();
     }

@@ -88,15 +88,15 @@ public class SettingsPanel extends PIG {
         soundSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                if (Configs.SOUND == 0){
+                if (Configs.ViewConfigs.SOUND == 0){
                     Sound.volumeMute();
                 }
-                if (soundSlider.getValue() - Configs.SOUND > 0)
+                if (soundSlider.getValue() - Configs.ViewConfigs.SOUND > 0)
                     Sound.volumeUp();
-                else if (soundSlider.getValue() - Configs.SOUND < 0)
+                else if (soundSlider.getValue() - Configs.ViewConfigs.SOUND < 0)
                     Sound.volumeDown();
-                Configs.SOUND = soundSlider.getValue();
-                if (Configs.SOUND == 0){
+                Configs.ViewConfigs.SOUND = soundSlider.getValue();
+                if (Configs.ViewConfigs.SOUND == 0){
                     Sound.volumeMute();
                 }
             }
@@ -112,16 +112,16 @@ public class SettingsPanel extends PIG {
             public void stateChanged(ChangeEvent e) {
                 Configs.SENSITIVITY = sensitivitySlider.getValue();
                 if (Configs.SENSITIVITY == 3){
-                    Configs.EPSILON_ACCELERATION = 0.001;
-                    Configs.EPSILON_DECELERATION_TIME = 50;
+                    Configs.GameConfigs.EPSILON_ACCELERATION = 0.001;
+                    Configs.GameConfigs.EPSILON_DECELERATION_TIME = 50;
                 }
                 else if (Configs.SENSITIVITY == 2){
-                    Configs.EPSILON_ACCELERATION = 0.0006;
-                    Configs.EPSILON_DECELERATION_TIME = 200;
+                    Configs.GameConfigs.EPSILON_ACCELERATION = 0.0006;
+                    Configs.GameConfigs.EPSILON_DECELERATION_TIME = 200;
                 }
                 else if (Configs.SENSITIVITY == 1){
-                    Configs.EPSILON_ACCELERATION = 0.0003;
-                    Configs.EPSILON_DECELERATION_TIME = 400;
+                    Configs.GameConfigs.EPSILON_ACCELERATION = 0.0003;
+                    Configs.GameConfigs.EPSILON_DECELERATION_TIME = 400;
                 }
             }
         });
@@ -178,7 +178,7 @@ public class SettingsPanel extends PIG {
         soundSlider.setMajorTickSpacing(1);
         soundSlider.setPaintLabels(true);
         soundSlider.setFont(new Font("MV Boli" ,Font.PLAIN ,15));
-        soundSlider.setValue(Configs.SOUND);
+        soundSlider.setValue(Configs.ViewConfigs.SOUND);
         this.add(soundSlider);
     }
 
