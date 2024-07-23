@@ -142,17 +142,50 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
 
     void initVertices(){
         vertices = new ArrayList<>();
-        vertices.add(new Vector(
-                position.x ,
-                position.y - (java.lang.Math.sqrt(3) * Constants.TRIGORATH_DIMENTION.width / 3d))
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                Constants.NECROPICK_DIMENSION.width /2d,
+                                Constants.NECROPICK_DIMENSION.height / 2d
+                        )
+                )
         );
-        vertices.add(new Vector(
-                position.x - Constants.TRIGORATH_DIMENTION.width / 2d ,
-                position.y + (java.lang.Math.sqrt(3) * Constants.TRIGORATH_DIMENTION.width / 6d))
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                Constants.NECROPICK_DIMENSION.width /2d,
+                                -Constants.NECROPICK_DIMENSION.height / 5d
+                        )
+                )
         );
-        vertices.add(new Vector(
-                position.x + Constants.TRIGORATH_DIMENTION.width / 2d ,
-                position.y + (java.lang.Math.sqrt(3) * Constants.TRIGORATH_DIMENTION.width / 6d))
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                0,
+                                -Constants.NECROPICK_DIMENSION.height / 2d
+                        )
+                )
+        );
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                -Constants.NECROPICK_DIMENSION.width /2d,
+                                -Constants.NECROPICK_DIMENSION.height / 5d
+                        )
+                )
+        );
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                -Constants.NECROPICK_DIMENSION.width /2d,
+                                Constants.NECROPICK_DIMENSION.height / 2d
+                        )
+                )
         );
     }
 

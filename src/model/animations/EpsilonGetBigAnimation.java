@@ -25,7 +25,7 @@ public class EpsilonGetBigAnimation extends Animation{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (ModelData.getEpsilon().getSize().width >= ModelData.getEpsilonFrame().getSize().width) {
-                    Controller.endGame();
+                    Controller.endGame(true);
                     timer.stop();
                 }
                 ModelData.getEpsilon().setSize(

@@ -57,7 +57,7 @@ public class AbilityCaster {
                     return true;
                 break;
             case projectile:
-                if (!boss.getHead().isInUse())
+                if (!boss.getHead().isInUse() && (!boss.getLeftHand().isDead() || !boss.getRightHand().isDead()))
                     return true;
                 break;
             case vomit:

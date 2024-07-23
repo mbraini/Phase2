@@ -50,6 +50,9 @@ import view.objectViews.normalEnemyView.archmireView.ArchmireEffectView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireView;
 import view.objectViews.projectiles.*;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
 public abstract class Spawner {
@@ -209,11 +212,19 @@ public abstract class Spawner {
         ViewRequest.addObjectView(new CollectiveView(position ,id));
     }
 
-    public static synchronized void spawnBoss(){
-        Boss boss = new Boss(Helper.RandomStringGenerator(Constants.ID_SIZE));
-        BossSpawnAnimation bossSpawnAnimation = new BossSpawnAnimation(boss);
-        bossSpawnAnimation.StartAnimation();
-        ModelRequests.addAbstractEnemy(boss);
+    public static void spawnBoss(){
+        Controller.killEveryThing();
+        Timer timer = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Boss boss = new Boss(Helper.RandomStringGenerator(Constants.ID_SIZE));
+                BossSpawnAnimation bossSpawnAnimation = new BossSpawnAnimation(boss);
+                bossSpawnAnimation.StartAnimation();
+                ModelRequests.addAbstractEnemy(boss);
+            }
+        });
+        timer.setRepeats(false);
+        timer.start();
     }
 
 

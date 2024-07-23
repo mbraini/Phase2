@@ -24,7 +24,6 @@ public class Vomit extends Ability {
     @Override
     protected void setUp() {
         ownHelper(boss.getHead());
-        boss.getHead().setVulnerableToEpsilonMelee(true);
         boss.getHead().setVulnerableToEpsilonBullet(true);
     }
 

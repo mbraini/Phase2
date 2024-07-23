@@ -5,7 +5,7 @@ import model.interfaces.IsCircle;
 import utils.Math;
 import utils.Vector;
 
-public class BossBulletModel extends BulletModel implements IsCircle {
+public class BossBulletModel extends EnemyBulletModel implements IsCircle {
 
     public BossBulletModel(Vector position , Vector direction , String id){
         this.position = position;

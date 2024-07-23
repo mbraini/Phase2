@@ -10,7 +10,7 @@ public class BarricadosView extends MiniBossEnemyView{
     public BarricadosView(Vector position ,String id){
         this.position = position;
         this.id = id;
-        image = Constants.omenoct;
+        image = Constants.barricados;
     }
 
     @Override

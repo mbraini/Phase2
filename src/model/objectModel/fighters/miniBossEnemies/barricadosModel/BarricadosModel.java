@@ -1,6 +1,8 @@
 package model.objectModel.fighters.miniBossEnemies.barricadosModel;
 
 import constants.Constants;
+import controller.Controller;
+import model.ModelRequests;
 import model.interfaces.Fader;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
@@ -72,5 +74,8 @@ public abstract class BarricadosModel extends MiniBossModel implements Fader , I
         ));
     }
 
-
+    @Override
+    public void die() {
+        Controller.removeObject(this);
+    }
 }

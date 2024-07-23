@@ -46,7 +46,10 @@ import view.objectViews.ObjectView;
 import view.objectViews.effectView.EffectView;
 import view.painter.Render;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -209,6 +212,8 @@ public abstract class Controller {
     }
 
     public static void saveGameInPortal() {
+        ModelData.getEpsilon().setHP(ModelData.getEpsilon().getHP() + 10);
+        ModelData.getEpsilon().checkHP();
         new GameSaver(
                 ModelData.getModels(),
                 ModelData.getEffectModels(),
@@ -279,6 +284,17 @@ public abstract class Controller {
         SkillTreeAbilityRequests.buyRequest(type);
     }
 
+    public synchronized static void killEveryThing() {
+        ArrayList<ObjectModel> models;
+        synchronized (ModelData.getModels()) {
+            models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
+        }
+        for (ObjectModel model : models) {
+            if (!(model instanceof EpsilonModel))
+                model.die();
+        }
+    }
+
 
     private void updateObjectViews(){
 
@@ -295,26 +311,42 @@ public abstract class Controller {
     public static void startGame(){
         gameMode = GameMode.inGame;
         if (GameSaver.isGameSaved()) {
-            GameState.reset();
-            modelStarter();
-            viewStarter();
-            new GameLoader("src/controller/manager/saving/inGameSaved").load();
-            Controller.threadsStarter();
+            int response = JOptionPane.showConfirmDialog(null ,"do you want to play your last game?");
+            if (response == 0) {
+                GameState.reset();
+                modelStarter();
+                viewStarter();
+                new GameLoader("src/controller/manager/saving/inGameSaved").load();
+                GameState.setPause(true);
+                Timer timer = new Timer(2000, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        GameState.setPause(false);
+                        System.out.println("UNPAUSE!");
+                    }
+                });
+                timer.setRepeats(false);
+                timer.start();
+                Controller.threadsStarter();
+                return;
+            }
         }
-        else {
-            GameState.reset();
-            modelStarter();
-            viewStarter();
-            addEpsilonAndFrame();
-            new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
-            InGameAbilityHandler.initInGameAbilities();
-            SkillTreeAbilityHandler.initAbilities();
-            Controller.threadsStarter();
-        }
+        GameState.reset();
+        modelStarter();
+        viewStarter();
+        addEpsilonAndFrame();
+        new GameStartAnimation(ModelData.getFrames().getFirst()).StartAnimation();
+        InGameAbilityHandler.initInGameAbilities();
+        SkillTreeAbilityHandler.initAbilities();
+        Controller.threadsStarter();
     }
 
-    public static void endGame() {
+    public static void endGame(boolean won) {
         endRequest();
+        if (won) {
+            new EndGamePanel(new EndGameFrame()).start();
+            return;
+        }
         if (GameSaver.isPortalSaved()) {
             gameMode = GameMode.portal;
             new GameLoader("src/controller/manager/saving/portalSaved").load();

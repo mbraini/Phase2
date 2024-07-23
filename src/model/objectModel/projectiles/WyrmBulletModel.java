@@ -6,7 +6,7 @@ import model.interfaces.IsCircle;
 import utils.Math;
 import utils.Vector;
 
-public class WyrmBulletModel extends BulletModel implements IsCircle {
+public class WyrmBulletModel extends EnemyBulletModel implements IsCircle {
 
     public WyrmBulletModel(Vector position , Vector direction , String id){
         this.position = position;

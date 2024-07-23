@@ -40,17 +40,77 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
 
     private void initVertices() {
         vertices = new ArrayList<>();
-        vertices.add(new Vector(
-                position.x ,
-                position.y - (java.lang.Math.sqrt(3) * Constants.ARCHMIRE_DIMENSION.width / 3d))
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                0,
+                                Constants.ARCHMIRE_DIMENSION.height /2d
+                        )
+                )
         );
-        vertices.add(new Vector(
-                position.x - Constants.ARCHMIRE_DIMENSION.width / 2d ,
-                position.y + (java.lang.Math.sqrt(3) * Constants.ARCHMIRE_DIMENSION.width / 6d))
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                Constants.ARCHMIRE_DIMENSION.width * 18 / 40d,
+                                Constants.ARCHMIRE_DIMENSION.height * 9 / 32d
+                        )
+                )
         );
-        vertices.add(new Vector(
-                position.x + Constants.ARCHMIRE_DIMENSION.width / 2d ,
-                position.y + (java.lang.Math.sqrt(3) * Constants.ARCHMIRE_DIMENSION.width / 6d))
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                Constants.ARCHMIRE_DIMENSION.width * 18 / 40d,
+                                -Constants.ARCHMIRE_DIMENSION.height / 32d
+                        )
+                )
+        );
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                Constants.ARCHMIRE_DIMENSION.width * 13 / 40d,
+                                -Constants.ARCHMIRE_DIMENSION.height * 10 / 32d
+                        )
+                )
+        );
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                0,
+                                -Constants.ARCHMIRE_DIMENSION.height / 2d
+                        )
+                )
+        );
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                -Constants.ARCHMIRE_DIMENSION.width * 13 / 40d,
+                                -Constants.ARCHMIRE_DIMENSION.height * 10 / 32d
+                        )
+                )
+        );
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                -Constants.ARCHMIRE_DIMENSION.width * 18 / 40d,
+                                -Constants.ARCHMIRE_DIMENSION.height / 32d
+                        )
+                )
+        );
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                -Constants.ARCHMIRE_DIMENSION.width * 18 / 40d,
+                                Constants.ARCHMIRE_DIMENSION.height * 9 / 32d
+                        )
+                )
         );
     }
 

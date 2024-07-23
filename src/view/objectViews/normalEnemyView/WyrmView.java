@@ -9,7 +9,7 @@ public class WyrmView extends NormalEnemyView {
     public WyrmView(Vector position, String id) {
         this.position = position;
         this.id = id;
-        this.image = Constants.omenoct;
+        this.image = Constants.wyrm;
     }
 
     @Override

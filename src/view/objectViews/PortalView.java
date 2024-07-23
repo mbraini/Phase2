@@ -10,7 +10,7 @@ public class PortalView extends ObjectView{
     public PortalView(Vector position ,String id) {
         this.position = position;
         this.id = id;
-        image = Constants.heal;
+        image = Constants.portal;
     }
 
     @Override

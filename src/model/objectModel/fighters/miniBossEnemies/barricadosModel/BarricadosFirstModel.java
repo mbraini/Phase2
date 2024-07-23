@@ -18,6 +18,6 @@ public class BarricadosFirstModel extends BarricadosModel {
 
     @Override
     public void die() {
-
+        super.die();
     }
 }

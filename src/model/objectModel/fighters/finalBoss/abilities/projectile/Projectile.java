@@ -31,9 +31,7 @@ public class Projectile extends Ability {
         ownHelper(boss.getHead());
         boss.getHead().setHovering(false);
         boss.getLeftHand().setVulnerableToEpsilonBullet(true);
-        boss.getLeftHand().setVulnerableToEpsilonMelee(true);
         boss.getRightHand().setVulnerableToEpsilonBullet(true);
-        boss.getRightHand().setVulnerableToEpsilonMelee(true);
     }
 
     @Override

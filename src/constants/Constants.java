@@ -25,7 +25,7 @@ public class Constants {
     public static final double FRAME_SHRINKAGE_DISTANCE = 50;
     public static final double NECROPICK_SPAWN_RADIOS = 300;
     public static final double NECROPCIK_NAVIGATION_VELOCITY = 1;
-    public static final Dimension NECROPICK_DIMENSION = new Dimension(50 ,50);
+    public static final Dimension NECROPICK_DIMENSION = new Dimension(40 ,60);
     public static final Dimension OMENOCT_DIMENTION = new Dimension(100 ,100);
     public static final double OMENOCT_RADIOS = (
             Constants.OMENOCT_DIMENTION.width / (Math.sqrt(2) + 1)
@@ -37,8 +37,8 @@ public class Constants {
     public static final int ARCHMIRE_THREAD_REFRESH_RATE = ARCHMIRE_AOE_TIME_LIMIT / 50;
     public static final double ARCHMIRE_VELOCITY = 0.1;
     public static final int ARCHMIRE_POINT_RADIOS = 30;
-    public static final Dimension WYRM_FRAME_DIMENSION = new Dimension(150 ,150);
-    public static final Dimension WYRM_DIMENSION = new Dimension(100 ,100);
+    public static final Dimension WYRM_FRAME_DIMENSION = new Dimension(180 ,130);
+    public static final Dimension WYRM_DIMENSION = new Dimension(180 ,130);
     public static final double WYRM_NAVIGATION_VELOCITY = 0.3;
     public static final double WYRM_NAVIGATION_RADIOS = 500;
     public static final int WYRM_SHOOTING_TIME = 1000;
@@ -115,6 +115,8 @@ public class Constants {
     public static final int EMPUSA_UNLOCK_COST = 750;
     public static final int MELAMPUS_UNLOCK_COST = 750;
     public static final int PROTEUS_UNLOCK_COST = 1000;
+    public static final int BOSS_HELPER_DASH_TIME = 1000;
+    public static final double BOSS_HELPER_DASH_DISTANCE = 300;
     public static Dimension EPSILON_DIMENSION = new Dimension(25 ,25);
     public static final Dimension EPSILON_FINAL_DIMENSION = new Dimension(25 ,25);
     public static Dimension TRIGORATH_DIMENTION = new Dimension(50 ,50);
@@ -180,4 +182,17 @@ public class Constants {
     public static Image slumber;
     public static BufferedImage archmire;
     public static Image skeleton;
+    public static Image barricados;
+    public static Image wyrm;
+    public static Image portal;
+    public static Image slaughter;
+    public static Image dismay;
+    public static Image necropick;
+    public static Image astrape;
+    public static Image cerberus;
+    public static Image melampus;
+    public static Image chiron;
+    public static Image athena;
+    public static Image empusa;
+    public static Image dolus;
 }

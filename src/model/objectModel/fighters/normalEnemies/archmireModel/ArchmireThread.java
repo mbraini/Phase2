@@ -85,7 +85,7 @@ public class ArchmireThread extends Thread{
 
     }
 
-    private boolean isCollided(ObjectModel model) {
+    private synchronized boolean isCollided(ObjectModel model) {
         for (ArchmireAoeEffectModel effectModel : archmire.getAoeEffects()){
             if (Collision.IsColliding(effectModel ,model)) {
                 if (model instanceof EnemyModel || model instanceof EpsilonModel)
@@ -95,14 +95,14 @@ public class ArchmireThread extends Thread{
         return false;
     }
 
-    private void checkRemovedAOEs() {
+    private synchronized void checkRemovedAOEs() {
         for (String id : removedAoe){
             removeAoe(id);
         }
         removedAoe = new ArrayList<>();
     }
 
-    private void removeAoe(String id) {
+    private synchronized void removeAoe(String id) {
         for (ArchmireAoeEffectModel effectModel : archmire.getAoeEffects()){
             if (effectModel.getId().equals(id)){
                 archmire.getAoeEffects().remove(effectModel);
@@ -111,7 +111,7 @@ public class ArchmireThread extends Thread{
         }
     }
 
-    private void addEffect() {
+    private synchronized void addEffect() {
         ArchmireAoeEffectModel effectModel = new ArchmireAoeEffectModel(
                 archmire,
                 Helper.RandomStringGenerator(Constants.ID_SIZE)

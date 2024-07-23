@@ -23,6 +23,9 @@ public abstract class BossHelperModel extends EnemyModel implements ImageChanger
     protected Dimension size;
     protected boolean isInUse = true;
     protected boolean isDead;
+    protected boolean dashedInPositiveWay;
+    private boolean inDash;
+
     protected abstract void initFrame();
 
     @Override
@@ -60,6 +63,14 @@ public abstract class BossHelperModel extends EnemyModel implements ImageChanger
 
     public void setDead(boolean dead) {
         isDead = dead;
+    }
+
+    public boolean dashedInPositiveWay() {
+        return dashedInPositiveWay;
+    }
+
+    public void setDashedInPositiveWay(boolean dashedInPositiveWay) {
+        this.dashedInPositiveWay = dashedInPositiveWay;
     }
 
     @Override
@@ -106,4 +117,11 @@ public abstract class BossHelperModel extends EnemyModel implements ImageChanger
         setDead(true);
     }
 
+    public boolean isInDash() {
+        return inDash;
+    }
+
+    public void setInDash(boolean inDash) {
+        this.inDash = inDash;
+    }
 }

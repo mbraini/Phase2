@@ -55,7 +55,7 @@ public class PortalPanel extends PIG {
                 pay.getWidth() / 7 * 5 ,
                 pay.getHeight() / 7
         );
-        declineL1.setText("gain " + PR + " " + "XP");
+        declineL1.setText("gain " + PR / 10 + " " + "XP");
         declineL1.setForeground(Color.WHITE);
         declineL1.setOpaque(false);
         declineL1.setFont(new Font(null,Font.BOLD ,15));
@@ -146,7 +146,7 @@ public class PortalPanel extends PIG {
         decline.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.addXP(PR);
+                Controller.addXP(PR / 10);
                 Controller.resume();
                 end();
             }

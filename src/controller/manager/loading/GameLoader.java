@@ -11,6 +11,7 @@ import controller.manager.WaveSpawner;
 import controller.manager.saving.GameManagerHelperSaver;
 import model.ModelData;
 import model.inGameAbilities.InGameAbility;
+import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
 import model.objectModel.frameModel.FrameModel;
 import model.skillTreeAbilities.SkillTreeAbility;
@@ -199,10 +200,15 @@ public class GameLoader {
                 JSONObject jAbstract = jAbstractEnemies.getJSONObject(i);
                 String jType = jAbstract.get("type").toString();
                 AbstractEnemyType type = gson.fromJson(jType , AbstractEnemyType.class);
-                GameLoaderHelper.addBlackOrb(
-                        gson.fromJson(jAbstract.toString() , BlackOrbModel.class) ,
-                        jAbstract
-                );
+                if (type == AbstractEnemyType.blackOrb) {
+                    GameLoaderHelper.addBlackOrb(
+                            gson.fromJson(jAbstract.toString(), BlackOrbModel.class),
+                            jAbstract
+                    );
+                }
+                else {
+                    ////todo
+                }
             }
         } catch (JSONException e) {
             throw new RuntimeException(e);

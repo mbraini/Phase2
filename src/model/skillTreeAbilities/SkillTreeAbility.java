@@ -108,10 +108,8 @@ public abstract class SkillTreeAbility {
                 if (GameState.isOver())
                     coolDownTimer.stop();
                 coolDownTimePassed += Constants.SKILL_TREE_ABILITY_TIMER_REFRESH_RATE;
-                System.out.println(coolDownTimePassed);
                 if (coolDownTimePassed >= inGameCoolDownTime){
                     canCast = true;
-                    System.out.println("RELEASED!");
                     coolDownTimePassed = 0;
                     coolDownTimer.stop();
                 }

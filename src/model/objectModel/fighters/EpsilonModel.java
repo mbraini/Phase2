@@ -137,7 +137,7 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
 
     @Override
     public void die() {
-        Controller.endGame();
+        Controller.endGame(false);
     }
 
     public void meleeAttack(EnemyModel enemyModel){

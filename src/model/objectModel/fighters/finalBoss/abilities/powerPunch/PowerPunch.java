@@ -30,9 +30,7 @@ public class PowerPunch extends Ability {
         boss.getPunch().setHovering(true);
         boss.getHead().setVulnerableToEpsilonMelee(true);
         boss.getHead().setVulnerableToEpsilonBullet(true);
-        boss.getLeftHand().setVulnerableToEpsilonMelee(true);
         boss.getLeftHand().setVulnerableToEpsilonBullet(true);
-        boss.getRightHand().setVulnerableToEpsilonMelee(true);
         boss.getRightHand().setVulnerableToEpsilonBullet(true);
     }
 

@@ -10,7 +10,7 @@ public class NecropickView extends NormalEnemyView{
     public NecropickView(Vector position , String id){
         this.position = position;
         this.id = id;
-        this.image = Constants.omenoct;
+        this.image = Constants.necropick;
     }
 
     @Override

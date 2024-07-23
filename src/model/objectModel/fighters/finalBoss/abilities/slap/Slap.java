@@ -35,7 +35,6 @@ public class Slap extends Ability {
         helper.setHovering(false);
         helper.setHasMeleeAttack(true);
         helper.setMeleeAttack(10);
-        boss.getHead().setVulnerableToEpsilonMelee(true);
         boss.getHead().setVulnerableToEpsilonBullet(true);
     }
 

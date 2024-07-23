@@ -14,6 +14,7 @@ import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.ObjectModel;
 import model.objectModel.fighters.finalBoss.bossHelper.BossHelperModel;
 import model.objectModel.projectiles.BulletModel;
+import model.objectModel.projectiles.EnemyBulletModel;
 import model.objectModel.projectiles.EpsilonBulletModel;
 import model.skillTreeAbilities.Cerberus.CerberusModel;
 import utils.Math;
@@ -130,8 +131,9 @@ public class CollisionHandler {
                 object.setVelocity(0 ,0);
             }
         }
-        if (object instanceof BulletModel && !(object instanceof EpsilonBulletModel)){
+        if (object instanceof EnemyBulletModel){
             epsilon.setHP(epsilon.getHP() - ((BulletModel) object).getDamage());
+            new Impact(object.getPosition() , Constants.REGULAR_IMPACT_RANGE).MakeImpact();
             object.die();
         }
         if (object instanceof CollisionDetector){

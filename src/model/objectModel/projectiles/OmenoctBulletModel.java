@@ -5,7 +5,7 @@ import model.interfaces.IsCircle;
 import utils.Math;
 import utils.Vector;
 
-public class OmenoctBulletModel extends BulletModel implements IsCircle {
+public class OmenoctBulletModel extends EnemyBulletModel implements IsCircle {
 
     public OmenoctBulletModel(Vector position , Vector direction , String id){
         this.position = position;

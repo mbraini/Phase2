@@ -18,7 +18,7 @@ public class Ares extends SkillTreeAbility{
     @Override
     protected void cast() {
         canCast = false;
-        EpsilonModel epsilon = (EpsilonModel)ModelData.getModels().getFirst();
+        EpsilonModel epsilon = ModelData.getEpsilon();
         epsilon.setEpsilonBulletDamage(epsilon.getEpsilonBulletDamage() + 2);
         epsilon.setMeleeAttack(epsilon.getMeleeAttack() + 2);
         coolDownTimer.start();

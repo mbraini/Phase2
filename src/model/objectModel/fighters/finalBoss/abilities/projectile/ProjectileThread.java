@@ -68,8 +68,10 @@ public class ProjectileThread extends Thread{
         if (time % 1000 != 0){
             return;
         }
-        fire(projectile.getBoss().getLeftHand());
-        fire(projectile.getBoss().getRightHand());
+        if (!projectile.getBoss().getLeftHand().isDead())
+            fire(projectile.getBoss().getLeftHand());
+        if (!projectile.getBoss().getRightHand().isDead())
+            fire(projectile.getBoss().getRightHand());
     }
 
     private void fire(HandModel hand) {

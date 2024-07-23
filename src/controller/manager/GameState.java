@@ -24,10 +24,10 @@ public class GameState {
     private static int thirdWavePR;
     private static int forthWavePR;
     private static int fifthWavePR;
-    private static boolean isPause;
-    private static boolean isOver;
-    private static boolean isDizzy;
-    private static volatile boolean isInAnimation;
+    private volatile static boolean isPause;
+    private volatile static boolean isOver;
+    private volatile static boolean isDizzy;
+    private volatile static boolean isInAnimation;
 
     public GameState(){
         /////todo

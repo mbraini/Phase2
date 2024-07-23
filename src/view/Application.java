@@ -35,9 +35,6 @@ public class Application implements Runnable{
             Constants.banish = ImageIO.read(new File("src/view/objectViews/images/Banish.png"));
             Constants.empower = ImageIO.read(new File("src/view/objectViews/images/Empower.png"));
             Constants.heal = ImageIO.read(new File("src/view/objectViews/images/Heal.png"));
-            Constants.ares = ImageIO.read(new File("src/view/objectViews/images/Ares.png"));
-            Constants.aceso = ImageIO.read(new File("src/view/objectViews/images/Aceso.png"));
-            Constants.proteus = ImageIO.read(new File("src/view/objectViews/images/Proteus.png"));
             Constants.endGameImage = ImageIO.read(new File("src/view/objectViews/images/GameOver.png"));
             Constants.omenoct = ImageIO.read(new File("src/view/objectViews/images/omenoct.png"));
             Constants.orb = ImageIO.read(new File("src/view/objectViews/images/orb.png"));
@@ -48,6 +45,22 @@ public class Application implements Runnable{
             Constants.slumber = ImageIO.read(new File("src/view/objectViews/images/slumber.png"));
             Constants.archmire = ImageIO.read(new File("src/view/objectViews/images/archmire.png"));
             Constants.skeleton = ImageIO.read(new File("src/view/objectViews/images/skeleton.png"));
+            Constants.barricados = ImageIO.read(new File("src/view/objectViews/images/barricados.png"));
+            Constants.wyrm = ImageIO.read(new File("src/view/objectViews/images/wyrm.png"));
+            Constants.portal = ImageIO.read(new File("src/view/objectViews/images/portal.png"));
+            Constants.slaughter = ImageIO.read(new File("src/view/objectViews/images/slaughter.png"));
+            Constants.dismay = ImageIO.read(new File("src/view/objectViews/images/dismay.png"));
+            Constants.necropick = ImageIO.read(new File("src/view/objectViews/images/necropick.png"));
+            Constants.ares = ImageIO.read(new File("src/view/objectViews/images/ares.png"));
+            Constants.astrape = ImageIO.read(new File("src/view/objectViews/images/astrape.png"));
+            Constants.cerberus = ImageIO.read(new File("src/view/objectViews/images/cerberus.png"));
+            Constants.aceso = ImageIO.read(new File("src/view/objectViews/images/aceso.png"));
+            Constants.melampus = ImageIO.read(new File("src/view/objectViews/images/melampus.png"));
+            Constants.chiron = ImageIO.read(new File("src/view/objectViews/images/chiron.png"));
+            Constants.athena = ImageIO.read(new File("src/view/objectViews/images/athena.png"));
+            Constants.proteus = ImageIO.read(new File("src/view/objectViews/images/proteus.png"));
+            Constants.empusa = ImageIO.read(new File("src/view/objectViews/images/empusa.png"));
+            Constants.dolus = ImageIO.read(new File("src/view/objectViews/images/dolus.png"));
         }
         catch (Exception e){
             System.out.println("File Not Found!");

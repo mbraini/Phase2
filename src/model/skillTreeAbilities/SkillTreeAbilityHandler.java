@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class SkillTreeAbilityHandler {
 
     public synchronized static void initAbilities(){
-        ArrayList<SkillTreeAbility> abilities = ModelData.getSkillTreeAbilities();
+        ArrayList<SkillTreeAbility> abilities = new ArrayList<>();
         abilities.add(new Ares());
         abilities.add(new Astrape());
         abilities.add(new Cerberus());

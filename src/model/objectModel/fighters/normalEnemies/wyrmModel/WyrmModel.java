@@ -33,33 +33,12 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         this.HP = 12;
         type = ModelType.wyrm;
         vulnerableToEpsilonBullet = true;
-        initVertices();
         setFrame();
         setPosition(Math.VectorAdd(
                 position,
                 new Vector(frameModel.getSize().width / 2d ,frameModel.getSize().height / 2d))
         );
-        this.setVertices();
-    }
-
-    private void setVertices() {
-        vertices = new ArrayList<>();
-        vertices.add(new Vector(
-                position.x + (Constants.Squarantine_DIMENTION.width / 2d) ,
-                position.y + (Constants.Squarantine_DIMENTION.height / 2d))
-        );
-        vertices.add(new Vector(
-                position.x + (Constants.Squarantine_DIMENTION.width / 2d) ,
-                position.y - (Constants.Squarantine_DIMENTION.height / 2d))
-        );
-        vertices.add(new Vector(
-                position.x - (Constants.Squarantine_DIMENTION.width / 2d) ,
-                position.y - (Constants.Squarantine_DIMENTION.height / 2d))
-        );
-        vertices.add(new Vector(
-                position.x - (Constants.Squarantine_DIMENTION.width / 2d) ,
-                position.y + (Constants.Squarantine_DIMENTION.height / 2d))
-        );
+        initVertices();
     }
 
     private void setFrame() {
@@ -156,17 +135,41 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
 
     void initVertices(){
         vertices = new ArrayList<>();
-        vertices.add(new Vector(
-                position.x ,
-                position.y - (java.lang.Math.sqrt(3) * Constants.TRIGORATH_DIMENTION.width / 3d))
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                Constants.WYRM_DIMENSION.width /2d,
+                                0
+                        )
+                )
         );
-        vertices.add(new Vector(
-                position.x - Constants.TRIGORATH_DIMENTION.width / 2d ,
-                position.y + (java.lang.Math.sqrt(3) * Constants.TRIGORATH_DIMENTION.width / 6d))
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                0,
+                                -Constants.WYRM_DIMENSION.height / 2d
+                        )
+                )
         );
-        vertices.add(new Vector(
-                position.x + Constants.TRIGORATH_DIMENTION.width / 2d ,
-                position.y + (java.lang.Math.sqrt(3) * Constants.TRIGORATH_DIMENTION.width / 6d))
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                -Constants.WYRM_DIMENSION.width / 2d,
+                                0
+                        )
+                )
+        );
+        vertices.add(
+                Math.VectorAdd(
+                        position,
+                        new Vector(
+                                0,
+                                Constants.WYRM_DIMENSION.height /2d
+                        )
+                )
         );
     }
 
