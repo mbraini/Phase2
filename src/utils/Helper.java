@@ -4,6 +4,7 @@ package utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import constants.Constants;
+import controller.configs.Configs;
 import controller.configs.helper.GameConfigsJsonHelper;
 import model.objectModel.frameModel.FrameModel;
 
@@ -149,6 +150,7 @@ public class Helper {
             scanner.close();
             helper = gson.fromJson(stringBuilder.toString() ,GameConfigsJsonHelper.class);
             helper.XP = xp;
+            Configs.GameConfigs.XP = xp;
             PrintWriter printWriter = new PrintWriter("src/controller/configs/gameConfigs.json");
             printWriter.write(gson.toJson(helper));
             printWriter.close();

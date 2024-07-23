@@ -3,7 +3,10 @@ package view.menuPanels;
 
 import constants.Constants;
 import controller.Controller;
+import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
+import controller.manager.GameState;
+import utils.Helper;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,8 +59,26 @@ public class SkillTreePanel extends PIG {
         initAstrape();
         initCerberus();
         initAthena();
+        initXP();
         initBack();
         initAL();
+    }
+
+    private void initXP() {
+        xp = new JLabel();
+        xp.setBounds(
+                (int) (widthUnit * 8.9),
+                0,
+                (int) (widthUnit * 1.6),
+                heightUnit
+        );
+        xp.setOpaque(false);
+        xp.setForeground(Color.MAGENTA);
+        xp.setText("xp: " + Configs.GameConfigs.XP);
+        xp.setFont(new Font(null,Font.BOLD ,15));
+        xp.setHorizontalAlignment(JLabel.CENTER);
+        xp.setVerticalAlignment(JLabel.CENTER);
+        this.add(xp);
     }
 
     private void initAthena() {
@@ -73,6 +94,7 @@ public class SkillTreePanel extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.buySkillTreeRequest(SkillTreeAbilityType.athena);
+                updateXP();
             }
         });
         athenaL = new JLabel();
@@ -105,6 +127,7 @@ public class SkillTreePanel extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.buySkillTreeRequest(SkillTreeAbilityType.cerberus);
+                updateXP();
             }
         });
         cerberusL = new JLabel();
@@ -124,6 +147,11 @@ public class SkillTreePanel extends PIG {
         this.add(cerberusL);
     }
 
+    private void updateXP() {
+        Helper.saveXP(GameState.getXp());
+        xp.setText("xp: " + Configs.GameConfigs.XP);
+    }
+
     private void initAstrape() {
         astrape.setBounds(
                 (int) (widthUnit * 6.75),
@@ -137,6 +165,7 @@ public class SkillTreePanel extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.buySkillTreeRequest(SkillTreeAbilityType.astrape);
+                updateXP();
             }
         });
         astrapeL = new JLabel();
@@ -169,6 +198,7 @@ public class SkillTreePanel extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.buySkillTreeRequest(SkillTreeAbilityType.dolus);
+                updateXP();
             }
         });
         dolusL = new JLabel();
@@ -201,6 +231,7 @@ public class SkillTreePanel extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.buySkillTreeRequest(SkillTreeAbilityType.empusa);
+                updateXP();
             }
         });
         empusaL = new JLabel();
@@ -233,6 +264,7 @@ public class SkillTreePanel extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.buySkillTreeRequest(SkillTreeAbilityType.chiron);
+                updateXP();
             }
         });
         chironL = new JLabel();
@@ -265,6 +297,7 @@ public class SkillTreePanel extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.buySkillTreeRequest(SkillTreeAbilityType.melampus);
+                updateXP();
             }
         });
         melampusL = new JLabel();
@@ -331,6 +364,7 @@ public class SkillTreePanel extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.buySkillTreeRequest(SkillTreeAbilityType.ares);
+                updateXP();
             }
         });
         aresL = new JLabel();
@@ -363,6 +397,7 @@ public class SkillTreePanel extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.buySkillTreeRequest(SkillTreeAbilityType.aceso);
+                updateXP();
             }
         });
         acesoL = new JLabel();
@@ -394,6 +429,7 @@ public class SkillTreePanel extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.buySkillTreeRequest(SkillTreeAbilityType.proteus);
+                updateXP();
             }
         });
         proteusL = new JLabel();
