@@ -5,6 +5,7 @@ import constants.Constants;
 import utils.Vector;
 import view.ViewData;
 import view.ViewRequest;
+import view.abilities.AbilityView;
 import view.gamePanels.ImaginaryPanel;
 import view.objectViews.FrameView;
 import view.objectViews.ObjectView;
@@ -17,6 +18,7 @@ public class Render extends Thread {
     private ArrayList<FrameView> frames;
     private ArrayList<ObjectView> views;
     private ArrayList<EffectView> effects;
+    private ArrayList<AbilityView> abilityViews;
 
     @Override
     public void run() {
@@ -63,10 +65,11 @@ public class Render extends Thread {
             frames = (ArrayList<FrameView>) ViewData.getFrames().clone();
             views = (ArrayList<ObjectView>) ViewData.getViews().clone();
             effects = (ArrayList<EffectView>) ViewData.getEffectViews().clone();
+            abilityViews = (ArrayList<AbilityView>) ViewData.getAbilityViews().clone();
         }
         updateFrames(frames);
         updateImaginaryPanels(frames);
-        paintViews(views ,effects);
+        paintViews();
     }
 
     private void updateImaginaryPanels(ArrayList<FrameView> frames) {
@@ -79,11 +82,12 @@ public class Render extends Thread {
         }
     }
 
-    private void paintViews(ArrayList<ObjectView> views , ArrayList<EffectView> effects) {
+    private void paintViews() {
         for (ImaginaryPanel imaginaryPanel : ViewData.getPanels()) {
             imaginaryPanel.setVariables();
             imaginaryPanel.setViews(views);
             imaginaryPanel.setEffects(effects);
+            imaginaryPanel.setAbilityViews(abilityViews);
             imaginaryPanel.revalidate();
             imaginaryPanel.repaint();
         }

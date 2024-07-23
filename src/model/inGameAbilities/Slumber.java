@@ -58,4 +58,8 @@ public class Slumber extends InGameAbility{
             timer.start();
         }
     }
+
+    public int getTimePassed() {
+        return timePassed;
+    }
 }

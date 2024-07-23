@@ -70,4 +70,12 @@ public class Slaughter extends InGameAbility{
     public void setUsed(boolean used) {
         isUsed = used;
     }
+
+    public int getTimePassed() {
+        return timePassed;
+    }
+
+    public void setTimePassed(int timePassed) {
+        this.timePassed = timePassed;
+    }
 }

@@ -125,7 +125,7 @@ public class Constants {
     public static final double EPSILON_BULLET_RADIOS = 5;
     public static final int ID_SIZE = 10;
     public static final int MELEI_ATTACK = 10;
-    public static final Dimension MINIMUM_FRAME_DIMENSION = new Dimension(200 + barD.width ,200 + barD.height);
+    public static final Dimension MINIMUM_FRAME_DIMENSION = new Dimension(300 ,300);
     public static final double IMPACT_AREA = 200;
     public static final int ENEMY_SPAWN_MARGIN = 500;
     public static final double DASH_DISTANCE = 100;
@@ -133,6 +133,10 @@ public class Constants {
     public static final double EPSILON_DECELERATION = 0.0001;
     public static Image epsilonImage;
     public static Image trigorathImage;
+    public static final Dimension ABILITY_VIEW_DIMENSION = new Dimension(
+            MINIMUM_FRAME_DIMENSION.width / 11,
+            MINIMUM_FRAME_DIMENSION.height / 11
+    );
     public static Image squarantineImage;
     public static Image empower;
     public static Image heal;

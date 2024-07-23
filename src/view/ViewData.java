@@ -1,22 +1,25 @@
 package view;
 
+import controller.enums.InGameAbilityType;
+import controller.enums.SkillTreeAbilityType;
 import controller.listeners.EpsilonAiming;
 import controller.listeners.EpsilonCirculation;
 import controller.listeners.EpsilonMovement;
+import model.inGameAbilities.InGameAbility;
+import view.abilities.*;
 import view.objectViews.FrameView;
 import view.objectViews.ObjectView;
 import view.gamePanels.ImaginaryPanel;
 import view.objectViews.effectView.EffectView;
 
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ViewData {
     private static ArrayList<ImaginaryPanel> panels;
     private static ArrayList<FrameView> frames;
     private static ArrayList<ObjectView> views;
     private static ArrayList<EffectView> effectViews;
+    private static ArrayList<AbilityView> abilityViews;
     private static double time;
     private static double hp;
     private static double xp;
@@ -33,6 +36,7 @@ public class ViewData {
         frames = new ArrayList<>();
         views = new ArrayList<>();
         effectViews = new ArrayList<>();
+        abilityViews = new ArrayList<>();
     }
 
 
@@ -154,6 +158,14 @@ public class ViewData {
         effectViews.add(effectView);
     }
 
+    public static ArrayList<AbilityView> getAbilityViews() {
+        return abilityViews;
+    }
+
+    public static void setAbilityViews(ArrayList<AbilityView> abilityViews) {
+        ViewData.abilityViews = abilityViews;
+    }
+
     public static FrameView getEpsilonFrame() {
         return epsilonFrame;
     }
@@ -162,4 +174,70 @@ public class ViewData {
         ViewData.epsilonFrame = frameView;
     }
 
+    public static void addAbilityWithType(int coolDown, int timePassed, boolean isAvailable, SkillTreeAbilityType type) {
+        switch (type) {
+            case ares :
+                ViewData.addAbility(
+                        new AresView(coolDown,timePassed,isAvailable)
+                );
+                break;
+            case astrape:
+                ViewData.addAbility(
+                        new AstrapeView(coolDown,timePassed,isAvailable)
+                );
+                break;
+            case cerberus:
+                ViewData.addAbility(
+                        new CerberusView(coolDown,timePassed,isAvailable)
+                );
+                break;
+            case aceso:
+                ViewData.addAbility(
+                        new AcesoView(coolDown,timePassed,isAvailable)
+                );
+                break;
+            case melampus:
+                ViewData.addAbility(
+                        new MelampusView(coolDown,timePassed,isAvailable)
+                );
+                break;
+            case chiron:
+                ViewData.addAbility(
+                        new ChironView(coolDown,timePassed,isAvailable)
+                );
+                break;
+            case athena:
+                ViewData.addAbility(
+                        new AthenaView(coolDown,timePassed,isAvailable)
+                );
+                break;case proteus:
+                ViewData.addAbility(
+                        new ProteusView(coolDown,timePassed,isAvailable)
+                );
+                break;
+            case empusa:
+                ViewData.addAbility(
+                        new EmpusaView(coolDown,timePassed,isAvailable)
+                );
+                break;
+            case dolus:
+                ViewData.addAbility(
+                        new DolusView(coolDown,timePassed,isAvailable)
+                );
+                break;
+        }
+    }
+
+    public static void addAbilityWithType(int coolDown, int timePassed, boolean isAvailable, InGameAbilityType type) {
+        if (type == InGameAbilityType.slaughter) {
+            addAbility(new SlaughterView(coolDown,timePassed,isAvailable));
+        }
+        else {
+            addAbility(new SlumberView(coolDown,timePassed,isAvailable));
+        }
+    }
+
+    private static void addAbility(AbilityView abilityView) {
+        abilityViews.add(abilityView);
+    }
 }

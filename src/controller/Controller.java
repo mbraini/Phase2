@@ -1,7 +1,6 @@
 package controller;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import controller.configs.Configs;
 import controller.configs.helper.GameConfigsJsonHelper;
 import controller.enums.InGameAbilityType;
@@ -9,18 +8,21 @@ import controller.enums.SkillTreeAbilityType;
 import controller.interfaces.SizeChanger;
 import controller.listeners.keyHelper.KeyHelper;
 import controller.manager.GameManager;
-import controller.manager.GameManagerThread;
 import controller.manager.loading.GameLoader;
 import constants.Constants;
 import controller.manager.saving.GameSaver;
 import model.ModelRequests;
 import model.animations.GameStartAnimation;
+import model.inGameAbilities.InGameAbility;
 import model.inGameAbilities.InGameAbilityHandler;
+import model.inGameAbilities.Slaughter;
+import model.inGameAbilities.Slumber;
 import model.interfaces.ImageChanger;
 import model.objectModel.PortalModel;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.frameModel.FrameModelBuilder;
+import model.skillTreeAbilities.SkillTreeAbility;
 import model.skillTreeAbilities.SkillTreeAbilityHandler;
 import model.threads.FrameThread;
 import model.threads.GameLoop;
@@ -31,7 +33,6 @@ import model.objectModel.ObjectModel;
 import model.viewRequests.ShootRequest;
 import model.viewRequests.InGameAbilityRequests;
 import model.viewRequests.SkillTreeAbilityRequests;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -39,6 +40,7 @@ import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
 import view.ViewData;
+import view.abilities.AbilityView;
 import view.gamePanels.*;
 import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
@@ -77,6 +79,9 @@ public abstract class Controller {
             ArrayList<EffectModel> effectModels = (ArrayList<EffectModel>) ModelData.getEffectModels().clone();
             HashMap<ObjectModel ,FrameModel> locals =
                     (HashMap<ObjectModel, FrameModel>) ModelData.getLocalFrames().clone();
+            ArrayList<SkillTreeAbility> skillTreeAbilities =
+                    (ArrayList<SkillTreeAbility>) ModelData.getSkillTreeAbilities().clone();
+            ArrayList<InGameAbility> inGameAbilities = (ArrayList<InGameAbility>) ModelData.getInGameAbilities().clone();
 
             ///////////////
 
@@ -145,6 +150,35 @@ public abstract class Controller {
                 ViewData.setViews(objectViews);
                 ViewData.setFrames(frameViews);
                 setVariables();
+                ViewData.setAbilityViews(new ArrayList<>());
+                for (SkillTreeAbility skillTreeAbility : skillTreeAbilities) {
+                    ViewData.addAbilityWithType(
+                            skillTreeAbility.getInGameCoolDownTime(),
+                            skillTreeAbility.getCoolDownTimePassed(),
+                            skillTreeAbility.isBought() && skillTreeAbility.CanCast(),
+                            skillTreeAbility.getType()
+                    );
+                }
+                for (InGameAbility inGameAbility : inGameAbilities) {
+                    if (inGameAbility.getType() == InGameAbilityType.slaughter) {
+                        Slaughter slaughter = (Slaughter) (inGameAbility);
+                        ViewData.addAbilityWithType(
+                                Constants.SLAUGHTER_COOLDOWN,
+                                slaughter.getTimePassed(),
+                                slaughter.isAvailable(),
+                                slaughter.getType()
+                        );
+                    }
+                    if (inGameAbility.getType() == InGameAbilityType.slumber) {
+                        Slumber slaughter = (Slumber) (inGameAbility);
+                        ViewData.addAbilityWithType(
+                                Constants.SLUMBER_DURATION,
+                                slaughter.getTimePassed(),
+                                slaughter.isAvailable(),
+                                slaughter.getType()
+                        );
+                    }
+                }
             }
             catch (Exception e){
                 System.out.println("update view exeption!");

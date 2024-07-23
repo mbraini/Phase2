@@ -3,6 +3,7 @@ package view.gamePanels;
 import controller.listeners.PanelKeyListener;
 import constants.Constants;
 import view.ViewData;
+import view.abilities.AbilityView;
 import view.objectViews.FrameView;
 import view.objectViews.ObjectView;
 import view.objectViews.effectView.EffectView;
@@ -15,6 +16,7 @@ public class ImaginaryPanel extends JPanel {
     private ArrayList<ObjectView> views = new ArrayList<>();
     private FrameView epsilonFrame;
     private ArrayList<EffectView> effectViews = new ArrayList<>();
+    private ArrayList<AbilityView> abilityViews = new ArrayList<>();
     private String id;
     public ImaginaryPanel(String id){
         this.setLayout(null);
@@ -50,27 +52,11 @@ public class ImaginaryPanel extends JPanel {
         }
 
         if (epsilonFrame != null) {
-            g.setColor(Color.MAGENTA);
-            g.setFont(new Font(null, Font.BOLD, 10));
-            g.drawString("XP: " + (int) ViewData.getXp(),
-                    3 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
-                    20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
-            );
-            g.setColor(Color.GREEN);
-            g.drawString("HP: " + (int) ViewData.getHp(),
-                    58 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
-                    20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
-            );
-            g.setColor(Color.RED);
-            g.drawString("Wave: " + ViewData.getWave(),
-                    103 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
-                    20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
-            );
-            g.setColor(Color.WHITE);
-            g.drawString("Time: " + (int) ViewData.getTime() / 1000,
-                    151 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
-                    20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
-            );
+            paintInfos(g);
+        }
+        for (AbilityView abilityView : abilityViews) {
+            abilityView.setUp();
+            abilityView.draw(g2d);
         }
 
         if (views == null)
@@ -79,6 +65,30 @@ public class ImaginaryPanel extends JPanel {
             views.get(i).draw(g2d);
         }
 
+    }
+
+    private void paintInfos(Graphics g) {
+        g.setColor(Color.MAGENTA);
+        g.setFont(new Font(null, Font.BOLD, 10));
+        g.drawString("xp: " + (int) ViewData.getXp(),
+                3 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
+                20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
+        );
+        g.setColor(Color.GREEN);
+        g.drawString("hp: " + (int) ViewData.getHp(),
+                58 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
+                20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
+        );
+        g.setColor(Color.RED);
+        g.drawString("wave: " + ViewData.getWave(),
+                103 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
+                20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
+        );
+        g.setColor(Color.WHITE);
+        g.drawString("time: " + (int) ViewData.getTime() / 1000,
+                151 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
+                20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
+        );
     }
 
     public void setViews(ArrayList<ObjectView> views) {
@@ -94,4 +104,7 @@ public class ImaginaryPanel extends JPanel {
         this.effectViews = effectViews;
     }
 
+    public void setAbilityViews(ArrayList<AbilityView> abilityViews) {
+        this.abilityViews = abilityViews;
+    }
 }

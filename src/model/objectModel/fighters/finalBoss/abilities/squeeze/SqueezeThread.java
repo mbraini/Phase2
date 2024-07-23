@@ -68,7 +68,7 @@ public class SqueezeThread extends Thread {
         Vector leftHandPlacer = Math.VectorAdd(
                 leftFrameCenter,
                 new Vector(
-                        -Constants.HAND_DIMENSION.width / 2d - 1,
+                        -Constants.HAND_DIMENSION.width / 2d - 2,
                         0
                 )
         );
@@ -76,7 +76,7 @@ public class SqueezeThread extends Thread {
         Vector rightHandPlacer = Math.VectorAdd(
                 rightFrameCenter,
                 new Vector(
-                        Constants.HAND_DIMENSION.width / 2d + 1,
+                        Constants.HAND_DIMENSION.width / 2d + 2,
                         0
                 )
         );

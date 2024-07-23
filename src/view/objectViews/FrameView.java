@@ -19,7 +19,7 @@ public class FrameView extends JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
-//        this.setType(Type.UTILITY);
+        this.setType(Type.UTILITY);
         this.setLocation((int) position.getX() ,(int) position.getY());
 
         this.setVisible(true);
