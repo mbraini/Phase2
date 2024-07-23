@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
 import constants.Constants;
+import controller.enums.ModelType;
 import model.objectModel.frameModel.FrameModelBuilder;
 import utils.Math;
 import utils.Vector;
@@ -18,6 +19,7 @@ public class PunchModel extends BossHelperModel {
                 Constants.PUNCH_DIMENSION.width,
                 Constants.PUNCH_DIMENSION.height
         );
+        type = ModelType.punch;
         HP = 100000;
         this.acceleration = new Vector();
         initFrame();

@@ -21,7 +21,7 @@ public class SqueezeThread extends Thread {
         double ns = 1000000000 / amountOfTicks;
         double deltaModel = 0;
         while (!GameState.isOver() && !isInterrupted()) {
-            if (GameState.isPause()){
+            if (GameState.isPause() || GameState.isDizzy()){
                 lastTime = System.nanoTime();
                 continue;
             }

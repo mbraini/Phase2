@@ -4,6 +4,7 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import constants.Constants;
 import controller.enums.EffectType;
 import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
@@ -23,7 +24,12 @@ import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.EpsilonVertexModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
+import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.AbilityType;
+import model.objectModel.fighters.finalBoss.bossHelper.BossHelperModel;
+import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
+import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
+import model.objectModel.fighters.finalBoss.bossHelper.PunchModel;
 import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosFirstModel;
 import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosSecondModel;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
@@ -45,8 +51,12 @@ import view.ViewRequest;
 import view.objectViews.CerberusView;
 import view.objectViews.EpsilonProtectorView;
 import view.objectViews.EpsilonView;
+import view.objectViews.FrameView;
 import view.objectViews.basicEnemyView.SquarantineView;
 import view.objectViews.basicEnemyView.TrigorathView;
+import view.objectViews.bossView.HandView;
+import view.objectViews.bossView.HeadView;
+import view.objectViews.bossView.PunchView;
 import view.objectViews.miniBossEnemyView.BarricadosView;
 import view.objectViews.miniBossEnemyView.BlackOrbLaserEffectView;
 import view.objectViews.miniBossEnemyView.OrbView;
@@ -245,15 +255,6 @@ public class GameLoaderHelper {
         }
     }
 
-    public synchronized static void addWyrm(ArchmireModel wyrm, FrameModel frameModel){
-        ModelRequests.addObjectModel(wyrm);
-        ViewRequest.addObjectView(new WyrmView(
-                wyrm.getPosition(),
-                wyrm.getId()
-        ));
-
-        Spawner.addFrame(frameModel);
-    }
 
     public synchronized static void addBlackOrb(BlackOrbModel blackOrbModel ,JSONObject jsonObject){
         blackOrbModel.start();
@@ -289,32 +290,6 @@ public class GameLoaderHelper {
                         orbModel.getId()
                 )
         );
-    }
-
-    public synchronized static void addBlackOrbEffect(BlackOrbAoeEffectModel effectModel){
-        ModelRequests.addEffectModel(effectModel);
-        ViewRequest.addEffectView(new BlackOrbLaserEffectView(
-                effectModel.getArea(),
-                effectModel.getId()
-        ));
-    }
-
-    public synchronized static void addBarricadosTheFirst(BarricadosSecondModel barricados){
-        ModelRequests.addObjectModel(barricados);
-        ViewRequest.addObjectView(new BarricadosView(
-                barricados.getPosition(),
-                barricados.getId()
-        ));
-    }
-
-    public synchronized static void addBarricadosTheSecond(BarricadosSecondModel barricados ,FrameModel frameModel){
-        ModelRequests.addObjectModel(barricados);
-        ViewRequest.addObjectView(new BarricadosView(
-                barricados.getPosition(),
-                barricados.getId()
-        ));
-
-        Spawner.addFrame(frameModel);
     }
 
     public static void addEffect(EffectModel effect, EffectType effectType) {
@@ -396,5 +371,68 @@ public class GameLoaderHelper {
         }
         skillTreeAbility.setUp();
         SkillTreeAbilityHandler.addSkillTree(skillTreeAbility);
+    }
+
+    public static void addBoss(Boss boss) {
+        ModelRequests.addAbstractEnemy(boss);
+        addHelper(boss.getHead() ,boss);
+        addHelper(boss.getLeftHand() ,boss);
+        addHelper(boss.getRightHand() ,boss);
+        boss.getHead().setInUse(false);
+        boss.getLeftHand().setInUse(false);
+        boss.getRightHand().setInUse(false);
+        if (boss.getAttackPhase() == 2) {
+            addHelper(boss.getPunch() ,boss);
+            boss.getPunch().setInUse(false);
+        }
+        boss.getPunch().setImage(Constants.punch);
+        boss.start();
+    }
+
+    public static void addHelper(BossHelperModel bossHelperModel ,Boss boss) {
+        bossHelperModel.setFrame(findFrame(bossHelperModel.getFrame().getId()));
+        ModelRequests.addObjectModel(bossHelperModel);
+        bossHelperModel.setVelocity(0 ,0);
+        bossHelperModel.setAcceleration(0 ,0);
+        switch (bossHelperModel.getType()) {
+            case hand :
+                bossHelperModel.setImage(Constants.hand);
+                ViewRequest.addObjectView(new HandView(
+                        bossHelperModel.getPosition(),
+                        bossHelperModel.getId()
+                ));
+                break;
+            case head:
+                bossHelperModel.setImage(Constants.smiley);
+                ((HeadModel)bossHelperModel).setBoss(boss);
+                ViewRequest.addObjectView(new HeadView(
+                        bossHelperModel.getPosition(),
+                        bossHelperModel.getId()
+                ));
+                break;
+            case punch:
+                bossHelperModel.setImage(Constants.punch);
+                ViewRequest.addObjectView(new PunchView(
+                        bossHelperModel.getPosition(),
+                        bossHelperModel.getId()
+                ));
+        }
+    }
+
+    public static FrameModel findFrame(String id) {
+        for (FrameModel frameModel : ModelData.getFrames()) {
+            if (frameModel.getId().equals(id))
+                return frameModel;
+        }
+        return null;
+    }
+
+    public synchronized static void addFrame(FrameModel frameModel) {
+        ModelData.addFrame(frameModel);
+        ViewRequest.addFrameView(new FrameView(
+                frameModel.getPosition(),
+                frameModel.getSize(),
+                frameModel.getId()
+        ));
     }
 }

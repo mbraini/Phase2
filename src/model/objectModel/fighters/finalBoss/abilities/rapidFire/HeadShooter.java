@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities.rapidFire;
 
 import controller.enums.ModelType;
+import controller.manager.GameState;
 import controller.manager.Spawner;
 import constants.Constants;
 import utils.Math;
@@ -19,7 +20,8 @@ public class HeadShooter implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (GameState.isPause() || GameState.isDizzy())
+            return;
         double theta = 0;
         Vector direction;
         Vector spawnPosition;

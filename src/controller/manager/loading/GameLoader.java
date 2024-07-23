@@ -61,7 +61,6 @@ public class GameLoader {
         }
         GameManagerHelperSaver gameState = gson.fromJson(gameStateString.toString() ,GameManagerHelperSaver.class);
         GameState.setTime(gameState.time);
-        GameState.setXp(gameState.xp);
         GameState.setHp(gameState.hp);
         GameState.setWave(gameState.wave);
         GameState.setShrinkageVelocity(gameState.shrinkageVelocity);
@@ -191,10 +190,10 @@ public class GameLoader {
                     continue;
                 }
                 if (!spawnedByObjects(frameModel.getId()))
-                    Spawner.addFrame(frameModel);
+                    GameLoaderHelper.addFrame(frameModel);
             }
             for (FrameModel frameModel : framesSpawnedByObjects)
-                Spawner.addFrame(frameModel);
+                GameLoaderHelper.addFrame(frameModel);
             JSONArray jAbstractEnemies = (JSONArray) new JSONTokener(abstractEnemyString.toString()).nextValue();
             for (int i = 0; i < jAbstractEnemies.length() ; i++){/////////////only one frame!
                 JSONObject jAbstract = jAbstractEnemies.getJSONObject(i);
@@ -207,7 +206,9 @@ public class GameLoader {
                     );
                 }
                 else {
-                    ////todo
+                    GameLoaderHelper.addBoss(
+                            gson.fromJson(jAbstract.toString(), Boss.class)
+                    );
                 }
             }
         } catch (JSONException e) {

@@ -125,4 +125,10 @@ public class Boss extends AbstractEnemy {
     public void setPhaseAttack(int phaseAttack) {
         this.attackPhase = phaseAttack;
     }
+
+    public void start() {
+        if (bossThread == null)
+            bossThread = new BossThread(this);
+        bossThread.start();
+    }
 }

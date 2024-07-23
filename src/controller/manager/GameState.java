@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class GameState {
 
     private static double time;
-    private static double xp = 1000;
+    private static int xp = 1000;
     private static double hp;
     private static int wave = 1;
     private static double shrinkageVelocity = Constants.FRAME_SHRINKAGE_VELOCITY;
@@ -64,11 +64,11 @@ public class GameState {
         GameState.time = time;
     }
 
-    public static double getXp() {
+    public static int getXp() {
         return xp;
     }
 
-    public static void setXp(double xp) {
+    public static void setXp(int xp) {
         GameState.xp = xp;
     }
 

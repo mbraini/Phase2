@@ -44,7 +44,7 @@ public class BossThread extends Thread {
         double deltaModel = 0;
         while (!GameState.isOver()) {
             long now = System.nanoTime();
-            if (GameState.isPause() || GameState.isInAnimation()){
+            if (GameState.isPause() || GameState.isInAnimation() || GameState.isDizzy()){
                 lastTime = now;
                 continue;
             }
@@ -100,27 +100,37 @@ public class BossThread extends Thread {
     private void defineAbility() {
         if (bossAI.isInSqueezePosition()){
             abilityType = AbilityType.squeeze;
-            return;
+            abilityCaster.setAbilityType(abilityType);
+            if (abilityCaster.canCast())
+                return;
         }
         if (bossAI.isInProjectileRange()){
             if (boss.getAttackPhase() == 1) {
                 abilityType = AbilityType.projectile;
-                return;
+                abilityCaster.setAbilityType(abilityType);
+                if (abilityCaster.canCast())
+                    return;
             }
             else {
                 Random random = new Random();
                 int randomNum = random.nextInt(0 ,3);
                 if (randomNum == 0) {
                     abilityType = AbilityType.projectile;
-                    return;
+                    abilityCaster.setAbilityType(abilityType);
+                    if (abilityCaster.canCast())
+                        return;
                 }
                 else if (randomNum == 1) {
                     abilityType = AbilityType.rapidFire;
-                    return;
+                    abilityCaster.setAbilityType(abilityType);
+                    if (abilityCaster.canCast())
+                        return;
                 }
                 else {
                     abilityType = AbilityType.vomit;
-                    return;
+                    abilityCaster.setAbilityType(abilityType);
+                    if (abilityCaster.canCast())
+                        return;
                 }
             }
         }

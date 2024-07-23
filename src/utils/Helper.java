@@ -1,7 +1,10 @@
 package utils;
 
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import constants.Constants;
+import controller.configs.helper.GameConfigsJsonHelper;
 import model.objectModel.frameModel.FrameModel;
 
 import java.awt.*;
@@ -131,5 +134,26 @@ public class Helper {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public static void saveXP(int xp) {
+        GameConfigsJsonHelper helper = new GameConfigsJsonHelper();
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+        Gson gson = builder.create();
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            Scanner scanner = new Scanner(new File("src/controller/configs/gameConfigs.json"));
+            while (scanner.hasNextLine())
+                stringBuilder.append(scanner.nextLine());
+            scanner.close();
+            helper = gson.fromJson(stringBuilder.toString() ,GameConfigsJsonHelper.class);
+            helper.XP = xp;
+            PrintWriter printWriter = new PrintWriter("src/controller/configs/gameConfigs.json");
+            printWriter.write(gson.toJson(helper));
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

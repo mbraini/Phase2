@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
 import constants.Constants;
+import controller.enums.ModelType;
 import controller.manager.loading.SkippedByJson;
 import model.animations.BossDeathAnimation;
 import model.interfaces.CollisionDetector;
@@ -28,6 +29,7 @@ public class HeadModel extends BossHelperModel implements IsCircle , CollisionDe
                 Constants.HEAD_DIMENSION.width,
                 Constants.HEAD_DIMENSION.height
         );
+        type = ModelType.head;
         HP = 300;
         setHovering(true);
         initFrame();
@@ -78,5 +80,9 @@ public class HeadModel extends BossHelperModel implements IsCircle , CollisionDe
     @Override
     public void detect() {
         isInPositiveDirection = !isInPositiveDirection;
+    }
+
+    public void setBoss(Boss boss) {
+        this.boss = boss;
     }
 }

@@ -14,6 +14,7 @@ import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.frameModel.FrameModel;
 import model.skillTreeAbilities.SkillTreeAbility;
+import utils.Helper;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -53,12 +54,16 @@ public class GameSaver {
         saveAbilities();
         saveSkillTree();
         saveGameState();
+        saveXP();
+    }
+
+    private void saveXP() {
+        Helper.saveXP(GameState.getXp());
     }
 
     private void saveGameState() {
         GameManagerHelperSaver gameState = new GameManagerHelperSaver();
         gameState.time = GameState.getTime();
-        gameState.xp = GameState.getXp();
         gameState.hp = GameState.getHp();
         gameState.wave = GameState.getWave();
         gameState.shrinkageVelocity = GameState.getShrinkageVelocity();

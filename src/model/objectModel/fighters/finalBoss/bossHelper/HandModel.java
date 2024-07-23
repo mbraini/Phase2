@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
 import constants.Constants;
+import controller.enums.ModelType;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
 import model.objectModel.frameModel.FrameModelBuilder;
@@ -25,6 +26,7 @@ public class HandModel extends BossHelperModel implements IsPolygon , HasVertice
                 Constants.HAND_DIMENSION.width,
                 Constants.HAND_DIMENSION.height
         );
+        type = ModelType.hand;
         HP = 100;
         setHovering(true);
         initFrame();
