@@ -2,6 +2,7 @@ package controller.listeners;
 
 
 import constants.Constants;
+import controller.manager.GameState;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
@@ -18,7 +19,8 @@ public class EpsilonCirculation extends MouseMotionAdapter {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-
+        if (GameState.isInAnimation())
+            return;
         Vector mousePosition = new Vector(e.getX() ,e.getY());
         mousePosition = Math.VectorAdd(
                 mousePosition,

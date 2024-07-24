@@ -2,6 +2,7 @@ package controller.listeners;
 
 
 import controller.configs.Configs;
+import controller.manager.GameState;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
@@ -30,6 +31,8 @@ public class EpsilonMovement extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        if (GameState.isInAnimation())
+            return;
         keys.add(e.getKeyCode());
         CalculateDirection();
         changeDirection();
@@ -62,6 +65,8 @@ public class EpsilonMovement extends KeyAdapter {
 
     @Override
     public void keyReleased(KeyEvent e) {
+        if (GameState.isInAnimation())
+            return;
         keys.remove(e.getKeyCode());
         CalculateDirection();
         double xVelocity = epsilon.getVelocity().x;

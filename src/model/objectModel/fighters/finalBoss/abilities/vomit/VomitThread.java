@@ -31,6 +31,10 @@ public class VomitThread extends Thread{
                 lastTime = System.nanoTime();
                 continue;
             }
+            if (GameState.isInAnimation()) {
+                vomit.endAbility();
+                return;
+            }
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;

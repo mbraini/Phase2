@@ -25,6 +25,8 @@ public class EpsilonAiming extends MouseAdapter {
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if (GameState.isInAnimation())
+            return;
         if (e.getButton() != AIM_CODE) {
             return;
         }

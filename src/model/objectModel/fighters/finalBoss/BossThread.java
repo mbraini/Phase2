@@ -74,13 +74,13 @@ public class BossThread extends Thread {
             abilityCaster.setAbilityType(abilityType);
             if (abilityCaster.canCast()) {
                 try {
-                    System.out.println("SLEEPING");
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
+                if (GameState.isInAnimation())
+                    return;
                 abilityCaster.cast();
-                System.out.println("CASTING!");
             }
         }
         bossAI.dash(boss.getHead());
@@ -98,42 +98,9 @@ public class BossThread extends Thread {
     }
 
     private void defineAbility() {
-        if (bossAI.isInSqueezePosition()){
-            abilityType = AbilityType.squeeze;
-            abilityCaster.setAbilityType(abilityType);
-            if (abilityCaster.canCast())
-                return;
-        }
-        if (bossAI.isInProjectileRange()){
-            if (boss.getAttackPhase() == 1) {
-                abilityType = AbilityType.projectile;
-                abilityCaster.setAbilityType(abilityType);
-                if (abilityCaster.canCast())
-                    return;
-            }
-            else {
-                Random random = new Random();
-                int randomNum = random.nextInt(0 ,3);
-                if (randomNum == 0) {
-                    abilityType = AbilityType.projectile;
-                    abilityCaster.setAbilityType(abilityType);
-                    if (abilityCaster.canCast())
-                        return;
-                }
-                else if (randomNum == 1) {
-                    abilityType = AbilityType.rapidFire;
-                    abilityCaster.setAbilityType(abilityType);
-                    if (abilityCaster.canCast())
-                        return;
-                }
-                else {
-                    abilityType = AbilityType.vomit;
-                    abilityCaster.setAbilityType(abilityType);
-                    if (abilityCaster.canCast())
-                        return;
-                }
-            }
-        }
+        int projectiles = checkProjectile();
+        if (projectiles == 1)
+            return;
         if (boss.getAttackPhase() == 1) {
             if (ability >= 2)
                 ability = ability - 2;
@@ -150,6 +117,46 @@ public class BossThread extends Thread {
         }
         abilityType = AbilityType.values()[ability];
         ability++;
+    }
+
+    private int checkProjectile() {
+        if (bossAI.isInSqueezePosition()){
+            abilityType = AbilityType.squeeze;
+            abilityCaster.setAbilityType(abilityType);
+            if (abilityCaster.canCast())
+                return 1;
+        }
+        if (bossAI.isInProjectileRange()){
+            if (boss.getAttackPhase() == 1) {
+                abilityType = AbilityType.projectile;
+                abilityCaster.setAbilityType(abilityType);
+                if (abilityCaster.canCast())
+                    return 1;
+            }
+            else {
+                Random random = new Random();
+                int randomNum = random.nextInt(0 ,3);
+                if (randomNum == 0) {
+                    abilityType = AbilityType.projectile;
+                    abilityCaster.setAbilityType(abilityType);
+                    if (abilityCaster.canCast())
+                        return 1;
+                }
+                else if (randomNum == 1) {
+                    abilityType = AbilityType.rapidFire;
+                    abilityCaster.setAbilityType(abilityType);
+                    if (abilityCaster.canCast())
+                        return 1;
+                }
+                else {
+                    abilityType = AbilityType.vomit;
+                    abilityCaster.setAbilityType(abilityType);
+                    if (abilityCaster.canCast())
+                        return 1;
+                }
+            }
+        }
+        return 0;
     }
 
 }

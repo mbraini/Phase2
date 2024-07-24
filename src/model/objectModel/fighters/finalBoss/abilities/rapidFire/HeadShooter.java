@@ -22,6 +22,10 @@ public class HeadShooter implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (GameState.isPause() || GameState.isDizzy())
             return;
+        if (GameState.isInAnimation()) {
+            rapidFire.endAbility();
+            return;
+        }
         double theta = 0;
         Vector direction;
         Vector spawnPosition;
