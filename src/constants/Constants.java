@@ -184,7 +184,7 @@ public class Constants {
     public static Image punch;
     public static Image bossAoe;
     public static Image slumber;
-    public static BufferedImage archmire;
+    public static Image archmire;
     public static Image skeleton;
     public static Image barricados;
     public static Image wyrm;

@@ -46,6 +46,12 @@ public class Dolus extends SkillTreeAbility{
 
     private void defineAbilities() {
         ArrayList<SkillTreeAbility> abilities = (ArrayList<SkillTreeAbility>) ModelData.getSkillTreeAbilities().clone();
+        for (int i = 0 ;i < abilities.size() ;i++) {
+            if (abilities.get(i).getType() == SkillTreeAbilityType.dolus) {
+                abilities.remove(i);
+                break;
+            }
+        }
         Random random = new Random();
         int firstRandom = random.nextInt(0 ,abilities.size());
         firstAbility = abilities.get(firstRandom).getType();
