@@ -1,9 +1,8 @@
-package controller.listeners.epsilonMovementALs;
+package controller.listeners.epsilonMovement.epsilonMovementALs;
 
 
 import controller.configs.Configs;
 import model.objectModel.fighters.EpsilonModel;
-import controller.listeners.EpsilonMovement;
 
 public class xStopper extends Thread {
     private EpsilonModel epsilon;

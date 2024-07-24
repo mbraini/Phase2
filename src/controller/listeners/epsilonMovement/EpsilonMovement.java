@@ -1,4 +1,4 @@
-package controller.listeners;
+package controller.listeners.epsilonMovement;
 
 
 import controller.configs.Configs;
@@ -7,9 +7,8 @@ import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
 import utils.Vector;
-import controller.listeners.epsilonMovementALs.*;
+import controller.listeners.epsilonMovement.epsilonMovementALs.*;
 
-import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.HashSet;

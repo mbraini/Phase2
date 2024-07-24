@@ -1,12 +1,8 @@
-package controller.listeners.epsilonMovementALs;
+package controller.listeners.epsilonMovement.epsilonMovementALs;
 
 
 import controller.configs.Configs;
 import model.objectModel.fighters.EpsilonModel;
-import controller.listeners.EpsilonMovement;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class yStopper extends Thread {
     EpsilonModel epsilon;

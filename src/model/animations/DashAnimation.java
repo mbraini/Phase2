@@ -9,7 +9,7 @@ import utils.Vector;
 
 import java.util.HashMap;
 
-public class DashAnimation extends Animation {
+public class DashAnimation extends ThreadAnimation {
     private final ObjectModel oigModel;
     private final Vector direction;
     private final int time;

@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FrameVanishAnimation extends Animation{
+public class FrameVanishAnimation extends TimerAnimation {
     FrameModel gameFrame;
     Timer timer;
     public FrameVanishAnimation(FrameModel gameFrame){

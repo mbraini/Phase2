@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class EpsilonGetBigAnimation extends Animation{
+public class EpsilonGetBigAnimation extends TimerAnimation {
 
     private Timer timer;
     private int delay = 10;

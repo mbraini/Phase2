@@ -2,7 +2,7 @@ package model.animations;
 
 import model.objectModel.frameModel.FrameModel;
 
-public class GameStartAnimation extends Animation{
+public class GameStartAnimation extends TimerAnimation {
     private FrameAnimation frameAnimation;
     private FrameModel frame;
     public GameStartAnimation(FrameModel frame){

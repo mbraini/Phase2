@@ -13,7 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class BossDeathAnimation extends Animation{
+public class BossDeathAnimation extends TimerAnimation {
 
     private Boss boss;
     private Timer timer;

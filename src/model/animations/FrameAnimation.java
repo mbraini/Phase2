@@ -1,15 +1,10 @@
 package model.animations;
 
 
-import controller.Controller;
 import model.objectModel.frameModel.FrameModel;
 import utils.Vector;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-public class FrameAnimation extends Animation{
+public class FrameAnimation extends ThreadAnimation {
     private FrameModel frame;
     private double time;
     private double upAcceleration;

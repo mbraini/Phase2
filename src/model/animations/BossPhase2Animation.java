@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class BossPhase2Animation extends Animation {
+public class BossPhase2Animation extends TimerAnimation {
 
     private Boss boss;
     private boolean isDone;
