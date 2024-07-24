@@ -376,9 +376,14 @@ public abstract class Controller {
     }
 
     public static void endGame(boolean won) {
+        int xpGained = GameState.getXpGained();
+        int enemyKilled = GameState.getEnemyKilled();
+        int totalShots = GameState.getTotalBullets();
+        int successfulShots = GameState.getSuccessfulBullets();
+        int timePassed = (int) GameState.getTime() / 1000;
         endRequest();
         if (won) {
-            new EndGamePanel(new EndGameFrame()).start();
+            new EndGamePanel(new EndGameFrame(),xpGained ,enemyKilled ,totalShots ,successfulShots ,timePassed).start();
             return;
         }
         if (GameSaver.isPortalSaved()) {
@@ -392,7 +397,7 @@ public abstract class Controller {
             threadsStarter();
         }
         else {
-            new EndGamePanel(new EndGameFrame()).start();
+            new EndGamePanel(new EndGameFrame() ,xpGained ,enemyKilled ,totalShots ,successfulShots ,timePassed).start();
         }
     }
 
@@ -475,6 +480,7 @@ public abstract class Controller {
     public static boolean shootRequest(Vector clickedPoint){
         if (ShootRequest.canShoot()){
             new ShootRequest(ModelData.getEpsilon()).shoot(clickedPoint);
+            GameState.setTotalBullets(GameState.getTotalBullets() + 1);
             return true;
         }
         return false;

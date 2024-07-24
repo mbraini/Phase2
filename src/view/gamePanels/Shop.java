@@ -2,9 +2,11 @@ package view.gamePanels;
 
 
 import controller.Controller;
+import controller.configs.Configs;
 import controller.enums.InGameAbilityType;
 import constants.Constants;
 import controller.manager.GameState;
+import utils.Helper;
 import view.ViewData;
 import view.menuPanels.PIG;
 
@@ -58,6 +60,7 @@ public class Shop extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.inGameAbilityRequest(InGameAbilityType.slaughter);
+                updateXP();
             }
             @Override
             public void mousePressed(MouseEvent e) {
@@ -81,6 +84,7 @@ public class Shop extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.inGameAbilityRequest(InGameAbilityType.slumber);
+                updateXP();
             }
             @Override
             public void mousePressed(MouseEvent e) {
@@ -104,6 +108,7 @@ public class Shop extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.inGameAbilityRequest(InGameAbilityType.dismay);
+                updateXP();
             }
             @Override
             public void mousePressed(MouseEvent e) {
@@ -260,6 +265,7 @@ public class Shop extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.inGameAbilityRequest(InGameAbilityType.heal);
+                updateXP();
             }
 
             @Override
@@ -284,6 +290,7 @@ public class Shop extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.inGameAbilityRequest(InGameAbilityType.empower);
+                updateXP();
             }
             @Override
             public void mousePressed(MouseEvent e) {
@@ -307,6 +314,7 @@ public class Shop extends PIG {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.inGameAbilityRequest(InGameAbilityType.banish);
+                updateXP();
             }
             @Override
             public void mousePressed(MouseEvent e) {
@@ -359,6 +367,11 @@ public class Shop extends PIG {
     @Override
     public void start() {
         setVisible(true);
+    }
+
+    private void updateXP() {
+        Helper.saveXP(GameState.getXp());
+        xp.setText("xp: " + Configs.GameConfigs.XP);
     }
 
     @Override

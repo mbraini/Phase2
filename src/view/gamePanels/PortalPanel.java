@@ -20,6 +20,7 @@ public class PortalPanel extends PIG {
     private JLabel payL3;
     private JPanel decline;
     private JLabel declineL1;
+    private JLabel choose;
 
     public PortalPanel(PortalFrame portalFrame ,int PR) {
         this.setLayout(null);
@@ -34,7 +35,29 @@ public class PortalPanel extends PIG {
         initPayLabels();
         initDeclineLabels();
         portalFrame.add(this);
+        this.setFocusable(true);
+        this.grabFocus();
+        initChoose();
+        this.setVisible(true);
         portalFrame.setVisible(true);
+    }
+
+    private void initChoose() {
+        choose = new JLabel();
+        choose.setBounds(
+                getWidth() / 5 * 2,
+                getHeight() / 9 ,
+                getWidth() / 5 ,
+                getHeight() / 7
+        );
+        choose.setText("Choose One!");
+        choose.setForeground(Color.WHITE);
+        choose.setOpaque(false);
+        choose.setFont(new Font(null,Font.BOLD ,15));
+        choose.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+        choose.setHorizontalAlignment(JLabel.CENTER);
+        choose.setVerticalAlignment(JLabel.CENTER);
+        this.add(choose);
     }
 
     private void initDeclineLabels() {
@@ -194,6 +217,7 @@ public class PortalPanel extends PIG {
     @Override
     public void start() {
         this.setVisible(true);
+        repaint();
     }
 
     @Override

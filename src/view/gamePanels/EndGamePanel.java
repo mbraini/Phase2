@@ -12,42 +12,43 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EndGamePanel extends PIG {
-    JLabel xp;
+    int xpGained;
+    int totalShots;
+    int successfulShots;
+    int enemyKilled;
+    int timePassed;
     JButton menu;
     private final EndGameFrame endGameFrame;
-    public EndGamePanel(EndGameFrame endGameFrame){
+    public EndGamePanel(EndGameFrame endGameFrame ,int xpGained ,int enemyKilled ,int totalShots ,int successfulShots ,int timePassed){
         this.setLayout(null);
         this.setBounds(0,0, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
         this.setBackground(Color.BLACK);
         this.endGameFrame = endGameFrame;
-        initMenu();
-        initXP();
-        endGameFrame.add(this);
-        endGameFrame.setVisible(true);
-    }
 
-    private void initXP() {
-        xp = new JLabel();
-        xp.setBounds(getWidth() / 3 ,getHeight() / 10 * 6 ,getWidth() / 3 ,getHeight() / 10);
-        xp.setFont(new Font(null,Font.BOLD ,15));
-        xp.setText("XP: " + (int) GameState.getXp());
-        xp.setBackground(Color.WHITE);
-        xp.setOpaque(true);
-        xp.setHorizontalAlignment(JLabel.CENTER);
-        xp.setVerticalAlignment(JLabel.CENTER);
-        this.add(xp);
+        this.timePassed = timePassed;
+        this.successfulShots = successfulShots;
+        this.enemyKilled = enemyKilled;
+        this.xpGained = xpGained;
+        this.totalShots = totalShots;
+        endGameFrame.add(this);
+        this.setFocusable(true);
+        this.grabFocus();
+        initMenu();
+        this.setVisible(true);
     }
 
     private void initMenu() {
         menu = new JButton();
-        menu.setBounds(getWidth() / 3 ,getHeight() / 10 * 8 ,getWidth() / 3 ,getHeight() / 10);
-        menu.setFont(new Font(null,Font.BOLD ,15));
+        menu.setBounds(getWidth() / 5 * 2 ,getHeight() / 14 * 12 ,getWidth() / 5 ,getHeight() / 14);
         menu.setText("menu");
         menu.setBackground(Color.WHITE);
         menu.setOpaque(true);
-        menu.setHorizontalTextPosition(JLabel.RIGHT);
-        menu.setVerticalTextPosition(JLabel.TOP);
+        menu.setFont(new Font(null,Font.BOLD ,15));
+        menu.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
+        menu.setHorizontalTextPosition(JLabel.CENTER);
+        menu.setVerticalTextPosition(JLabel.CENTER);
         menu.setFocusable(false);
+        this.add(menu);
 
         menu.addActionListener(new ActionListener() {
             @Override
@@ -62,7 +63,6 @@ public class EndGamePanel extends PIG {
     @Override
     public void start() {
         this.setVisible(true);
-        setSize(getSize());
     }
 
     @Override
@@ -75,5 +75,15 @@ public class EndGamePanel extends PIG {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(Constants.endGameImage ,getWidth() / 3 ,getHeight() / 6 ,getWidth() / 3 ,getHeight() / 3 ,null);
+        g.setFont(new Font(null,Font.BOLD ,15));
+        g.setColor(Color.MAGENTA);
+        g.drawString("xp earned: " + xpGained ,getWidth() / 7 * 4 ,getHeight() / 14 * 8);
+        g.setColor(Color.RED);
+        g.drawString("successfulShots: " + successfulShots ,getWidth() / 7 * 2 ,getHeight() / 14 * 8);
+        g.drawString("enemyKilled: " + enemyKilled,getWidth() / 7 * 3 ,getHeight() / 14 * 10);
+        g.setColor(Color.WHITE);
+        g.drawString("timePassed: " + timePassed,getWidth() / 7 ,getHeight() / 14 * 10);
+        g.setColor(Color.BLUE);
+        g.drawString("totalShots: " + totalShots,getWidth() / 7 * 5 ,getHeight() / 14 * 10);
     }
 }

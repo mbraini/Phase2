@@ -3,6 +3,7 @@ package model.logics.collision;
 
 import constants.Constants;
 import controller.Controller;
+import controller.manager.GameState;
 import model.ModelData;
 import model.inGameAbilities.Dismay.EpsilonProtectorModel;
 import model.interfaces.CollisionDetector;
@@ -95,6 +96,7 @@ public class CollisionHandler {
     private void BulletToEnemyHandler(EnemyModel enemy, EpsilonBulletModel epsilonBullet) {
         if (enemy.isVulnerableToEpsilonBullet())
             enemy.setHP(enemy.getHP() - epsilonBullet.getDamage());
+        GameState.setSuccessfulBullets(GameState.getSuccessfulBullets() + 1);
         EpsilonModel epsilonModel = ModelData.getEpsilon();
         epsilonModel.setHP(epsilonModel.getHP() + epsilonModel.getLifeSteal());
         epsilonModel.checkHP();
