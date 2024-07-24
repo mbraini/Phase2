@@ -13,7 +13,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class ImaginaryPanel extends JPanel {
-    private ArrayList<ObjectView> views = new ArrayList<>();
+    private ArrayList<ObjectView> epsilons = new ArrayList<>();
+    private ArrayList<ObjectView> otherViews = new ArrayList<>();
+    private ArrayList<ObjectView> archmires = new ArrayList<>();
+    private ArrayList<ObjectView> cerberuses = new ArrayList<>();
     private FrameView epsilonFrame;
     private ArrayList<EffectView> effectViews = new ArrayList<>();
     private ArrayList<AbilityView> abilityViews = new ArrayList<>();
@@ -44,13 +47,6 @@ public class ImaginaryPanel extends JPanel {
             return;
 
         Graphics2D g2d = (Graphics2D) g;
-        for (int i = 0; i < effectViews.size() ;i++){
-            if (effectViews.get(i) == null)
-                System.out.println("NULL IN PAINTER :(");
-            effectViews.get(i).setEffect();
-            effectViews.get(i).draw(g2d);
-        }
-
         if (epsilonFrame != null) {
             paintInfos(g);
         }
@@ -58,11 +54,28 @@ public class ImaginaryPanel extends JPanel {
             abilityView.setUp();
             abilityView.draw(g2d);
         }
+        for (int i = 0; i < effectViews.size() ;i++){
+            if (effectViews.get(i) == null) {
+                System.out.println("NULL IN PAINTER :(");
+            }
+            effectViews.get(i).setEffect();
+            effectViews.get(i).draw(g2d);
+        }
 
-        if (views == null)
-            return;
-        for (int i = 0 ;i < views.size() ;i++){
-            views.get(i).draw(g2d);
+        for (int i = 0 ;i < cerberuses.size() ;i++) {
+            cerberuses.get(i).draw(g2d);
+        }
+
+        for (int i = 0 ;i < archmires.size() ;i++) {
+            archmires.get(i).draw(g2d);
+        }
+
+        for (int i = 0 ;i < otherViews.size() ;i++){
+            otherViews.get(i).draw(g2d);
+        }
+
+        for (int i = 0 ;i < epsilons.size() ;i++) {
+            epsilons.get(i).draw(g2d);
         }
 
     }
@@ -91,8 +104,8 @@ public class ImaginaryPanel extends JPanel {
         );
     }
 
-    public void setViews(ArrayList<ObjectView> views) {
-        this.views = views;
+    public void setOtherViews(ArrayList<ObjectView> otherViews) {
+        this.otherViews = otherViews;
     }
 
     public void setVariables() {
@@ -106,5 +119,17 @@ public class ImaginaryPanel extends JPanel {
 
     public void setAbilityViews(ArrayList<AbilityView> abilityViews) {
         this.abilityViews = abilityViews;
+    }
+
+    public void setEpsilons(ArrayList<ObjectView> epsilons) {
+        this.epsilons = epsilons;
+    }
+
+    public void setArchmires(ArrayList<ObjectView> archmires) {
+        this.archmires = archmires;
+    }
+
+    public void setCerberuses(ArrayList<ObjectView> cerberuses) {
+        this.cerberuses = cerberuses;
     }
 }

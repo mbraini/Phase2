@@ -8,9 +8,12 @@ import view.ViewData;
 import view.ViewRequest;
 import view.abilities.AbilityView;
 import view.gamePanels.ImaginaryPanel;
+import view.objectViews.CerberusView;
+import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
 import view.objectViews.ObjectView;
 import view.objectViews.effectView.EffectView;
+import view.objectViews.normalEnemyView.archmireView.ArchmireView;
 
 import java.util.ArrayList;
 
@@ -40,27 +43,6 @@ public class Render extends Thread {
         }
     }
 
-    private void checkIfNull() {
-        for (int i = 0 ;i < ViewData.getViews().size() ;i++){
-            if (ViewData.getViews().get(i) == null){
-                ViewData.getViews().remove(i);
-                i--;
-            }
-        }
-        for (int i = 0; i < ViewData.getEffectViews().size() ;i++){
-            if (ViewData.getEffectViews().get(i) == null){
-                ViewData.getEffectViews().remove(i);
-                i--;
-            }
-        }
-        for (int i = 0 ;i < ViewData.getFrames().size() ;i++){
-            if (ViewData.getFrames().get(i) == null){
-                ViewData.getFrames().remove(i);
-                i--;
-            }
-        }
-    }
-
     private void paint(){
         synchronized (ViewData.getViews()) {
             frames = (ArrayList<FrameView>) ViewData.getFrames().clone();
@@ -84,14 +66,61 @@ public class Render extends Thread {
     }
 
     private void paintViews() {
+        ArrayList<ObjectView> cerberuces = defineCerberuces();
+        ArrayList<ObjectView> archmires = defineArchmires();
+        ArrayList<ObjectView> otherViews = defineOtherViews();
+        ArrayList<ObjectView> epsilons = defineEpsilons();
         for (ImaginaryPanel imaginaryPanel : ViewData.getPanels()) {
             imaginaryPanel.setVariables();
-            imaginaryPanel.setViews(views);
             imaginaryPanel.setEffects(effects);
+            imaginaryPanel.setCerberuses(cerberuces);
+            imaginaryPanel.setArchmires(archmires);
+            imaginaryPanel.setOtherViews(otherViews);
+            imaginaryPanel.setEpsilons(epsilons);
             imaginaryPanel.setAbilityViews(abilityViews);
             imaginaryPanel.revalidate();
             imaginaryPanel.repaint();
         }
+    }
+
+    private ArrayList<ObjectView> defineEpsilons() {
+        ArrayList<ObjectView> answer = new ArrayList<>();
+        for (ObjectView view : views) {
+            if (view instanceof EpsilonView) {
+                answer.add(view);
+            }
+        }
+        return answer;
+    }
+
+    private ArrayList<ObjectView> defineOtherViews() {
+        ArrayList<ObjectView> answer = new ArrayList<>();
+        for (ObjectView view : views) {
+            if (!(view instanceof CerberusView) && !(view instanceof ArchmireView)) {
+                answer.add(view);
+            }
+        }
+        return answer;
+    }
+
+    private ArrayList<ObjectView> defineArchmires() {
+        ArrayList<ObjectView> answer = new ArrayList<>();
+        for (ObjectView view : views) {
+            if (view instanceof ArchmireView) {
+                answer.add(view);
+            }
+        }
+        return answer;
+    }
+
+    private ArrayList<ObjectView> defineCerberuces() {
+        ArrayList<ObjectView> answer = new ArrayList<>();
+        for (ObjectView view : views) {
+            if (view instanceof CerberusView) {
+                answer.add(view);
+            }
+        }
+        return answer;
     }
 
     private void updateFrames(ArrayList<FrameView> frames){

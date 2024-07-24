@@ -1,5 +1,6 @@
 package controller;
 
+import constants.SoundPathConstants;
 import controller.listeners.keyHelper.KeyHelper;
 import controller.manager.GameState;
 import model.ModelData;
@@ -8,7 +9,11 @@ import model.objectModel.PortalModel;
 import model.objectModel.fighters.EpsilonModel;
 import view.gamePanels.PortalFrame;
 import view.gamePanels.PortalPanel;
+import view.soundEffects.Sound;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ModelRequestController {
@@ -46,4 +51,19 @@ public class ModelRequestController {
     public static void setPortalModel(PortalModel portalModel) {
         ModelRequestController.portalModel = portalModel;
     }
+
+    public static void playSound(String path) {
+        Sound sound = null;
+        try {
+            sound = new Sound(path);
+        } catch (UnsupportedAudioFileException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (LineUnavailableException e) {
+            throw new RuntimeException(e);
+        }
+        sound.play();
+    }
+
 }

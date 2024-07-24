@@ -31,6 +31,8 @@ public class EndGamePanel extends PIG {
         this.xpGained = xpGained;
         this.totalShots = totalShots;
         endGameFrame.add(this);
+        this.setFocusable(true);
+        this.grabFocus();
         initMenu();
         this.setVisible(true);
     }
