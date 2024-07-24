@@ -1,8 +1,9 @@
 package controller.listeners;
 
 
+import constants.SizeConstants;
+import constants.SoundPathConstants;
 import controller.Controller;
-import constants.Constants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
@@ -35,8 +36,8 @@ public class EpsilonAiming extends MouseAdapter {
         timer = GameState.getTime();
         EpsilonModel epsilon = ModelData.getEpsilon();
         Vector clickedPoint = new Vector(
-                e.getX() - Constants.SCREEN_SIZE.width ,
-                e.getY() - Constants.SCREEN_SIZE.height
+                e.getX() - SizeConstants.SCREEN_SIZE.width ,
+                e.getY() - SizeConstants.SCREEN_SIZE.height
         );
         if (clickedPoint.Equals(epsilon.getPosition()))
             return;
@@ -44,7 +45,7 @@ public class EpsilonAiming extends MouseAdapter {
             return;
 
         try {
-            Sound sound = new Sound(Constants.BulletFiredSound);
+            Sound sound = new Sound(SoundPathConstants.BulletFiredSound);
             sound.play();
         } catch (UnsupportedAudioFileException ex) {
             throw new RuntimeException(ex);

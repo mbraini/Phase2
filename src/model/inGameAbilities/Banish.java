@@ -1,11 +1,10 @@
 package model.inGameAbilities;
 
-import constants.Constants;
+import constants.DistanceConstants;
 import controller.enums.InGameAbilityType;
 import model.ModelData;
 import model.logics.Impact;
 import model.objectModel.fighters.EpsilonModel;
-import utils.Vector;
 
 public class Banish extends InGameAbility{
 
@@ -19,7 +18,7 @@ public class Banish extends InGameAbility{
 
     @Override
     public void performAbility() {
-        new Impact(epsilon.getPosition() , Constants.BANISH_IMPACT_RANGE ,2000 ,true).MakeImpact();
+        new Impact(epsilon.getPosition() , DistanceConstants.BANISH_IMPACT_RANGE ,2000 ,true).MakeImpact();
         isActive = false;
     }
 

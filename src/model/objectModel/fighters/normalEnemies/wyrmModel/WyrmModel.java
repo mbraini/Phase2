@@ -1,10 +1,11 @@
 package model.objectModel.fighters.normalEnemies.wyrmModel;
 
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
 import controller.Controller;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
 import model.ModelData;
 import model.interfaces.*;
 import model.objectModel.frameModel.FrameModel;
@@ -44,7 +45,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
     private void setFrame() {
         FrameModelBuilder builder = new FrameModelBuilder(
                 position.clone(),
-                Constants.WYRM_FRAME_DIMENSION,
+                SizeConstants.WYRM_FRAME_DIMENSION,
                 id
         );
         builder.setIsometric(true);
@@ -100,22 +101,22 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         frameModel.transfer(Math.VectorAdd(
                 position,
                 new Vector(
-                        -Constants.WYRM_FRAME_DIMENSION.width / 2d,
-                        -Constants.WYRM_FRAME_DIMENSION.height / 2d
+                        -SizeConstants.WYRM_FRAME_DIMENSION.width / 2d,
+                        -SizeConstants.WYRM_FRAME_DIMENSION.height / 2d
                 )
         ));
     }
 
     @Override
     public void move() {
-        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(Constants.UPS ,acceleration));
-        double xMoved = ((2 * velocity.x - acceleration.x * Constants.UPS) / 2) * Constants.UPS;
-        double yMoved = ((2 * velocity.y - acceleration.y * Constants.UPS) / 2) * Constants.UPS;
+        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(RefreshRateConstants.UPS ,acceleration));
+        double xMoved = ((2 * velocity.x - acceleration.x * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
+        double yMoved = ((2 * velocity.y - acceleration.y * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
         setPosition(position.x + xMoved ,position.y + yMoved);
 
 
-        omega += alpha * Constants.UPS;
-        double thetaMoved = ((2 * omega - alpha * Constants.UPS) / 2) * Constants.UPS;
+        omega += alpha * RefreshRateConstants.UPS;
+        double thetaMoved = ((2 * omega - alpha * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
         theta = theta + thetaMoved;
         if (this instanceof HasVertices)
             ((HasVertices) this).UpdateVertices(xMoved ,yMoved ,thetaMoved);
@@ -139,7 +140,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                Constants.WYRM_DIMENSION.width /2d,
+                                SizeConstants.WYRM_DIMENSION.width /2d,
                                 0
                         )
                 )
@@ -149,7 +150,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
                         position,
                         new Vector(
                                 0,
-                                -Constants.WYRM_DIMENSION.height / 2d
+                                -SizeConstants.WYRM_DIMENSION.height / 2d
                         )
                 )
         );
@@ -157,7 +158,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                -Constants.WYRM_DIMENSION.width / 2d,
+                                -SizeConstants.WYRM_DIMENSION.width / 2d,
                                 0
                         )
                 )
@@ -167,7 +168,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
                         position,
                         new Vector(
                                 0,
-                                Constants.WYRM_DIMENSION.height /2d
+                                SizeConstants.WYRM_DIMENSION.height /2d
                         )
                 )
         );

@@ -1,16 +1,15 @@
 package view.abilities;
 
-import constants.Constants;
+import constants.ImageConstants;
+import constants.SizeConstants;
 import utils.Vector;
 import view.ViewData;
-
-import java.awt.*;
 
 public class EmpusaView extends AbilityView {
 
     public EmpusaView(int coolDownTime, int timePassed, boolean isAvailable) {
         super(coolDownTime, timePassed, isAvailable);
-        image = Constants.empusa;
+        image = ImageConstants.empusa;
     }
 
     @Override
@@ -20,9 +19,9 @@ public class EmpusaView extends AbilityView {
         if (frame == null)
             return;
         position = new Vector(
-                frame.getX() + frame.getWidth() - Constants.barD.width * 2 - Constants.ABILITY_VIEW_DIMENSION.width / 2d + Constants.SCREEN_SIZE.width,
-                frame.getY() + ((8.5) / 11) * (frame.getHeight() - Constants.barD.height) + Constants.SCREEN_SIZE.height
-                        - Constants.barD.height
+                frame.getX() + frame.getWidth() - SizeConstants.barD.width * 2 - SizeConstants.ABILITY_VIEW_DIMENSION.width / 2d + SizeConstants.SCREEN_SIZE.width,
+                frame.getY() + ((8.5) / 11) * (frame.getHeight() - SizeConstants.barD.height) + SizeConstants.SCREEN_SIZE.height
+                        - SizeConstants.barD.height
         );
     }
 }

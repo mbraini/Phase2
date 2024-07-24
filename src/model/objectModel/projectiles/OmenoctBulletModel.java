@@ -1,6 +1,8 @@
 package model.objectModel.projectiles;
 
-import constants.Constants;
+import constants.DamageConstants;
+import constants.SizeConstants;
+import constants.VelocityConstants;
 import model.interfaces.IsCircle;
 import utils.Math;
 import utils.Vector;
@@ -9,9 +11,9 @@ public class OmenoctBulletModel extends EnemyBulletModel implements IsCircle {
 
     public OmenoctBulletModel(Vector position , Vector direction , String id){
         this.position = position;
-        this.velocity = Math.VectorWithSize(direction , Constants.OMENOCT_BULLET_VELOCITY);
+        this.velocity = Math.VectorWithSize(direction , VelocityConstants.OMENOCT_BULLET_VELOCITY);
         this.acceleration = new Vector(0 ,0);
-        damage = Constants.OMENOCT_BULLET_DAMAGE;
+        damage = DamageConstants.OMENOCT_BULLET_DAMAGE;
         setSolid(false);
 
         this.id = id;
@@ -20,7 +22,7 @@ public class OmenoctBulletModel extends EnemyBulletModel implements IsCircle {
 
     @Override
     public double getRadios() {
-        return Constants.OMENOCT_BULLET_RADIOUS;
+        return SizeConstants.OMENOCT_BULLET_RADIOS;
     }
 
     @Override

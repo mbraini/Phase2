@@ -1,7 +1,7 @@
 package view.objectViews.projectiles;
 
 
-import constants.Constants;
+import constants.SizeConstants;
 import utils.Vector;
 
 import java.awt.*;
@@ -18,10 +18,10 @@ public class EpsilonBulletView extends BulletView {
     public void draw(Graphics2D g2d) {
         g2d.setColor(Color.WHITE);
         g2d.fillOval(
-                (int) (position.x - Constants.EPSILON_BULLET_RADIOS) + Constants.SCREEN_SIZE.width,
-                (int) (position.y - Constants.EPSILON_BULLET_RADIOS) + Constants.SCREEN_SIZE.height,
-                (int) Constants.EPSILON_BULLET_RADIOS * 2,
-                (int) Constants.EPSILON_BULLET_RADIOS * 2
+                (int) (position.x - SizeConstants.EPSILON_BULLET_RADIOS) + SizeConstants.SCREEN_SIZE.width,
+                (int) (position.y - SizeConstants.EPSILON_BULLET_RADIOS) + SizeConstants.SCREEN_SIZE.height,
+                (int) SizeConstants.EPSILON_BULLET_RADIOS * 2,
+                (int) SizeConstants.EPSILON_BULLET_RADIOS * 2
         );
     }
 }

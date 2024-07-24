@@ -1,7 +1,7 @@
 package view.gamePanels;
 
+import constants.SizeConstants;
 import controller.listeners.PanelKeyListener;
-import constants.Constants;
 import view.ViewData;
 import view.abilities.AbilityView;
 import view.objectViews.FrameView;
@@ -22,10 +22,10 @@ public class ImaginaryPanel extends JPanel {
         this.setLayout(null);
         this.setBackground(Color.BLACK);
         this.setBounds(
-                -Constants.SCREEN_SIZE.width ,
-                -Constants.SCREEN_SIZE.height ,
-                Constants.SCREEN_SIZE.width * 3 ,
-                Constants.SCREEN_SIZE.height * 3
+                -SizeConstants.SCREEN_SIZE.width ,
+                -SizeConstants.SCREEN_SIZE.height ,
+                SizeConstants.SCREEN_SIZE.width * 3 ,
+                SizeConstants.SCREEN_SIZE.height * 3
         );
         initKeyListener();
         setVisible(true);
@@ -71,23 +71,23 @@ public class ImaginaryPanel extends JPanel {
         g.setColor(Color.MAGENTA);
         g.setFont(new Font(null, Font.BOLD, 10));
         g.drawString("xp: " + (int) ViewData.getXp(),
-                3 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
-                20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
+                3 + epsilonFrame.getX() + SizeConstants.SCREEN_SIZE.width,
+                20 + epsilonFrame.getY() + SizeConstants.SCREEN_SIZE.height
         );
         g.setColor(Color.GREEN);
         g.drawString("hp: " + (int) ViewData.getHp(),
-                58 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
-                20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
+                58 + epsilonFrame.getX() + SizeConstants.SCREEN_SIZE.width,
+                20 + epsilonFrame.getY() + SizeConstants.SCREEN_SIZE.height
         );
         g.setColor(Color.RED);
         g.drawString("wave: " + ViewData.getWave(),
-                103 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
-                20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
+                103 + epsilonFrame.getX() + SizeConstants.SCREEN_SIZE.width,
+                20 + epsilonFrame.getY() + SizeConstants.SCREEN_SIZE.height
         );
         g.setColor(Color.WHITE);
         g.drawString("time: " + (int) ViewData.getTime() / 1000,
-                151 + epsilonFrame.getX() + Constants.SCREEN_SIZE.width,
-                20 + epsilonFrame.getY() + Constants.SCREEN_SIZE.height
+                151 + epsilonFrame.getX() + SizeConstants.SCREEN_SIZE.width,
+                20 + epsilonFrame.getY() + SizeConstants.SCREEN_SIZE.height
         );
     }
 

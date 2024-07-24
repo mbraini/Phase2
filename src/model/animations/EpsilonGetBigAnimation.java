@@ -1,10 +1,9 @@
 package model.animations;
 
-import constants.Constants;
+import constants.SizeConstants;
 import controller.Controller;
 import controller.manager.GameState;
 import model.ModelData;
-import model.objectModel.fighters.finalBoss.Boss;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,8 +29,8 @@ public class EpsilonGetBigAnimation extends Animation{
                 }
                 ModelData.getEpsilon().setSize(
                         new Dimension(
-                                ModelData.getEpsilon().getSize().width + Constants.EPSILON_DIMENSION.width / 10,
-                                ModelData.getEpsilon().getSize().height + Constants.EPSILON_DIMENSION.height / 10
+                                ModelData.getEpsilon().getSize().width + SizeConstants.EPSILON_DIMENSION.width / 10,
+                                ModelData.getEpsilon().getSize().height + SizeConstants.EPSILON_DIMENSION.height / 10
                         )
                 );
             }

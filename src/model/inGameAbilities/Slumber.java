@@ -1,8 +1,9 @@
 package model.inGameAbilities;
 
+import constants.RefreshRateConstants;
+import constants.TimeConstants;
 import controller.enums.InGameAbilityType;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
 import controller.manager.GameState;
 
 import javax.swing.*;
@@ -22,13 +23,13 @@ public class Slumber extends InGameAbility{
     }
 
     private void initTimer() {
-        timer = new Timer(Constants.IN_GAME_ABILITY_TIMER_REFRESH_RATE, new ActionListener() {
+        timer = new Timer(RefreshRateConstants.IN_GAME_ABILITY_TIMER_REFRESH_RATE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (GameState.isPause())
                     return;
-                timePassed += Constants.IN_GAME_ABILITY_TIMER_REFRESH_RATE;
-                if (timePassed >= Constants.SLUMBER_DURATION){
+                timePassed += RefreshRateConstants.IN_GAME_ABILITY_TIMER_REFRESH_RATE;
+                if (timePassed >= TimeConstants.SLUMBER_DURATION){
                     isAvailable = true;
                     isActive = false;
                     timePassed = 0;
@@ -53,7 +54,7 @@ public class Slumber extends InGameAbility{
     @Override
     public void setUp() {
         initTimer();
-        if (timePassed <= Constants.SLUMBER_DURATION && isActive) {
+        if (timePassed <= TimeConstants.SLUMBER_DURATION && isActive) {
             GameState.setDizzy(true);
             timer.start();
         }

@@ -1,8 +1,9 @@
 package controller.manager;
 
+import constants.SizeConstants;
 import controller.Controller;
 import controller.enums.ModelType;
-import constants.Constants;
+import constants.ControllerConstants;
 import model.ModelRequests;
 import model.animations.BossSpawnAnimation;
 import model.inGameAbilities.Dismay.EpsilonProtectorModel;
@@ -131,13 +132,13 @@ public abstract class Spawner {
     }
 
     public synchronized static void spawnObject(Vector position , ModelType modelType){
-        spawnObjectWithId(position , modelType,Helper.RandomStringGenerator(Constants.ID_SIZE));
+        spawnObjectWithId(position , modelType,Helper.RandomStringGenerator(ControllerConstants.ID_SIZE));
     }
 
 
 
     public synchronized static void addProjectile(Vector position , Vector direction , ModelType modelType){
-        String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
+        String id = Helper.RandomStringGenerator(ControllerConstants.ID_SIZE);
         addProjectileWithId(position ,direction , modelType,id);
     }
 
@@ -195,19 +196,19 @@ public abstract class Spawner {
         Random random = new Random();
         for (int i = 0; i < count; i++){
             int x = random.nextInt(
-                    (int) position.x - Constants.COLLECTIVE_BOX_DIMENSION.width ,
-                    (int) position.x + Constants.COLLECTIVE_BOX_DIMENSION.width
+                    (int) position.x - SizeConstants.COLLECTIVE_BOX_DIMENSION.width ,
+                    (int) position.x + SizeConstants.COLLECTIVE_BOX_DIMENSION.width
             );
             int y = random.nextInt(
-                    (int) position.y - Constants.COLLECTIVE_BOX_DIMENSION.height ,
-                    (int) position.y + Constants.COLLECTIVE_BOX_DIMENSION.height
+                    (int) position.y - SizeConstants.COLLECTIVE_BOX_DIMENSION.height ,
+                    (int) position.y + SizeConstants.COLLECTIVE_BOX_DIMENSION.height
             );
             addCollective(new Vector(x ,y) ,value);
         }
     }
 
     private static void addCollective(Vector position, int value) {
-        String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
+        String id = Helper.RandomStringGenerator(ControllerConstants.ID_SIZE);
         ModelRequests.addObjectModel(new CollectiveModel(position,id ,value));
         ViewRequest.addObjectView(new CollectiveView(position ,id));
     }
@@ -217,7 +218,7 @@ public abstract class Spawner {
         Timer timer = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Boss boss = new Boss(Helper.RandomStringGenerator(Constants.ID_SIZE));
+                Boss boss = new Boss(Helper.RandomStringGenerator(ControllerConstants.ID_SIZE));
                 BossSpawnAnimation bossSpawnAnimation = new BossSpawnAnimation(boss);
                 bossSpawnAnimation.StartAnimation();
                 ModelRequests.addAbstractEnemy(boss);
@@ -308,7 +309,7 @@ public abstract class Spawner {
     }
 
     public static void spawnPortal(Vector position, FrameModel epsilonFrame) {
-        String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
+        String id = Helper.RandomStringGenerator(ControllerConstants.ID_SIZE);
         PortalModel portalModel = new PortalModel(
                 epsilonFrame,
                 id

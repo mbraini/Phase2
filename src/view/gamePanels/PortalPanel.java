@@ -1,8 +1,7 @@
 package view.gamePanels;
 
-import constants.Constants;
+import constants.SizeConstants;
 import controller.Controller;
-import controller.enums.InGameAbilityType;
 import view.menuPanels.PIG;
 import view.objectViews.panels.MyLabel;
 
@@ -25,7 +24,7 @@ public class PortalPanel extends PIG {
 
     public PortalPanel(PortalFrame portalFrame ,int PR) {
         this.setLayout(null);
-        this.setBounds(0,0, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
+        this.setBounds(0,0, SizeConstants.GAME_WIDTH, SizeConstants.GAME_HEIGHT);
         this.setBackground(Color.BLACK);
         this.portalFrame = portalFrame;
         this.PR = PR;

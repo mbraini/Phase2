@@ -1,6 +1,7 @@
 package model.objectModel;
 
-import constants.Constants;
+import constants.SizeConstants;
+import constants.TimeConstants;
 import controller.Controller;
 import controller.enums.ModelType;
 import model.interfaces.Ability;
@@ -33,7 +34,7 @@ public class PortalModel extends ObjectModel implements IsCircle, Fader ,Ability
 
     @Override
     public double getRadios() {
-        return Constants.PORTAL_RADIOS;
+        return SizeConstants.PORTAL_RADIOS;
     }
 
     @Override
@@ -48,7 +49,7 @@ public class PortalModel extends ObjectModel implements IsCircle, Fader ,Ability
 
     @Override
     public void fadeIf() {
-        if (fadeTime >= Constants.PORTAL_FADE_TIME) {
+        if (fadeTime >= TimeConstants.PORTAL_FADE_TIME) {
             die();
         }
     }

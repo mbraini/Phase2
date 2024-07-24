@@ -1,7 +1,7 @@
 package model.logics.collision;
 
 
-import constants.Constants;
+import constants.DistanceConstants;
 import controller.Controller;
 import controller.manager.GameState;
 import model.ModelData;
@@ -100,7 +100,7 @@ public class CollisionHandler {
         EpsilonModel epsilonModel = ModelData.getEpsilon();
         epsilonModel.setHP(epsilonModel.getHP() + epsilonModel.getLifeSteal());
         epsilonModel.checkHP();
-        new Impact(epsilonBullet.getPosition() , Constants.REGULAR_IMPACT_RANGE).MakeImpact();
+        new Impact(epsilonBullet.getPosition() , DistanceConstants.REGULAR_IMPACT_RANGE).MakeImpact();
         epsilonBullet.die();
     }
 
@@ -113,7 +113,7 @@ public class CollisionHandler {
             pullOutObject(enemy1 ,enemy2);
         else
             pullOutObject(enemy2 ,enemy1);
-        new Impact(collisionPoint ,Constants.REGULAR_IMPACT_RANGE).MakeImpact();
+        new Impact(collisionPoint , DistanceConstants.REGULAR_IMPACT_RANGE).MakeImpact();
         if (enemy1 instanceof CollisionDetector)
             ((CollisionDetector) enemy1).detect();
         if (enemy2 instanceof CollisionDetector)
@@ -127,7 +127,7 @@ public class CollisionHandler {
         if (object instanceof EnemyModel){
             epsilonEnemyMeleeHandler(epsilon ,(EnemyModel)object);
             pullOutObject(epsilon ,object);
-            new Impact(collisionPoint ,Constants.REGULAR_IMPACT_RANGE).MakeImpact();
+            new Impact(collisionPoint , DistanceConstants.REGULAR_IMPACT_RANGE).MakeImpact();
             if (object instanceof BossHelperModel){
                 object.setAcceleration(0 ,0);
                 object.setVelocity(0 ,0);
@@ -135,7 +135,7 @@ public class CollisionHandler {
         }
         if (object instanceof EnemyBulletModel){
             epsilon.setHP(epsilon.getHP() - ((BulletModel) object).getDamage());
-            new Impact(object.getPosition() , Constants.REGULAR_IMPACT_RANGE).MakeImpact();
+            new Impact(object.getPosition() , DistanceConstants.REGULAR_IMPACT_RANGE).MakeImpact();
             object.die();
         }
         if (object instanceof CollisionDetector){

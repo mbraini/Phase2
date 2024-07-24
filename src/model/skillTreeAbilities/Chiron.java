@@ -1,6 +1,6 @@
 package model.skillTreeAbilities;
 
-import constants.Constants;
+import constants.CostConstants;
 import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
 import model.ModelData;
@@ -11,7 +11,7 @@ public class Chiron extends SkillTreeAbility{
 
     public Chiron(){
         isBought = Configs.SkillTreeConfigs.chironBought;
-        unlockXpCost = Constants.CHIRON_UNLOCK_COST;
+        unlockXpCost = CostConstants.CHIRON_UNLOCK_COST;
         type = SkillTreeAbilityType.chiron;
         initTimer();
         initEpsilon();

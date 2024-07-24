@@ -1,8 +1,9 @@
 package model.skillTreeAbilities.Cerberus;
 
+import constants.SizeConstants;
+import constants.TimeConstants;
 import controller.enums.ModelType;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
 import controller.manager.GameState;
 import model.interfaces.IsCircle;
 import model.objectModel.FighterModel;
@@ -26,7 +27,7 @@ public class CerberusModel extends FighterModel implements IsCircle {
         isHovering = true;
         hasMeleeAttack = true;
         meleeAttack = 10;
-        coolDown = Constants.CERBERUS_COOLDOWN;
+        coolDown = TimeConstants.CERBERUS_COOLDOWN;
         type = ModelType.cerberus;
         setHP(100000);
         initTimer();
@@ -39,7 +40,7 @@ public class CerberusModel extends FighterModel implements IsCircle {
                 if (GameState.isPause())
                     return;
                 timePassed += 1000;
-                if (timePassed >= Constants.CERBERUS_COOLDOWN){
+                if (timePassed >= TimeConstants.CERBERUS_COOLDOWN){
                     hasMeleeAttack = true;
                     timePassed = 0;
                     timer.stop();
@@ -56,7 +57,7 @@ public class CerberusModel extends FighterModel implements IsCircle {
 
     @Override
     public double getRadios() {
-        return Constants.CERBERUS_RADIOS;
+        return SizeConstants.CERBERUS_RADIOS;
     }
 
     @Override

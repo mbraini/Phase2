@@ -1,9 +1,10 @@
 package model.objectModel.fighters.finalBoss.abilities.rapidFire;
 
+import constants.SizeConstants;
+import constants.TimeConstants;
 import controller.enums.ModelType;
 import controller.manager.GameState;
 import controller.manager.Spawner;
-import constants.Constants;
 import utils.Math;
 import utils.Vector;
 
@@ -33,7 +34,7 @@ public class HeadShooter implements ActionListener {
             theta += java.lang.Math.PI / 8d;
             direction = new Vector(java.lang.Math.cos(theta) , java.lang.Math.sin(theta));
             spawnPosition = Math.VectorAdd(
-                    Math.VectorWithSize(direction , Constants.HEAD_DIMENSION.width / 2d),
+                    Math.VectorWithSize(direction , SizeConstants.HEAD_DIMENSION.width / 2d),
                     rapidFire.getBoss().getHead().getPosition()
             );
             Spawner.addProjectile(
@@ -43,8 +44,8 @@ public class HeadShooter implements ActionListener {
             );
         }
 
-        time += Constants.BOSS_BULLET_DELAY_TIME;
-        if (time >= Constants.RAPID_FIRE_DURATION_TIME){
+        time += TimeConstants.BOSS_BULLET_DELAY_TIME;
+        if (time >= TimeConstants.RAPID_FIRE_DURATION_TIME){
             rapidFire.endAbility();
             rapidFire.getShooter().removeActionListener(this);
             rapidFire.getShooter().stop();

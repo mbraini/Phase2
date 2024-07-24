@@ -1,10 +1,11 @@
 package view.gamePanels;
 
 
+import constants.ImageConstants;
+import constants.SizeConstants;
 import controller.Controller;
 import controller.configs.Configs;
 import controller.enums.InGameAbilityType;
-import constants.Constants;
 import controller.manager.GameState;
 import utils.Helper;
 import view.ViewData;
@@ -13,7 +14,6 @@ import view.objectViews.panels.MyButton;
 import view.objectViews.panels.MyLabel;
 import view.objectViews.panels.MyPanel;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -36,7 +36,7 @@ public class Shop extends PIG {
 
     public Shop(ShopFrame shopFrame){
         this.setLayout(null);
-        this.setBounds(0,0, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
+        this.setBounds(0,0, SizeConstants.GAME_WIDTH, SizeConstants.GAME_HEIGHT);
         this.setBackground(Color.BLACK);
         this.shopFrame = shopFrame;
         initContainers();
@@ -108,8 +108,8 @@ public class Shop extends PIG {
 
     private void initSlaughterL() {
         slaughterL = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 10 * 7 ,Constants.GAME_HEIGHT / 16 * 12),
-                new Dimension(Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16),
+                new Point(SizeConstants.GAME_WIDTH / 10 * 7 , SizeConstants.GAME_HEIGHT / 16 * 12),
+                new Dimension(SizeConstants.GAME_WIDTH / 10 * 2 , SizeConstants.GAME_HEIGHT / 16),
                 "slaughter",
                 this
         );
@@ -117,8 +117,8 @@ public class Shop extends PIG {
 
     private void initSlumberL() {
         slumberL = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 10 * 4 ,Constants.GAME_HEIGHT / 16 * 12),
-                new Dimension(Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16),
+                new Point(SizeConstants.GAME_WIDTH / 10 * 4 , SizeConstants.GAME_HEIGHT / 16 * 12),
+                new Dimension(SizeConstants.GAME_WIDTH / 10 * 2 , SizeConstants.GAME_HEIGHT / 16),
                 "slumber",
                 this
         );
@@ -126,8 +126,8 @@ public class Shop extends PIG {
 
     private void initDismayL() {
         dismayL = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 10 ,Constants.GAME_HEIGHT / 16 * 12),
-                new Dimension(Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16),
+                new Point(SizeConstants.GAME_WIDTH / 10 , SizeConstants.GAME_HEIGHT / 16 * 12),
+                new Dimension(SizeConstants.GAME_WIDTH / 10 * 2 , SizeConstants.GAME_HEIGHT / 16),
                 "dismay",
                 this
         );
@@ -135,8 +135,8 @@ public class Shop extends PIG {
 
     private void initXPL() {
         xp = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 10 * 4 ,Constants.GAME_HEIGHT / 16),
-                new Dimension(Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16),
+                new Point(SizeConstants.GAME_WIDTH / 10 * 4 , SizeConstants.GAME_HEIGHT / 16),
+                new Dimension(SizeConstants.GAME_WIDTH / 10 * 2 , SizeConstants.GAME_HEIGHT / 16),
                 "XP :" + GameState.getXp(),
                 this
         );
@@ -144,8 +144,8 @@ public class Shop extends PIG {
 
     private void initHealL() {
         healL = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 10 ,(int) (Constants.GAME_HEIGHT / 16 * 6.5)),
-                new Dimension(Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16),
+                new Point(SizeConstants.GAME_WIDTH / 10 ,(int) (SizeConstants.GAME_HEIGHT / 16 * 6.5)),
+                new Dimension(SizeConstants.GAME_WIDTH / 10 * 2 , SizeConstants.GAME_HEIGHT / 16),
                 "heal",
                 this
         );
@@ -153,8 +153,8 @@ public class Shop extends PIG {
 
     private void initBanishL() {
         banishL = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 10 * 4 ,(int) (Constants.GAME_HEIGHT / 16 * 6.5)),
-                new Dimension(Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16),
+                new Point(SizeConstants.GAME_WIDTH / 10 * 4 ,(int) (SizeConstants.GAME_HEIGHT / 16 * 6.5)),
+                new Dimension(SizeConstants.GAME_WIDTH / 10 * 2 , SizeConstants.GAME_HEIGHT / 16),
                 "empower",
                 this
         );
@@ -162,8 +162,8 @@ public class Shop extends PIG {
 
     private void initEmpowerL() {
         empowerL = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 10 * 7 ,(int) (Constants.GAME_HEIGHT / 16 * 6.5)),
-                new Dimension(Constants.GAME_WIDTH / 10 * 2 ,Constants.GAME_HEIGHT / 16),
+                new Point(SizeConstants.GAME_WIDTH / 10 * 7 ,(int) (SizeConstants.GAME_HEIGHT / 16 * 6.5)),
+                new Dimension(SizeConstants.GAME_WIDTH / 10 * 2 , SizeConstants.GAME_HEIGHT / 16),
                 "banish",
                 this
         );
@@ -253,12 +253,12 @@ public class Shop extends PIG {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         xp.setText(ViewData.getXp() + "");
-        g.drawImage(Constants.heal ,heal.getX() ,heal.getY() ,heal.getWidth() ,heal.getHeight() ,null);
-        g.drawImage(Constants.empower ,empower.getX() ,empower.getY() ,empower.getWidth() ,empower.getHeight() ,null);
-        g.drawImage(Constants.banish ,banish.getX() ,banish.getY() ,banish.getWidth() ,banish.getHeight() ,null);
-        g.drawImage(Constants.slumber ,slumber.getX() ,slumber.getY() ,slumber.getWidth() ,slumber.getHeight() ,null);
-        g.drawImage(Constants.slaughter ,slaughter.getX() ,slaughter.getY() ,slaughter.getWidth() ,slaughter.getHeight() ,null);
-        g.drawImage(Constants.dismay ,dismay.getX() ,dismay.getY() ,dismay.getWidth() ,dismay.getHeight() ,null);
+        g.drawImage(ImageConstants.heal ,heal.getX() ,heal.getY() ,heal.getWidth() ,heal.getHeight() ,null);
+        g.drawImage(ImageConstants.empower ,empower.getX() ,empower.getY() ,empower.getWidth() ,empower.getHeight() ,null);
+        g.drawImage(ImageConstants.banish ,banish.getX() ,banish.getY() ,banish.getWidth() ,banish.getHeight() ,null);
+        g.drawImage(ImageConstants.slumber ,slumber.getX() ,slumber.getY() ,slumber.getWidth() ,slumber.getHeight() ,null);
+        g.drawImage(ImageConstants.slaughter ,slaughter.getX() ,slaughter.getY() ,slaughter.getWidth() ,slaughter.getHeight() ,null);
+        g.drawImage(ImageConstants.dismay ,dismay.getX() ,dismay.getY() ,dismay.getWidth() ,dismay.getHeight() ,null);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package model.skillTreeAbilities;
 
-import constants.Constants;
+import constants.CostConstants;
 import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
 import model.ModelData;
@@ -15,7 +15,7 @@ public class Dolus extends SkillTreeAbility{
 
     public Dolus() {
         isBought = Configs.SkillTreeConfigs.dolusBought;
-        unlockXpCost = Constants.DOLUS_UNLOCK_COST;
+        unlockXpCost = CostConstants.DOLUS_UNLOCK_COST;
         type = SkillTreeAbilityType.dolus;
         initTimer();
     }

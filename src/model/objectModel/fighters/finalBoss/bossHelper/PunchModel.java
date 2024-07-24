@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
-import constants.Constants;
+import constants.ImageConstants;
+import constants.SizeConstants;
 import controller.enums.ModelType;
 import model.objectModel.frameModel.FrameModelBuilder;
 import utils.Math;
@@ -13,11 +14,11 @@ public class PunchModel extends BossHelperModel {
     public PunchModel(Vector position ,String id){
         this.position = position;
         this.id = id;
-        this.image = Constants.punch;
+        this.image = ImageConstants.punch;
         this.velocity = new Vector();
         size = new Dimension(
-                Constants.PUNCH_DIMENSION.width,
-                Constants.PUNCH_DIMENSION.height
+                SizeConstants.PUNCH_DIMENSION.width,
+                SizeConstants.PUNCH_DIMENSION.height
         );
         type = ModelType.punch;
         HP = 100000;
@@ -32,11 +33,11 @@ public class PunchModel extends BossHelperModel {
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                -Constants.PUNCH_DIMENSION.width / 2d,
-                                -Constants.PUNCH_DIMENSION.height / 2d
+                                -SizeConstants.PUNCH_DIMENSION.width / 2d,
+                                -SizeConstants.PUNCH_DIMENSION.height / 2d
                         )
                 ),
-                new Dimension(Constants.PUNCH_DIMENSION),
+                new Dimension(SizeConstants.PUNCH_DIMENSION),
                 id
         );
         builder.setIsometric(true);

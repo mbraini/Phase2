@@ -1,8 +1,8 @@
 package model.objectModel.fighters.normalEnemies.necropickModel;
 
+import constants.SizeConstants;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
-import constants.Constants;
 import utils.Math;
 import utils.Vector;
 
@@ -22,7 +22,7 @@ public class NecropickShooter {
             theta += java.lang.Math.PI / 4d;
             direction = new Vector(java.lang.Math.cos(theta) , java.lang.Math.sin(theta));
             spawnPosition = Math.VectorAdd(
-                    Math.VectorWithSize(direction , Constants.NECROPICK_DIMENSION.width / 2d),
+                    Math.VectorWithSize(direction , SizeConstants.NECROPICK_DIMENSION.width / 2d),
                     position
             );
             Spawner.addProjectile(

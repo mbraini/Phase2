@@ -1,6 +1,7 @@
 package view.objectViews;
 
-import constants.Constants;
+import constants.ImageConstants;
+import constants.SizeConstants;
 import utils.Vector;
 
 import java.awt.*;
@@ -10,17 +11,17 @@ public class PortalView extends ObjectView{
     public PortalView(Vector position ,String id) {
         this.position = position;
         this.id = id;
-        image = Constants.portal;
+        image = ImageConstants.portal;
     }
 
     @Override
     public void draw(Graphics2D g2d) {
         g2d.drawImage(
                 image ,
-                (int) (position.getX() - Constants.PORTAL_RADIOS) + Constants.SCREEN_SIZE.width ,
-                (int) (position.getY() - Constants.PORTAL_RADIOS) + Constants.SCREEN_SIZE.height,
-                (int) Constants.PORTAL_RADIOS * 2 ,
-                (int) Constants.PORTAL_RADIOS * 2 ,
+                (int) (position.getX() - SizeConstants.PORTAL_RADIOS) + SizeConstants.SCREEN_SIZE.width ,
+                (int) (position.getY() - SizeConstants.PORTAL_RADIOS) + SizeConstants.SCREEN_SIZE.height,
+                (int) SizeConstants.PORTAL_RADIOS * 2 ,
+                (int) SizeConstants.PORTAL_RADIOS * 2 ,
                 null
         );
     }

@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities.squeeze;
 
-import constants.Constants;
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
 import model.animations.DashAnimation;
 import model.interfaces.Navigator;
 import model.objectModel.fighters.finalBoss.Boss;
@@ -56,7 +57,7 @@ public class Squeeze extends Ability implements Navigator {
     protected void endAbility() {
         doAnimation();
         try {
-            Thread.sleep(Constants.ABILITY_UNSETUP_DELAY);
+            Thread.sleep(RefreshRateConstants.ABILITY_UNSETUP_DELAY);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -67,8 +68,8 @@ public class Squeeze extends Ability implements Navigator {
     private void doAnimation() {
         Vector leftD = Math.VectorAdd(
                 new Vector(
-                        Constants.HAND_DIMENSION.width / 2d,
-                        Constants.SCREEN_SIZE.height / 2d
+                        SizeConstants.HAND_DIMENSION.width / 2d,
+                        SizeConstants.SCREEN_SIZE.height / 2d
                 ),
                 Math.ScalarInVector(-1, boss.getLeftHand().getPosition())
         );
@@ -82,8 +83,8 @@ public class Squeeze extends Ability implements Navigator {
         ).StartAnimation();
         Vector rightD = Math.VectorAdd(
                 new Vector(
-                        Constants.SCREEN_SIZE.width - Constants.HAND_DIMENSION.width / 2d,
-                        Constants.SCREEN_SIZE.height / 2d
+                        SizeConstants.SCREEN_SIZE.width - SizeConstants.HAND_DIMENSION.width / 2d,
+                        SizeConstants.SCREEN_SIZE.height / 2d
                 ),
                 Math.ScalarInVector(-1, boss.getRightHand().getPosition())
         );

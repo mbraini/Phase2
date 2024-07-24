@@ -1,9 +1,9 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
+import constants.SizeConstants;
 import controller.Controller;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
 import model.interfaces.IsCircle;
 import model.objectModel.fighters.miniBossEnemies.MiniBossModel;
 import model.objectModel.frameModel.FrameModel;
@@ -44,7 +44,7 @@ public class OrbModel extends MiniBossModel implements IsCircle {
 
     @Override
     public double getRadios() {
-        return Constants.ORB_DIMENSION.width / 2d;
+        return SizeConstants.ORB_DIMENSION.width / 2d;
     }
 
     @Override

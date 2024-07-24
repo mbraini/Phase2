@@ -1,5 +1,6 @@
 package model.objectModel.fighters.finalBoss;
 
+import constants.RefreshRateConstants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.animations.BossPhase2Animation;
@@ -50,7 +51,7 @@ public class BossThread extends Thread {
             }
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= 100) {
+            if (deltaModel >= RefreshRateConstants.BOSS_THREAD_REFRESH_RATE) {
                 updateAbilities();
                 deltaModel = 0;
             }

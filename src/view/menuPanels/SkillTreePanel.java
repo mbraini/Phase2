@@ -1,7 +1,8 @@
 package view.menuPanels;
 
 
-import constants.Constants;
+import constants.ImageConstants;
+import constants.SizeConstants;
 import controller.Controller;
 import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
@@ -11,7 +12,6 @@ import view.objectViews.panels.MyButton;
 import view.objectViews.panels.MyLabel;
 import view.objectViews.panels.MyPanel;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -43,7 +43,7 @@ public class SkillTreePanel extends PIG {
 
     public SkillTreePanel(){
         this.setLayout(null);
-        this.setBounds(0,0, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
+        this.setBounds(0,0, SizeConstants.GAME_WIDTH, SizeConstants.GAME_HEIGHT);
         this.setBackground(Color.BLACK);
         this.setVisible(false);
 
@@ -380,16 +380,16 @@ public class SkillTreePanel extends PIG {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(Constants.aceso ,aceso.getX() ,aceso.getY() ,aceso.getWidth() ,aceso.getHeight() ,null);
-        g.drawImage(Constants.melampus ,melampus.getX() ,melampus.getY() ,melampus.getWidth() ,melampus.getHeight() ,null);
-        g.drawImage(Constants.chiron ,chiron.getX() ,chiron.getY() ,chiron.getWidth() ,chiron.getHeight() ,null);
-        g.drawImage(Constants.proteus ,proteus.getX() ,proteus.getY() ,proteus.getWidth() ,proteus.getHeight() ,null);
-        g.drawImage(Constants.empusa ,empusa.getX() ,empusa.getY() ,empusa.getWidth() ,empusa.getHeight() ,null);
-        g.drawImage(Constants.dolus ,dolus.getX() ,dolus.getY() ,dolus.getWidth() ,dolus.getHeight() ,null);
-        g.drawImage(Constants.athena ,athena.getX() ,athena.getY() ,athena.getWidth() ,athena.getHeight() ,null);
-        g.drawImage(Constants.ares ,ares.getX() ,ares.getY() ,ares.getWidth() ,ares.getHeight() ,null);
-        g.drawImage(Constants.astrape ,astrape.getX() ,astrape.getY() ,astrape.getWidth() ,astrape.getHeight() ,null);
-        g.drawImage(Constants.cerberus ,cerberus.getX() ,cerberus.getY() ,cerberus.getWidth() ,cerberus.getHeight() ,null);
+        g.drawImage(ImageConstants.aceso ,aceso.getX() ,aceso.getY() ,aceso.getWidth() ,aceso.getHeight() ,null);
+        g.drawImage(ImageConstants.melampus ,melampus.getX() ,melampus.getY() ,melampus.getWidth() ,melampus.getHeight() ,null);
+        g.drawImage(ImageConstants.chiron ,chiron.getX() ,chiron.getY() ,chiron.getWidth() ,chiron.getHeight() ,null);
+        g.drawImage(ImageConstants.proteus ,proteus.getX() ,proteus.getY() ,proteus.getWidth() ,proteus.getHeight() ,null);
+        g.drawImage(ImageConstants.empusa ,empusa.getX() ,empusa.getY() ,empusa.getWidth() ,empusa.getHeight() ,null);
+        g.drawImage(ImageConstants.dolus ,dolus.getX() ,dolus.getY() ,dolus.getWidth() ,dolus.getHeight() ,null);
+        g.drawImage(ImageConstants.athena ,athena.getX() ,athena.getY() ,athena.getWidth() ,athena.getHeight() ,null);
+        g.drawImage(ImageConstants.ares ,ares.getX() ,ares.getY() ,ares.getWidth() ,ares.getHeight() ,null);
+        g.drawImage(ImageConstants.astrape ,astrape.getX() ,astrape.getY() ,astrape.getWidth() ,astrape.getHeight() ,null);
+        g.drawImage(ImageConstants.cerberus ,cerberus.getX() ,cerberus.getY() ,cerberus.getWidth() ,cerberus.getHeight() ,null);
     }
 
     @Override

@@ -1,8 +1,8 @@
 package model.objectModel.fighters.miniBossEnemies.barricadosModel;
 
-import constants.Constants;
+import constants.SizeConstants;
+import constants.TimeConstants;
 import controller.Controller;
-import model.ModelRequests;
 import model.interfaces.Fader;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
@@ -24,7 +24,7 @@ public abstract class BarricadosModel extends MiniBossModel implements Fader , I
 
     @Override
     public void fadeIf() {
-        if (time >= Constants.BARRICADOS_DURATION_TIME){
+        if (time >= TimeConstants.BARRICADOS_DURATION_TIME){
             die();
         }
     }
@@ -47,29 +47,29 @@ public abstract class BarricadosModel extends MiniBossModel implements Fader , I
         vertices.add(Math.VectorAdd(
                 position,
                 new Vector(
-                        -Constants.BARRICADOS_DIMENSION.width /2d,
-                        -Constants.BARRICADOS_DIMENSION.height /2d
+                        -SizeConstants.BARRICADOS_DIMENSION.width /2d,
+                        -SizeConstants.BARRICADOS_DIMENSION.height /2d
                 )
         ));
         vertices.add(Math.VectorAdd(
                 position,
                 new Vector(
-                        Constants.BARRICADOS_DIMENSION.width / 2d,
-                        -Constants.BARRICADOS_DIMENSION.height /2d
+                        SizeConstants.BARRICADOS_DIMENSION.width / 2d,
+                        -SizeConstants.BARRICADOS_DIMENSION.height /2d
                 )
         ));
         vertices.add(Math.VectorAdd(
                 position,
                 new Vector(
-                        Constants.BARRICADOS_DIMENSION.width /2d,
-                        Constants.BARRICADOS_DIMENSION.height /2d
+                        SizeConstants.BARRICADOS_DIMENSION.width /2d,
+                        SizeConstants.BARRICADOS_DIMENSION.height /2d
                 )
         ));
         vertices.add(Math.VectorAdd(
                 position,
                 new Vector(
-                        -Constants.BARRICADOS_DIMENSION.width /2d,
-                        Constants.BARRICADOS_DIMENSION.height /2d
+                        -SizeConstants.BARRICADOS_DIMENSION.width /2d,
+                        SizeConstants.BARRICADOS_DIMENSION.height /2d
                 )
         ));
     }

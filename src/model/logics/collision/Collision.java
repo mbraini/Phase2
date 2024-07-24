@@ -1,7 +1,7 @@
 package model.logics.collision;
 
 
-import constants.Constants;
+import constants.SizeConstants;
 import model.interfaces.IsCircle;
 import model.interfaces.IsPolygon;
 import model.objectModel.*;
@@ -133,7 +133,7 @@ public class Collision {
                 circle = b;
                 polygon = a;
             }
-            Vector direction = Math.VectorWithSize(Math.VectorAdd(Math.ScalarInVector(-1 ,circle.getPosition()) ,polygon.getPosition()) , Constants.EPSILON_DIMENSION.width);
+            Vector direction = Math.VectorWithSize(Math.VectorAdd(Math.ScalarInVector(-1 ,circle.getPosition()) ,polygon.getPosition()) , SizeConstants.EPSILON_DIMENSION.width);
             return Math.VectorAdd(direction ,circle.getPosition());
         }
         else if (a instanceof IsCircle && b instanceof IsCircle){

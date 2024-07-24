@@ -1,7 +1,7 @@
 
 package model.threads;
 
-import constants.Constants;
+import constants.RefreshRateConstants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.logics.collision.Collision;
@@ -41,7 +41,7 @@ public class FrameThread extends Thread{
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
-            if (delta >= Constants.FRAME_THREAD_REFRESH_RATE) {
+            if (delta >= RefreshRateConstants.FRAME_THREAD_REFRESH_RATE) {
                 updateFrames();
                 delta = 0;
             }

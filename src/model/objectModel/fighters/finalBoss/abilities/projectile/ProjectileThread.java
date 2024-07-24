@@ -1,8 +1,10 @@
 package model.objectModel.fighters.finalBoss.abilities.projectile;
 
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
+import constants.TimeConstants;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
-import constants.Constants;
 import controller.manager.GameState;
 import model.interfaces.HasVertices;
 import model.objectModel.fighters.EpsilonModel;
@@ -16,7 +18,7 @@ public class ProjectileThread extends Thread{
     private Projectile projectile;
     private Vector origin;
     private EpsilonModel epsilon;
-    private final double thetaD = (java.lang.Math.PI / 2) / (1000 / Constants.PROJECTILE_THREAD_REFRESH_RATE);
+    private final double thetaD = (java.lang.Math.PI / 2) / (1000 / RefreshRateConstants.PROJECTILE_THREAD_REFRESH_RATE);
     private double time;
 
     public ProjectileThread(Projectile projectile , EpsilonModel epsilon){
@@ -49,8 +51,8 @@ public class ProjectileThread extends Thread{
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= Constants.PROJECTILE_THREAD_REFRESH_RATE) {
-                time += Constants.PROJECTILE_THREAD_REFRESH_RATE;
+            if (deltaModel >= RefreshRateConstants.PROJECTILE_THREAD_REFRESH_RATE) {
+                time += RefreshRateConstants.PROJECTILE_THREAD_REFRESH_RATE;
                 update();
                 deltaModel = 0;
             }
@@ -60,7 +62,7 @@ public class ProjectileThread extends Thread{
     private void update() {
         turnAround();
         fireIf();
-        if (time >= Constants.PROJECTILE_DURATION)
+        if (time >= TimeConstants.PROJECTILE_DURATION)
             projectile.endAbility();
     }
 
@@ -85,7 +87,7 @@ public class ProjectileThread extends Thread{
                 position,
                 Math.VectorWithSize(
                         direction ,
-                        Constants.BOSS_BULLET_RADIOS + Constants.HAND_DIMENSION.width / 2d
+                        SizeConstants.BOSS_BULLET_RADIOS + SizeConstants.HAND_DIMENSION.width / 2d
                 )
         );
 

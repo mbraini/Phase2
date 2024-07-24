@@ -1,12 +1,15 @@
 package model.objectModel.fighters;
 
 
+import constants.DamageConstants;
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
 import controller.Controller;
 import controller.configs.Configs;
 import controller.enums.ModelType;
 import controller.interfaces.SizeChanger;
 import controller.manager.Spawner;
-import constants.Constants;
+import constants.ControllerConstants;
 import model.logics.collision.Collision;
 import model.interfaces.*;
 import model.objectModel.FighterModel;
@@ -30,13 +33,13 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
         this.velocity = new Vector();
         this.acceleration = new Vector(0 ,0);
         this.size = new Dimension(
-                Constants.EPSILON_DIMENSION.width,
-                Constants.EPSILON_DIMENSION.height
+                SizeConstants.EPSILON_DIMENSION.width,
+                SizeConstants.EPSILON_DIMENSION.height
         );
         this.id =  id;
         this.HP = 100;
-        this.epsilonBulletDamage = Constants.INITIAL_EPSILON_DAMAGE;
-        this.meleeAttack = Constants.INITIAL_EPSILON_DAMAGE;
+        this.epsilonBulletDamage = DamageConstants.INITIAL_EPSILON_DAMAGE;
+        this.meleeAttack = DamageConstants.INITIAL_EPSILON_DAMAGE;
         this.isSolid = true;
         type = ModelType.epsilon;
         vertices = new ArrayList<>();
@@ -44,9 +47,9 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
 
     @Override
     public void move() {
-        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(Constants.UPS ,acceleration));
-        double xMoved = ((2 * velocity.x - acceleration.x * Constants.UPS) / 2) * Constants.UPS;
-        double yMoved = ((2 * velocity.y - acceleration.y * Constants.UPS) / 2) * Constants.UPS;
+        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(RefreshRateConstants.UPS ,acceleration));
+        double xMoved = ((2 * velocity.x - acceleration.x * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
+        double yMoved = ((2 * velocity.y - acceleration.y * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
         setPosition(position.x + xMoved ,position.y + yMoved);
         ((HasVertices) this).UpdateVertices(xMoved ,yMoved ,omega);
         checkMaxSpeed();
@@ -85,13 +88,13 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
         Vector direction = new Vector(java.lang.Math.cos(degree) , java.lang.Math.sin(degree));
         direction = Math.VectorWithSize(
                 direction,
-                Constants.EPSILON_DIMENSION.width / 2d + Constants.EPSILON_VERTICES_RADIOS
+                SizeConstants.EPSILON_DIMENSION.width / 2d + SizeConstants.EPSILON_VERTICES_RADIOS
         );
         EpsilonVertexModel epsilonVertexModel = new EpsilonVertexModel(
                 Math.VectorAdd(direction ,position),
                 position.clone(),
                 degree,
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
+                Helper.RandomStringGenerator(ControllerConstants.ID_SIZE)
         );
         Spawner.spawnVertex(epsilonVertexModel);
         vertices.add(epsilonVertexModel);
@@ -102,7 +105,7 @@ public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, Ha
         for (int i = 0 ;i < vertices.size() ;i++){
             vertices.get(i).rotateBy(theta);
             Vector origin = new Vector(
-                    getPosition().x + getRadios() + Constants.EPSILON_VERTICES_RADIOS,
+                    getPosition().x + getRadios() + SizeConstants.EPSILON_VERTICES_RADIOS,
                     getPosition().y
             );
             vertices.get(i).setPosition(Math.RotateByTheta(

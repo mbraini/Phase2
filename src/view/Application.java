@@ -1,6 +1,7 @@
 package view;
 
-import constants.Constants;
+import constants.ImageConstants;
+import constants.SoundPathConstants;
 import controller.Controller;
 import view.soundEffects.Sound;
 import view.menuPanels.MainFrame;
@@ -29,38 +30,38 @@ public class Application implements Runnable{
 
     private void getImages(){
         try {
-            Constants.epsilonImage = ImageIO.read(new File("src/view/objectViews/images/epsilonImage.png"));
-            Constants.trigorathImage = ImageIO.read(new File("src/view/objectViews/images/trigorathImage.png"));
-            Constants.squarantineImage = ImageIO.read(new File("src/view/objectViews/images/squarantineImage.png"));
-            Constants.banish = ImageIO.read(new File("src/view/objectViews/images/Banish.png"));
-            Constants.empower = ImageIO.read(new File("src/view/objectViews/images/Empower.png"));
-            Constants.heal = ImageIO.read(new File("src/view/objectViews/images/Heal.png"));
-            Constants.endGameImage = ImageIO.read(new File("src/view/objectViews/images/GameOver.png"));
-            Constants.omenoct = ImageIO.read(new File("src/view/objectViews/images/omenoct.png"));
-            Constants.orb = ImageIO.read(new File("src/view/objectViews/images/orb.png"));
-            Constants.smiley = ImageIO.read(new File("src/view/objectViews/images/smiley.png"));
-            Constants.hand = ImageIO.read(new File("src/view/objectViews/images/hand.png"));
-            Constants.bossAoe = ImageIO.read(new File("src/view/objectViews/images/bossAoe.png"));
-            Constants.punch = ImageIO.read(new File("src/view/objectViews/images/punch.png"));
-            Constants.slumber = ImageIO.read(new File("src/view/objectViews/images/slumber.png"));
-            Constants.archmire = ImageIO.read(new File("src/view/objectViews/images/archmire.png"));
-            Constants.skeleton = ImageIO.read(new File("src/view/objectViews/images/skeleton.png"));
-            Constants.barricados = ImageIO.read(new File("src/view/objectViews/images/barricados.png"));
-            Constants.wyrm = ImageIO.read(new File("src/view/objectViews/images/wyrm.png"));
-            Constants.portal = ImageIO.read(new File("src/view/objectViews/images/portal.png"));
-            Constants.slaughter = ImageIO.read(new File("src/view/objectViews/images/slaughter.png"));
-            Constants.dismay = ImageIO.read(new File("src/view/objectViews/images/dismay.png"));
-            Constants.necropick = ImageIO.read(new File("src/view/objectViews/images/necropick.png"));
-            Constants.ares = ImageIO.read(new File("src/view/objectViews/images/ares.png"));
-            Constants.astrape = ImageIO.read(new File("src/view/objectViews/images/astrape.png"));
-            Constants.cerberus = ImageIO.read(new File("src/view/objectViews/images/cerberus.png"));
-            Constants.aceso = ImageIO.read(new File("src/view/objectViews/images/aceso.png"));
-            Constants.melampus = ImageIO.read(new File("src/view/objectViews/images/melampus.png"));
-            Constants.chiron = ImageIO.read(new File("src/view/objectViews/images/chiron.png"));
-            Constants.athena = ImageIO.read(new File("src/view/objectViews/images/athena.png"));
-            Constants.proteus = ImageIO.read(new File("src/view/objectViews/images/proteus.png"));
-            Constants.empusa = ImageIO.read(new File("src/view/objectViews/images/empusa.png"));
-            Constants.dolus = ImageIO.read(new File("src/view/objectViews/images/dolus.png"));
+            ImageConstants.epsilonImage = ImageIO.read(new File("src/view/objectViews/images/epsilonImage.png"));
+            ImageConstants.trigorathImage = ImageIO.read(new File("src/view/objectViews/images/trigorathImage.png"));
+            ImageConstants.squarantineImage = ImageIO.read(new File("src/view/objectViews/images/squarantineImage.png"));
+            ImageConstants.banish = ImageIO.read(new File("src/view/objectViews/images/Banish.png"));
+            ImageConstants.empower = ImageIO.read(new File("src/view/objectViews/images/Empower.png"));
+            ImageConstants.heal = ImageIO.read(new File("src/view/objectViews/images/Heal.png"));
+            ImageConstants.endGameImage = ImageIO.read(new File("src/view/objectViews/images/GameOver.png"));
+            ImageConstants.omenoct = ImageIO.read(new File("src/view/objectViews/images/omenoct.png"));
+            ImageConstants.orb = ImageIO.read(new File("src/view/objectViews/images/orb.png"));
+            ImageConstants.smiley = ImageIO.read(new File("src/view/objectViews/images/smiley.png"));
+            ImageConstants.hand = ImageIO.read(new File("src/view/objectViews/images/hand.png"));
+            ImageConstants.bossAoe = ImageIO.read(new File("src/view/objectViews/images/bossAoe.png"));
+            ImageConstants.punch = ImageIO.read(new File("src/view/objectViews/images/punch.png"));
+            ImageConstants.slumber = ImageIO.read(new File("src/view/objectViews/images/slumber.png"));
+            ImageConstants.archmire = ImageIO.read(new File("src/view/objectViews/images/archmire.png"));
+            ImageConstants.skeleton = ImageIO.read(new File("src/view/objectViews/images/skeleton.png"));
+            ImageConstants.barricados = ImageIO.read(new File("src/view/objectViews/images/barricados.png"));
+            ImageConstants.wyrm = ImageIO.read(new File("src/view/objectViews/images/wyrm.png"));
+            ImageConstants.portal = ImageIO.read(new File("src/view/objectViews/images/portal.png"));
+            ImageConstants.slaughter = ImageIO.read(new File("src/view/objectViews/images/slaughter.png"));
+            ImageConstants.dismay = ImageIO.read(new File("src/view/objectViews/images/dismay.png"));
+            ImageConstants.necropick = ImageIO.read(new File("src/view/objectViews/images/necropick.png"));
+            ImageConstants.ares = ImageIO.read(new File("src/view/objectViews/images/ares.png"));
+            ImageConstants.astrape = ImageIO.read(new File("src/view/objectViews/images/astrape.png"));
+            ImageConstants.cerberus = ImageIO.read(new File("src/view/objectViews/images/cerberus.png"));
+            ImageConstants.aceso = ImageIO.read(new File("src/view/objectViews/images/aceso.png"));
+            ImageConstants.melampus = ImageIO.read(new File("src/view/objectViews/images/melampus.png"));
+            ImageConstants.chiron = ImageIO.read(new File("src/view/objectViews/images/chiron.png"));
+            ImageConstants.athena = ImageIO.read(new File("src/view/objectViews/images/athena.png"));
+            ImageConstants.proteus = ImageIO.read(new File("src/view/objectViews/images/proteus.png"));
+            ImageConstants.empusa = ImageIO.read(new File("src/view/objectViews/images/empusa.png"));
+            ImageConstants.dolus = ImageIO.read(new File("src/view/objectViews/images/dolus.png"));
         }
         catch (Exception e){
             System.out.println("File Not Found!");
@@ -68,16 +69,16 @@ public class Application implements Runnable{
     }
 
     private void getAudios() {
-        Constants.backGroundSound = "src/view/SoundEffects/Song.wav";
-        Constants.BulletFiredSound = "src/view/SoundEffects/Bullet Fired.wav";
-        Constants.waveSpawnSound = "src/view/SoundEffects/Wave Spawn.wav";
-        Constants.enemyOnDeathSound = "src/view/SoundEffects/EnemyOnDeath.wav";
-        Constants.impactSound = "src/view/SoundEffects/ImpactSound.wav";
-        Constants.endSound = "src/view/SoundEffects/endSound.wav";
-        Constants.winSound = "src/view/SoundEffects/winSound.wav";
+        SoundPathConstants.backGroundSound = "src/view/SoundEffects/Song.wav";
+        SoundPathConstants.BulletFiredSound = "src/view/SoundEffects/Bullet Fired.wav";
+        SoundPathConstants.waveSpawnSound = "src/view/SoundEffects/Wave Spawn.wav";
+        SoundPathConstants.enemyOnDeathSound = "src/view/SoundEffects/EnemyOnDeath.wav";
+        SoundPathConstants.impactSound = "src/view/SoundEffects/ImpactSound.wav";
+        SoundPathConstants.endSound = "src/view/SoundEffects/endSound.wav";
+        SoundPathConstants.winSound = "src/view/SoundEffects/winSound.wav";
         Sound sound = null;
         try {
-            sound = new Sound(Constants.backGroundSound);
+            sound = new Sound(SoundPathConstants.backGroundSound);
             Sound.volumeUp();
             Sound.volumeDown();
             sound.loop();

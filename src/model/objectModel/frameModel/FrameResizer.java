@@ -1,6 +1,7 @@
 package model.objectModel.frameModel;
 
-import constants.Constants;
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
 import model.ModelData;
 import model.logics.collision.Collision;
 import utils.Math;
@@ -22,30 +23,30 @@ public class FrameResizer {
 
     public void resize() {
         frameModel.setUpDownV(
-                frameModel.getUpDownV().x + frameModel.getUpDownA().x * Constants.FRAME_ANIMATION_REFRESH_RATE ,
-                frameModel.getUpDownV().y + frameModel.getUpDownA().y * Constants.FRAME_ANIMATION_REFRESH_RATE
+                frameModel.getUpDownV().x + frameModel.getUpDownA().x * RefreshRateConstants.FRAME_ANIMATION_REFRESH_RATE ,
+                frameModel.getUpDownV().y + frameModel.getUpDownA().y * RefreshRateConstants.FRAME_ANIMATION_REFRESH_RATE
         );
         frameModel.setLeftRightV(
-                frameModel.getLeftRightV().x + frameModel.getLeftRightA().x * Constants.FRAME_ANIMATION_REFRESH_RATE ,
-                frameModel.getLeftRightV().y + frameModel.getLeftRightA().y * Constants.FRAME_ANIMATION_REFRESH_RATE
+                frameModel.getLeftRightV().x + frameModel.getLeftRightA().x * RefreshRateConstants.FRAME_ANIMATION_REFRESH_RATE ,
+                frameModel.getLeftRightV().y + frameModel.getLeftRightA().y * RefreshRateConstants.FRAME_ANIMATION_REFRESH_RATE
         );
         Vector upDownMoved = new Vector();
         Vector leftRightMoved = new Vector();
         if (frameModel.canTopResize()){
-            upDownMoved.setX((2 * frameModel.getUpDownV().x - frameModel.getUpDownA().x * Constants.FRAME_ANIMATION_REFRESH_RATE)
-                    * Constants.FRAME_ANIMATION_REFRESH_RATE / 2);
+            upDownMoved.setX((2 * frameModel.getUpDownV().x - frameModel.getUpDownA().x * RefreshRateConstants.FRAME_ANIMATION_REFRESH_RATE)
+                    * RefreshRateConstants.FRAME_ANIMATION_REFRESH_RATE / 2);
         }
         if (frameModel.canBottomResize()){
-            upDownMoved.setY((2 * frameModel.getUpDownV().y - frameModel.getUpDownA().y * Constants.FRAME_ANIMATION_REFRESH_RATE)
-                    * Constants.FRAME_ANIMATION_REFRESH_RATE / 2);
+            upDownMoved.setY((2 * frameModel.getUpDownV().y - frameModel.getUpDownA().y * RefreshRateConstants.FRAME_ANIMATION_REFRESH_RATE)
+                    * RefreshRateConstants.FRAME_ANIMATION_REFRESH_RATE / 2);
         }
         if (frameModel.canLeftResize()){
             leftRightMoved.setX((2 * frameModel.getLeftRightV().x - frameModel.getLeftRightA().x
-                    * Constants.FRAME_ANIMATION_REFRESH_RATE) * Constants.FRAME_ANIMATION_REFRESH_RATE / 2);
+                    * RefreshRateConstants.FRAME_ANIMATION_REFRESH_RATE) * RefreshRateConstants.FRAME_ANIMATION_REFRESH_RATE / 2);
         }
         if (frameModel.canRightResize()){
-            leftRightMoved.setY((2 * frameModel.getLeftRightV().y - frameModel.getLeftRightA().y * Constants.FRAME_ANIMATION_REFRESH_RATE)
-                    * Constants.FRAME_ANIMATION_REFRESH_RATE / 2);
+            leftRightMoved.setY((2 * frameModel.getLeftRightV().y - frameModel.getLeftRightA().y * RefreshRateConstants.FRAME_ANIMATION_REFRESH_RATE)
+                    * RefreshRateConstants.FRAME_ANIMATION_REFRESH_RATE / 2);
         }
         frameModel.setUpDownP(Math.VectorAdd(upDownMoved ,frameModel.getUpDownP()));
         frameModel.setLeftRightP(Math.VectorAdd(leftRightMoved ,frameModel.getLeftRightP()));
@@ -66,7 +67,7 @@ public class FrameResizer {
             );
         }
 
-        if (frameModel.getSize().width < Constants.MINIMUM_FRAME_DIMENSION.width) {
+        if (frameModel.getSize().width < SizeConstants.MINIMUM_FRAME_DIMENSION.width) {
             frameModel.setLeftRightP(Math.VectorAdd(
                     frameModel.getLeftRightP() ,
                     Math.ScalarInVector(-1 ,leftRightMoved))
@@ -77,7 +78,7 @@ public class FrameResizer {
             );
         }
 
-        if (frameModel.getSize().height < Constants.MINIMUM_FRAME_DIMENSION.height) {
+        if (frameModel.getSize().height < SizeConstants.MINIMUM_FRAME_DIMENSION.height) {
             frameModel.setUpDownP(Math.VectorAdd(
                     frameModel.getUpDownP() ,
                     Math.ScalarInVector(-1 ,upDownMoved))

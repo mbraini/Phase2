@@ -1,6 +1,8 @@
 package model.objectModel.fighters.finalBoss.abilities.squeeze;
 
-import constants.Constants;
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
+import constants.TimeConstants;
 import controller.manager.GameState;
 import utils.Math;
 import utils.Vector;
@@ -32,16 +34,16 @@ public class SqueezeThread extends Thread {
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= Constants.SQUEEZE_THREAD_REFRESH_RATE) {
+            if (deltaModel >= RefreshRateConstants.SQUEEZE_THREAD_REFRESH_RATE) {
                 squeeze();
                 deltaModel = 0;
-                time += Constants.SQUEEZE_THREAD_REFRESH_RATE;
+                time += RefreshRateConstants.SQUEEZE_THREAD_REFRESH_RATE;
             }
         }
     }
 
     private void squeeze() {
-        if (time >= Constants.SQUEEZE_DURATON) {
+        if (time >= TimeConstants.SQUEEZE_DURATION) {
             squeeze.endAbility();
             return;
         }
@@ -68,7 +70,7 @@ public class SqueezeThread extends Thread {
         Vector leftHandPlacer = Math.VectorAdd(
                 leftFrameCenter,
                 new Vector(
-                        -Constants.HAND_DIMENSION.width / 2d - 2,
+                        -SizeConstants.HAND_DIMENSION.width / 2d - 2,
                         0
                 )
         );
@@ -76,7 +78,7 @@ public class SqueezeThread extends Thread {
         Vector rightHandPlacer = Math.VectorAdd(
                 rightFrameCenter,
                 new Vector(
-                        Constants.HAND_DIMENSION.width / 2d + 2,
+                        SizeConstants.HAND_DIMENSION.width / 2d + 2,
                         0
                 )
         );

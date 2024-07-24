@@ -1,6 +1,7 @@
 package model.animations;
 
-import constants.Constants;
+import constants.ImageConstants;
+import constants.SizeConstants;
 import controller.Controller;
 import controller.manager.GameState;
 import model.ModelRequests;
@@ -35,26 +36,26 @@ public class BossDeathAnimation extends Animation{
                 }
                 boss.getHead().setSize(
                         new Dimension(
-                                boss.getHead().getSize().width - Constants.HEAD_DIMENSION.width / 100,
-                                boss.getHead().getSize().height - Constants.HEAD_DIMENSION.height / 100
+                                boss.getHead().getSize().width - SizeConstants.HEAD_DIMENSION.width / 100,
+                                boss.getHead().getSize().height - SizeConstants.HEAD_DIMENSION.height / 100
                         )
                 );
                 boss.getLeftHand().setSize(
                         new Dimension(
-                                boss.getLeftHand().getSize().width - Constants.HAND_DIMENSION.width / 100,
-                                boss.getLeftHand().getSize().height - Constants.HAND_DIMENSION.height / 100
+                                boss.getLeftHand().getSize().width - SizeConstants.HAND_DIMENSION.width / 100,
+                                boss.getLeftHand().getSize().height - SizeConstants.HAND_DIMENSION.height / 100
                         )
                 );
                 boss.getRightHand().setSize(
                         new Dimension(
-                                boss.getRightHand().getSize().width - Constants.HAND_DIMENSION.width / 100,
-                                boss.getRightHand().getSize().height - Constants.HAND_DIMENSION.height / 100
+                                boss.getRightHand().getSize().width - SizeConstants.HAND_DIMENSION.width / 100,
+                                boss.getRightHand().getSize().height - SizeConstants.HAND_DIMENSION.height / 100
                         )
                 );
                 boss.getPunch().setSize(
                         new Dimension(
-                                boss.getPunch().getSize().width - Constants.PUNCH_DIMENSION.width / 100,
-                                boss.getPunch().getSize().height - Constants.PUNCH_DIMENSION.height / 100
+                                boss.getPunch().getSize().width - SizeConstants.PUNCH_DIMENSION.width / 100,
+                                boss.getPunch().getSize().height - SizeConstants.PUNCH_DIMENSION.height / 100
                         )
                 );
             }
@@ -88,9 +89,9 @@ public class BossDeathAnimation extends Animation{
     }
 
     private void setUpPictures() {
-        boss.getLeftHand().setImage(Constants.skeleton);
-        boss.getRightHand().setImage(Constants.skeleton);
-        boss.getHead().setImage(Constants.skeleton);
-        boss.getPunch().setImage(Constants.skeleton);
+        boss.getLeftHand().setImage(ImageConstants.skeleton);
+        boss.getRightHand().setImage(ImageConstants.skeleton);
+        boss.getHead().setImage(ImageConstants.skeleton);
+        boss.getPunch().setImage(ImageConstants.skeleton);
     }
 }

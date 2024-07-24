@@ -1,8 +1,8 @@
 package view.objectViews.bossView;
 
-import constants.Constants;
+import constants.ImageConstants;
+import constants.SizeConstants;
 import utils.Vector;
-import view.objectViews.EnemyView;
 
 import java.awt.*;
 
@@ -11,10 +11,10 @@ public class HeadView extends BossHelperView {
     public HeadView(Vector position , String id){
         this.position = position;
         this.id = id;
-        this.image = Constants.omenoct;
+        this.image = ImageConstants.omenoct;
         this.size = new Dimension(
-                Constants.HEAD_DIMENSION.width,
-                Constants.HEAD_DIMENSION.height
+                SizeConstants.HEAD_DIMENSION.width,
+                SizeConstants.HEAD_DIMENSION.height
         );
     }
 

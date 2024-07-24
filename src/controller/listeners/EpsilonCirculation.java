@@ -1,7 +1,7 @@
 package controller.listeners;
 
 
-import constants.Constants;
+import constants.SizeConstants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
@@ -25,8 +25,8 @@ public class EpsilonCirculation extends MouseMotionAdapter {
         mousePosition = Math.VectorAdd(
                 mousePosition,
                 new Vector(
-                        -Constants.SCREEN_SIZE.width,
-                        -Constants.SCREEN_SIZE.height
+                        -SizeConstants.SCREEN_SIZE.width,
+                        -SizeConstants.SCREEN_SIZE.height
                 )
         );
         Vector epsilonPosition = epsilon.getPosition();

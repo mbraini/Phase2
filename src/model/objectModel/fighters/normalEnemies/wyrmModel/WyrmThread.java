@@ -1,12 +1,13 @@
 package model.objectModel.fighters.normalEnemies.wyrmModel;
 
-import constants.Constants;
+import constants.RefreshRateConstants;
+import constants.TimeConstants;
 import controller.manager.GameState;
 import utils.Math;
 import utils.Vector;
 
 public class WyrmThread extends Thread{
-    private final static double thetaD = java.lang.Math.PI / Constants.WYRM_THETA_UPDATE_COUNT;
+    private final static double thetaD = java.lang.Math.PI / RefreshRateConstants.WYRM_THETA_UPDATE_COUNT;
     private WyrmModel wyrmModel;
     private Vector origin;
     private double time;
@@ -31,17 +32,17 @@ public class WyrmThread extends Thread{
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= Constants.WYRM_THREAD_REFRESH_RATE) {
+            if (deltaModel >= RefreshRateConstants.WYRM_THREAD_REFRESH_RATE) {
                 rotateModel();
                 shootIf();
                 deltaModel = 0;
-                time += Constants.WYRM_THREAD_REFRESH_RATE;
+                time += RefreshRateConstants.WYRM_THREAD_REFRESH_RATE;
             }
         }
     }
 
     private void shootIf() {
-        if (time % Constants.WYRM_SHOOTING_TIME != 0)
+        if (time % TimeConstants.WYRM_SHOOTING_TIME != 0)
             return;
         if (GameState.isOver())
             return;

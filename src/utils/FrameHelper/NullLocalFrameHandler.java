@@ -1,6 +1,6 @@
 package utils.FrameHelper;
 
-import constants.Constants;
+import constants.DistanceConstants;
 import model.logics.collision.Collision;
 import model.logics.FrameHit;
 import model.logics.Impact;
@@ -40,7 +40,7 @@ public class NullLocalFrameHandler {
                 new Vector(0 ,-epsilon.getRadios())
         );
         if (isInNoFrame(top)) {
-            new Impact(top , Constants.REGULAR_IMPACT_RANGE).MakeImpact();
+            new Impact(top , DistanceConstants.REGULAR_IMPACT_RANGE).MakeImpact();
         }
 
         Vector right = Math.VectorAdd(
@@ -48,7 +48,7 @@ public class NullLocalFrameHandler {
                 new Vector(epsilon.getRadios() ,0)
         );
         if (isInNoFrame(right)) {
-            new Impact(right ,Constants.REGULAR_IMPACT_RANGE).MakeImpact();
+            new Impact(right , DistanceConstants.REGULAR_IMPACT_RANGE).MakeImpact();
         }
 
         Vector bottom = Math.VectorAdd(
@@ -56,7 +56,7 @@ public class NullLocalFrameHandler {
                 new Vector(0 ,epsilon.getRadios())
         );
         if (isInNoFrame(bottom)) {
-            new Impact(bottom ,Constants.REGULAR_IMPACT_RANGE).MakeImpact();
+            new Impact(bottom , DistanceConstants.REGULAR_IMPACT_RANGE).MakeImpact();
         }
 
         Vector left = Math.VectorAdd(
@@ -64,7 +64,7 @@ public class NullLocalFrameHandler {
                 new Vector(-epsilon.getRadios() ,0)
         );
         if (isInNoFrame(left)) {
-            new Impact(left ,Constants.REGULAR_IMPACT_RANGE).MakeImpact();
+            new Impact(left , DistanceConstants.REGULAR_IMPACT_RANGE).MakeImpact();
         }
 
     }
@@ -106,7 +106,7 @@ public class NullLocalFrameHandler {
         FrameModel closestFrame = map.get(min);
         Vector newPosition = getEpsilonNewPosition(closestFrame ,min);
         model.setPosition(newPosition);
-        new Impact(impactPoint ,Constants.REGULAR_IMPACT_RANGE).MakeImpact();
+        new Impact(impactPoint , DistanceConstants.REGULAR_IMPACT_RANGE).MakeImpact();
     }
 
     private void bulletHandler() {

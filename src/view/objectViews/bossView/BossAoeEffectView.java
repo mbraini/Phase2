@@ -1,6 +1,7 @@
 package view.objectViews.bossView;
 
-import constants.Constants;
+import constants.ImageConstants;
+import constants.SizeConstants;
 import utils.Math;
 import utils.Vector;
 import utils.area.Area;
@@ -20,7 +21,7 @@ public class BossAoeEffectView extends EffectView {
     @Override
     public void draw(Graphics2D g2d) {
         g2d.drawImage(
-                Constants.bossAoe,
+                ImageConstants.bossAoe,
                 (int) position.x,
                 (int) position.y,
                 radios * 2,
@@ -36,8 +37,8 @@ public class BossAoeEffectView extends EffectView {
         position = Math.VectorAdd(
                 center,
                 new Vector(
-                        -radios + Constants.SCREEN_SIZE.width ,
-                        -radios + Constants.SCREEN_SIZE.height
+                        -radios + SizeConstants.SCREEN_SIZE.width ,
+                        -radios + SizeConstants.SCREEN_SIZE.height
                 )
         );
     }

@@ -1,8 +1,8 @@
 package model.objectModel.effects;
 
+import constants.SizeConstants;
 import controller.enums.EffectType;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
 import model.interfaces.Fader;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
@@ -38,15 +38,15 @@ public class ArchmireAoeEffectModel extends AoeEffectModel implements Fader , Is
         vertices = new ArrayList<>();
         vertices.add(new Vector(
                 position.x ,
-                position.y - (java.lang.Math.sqrt(3) * Constants.ARCHMIRE_DIMENSION.width / 3d))
+                position.y - (java.lang.Math.sqrt(3) * SizeConstants.ARCHMIRE_DIMENSION.width / 3d))
         );
         vertices.add(new Vector(
-                position.x - Constants.ARCHMIRE_DIMENSION.width / 2d ,
-                position.y + (java.lang.Math.sqrt(3) * Constants.ARCHMIRE_DIMENSION.width / 6d))
+                position.x - SizeConstants.ARCHMIRE_DIMENSION.width / 2d ,
+                position.y + (java.lang.Math.sqrt(3) * SizeConstants.ARCHMIRE_DIMENSION.width / 6d))
         );
         vertices.add(new Vector(
-                position.x + Constants.ARCHMIRE_DIMENSION.width / 2d ,
-                position.y + (java.lang.Math.sqrt(3) * Constants.ARCHMIRE_DIMENSION.width / 6d))
+                position.x + SizeConstants.ARCHMIRE_DIMENSION.width / 2d ,
+                position.y + (java.lang.Math.sqrt(3) * SizeConstants.ARCHMIRE_DIMENSION.width / 6d))
         );
     }
 
@@ -70,17 +70,17 @@ public class ArchmireAoeEffectModel extends AoeEffectModel implements Fader , Is
 
     @Override
     public void addTime(double time) {
-        if (time >= Constants.ARCHMIRE_AOE_TIME_LIMIT)
+        if (time >= SizeConstants.ARCHMIRE_AOE_TIME_LIMIT)
             return;
         int G;
-        G =(int) (255 - (this.fadeTime / Constants.ARCHMIRE_AOE_TIME_LIMIT) * 255);
+        G =(int) (255 - (this.fadeTime / SizeConstants.ARCHMIRE_AOE_TIME_LIMIT) * 255);
         this.G = G;
         fadeTime += time;
     }
 
     @Override
     public void fadeIf() {
-        if (fadeTime >= Constants.ARCHMIRE_AOE_TIME_LIMIT)
+        if (fadeTime >= SizeConstants.ARCHMIRE_AOE_TIME_LIMIT)
             die();
     }
 

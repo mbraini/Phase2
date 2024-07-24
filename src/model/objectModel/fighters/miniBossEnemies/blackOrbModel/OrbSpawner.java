@@ -1,7 +1,7 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
+import constants.SizeConstants;
 import controller.manager.Spawner;
-import constants.Constants;
 import utils.Math;
 import utils.Vector;
 
@@ -19,8 +19,8 @@ public class OrbSpawner {
                 Math.VectorAdd(
                         blackOrbModel.getFrameModels().get(blackOrbModel.getOrbCount()).getPosition(),
                         new Vector(
-                                Constants.BLACK_ORB_FRAME_DIMENSION.width / 2d,
-                                Constants.BLACK_ORB_FRAME_DIMENSION.height / 2d
+                                SizeConstants.BLACK_ORB_FRAME_DIMENSION.width / 2d,
+                                SizeConstants.BLACK_ORB_FRAME_DIMENSION.height / 2d
                         )
                 ),
                 blackOrbModel,

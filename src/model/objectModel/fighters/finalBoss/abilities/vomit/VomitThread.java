@@ -1,6 +1,8 @@
 package model.objectModel.fighters.finalBoss.abilities.vomit;
 
-import constants.Constants;
+import constants.DamageConstants;
+import constants.RefreshRateConstants;
+import constants.TimeConstants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.logics.collision.Collision;
@@ -38,10 +40,10 @@ public class VomitThread extends Thread{
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= Constants.SQUEEZE_THREAD_REFRESH_RATE) {
+            if (deltaModel >= RefreshRateConstants.SQUEEZE_THREAD_REFRESH_RATE) {
                 update();
                 deltaModel = 0;
-                time += Constants.SQUEEZE_THREAD_REFRESH_RATE;
+                time += RefreshRateConstants.SQUEEZE_THREAD_REFRESH_RATE;
             }
         }
     }
@@ -61,7 +63,7 @@ public class VomitThread extends Thread{
         if (time % 1000 == 0){
             vomit.addEffect(epsilonFrame);
         }
-        if (time >= Constants.VOMIT_DURATION_TIME){
+        if (time >= TimeConstants.VOMIT_DURATION_TIME){
             vomit.endAbility();
         }
     }
@@ -78,7 +80,7 @@ public class VomitThread extends Thread{
         }
 
         for (ObjectModel model : collidedModels){
-            model.setHP(model.getHP() - Constants.VOMIT_AOE_DAMAGE);
+            model.setHP(model.getHP() - DamageConstants.VOMIT_AOE_DAMAGE);
         }
 
     }

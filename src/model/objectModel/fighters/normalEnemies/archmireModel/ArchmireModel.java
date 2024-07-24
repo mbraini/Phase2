@@ -1,11 +1,13 @@
 package model.objectModel.fighters.normalEnemies.archmireModel;
 
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
+import constants.VelocityConstants;
 import controller.Controller;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import controller.manager.loading.GameLoaderHelper;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
 import model.ModelData;
 import model.interfaces.Ability;
 import model.interfaces.HasVertices;
@@ -33,7 +35,7 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
         type = ModelType.archmire;
         setHovering(true);
         vulnerableToEpsilonBullet = true;
-        omega = Constants.ENEMY_ROTATION_SPEED;
+        omega = VelocityConstants.ENEMY_ROTATION_SPEED;
         initVertices();
         start();
     }
@@ -45,7 +47,7 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
                         position,
                         new Vector(
                                 0,
-                                Constants.ARCHMIRE_DIMENSION.height /2d
+                                SizeConstants.ARCHMIRE_DIMENSION.height /2d
                         )
                 )
         );
@@ -53,8 +55,8 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                Constants.ARCHMIRE_DIMENSION.width * 18 / 40d,
-                                Constants.ARCHMIRE_DIMENSION.height * 9 / 32d
+                                SizeConstants.ARCHMIRE_DIMENSION.width * 18 / 40d,
+                                SizeConstants.ARCHMIRE_DIMENSION.height * 9 / 32d
                         )
                 )
         );
@@ -62,8 +64,8 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                Constants.ARCHMIRE_DIMENSION.width * 18 / 40d,
-                                -Constants.ARCHMIRE_DIMENSION.height / 32d
+                                SizeConstants.ARCHMIRE_DIMENSION.width * 18 / 40d,
+                                -SizeConstants.ARCHMIRE_DIMENSION.height / 32d
                         )
                 )
         );
@@ -71,8 +73,8 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                Constants.ARCHMIRE_DIMENSION.width * 13 / 40d,
-                                -Constants.ARCHMIRE_DIMENSION.height * 10 / 32d
+                                SizeConstants.ARCHMIRE_DIMENSION.width * 13 / 40d,
+                                -SizeConstants.ARCHMIRE_DIMENSION.height * 10 / 32d
                         )
                 )
         );
@@ -81,7 +83,7 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
                         position,
                         new Vector(
                                 0,
-                                -Constants.ARCHMIRE_DIMENSION.height / 2d
+                                -SizeConstants.ARCHMIRE_DIMENSION.height / 2d
                         )
                 )
         );
@@ -89,8 +91,8 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                -Constants.ARCHMIRE_DIMENSION.width * 13 / 40d,
-                                -Constants.ARCHMIRE_DIMENSION.height * 10 / 32d
+                                -SizeConstants.ARCHMIRE_DIMENSION.width * 13 / 40d,
+                                -SizeConstants.ARCHMIRE_DIMENSION.height * 10 / 32d
                         )
                 )
         );
@@ -98,8 +100,8 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                -Constants.ARCHMIRE_DIMENSION.width * 18 / 40d,
-                                -Constants.ARCHMIRE_DIMENSION.height / 32d
+                                -SizeConstants.ARCHMIRE_DIMENSION.width * 18 / 40d,
+                                -SizeConstants.ARCHMIRE_DIMENSION.height / 32d
                         )
                 )
         );
@@ -107,8 +109,8 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                -Constants.ARCHMIRE_DIMENSION.width * 18 / 40d,
-                                Constants.ARCHMIRE_DIMENSION.height * 9 / 32d
+                                -SizeConstants.ARCHMIRE_DIMENSION.width * 18 / 40d,
+                                SizeConstants.ARCHMIRE_DIMENSION.height * 9 / 32d
                         )
                 )
         );
@@ -124,14 +126,14 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
 
     @Override
     public void move() {
-        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(Constants.UPS ,acceleration));
-        double xMoved = ((2 * velocity.x - acceleration.x * Constants.UPS) / 2) * Constants.UPS;
-        double yMoved = ((2 * velocity.y - acceleration.y * Constants.UPS) / 2) * Constants.UPS;
+        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(RefreshRateConstants.UPS ,acceleration));
+        double xMoved = ((2 * velocity.x - acceleration.x * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
+        double yMoved = ((2 * velocity.y - acceleration.y * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
         setPosition(position.x + xMoved ,position.y + yMoved);
 
 
-        omega += alpha * Constants.UPS;
-        double thetaMoved = ((2 * omega - alpha * Constants.UPS) / 2) * Constants.UPS;
+        omega += alpha * RefreshRateConstants.UPS;
+        double thetaMoved = ((2 * omega - alpha * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
         theta = theta + thetaMoved;
         UpdateVertices(xMoved ,yMoved ,thetaMoved);
     }
@@ -148,7 +150,7 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
             velocity = Math.VectorWithSize(Math.VectorAdd(
                     epsilonPosition,
                     Math.ScalarInVector(-1 ,position)
-            ),Constants.ARCHMIRE_VELOCITY);
+            ), VelocityConstants.ARCHMIRE_VELOCITY);
         }
     }
 

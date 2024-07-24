@@ -1,7 +1,8 @@
 package view.painter;
 
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
 import controller.Controller;
-import constants.Constants;
 import utils.Vector;
 import view.ViewData;
 import view.ViewRequest;
@@ -30,7 +31,7 @@ public class Render extends Thread {
             long now = System.nanoTime();
             deltaPaint += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaPaint >= Constants.FPS) {
+            if (deltaPaint >= RefreshRateConstants.FPS) {
                 ViewRequest.checkRequests();
                 Controller.updateView();
                 paint();
@@ -76,8 +77,8 @@ public class Render extends Thread {
         for (int i = 0 ;i < frames.size() ;i++){
             Vector frameLocation = frames.get(i).getPosition();
             ViewData.getPanels().get(i).setLocation(
-                    (int) -frameLocation.getX() - Constants.SCREEN_SIZE.width,
-                    (int) -frameLocation.getY() - Constants.SCREEN_SIZE.height
+                    (int) -frameLocation.getX() - SizeConstants.SCREEN_SIZE.width,
+                    (int) -frameLocation.getY() - SizeConstants.SCREEN_SIZE.height
             );
         }
     }

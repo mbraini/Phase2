@@ -1,6 +1,6 @@
 package model.objectModel.fighters.finalBoss.abilities.rapidFire;
 
-import constants.Constants;
+import constants.TimeConstants;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.Ability;
 
@@ -32,7 +32,7 @@ public class RapidFire extends Ability {
     @Override
     public void activate() {
         super.activate();
-        shooter = new Timer(Constants.BOSS_BULLET_DELAY_TIME,new HeadShooter(this));
+        shooter = new Timer(TimeConstants.BOSS_BULLET_DELAY_TIME,new HeadShooter(this));
         shooter.start();
     }
 

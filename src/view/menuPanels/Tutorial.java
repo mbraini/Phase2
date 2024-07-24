@@ -1,7 +1,7 @@
 package view.menuPanels;
 
 
-import constants.Constants;
+import constants.SizeConstants;
 import view.objectViews.panels.MyButton;
 import view.objectViews.panels.MyLabel;
 
@@ -30,7 +30,7 @@ public class Tutorial extends PIG {
      private MyButton back;
      public Tutorial(){
          this.setLayout(null);
-         this.setBounds(0,0, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
+         this.setBounds(0,0, SizeConstants.GAME_WIDTH, SizeConstants.GAME_HEIGHT);
          this.setBackground(Color.BLACK);
          this.setVisible(false);
 
@@ -44,15 +44,15 @@ public class Tutorial extends PIG {
 
     private void initShop() {
         shop = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 25 ,Constants.GAME_HEIGHT / 15),
-                new Dimension(Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 15),
+                new Point(SizeConstants.GAME_WIDTH / 25 , SizeConstants.GAME_HEIGHT / 15),
+                new Dimension(SizeConstants.GAME_WIDTH / 5 , SizeConstants.GAME_HEIGHT / 15),
                 "Shop",
                 this
         );
 
         shopGuide = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 25 * 2 + Constants.GAME_WIDTH / 5,Constants.GAME_HEIGHT / 15),
-                new Dimension(Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 15),
+                new Point(SizeConstants.GAME_WIDTH / 25 * 2 + SizeConstants.GAME_WIDTH / 5, SizeConstants.GAME_HEIGHT / 15),
+                new Dimension(SizeConstants.GAME_WIDTH / 5 , SizeConstants.GAME_HEIGHT / 15),
                 "P_KEY",
                 this
         );
@@ -70,8 +70,8 @@ public class Tutorial extends PIG {
 
     private void initBack() {
         back = new MyButton(
-                new Point(Constants.GAME_WIDTH / 3 ,Constants.GAME_HEIGHT / 15 * 13),
-                new Dimension(Constants.GAME_WIDTH / 3 ,Constants.GAME_HEIGHT / 15),
+                new Point(SizeConstants.GAME_WIDTH / 3 , SizeConstants.GAME_HEIGHT / 15 * 13),
+                new Dimension(SizeConstants.GAME_WIDTH / 3 , SizeConstants.GAME_HEIGHT / 15),
                 "back",
                 this
         );
@@ -79,7 +79,7 @@ public class Tutorial extends PIG {
 
     private void initAbilities() {
         ares = new JLabel();
-        ares.setBounds(Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 15 * 7 ,Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 15);
+        ares.setBounds(SizeConstants.GAME_WIDTH / 5 , SizeConstants.GAME_HEIGHT / 15 * 7 , SizeConstants.GAME_WIDTH / 5 , SizeConstants.GAME_HEIGHT / 15);
         ares.setText("Ares");
         ares.setBackground(Color.WHITE);
         ares.setOpaque(true);
@@ -90,7 +90,7 @@ public class Tutorial extends PIG {
         this.add(ares);
 
         aresGuide = new JLabel();
-        aresGuide.setBounds(Constants.GAME_WIDTH / 5 * 3 ,Constants.GAME_HEIGHT / 15 * 7 ,Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 15);
+        aresGuide.setBounds(SizeConstants.GAME_WIDTH / 5 * 3 , SizeConstants.GAME_HEIGHT / 15 * 7 , SizeConstants.GAME_WIDTH / 5 , SizeConstants.GAME_HEIGHT / 15);
         aresGuide.setText("Q_KEY");
         aresGuide.setBackground(Color.WHITE);
         aresGuide.setOpaque(true);
@@ -101,7 +101,7 @@ public class Tutorial extends PIG {
         this.add(aresGuide);
 
         aceso = new JLabel();
-        aceso.setBounds(Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 15 * 9 ,Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 15);
+        aceso.setBounds(SizeConstants.GAME_WIDTH / 5 , SizeConstants.GAME_HEIGHT / 15 * 9 , SizeConstants.GAME_WIDTH / 5 , SizeConstants.GAME_HEIGHT / 15);
         aceso.setText("Aceso");
         aceso.setBackground(Color.WHITE);
         aceso.setOpaque(true);
@@ -112,7 +112,7 @@ public class Tutorial extends PIG {
         this.add(aceso);
 
         acesoGuide = new JLabel();
-        acesoGuide.setBounds(Constants.GAME_WIDTH / 5 * 3 ,Constants.GAME_HEIGHT / 15 * 9 ,Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 15);
+        acesoGuide.setBounds(SizeConstants.GAME_WIDTH / 5 * 3 , SizeConstants.GAME_HEIGHT / 15 * 9 , SizeConstants.GAME_WIDTH / 5 , SizeConstants.GAME_HEIGHT / 15);
         acesoGuide.setText("W_KEY");
         acesoGuide.setBackground(Color.WHITE);
         acesoGuide.setOpaque(true);
@@ -123,7 +123,7 @@ public class Tutorial extends PIG {
         this.add(acesoGuide);
 
         proteus = new JLabel();
-        proteus.setBounds(Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 15 * 11 ,Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 15);
+        proteus.setBounds(SizeConstants.GAME_WIDTH / 5 , SizeConstants.GAME_HEIGHT / 15 * 11 , SizeConstants.GAME_WIDTH / 5 , SizeConstants.GAME_HEIGHT / 15);
         proteus.setText("Proteus");
         proteus.setBackground(Color.WHITE);
         proteus.setOpaque(true);
@@ -134,7 +134,7 @@ public class Tutorial extends PIG {
         this.add(proteus);
 
         proteusGuide = new JLabel();
-        proteusGuide.setBounds(Constants.GAME_WIDTH / 5 * 3 ,Constants.GAME_HEIGHT / 15 * 11 ,Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 15);
+        proteusGuide.setBounds(SizeConstants.GAME_WIDTH / 5 * 3 , SizeConstants.GAME_HEIGHT / 15 * 11 , SizeConstants.GAME_WIDTH / 5 , SizeConstants.GAME_HEIGHT / 15);
         proteusGuide.setText("E_KEY");
         proteusGuide.setBackground(Color.WHITE);
         proteusGuide.setOpaque(true);
@@ -148,35 +148,35 @@ public class Tutorial extends PIG {
 
     private void initMovement() {
         movement = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 7 ,Constants.GAME_HEIGHT / 15 * 4),
-                new Dimension(Constants.GAME_WIDTH / 7 ,Constants.GAME_HEIGHT / 15),
+                new Point(SizeConstants.GAME_WIDTH / 7 , SizeConstants.GAME_HEIGHT / 15 * 4),
+                new Dimension(SizeConstants.GAME_WIDTH / 7 , SizeConstants.GAME_HEIGHT / 15),
                 "Movement",
                 this
         );
         movementGuide1 = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 7 * 3 ,Constants.GAME_HEIGHT / 15 * 3),
-                new Dimension(Constants.GAME_WIDTH / 7 ,Constants.GAME_HEIGHT / 15),
+                new Point(SizeConstants.GAME_WIDTH / 7 * 3 , SizeConstants.GAME_HEIGHT / 15 * 3),
+                new Dimension(SizeConstants.GAME_WIDTH / 7 , SizeConstants.GAME_HEIGHT / 15),
                 "UP_KEY",
                 this
         );
 
         movementGuide2 = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 7 * 5 ,Constants.GAME_HEIGHT / 15 * 3),
-                new Dimension(Constants.GAME_WIDTH / 7 ,Constants.GAME_HEIGHT / 15),
+                new Point(SizeConstants.GAME_WIDTH / 7 * 5 , SizeConstants.GAME_HEIGHT / 15 * 3),
+                new Dimension(SizeConstants.GAME_WIDTH / 7 , SizeConstants.GAME_HEIGHT / 15),
                 "DOWN_KEY",
                 this
         );
 
         movementGuide3 = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 7 * 3 ,Constants.GAME_HEIGHT / 15 * 5),
-                new Dimension(Constants.GAME_WIDTH / 7 ,Constants.GAME_HEIGHT / 15),
+                new Point(SizeConstants.GAME_WIDTH / 7 * 3 , SizeConstants.GAME_HEIGHT / 15 * 5),
+                new Dimension(SizeConstants.GAME_WIDTH / 7 , SizeConstants.GAME_HEIGHT / 15),
                 "LEFT_KEY",
                 this
         );
 
         movementGuide4 = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 7 * 5 ,Constants.GAME_HEIGHT / 15 * 5),
-                new Dimension(Constants.GAME_WIDTH / 7 ,Constants.GAME_HEIGHT / 15),
+                new Point(SizeConstants.GAME_WIDTH / 7 * 5 , SizeConstants.GAME_HEIGHT / 15 * 5),
+                new Dimension(SizeConstants.GAME_WIDTH / 7 , SizeConstants.GAME_HEIGHT / 15),
                 "RIGHT_KEY",
                 this
         );
@@ -184,15 +184,15 @@ public class Tutorial extends PIG {
 
     private void initShot() {
         shoot = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 25 * 3 + Constants.GAME_WIDTH / 5 * 2 ,Constants.GAME_HEIGHT / 15),
-                new Dimension(Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 15),
+                new Point(SizeConstants.GAME_WIDTH / 25 * 3 + SizeConstants.GAME_WIDTH / 5 * 2 , SizeConstants.GAME_HEIGHT / 15),
+                new Dimension(SizeConstants.GAME_WIDTH / 5 , SizeConstants.GAME_HEIGHT / 15),
                 "Shoot",
                 this
         );
 
         shootGuide = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 25 * 4 + Constants.GAME_WIDTH / 5 * 3 ,Constants.GAME_HEIGHT / 15),
-                new Dimension(Constants.GAME_WIDTH / 5 ,Constants.GAME_HEIGHT / 15),
+                new Point(SizeConstants.GAME_WIDTH / 25 * 4 + SizeConstants.GAME_WIDTH / 5 * 3 , SizeConstants.GAME_HEIGHT / 15),
+                new Dimension(SizeConstants.GAME_WIDTH / 5 , SizeConstants.GAME_HEIGHT / 15),
                 "Left_Mouse_Button",
                 this
         );

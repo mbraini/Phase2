@@ -1,6 +1,7 @@
 package model.logics;
 
-import constants.Constants;
+import constants.DistanceConstants;
+import constants.TimeConstants;
 import model.animations.FrameAnimation;
 import model.interfaces.FrameAttacher;
 import model.objectModel.ObjectModel;
@@ -36,11 +37,11 @@ public class FrameHit {
             case top :
                 new FrameAnimation(
                         frame,
-                        Constants.FRAME_BULLET_RESIZE,
+                        DistanceConstants.FRAME_BULLET_RESIZE,
                         0,
                         0,
                         0,
-                        Constants.FRAME_SHRINKAGE_TIME
+                        TimeConstants.FRAME_SHRINKAGE_TIME
                 ).StartAnimation();
                 for (ObjectModel model1 : models) {
                     if (model1 instanceof FrameAttacher) {
@@ -59,10 +60,10 @@ public class FrameHit {
                 new FrameAnimation(
                         frame,
                         0,
-                        Constants.FRAME_BULLET_RESIZE,
+                        DistanceConstants.FRAME_BULLET_RESIZE,
                         0,
                         0,
-                        Constants.FRAME_SHRINKAGE_TIME
+                        TimeConstants.FRAME_SHRINKAGE_TIME
                 ).StartAnimation();
                 for (ObjectModel model1 : models) {
                     if (model1 instanceof FrameAttacher) {
@@ -82,9 +83,9 @@ public class FrameHit {
                         frame,
                         0,
                         0,
-                        Constants.FRAME_BULLET_RESIZE,
+                        DistanceConstants.FRAME_BULLET_RESIZE,
                         0,
-                        Constants.FRAME_SHRINKAGE_TIME
+                        TimeConstants.FRAME_SHRINKAGE_TIME
                 ).StartAnimation();
                 for (ObjectModel model1 : models) {
                     if (model1 instanceof FrameAttacher) {
@@ -105,8 +106,8 @@ public class FrameHit {
                         0,
                         0,
                         0,
-                        Constants.FRAME_BULLET_RESIZE,
-                        Constants.FRAME_SHRINKAGE_TIME
+                        DistanceConstants.FRAME_BULLET_RESIZE,
+                        TimeConstants.FRAME_SHRINKAGE_TIME
                 ).StartAnimation();
                 for (ObjectModel model1 : models) {
                     if (model1 instanceof FrameAttacher) {

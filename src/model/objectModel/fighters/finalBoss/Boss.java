@@ -1,8 +1,9 @@
 package model.objectModel.fighters.finalBoss;
 
+import constants.SizeConstants;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
+import constants.ControllerConstants;
 import model.objectModel.fighters.AbstractEnemy;
 import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
@@ -32,38 +33,38 @@ public class Boss extends AbstractEnemy {
     private void initPunch() {
         punch = new PunchModel(
                 new Vector(
-                        Constants.PUNCH_DIMENSION.width / 2d,
-                        Constants.SCREEN_SIZE.height - Constants.PUNCH_DIMENSION.height /2d
+                        SizeConstants.PUNCH_DIMENSION.width / 2d,
+                        SizeConstants.SCREEN_SIZE.height - SizeConstants.PUNCH_DIMENSION.height /2d
                 ),
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
+                Helper.RandomStringGenerator(ControllerConstants.ID_SIZE)
         );
     }
 
     private void initHands() {
         leftHand = new HandModel(
                 new Vector(
-                        Constants.HAND_DIMENSION.width / 2d,
-                        Constants.SCREEN_SIZE.height / 2d
+                        SizeConstants.HAND_DIMENSION.width / 2d,
+                        SizeConstants.SCREEN_SIZE.height / 2d
                 ),
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
+                Helper.RandomStringGenerator(ControllerConstants.ID_SIZE)
         );
         rightHand = new HandModel(
                 new Vector(
-                        Constants.SCREEN_SIZE.width - Constants.HAND_DIMENSION.width / 2d,
-                        Constants.SCREEN_SIZE.height / 2d
+                        SizeConstants.SCREEN_SIZE.width - SizeConstants.HAND_DIMENSION.width / 2d,
+                        SizeConstants.SCREEN_SIZE.height / 2d
                 ),
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
+                Helper.RandomStringGenerator(ControllerConstants.ID_SIZE)
         );
     }
 
     private void initHead() {
         head = new HeadModel(
                 new Vector(
-                        Constants.SCREEN_SIZE.width / 2d,
-                        -Constants.HEAD_DIMENSION.width
+                        SizeConstants.SCREEN_SIZE.width / 2d,
+                        -SizeConstants.HEAD_DIMENSION.width
                 ),
                 this,
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
+                Helper.RandomStringGenerator(ControllerConstants.ID_SIZE)
         );
     }
 

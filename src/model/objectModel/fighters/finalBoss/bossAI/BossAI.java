@@ -1,6 +1,8 @@
 package model.objectModel.fighters.finalBoss.bossAI;
 
-import constants.Constants;
+import constants.DistanceConstants;
+import constants.SizeConstants;
+import constants.TimeConstants;
 import model.animations.DashAnimation;
 import model.logics.collision.Collision;
 import model.objectModel.ObjectModel;
@@ -35,7 +37,7 @@ public class BossAI {
                 Math.ScalarInVector(-1 ,epsilonModel.getPosition())
         );
 
-        if (Math.VectorSize(distanceV) >= Constants.PROJECTILE_ACTIVATION_RADIOS)
+        if (Math.VectorSize(distanceV) >= SizeConstants.PROJECTILE_ACTIVATION_RADIOS)
             return true;
         return false;
     }
@@ -85,8 +87,8 @@ public class BossAI {
             new DashAnimation(
                     helperModel,
                     new Vector(0,1),
-                    Constants.BOSS_HELPER_DASH_TIME,
-                    Constants.BOSS_HELPER_DASH_DISTANCE,
+                    TimeConstants.BOSS_HELPER_DASH_TIME,
+                    DistanceConstants.BOSS_HELPER_DASH_DISTANCE,
                     0,
                     false
             ).StartAnimation();
@@ -95,15 +97,15 @@ public class BossAI {
             new DashAnimation(
                     helperModel,
                     new Vector(0,-1),
-                    Constants.BOSS_HELPER_DASH_TIME,
-                    Constants.BOSS_HELPER_DASH_DISTANCE,
+                    TimeConstants.BOSS_HELPER_DASH_TIME,
+                    DistanceConstants.BOSS_HELPER_DASH_DISTANCE,
                     0,
                     false
             ).StartAnimation();
         }
         helperModel.setInDash(true);
         Timer timer = new Timer(
-                Constants.BOSS_HELPER_DASH_TIME,
+                TimeConstants.BOSS_HELPER_DASH_TIME,
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -122,8 +124,8 @@ public class BossAI {
             new DashAnimation(
                     helperModel,
                     new Vector(1,0),
-                    Constants.BOSS_HELPER_DASH_TIME,
-                    Constants.BOSS_HELPER_DASH_DISTANCE,
+                    TimeConstants.BOSS_HELPER_DASH_TIME,
+                    DistanceConstants.BOSS_HELPER_DASH_DISTANCE,
                     0,
                     false
             ).StartAnimation();
@@ -132,15 +134,15 @@ public class BossAI {
             new DashAnimation(
                     helperModel,
                     new Vector(-1,0),
-                    Constants.BOSS_HELPER_DASH_TIME,
-                    Constants.BOSS_HELPER_DASH_DISTANCE,
+                    TimeConstants.BOSS_HELPER_DASH_TIME,
+                    DistanceConstants.BOSS_HELPER_DASH_DISTANCE,
                     0,
                     false
             ).StartAnimation();
         }
         helperModel.setInDash(true);
         Timer timer = new Timer(
-                Constants.BOSS_HELPER_DASH_TIME,
+                TimeConstants.BOSS_HELPER_DASH_TIME,
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -172,7 +174,7 @@ public class BossAI {
                 )
         );
         ArrayList<Vector> imaginaryVertices = new ArrayList<>();
-        Vector n1 = Math.NormalWithSize(direction ,Constants.EPSILON_BULLET_RADIOS);
+        Vector n1 = Math.NormalWithSize(direction , SizeConstants.EPSILON_BULLET_RADIOS);
         Vector n2 = Math.ScalarInVector(-1 ,n1);
         imaginaryVertices.add(
                 Math.VectorAdd(

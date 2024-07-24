@@ -1,6 +1,6 @@
 package model.skillTreeAbilities;
 
-import constants.Constants;
+import constants.CostConstants;
 import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.loading.SkippedByJson;
@@ -20,7 +20,7 @@ public class Aceso extends SkillTreeAbility{
 
     public Aceso(){
         isBought = Configs.SkillTreeConfigs.acesoBought;
-        unlockXpCost = Constants.ACESO_UNLOCK_COST;
+        unlockXpCost = CostConstants.ACESO_UNLOCK_COST;
         type = SkillTreeAbilityType.aceso;
         initTimer();
         initEpsilon();

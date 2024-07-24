@@ -1,6 +1,6 @@
 package view.objectViews.projectiles;
 
-import constants.Constants;
+import constants.SizeConstants;
 import utils.Vector;
 
 import java.awt.*;
@@ -16,10 +16,10 @@ public class OmenoctBulletView extends BulletView{
     public void draw(Graphics2D g2d) {
         g2d.setColor(Color.RED);
         g2d.fillOval(
-                (int) (position.x - Constants.OMENOCT_BULLET_RADIOUS) + Constants.SCREEN_SIZE.width,
-                (int) (position.y - Constants.OMENOCT_BULLET_RADIOUS) + Constants.SCREEN_SIZE.height,
-                (int) Constants.OMENOCT_BULLET_RADIOUS * 2,
-                (int) Constants.OMENOCT_BULLET_RADIOUS * 2
+                (int) (position.x - SizeConstants.OMENOCT_BULLET_RADIOS) + SizeConstants.SCREEN_SIZE.width,
+                (int) (position.y - SizeConstants.OMENOCT_BULLET_RADIOS) + SizeConstants.SCREEN_SIZE.height,
+                (int) SizeConstants.OMENOCT_BULLET_RADIOS * 2,
+                (int) SizeConstants.OMENOCT_BULLET_RADIOS * 2
         );
     }
 }

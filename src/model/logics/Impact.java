@@ -1,7 +1,8 @@
 package model.logics;
 
 
-import constants.Constants;
+import constants.SoundPathConstants;
+import constants.TimeConstants;
 import model.ModelData;
 import model.animations.DashAnimation;
 import model.interfaces.ImpactAble;
@@ -23,7 +24,7 @@ public class Impact {
     public Impact(Vector collisionPoint ,double distance){
         this.collisionPoint = collisionPoint;
         this.distance = distance;
-        time = Constants.DASH_TIME;
+        time = TimeConstants.DASH_TIME;
     }
 
 
@@ -42,7 +43,7 @@ public class Impact {
 
     public void MakeImpact(){
         try {
-            new Sound(Constants.impactSound).play();
+            new Sound(SoundPathConstants.impactSound).play();
         } catch (UnsupportedAudioFileException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

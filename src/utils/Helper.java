@@ -3,7 +3,8 @@ package utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import constants.Constants;
+import constants.DistanceConstants;
+import constants.SizeConstants;
 import controller.configs.Configs;
 import controller.configs.helper.GameConfigsJsonHelper;
 import model.objectModel.frameModel.FrameModel;
@@ -62,22 +63,22 @@ public class Helper {
         }
         else {
             int x = random.nextInt(
-                    -Constants.ENEMY_SPAWN_MARGIN ,
-                    frameModel.getSize().width + Constants.ENEMY_SPAWN_MARGIN
+                    -DistanceConstants.ENEMY_SPAWN_MARGIN ,
+                    frameModel.getSize().width + DistanceConstants.ENEMY_SPAWN_MARGIN
             );
             int y = 0;
-            if (x < -Constants.ENEMY_SPAWN_MARGIN || x > frameModel.getSize().width + Constants.ENEMY_SPAWN_MARGIN){
-                y = random.nextInt(-Constants.ENEMY_SPAWN_MARGIN ,frameModel.getSize().height + Constants.ENEMY_SPAWN_MARGIN);
+            if (x < -DistanceConstants.ENEMY_SPAWN_MARGIN || x > frameModel.getSize().width + DistanceConstants.ENEMY_SPAWN_MARGIN){
+                y = random.nextInt(-DistanceConstants.ENEMY_SPAWN_MARGIN ,frameModel.getSize().height + DistanceConstants.ENEMY_SPAWN_MARGIN);
             }
             else {
                 int rand = random.nextInt(2);
                 if (rand == 0){
-                    y = random.nextInt(-Constants.ENEMY_SPAWN_MARGIN ,0);
+                    y = random.nextInt(-DistanceConstants.ENEMY_SPAWN_MARGIN ,0);
                 }
                 else {
                     y = random.nextInt(
-                            frameModel.getSize().height + Constants.ENEMY_SPAWN_MARGIN ,
-                            frameModel.getSize().height + Constants.ENEMY_SPAWN_MARGIN + Constants.TRIGORATH_DIMENTION.height
+                            frameModel.getSize().height + DistanceConstants.ENEMY_SPAWN_MARGIN ,
+                            frameModel.getSize().height + DistanceConstants.ENEMY_SPAWN_MARGIN + SizeConstants.TRIGORATH_DIMENTION.height
                     );
                 }
             }
@@ -88,10 +89,10 @@ public class Helper {
     public static Vector createRandomPositionSeparately(FrameModel epsilonFrame, Dimension size) {
         Vector solution;
 
-        double frameRightX = Constants.SCREEN_SIZE.width - epsilonFrame.getPosition().getX() - epsilonFrame.getSize().width;
+        double frameRightX = SizeConstants.SCREEN_SIZE.width - epsilonFrame.getPosition().getX() - epsilonFrame.getSize().width;
         double frameLeftX = epsilonFrame.getPosition().getX();
         double frameTopY = epsilonFrame.getPosition().getY();
-        double frameBottomY = Constants.SCREEN_SIZE.height - epsilonFrame.getPosition().getY() - epsilonFrame.getSize().height;
+        double frameBottomY = SizeConstants.SCREEN_SIZE.height - epsilonFrame.getPosition().getY() - epsilonFrame.getSize().height;
         frameRightX = java.lang.Math.abs(frameRightX);
         frameLeftX = java.lang.Math.abs(frameLeftX);
         frameTopY = java.lang.Math.abs(frameTopY);

@@ -1,8 +1,8 @@
 package model.objectModel.fighters;
 
 
+import constants.SizeConstants;
 import controller.enums.ModelType;
-import constants.Constants;
 import model.interfaces.IsCircle;
 import model.objectModel.ObjectModel;
 import utils.Math;
@@ -23,7 +23,7 @@ public class EpsilonVertexModel extends ObjectModel implements IsCircle {
     }
     @Override
     public double getRadios() {
-        return Constants.EPSILON_VERTICES_RADIOS;
+        return SizeConstants.EPSILON_VERTICES_RADIOS;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class EpsilonVertexModel extends ObjectModel implements IsCircle {
 
     public void rotateTo(double theta) {
         Vector direction = new Vector(
-                Constants.EPSILON_VERTICES_RADIOS + Constants.EPSILON_DIMENSION.width / 2d,
+                SizeConstants.EPSILON_VERTICES_RADIOS + SizeConstants.EPSILON_DIMENSION.width / 2d,
                 0
         );
         position = Math.RotateByTheta(Math.VectorAdd(epsilonPosition ,direction) ,epsilonPosition ,theta);

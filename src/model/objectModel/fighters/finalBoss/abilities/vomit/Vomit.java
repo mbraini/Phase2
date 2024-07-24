@@ -1,7 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities.vomit;
 
 import controller.manager.Spawner;
-import constants.Constants;
+import constants.ControllerConstants;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.Ability;
 import model.objectModel.frameModel.FrameModel;
@@ -51,7 +51,7 @@ public class Vomit extends Ability {
                 Helper.createRandomPosition(epsilonFrame ,true),
                 thread,
                 this,
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
+                Helper.RandomStringGenerator(ControllerConstants.ID_SIZE)
         );
         Spawner.addBossEffect(effectModel);
         synchronized (effects) {

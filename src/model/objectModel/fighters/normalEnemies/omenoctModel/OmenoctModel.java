@@ -1,10 +1,9 @@
 package model.objectModel.fighters.normalEnemies.omenoctModel;
 
-import controller.Controller;
+import constants.*;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
 import model.interfaces.*;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.fighters.normalEnemies.NormalEnemyModel;
@@ -37,8 +36,8 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         vulnerableToEpsilonBullet = true;
         vulnerableToEpsilonMelee = true;
         hasMeleeAttack = true;
-        meleeAttack = Constants.OMENOCT_MELEE_ATTACK;
-        omega = Constants.ENEMY_ROTATION_SPEED;
+        meleeAttack = DamageConstants.OMENOCT_MELEE_ATTACK;
+        omega = VelocityConstants.ENEMY_ROTATION_SPEED;
         navigater = new OmenoctNavigater(position);
         try {
             Thread.sleep(100);
@@ -54,7 +53,7 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
                 java.lang.Math.cos(java.lang.Math.PI / 8),
                 java.lang.Math.sin(java.lang.Math.PI / 8)
         );
-        initVector = Math.VectorWithSize(initVector ,Constants.OMENOCT_RADIOS);
+        initVector = Math.VectorWithSize(initVector , SizeConstants.OMENOCT_RADIOS);
         for (int i = 0 ;i < 8 ;i++){
             vertices.add(
                     Math.VectorAdd(
@@ -91,7 +90,7 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
                         Math.ScalarInVector(-1 ,position),
                         destination
                 )
-                ,Constants.OMENOCT_NAVIGATE_VELOCITY
+                , VelocityConstants.OMENOCT_NAVIGATE_VELOCITY
         );
     }
 
@@ -101,7 +100,7 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         if (Math.VectorSize(Math.VectorAdd(
                 Math.ScalarInVector(-1 ,position),
                 destination
-        )) <= Constants.OMENOCT_NAVIGATE_VELOCITY * Constants.UPS){
+        )) <= VelocityConstants.OMENOCT_NAVIGATE_VELOCITY * RefreshRateConstants.UPS){
             position = destination.clone();
             velocity = new Vector();
         }
@@ -139,19 +138,19 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
 
     @Override
     public void damage() {
-        HP = HP - Constants.OMENOCT_FRAME_DAMAGE;
+        HP = HP - DamageConstants.OMENOCT_FRAME_DAMAGE;
     }
 
     @Override
     public void move() {
-        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(Constants.UPS ,acceleration));
-        double xMoved = ((2 * velocity.x - acceleration.x * Constants.UPS) / 2) * Constants.UPS;
-        double yMoved = ((2 * velocity.y - acceleration.y * Constants.UPS) / 2) * Constants.UPS;
+        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(RefreshRateConstants.UPS ,acceleration));
+        double xMoved = ((2 * velocity.x - acceleration.x * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
+        double yMoved = ((2 * velocity.y - acceleration.y * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
         setPosition(position.x + xMoved ,position.y + yMoved);
 
 
-        omega += alpha * Constants.UPS;
-        double thetaMoved = ((2 * omega - alpha * Constants.UPS) / 2) * Constants.UPS;
+        omega += alpha * RefreshRateConstants.UPS;
+        double thetaMoved = ((2 * omega - alpha * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
         theta = theta + thetaMoved;
         UpdateVertices(xMoved ,yMoved ,thetaMoved);
     }

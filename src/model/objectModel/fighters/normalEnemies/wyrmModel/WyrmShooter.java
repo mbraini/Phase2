@@ -1,8 +1,8 @@
 package model.objectModel.fighters.normalEnemies.wyrmModel;
 
+import constants.SizeConstants;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
-import constants.Constants;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
@@ -27,7 +27,7 @@ public class WyrmShooter {
                 position,
                 Math.VectorWithSize(
                         direction ,
-                        Constants.OMENOCT_BULLET_RADIOUS + Constants.OMENOCT_RADIOS
+                        SizeConstants.OMENOCT_BULLET_RADIOS + SizeConstants.OMENOCT_RADIOS
                 )
         );
 

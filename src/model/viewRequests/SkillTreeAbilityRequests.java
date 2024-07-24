@@ -2,17 +2,13 @@ package model.viewRequests;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import constants.Constants;
+import constants.CostConstants;
 import controller.configs.Configs;
 import controller.configs.helper.SkillTreeJsonHelper;
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.GameState;
 import model.skillTreeAbilities.SkillTreeAbility;
 import model.skillTreeAbilities.SkillTreeAbilityHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -118,69 +114,69 @@ public class SkillTreeAbilityRequests {
             case ares :
                 if (Configs.SkillTreeConfigs.aresBought)
                     return -1;
-                if (GameState.getXp() >= Constants.ARES_UNLOCK_COST)
-                    return Constants.ARES_UNLOCK_COST;
+                if (GameState.getXp() >= CostConstants.ARES_UNLOCK_COST)
+                    return CostConstants.ARES_UNLOCK_COST;
                 break;
             case astrape:
                 if (Configs.SkillTreeConfigs.astrapeBought)
                     return -1;
-                if (GameState.getXp() >= Constants.ASTRAPE_UNLOCK_COST && Configs.SkillTreeConfigs.aresBought)
-                    return Constants.ASTRAPE_UNLOCK_COST;
+                if (GameState.getXp() >= CostConstants.ASTRAPE_UNLOCK_COST && Configs.SkillTreeConfigs.aresBought)
+                    return CostConstants.ASTRAPE_UNLOCK_COST;
                 break;
             case cerberus:
                 if (Configs.SkillTreeConfigs.cerberusBought)
                     return -1;
-                if (GameState.getXp() >= Constants.CERBERUS_UNLOCK_COST) {
+                if (GameState.getXp() >= CostConstants.CERBERUS_UNLOCK_COST) {
                     if (Configs.SkillTreeConfigs.aresBought && Configs.SkillTreeConfigs.astrapeBought)
-                        return Constants.CERBERUS_UNLOCK_COST;
+                        return CostConstants.CERBERUS_UNLOCK_COST;
                 }
                 break;
             case aceso:
                 if (Configs.SkillTreeConfigs.acesoBought)
                     return -1;
-                if (GameState.getXp() >= Constants.ACESO_UNLOCK_COST)
-                    return Constants.ACESO_UNLOCK_COST;
+                if (GameState.getXp() >= CostConstants.ACESO_UNLOCK_COST)
+                    return CostConstants.ACESO_UNLOCK_COST;
                 break;
             case melampus:
                 if (Configs.SkillTreeConfigs.melampusBought)
                     return -1;
-                if (GameState.getXp() >= Constants.MELAMPUS_UNLOCK_COST && Configs.SkillTreeConfigs.acesoBought)
-                    return Constants.MELAMPUS_UNLOCK_COST;
+                if (GameState.getXp() >= CostConstants.MELAMPUS_UNLOCK_COST && Configs.SkillTreeConfigs.acesoBought)
+                    return CostConstants.MELAMPUS_UNLOCK_COST;
                 break;
             case chiron:
                 if (Configs.SkillTreeConfigs.chironBought)
                     return -1;
-                if (GameState.getXp() >= Constants.CHIRON_UNLOCK_COST) {
+                if (GameState.getXp() >= CostConstants.CHIRON_UNLOCK_COST) {
                     if (Configs.SkillTreeConfigs.acesoBought && Configs.SkillTreeConfigs.melampusBought)
-                        return Constants.CHIRON_UNLOCK_COST;
+                        return CostConstants.CHIRON_UNLOCK_COST;
                 }
                 break;
             case athena:
                 if (Configs.SkillTreeConfigs.athenaBought)
                     return -1;
-                if (GameState.getXp() >= Constants.ATHENA_UNLOCK_COST) {
+                if (GameState.getXp() >= CostConstants.ATHENA_UNLOCK_COST) {
                     if (Configs.SkillTreeConfigs.acesoBought && Configs.SkillTreeConfigs.melampusBought)
-                        return Constants.ATHENA_UNLOCK_COST;
+                        return CostConstants.ATHENA_UNLOCK_COST;
                 }
                 break;
             case proteus:
                 if (Configs.SkillTreeConfigs.proteusBought)
                     return -1;
-                if (GameState.getXp() >= Constants.PROTEUS_UNLOCK_COST)
-                    return Constants.PROTEUS_UNLOCK_COST;
+                if (GameState.getXp() >= CostConstants.PROTEUS_UNLOCK_COST)
+                    return CostConstants.PROTEUS_UNLOCK_COST;
                 break;
             case empusa:
                 if (Configs.SkillTreeConfigs.empusaBought)
                     return -1;
-                if (GameState.getXp() >= Constants.EMPUSA_UNLOCK_COST && Configs.SkillTreeConfigs.proteusBought)
-                    return Constants.EMPUSA_UNLOCK_COST;
+                if (GameState.getXp() >= CostConstants.EMPUSA_UNLOCK_COST && Configs.SkillTreeConfigs.proteusBought)
+                    return CostConstants.EMPUSA_UNLOCK_COST;
                 break;
             case dolus:
                 if (Configs.SkillTreeConfigs.dolusBought)
                     return -1;
-                if (GameState.getXp() >= Constants.DOLUS_UNLOCK_COST) {
+                if (GameState.getXp() >= CostConstants.DOLUS_UNLOCK_COST) {
                     if (Configs.SkillTreeConfigs.proteusBought && Configs.SkillTreeConfigs.empusaBought)
-                        return Constants.DOLUS_UNLOCK_COST;
+                        return CostConstants.DOLUS_UNLOCK_COST;
                 }
                 break;
         }

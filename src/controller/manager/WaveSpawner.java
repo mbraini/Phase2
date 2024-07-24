@@ -1,6 +1,6 @@
 package controller.manager;
 
-import constants.Constants;
+import constants.SizeConstants;
 import controller.enums.ModelType;
 import model.ModelData;
 import model.objectModel.frameModel.FrameModel;
@@ -161,8 +161,8 @@ public class WaveSpawner {
         if (repeatedCount == 1) {
             Spawner.spawnObject(
                     new Vector(
-                            Constants.SCREEN_SIZE.width / 2d,
-                            Constants.SCREEN_SIZE.height / 2d
+                            SizeConstants.SCREEN_SIZE.width / 2d,
+                            SizeConstants.SCREEN_SIZE.height / 2d
                     ),
                     ModelType.blackOrb
             );
@@ -190,7 +190,7 @@ public class WaveSpawner {
             Spawner.spawnObject(
                     Helper.createRandomPositionSeparately(
                             epsilonFrame ,
-                            Constants.BARRICADOS_DIMENSION
+                            SizeConstants.BARRICADOS_DIMENSION
                     ),
                     ModelType.barricados
             );
@@ -223,7 +223,7 @@ public class WaveSpawner {
             Spawner.spawnObject(
                     Helper.createRandomPositionSeparately(
                         epsilonFrame ,
-                        Constants.BARRICADOS_DIMENSION
+                        SizeConstants.BARRICADOS_DIMENSION
                     ),
                     ModelType.barricados
             );
@@ -233,8 +233,8 @@ public class WaveSpawner {
         if (repeatedCount == 3) {
             Spawner.spawnObject(
                     new Vector(
-                            Constants.SCREEN_SIZE.width / 2d,
-                            Constants.SCREEN_SIZE.height / 2d
+                            SizeConstants.SCREEN_SIZE.width / 2d,
+                            SizeConstants.SCREEN_SIZE.height / 2d
                     )
                     ,ModelType.blackOrb
             );

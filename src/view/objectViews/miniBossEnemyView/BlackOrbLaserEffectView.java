@@ -1,6 +1,6 @@
 package view.objectViews.miniBossEnemyView;
 
-import constants.Constants;
+import constants.SizeConstants;
 import utils.area.Area;
 import utils.area.Polygon;
 import view.objectViews.effectView.EffectView;
@@ -27,8 +27,8 @@ public class BlackOrbLaserEffectView extends EffectView {
     @Override
     public void setEffect() {
         utils.area.Polygon polygon = (Polygon) area;
-        int[] xp = polygon.getX().stream().mapToInt(i -> i + Constants.SCREEN_SIZE.width).toArray();
-        int[] yp = polygon.getY().stream().mapToInt(i -> i + Constants.SCREEN_SIZE.height).toArray();
+        int[] xp = polygon.getX().stream().mapToInt(i -> i + SizeConstants.SCREEN_SIZE.width).toArray();
+        int[] yp = polygon.getY().stream().mapToInt(i -> i + SizeConstants.SCREEN_SIZE.height).toArray();
         int np = polygon.getN();
 
         x = xp;

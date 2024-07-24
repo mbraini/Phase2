@@ -1,10 +1,11 @@
 package model.objectModel.fighters.basicEnemies;
 
 
-import controller.Controller;
+import constants.DamageConstants;
+import constants.SizeConstants;
+import constants.VelocityConstants;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
-import constants.Constants;
 import model.ModelData;
 import model.animations.DashAnimation;
 import model.interfaces.Ability;
@@ -25,32 +26,32 @@ public class SquarantineModel extends BasicEnemyModel implements HasVertices, Is
         this.acceleration = new Vector(0 ,0);
         this.id = id;
         this.HP = 10;
-        this.meleeAttack = Constants.SQURANTINE_DAMAGE;
+        this.meleeAttack = DamageConstants.SQURANTINE_DAMAGE;
         this.hasMeleeAttack = true;
         this.vulnerableToEpsilonMelee = true;
         this.vulnerableToEpsilonBullet = true;
         type = ModelType.squarantine;
-        omega = Constants.ENEMY_ROTATION_SPEED;
+        omega = VelocityConstants.ENEMY_ROTATION_SPEED;
         initVertices();
     }
 
     void initVertices(){
         vertices = new ArrayList<>();
         vertices.add(new Vector(
-                position.x + (Constants.Squarantine_DIMENTION.width / 2d) ,
-                position.y + (Constants.Squarantine_DIMENTION.height / 2d))
+                position.x + (SizeConstants.Squarantine_DIMENTION.width / 2d) ,
+                position.y + (SizeConstants.Squarantine_DIMENTION.height / 2d))
         );
         vertices.add(new Vector(
-                position.x + (Constants.Squarantine_DIMENTION.width / 2d) ,
-                position.y - (Constants.Squarantine_DIMENTION.height / 2d))
+                position.x + (SizeConstants.Squarantine_DIMENTION.width / 2d) ,
+                position.y - (SizeConstants.Squarantine_DIMENTION.height / 2d))
         );
         vertices.add(new Vector(
-                position.x - (Constants.Squarantine_DIMENTION.width / 2d) ,
-                position.y - (Constants.Squarantine_DIMENTION.height / 2d))
+                position.x - (SizeConstants.Squarantine_DIMENTION.width / 2d) ,
+                position.y - (SizeConstants.Squarantine_DIMENTION.height / 2d))
         );
         vertices.add(new Vector(
-                position.x - (Constants.Squarantine_DIMENTION.width / 2d) ,
-                position.y + (Constants.Squarantine_DIMENTION.height / 2d))
+                position.x - (SizeConstants.Squarantine_DIMENTION.width / 2d) ,
+                position.y + (SizeConstants.Squarantine_DIMENTION.height / 2d))
         );
     }
 

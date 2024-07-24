@@ -1,8 +1,8 @@
 package model.objectModel.effects;
 
+import constants.SizeConstants;
 import controller.Controller;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
@@ -40,7 +40,7 @@ public class BlackOrbAoeEffectModel extends AoeEffectModel implements IsPolygon 
                 Math.ScalarInVector(-1 ,orbOrigin.getPosition())
         );
 
-        Vector n1 = Math.NormalWithSize(direction , Constants.ORB_DIMENSION.width / 2d);
+        Vector n1 = Math.NormalWithSize(direction , SizeConstants.ORB_DIMENSION.width / 2d);
         Vector n2 = Math.ScalarInVector(-1 ,n1);
 
         vertices.add(Math.VectorAdd(

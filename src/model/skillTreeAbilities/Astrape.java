@@ -1,6 +1,6 @@
 package model.skillTreeAbilities;
 
-import constants.Constants;
+import constants.CostConstants;
 import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
 import model.ModelData;
@@ -10,7 +10,7 @@ public class Astrape extends SkillTreeAbility{
 
     public Astrape(){
         isBought = Configs.SkillTreeConfigs.astrapeBought;
-        unlockXpCost = Constants.ASTRAPE_UNLOCK_COST;
+        unlockXpCost = CostConstants.ASTRAPE_UNLOCK_COST;
         type = SkillTreeAbilityType.astrape;
         initTimer();
     }

@@ -1,8 +1,7 @@
 package controller.manager;
 
-import controller.Controller;
+import constants.TimeConstants;
 import controller.manager.saving.GameSaver;
-import constants.Constants;
 import model.ModelData;
 import model.inGameAbilities.InGameAbility;
 import model.interfaces.Fader;
@@ -46,10 +45,10 @@ public class GameManagerThread extends Thread{
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= Constants.MANAGER_THREAD_REFRESH_TIME) {
+            if (deltaModel >= TimeConstants.MANAGER_THREAD_REFRESH_TIME) {
                 manage();
                 deltaModel = 0;
-                time += Constants.MANAGER_THREAD_REFRESH_TIME;
+                time += TimeConstants.MANAGER_THREAD_REFRESH_TIME;
             }
         }
     }
@@ -79,7 +78,7 @@ public class GameManagerThread extends Thread{
                 ).save();
             }
         }
-        GameState.update(models ,Constants.MANAGER_THREAD_REFRESH_TIME);
+        GameState.update(models , TimeConstants.MANAGER_THREAD_REFRESH_TIME);
         killObjects();
     }
 
@@ -90,13 +89,13 @@ public class GameManagerThread extends Thread{
     private void interfaces() {
         for (ObjectModel model : models){
             if (model instanceof Fader){
-                ((Fader) model).addTime(Constants.MANAGER_THREAD_REFRESH_TIME);
+                ((Fader) model).addTime(TimeConstants.MANAGER_THREAD_REFRESH_TIME);
                 ((Fader) model).fadeIf();
             }
         }
         for (EffectModel effect : effects){
             if (effect instanceof Fader){
-                ((Fader) effect).addTime(Constants.MANAGER_THREAD_REFRESH_TIME);
+                ((Fader) effect).addTime(TimeConstants.MANAGER_THREAD_REFRESH_TIME);
                 ((Fader) effect).fadeIf();
             }
         }

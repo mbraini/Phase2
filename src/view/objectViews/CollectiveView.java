@@ -1,7 +1,7 @@
 package view.objectViews;
 
 
-import constants.Constants;
+import constants.SizeConstants;
 import utils.Vector;
 
 import java.awt.*;
@@ -17,10 +17,10 @@ public class CollectiveView extends ObjectView{
     public void draw(Graphics2D g2d) {
         g2d.setColor(Color.MAGENTA);
         g2d.fillOval(
-                (int) (position.x - Constants.COLLECTIVE_RADIOS + Constants.SCREEN_SIZE.width) ,
-                (int) (position.y - Constants.COLLECTIVE_RADIOS + Constants.SCREEN_SIZE.height) ,
-                (int) Constants.COLLECTIVE_RADIOS * 2 ,
-                (int) Constants.COLLECTIVE_RADIOS * 2
+                (int) (position.x - SizeConstants.COLLECTIVE_RADIOS + SizeConstants.SCREEN_SIZE.width) ,
+                (int) (position.y - SizeConstants.COLLECTIVE_RADIOS + SizeConstants.SCREEN_SIZE.height) ,
+                (int) SizeConstants.COLLECTIVE_RADIOS * 2 ,
+                (int) SizeConstants.COLLECTIVE_RADIOS * 2
         );
     }
 }

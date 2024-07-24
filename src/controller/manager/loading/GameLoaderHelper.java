@@ -4,7 +4,7 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import constants.Constants;
+import constants.ImageConstants;
 import controller.enums.EffectType;
 import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
@@ -14,10 +14,8 @@ import model.ModelData;
 import model.ModelRequests;
 import model.inGameAbilities.*;
 import model.inGameAbilities.Dismay.Dismay;
-import model.inGameAbilities.Dismay.EpsilonProtectorModel;
 import model.interfaces.ImpactAble;
 import model.objectModel.ObjectModel;
-import model.objectModel.effects.ArchmireAoeEffectModel;
 import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.fighters.EpsilonModel;
@@ -25,11 +23,8 @@ import model.objectModel.fighters.EpsilonVertexModel;
 import model.objectModel.fighters.basicEnemies.SquarantineModel;
 import model.objectModel.fighters.basicEnemies.TrigorathModel;
 import model.objectModel.fighters.finalBoss.Boss;
-import model.objectModel.fighters.finalBoss.abilities.AbilityType;
 import model.objectModel.fighters.finalBoss.bossHelper.BossHelperModel;
-import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;
-import model.objectModel.fighters.finalBoss.bossHelper.PunchModel;
 import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosFirstModel;
 import model.objectModel.fighters.miniBossEnemies.barricadosModel.BarricadosSecondModel;
 import model.objectModel.fighters.miniBossEnemies.blackOrbModel.BlackOrbModel;
@@ -49,7 +44,6 @@ import org.json.JSONObject;
 import utils.area.Polygon;
 import view.ViewRequest;
 import view.objectViews.CerberusView;
-import view.objectViews.EpsilonProtectorView;
 import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
 import view.objectViews.basicEnemyView.SquarantineView;
@@ -66,8 +60,6 @@ import view.objectViews.normalEnemyView.WyrmView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireEffectView;
 import view.objectViews.normalEnemyView.archmireView.ArchmireView;
 import view.objectViews.projectiles.*;
-
-import java.util.ArrayList;
 
 public class GameLoaderHelper {
     private static final Gson gson = getGson();
@@ -385,7 +377,7 @@ public class GameLoaderHelper {
             addHelper(boss.getPunch() ,boss);
             boss.getPunch().setInUse(false);
         }
-        boss.getPunch().setImage(Constants.punch);
+        boss.getPunch().setImage(ImageConstants.punch);
         boss.start();
     }
 
@@ -396,14 +388,14 @@ public class GameLoaderHelper {
         bossHelperModel.setAcceleration(0 ,0);
         switch (bossHelperModel.getType()) {
             case hand :
-                bossHelperModel.setImage(Constants.hand);
+                bossHelperModel.setImage(ImageConstants.hand);
                 ViewRequest.addObjectView(new HandView(
                         bossHelperModel.getPosition(),
                         bossHelperModel.getId()
                 ));
                 break;
             case head:
-                bossHelperModel.setImage(Constants.smiley);
+                bossHelperModel.setImage(ImageConstants.smiley);
                 ((HeadModel)bossHelperModel).setBoss(boss);
                 ViewRequest.addObjectView(new HeadView(
                         bossHelperModel.getPosition(),
@@ -411,7 +403,7 @@ public class GameLoaderHelper {
                 ));
                 break;
             case punch:
-                bossHelperModel.setImage(Constants.punch);
+                bossHelperModel.setImage(ImageConstants.punch);
                 ViewRequest.addObjectView(new PunchView(
                         bossHelperModel.getPosition(),
                         bossHelperModel.getId()

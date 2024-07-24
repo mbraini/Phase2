@@ -1,6 +1,6 @@
 package model.skillTreeAbilities;
 
-import constants.Constants;
+import constants.CostConstants;
 import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
 import model.ModelData;
@@ -13,7 +13,7 @@ public class Empusa extends SkillTreeAbility{
 
     public Empusa() {
         isBought = Configs.SkillTreeConfigs.empusaBought;
-        unlockXpCost = Constants.EMPUSA_UNLOCK_COST;
+        unlockXpCost = CostConstants.EMPUSA_UNLOCK_COST;
         type = SkillTreeAbilityType.empusa;
         initTimer();
         initEpsilon();

@@ -1,8 +1,5 @@
 package view.objectViews.panels;
 
-import constants.Constants;
-import utils.Vector;
-
 import javax.swing.*;
 import java.awt.*;
 

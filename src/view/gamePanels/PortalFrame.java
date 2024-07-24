@@ -1,6 +1,6 @@
 package view.gamePanels;
 
-import constants.Constants;
+import constants.SizeConstants;
 
 import javax.swing.*;
 
@@ -10,7 +10,7 @@ public class PortalFrame extends JFrame {
         this.setLayout(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        this.setSize(Constants.GAME_WIDTH + Constants.barD.width ,Constants.GAME_HEIGHT + Constants.barD.height);
+        this.setSize(SizeConstants.GAME_WIDTH + SizeConstants.barD.width , SizeConstants.GAME_HEIGHT + SizeConstants.barD.height);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }

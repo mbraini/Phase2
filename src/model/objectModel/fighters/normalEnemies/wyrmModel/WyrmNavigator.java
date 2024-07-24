@@ -1,6 +1,8 @@
 package model.objectModel.fighters.normalEnemies.wyrmModel;
 
-import constants.Constants;
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
+import constants.VelocityConstants;
 import model.ModelData;
 import utils.Math;
 import utils.Vector;
@@ -20,11 +22,11 @@ public class WyrmNavigator {
         wyrmModel.setVelocity(
                 Math.VectorWithSize(
                         direction,
-                        Constants.WYRM_NAVIGATION_VELOCITY
+                        VelocityConstants.WYRM_NAVIGATION_VELOCITY
                 )
         );
-        double Moving = Math.VectorSize(wyrmModel.getVelocity()) * Constants.UPS;
-        if (Math.VectorSize(direction) <= Constants.WYRM_NAVIGATION_RADIOS + Moving){
+        double Moving = Math.VectorSize(wyrmModel.getVelocity()) * RefreshRateConstants.UPS;
+        if (Math.VectorSize(direction) <= SizeConstants.WYRM_NAVIGATION_RADIOS + Moving){
             wyrmModel.setVelocity(Math.ScalarInVector(-1 ,wyrmModel.getVelocity()));
         }
         wyrmModel.setThetaRelativeToOrigin(direction);
@@ -36,8 +38,8 @@ public class WyrmNavigator {
                 epsilonPosition,
                 Math.ScalarInVector(-1 ,wyrmModel.getPosition())
         );
-        if (java.lang.Math.abs(Math.VectorSize(distance) - Constants.WYRM_NAVIGATION_RADIOS)
-                <= Math.VectorSize(wyrmModel.getVelocity()) * Constants.UPS){
+        if (java.lang.Math.abs(Math.VectorSize(distance) - SizeConstants.WYRM_NAVIGATION_RADIOS)
+                <= Math.VectorSize(wyrmModel.getVelocity()) * RefreshRateConstants.UPS){
             return true;
         }
         return false;

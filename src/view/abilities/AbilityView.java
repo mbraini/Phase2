@@ -1,6 +1,6 @@
 package view.abilities;
 
-import constants.Constants;
+import constants.SizeConstants;
 import utils.Vector;
 import view.objectViews.FrameView;
 
@@ -33,8 +33,8 @@ public class AbilityView {
         g2d.drawArc(
                 (int) position.x,
                 (int) position.y,
-                Constants.ABILITY_VIEW_DIMENSION.width,
-                Constants.ABILITY_VIEW_DIMENSION.height,
+                SizeConstants.ABILITY_VIEW_DIMENSION.width,
+                SizeConstants.ABILITY_VIEW_DIMENSION.height,
                 0,
                 theta
         );
@@ -42,8 +42,8 @@ public class AbilityView {
                 image,
                 (int) position.x,
                 (int) position.y,
-                Constants.ABILITY_VIEW_DIMENSION.width,
-                Constants.ABILITY_VIEW_DIMENSION.height,
+                SizeConstants.ABILITY_VIEW_DIMENSION.width,
+                SizeConstants.ABILITY_VIEW_DIMENSION.height,
                 null
         );
     }

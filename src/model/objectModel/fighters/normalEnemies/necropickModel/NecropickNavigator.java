@@ -1,6 +1,8 @@
 package model.objectModel.fighters.normalEnemies.necropickModel;
 
-import constants.Constants;
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
+import constants.VelocityConstants;
 import utils.Math;
 import utils.Vector;
 
@@ -18,7 +20,7 @@ public class NecropickNavigator {
         ///////////// prevents from jiggling :)
         if (java.lang.Math.abs(Math.VectorSize(
                 Math.VectorAdd(position ,Math.ScalarInVector(-1 ,epsilonPosition))
-        ) - Constants.NECROPICK_SPAWN_RADIOS) <= Constants.NECROPCIK_NAVIGATION_VELOCITY * Constants.UPS){
+        ) - SizeConstants.NECROPICK_SPAWN_RADIOS) <= VelocityConstants.NECROPCIK_NAVIGATION_VELOCITY * RefreshRateConstants.UPS){
             velocity = new Vector();
             return;
         }
@@ -27,7 +29,7 @@ public class NecropickNavigator {
                 Math.ScalarInVector(-1 ,position),
                 epsilonPosition
         );
-        if (Math.VectorSize(direction) <= Constants.NECROPICK_SPAWN_RADIOS){
+        if (Math.VectorSize(direction) <= SizeConstants.NECROPICK_SPAWN_RADIOS){
             direction = Math.ScalarInVector(
                     -1,
                     direction
@@ -37,7 +39,7 @@ public class NecropickNavigator {
                     Math.ScalarInVector(-1 ,direction)
             );
         }
-        velocity = Math.VectorWithSize(direction ,Constants.NECROPCIK_NAVIGATION_VELOCITY);
+        velocity = Math.VectorWithSize(direction , VelocityConstants.NECROPCIK_NAVIGATION_VELOCITY);
     }
 
     public Vector getVelocity(){

@@ -1,7 +1,9 @@
 package model.objectModel.fighters.normalEnemies.archmireModel;
 
+import constants.DamageConstants;
+import constants.TimeConstants;
 import controller.manager.Spawner;
-import constants.Constants;
+import constants.ControllerConstants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.logics.collision.Collision;
@@ -41,10 +43,10 @@ public class ArchmireThread extends Thread{
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= Constants.ARCHMIRE_THREAD_REFRESH_RATE) {
+            if (deltaModel >= TimeConstants.ARCHMIRE_THREAD_REFRESH_RATE) {
                 updateAOE();
                 deltaModel = 0;
-                time += Constants.ARCHMIRE_THREAD_REFRESH_RATE;
+                time += TimeConstants.ARCHMIRE_THREAD_REFRESH_RATE;
             }
         }
     }
@@ -76,10 +78,10 @@ public class ArchmireThread extends Thread{
             if (model instanceof ArchmireModel)
                 continue;
             if (Collision.IsColliding(model ,archmire)){
-                model.setHP(model.getHP() - Constants.ARCHMIRE_DROWN_DAMAGE_PER_SECOND);
+                model.setHP(model.getHP() - DamageConstants.ARCHMIRE_DROWN_DAMAGE_PER_SECOND);
             }
             else {
-                model.setHP(model.getHP() - Constants.ARCHMIRE_AOE_DAMAGE_PER_SECOND);
+                model.setHP(model.getHP() - DamageConstants.ARCHMIRE_AOE_DAMAGE_PER_SECOND);
             }
         }
 
@@ -114,7 +116,7 @@ public class ArchmireThread extends Thread{
     private synchronized void addEffect() {
         ArchmireAoeEffectModel effectModel = new ArchmireAoeEffectModel(
                 archmire,
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
+                Helper.RandomStringGenerator(ControllerConstants.ID_SIZE)
         );
         Spawner.addArchmireEffect(effectModel);
         archmire.getAoeEffects().add(effectModel);

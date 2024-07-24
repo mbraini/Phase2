@@ -1,14 +1,12 @@
 package model.animations;
 
 
-import constants.Constants;
 import controller.manager.GameState;
 import model.interfaces.ImpactAble;
 import model.objectModel.ObjectModel;
 import utils.Math;
 import utils.Vector;
 
-import javax.swing.*;
 import java.util.HashMap;
 
 public class DashAnimation extends Animation {

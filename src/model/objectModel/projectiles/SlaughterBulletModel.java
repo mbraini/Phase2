@@ -1,17 +1,18 @@
 package model.objectModel.projectiles;
 
-import constants.Constants;
+import constants.DamageConstants;
+import constants.SizeConstants;
 import utils.Vector;
 
 public class SlaughterBulletModel extends EpsilonBulletModel {
     public SlaughterBulletModel(Vector position, Vector direction, String id) {
         super(position, direction, id);
-        damage = Constants.SLAUGHTER_DAMAGE;
+        damage = DamageConstants.SLAUGHTER_DAMAGE;
     }
 
     @Override
     public double getRadios() {
-        return Constants.SLAUGHTER_BULLET_RADIOS;
+        return SizeConstants.SLAUGHTER_BULLET_RADIOS;
     }
 
 

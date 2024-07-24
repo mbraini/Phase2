@@ -1,6 +1,8 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
-import constants.Constants;
+import constants.ControllerConstants;
+import constants.DamageConstants;
+import constants.RefreshRateConstants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.logics.collision.Collision;
@@ -43,7 +45,7 @@ public class BlackOrbThread extends Thread{
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= Constants.BLACK_ORB_THEAD_REFRESH_RATE) {
+            if (deltaModel >= RefreshRateConstants.BLACK_ORB_THEAD_REFRESH_RATE) {
                 if (GameState.isDizzy()){
                     setUpDizzy();
                     continue;
@@ -53,7 +55,7 @@ public class BlackOrbThread extends Thread{
                 }
                 updateBlackOrb();
                 deltaModel = 0;
-                time += Constants.BLACK_ORB_THEAD_REFRESH_RATE;
+                time += RefreshRateConstants.BLACK_ORB_THEAD_REFRESH_RATE;
             }
         }
 
@@ -88,12 +90,12 @@ public class BlackOrbThread extends Thread{
             spawningDone = true;
         }
         if (blackOrbModel.getFrameCount() < 5){
-            frameTime += Constants.BLACK_ORB_THEAD_REFRESH_RATE;
+            frameTime += RefreshRateConstants.BLACK_ORB_THEAD_REFRESH_RATE;
             spawnFrameIf();
             return;
         }
         if (blackOrbModel.getOrbCount() < 5){
-            orbTime += Constants.BLACK_ORB_THEAD_REFRESH_RATE;
+            orbTime += RefreshRateConstants.BLACK_ORB_THEAD_REFRESH_RATE;
             spawnOrbIf();
         }
     }
@@ -137,7 +139,7 @@ public class BlackOrbThread extends Thread{
         for (ObjectModel model : collidedObjects){
             if (model instanceof OrbModel)
                 continue;
-            model.setHP(model.getHP() - Constants.BLACK_ORB_LASER_DAMAGE);
+            model.setHP(model.getHP() - DamageConstants.BLACK_ORB_LASER_DAMAGE);
         }
     }
 
@@ -160,7 +162,7 @@ public class BlackOrbThread extends Thread{
                     blackOrbModel,
                     orbModels.get(i),
                     orbModels.get(index),
-                    Helper.RandomStringGenerator(Constants.ID_SIZE)
+                    Helper.RandomStringGenerator(ControllerConstants.ID_SIZE)
             );
         }
     }

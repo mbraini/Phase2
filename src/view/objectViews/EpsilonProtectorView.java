@@ -1,6 +1,7 @@
 package view.objectViews;
 
-import constants.Constants;
+import constants.ImageConstants;
+import constants.SizeConstants;
 import utils.Vector;
 
 import java.awt.*;
@@ -10,7 +11,7 @@ public class EpsilonProtectorView extends ObjectView{
     public EpsilonProtectorView(Vector position, String id){
         this.position = position;
         this.id = id;
-        image = Constants.epsilonImage;
+        image = ImageConstants.epsilonImage;
     }
 
 
@@ -19,10 +20,10 @@ public class EpsilonProtectorView extends ObjectView{
         g2d.setFont(new Font(null,Font.BOLD ,20));
         g2d.setColor(Color.BLUE);
         g2d.drawOval(
-                (int) position.x - Constants.DISMAY_RADIOS + Constants.SCREEN_SIZE.width,
-                (int) position.y - Constants.DISMAY_RADIOS + Constants.SCREEN_SIZE.height,
-                Constants.DISMAY_RADIOS * 2,
-                Constants.DISMAY_RADIOS * 2
+                (int) position.x - SizeConstants.DISMAY_RADIOS + SizeConstants.SCREEN_SIZE.width,
+                (int) position.y - SizeConstants.DISMAY_RADIOS + SizeConstants.SCREEN_SIZE.height,
+                SizeConstants.DISMAY_RADIOS * 2,
+                SizeConstants.DISMAY_RADIOS * 2
         );
     }
 

@@ -1,8 +1,8 @@
 package model.inGameAbilities.Dismay;
 
+import constants.SizeConstants;
 import controller.Controller;
 import controller.enums.ModelType;
-import constants.Constants;
 import model.interfaces.Ability;
 import model.interfaces.IsCircle;
 import model.objectModel.ObjectModel;
@@ -31,7 +31,7 @@ public class EpsilonProtectorModel extends ObjectModel implements IsCircle , Abi
 
     @Override
     public double getRadios() {
-        return Constants.DISMAY_RADIOS;
+        return SizeConstants.DISMAY_RADIOS;
     }
 
     @Override

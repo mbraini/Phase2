@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
-import constants.Constants;
+import constants.ImageConstants;
+import constants.SizeConstants;
 import controller.enums.ModelType;
 import controller.manager.loading.SkippedByJson;
 import model.animations.BossDeathAnimation;
@@ -21,13 +22,13 @@ public class HeadModel extends BossHelperModel implements IsCircle , CollisionDe
     public HeadModel(Vector position , Boss boss, String id){
         this.position = position;
         this.id = id;
-        this.image = Constants.smiley;
+        this.image = ImageConstants.smiley;
         this.velocity = new Vector();
         this.acceleration = new Vector();
         this.boss = boss;
         size = new Dimension(
-                Constants.HEAD_DIMENSION.width,
-                Constants.HEAD_DIMENSION.height
+                SizeConstants.HEAD_DIMENSION.width,
+                SizeConstants.HEAD_DIMENSION.height
         );
         type = ModelType.head;
         HP = 300;
@@ -50,11 +51,11 @@ public class HeadModel extends BossHelperModel implements IsCircle , CollisionDe
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                -Constants.HEAD_DIMENSION.width / 2d,
-                                -Constants.HEAD_DIMENSION.height / 2d
+                                -SizeConstants.HEAD_DIMENSION.width / 2d,
+                                -SizeConstants.HEAD_DIMENSION.height / 2d
                         )
                 ),
-                new Dimension(Constants.HEAD_DIMENSION),
+                new Dimension(SizeConstants.HEAD_DIMENSION),
                 id
         );
         builder.setIsometric(true);
@@ -69,7 +70,7 @@ public class HeadModel extends BossHelperModel implements IsCircle , CollisionDe
 
     @Override
     public double getRadios() {
-        return Constants.HEAD_DIMENSION.width / 2d;
+        return SizeConstants.HEAD_DIMENSION.width / 2d;
     }
 
     @Override

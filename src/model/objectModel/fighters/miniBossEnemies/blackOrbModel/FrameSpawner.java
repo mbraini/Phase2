@@ -1,7 +1,8 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
+import constants.SizeConstants;
 import controller.manager.Spawner;
-import constants.Constants;
+import constants.ControllerConstants;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.frameModel.FrameModelBuilder;
 import utils.Helper;
@@ -26,7 +27,7 @@ public class FrameSpawner  {
                 blackOrbModel.getCenter(),
                 Math.VectorWithSize(
                         new Vector(0 ,1),
-                        Constants.BLACK_ORB_DIAGONAL_SIZE
+                        SizeConstants.BLACK_ORB_DIAGONAL_SIZE
                 )
         );
 
@@ -39,15 +40,15 @@ public class FrameSpawner  {
         Vector framePosition = Math.VectorAdd(
                 frameCenter,
                 new Vector(
-                        -Constants.BLACK_ORB_FRAME_DIMENSION.width / 2d,
-                        -Constants.BLACK_ORB_FRAME_DIMENSION.height / 2d
+                        -SizeConstants.BLACK_ORB_FRAME_DIMENSION.width / 2d,
+                        -SizeConstants.BLACK_ORB_FRAME_DIMENSION.height / 2d
                 )
         );
 
         FrameModelBuilder builder = new FrameModelBuilder(
                 framePosition,
-                Constants.BLACK_ORB_FRAME_DIMENSION,
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
+                SizeConstants.BLACK_ORB_FRAME_DIMENSION,
+                Helper.RandomStringGenerator(ControllerConstants.ID_SIZE)
         );
 
         builder.setIsometric(true);

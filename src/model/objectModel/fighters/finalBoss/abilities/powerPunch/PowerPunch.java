@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities.powerPunch;
 
-import constants.Constants;
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
 import model.animations.DashAnimation;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.Ability;
@@ -51,7 +52,7 @@ public class PowerPunch extends Ability {
         super.activate();
         chooseFrameLocation();
         PunchAnimation();
-        timer = new Timer(Constants.ABILITY_SETUP_DELAY ,new PowerPunchAL(epsilonFrame ,frameLocation ,this));
+        timer = new Timer(RefreshRateConstants.ABILITY_SETUP_DELAY ,new PowerPunchAL(epsilonFrame ,frameLocation ,this));
         timer.start();
     }
 
@@ -100,7 +101,7 @@ public class PowerPunch extends Ability {
                         topMid,
                         new Vector(
                                 0,
-                                -Constants.PUNCH_DIMENSION.height /2d
+                                -SizeConstants.PUNCH_DIMENSION.height /2d
                         )
                 );
                 break;
@@ -108,7 +109,7 @@ public class PowerPunch extends Ability {
                 destination = Math.VectorAdd(
                         rightMid,
                         new Vector(
-                                Constants.PUNCH_DIMENSION.width /2d,
+                                SizeConstants.PUNCH_DIMENSION.width /2d,
                                 0
                         )
                 );
@@ -118,7 +119,7 @@ public class PowerPunch extends Ability {
                         bottomMid,
                         new Vector(
                                 0,
-                                Constants.PUNCH_DIMENSION.height /2d
+                                SizeConstants.PUNCH_DIMENSION.height /2d
                         )
                 );
                 break;
@@ -126,7 +127,7 @@ public class PowerPunch extends Ability {
                 destination = Math.VectorAdd(
                         leftMid,
                         new Vector(
-                                -Constants.PUNCH_DIMENSION.width /2d,
+                                -SizeConstants.PUNCH_DIMENSION.width /2d,
                                 0
                         )
                 );

@@ -1,8 +1,8 @@
 package view.menuPanels;
 
 
+import constants.SizeConstants;
 import controller.configs.Configs;
-import constants.Constants;
 import view.objectViews.panels.MyButton;
 import view.objectViews.panels.MyLabel;
 import view.soundEffects.Sound;
@@ -25,7 +25,7 @@ public class SettingsPanel extends PIG {
 
     public SettingsPanel(){
         this.setLayout(null);
-        this.setBounds(0,0, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
+        this.setBounds(0,0, SizeConstants.GAME_WIDTH, SizeConstants.GAME_HEIGHT);
         this.setBackground(Color.BLACK);
         this.setVisible(false);
 
@@ -39,15 +39,15 @@ public class SettingsPanel extends PIG {
 
     private void initGuides() {
         soundGuide = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 7),
-                new Dimension(Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 7),
+                new Point(SizeConstants.GAME_WIDTH / 8 , SizeConstants.GAME_HEIGHT / 7),
+                new Dimension(SizeConstants.GAME_WIDTH / 8 , SizeConstants.GAME_HEIGHT / 7),
                 "Sound",
                 this
         );
 
         sensitivityGuide = new MyLabel(
-                new Point(Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 7 * 3),
-                new Dimension(Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 7),
+                new Point(SizeConstants.GAME_WIDTH / 8 , SizeConstants.GAME_HEIGHT / 7 * 3),
+                new Dimension(SizeConstants.GAME_WIDTH / 8 , SizeConstants.GAME_HEIGHT / 7),
                 "Sensitivity",
                 this
         );
@@ -102,8 +102,8 @@ public class SettingsPanel extends PIG {
 
     private void initBack() {
         back = new MyButton(
-                new Point(Constants.GAME_WIDTH / 3 ,Constants.GAME_HEIGHT / 7 * 5),
-                new Dimension(Constants.GAME_WIDTH / 3 ,Constants.GAME_HEIGHT / 7),
+                new Point(SizeConstants.GAME_WIDTH / 3 , SizeConstants.GAME_HEIGHT / 7 * 5),
+                new Dimension(SizeConstants.GAME_WIDTH / 3 , SizeConstants.GAME_HEIGHT / 7),
                 "back",
                 this
         );
@@ -111,7 +111,7 @@ public class SettingsPanel extends PIG {
 
     private void initSensitivitySlider() {
         sensitivitySlider = new JSlider(1 ,3);
-        sensitivitySlider.setBounds(Constants.GAME_WIDTH / 8 * 3 ,Constants.GAME_HEIGHT / 7 * 3 ,Constants.GAME_WIDTH / 8 * 4 ,Constants.GAME_HEIGHT / 7);
+        sensitivitySlider.setBounds(SizeConstants.GAME_WIDTH / 8 * 3 , SizeConstants.GAME_HEIGHT / 7 * 3 , SizeConstants.GAME_WIDTH / 8 * 4 , SizeConstants.GAME_HEIGHT / 7);
         sensitivitySlider.setPaintTicks(true);
         sensitivitySlider.setMinorTickSpacing(1);
         sensitivitySlider.setPaintTrack(true);
@@ -125,7 +125,7 @@ public class SettingsPanel extends PIG {
 
     private void initSoundSlider() {
         soundSlider = new JSlider(0 ,10);
-        soundSlider.setBounds(Constants.GAME_WIDTH / 8 * 3 ,Constants.GAME_HEIGHT / 7 ,Constants.GAME_WIDTH / 8 * 4 ,Constants.GAME_HEIGHT / 7);
+        soundSlider.setBounds(SizeConstants.GAME_WIDTH / 8 * 3 , SizeConstants.GAME_HEIGHT / 7 , SizeConstants.GAME_WIDTH / 8 * 4 , SizeConstants.GAME_HEIGHT / 7);
         soundSlider.setPaintTicks(true);
         soundSlider.setMinorTickSpacing(1);
         soundSlider.setPaintTrack(true);

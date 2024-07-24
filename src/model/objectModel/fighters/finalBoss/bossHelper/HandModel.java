@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
-import constants.Constants;
+import constants.ImageConstants;
+import constants.SizeConstants;
 import controller.enums.ModelType;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
@@ -19,12 +20,12 @@ public class HandModel extends BossHelperModel implements IsPolygon , HasVertice
     public HandModel(Vector position ,String id){
         this.position = position;
         this.id = id;
-        this.image = Constants.hand;
+        this.image = ImageConstants.hand;
         this.velocity = new Vector();
         this.acceleration = new Vector();
         size = new Dimension(
-                Constants.HAND_DIMENSION.width,
-                Constants.HAND_DIMENSION.height
+                SizeConstants.HAND_DIMENSION.width,
+                SizeConstants.HAND_DIMENSION.height
         );
         type = ModelType.hand;
         HP = 100;
@@ -38,15 +39,15 @@ public class HandModel extends BossHelperModel implements IsPolygon , HasVertice
         vertices.add(getFrame().getPosition().clone());
         vertices.add(Math.VectorAdd(
                 getFrame().getPosition(),
-                new Vector(Constants.HAND_DIMENSION.width ,0)
+                new Vector(SizeConstants.HAND_DIMENSION.width ,0)
         ));
         vertices.add(Math.VectorAdd(
                 getFrame().getPosition(),
-                new Vector(Constants.HAND_DIMENSION.width ,Constants.HAND_DIMENSION.height)
+                new Vector(SizeConstants.HAND_DIMENSION.width , SizeConstants.HAND_DIMENSION.height)
         ));
         vertices.add(Math.VectorAdd(
                 getFrame().getPosition(),
-                new Vector(0 ,Constants.HAND_DIMENSION.height)
+                new Vector(0 , SizeConstants.HAND_DIMENSION.height)
         ));
     }
 
@@ -57,11 +58,11 @@ public class HandModel extends BossHelperModel implements IsPolygon , HasVertice
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                -Constants.HAND_DIMENSION.width / 2d,
-                                -Constants.HAND_DIMENSION.height / 2d
+                                -SizeConstants.HAND_DIMENSION.width / 2d,
+                                -SizeConstants.HAND_DIMENSION.height / 2d
                         )
                 ),
-                new Dimension(Constants.HAND_DIMENSION),
+                new Dimension(SizeConstants.HAND_DIMENSION),
                 id
         );
         builder.setIsometric(true);

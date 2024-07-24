@@ -1,12 +1,11 @@
 package view.menuPanels;
 
+import constants.SizeConstants;
 import controller.Controller;
-import constants.Constants;
 import view.Application;
 import view.objectViews.panels.MyButton;
 
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +19,7 @@ public class MenuPanel extends PIG {
     private MyButton skillTree;
     public MenuPanel(){
         this.setLayout(null);
-        this.setBounds(0,0, Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
+        this.setBounds(0,0, SizeConstants.GAME_WIDTH, SizeConstants.GAME_HEIGHT);
         this.setBackground(Color.BLACK);
 
         initExit();
@@ -81,8 +80,8 @@ public class MenuPanel extends PIG {
 
     private void initExit(){
         exit = new MyButton(
-                new Point(Constants.GAME_WIDTH / 3 ,Constants.GAME_HEIGHT / 11 * 9),
-                new Dimension(Constants.GAME_WIDTH / 3,Constants.GAME_HEIGHT / 11),
+                new Point(SizeConstants.GAME_WIDTH / 3 , SizeConstants.GAME_HEIGHT / 11 * 9),
+                new Dimension(SizeConstants.GAME_WIDTH / 3, SizeConstants.GAME_HEIGHT / 11),
                 "exit",
                 this
         );
@@ -90,8 +89,8 @@ public class MenuPanel extends PIG {
 
     private void initStart(){
         start = new MyButton(
-                new Point(Constants.GAME_WIDTH / 3 ,Constants.GAME_HEIGHT / 11),
-                new Dimension(Constants.GAME_WIDTH / 3,Constants.GAME_HEIGHT / 11),
+                new Point(SizeConstants.GAME_WIDTH / 3 , SizeConstants.GAME_HEIGHT / 11),
+                new Dimension(SizeConstants.GAME_WIDTH / 3, SizeConstants.GAME_HEIGHT / 11),
                 "start",
                 this
         );
@@ -99,8 +98,8 @@ public class MenuPanel extends PIG {
 
     private void initSettings(){
         settings = new MyButton(
-                new Point(Constants.GAME_WIDTH / 3 ,Constants.GAME_HEIGHT / 11 * 3),
-                new Dimension(Constants.GAME_WIDTH / 3,Constants.GAME_HEIGHT / 11),
+                new Point(SizeConstants.GAME_WIDTH / 3 , SizeConstants.GAME_HEIGHT / 11 * 3),
+                new Dimension(SizeConstants.GAME_WIDTH / 3, SizeConstants.GAME_HEIGHT / 11),
                 "settings",
                 this
         );
@@ -108,8 +107,8 @@ public class MenuPanel extends PIG {
 
     private void initTutorial(){
         tutorial = new MyButton(
-                new Point(Constants.GAME_WIDTH / 3 ,Constants.GAME_HEIGHT / 11 * 7),
-                new Dimension(Constants.GAME_WIDTH / 3,Constants.GAME_HEIGHT / 11),
+                new Point(SizeConstants.GAME_WIDTH / 3 , SizeConstants.GAME_HEIGHT / 11 * 7),
+                new Dimension(SizeConstants.GAME_WIDTH / 3, SizeConstants.GAME_HEIGHT / 11),
                 "tutorial",
                 this
         );
@@ -117,8 +116,8 @@ public class MenuPanel extends PIG {
 
     private void initSkillTree(){
         skillTree = new MyButton(
-                new Point(Constants.GAME_WIDTH / 3 ,Constants.GAME_HEIGHT / 11 * 5),
-                new Dimension(Constants.GAME_WIDTH / 3,Constants.GAME_HEIGHT / 11),
+                new Point(SizeConstants.GAME_WIDTH / 3 , SizeConstants.GAME_HEIGHT / 11 * 5),
+                new Dimension(SizeConstants.GAME_WIDTH / 3, SizeConstants.GAME_HEIGHT / 11),
                 "skillTree",
                 this
         );

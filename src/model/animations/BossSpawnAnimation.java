@@ -1,6 +1,6 @@
 package model.animations;
 
-import constants.Constants;
+import constants.SizeConstants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.objectModel.fighters.finalBoss.Boss;
@@ -57,8 +57,8 @@ public class BossSpawnAnimation extends Animation{
                         framePosition,
                         new Vector(
                                 0 ,
-                                -ModelData.getEpsilonFrame().getSize().height / 2d - Constants.HEAD_DIMENSION.height / 2d
-                                -Constants.barD.height - 1
+                                -ModelData.getEpsilonFrame().getSize().height / 2d - SizeConstants.HEAD_DIMENSION.height / 2d
+                                - SizeConstants.barD.height - 1
                         )
                 )
         );
@@ -68,13 +68,13 @@ public class BossSpawnAnimation extends Animation{
         FrameModel epsilonFrame = ModelData.getEpsilonFrame();
         epsilonFrame.transfer(
                 new Vector(
-                        Constants.SCREEN_SIZE.width / 2d - epsilonFrame.getSize().width / 2d,
-                        Constants.SCREEN_SIZE.height / 2d - epsilonFrame.getSize().height / 2d
+                        SizeConstants.SCREEN_SIZE.width / 2d - epsilonFrame.getSize().width / 2d,
+                        SizeConstants.SCREEN_SIZE.height / 2d - epsilonFrame.getSize().height / 2d
                 )
         );
         ModelData.getEpsilon().setPosition(
-                Constants.SCREEN_SIZE.width / 2d,
-                Constants.SCREEN_SIZE.height / 2d
+                SizeConstants.SCREEN_SIZE.width / 2d,
+                SizeConstants.SCREEN_SIZE.height / 2d
         );
     }
 

@@ -1,9 +1,9 @@
 package model.viewRequests;
 
+import constants.SizeConstants;
 import controller.enums.InGameAbilityType;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
-import constants.Constants;
 import model.inGameAbilities.InGameAbilityHandler;
 import model.inGameAbilities.Slaughter;
 import model.objectModel.fighters.EpsilonModel;
@@ -37,7 +37,7 @@ public class ShootRequest {
         Vector position = Math.VectorAdd(
                 Math.VectorWithSize(
                         direction ,
-                        Constants.EPSILON_BULLET_RADIOS + Constants.EPSILON_DIMENSION.width / 2d + 1
+                        SizeConstants.EPSILON_BULLET_RADIOS + SizeConstants.EPSILON_DIMENSION.width / 2d + 1
                 )
                 ,epsilon.getPosition()
         );
@@ -59,7 +59,7 @@ public class ShootRequest {
                     java.lang.Math.PI / 12 * constant
             );
             Vector spawnPosition = Math.VectorAdd(
-                    Math.VectorWithSize(direction2 , Constants.EPSILON_BULLET_RADIOS + 1),
+                    Math.VectorWithSize(direction2 , SizeConstants.EPSILON_BULLET_RADIOS + 1),
                     position
             );
             Spawner.addProjectile(

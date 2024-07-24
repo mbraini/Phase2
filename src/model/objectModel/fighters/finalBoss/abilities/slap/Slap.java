@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities.slap;
 
-import constants.Constants;
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
 import model.animations.DashAnimation;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.finalBoss.Boss;
@@ -52,7 +53,7 @@ public class Slap extends Ability {
     public void activate() {
         super.activate();
         slapAnimation();
-        timer = new Timer(Constants.ABILITY_SETUP_DELAY * 3 / 2, new ActionListener() {
+        timer = new Timer(RefreshRateConstants.ABILITY_SETUP_DELAY * 3 / 2, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 endAbility();
@@ -71,7 +72,7 @@ public class Slap extends Ability {
     }
 
     private void unsetUpTimer() {
-        unsetUptimer = new Timer(Constants.ABILITY_UNSETUP_DELAY * 3 / 4, new ActionListener() {
+        unsetUptimer = new Timer(RefreshRateConstants.ABILITY_UNSETUP_DELAY * 3 / 4, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 unsetUp();
@@ -87,20 +88,20 @@ public class Slap extends Ability {
         Vector destination;
         if (helper == boss.getLeftHand()) {
             destination = new Vector(
-                    Constants.HAND_DIMENSION.width / 2d,
-                    Constants.SCREEN_SIZE.height / 2d
+                    SizeConstants.HAND_DIMENSION.width / 2d,
+                    SizeConstants.SCREEN_SIZE.height / 2d
             );
         }
         else if (helper == boss.getRightHand()) {
             destination = new Vector(
-                    Constants.SCREEN_SIZE.width - Constants.HAND_DIMENSION.width / 2d ,
-                    Constants.SCREEN_SIZE.height / 2d
+                    SizeConstants.SCREEN_SIZE.width - SizeConstants.HAND_DIMENSION.width / 2d ,
+                    SizeConstants.SCREEN_SIZE.height / 2d
             );
         }
         else {
             destination = new Vector(
-                    Constants.SCREEN_SIZE.width / 2d,
-                    Constants.SCREEN_SIZE.height - Constants.HAND_DIMENSION.height / 2d
+                    SizeConstants.SCREEN_SIZE.width / 2d,
+                    SizeConstants.SCREEN_SIZE.height - SizeConstants.HAND_DIMENSION.height / 2d
             );
         }
         direction = Math.VectorAdd(
@@ -114,7 +115,7 @@ public class Slap extends Ability {
         new DashAnimation(
                 helper,
                 direction,
-                Constants.ABILITY_UNSETUP_DELAY,
+                RefreshRateConstants.ABILITY_UNSETUP_DELAY,
                 Math.VectorSize(direction),
                 0,
                 false
@@ -129,11 +130,11 @@ public class Slap extends Ability {
                 Math.ScalarInVector(-1 ,helper.getPosition())
         );
 
-        double distance = Math.VectorSize(direction) - Constants.HAND_DIMENSION.width / 2d;
+        double distance = Math.VectorSize(direction) - SizeConstants.HAND_DIMENSION.width / 2d;
         new DashAnimation(
                 helper,
                 direction,
-                Constants.ABILITY_SETUP_DELAY,
+                RefreshRateConstants.ABILITY_SETUP_DELAY,
                 distance,
                 0,
                 true

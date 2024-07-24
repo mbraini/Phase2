@@ -1,9 +1,11 @@
 package model.inGameAbilities.Dismay;
 
+import constants.RefreshRateConstants;
+import constants.TimeConstants;
 import controller.enums.InGameAbilityType;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
+import constants.ControllerConstants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.inGameAbilities.InGameAbility;
@@ -33,18 +35,18 @@ public class Dismay extends InGameAbility {
     private void initProtector() {
         protectorModel = new EpsilonProtectorModel(
                 epsilon,
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
+                Helper.RandomStringGenerator(ControllerConstants.ID_SIZE)
         );
     }
 
     private void initTimer() {
-        timer = new Timer(Constants.IN_GAME_ABILITY_TIMER_REFRESH_RATE, new ActionListener() {
+        timer = new Timer(RefreshRateConstants.IN_GAME_ABILITY_TIMER_REFRESH_RATE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (GameState.isPause())
                     return;
-                timePassed += Constants.IN_GAME_ABILITY_TIMER_REFRESH_RATE;
-                if (timePassed >= Constants.DISMAY_DURATION){
+                timePassed += RefreshRateConstants.IN_GAME_ABILITY_TIMER_REFRESH_RATE;
+                if (timePassed >= TimeConstants.DISMAY_DURATION){
                     isAvailable = true;
                     isActive = false;
                     timePassed = 0;
@@ -68,7 +70,7 @@ public class Dismay extends InGameAbility {
         initTimer();
         this.epsilon =ModelData.getEpsilon();
         protectorModel.setEpsilon(epsilon);
-        if (timePassed <= Constants.DISMAY_DURATION && isActive) {
+        if (timePassed <= TimeConstants.DISMAY_DURATION && isActive) {
             Spawner.spawnProtector(protectorModel);
             timer.start();
         }

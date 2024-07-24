@@ -1,9 +1,9 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
+import constants.RefreshRateConstants;
 import controller.Controller;
 import controller.interfaces.SizeChanger;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
 import model.interfaces.FrameSticker;
 import model.interfaces.HasVertices;
 import model.interfaces.ImageChanger;
@@ -75,14 +75,14 @@ public abstract class BossHelperModel extends EnemyModel implements ImageChanger
 
     @Override
     public void move() {
-        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(Constants.UPS ,acceleration));
-        double xMoved = ((2 * velocity.x - acceleration.x * Constants.UPS) / 2) * Constants.UPS;
-        double yMoved = ((2 * velocity.y - acceleration.y * Constants.UPS) / 2) * Constants.UPS;
+        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(RefreshRateConstants.UPS ,acceleration));
+        double xMoved = ((2 * velocity.x - acceleration.x * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
+        double yMoved = ((2 * velocity.y - acceleration.y * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
         setPosition(position.x + xMoved ,position.y + yMoved);
 
 
-        omega += alpha * Constants.UPS;
-        double thetaMoved = ((2 * omega - alpha * Constants.UPS) / 2) * Constants.UPS;
+        omega += alpha * RefreshRateConstants.UPS;
+        double thetaMoved = ((2 * omega - alpha * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
         theta = theta + thetaMoved;
         if (this instanceof HasVertices)
             ((HasVertices) this).UpdateVertices(xMoved ,yMoved ,thetaMoved);

@@ -1,6 +1,8 @@
 package model.objectModel.fighters.finalBoss.abilities.squeeze;
 
-import constants.Constants;
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
+import constants.VelocityConstants;
 import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
 import model.objectModel.frameModel.FrameModel;
 import utils.Math;
@@ -30,7 +32,7 @@ public class SqueezeNavigator {
         Vector leftHandPlacer = Math.VectorAdd(
                 leftFrameCenter,
                 new Vector(
-                        -Constants.HAND_DIMENSION.width / 2d,
+                        -SizeConstants.HAND_DIMENSION.width / 2d,
                         0
                 )
         );
@@ -38,7 +40,7 @@ public class SqueezeNavigator {
         Vector rightHandPlacer = Math.VectorAdd(
                 rightFrameCenter,
                 new Vector(
-                        Constants.HAND_DIMENSION.width / 2d,
+                        SizeConstants.HAND_DIMENSION.width / 2d,
                         0
                 )
         );
@@ -53,11 +55,11 @@ public class SqueezeNavigator {
         );
         leftHandDirection = Math.VectorWithSize(
                 leftHandDirection,
-                Constants.HAND_SQUEEZE_NAVIGAE_VELOCITY
+                VelocityConstants.HAND_SQUEEZE_NAVIGAE_VELOCITY
         );
         rightHandDirection = Math.VectorWithSize(
                 rightHandDirection,
-                Constants.HAND_SQUEEZE_NAVIGAE_VELOCITY
+                VelocityConstants.HAND_SQUEEZE_NAVIGAE_VELOCITY
         );
         leftHand.setVelocity(leftHandDirection);
         rightHand.setVelocity(rightHandDirection);
@@ -76,7 +78,7 @@ public class SqueezeNavigator {
         Vector leftHandPlacer = Math.VectorAdd(
                 leftFrameCenter,
                 new Vector(
-                        -Constants.HAND_DIMENSION.width / 2d,
+                        -SizeConstants.HAND_DIMENSION.width / 2d,
                         0
                 )
         );
@@ -84,7 +86,7 @@ public class SqueezeNavigator {
         Vector rightHandPlacer = Math.VectorAdd(
                 rightFrameCenter,
                 new Vector(
-                        Constants.HAND_DIMENSION.width / 2d,
+                        SizeConstants.HAND_DIMENSION.width / 2d,
                         0
                 )
         );
@@ -99,7 +101,7 @@ public class SqueezeNavigator {
         );
         double leftDistance = Math.VectorSize(distanceVLeft);
         double rightDistance = Math.VectorSize(distanceVRight);
-        double minDistance = Constants.HAND_SQUEEZE_NAVIGAE_VELOCITY * Constants.UPS;
+        double minDistance = VelocityConstants.HAND_SQUEEZE_NAVIGAE_VELOCITY * RefreshRateConstants.UPS;
         if (leftDistance <= minDistance && rightDistance <= minDistance)
             return true;
         return false;

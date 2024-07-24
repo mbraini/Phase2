@@ -1,8 +1,8 @@
 package model.threads;
 
 
-import controller.Controller;
-import constants.Constants;
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.ModelRequests;
@@ -30,7 +30,7 @@ public class GameLoop extends Thread {
             long now = System.nanoTime();
             deltaModel += (now - lastTime) / ns;
             lastTime = now;
-            if (deltaModel >= Constants.UPS) {
+            if (deltaModel >= RefreshRateConstants.UPS) {
                 UpdateModel();
                 deltaModel = 0;
             }
@@ -59,11 +59,11 @@ public class GameLoop extends Thread {
     private void checkGarbage(ArrayList<ObjectModel> models) {
         for (ObjectModel model : models){
             Vector position = model.getPosition();
-            if (position.x <= -Constants.SCREEN_SIZE.width || position.x >= 2 * Constants.SCREEN_SIZE.width){
+            if (position.x <= -SizeConstants.SCREEN_SIZE.width || position.x >= 2 * SizeConstants.SCREEN_SIZE.width){
                 ModelRequests.removeObjectModel(model.getId());
                 continue;
             }
-            if (position.y <= -Constants.SCREEN_SIZE.height || position.y >= 2 * Constants.SCREEN_SIZE.height){
+            if (position.y <= -SizeConstants.SCREEN_SIZE.height || position.y >= 2 * SizeConstants.SCREEN_SIZE.height){
                 ModelRequests.removeObjectModel(model.getId());
             }
         }

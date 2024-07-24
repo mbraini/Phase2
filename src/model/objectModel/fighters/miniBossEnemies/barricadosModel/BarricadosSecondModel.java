@@ -1,8 +1,8 @@
 package model.objectModel.fighters.miniBossEnemies.barricadosModel;
 
+import constants.SizeConstants;
 import controller.Controller;
 import controller.enums.ModelType;
-import constants.Constants;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.frameModel.FrameModelBuilder;
 import utils.Math;
@@ -27,11 +27,11 @@ public class BarricadosSecondModel extends BarricadosModel{
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                -Constants.BARRICADOS_DIMENSION.width / 2d,
-                                -Constants.BARRICADOS_DIMENSION.height / 2d
+                                -SizeConstants.BARRICADOS_DIMENSION.width / 2d,
+                                -SizeConstants.BARRICADOS_DIMENSION.height / 2d
                         )
                 ),
-                Constants.BARRICADOS_DIMENSION,
+                SizeConstants.BARRICADOS_DIMENSION,
                 id
         );
         builder.setSolid(true);

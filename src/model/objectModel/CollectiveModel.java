@@ -1,8 +1,8 @@
 package model.objectModel;
 
 
+import constants.*;
 import controller.Controller;
-import constants.Constants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.interfaces.*;
@@ -25,7 +25,7 @@ public class CollectiveModel extends ObjectModel implements IsCircle, Ability, M
 
     @Override
     public double getRadios() {
-        return Constants.COLLECTIVE_ABILITY_ACTIVATION_RADIOS;
+        return SizeConstants.COLLECTIVE_ABILITY_ACTIVATION_RADIOS;
     }
 
     @Override
@@ -50,9 +50,9 @@ public class CollectiveModel extends ObjectModel implements IsCircle, Ability, M
         );
         velocity = Math.VectorWithSize(
                 distance,
-                Constants.COLLECTIVE_VELOCITY
+                VelocityConstants.COLLECTIVE_VELOCITY
         );
-        if (Math.VectorSize(distance) <= Constants.EPSILON_DIMENSION.width) {
+        if (Math.VectorSize(distance) <= SizeConstants.EPSILON_DIMENSION.width) {
             GameState.setXp(GameState.getXp() + value);
             GameState.setXpGained(GameState.getXpGained() + value);
             die();
@@ -67,9 +67,9 @@ public class CollectiveModel extends ObjectModel implements IsCircle, Ability, M
 
     @Override
     public void move() {
-        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(Constants.UPS ,acceleration));
-        double xMoved = ((2 * velocity.x - acceleration.x * Constants.UPS) / 2) * Constants.UPS;
-        double yMoved = ((2 * velocity.y - acceleration.y * Constants.UPS) / 2) * Constants.UPS;
+        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(RefreshRateConstants.UPS ,acceleration));
+        double xMoved = ((2 * velocity.x - acceleration.x * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
+        double yMoved = ((2 * velocity.y - acceleration.y * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
         setPosition(position.x + xMoved ,position.y + yMoved);
     }
 
@@ -90,7 +90,7 @@ public class CollectiveModel extends ObjectModel implements IsCircle, Ability, M
 
     @Override
     public void fadeIf() {
-        if (time >= Constants.COLLECTIVE_FADE_TIME){
+        if (time >= TimeConstants.COLLECTIVE_FADE_TIME){
             die();
         }
     }

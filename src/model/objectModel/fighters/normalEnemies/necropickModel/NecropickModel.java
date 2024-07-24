@@ -1,10 +1,10 @@
 package model.objectModel.fighters.normalEnemies.necropickModel;
 
-import controller.Controller;
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.interfaces.Ability;
@@ -107,14 +107,14 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
 
     @Override
     public void move() {
-        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(Constants.UPS ,acceleration));
-        double xMoved = ((2 * velocity.x - acceleration.x * Constants.UPS) / 2) * Constants.UPS;
-        double yMoved = ((2 * velocity.y - acceleration.y * Constants.UPS) / 2) * Constants.UPS;
+        velocity = Math.VectorAdd(velocity ,Math.ScalarInVector(RefreshRateConstants.UPS ,acceleration));
+        double xMoved = ((2 * velocity.x - acceleration.x * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
+        double yMoved = ((2 * velocity.y - acceleration.y * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
         setPosition(position.x + xMoved ,position.y + yMoved);
 
 
-        omega += alpha * Constants.UPS;
-        double thetaMoved = ((2 * omega - alpha * Constants.UPS) / 2) * Constants.UPS;
+        omega += alpha * RefreshRateConstants.UPS;
+        double thetaMoved = ((2 * omega - alpha * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
         theta = theta + thetaMoved;
         if (this instanceof HasVertices)
             ((HasVertices) this).UpdateVertices(xMoved ,yMoved ,thetaMoved);
@@ -146,8 +146,8 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                Constants.NECROPICK_DIMENSION.width /2d,
-                                Constants.NECROPICK_DIMENSION.height / 2d
+                                SizeConstants.NECROPICK_DIMENSION.width /2d,
+                                SizeConstants.NECROPICK_DIMENSION.height / 2d
                         )
                 )
         );
@@ -155,8 +155,8 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                Constants.NECROPICK_DIMENSION.width /2d,
-                                -Constants.NECROPICK_DIMENSION.height / 5d
+                                SizeConstants.NECROPICK_DIMENSION.width /2d,
+                                -SizeConstants.NECROPICK_DIMENSION.height / 5d
                         )
                 )
         );
@@ -165,7 +165,7 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
                         position,
                         new Vector(
                                 0,
-                                -Constants.NECROPICK_DIMENSION.height / 2d
+                                -SizeConstants.NECROPICK_DIMENSION.height / 2d
                         )
                 )
         );
@@ -173,8 +173,8 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                -Constants.NECROPICK_DIMENSION.width /2d,
-                                -Constants.NECROPICK_DIMENSION.height / 5d
+                                -SizeConstants.NECROPICK_DIMENSION.width /2d,
+                                -SizeConstants.NECROPICK_DIMENSION.height / 5d
                         )
                 )
         );
@@ -182,8 +182,8 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
                 Math.VectorAdd(
                         position,
                         new Vector(
-                                -Constants.NECROPICK_DIMENSION.width /2d,
-                                Constants.NECROPICK_DIMENSION.height / 2d
+                                -SizeConstants.NECROPICK_DIMENSION.width /2d,
+                                SizeConstants.NECROPICK_DIMENSION.height / 2d
                         )
                 )
         );

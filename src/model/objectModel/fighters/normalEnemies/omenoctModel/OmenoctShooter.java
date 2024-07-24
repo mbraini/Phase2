@@ -1,9 +1,11 @@
 package model.objectModel.fighters.normalEnemies.omenoctModel;
 
+import constants.SizeConstants;
+import constants.TimeConstants;
 import controller.enums.ModelType;
 import controller.manager.GameState;
 import controller.manager.Spawner;
-import constants.Constants;
+import constants.ControllerConstants;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Helper;
@@ -35,19 +37,19 @@ public class OmenoctShooter implements ActionListener {
             return;
         }
         timePassed += 1000;
-        if (timePassed >= Constants.OMENOCT_FIRING_TIME) {
+        if (timePassed >= TimeConstants.OMENOCT_FIRING_TIME) {
             timePassed = 0;
             EpsilonModel epsilon = ModelData.getEpsilon();
             Vector direction = Math.VectorAdd(
                     Math.ScalarInVector(-1, position),
                     epsilon.getPosition()
             );
-            String id = Helper.RandomStringGenerator(Constants.ID_SIZE);
+            String id = Helper.RandomStringGenerator(ControllerConstants.ID_SIZE);
             Vector bulletPosition = Math.VectorAdd(
                     position,
                     Math.VectorWithSize(
                             direction,
-                            Constants.OMENOCT_BULLET_RADIOUS + Constants.OMENOCT_RADIOS
+                            SizeConstants.OMENOCT_BULLET_RADIOS + SizeConstants.OMENOCT_RADIOS
                     )
             );
             Spawner.addProjectile(bulletPosition, direction, ModelType.omenoctBullet);

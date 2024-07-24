@@ -1,8 +1,8 @@
 package model.skillTreeAbilities;
 
+import constants.RefreshRateConstants;
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
 import controller.manager.GameState;
 
 import javax.swing.*;
@@ -100,14 +100,14 @@ public abstract class SkillTreeAbility {
     }
 
     protected void initTimer() {
-        coolDownTimer = new Timer(Constants.SKILL_TREE_ABILITY_TIMER_REFRESH_RATE, new ActionListener() {
+        coolDownTimer = new Timer(RefreshRateConstants.SKILL_TREE_ABILITY_TIMER_REFRESH_RATE, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (GameState.isPause())
                     return;
                 if (GameState.isOver())
                     coolDownTimer.stop();
-                coolDownTimePassed += Constants.SKILL_TREE_ABILITY_TIMER_REFRESH_RATE;
+                coolDownTimePassed += RefreshRateConstants.SKILL_TREE_ABILITY_TIMER_REFRESH_RATE;
                 if (coolDownTimePassed >= inGameCoolDownTime){
                     canCast = true;
                     coolDownTimePassed = 0;

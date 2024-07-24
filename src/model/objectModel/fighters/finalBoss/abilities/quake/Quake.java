@@ -1,7 +1,8 @@
 package model.objectModel.fighters.finalBoss.abilities.quake;
 
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
 import controller.Controller;
-import constants.Constants;
 import model.animations.DashAnimation;
 import model.logics.Impact;
 import model.objectModel.fighters.finalBoss.Boss;
@@ -36,13 +37,13 @@ public class Quake extends Ability {
                 reorderTimer.stop();
             }
         });
-        randomizeTimer = new Timer(Constants.ABILITY_SETUP_DELAY, new ActionListener() {
+        randomizeTimer = new Timer(RefreshRateConstants.ABILITY_SETUP_DELAY, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Controller.randomizeKeys();
                 new Impact(
                         boss.getPunch().getPosition(),
-                        Constants.SCREEN_SIZE.height,
+                        SizeConstants.SCREEN_SIZE.height,
                         3000,
                         true
                 ).MakeImpact();
@@ -79,7 +80,7 @@ public class Quake extends Ability {
     private void punchAnimation() {
         Vector destination = new Vector(
                 epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
-                epsilonFrame.getPosition().y + epsilonFrame.getSize().height + Constants.PUNCH_DIMENSION.height / 2d
+                epsilonFrame.getPosition().y + epsilonFrame.getSize().height + SizeConstants.PUNCH_DIMENSION.height / 2d
         );
         Vector direction = Math.VectorAdd(
                 destination ,
@@ -88,7 +89,7 @@ public class Quake extends Ability {
         new DashAnimation(
                 boss.getPunch(),
                 direction,
-                Constants.ABILITY_SETUP_DELAY,
+                RefreshRateConstants.ABILITY_SETUP_DELAY,
                 Math.VectorSize(direction),
                 0,
                 true

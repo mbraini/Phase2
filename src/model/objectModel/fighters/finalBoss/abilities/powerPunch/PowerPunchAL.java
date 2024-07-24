@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities.powerPunch;
 
-import constants.Constants;
+import constants.DistanceConstants;
+import constants.TimeConstants;
 import model.animations.FrameAnimation;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.frameModel.FrameModel;
@@ -27,11 +28,11 @@ public class PowerPunchAL implements ActionListener {
             case top :
                 new FrameAnimation(
                         epsilonModel,
-                        -Constants.PUNCH_FRAME_PUSH_DISTANCE,
+                        -DistanceConstants.PUNCH_FRAME_PUSH_DISTANCE,
                         0,
                         0,
                         0,
-                        Constants.FRAME_SHRINKAGE_TIME
+                        TimeConstants.FRAME_SHRINKAGE_TIME
                 ).StartAnimation();
                 break;
             case right:
@@ -39,19 +40,19 @@ public class PowerPunchAL implements ActionListener {
                         epsilonModel,
                         0,
                         0,
-                        -Constants.PUNCH_FRAME_PUSH_DISTANCE,
+                        -DistanceConstants.PUNCH_FRAME_PUSH_DISTANCE,
                         0,
-                        Constants.FRAME_SHRINKAGE_TIME
+                        TimeConstants.FRAME_SHRINKAGE_TIME
                 ).StartAnimation();
                 break;
             case bottom:
                 new FrameAnimation(
                         epsilonModel,
                         0,
-                        -Constants.PUNCH_FRAME_PUSH_DISTANCE,
+                        -DistanceConstants.PUNCH_FRAME_PUSH_DISTANCE,
                         0,
                         0,
-                        Constants.FRAME_SHRINKAGE_TIME
+                        TimeConstants.FRAME_SHRINKAGE_TIME
                 ).StartAnimation();
                 break;
             case left:
@@ -60,8 +61,8 @@ public class PowerPunchAL implements ActionListener {
                         0,
                         0,
                         0,
-                        -Constants.PUNCH_FRAME_PUSH_DISTANCE,
-                        Constants.FRAME_SHRINKAGE_TIME
+                        -DistanceConstants.PUNCH_FRAME_PUSH_DISTANCE,
+                        TimeConstants.FRAME_SHRINKAGE_TIME
                 ).StartAnimation();
                 break;
         }

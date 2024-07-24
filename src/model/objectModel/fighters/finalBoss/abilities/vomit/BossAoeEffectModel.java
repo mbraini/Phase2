@@ -1,8 +1,9 @@
 package model.objectModel.fighters.finalBoss.abilities.vomit;
 
+import constants.DistanceConstants;
+import constants.SizeConstants;
 import controller.Controller;
 import controller.manager.loading.SkippedByJson;
-import constants.Constants;
 import model.interfaces.Fader;
 import model.interfaces.IsCircle;
 import model.logics.Impact;
@@ -21,7 +22,7 @@ public class BossAoeEffectModel extends AoeEffectModel implements Fader , IsCirc
         this.id = id;
         this.vomit = vomit;
         this.thread = thread;
-        area = new Circle(Constants.VOMIT_RADIOS ,center);
+        area = new Circle(SizeConstants.VOMIT_RADIOS ,center);
     }
 
     @Override
@@ -31,7 +32,7 @@ public class BossAoeEffectModel extends AoeEffectModel implements Fader , IsCirc
             vomit.removeEffect(id);
         }
         thread.dealDamage(this);
-        new Impact(((Circle)area).getCenter() ,Constants.REGULAR_IMPACT_RANGE).MakeImpact();
+        new Impact(((Circle)area).getCenter() , DistanceConstants.REGULAR_IMPACT_RANGE).MakeImpact();
     }
 
     @Override
@@ -47,7 +48,7 @@ public class BossAoeEffectModel extends AoeEffectModel implements Fader , IsCirc
 
     @Override
     public double getRadios() {
-        return Constants.VOMIT_RADIOS;
+        return SizeConstants.VOMIT_RADIOS;
     }
 
     @Override

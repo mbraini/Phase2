@@ -1,6 +1,7 @@
 package model.objectModel.fighters.finalBoss.abilities.projectile;
 
-import constants.Constants;
+import constants.RefreshRateConstants;
+import constants.SizeConstants;
 import model.ModelData;
 import model.animations.DashAnimation;
 import model.objectModel.fighters.EpsilonModel;
@@ -55,7 +56,7 @@ public class Projectile extends Ability {
     protected void endAbility() {
         endAnimation();
         try {
-            Thread.sleep(Constants.ABILITY_UNSETUP_DELAY);
+            Thread.sleep(RefreshRateConstants.ABILITY_UNSETUP_DELAY);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -67,7 +68,7 @@ public class Projectile extends Ability {
         HeadModel headModel = boss.getHead();
         Vector destination = new Vector(
                 epsilon.getPosition().x,
-                epsilon.getPosition().y - Constants.PROJECTILE_NAVIGATE_RADIOS
+                epsilon.getPosition().y - SizeConstants.PROJECTILE_NAVIGATE_RADIOS
         );
         Vector distance = Math.VectorAdd(
                 destination,
@@ -76,7 +77,7 @@ public class Projectile extends Ability {
         new DashAnimation(
                 headModel,
                 distance,
-                Constants.ABILITY_SETUP_DELAY,
+                RefreshRateConstants.ABILITY_SETUP_DELAY,
                 Math.VectorSize(distance),
                 0,
                 false
@@ -86,7 +87,7 @@ public class Projectile extends Ability {
 
     private void endAnimation() {
         Vector headDirection = Math.VectorAdd(
-                new Vector(Constants.SCREEN_SIZE.width / 2d ,0),
+                new Vector(SizeConstants.SCREEN_SIZE.width / 2d ,0),
                 Math.ScalarInVector(-1 ,boss.getHead().getPosition())
         );
         helperAnimation(boss.getHead() ,headDirection);

@@ -1,6 +1,8 @@
 package controller;
 
 import com.google.gson.Gson;
+import constants.SizeConstants;
+import constants.TimeConstants;
 import controller.configs.Configs;
 import controller.configs.helper.GameConfigsJsonHelper;
 import controller.enums.InGameAbilityType;
@@ -9,7 +11,7 @@ import controller.interfaces.SizeChanger;
 import controller.listeners.keyHelper.KeyHelper;
 import controller.manager.GameManager;
 import controller.manager.loading.GameLoader;
-import constants.Constants;
+import constants.ControllerConstants;
 import controller.manager.saving.GameSaver;
 import model.ModelRequests;
 import model.animations.GameStartAnimation;
@@ -40,7 +42,6 @@ import utils.Helper;
 import utils.Vector;
 import view.ViewRequest;
 import view.ViewData;
-import view.abilities.AbilityView;
 import view.gamePanels.*;
 import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
@@ -99,8 +100,8 @@ public abstract class Controller {
                     frameViews.get(i).setPosition(frame.getPosition());
                     frameViews.get(i).setDimension(
                             new Dimension(
-                                    frame.getSize().width + Constants.barD.width,
-                                    frame.getSize().height + Constants.barD.height
+                                    frame.getSize().width + SizeConstants.barD.width,
+                                    frame.getSize().height + SizeConstants.barD.height
                             )
                     );
                     if (locals.get(objectModels.getFirst()) == frame){
@@ -163,7 +164,7 @@ public abstract class Controller {
                     if (inGameAbility.getType() == InGameAbilityType.slaughter) {
                         Slaughter slaughter = (Slaughter) (inGameAbility);
                         ViewData.addAbilityWithType(
-                                Constants.SLAUGHTER_COOLDOWN,
+                                TimeConstants.SLAUGHTER_COOLDOWN,
                                 slaughter.getTimePassed(),
                                 slaughter.isAvailable(),
                                 slaughter.getType()
@@ -172,7 +173,7 @@ public abstract class Controller {
                     if (inGameAbility.getType() == InGameAbilityType.slumber) {
                         Slumber slaughter = (Slumber) (inGameAbility);
                         ViewData.addAbilityWithType(
-                                Constants.SLUMBER_DURATION,
+                                TimeConstants.SLUMBER_DURATION,
                                 slaughter.getTimePassed(),
                                 slaughter.isAvailable(),
                                 slaughter.getType()
@@ -418,21 +419,21 @@ public abstract class Controller {
 
     private static void addEpsilonAndFrame() {
         EpsilonModel epsilon = new EpsilonModel(
-                new Vector(Constants.SCREEN_SIZE.width / 2d ,
-                        Constants.SCREEN_SIZE.height / 2d
+                new Vector(SizeConstants.SCREEN_SIZE.width / 2d ,
+                        SizeConstants.SCREEN_SIZE.height / 2d
                 )
-                ,Helper.RandomStringGenerator(Constants.ID_SIZE)
+                ,Helper.RandomStringGenerator(ControllerConstants.ID_SIZE)
         );
         ModelData.addModel(epsilon);
         ModelData.setEpsilon(epsilon);
         ViewData.addObject(new EpsilonView(epsilon.getPosition() ,epsilon.getId()));
         FrameModelBuilder builder = new FrameModelBuilder(
                 new Vector(
-                        Constants.SCREEN_SIZE.width / 2d - Constants.GAME_WIDTH / 2d ,
-                        Constants.SCREEN_SIZE.height / 2d - Constants.GAME_HEIGHT / 2d
+                        SizeConstants.SCREEN_SIZE.width / 2d - SizeConstants.GAME_WIDTH / 2d ,
+                        SizeConstants.SCREEN_SIZE.height / 2d - SizeConstants.GAME_HEIGHT / 2d
                 ),
-                new Dimension(Constants.GAME_WIDTH ,Constants.GAME_HEIGHT),
-                Helper.RandomStringGenerator(Constants.ID_SIZE)
+                new Dimension(SizeConstants.GAME_WIDTH , SizeConstants.GAME_HEIGHT),
+                Helper.RandomStringGenerator(ControllerConstants.ID_SIZE)
         );
         builder.setSolid(true);
         FrameModel frameModel = builder.create();

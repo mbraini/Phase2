@@ -1,6 +1,6 @@
 package model.skillTreeAbilities;
 
-import constants.Constants;
+import constants.CostConstants;
 import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
 import model.ModelData;
@@ -12,7 +12,7 @@ public class Melapmus extends SkillTreeAbility{
 
     public Melapmus(){
         isBought = Configs.SkillTreeConfigs.melampusBought;
-        unlockXpCost = Constants.MELAMPUS_UNLOCK_COST;
+        unlockXpCost = CostConstants.MELAMPUS_UNLOCK_COST;
         type = SkillTreeAbilityType.melampus;
         initTimer();
         initEpsilon();

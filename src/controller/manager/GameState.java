@@ -1,6 +1,6 @@
 package controller.manager;
 
-import constants.Constants;
+import constants.VelocityConstants;
 import model.ModelData;
 import model.objectModel.ObjectModel;
 
@@ -46,7 +46,7 @@ public class GameState {
         thirdWavePR = 0;
         forthWavePR = 0;
         fifthWavePR = 0;
-        shrinkageVelocity = Constants.FRAME_SHRINKAGE_VELOCITY;
+        shrinkageVelocity = VelocityConstants.FRAME_SHRINKAGE_VELOCITY;
         WaveSpawner.repeatedCount = 0;
         time = 0;
         hp = 100;
