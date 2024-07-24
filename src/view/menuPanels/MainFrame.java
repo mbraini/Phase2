@@ -17,8 +17,6 @@ public class MainFrame extends JFrame {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setSize(Constants.GAME_WIDTH + Constants.barD.width ,Constants.GAME_HEIGHT + Constants.barD.height);
         this.setLocationRelativeTo(null);
-        this.setType(Type.UTILITY);
-
         addOthers();
 
         this.setVisible(true);

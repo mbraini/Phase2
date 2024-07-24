@@ -12,17 +12,17 @@ import javax.swing.*;
 import java.util.HashMap;
 
 public class DashAnimation extends Animation {
-    private ObjectModel oigModel;
-    private Vector direction;
-    private int time;
-    private int timePassed;
+    private final ObjectModel oigModel;
+    private final Vector direction;
+    private final int time;
+    private  int timePassed;
 
-    private double distance;
+    private final double distance;
 
-    private double theta;
+    private final double theta;
     static HashMap<ObjectModel ,DashAnimation> dashes = new HashMap<>();
-    private boolean grow;
-    private boolean stopBoolean;
+    private final boolean grow;
+    private volatile boolean stopBoolean;
     public DashAnimation(ObjectModel oigModel, Vector direction, int time, double distance ,double theta ,boolean grow) {
         this.oigModel = oigModel;
         this.direction = Math.VectorWithSize(direction ,1);

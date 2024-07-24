@@ -5,6 +5,7 @@ import constants.Constants;
 import controller.manager.GameState;
 import view.Application;
 import view.menuPanels.PIG;
+import view.objectViews.panels.MyButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,12 +13,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EndGamePanel extends PIG {
-    int xpGained;
-    int totalShots;
-    int successfulShots;
-    int enemyKilled;
-    int timePassed;
-    JButton menu;
+    private final int xpGained;
+    private final int totalShots;
+    private final int successfulShots;
+    private final int enemyKilled;
+    private final int timePassed;
+    private MyButton menu;
     private final EndGameFrame endGameFrame;
     public EndGamePanel(EndGameFrame endGameFrame ,int xpGained ,int enemyKilled ,int totalShots ,int successfulShots ,int timePassed){
         this.setLayout(null);
@@ -38,18 +39,12 @@ public class EndGamePanel extends PIG {
     }
 
     private void initMenu() {
-        menu = new JButton();
-        menu.setBounds(getWidth() / 5 * 2 ,getHeight() / 14 * 12 ,getWidth() / 5 ,getHeight() / 14);
-        menu.setText("menu");
-        menu.setBackground(Color.WHITE);
-        menu.setOpaque(true);
-        menu.setFont(new Font(null,Font.BOLD ,15));
-        menu.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
-        menu.setHorizontalTextPosition(JLabel.CENTER);
-        menu.setVerticalTextPosition(JLabel.CENTER);
-        menu.setFocusable(false);
-        this.add(menu);
-
+        menu = new MyButton(
+                new Point(getWidth() / 5 * 2 ,getHeight() / 14 * 12),
+                new Dimension(getWidth() / 5 ,getHeight() / 14),
+                "menu",
+                this
+        );
         menu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

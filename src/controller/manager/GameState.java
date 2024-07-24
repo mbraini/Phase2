@@ -12,7 +12,7 @@ public class GameState {
     private static int xp = 1000;
     private static double hp;
     private static int wave = 1;
-    private static double shrinkageVelocity = Constants.FRAME_SHRINKAGE_VELOCITY;
+    private static double shrinkageVelocity;
     private static int enemyKilled;
     private static int totalBullets;
     private static int successfulBullets;
@@ -46,6 +46,7 @@ public class GameState {
         thirdWavePR = 0;
         forthWavePR = 0;
         fifthWavePR = 0;
+        shrinkageVelocity = Constants.FRAME_SHRINKAGE_VELOCITY;
         WaveSpawner.repeatedCount = 0;
         time = 0;
         hp = 100;

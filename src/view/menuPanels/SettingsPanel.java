@@ -3,6 +3,8 @@ package view.menuPanels;
 
 import controller.configs.Configs;
 import constants.Constants;
+import view.objectViews.panels.MyButton;
+import view.objectViews.panels.MyLabel;
 import view.soundEffects.Sound;
 
 import javax.swing.*;
@@ -15,13 +17,11 @@ import java.awt.event.ActionListener;
 
 public class SettingsPanel extends PIG {
 
-    JSlider soundSlider;
-    JSlider difficultySlider;
-    JSlider sensitivitySlider;
-    JLabel soundGuide;
-    JLabel difficultyGuide;
-    JLabel sensitivityGuide;
-    JButton back;
+    private JSlider soundSlider;
+    private JSlider sensitivitySlider;
+    private MyLabel soundGuide;
+    private MyLabel sensitivityGuide;
+    private MyButton back;
 
     public SettingsPanel(){
         this.setLayout(null);
@@ -30,7 +30,6 @@ public class SettingsPanel extends PIG {
         this.setVisible(false);
 
         initSoundSlider();
-        initDifficultySlider();
         initSensitivitySlider();
         initGuides();
         initBack();
@@ -39,39 +38,19 @@ public class SettingsPanel extends PIG {
     }
 
     private void initGuides() {
-        soundGuide = new JLabel();
-        soundGuide.setBounds(Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 9 ,Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 9);
-        soundGuide.setText("Sound");
-        soundGuide.setBackground(Color.WHITE);
-        soundGuide.setOpaque(true);
-        soundGuide.setFont(new Font(null,Font.BOLD ,15));
-        soundGuide.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
-        soundGuide.setHorizontalAlignment(JLabel.CENTER);
-        soundGuide.setVerticalAlignment(JLabel.CENTER);
-        this.add(soundGuide);
+        soundGuide = new MyLabel(
+                new Point(Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 7),
+                new Dimension(Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 7),
+                "Sound",
+                this
+        );
 
-        difficultyGuide = new JLabel();
-        difficultyGuide.setBounds(Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 9 * 3 ,Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 9);
-        difficultyGuide.setText("Difficulty");
-        difficultyGuide.setBackground(Color.WHITE);
-        difficultyGuide.setOpaque(true);
-        difficultyGuide.setFont(new Font(null,Font.BOLD ,15));
-        difficultyGuide.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
-        difficultyGuide.setHorizontalAlignment(JLabel.CENTER);
-        difficultyGuide.setVerticalAlignment(JLabel.CENTER);
-        this.add(difficultyGuide);
-
-        sensitivityGuide = new JLabel();
-        sensitivityGuide.setBounds(Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 9 * 5 ,Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 9);
-        sensitivityGuide.setText("Sensitivity");
-        sensitivityGuide.setBackground(Color.WHITE);
-        sensitivityGuide.setOpaque(true);
-        sensitivityGuide.setFont(new Font(null,Font.BOLD ,15));
-        sensitivityGuide.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
-        sensitivityGuide.setHorizontalAlignment(JLabel.CENTER);
-        sensitivityGuide.setVerticalAlignment(JLabel.CENTER);
-        sensitivitySlider.setValue(3);
-        this.add(sensitivityGuide);
+        sensitivityGuide = new MyLabel(
+                new Point(Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 7 * 3),
+                new Dimension(Constants.GAME_WIDTH / 8 ,Constants.GAME_HEIGHT / 7),
+                "Sensitivity",
+                this
+        );
     }
 
     private void initAL() {
@@ -101,12 +80,6 @@ public class SettingsPanel extends PIG {
                 }
             }
         });
-        difficultySlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                Configs.DIFFICULTY = difficultySlider.getValue();
-            }
-        });
         sensitivitySlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -120,30 +93,25 @@ public class SettingsPanel extends PIG {
                     Configs.GameConfigs.EPSILON_DECELERATION_TIME = 200;
                 }
                 else if (Configs.SENSITIVITY == 1){
-                    Configs.GameConfigs.EPSILON_ACCELERATION = 0.0003;
-                    Configs.GameConfigs.EPSILON_DECELERATION_TIME = 400;
+                    Configs.GameConfigs.EPSILON_ACCELERATION = 0.0001;
+                    Configs.GameConfigs.EPSILON_DECELERATION_TIME = 500;
                 }
             }
         });
     }
 
     private void initBack() {
-        back = new JButton();
-        back.setBounds(Constants.GAME_WIDTH / 3 ,Constants.GAME_HEIGHT / 9 * 7 ,Constants.GAME_WIDTH / 3 ,Constants.GAME_HEIGHT / 9);
-        back.setFont(new Font(null,Font.BOLD ,15));
-        back.setText("back");
-        back.setBackground(Color.WHITE);
-        back.setOpaque(true);
-        back.setHorizontalTextPosition(JLabel.RIGHT);
-        back.setVerticalTextPosition(JLabel.TOP);
-        back.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
-        back.setFocusable(false);
-        this.add(back);
+        back = new MyButton(
+                new Point(Constants.GAME_WIDTH / 3 ,Constants.GAME_HEIGHT / 7 * 5),
+                new Dimension(Constants.GAME_WIDTH / 3 ,Constants.GAME_HEIGHT / 7),
+                "back",
+                this
+        );
     }
 
     private void initSensitivitySlider() {
         sensitivitySlider = new JSlider(1 ,3);
-        sensitivitySlider.setBounds(Constants.GAME_WIDTH / 8 * 3 ,Constants.GAME_HEIGHT / 9 * 5 ,Constants.GAME_WIDTH / 8 * 4 ,Constants.GAME_HEIGHT / 9);
+        sensitivitySlider.setBounds(Constants.GAME_WIDTH / 8 * 3 ,Constants.GAME_HEIGHT / 7 * 3 ,Constants.GAME_WIDTH / 8 * 4 ,Constants.GAME_HEIGHT / 7);
         sensitivitySlider.setPaintTicks(true);
         sensitivitySlider.setMinorTickSpacing(1);
         sensitivitySlider.setPaintTrack(true);
@@ -155,23 +123,9 @@ public class SettingsPanel extends PIG {
         this.add(sensitivitySlider);
     }
 
-    private void initDifficultySlider() {
-        difficultySlider = new JSlider(1 ,3);
-        difficultySlider.setBounds(Constants.GAME_WIDTH / 8 * 3 ,Constants.GAME_HEIGHT / 9 * 3 ,Constants.GAME_WIDTH / 8 * 4 ,Constants.GAME_HEIGHT / 9);
-        difficultySlider.setPaintTicks(true);
-        difficultySlider.setMinorTickSpacing(1);
-        difficultySlider.setPaintTrack(true);
-        difficultySlider.setMajorTickSpacing(1);
-        difficultySlider.setPaintLabels(true);
-        difficultySlider.setFont(new Font("MV Boli" ,Font.PLAIN ,15));
-        difficultySlider.setValue(Configs.DIFFICULTY);
-
-        this.add(difficultySlider);
-    }
-
     private void initSoundSlider() {
         soundSlider = new JSlider(0 ,10);
-        soundSlider.setBounds(Constants.GAME_WIDTH / 8 * 3 ,Constants.GAME_HEIGHT / 9 ,Constants.GAME_WIDTH / 8 * 4 ,Constants.GAME_HEIGHT / 9);
+        soundSlider.setBounds(Constants.GAME_WIDTH / 8 * 3 ,Constants.GAME_HEIGHT / 7 ,Constants.GAME_WIDTH / 8 * 4 ,Constants.GAME_HEIGHT / 7);
         soundSlider.setPaintTicks(true);
         soundSlider.setMinorTickSpacing(1);
         soundSlider.setPaintTrack(true);

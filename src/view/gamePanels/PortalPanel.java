@@ -4,6 +4,7 @@ import constants.Constants;
 import controller.Controller;
 import controller.enums.InGameAbilityType;
 import view.menuPanels.PIG;
+import view.objectViews.panels.MyLabel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,14 +14,14 @@ import java.awt.event.MouseEvent;
 public class PortalPanel extends PIG {
 
     private PortalFrame portalFrame;
-    int PR;
+    private final int PR;
     private JPanel pay;
-    private JLabel payL1;
-    private JLabel payL2;
-    private JLabel payL3;
+    private MyLabel payL1;
+    private MyLabel payL2;
+    private MyLabel payL3;
     private JPanel decline;
-    private JLabel declineL1;
-    private JLabel choose;
+    private MyLabel declineL1;
+    private MyLabel choose;
 
     public PortalPanel(PortalFrame portalFrame ,int PR) {
         this.setLayout(null);
@@ -43,21 +44,18 @@ public class PortalPanel extends PIG {
     }
 
     private void initChoose() {
-        choose = new JLabel();
-        choose.setBounds(
-                getWidth() / 5 * 2,
-                getHeight() / 9 ,
-                getWidth() / 5 ,
-                getHeight() / 7
+        choose = new MyLabel(
+                new Point(
+                        getWidth() / 5 * 2,
+                        getHeight() / 9
+                ),
+                new Dimension(
+                        getWidth() / 5 ,
+                        getHeight() / 7
+                ),
+                "Choose One!",
+                this
         );
-        choose.setText("Choose One!");
-        choose.setForeground(Color.WHITE);
-        choose.setOpaque(false);
-        choose.setFont(new Font(null,Font.BOLD ,15));
-        choose.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
-        choose.setHorizontalAlignment(JLabel.CENTER);
-        choose.setVerticalAlignment(JLabel.CENTER);
-        this.add(choose);
     }
 
     private void initDeclineLabels() {
@@ -71,21 +69,18 @@ public class PortalPanel extends PIG {
     }
 
     private void initDeclineL1() {
-        declineL1 = new JLabel();
-        declineL1.setBounds(
-                pay.getWidth() / 7 ,
-                pay.getHeight() / 7 * 3  ,
-                pay.getWidth() / 7 * 5 ,
-                pay.getHeight() / 7
+        declineL1 = new MyLabel(
+                new Point(
+                        pay.getWidth() / 7 ,
+                        pay.getHeight() / 7 * 3
+                ),
+                new Dimension(
+                        pay.getWidth() / 7 * 5 ,
+                        pay.getHeight() / 7
+                ),
+                "gain " + PR / 10 + " " + "XP",
+                this
         );
-        declineL1.setText("gain " + PR / 10 + " " + "XP");
-        declineL1.setForeground(Color.WHITE);
-        declineL1.setOpaque(false);
-        declineL1.setFont(new Font(null,Font.BOLD ,15));
-        declineL1.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
-        declineL1.setHorizontalAlignment(JLabel.CENTER);
-        declineL1.setVerticalAlignment(JLabel.CENTER);
-        this.add(declineL1);
     }
 
     private void initPayLabels() {
@@ -98,57 +93,48 @@ public class PortalPanel extends PIG {
     }
 
     private void initPayL3() {
-        payL3 = new JLabel();
-        payL3.setBounds(
-                pay.getWidth() / 7 ,
-                pay.getHeight() / 7 * 5  ,
-                pay.getWidth() / 7 * 5,
-                pay.getHeight() / 7
+        payL3 = new MyLabel(
+                new Point(
+                        pay.getWidth() / 7 ,
+                        pay.getHeight() / 7 * 5
+                ),
+                new Dimension(
+                        pay.getWidth() / 7 * 5,
+                        pay.getHeight() / 7
+                ),
+                "save the game",
+                this
         );
-        payL3.setText("save the game");
-        payL3.setForeground(Color.WHITE);
-        payL3.setOpaque(false);
-        payL3.setFont(new Font(null,Font.BOLD ,15));
-        payL3.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
-        payL3.setHorizontalAlignment(JLabel.CENTER);
-        payL3.setVerticalAlignment(JLabel.CENTER);
-        this.add(payL3);
     }
 
     private void initPayL2() {
-        payL2 = new JLabel();
-        payL2.setBounds(
-                pay.getWidth() / 7 ,
-                pay.getHeight() / 7 * 3,
-                pay.getWidth() / 7 * 5,
-                pay.getHeight() / 7
+        payL2 = new MyLabel(
+                new Point(
+                        pay.getWidth() / 7 ,
+                        pay.getHeight() / 7 * 3
+                ),
+                new Dimension(
+                        pay.getWidth() / 7 * 5,
+                        pay.getHeight() / 7
+                ),
+                "lose " + PR + " " + "XP",
+                this
         );
-        payL2.setText("lose " + PR + " " + "XP");
-        payL2.setForeground(Color.WHITE);
-        payL2.setOpaque(false);
-        payL2.setFont(new Font(null,Font.BOLD ,15));
-        payL2.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
-        payL2.setHorizontalAlignment(JLabel.CENTER);
-        payL2.setVerticalAlignment(JLabel.CENTER);
-        this.add(payL2);
     }
 
     private void initPayL1() {
-        payL1 = new JLabel();
-        payL1.setBounds(
-                pay.getWidth() / 7 ,
-                pay.getHeight() / 7  ,
-                pay.getWidth() / 7 * 5 ,
-                pay.getHeight() / 7
+        payL1 = new MyLabel(
+                new Point(
+                        pay.getWidth() / 7 ,
+                        pay.getHeight() / 7
+                ),
+                new Dimension(
+                        pay.getWidth() / 7 * 5 ,
+                        pay.getHeight() / 7
+                ),
+                "gain 10 hp",
+                this
         );
-        payL1.setText("gain 10 hp");
-        payL1.setForeground(Color.WHITE);
-        payL1.setOpaque(false);
-        payL1.setFont(new Font(null,Font.BOLD ,15));
-        payL1.setBorder(BorderFactory.createLineBorder(Color.CYAN,2));
-        payL1.setHorizontalAlignment(JLabel.CENTER);
-        payL1.setVerticalAlignment(JLabel.CENTER);
-        this.add(payL1);
     }
 
     private void initContainers() {
