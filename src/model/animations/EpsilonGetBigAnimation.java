@@ -1,7 +1,9 @@
 package model.animations;
 
 import constants.SizeConstants;
+import constants.SoundPathConstants;
 import controller.Controller;
+import controller.ModelRequestController;
 import controller.manager.GameState;
 import model.ModelData;
 
@@ -25,6 +27,7 @@ public class EpsilonGetBigAnimation extends TimerAnimation {
             public void actionPerformed(ActionEvent e) {
                 if (ModelData.getEpsilon().getSize().width >= ModelData.getEpsilonFrame().getSize().width) {
                     Controller.endGame(true);
+                    ModelRequestController.playSound(SoundPathConstants.endSound);
                     timer.stop();
                 }
                 ModelData.getEpsilon().setSize(

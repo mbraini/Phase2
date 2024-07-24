@@ -2,7 +2,9 @@ package model.animations;
 
 import constants.ImageConstants;
 import constants.SizeConstants;
+import constants.SoundPathConstants;
 import controller.Controller;
+import controller.ModelRequestController;
 import controller.ObjectController;
 import controller.manager.GameState;
 import model.ModelRequests;
@@ -22,6 +24,7 @@ public class BossDeathAnimation extends TimerAnimation {
 
     public BossDeathAnimation(Boss boss) {
         this.boss = boss;
+        ModelRequestController.playSound(SoundPathConstants.winSound);
         setUpTimer();
     }
 

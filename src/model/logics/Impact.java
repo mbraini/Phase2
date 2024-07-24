@@ -42,15 +42,6 @@ public class Impact {
     }
 
     public void MakeImpact(){
-        try {
-            new Sound(SoundPathConstants.impactSound).play();
-        } catch (UnsupportedAudioFileException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (LineUnavailableException e) {
-            throw new RuntimeException(e);
-        }
         double distance;
         for (int i = 0; i < ModelData.getModels().size() ; i++){
             if (ModelData.getModels().get(i) instanceof ImpactAble) {

@@ -1,6 +1,8 @@
 package controller.manager;
 
 import constants.SizeConstants;
+import constants.SoundPathConstants;
+import controller.ModelRequestController;
 import controller.enums.ModelType;
 import model.ModelData;
 import model.objectModel.frameModel.FrameModel;
@@ -72,6 +74,7 @@ public class WaveSpawner {
         repeatedCount++;
         spawnDelay = 5000;
         if (repeatedCount == 1) {
+            ModelRequestController.playSound(SoundPathConstants.waveSpawnSound);
             Spawner.spawnPortal(
                     new Vector(
                             epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
@@ -97,6 +100,7 @@ public class WaveSpawner {
     private void secondWave(int enemyKilled) {
         repeatedCount++;
         if (repeatedCount == 1) {
+            ModelRequestController.playSound(SoundPathConstants.waveSpawnSound);
             Spawner.spawnPortal(
                     new Vector(
                             epsilonFrame.getPosition().x + epsilonFrame.getSize().width / 2d,
@@ -132,6 +136,7 @@ public class WaveSpawner {
             GameState.setEnemyCount(GameState.getEnemyCount() + 1);
         }
         if (repeatedCount == 1) {
+            ModelRequestController.playSound(SoundPathConstants.waveSpawnSound);
             Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.archmire);
             Spawner.spawnPortal(
                     new Vector(
@@ -159,6 +164,7 @@ public class WaveSpawner {
     private void forthWave(int enemyKilled) {
         repeatedCount++;
         if (repeatedCount == 1) {
+            ModelRequestController.playSound(SoundPathConstants.waveSpawnSound);
             Spawner.spawnObject(
                     new Vector(
                             SizeConstants.SCREEN_SIZE.width / 2d,
@@ -208,6 +214,7 @@ public class WaveSpawner {
     private void fifthWave(int enemyKilled) {
         repeatedCount++;
         if (repeatedCount == 1) {
+            ModelRequestController.playSound(SoundPathConstants.waveSpawnSound);
             Spawner.spawnObject(Helper.createRandomPosition(epsilonFrame ,false) ,ModelType.archmire);
             Spawner.spawnPortal(
                     new Vector(
@@ -273,6 +280,7 @@ public class WaveSpawner {
     private void sixthWave() {
         repeatedCount++;
         if (repeatedCount == 1) {
+            ModelRequestController.playSound(SoundPathConstants.waveSpawnSound);
             Spawner.spawnBoss();
         }
     }

@@ -2,6 +2,7 @@ package model.logics.collision;
 
 
 import constants.DistanceConstants;
+import constants.SoundPathConstants;
 import controller.ModelRequestController;
 import controller.manager.GameState;
 import model.ModelData;
@@ -128,6 +129,7 @@ public class CollisionHandler {
             epsilonEnemyMeleeHandler(epsilon ,(EnemyModel)object);
             pullOutObject(epsilon ,object);
             new Impact(collisionPoint , DistanceConstants.REGULAR_IMPACT_RANGE).MakeImpact();
+            ModelRequestController.playSound(SoundPathConstants.impactSound);
             if (object instanceof BossHelperModel){
                 object.setAcceleration(0 ,0);
                 object.setVelocity(0 ,0);
