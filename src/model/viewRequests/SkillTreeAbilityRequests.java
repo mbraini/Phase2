@@ -9,6 +9,7 @@ import controller.enums.SkillTreeAbilityType;
 import controller.manager.GameState;
 import model.skillTreeAbilities.SkillTreeAbility;
 import model.skillTreeAbilities.SkillTreeAbilityHandler;
+import utils.Helper;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,21 +42,12 @@ public class SkillTreeAbilityRequests {
     }
 
     private static void buy(SkillTreeAbilityType type ,int cost) {
-        StringBuilder stringBuilder = new StringBuilder();
-        Scanner scanner;
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.setPrettyPrinting();
         Gson gson = gsonBuilder.create();
         SkillTreeJsonHelper helper;
-        try {
-            scanner = new Scanner(new File("src/controller/configs/skillTree.json"));
-            while (scanner.hasNextLine())
-                stringBuilder.append(scanner.nextLine());
-            scanner.close();
-            helper = gson.fromJson(stringBuilder.toString() ,SkillTreeJsonHelper.class);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        StringBuilder stringBuilder = Helper.readFile("src/controller/configs/skillTree.json");
+        helper = gson.fromJson(stringBuilder.toString() ,SkillTreeJsonHelper.class);
         GameState.setXp(GameState.getXp() - cost);
         switch (type) {
             case ares :
@@ -100,13 +92,7 @@ public class SkillTreeAbilityRequests {
                 break;
         }
         String json = gson.toJson(helper);
-        try {
-            PrintWriter printWriter = new PrintWriter("src/controller/configs/skillTree.json");
-            printWriter.write(json);
-            printWriter.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        Helper.writeFile("src/controller/configs/skillTree.json" ,json);
     }
 
     private static int canBuy(SkillTreeAbilityType type) {

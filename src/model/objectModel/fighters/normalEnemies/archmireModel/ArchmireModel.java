@@ -3,7 +3,7 @@ package model.objectModel.fighters.normalEnemies.archmireModel;
 import constants.RefreshRateConstants;
 import constants.SizeConstants;
 import constants.VelocityConstants;
-import controller.Controller;
+import controller.ObjectController;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import controller.manager.loading.GameLoaderHelper;
@@ -173,7 +173,7 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
 
     public void killEffect(ArchmireAoeEffectModel archmireAoeEffectModel) {
         thread.getRemovedAoe().add(archmireAoeEffectModel.getId());
-        Controller.removeEffect(archmireAoeEffectModel);
+        ObjectController.removeEffect(archmireAoeEffectModel);
     }
 
     public void start() {

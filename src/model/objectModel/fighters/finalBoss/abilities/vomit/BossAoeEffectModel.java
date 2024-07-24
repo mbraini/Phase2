@@ -2,7 +2,7 @@ package model.objectModel.fighters.finalBoss.abilities.vomit;
 
 import constants.DistanceConstants;
 import constants.SizeConstants;
-import controller.Controller;
+import controller.ObjectController;
 import controller.manager.loading.SkippedByJson;
 import model.interfaces.Fader;
 import model.interfaces.IsCircle;
@@ -27,7 +27,7 @@ public class BossAoeEffectModel extends AoeEffectModel implements Fader , IsCirc
 
     @Override
     public void die() {
-        Controller.removeEffect(this);
+        ObjectController.removeEffect(this);
         synchronized (vomit.getEffects()){
             vomit.removeEffect(id);
         }

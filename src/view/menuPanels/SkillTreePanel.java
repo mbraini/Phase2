@@ -3,7 +3,7 @@ package view.menuPanels;
 
 import constants.ImageConstants;
 import constants.SizeConstants;
-import controller.Controller;
+import controller.ViewRequestController;
 import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.GameState;
@@ -85,7 +85,7 @@ public class SkillTreePanel extends PIG {
         athena.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.buySkillTreeRequest(SkillTreeAbilityType.athena);
+                ViewRequestController.buySkillTreeRequest(SkillTreeAbilityType.athena);
                 updateXP();
             }
         });
@@ -107,7 +107,7 @@ public class SkillTreePanel extends PIG {
         cerberus.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.buySkillTreeRequest(SkillTreeAbilityType.cerberus);
+                ViewRequestController.buySkillTreeRequest(SkillTreeAbilityType.cerberus);
                 updateXP();
             }
         });
@@ -134,7 +134,7 @@ public class SkillTreePanel extends PIG {
         astrape.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.buySkillTreeRequest(SkillTreeAbilityType.astrape);
+                ViewRequestController.buySkillTreeRequest(SkillTreeAbilityType.astrape);
                 updateXP();
             }
         });
@@ -156,7 +156,7 @@ public class SkillTreePanel extends PIG {
         dolus.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.buySkillTreeRequest(SkillTreeAbilityType.dolus);
+                ViewRequestController.buySkillTreeRequest(SkillTreeAbilityType.dolus);
                 updateXP();
             }
         });
@@ -178,7 +178,7 @@ public class SkillTreePanel extends PIG {
         empusa.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.buySkillTreeRequest(SkillTreeAbilityType.empusa);
+                ViewRequestController.buySkillTreeRequest(SkillTreeAbilityType.empusa);
                 updateXP();
             }
         });
@@ -200,7 +200,7 @@ public class SkillTreePanel extends PIG {
         chiron.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.buySkillTreeRequest(SkillTreeAbilityType.chiron);
+                ViewRequestController.buySkillTreeRequest(SkillTreeAbilityType.chiron);
                 updateXP();
             }
         });
@@ -222,7 +222,7 @@ public class SkillTreePanel extends PIG {
         melampus.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.buySkillTreeRequest(SkillTreeAbilityType.melampus);
+                ViewRequestController.buySkillTreeRequest(SkillTreeAbilityType.melampus);
                 updateXP();
             }
         });
@@ -298,7 +298,7 @@ public class SkillTreePanel extends PIG {
         ares.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.buySkillTreeRequest(SkillTreeAbilityType.ares);
+                ViewRequestController.buySkillTreeRequest(SkillTreeAbilityType.ares);
                 updateXP();
             }
         });
@@ -320,7 +320,7 @@ public class SkillTreePanel extends PIG {
         aceso.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.buySkillTreeRequest(SkillTreeAbilityType.aceso);
+                ViewRequestController.buySkillTreeRequest(SkillTreeAbilityType.aceso);
                 updateXP();
             }
         });
@@ -341,7 +341,7 @@ public class SkillTreePanel extends PIG {
         proteus.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.buySkillTreeRequest(SkillTreeAbilityType.proteus);
+                ViewRequestController.buySkillTreeRequest(SkillTreeAbilityType.proteus);
                 updateXP();
             }
         });

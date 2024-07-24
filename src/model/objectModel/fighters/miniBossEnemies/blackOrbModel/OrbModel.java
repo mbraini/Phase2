@@ -1,7 +1,7 @@
 package model.objectModel.fighters.miniBossEnemies.blackOrbModel;
 
 import constants.SizeConstants;
-import controller.Controller;
+import controller.ObjectController;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
 import model.interfaces.IsCircle;
@@ -36,7 +36,7 @@ public class OrbModel extends MiniBossModel implements IsCircle {
             blackOrbModel.getBlackOrbThread().disconnectLasers(this);
             blackOrbModel.removeOrb(id);
             blackOrbModel.checkDeath();
-            Controller.removeFrame(frameModel);
+            ObjectController.removeFrame(frameModel);
             Spawner.addCollectives(position, 1, 30);
         }
     }

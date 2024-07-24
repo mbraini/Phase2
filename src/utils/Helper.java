@@ -128,14 +128,7 @@ public class Helper {
     }
 
     public static void resetAllJsons(String path) {
-        try {
-            PrintWriter printWriter = new PrintWriter(new File(path + "/models.json"));
-            printWriter.write("");
-            printWriter.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
+        Helper.writeFile(path + "/models.json" ,"");
     }
 
     public static void saveXP(int xp) {
@@ -143,20 +136,35 @@ public class Helper {
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
         Gson gson = builder.create();
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = Helper.readFile("src/controller/configs/gameConfigs.json");
+        helper = gson.fromJson(stringBuilder.toString() ,GameConfigsJsonHelper.class);
+        helper.XP = xp;
+        Configs.GameConfigs.XP = xp;
+        Helper.writeFile("src/controller/configs/gameConfigs.json" ,gson.toJson(helper));
+    }
+
+    public static synchronized StringBuilder readFile(String path) {
+        Scanner scanner;
         try {
-            Scanner scanner = new Scanner(new File("src/controller/configs/gameConfigs.json"));
-            while (scanner.hasNextLine())
-                stringBuilder.append(scanner.nextLine());
-            scanner.close();
-            helper = gson.fromJson(stringBuilder.toString() ,GameConfigsJsonHelper.class);
-            helper.XP = xp;
-            Configs.GameConfigs.XP = xp;
-            PrintWriter printWriter = new PrintWriter("src/controller/configs/gameConfigs.json");
-            printWriter.write(gson.toJson(helper));
+            scanner = new Scanner(new File(path));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        while (scanner.hasNextLine())
+            stringBuilder.append(scanner.nextLine());
+        scanner.close();
+        return stringBuilder;
+    }
+
+    public static synchronized void writeFile(String path ,String text) {
+        try {
+            PrintWriter printWriter = new PrintWriter(path);
+            printWriter.write(text);
             printWriter.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
+
 }

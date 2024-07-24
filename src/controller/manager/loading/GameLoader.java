@@ -20,6 +20,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import utils.Helper;
 import view.ViewRequest;
 import view.objectViews.FrameView;
 
@@ -50,15 +51,8 @@ public class GameLoader {
     private void loadGameState() {
         gson = getGson();
 
-        StringBuilder gameStateString = new StringBuilder();
-        try {
-            Scanner gameStateScanner = new Scanner(new File(path + "/gameState.json"));
-            while (gameStateScanner.hasNextLine())
-                gameStateString.append(gameStateScanner.nextLine());
-            gameStateScanner.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        StringBuilder gameStateString = Helper.readFile(path + "/gameState.json");
+
         GameManagerHelperSaver gameState = gson.fromJson(gameStateString.toString() ,GameManagerHelperSaver.class);
         GameState.setTime(gameState.time);
         GameState.setHp(gameState.hp);
@@ -86,15 +80,7 @@ public class GameLoader {
     public void loadSkillTree() {
         gson = getGson();
 
-        StringBuilder skillTreeString = new StringBuilder();
-        try {
-            Scanner abilityScanner = new Scanner(new File(path + "/skillTree.json"));
-            while (abilityScanner.hasNextLine())
-                skillTreeString.append(abilityScanner.nextLine());
-            abilityScanner.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        StringBuilder skillTreeString = Helper.readFile(path + "/skillTree.json");
         ArrayList<SkillTreeAbility> abilities;
         try {
             JSONArray jAbilities = (JSONArray) new JSONTokener(skillTreeString.toString()).nextValue();
@@ -112,15 +98,7 @@ public class GameLoader {
     public void loadAbilities() {
         gson = getGson();
 
-        StringBuilder abilityString = new StringBuilder();
-        try {
-            Scanner abilityScanner = new Scanner(new File(path + "/abilities.json"));
-            while (abilityScanner.hasNextLine())
-                abilityString.append(abilityScanner.nextLine());
-            abilityScanner.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        StringBuilder abilityString = Helper.readFile(path + "/abilities.json");
         ArrayList<InGameAbility> abilities;
         try {
             JSONArray jAbilities = (JSONArray) new JSONTokener(abilityString.toString()).nextValue();
@@ -138,35 +116,10 @@ public class GameLoader {
     public void loadGame() {
         gson = getGson();
 
-        StringBuilder modelString = new StringBuilder();
-        StringBuilder frameString = new StringBuilder();
-        StringBuilder abstractEnemyString = new StringBuilder();
-        StringBuilder effectString = new StringBuilder();
-        try {
-            Scanner modelScanner = new Scanner(new File(path + "/models.json"));
-            Scanner frameScanner = new Scanner(new File(path + "/frames.json"));
-            Scanner abstractEnemyScanner = new Scanner(new File(path + "/abstractEnemies.json"));
-            Scanner effectScanner = new Scanner(new File(path + "/effects.json"));
-            while (modelScanner.hasNextLine()){
-                modelString.append(modelScanner.nextLine());
-            }
-            while (frameScanner.hasNextLine()){
-                frameString.append(frameScanner.nextLine());
-            }
-            while (abstractEnemyScanner.hasNextLine()){
-                abstractEnemyString.append(abstractEnemyScanner.nextLine());
-            }
-            while (effectScanner.hasNextLine()){
-                effectString.append(effectScanner.nextLine());
-            }
-            modelScanner.close();
-            frameScanner.close();
-            abstractEnemyScanner.close();
-            effectScanner.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
+        StringBuilder modelString = Helper.readFile(path + "/models.json");
+        StringBuilder frameString = Helper.readFile(path + "/frames.json");
+        StringBuilder abstractEnemyString = Helper.readFile(path + "/abstractEnemies.json");
+        StringBuilder effectString = Helper.readFile(path + "/effects.json");
         try {
             JSONArray jModels = (JSONArray) new JSONTokener(modelString.toString()).nextValue();
             for (int i = 0; i <jModels.length() ;i++){

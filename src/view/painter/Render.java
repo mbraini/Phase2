@@ -2,7 +2,7 @@ package view.painter;
 
 import constants.RefreshRateConstants;
 import constants.SizeConstants;
-import controller.Controller;
+import controller.ViewRequestController;
 import utils.Vector;
 import view.ViewData;
 import view.ViewRequest;
@@ -33,7 +33,7 @@ public class Render extends Thread {
             lastTime = now;
             if (deltaPaint >= RefreshRateConstants.FPS) {
                 ViewRequest.checkRequests();
-                Controller.updateView();
+                ViewRequestController.updateView();
                 paint();
                 deltaPaint = 0;
             }

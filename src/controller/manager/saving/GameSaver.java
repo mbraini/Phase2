@@ -87,41 +87,19 @@ public class GameSaver {
 
         Gson gson = getGson();
         String gameStateString = gson.toJson(gameState);
-        PrintWriter modelWriter = null;
-        try {
-            modelWriter = new PrintWriter(path + "/gameState.json");
-            modelWriter.write(gameStateString);
-            modelWriter.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        Helper.writeFile(path + "/gameState.json" ,gameStateString);
     }
 
     private void saveSkillTree() {
         Gson gson = getGson();
         String skillTreeString = gson.toJson(skillTreeAbilities);
-        PrintWriter modelWriter = null;
-        try {
-            modelWriter = new PrintWriter(path + "/skillTree.json");
-            modelWriter.write(skillTreeString);
-            modelWriter.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        Helper.writeFile(path + "/skillTree.json" ,skillTreeString);
     }
 
     private void saveAbilities() {
         Gson gson = getGson();
         String abilityString = gson.toJson(abilities);
-        PrintWriter modelWriter = null;
-        try {
-            modelWriter = new PrintWriter(path + "/abilities.json");
-            modelWriter.write(abilityString);
-            modelWriter.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
+        Helper.writeFile(path + "/abilities.json" ,abilityString);
     }
 
     private void saveGame() {
@@ -132,24 +110,10 @@ public class GameSaver {
         String abstractEnemyString = gson.toJson(abstractEnemies);
         String effectString = gson.toJson(effects);
 
-        try {
-            PrintWriter modelWriter = new PrintWriter(path + "/models.json");
-            modelWriter.write(modelString);
-            modelWriter.close();
-            PrintWriter frameWriter = new PrintWriter(path + "/frames.json");
-            frameWriter.write(frameString);
-            frameWriter.close();
-            PrintWriter abstractEnemyWriter = new PrintWriter(
-                    path + "/abstractEnemies.json"
-            );
-            abstractEnemyWriter.write(abstractEnemyString);
-            abstractEnemyWriter.close();
-            PrintWriter effectWriter = new PrintWriter(path + "/effects.json");
-            effectWriter.write(effectString);
-            effectWriter.close();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        Helper.writeFile(path + "/models.json" ,modelString);
+        Helper.writeFile(path + "/frames.json" ,frameString);
+        Helper.writeFile(path + "/abstractEnemies.json" ,abstractEnemyString);
+        Helper.writeFile(path + "/effects.json" ,effectString);
     }
 
     private Gson getGson() {
@@ -176,16 +140,7 @@ public class GameSaver {
     }
 
     public static boolean isPortalSaved() {
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(new File("src/controller/manager/saving/portalSaved/models.json"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        StringBuilder stringBuilder = new StringBuilder();
-        while (scanner.hasNextLine()) {
-            stringBuilder.append(scanner.nextLine());
-        }
+        StringBuilder stringBuilder = Helper.readFile("src/controller/manager/saving/portalSaved/models.json");
         if (stringBuilder.toString().isEmpty()) {
             return false;
         }
@@ -193,16 +148,7 @@ public class GameSaver {
     }
 
     public static boolean isGameSaved() {
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(new File("src/controller/manager/saving/inGameSaved/models.json"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        StringBuilder stringBuilder = new StringBuilder();
-        while (scanner.hasNextLine()) {
-            stringBuilder.append(scanner.nextLine());
-        }
+        StringBuilder stringBuilder = Helper.readFile("src/controller/manager/saving/inGameSaved/models.json");
         if (stringBuilder.toString().isEmpty()) {
             return false;
         }

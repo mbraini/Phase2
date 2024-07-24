@@ -1,7 +1,7 @@
 package model.objectModel.fighters;
 
 
-import controller.Controller;
+import controller.ObjectController;
 import controller.manager.GameState;
 import model.logics.collision.Collision;
 import model.interfaces.IsCircle;
@@ -29,7 +29,7 @@ public abstract class EnemyModel extends FighterModel {
 
     @Override
     public void die() {
-        Controller.removeObject(this);
+        ObjectController.removeObject(this);
         GameState.setEnemyCount(GameState.getEnemyCount() - 1);
         GameState.setEnemyKilled(GameState.getEnemyKilled() + 1);
     }

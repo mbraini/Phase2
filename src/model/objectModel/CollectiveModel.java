@@ -2,7 +2,7 @@ package model.objectModel;
 
 
 import constants.*;
-import controller.Controller;
+import controller.ObjectController;
 import controller.manager.GameState;
 import model.ModelData;
 import model.interfaces.*;
@@ -75,7 +75,7 @@ public class CollectiveModel extends ObjectModel implements IsCircle, Ability, M
 
     @Override
     public void die() {
-        Controller.removeObject(this);
+        ObjectController.removeObject(this);
     }
 
     @Override

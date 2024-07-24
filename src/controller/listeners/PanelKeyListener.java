@@ -1,6 +1,7 @@
 package controller.listeners;
 
 import controller.Controller;
+import controller.ViewRequestController;
 import controller.configs.Configs;
 import controller.enums.SkillTreeAbilityType;
 import controller.manager.GameState;
@@ -38,34 +39,34 @@ public class PanelKeyListener extends KeyAdapter {
             new Shop(new ShopFrame());
         }
         if (e.getKeyChar() == ARES_KEY) {
-            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.ares);
+            ViewRequestController.skillTreeAbilityRequest(SkillTreeAbilityType.ares);
         }
         if (e.getKeyChar() == ASTRAPE_KEY) {
-            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.astrape);
+            ViewRequestController.skillTreeAbilityRequest(SkillTreeAbilityType.astrape);
         }
         if (e.getKeyChar() == CERBERUS_KEY) {
-            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.cerberus);
+            ViewRequestController.skillTreeAbilityRequest(SkillTreeAbilityType.cerberus);
         }
         if (e.getKeyChar() == ACESO_KEY) {
-            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.aceso);
+            ViewRequestController.skillTreeAbilityRequest(SkillTreeAbilityType.aceso);
         }
         if (e.getKeyChar() == MELAMPUS_KEY) {
-            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.melampus);
+            ViewRequestController.skillTreeAbilityRequest(SkillTreeAbilityType.melampus);
         }
         if (e.getKeyChar() == CHIRON_KEY) {
-            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.chiron);
+            ViewRequestController.skillTreeAbilityRequest(SkillTreeAbilityType.chiron);
         }
         if (e.getKeyChar() == PROTEUS_KEY) {
-            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.proteus);
+            ViewRequestController.skillTreeAbilityRequest(SkillTreeAbilityType.proteus);
         }
         if (e.getKeyChar() == EMPUSA_KEY) {
-            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.empusa);
+            ViewRequestController.skillTreeAbilityRequest(SkillTreeAbilityType.empusa);
         }
         if (e.getKeyChar() == DOLUS_KEY) {
-            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.dolus);
+            ViewRequestController.skillTreeAbilityRequest(SkillTreeAbilityType.dolus);
         }
         if (e.getKeyChar() == ATHENA_KEY) {
-            Controller.skillTreeAbilityRequest(SkillTreeAbilityType.athena);
+            ViewRequestController.skillTreeAbilityRequest(SkillTreeAbilityType.athena);
         }
     }
 }

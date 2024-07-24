@@ -2,7 +2,7 @@ package model.objectModel;
 
 import constants.SizeConstants;
 import constants.TimeConstants;
-import controller.Controller;
+import controller.ObjectController;
 import controller.enums.ModelType;
 import model.interfaces.Ability;
 import model.interfaces.Fader;
@@ -29,7 +29,7 @@ public class PortalModel extends ObjectModel implements IsCircle, Fader ,Ability
 
     @Override
     public void die() {
-        Controller.removeObject(this);
+        ObjectController.removeObject(this);
     }
 
     @Override

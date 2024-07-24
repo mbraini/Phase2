@@ -2,39 +2,23 @@ package controller;
 
 import com.google.gson.Gson;
 import constants.SizeConstants;
-import constants.TimeConstants;
 import controller.configs.Configs;
 import controller.configs.helper.GameConfigsJsonHelper;
-import controller.enums.InGameAbilityType;
-import controller.enums.SkillTreeAbilityType;
-import controller.interfaces.SizeChanger;
-import controller.listeners.keyHelper.KeyHelper;
 import controller.manager.GameManager;
 import controller.manager.loading.GameLoader;
 import constants.ControllerConstants;
 import controller.manager.saving.GameSaver;
 import model.ModelRequests;
 import model.animations.GameStartAnimation;
-import model.inGameAbilities.InGameAbility;
 import model.inGameAbilities.InGameAbilityHandler;
-import model.inGameAbilities.Slaughter;
-import model.inGameAbilities.Slumber;
-import model.interfaces.ImageChanger;
-import model.objectModel.PortalModel;
 import model.objectModel.fighters.EpsilonModel;
-import model.objectModel.effects.EffectModel;
 import model.objectModel.frameModel.FrameModelBuilder;
-import model.skillTreeAbilities.SkillTreeAbility;
 import model.skillTreeAbilities.SkillTreeAbilityHandler;
 import model.threads.FrameThread;
 import model.threads.GameLoop;
 import controller.manager.GameState;
 import model.ModelData;
 import model.objectModel.frameModel.FrameModel;
-import model.objectModel.ObjectModel;
-import model.viewRequests.ShootRequest;
-import model.viewRequests.InGameAbilityRequests;
-import model.viewRequests.SkillTreeAbilityRequests;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -45,8 +29,6 @@ import view.ViewData;
 import view.gamePanels.*;
 import view.objectViews.EpsilonView;
 import view.objectViews.FrameView;
-import view.objectViews.ObjectView;
-import view.objectViews.effectView.EffectView;
 import view.painter.Render;
 
 import javax.swing.*;
@@ -55,8 +37,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public abstract class Controller {
@@ -64,147 +44,7 @@ public abstract class Controller {
     private static GameLoop gameLoop;
     private static FrameThread frameThread;
     private static GameManager gameManager;
-    private static PortalModel portalModel;
     private static GameMode gameMode;
-
-    public static void updateView(){
-        synchronized (ModelData.getModels()) {
-
-            //////// syncronize them later !
-
-            ArrayList<ObjectView> objectViews = (ArrayList<ObjectView>) ViewData.getViews().clone();
-            ArrayList<FrameView> frameViews = (ArrayList<FrameView>) ViewData.getFrames().clone();
-            ArrayList<ObjectModel> objectModels = (ArrayList<ObjectModel>) ModelData.getModels().clone();
-            ArrayList<FrameModel> frameModels = (ArrayList<FrameModel>) ModelData.getFrames().clone();
-            ArrayList<EffectView> effectViews = (ArrayList<EffectView>) ViewData.getEffectViews().clone();
-            ArrayList<EffectModel> effectModels = (ArrayList<EffectModel>) ModelData.getEffectModels().clone();
-            HashMap<ObjectModel ,FrameModel> locals =
-                    (HashMap<ObjectModel, FrameModel>) ModelData.getLocalFrames().clone();
-            ArrayList<SkillTreeAbility> skillTreeAbilities =
-                    (ArrayList<SkillTreeAbility>) ModelData.getSkillTreeAbilities().clone();
-            ArrayList<InGameAbility> inGameAbilities = (ArrayList<InGameAbility>) ModelData.getInGameAbilities().clone();
-
-            ///////////////
-
-            try {
-                for (int i = 0; i < frameViews.size(); i++) {
-                    int index = -1;
-                    for (int j = 0; j < frameModels.size(); j++) {
-                        if (frameModels.get(j).getId().equals(frameViews.get(i).getId()))
-                            index = j;
-                    }
-                    if (index == -1)
-                        continue;
-
-                    FrameModel frame = frameModels.get(index);
-                    frameViews.get(i).setPosition(frame.getPosition());
-                    frameViews.get(i).setDimension(
-                            new Dimension(
-                                    frame.getSize().width + SizeConstants.barD.width,
-                                    frame.getSize().height + SizeConstants.barD.height
-                            )
-                    );
-                    if (locals.get(objectModels.getFirst()) == frame){
-                        ViewData.setEpsilonFrame(frameViews.get(i));
-                    }
-                }
-
-                for (int i = 0; i < objectViews.size(); i++) {
-                    int index = -1;
-                    for (int j = 0; j < objectModels.size(); j++) {
-                        if (objectModels.get(j).getId().equals(objectViews.get(i).getId()))
-                            index = j;
-                    }
-                    if (index == -1)
-                        continue;
-                    ObjectModel model = objectModels.get(index);
-                    objectViews.get(i).setPosition(model.getPosition());
-                    objectViews.get(i).setTheta(model.getTheta());
-                    objectViews.get(i).setHovering(model.isHovering());
-                    if (model instanceof ImageChanger)
-                        objectViews.get(i).setImage(((ImageChanger) model).getImage());
-                    if (model instanceof SizeChanger && objectViews.get(i) instanceof SizeChanger)
-                        ((SizeChanger) objectViews.get(i)).setSize(((SizeChanger) model).getSize());
-                }
-
-                for (int i = 0; i < effectViews.size(); i++) {
-                    int index = -1;
-                    for (int j = 0; j < effectModels.size(); j++) {
-                        if (effectModels.get(j).getId() == null)
-                            continue;
-                        if (effectModels.get(j).getId().equals(effectViews.get(i).getId()))
-                            index = j;
-                    }
-                    if (index == -1)
-                        continue;
-                    EffectModel effectModel = effectModels.get(index);
-                    effectViews.get(i).setArea(effectModel.getArea());
-                    effectViews.get(i).setTheta(effectModel.getTheta());
-                    effectViews.get(i).setColor(new Color(
-                            effectModel.getR(),
-                            effectModel.getG(),
-                            effectModel.getB()
-                    ));
-                }
-
-
-                ViewData.setViews(objectViews);
-                ViewData.setFrames(frameViews);
-                setVariables();
-                ViewData.setAbilityViews(new ArrayList<>());
-                for (SkillTreeAbility skillTreeAbility : skillTreeAbilities) {
-                    ViewData.addAbilityWithType(
-                            skillTreeAbility.getInGameCoolDownTime(),
-                            skillTreeAbility.getCoolDownTimePassed(),
-                            skillTreeAbility.isBought() && skillTreeAbility.CanCast(),
-                            skillTreeAbility.getType()
-                    );
-                }
-                for (InGameAbility inGameAbility : inGameAbilities) {
-                    if (inGameAbility.getType() == InGameAbilityType.slaughter) {
-                        Slaughter slaughter = (Slaughter) (inGameAbility);
-                        ViewData.addAbilityWithType(
-                                TimeConstants.SLAUGHTER_COOLDOWN,
-                                slaughter.getTimePassed(),
-                                slaughter.isAvailable(),
-                                slaughter.getType()
-                        );
-                    }
-                    if (inGameAbility.getType() == InGameAbilityType.slumber) {
-                        Slumber slaughter = (Slumber) (inGameAbility);
-                        ViewData.addAbilityWithType(
-                                TimeConstants.SLUMBER_DURATION,
-                                slaughter.getTimePassed(),
-                                slaughter.isAvailable(),
-                                slaughter.getType()
-                        );
-                    }
-                }
-            }
-            catch (Exception e){
-                System.out.println("update view exeption!");
-            }
-        }
-    }
-
-    public synchronized static void removeObject(ObjectModel model) {
-        ModelRequests.removeObjectModel(model.getId());
-        ViewRequest.removeObjectView(model.getId());
-    }
-
-    public static void sendViewUpdates() {
-
-    }
-
-    public synchronized static void removeEffect(EffectModel effectModel) {
-        ModelRequests.removeEffectModel(effectModel.getId());
-        ViewRequest.removeEffectView(effectModel.getId());
-    }
-
-    public static void removeFrame(FrameModel frameModel) {
-        ModelRequests.removeFrameModel(frameModel.getId());
-        ViewRequest.removeFrameView(frameModel.getId());
-    }
 
     public static void resume() {
         GameState.setPause(false);
@@ -212,26 +52,6 @@ public abstract class Controller {
 
     public static void pause() {
         GameState.setPause(true);
-    }
-
-    public static void randomizeKeys() {
-        KeyHelper.randomize();
-    }
-
-    public static void reorderKeys() {
-        KeyHelper.reorder();
-    }
-
-    public static void portalWindow() {
-        pause();
-        Controller.removeObject(portalModel);
-        int totalPR = GameState.getAllPR();
-        int PR = (int) (totalPR * GameState.getXpGained() * 10 / GameState.getHp());
-        new PortalPanel(new PortalFrame() ,PR).start();
-    }
-
-    private static void removePortal() {
-
     }
 
     public static boolean addXP(int pr) {
@@ -271,75 +91,37 @@ public abstract class Controller {
 
     private static void gameConfigs() {
         Gson gson = new Gson();
-        StringBuilder stringBuilder = new StringBuilder();
-        try {
-            Scanner scanner = new Scanner(new File("src/controller/configs/gameConfigs.json"));
-            while (scanner.hasNextLine())
-                stringBuilder.append(scanner.nextLine());
-            scanner.close();
-            GameConfigsJsonHelper helper = gson.fromJson(stringBuilder.toString() , GameConfigsJsonHelper.class);
-            Configs.GameConfigs.XP = helper.XP;
-            GameState.setXp(helper.XP);
-            Configs.GameConfigs.EPSILON_ACCELERATION = helper.EPSILON_ACCELERATION;
-            Configs.GameConfigs.EPSILON_DECELERATION_TIME = helper.EPSILON_DECELERATION_TIME;
-            Configs.GameConfigs.EPSILON_MAX_SPEED = helper.EPSILON_MAX_SPEED;
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        StringBuilder stringBuilder = Helper.readFile("src/controller/configs/gameConfigs.json");
+        GameConfigsJsonHelper helper = gson.fromJson(stringBuilder.toString() , GameConfigsJsonHelper.class);
+        Configs.GameConfigs.XP = helper.XP;
+        GameState.setXp(helper.XP);
+        Configs.GameConfigs.EPSILON_ACCELERATION = helper.EPSILON_ACCELERATION;
+        Configs.GameConfigs.EPSILON_DECELERATION_TIME = helper.EPSILON_DECELERATION_TIME;
+        Configs.GameConfigs.EPSILON_MAX_SPEED = helper.EPSILON_MAX_SPEED;
     }
 
     private static void skillTreeConfigs() {
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = Helper.readFile("src/controller/configs/skillTree.json");
         try {
-            Scanner scanner = new Scanner(new File("src/controller/configs/skillTree.json"));
-            while (scanner.hasNextLine())
-                stringBuilder.append(scanner.nextLine());
-            scanner.close();
-            try {
-                JSONObject jsonObject = (JSONObject) new JSONTokener(stringBuilder.toString()).nextValue();
-                Configs.SkillTreeConfigs.aresBought = (boolean)jsonObject.get("ares");
-                Configs.SkillTreeConfigs.astrapeBought = (boolean)jsonObject.get("astrape");
-                Configs.SkillTreeConfigs.cerberusBought = (boolean)jsonObject.get("cerberus");
-                Configs.SkillTreeConfigs.acesoBought = (boolean)jsonObject.get("aceso");
-                Configs.SkillTreeConfigs.melampusBought = (boolean)jsonObject.get("melampus");
-                Configs.SkillTreeConfigs.chironBought = (boolean)jsonObject.get("chiron");
-                Configs.SkillTreeConfigs.athenaBought = (boolean)jsonObject.get("athena");
-                Configs.SkillTreeConfigs.proteusBought = (boolean)jsonObject.get("proteus");
-                Configs.SkillTreeConfigs.empusaBought = (boolean)jsonObject.get("empusa");
-                Configs.SkillTreeConfigs.dolusBought = (boolean)jsonObject.get("dolus");
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
-            }
-        } catch (FileNotFoundException e) {
+            JSONObject jsonObject = (JSONObject) new JSONTokener(stringBuilder.toString()).nextValue();
+            Configs.SkillTreeConfigs.aresBought = (boolean)jsonObject.get("ares");
+            Configs.SkillTreeConfigs.astrapeBought = (boolean)jsonObject.get("astrape");
+            Configs.SkillTreeConfigs.cerberusBought = (boolean)jsonObject.get("cerberus");
+            Configs.SkillTreeConfigs.acesoBought = (boolean)jsonObject.get("aceso");
+            Configs.SkillTreeConfigs.melampusBought = (boolean)jsonObject.get("melampus");
+            Configs.SkillTreeConfigs.chironBought = (boolean)jsonObject.get("chiron");
+            Configs.SkillTreeConfigs.athenaBought = (boolean)jsonObject.get("athena");
+            Configs.SkillTreeConfigs.proteusBought = (boolean)jsonObject.get("proteus");
+            Configs.SkillTreeConfigs.empusaBought = (boolean)jsonObject.get("empusa");
+            Configs.SkillTreeConfigs.dolusBought = (boolean)jsonObject.get("dolus");
+        } catch (JSONException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    public static void buySkillTreeRequest(SkillTreeAbilityType type) {
-        SkillTreeAbilityRequests.buyRequest(type);
-    }
-
-    public synchronized static void killEveryThing() {
-        ArrayList<ObjectModel> models;
-        synchronized (ModelData.getModels()) {
-            models = (ArrayList<ObjectModel>) ModelData.getModels().clone();
-        }
-        for (ObjectModel model : models) {
-            if (!(model instanceof EpsilonModel))
-                model.die();
         }
     }
 
 
     private void updateObjectViews(){
 
-    }
-
-    private static void setVariables(){
-        ViewData.setTime(GameState.getTime());
-        ViewData.setHp(GameState.getHp());
-        ViewData.setXp(GameState.getXp());
-        ViewData.setWave(GameState.getWave());
     }
 
 
@@ -458,10 +240,6 @@ public abstract class Controller {
         gameManager.getGameManager().start();
     }
 
-    private static void controllerStarter() {
-        /////todo
-    }
-
     private static void modelStarter() {
         ModelData.resetAll();
         ModelRequests.resetAll();
@@ -472,34 +250,4 @@ public abstract class Controller {
         ViewRequest.resetAll();
     }
 
-    public static void setUpManager(){
-        new GameManager();
-    }
-
-
-
-    public static boolean shootRequest(Vector clickedPoint){
-        if (ShootRequest.canShoot()){
-            new ShootRequest(ModelData.getEpsilon()).shoot(clickedPoint);
-            GameState.setTotalBullets(GameState.getTotalBullets() + 1);
-            return true;
-        }
-        return false;
-    }
-
-    public static void inGameAbilityRequest(InGameAbilityType type){
-        InGameAbilityRequests.abilityRequest(type);
-    }
-
-    public static void skillTreeAbilityRequest(SkillTreeAbilityType type) {
-        SkillTreeAbilityRequests.abilityRequest(type);
-    }
-
-    public static PortalModel getPortalModel() {
-        return portalModel;
-    }
-
-    public static void setPortalModel(PortalModel portalModel) {
-        Controller.portalModel = portalModel;
-    }
 }

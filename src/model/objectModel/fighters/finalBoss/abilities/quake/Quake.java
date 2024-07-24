@@ -2,7 +2,7 @@ package model.objectModel.fighters.finalBoss.abilities.quake;
 
 import constants.RefreshRateConstants;
 import constants.SizeConstants;
-import controller.Controller;
+import controller.ModelRequestController;
 import model.animations.DashAnimation;
 import model.logics.Impact;
 import model.objectModel.fighters.finalBoss.Boss;
@@ -32,7 +32,7 @@ public class Quake extends Ability {
         reorderTimer = new Timer(8000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controller.reorderKeys();
+                ModelRequestController.reorderKeys();
                 endAbility();
                 reorderTimer.stop();
             }
@@ -40,7 +40,7 @@ public class Quake extends Ability {
         randomizeTimer = new Timer(RefreshRateConstants.ABILITY_SETUP_DELAY, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controller.randomizeKeys();
+                ModelRequestController.randomizeKeys();
                 new Impact(
                         boss.getPunch().getPosition(),
                         SizeConstants.SCREEN_SIZE.height,

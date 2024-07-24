@@ -3,6 +3,7 @@ package model.animations;
 import constants.ImageConstants;
 import constants.SizeConstants;
 import controller.Controller;
+import controller.ObjectController;
 import controller.manager.GameState;
 import model.ModelRequests;
 import model.objectModel.fighters.finalBoss.Boss;
@@ -64,19 +65,19 @@ public class BossDeathAnimation extends Animation{
 
     private void killEveryOne() {
         if (!boss.getRightHand().isDead()) {
-            Controller.removeObject(boss.getRightHand());
-            Controller.removeFrame(boss.getLeftHand().getFrame());
+            ObjectController.removeObject(boss.getRightHand());
+            ObjectController.removeFrame(boss.getLeftHand().getFrame());
             Controller.addXP(100);
         }
         if (!boss.getLeftHand().isDead()) {
-            Controller.removeObject(boss.getLeftHand());
-            Controller.removeFrame(boss.getRightHand().getFrame());
+            ObjectController.removeObject(boss.getLeftHand());
+            ObjectController.removeFrame(boss.getRightHand().getFrame());
             Controller.addXP(100);
         }
-        Controller.removeObject(boss.getHead());
-        Controller.removeFrame(boss.getHead().getFrame());
-        Controller.removeObject(boss.getPunch());
-        Controller.removeFrame(boss.getPunch().getFrame());
+        ObjectController.removeObject(boss.getHead());
+        ObjectController.removeFrame(boss.getHead().getFrame());
+        ObjectController.removeObject(boss.getPunch());
+        ObjectController.removeFrame(boss.getPunch().getFrame());
         ModelRequests.removeAbstractEnemy(boss.getId());
         Controller.addXP(300);
     }

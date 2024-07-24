@@ -2,7 +2,7 @@ package model.logics.collision;
 
 
 import constants.DistanceConstants;
-import controller.Controller;
+import controller.ModelRequestController;
 import controller.manager.GameState;
 import model.ModelData;
 import model.inGameAbilities.Dismay.EpsilonProtectorModel;
@@ -142,7 +142,7 @@ public class CollisionHandler {
             ((CollisionDetector) object).detect();
         }
         if (object instanceof PortalModel) {
-            Controller.portalWindow();
+            ModelRequestController.portalWindow();
         }
     }
 

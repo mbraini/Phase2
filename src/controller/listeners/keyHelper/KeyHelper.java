@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import controller.listeners.EpsilonAiming;
 import controller.listeners.PanelKeyListener;
+import utils.Helper;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,16 +37,8 @@ public class KeyHelper {
         builder.setPrettyPrinting();
         Gson gson = builder.create();
 
-        Scanner scanner;
-        try {
-            scanner = new Scanner(new File("src/controller/configs/keyConfigs.json"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        StringBuilder text = new StringBuilder();
-        while (scanner.hasNextLine()) {
-            text.append(scanner.nextLine());
-        }
+        StringBuilder text = Helper.readFile("src/controller/configs/keyConfigs.json");
+
         KeyHelper keyHelper = gson.fromJson(text.toString(), KeyHelper.class);
         ArrayList<Character> characters = getCharacters(keyHelper);
         Collections.shuffle(characters);
@@ -84,16 +77,8 @@ public class KeyHelper {
     public static void reorder() {
         Gson gson = new Gson();
 
-        Scanner scanner;
-        try {
-            scanner = new Scanner(new File("src/controller/configs/keyConfigs.json"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        StringBuilder text = new StringBuilder();
-        while (scanner.hasNextLine()) {
-            text.append(scanner.nextLine());
-        }
+        StringBuilder text = Helper.readFile("src/controller/configs/keyConfigs.json");
+
         KeyHelper keyHelper = gson.fromJson(text.toString() , KeyHelper.class);
         PanelKeyListener.SHOP_KEY = keyHelper.SHOP_KEY;
         PanelKeyListener.ARES_KEY = keyHelper.ARES_KEY;

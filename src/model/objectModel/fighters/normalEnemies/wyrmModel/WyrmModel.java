@@ -2,7 +2,7 @@ package model.objectModel.fighters.normalEnemies.wyrmModel;
 
 import constants.RefreshRateConstants;
 import constants.SizeConstants;
-import controller.Controller;
+import controller.ObjectController;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
@@ -57,7 +57,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
     @Override
     public void die() {
         super.die();
-        Controller.removeFrame(frameModel);
+        ObjectController.removeFrame(frameModel);
         if (wyrmThread != null)
             wyrmThread.interrupt();
         Spawner.addCollectives(position ,2 ,8);

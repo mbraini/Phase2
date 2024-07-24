@@ -1,7 +1,7 @@
 package model.inGameAbilities.Dismay;
 
 import constants.SizeConstants;
-import controller.Controller;
+import controller.ObjectController;
 import controller.enums.ModelType;
 import model.interfaces.Ability;
 import model.interfaces.IsCircle;
@@ -25,7 +25,7 @@ public class EpsilonProtectorModel extends ObjectModel implements IsCircle , Abi
 
     @Override
     public void die() {
-        Controller.removeObject(this);
+        ObjectController.removeObject(this);
     }
 
 

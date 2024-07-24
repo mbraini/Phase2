@@ -1,6 +1,6 @@
 package model.objectModel.frameModel;
 
-import controller.Controller;
+import controller.ObjectController;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
 import model.objectModel.ObjectModel;
@@ -50,7 +50,7 @@ public class FrameModel extends ObjectModel implements IsPolygon , HasVertices {
 
     @Override
     public void die() {
-        Controller.removeFrame(this);
+        ObjectController.removeFrame(this);
     }
 
     public Dimension getSize() {

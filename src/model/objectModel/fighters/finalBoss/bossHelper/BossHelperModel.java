@@ -1,7 +1,7 @@
 package model.objectModel.fighters.finalBoss.bossHelper;
 
 import constants.RefreshRateConstants;
-import controller.Controller;
+import controller.ObjectController;
 import controller.interfaces.SizeChanger;
 import controller.manager.loading.SkippedByJson;
 import model.interfaces.FrameSticker;
@@ -112,8 +112,8 @@ public abstract class BossHelperModel extends EnemyModel implements ImageChanger
 
     @Override
     public void die() {
-        Controller.removeObject(this);
-        Controller.removeFrame(frame);
+        ObjectController.removeObject(this);
+        ObjectController.removeFrame(frame);
         setDead(true);
     }
 

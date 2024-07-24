@@ -1,7 +1,7 @@
 package model.objectModel.effects;
 
 import constants.SizeConstants;
-import controller.Controller;
+import controller.ObjectController;
 import controller.manager.loading.SkippedByJson;
 import model.interfaces.HasVertices;
 import model.interfaces.IsPolygon;
@@ -77,7 +77,7 @@ public class BlackOrbAoeEffectModel extends AoeEffectModel implements IsPolygon 
     public void die() {
         synchronized (blackOrbModel.getEffectModels()) {
             blackOrbModel.getEffectModels().remove(this);
-            Controller.removeEffect(this);
+            ObjectController.removeEffect(this);
         }
     }
 

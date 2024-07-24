@@ -1,7 +1,7 @@
 package model.objectModel.projectiles;
 
 import constants.RefreshRateConstants;
-import controller.Controller;
+import controller.ObjectController;
 import model.interfaces.MoveAble;
 import utils.Math;
 
@@ -18,7 +18,7 @@ public abstract class BulletModel extends ProjectileModel implements MoveAble {
 
     @Override
     public void die() {
-        Controller.removeObject(this);
+        ObjectController.removeObject(this);
     }
 
 }

@@ -1,7 +1,7 @@
 package controller.manager;
 
 import constants.SizeConstants;
-import controller.Controller;
+import controller.ModelRequestController;
 import controller.enums.ModelType;
 import constants.ControllerConstants;
 import model.ModelRequests;
@@ -214,7 +214,7 @@ public abstract class Spawner {
     }
 
     public static void spawnBoss(){
-        Controller.killEveryThing();
+        ModelRequestController.killEveryThing();
         Timer timer = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -319,6 +319,6 @@ public abstract class Spawner {
                 portalModel.getPosition().clone(),
                 id
         ));
-        Controller.setPortalModel(portalModel);
+        ModelRequestController.setPortalModel(portalModel);
     }
 }

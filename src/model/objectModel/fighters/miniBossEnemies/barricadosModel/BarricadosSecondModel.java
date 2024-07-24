@@ -1,7 +1,7 @@
 package model.objectModel.fighters.miniBossEnemies.barricadosModel;
 
 import constants.SizeConstants;
-import controller.Controller;
+import controller.ObjectController;
 import controller.enums.ModelType;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.frameModel.FrameModelBuilder;
@@ -44,7 +44,7 @@ public class BarricadosSecondModel extends BarricadosModel{
     @Override
     public void die() {
         super.die();
-        Controller.removeFrame(frameModel);
+        ObjectController.removeFrame(frameModel);
     }
 
     public FrameModel getFrameModel() {

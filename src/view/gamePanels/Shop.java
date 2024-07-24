@@ -4,6 +4,7 @@ package view.gamePanels;
 import constants.ImageConstants;
 import constants.SizeConstants;
 import controller.Controller;
+import controller.ViewRequestController;
 import controller.configs.Configs;
 import controller.enums.InGameAbilityType;
 import controller.manager.GameState;
@@ -59,7 +60,7 @@ public class Shop extends PIG {
         slaughter.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.inGameAbilityRequest(InGameAbilityType.slaughter);
+                ViewRequestController.inGameAbilityRequest(InGameAbilityType.slaughter);
                 updateXP();
             }
         });
@@ -69,7 +70,7 @@ public class Shop extends PIG {
         slumber.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.inGameAbilityRequest(InGameAbilityType.slumber);
+                ViewRequestController.inGameAbilityRequest(InGameAbilityType.slumber);
                 updateXP();
             }
         });
@@ -79,7 +80,7 @@ public class Shop extends PIG {
         dismay.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.inGameAbilityRequest(InGameAbilityType.dismay);
+                ViewRequestController.inGameAbilityRequest(InGameAbilityType.dismay);
                 updateXP();
             }
         });
@@ -206,7 +207,7 @@ public class Shop extends PIG {
         heal.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.inGameAbilityRequest(InGameAbilityType.heal);
+                ViewRequestController.inGameAbilityRequest(InGameAbilityType.heal);
                 updateXP();
             }
         });
@@ -216,7 +217,7 @@ public class Shop extends PIG {
         empower.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.inGameAbilityRequest(InGameAbilityType.empower);
+                ViewRequestController.inGameAbilityRequest(InGameAbilityType.empower);
                 updateXP();
             }
         });
@@ -226,7 +227,7 @@ public class Shop extends PIG {
         banish.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.inGameAbilityRequest(InGameAbilityType.banish);
+                ViewRequestController.inGameAbilityRequest(InGameAbilityType.banish);
                 updateXP();
             }
         });

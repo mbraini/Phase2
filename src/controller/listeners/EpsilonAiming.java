@@ -3,7 +3,7 @@ package controller.listeners;
 
 import constants.SizeConstants;
 import constants.SoundPathConstants;
-import controller.Controller;
+import controller.ViewRequestController;
 import controller.manager.GameState;
 import model.ModelData;
 import model.objectModel.fighters.EpsilonModel;
@@ -41,7 +41,7 @@ public class EpsilonAiming extends MouseAdapter {
         );
         if (clickedPoint.Equals(epsilon.getPosition()))
             return;
-        if (!Controller.shootRequest(clickedPoint))
+        if (!ViewRequestController.shootRequest(clickedPoint))
             return;
 
         try {
