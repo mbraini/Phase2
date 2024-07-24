@@ -8,9 +8,9 @@ import controller.manager.loading.SkippedByJson;
 import controller.manager.GameState;
 import model.ModelData;
 import model.interfaces.Ability;
-import model.interfaces.HasVertices;
-import model.interfaces.IsPolygon;
-import model.interfaces.MoveAble;
+import model.interfaces.collisionInterfaces.HasVertices;
+import model.interfaces.collisionInterfaces.IsPolygon;
+import model.interfaces.movementIntefaces.MoveAble;
 import model.objectModel.fighters.normalEnemies.NormalEnemyModel;
 import utils.Math;
 import utils.Vector;
@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class NecropickModel extends NormalEnemyModel implements MoveAble ,Ability , IsPolygon ,HasVertices {
+public class NecropickModel extends NormalEnemyModel implements MoveAble ,Ability {
     @SkippedByJson
     private Timer hoveringTimer;
     @SkippedByJson
@@ -140,7 +140,7 @@ public class NecropickModel extends NormalEnemyModel implements MoveAble ,Abilit
         return vertices;
     }
 
-    void initVertices(){
+    public void initVertices(){
         vertices = new ArrayList<>();
         vertices.add(
                 Math.VectorAdd(

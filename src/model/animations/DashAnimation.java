@@ -2,7 +2,7 @@ package model.animations;
 
 
 import controller.manager.GameState;
-import model.interfaces.ImpactAble;
+import model.interfaces.movementIntefaces.ImpactAble;
 import model.objectModel.ObjectModel;
 import utils.Math;
 import utils.Vector;

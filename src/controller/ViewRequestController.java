@@ -10,7 +10,7 @@ import model.ModelData;
 import model.inGameAbilities.InGameAbility;
 import model.inGameAbilities.Slaughter;
 import model.inGameAbilities.Slumber;
-import model.interfaces.ImageChanger;
+import controller.interfaces.ImageChanger;
 import model.objectModel.ObjectModel;
 import model.objectModel.effects.EffectModel;
 import model.objectModel.frameModel.FrameModel;

@@ -6,7 +6,7 @@ import constants.TimeConstants;
 import controller.enums.ModelType;
 import controller.manager.Spawner;
 import controller.manager.GameState;
-import model.interfaces.HasVertices;
+import model.interfaces.collisionInterfaces.HasVertices;
 import model.objectModel.fighters.EpsilonModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HandModel;
 import model.objectModel.fighters.finalBoss.bossHelper.HeadModel;

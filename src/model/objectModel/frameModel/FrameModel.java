@@ -1,8 +1,8 @@
 package model.objectModel.frameModel;
 
 import controller.ObjectController;
-import model.interfaces.HasVertices;
-import model.interfaces.IsPolygon;
+import model.interfaces.collisionInterfaces.HasVertices;
+import model.interfaces.collisionInterfaces.IsPolygon;
 import model.objectModel.ObjectModel;
 import utils.Math;
 import utils.Vector;

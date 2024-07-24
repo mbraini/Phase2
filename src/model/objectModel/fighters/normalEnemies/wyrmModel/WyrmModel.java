@@ -8,6 +8,11 @@ import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
 import model.ModelData;
 import model.interfaces.*;
+import model.interfaces.collisionInterfaces.CollisionDetector;
+import model.interfaces.collisionInterfaces.HasVertices;
+import model.interfaces.collisionInterfaces.IsPolygon;
+import model.interfaces.movementIntefaces.MoveAble;
+import model.interfaces.movementIntefaces.Navigator;
 import model.objectModel.frameModel.FrameModel;
 import model.objectModel.frameModel.FrameModelBuilder;
 import model.objectModel.fighters.normalEnemies.NormalEnemyModel;
@@ -16,7 +21,7 @@ import utils.Vector;
 
 import java.util.ArrayList;
 
-public class WyrmModel extends NormalEnemyModel implements Navigator , FrameSticker , MoveAble ,IsPolygon ,HasVertices ,CollisionDetector {
+public class WyrmModel extends NormalEnemyModel implements Navigator, FrameSticker , MoveAble, CollisionDetector {
 
     private FrameModel frameModel;
     private boolean isInRange;
@@ -134,7 +139,7 @@ public class WyrmModel extends NormalEnemyModel implements Navigator , FrameStic
         setTheta(java.lang.Math.acos(cosTheta));
     }
 
-    void initVertices(){
+    public void initVertices(){
         vertices = new ArrayList<>();
         vertices.add(
                 Math.VectorAdd(

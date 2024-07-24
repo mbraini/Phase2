@@ -2,7 +2,7 @@ package model.objectModel.projectiles;
 
 import constants.RefreshRateConstants;
 import controller.ObjectController;
-import model.interfaces.MoveAble;
+import model.interfaces.movementIntefaces.MoveAble;
 import utils.Math;
 
 public abstract class BulletModel extends ProjectileModel implements MoveAble {

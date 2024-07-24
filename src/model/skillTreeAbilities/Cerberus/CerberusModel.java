@@ -5,7 +5,7 @@ import constants.TimeConstants;
 import controller.enums.ModelType;
 import controller.manager.loading.SkippedByJson;
 import controller.manager.GameState;
-import model.interfaces.IsCircle;
+import model.interfaces.collisionInterfaces.IsCircle;
 import model.objectModel.FighterModel;
 import model.objectModel.fighters.EnemyModel;
 import utils.Vector;

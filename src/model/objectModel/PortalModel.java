@@ -6,7 +6,7 @@ import controller.ObjectController;
 import controller.enums.ModelType;
 import model.interfaces.Ability;
 import model.interfaces.Fader;
-import model.interfaces.IsCircle;
+import model.interfaces.collisionInterfaces.IsCircle;
 import model.objectModel.frameModel.FrameModel;
 import utils.Vector;
 

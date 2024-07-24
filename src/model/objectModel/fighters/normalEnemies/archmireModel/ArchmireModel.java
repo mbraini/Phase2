@@ -10,9 +10,9 @@ import controller.manager.loading.GameLoaderHelper;
 import controller.manager.loading.SkippedByJson;
 import model.ModelData;
 import model.interfaces.Ability;
-import model.interfaces.HasVertices;
-import model.interfaces.IsPolygon;
-import model.interfaces.MoveAble;
+import model.interfaces.collisionInterfaces.HasVertices;
+import model.interfaces.collisionInterfaces.IsPolygon;
+import model.interfaces.movementIntefaces.MoveAble;
 import model.objectModel.effects.ArchmireAoeEffectModel;
 import model.objectModel.fighters.normalEnemies.NormalEnemyModel;
 import utils.Math;
@@ -20,7 +20,7 @@ import utils.Vector;
 
 import java.util.ArrayList;
 
-public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPolygon , Ability ,HasVertices {
+public class ArchmireModel extends NormalEnemyModel implements MoveAble , Ability {
     @SkippedByJson
     private ArchmireThread thread;
     private ArrayList<Vector> vertices = new ArrayList<>();
@@ -40,7 +40,7 @@ public class ArchmireModel extends NormalEnemyModel implements MoveAble , IsPoly
         start();
     }
 
-    private void initVertices() {
+    public void initVertices() {
         vertices = new ArrayList<>();
         vertices.add(
                 Math.VectorAdd(

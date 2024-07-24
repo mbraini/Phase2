@@ -4,7 +4,7 @@ import constants.SizeConstants;
 import controller.ObjectController;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
-import model.interfaces.IsCircle;
+import model.interfaces.collisionInterfaces.IsCircle;
 import model.objectModel.fighters.miniBossEnemies.MiniBossModel;
 import model.objectModel.frameModel.FrameModel;
 import utils.Vector;

@@ -1,4 +1,4 @@
-package model.interfaces;
+package model.interfaces.movementIntefaces;
 
 import model.objectModel.frameModel.FrameLocations;
 

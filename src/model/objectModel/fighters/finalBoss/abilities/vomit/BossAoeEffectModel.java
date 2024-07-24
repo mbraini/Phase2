@@ -5,7 +5,7 @@ import constants.SizeConstants;
 import controller.ObjectController;
 import controller.manager.loading.SkippedByJson;
 import model.interfaces.Fader;
-import model.interfaces.IsCircle;
+import model.interfaces.collisionInterfaces.IsCircle;
 import model.logics.Impact;
 import model.objectModel.effects.AoeEffectModel;
 import utils.Vector;

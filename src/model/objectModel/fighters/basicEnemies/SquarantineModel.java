@@ -9,15 +9,15 @@ import controller.manager.Spawner;
 import model.ModelData;
 import model.animations.DashAnimation;
 import model.interfaces.Ability;
-import model.interfaces.HasVertices;
-import model.interfaces.ImpactAble;
-import model.interfaces.IsPolygon;
+import model.interfaces.collisionInterfaces.HasVertices;
+import model.interfaces.movementIntefaces.ImpactAble;
+import model.interfaces.collisionInterfaces.IsPolygon;
 import utils.Math;
 import utils.Vector;
 
 import java.util.ArrayList;
 
-public class SquarantineModel extends BasicEnemyModel implements HasVertices, IsPolygon, Ability , ImpactAble {
+public class SquarantineModel extends BasicEnemyModel implements Ability , ImpactAble {
     private ArrayList<Vector> vertices;
     boolean isImpacted = false;
     public SquarantineModel(Vector position , String id){
@@ -35,7 +35,7 @@ public class SquarantineModel extends BasicEnemyModel implements HasVertices, Is
         initVertices();
     }
 
-    void initVertices(){
+    public void initVertices(){
         vertices = new ArrayList<>();
         vertices.add(new Vector(
                 position.x + (SizeConstants.Squarantine_DIMENTION.width / 2d) ,

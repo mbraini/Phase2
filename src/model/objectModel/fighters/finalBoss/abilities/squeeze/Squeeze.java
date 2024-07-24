@@ -3,7 +3,7 @@ package model.objectModel.fighters.finalBoss.abilities.squeeze;
 import constants.RefreshRateConstants;
 import constants.SizeConstants;
 import model.animations.DashAnimation;
-import model.interfaces.Navigator;
+import model.interfaces.movementIntefaces.Navigator;
 import model.objectModel.fighters.finalBoss.Boss;
 import model.objectModel.fighters.finalBoss.abilities.Ability;
 import model.objectModel.frameModel.FrameModel;

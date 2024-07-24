@@ -10,8 +10,11 @@ import controller.enums.ModelType;
 import controller.interfaces.SizeChanger;
 import controller.manager.Spawner;
 import constants.ControllerConstants;
+import model.interfaces.collisionInterfaces.HasVertices;
+import model.interfaces.collisionInterfaces.IsCircle;
+import model.interfaces.movementIntefaces.ImpactAble;
+import model.interfaces.movementIntefaces.MoveAble;
 import model.logics.collision.Collision;
-import model.interfaces.*;
 import model.objectModel.FighterModel;
 import utils.Helper;
 import utils.Math;
@@ -20,7 +23,7 @@ import utils.Vector;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, HasVertices , ImpactAble , SizeChanger {
+public class EpsilonModel extends FighterModel implements MoveAble, IsCircle, HasVertices, ImpactAble, SizeChanger {
     private ArrayList<EpsilonVertexModel> vertices = new ArrayList<>();
     private Dimension size;
     private boolean isImpacted = false;

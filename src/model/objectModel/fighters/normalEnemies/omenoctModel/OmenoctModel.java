@@ -5,6 +5,10 @@ import controller.enums.ModelType;
 import controller.manager.Spawner;
 import controller.manager.loading.SkippedByJson;
 import model.interfaces.*;
+import model.interfaces.collisionInterfaces.HasVertices;
+import model.interfaces.collisionInterfaces.IsPolygon;
+import model.interfaces.movementIntefaces.FrameAttacher;
+import model.interfaces.movementIntefaces.MoveAble;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.fighters.normalEnemies.NormalEnemyModel;
 import utils.Math;
@@ -13,7 +17,7 @@ import utils.Vector;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble, FrameAttacher ,IsPolygon ,HasVertices {
+public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble, FrameAttacher {
 
     /////////////////////// Fix the Ability interface with Navigator interface
 
@@ -47,7 +51,7 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         initVertices();
     }
 
-    private void initVertices() {
+    public void initVertices() {
         vertices = new ArrayList<>();
         Vector initVector = new Vector(
                 java.lang.Math.cos(java.lang.Math.PI / 8),
@@ -126,10 +130,6 @@ public class OmenoctModel extends NormalEnemyModel implements Ability , MoveAble
         return true;
     }
 
-//    @Override
-//    public ArrayList<Vector> getVertices() {
-//        return vertices;
-//    }
 
     @Override
     public FrameLocations getAttachedLocation() {

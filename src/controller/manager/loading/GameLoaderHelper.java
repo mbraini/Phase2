@@ -14,7 +14,7 @@ import model.ModelData;
 import model.ModelRequests;
 import model.inGameAbilities.*;
 import model.inGameAbilities.Dismay.Dismay;
-import model.interfaces.ImpactAble;
+import model.interfaces.movementIntefaces.ImpactAble;
 import model.objectModel.ObjectModel;
 import model.objectModel.effects.BlackOrbAoeEffectModel;
 import model.objectModel.effects.EffectModel;

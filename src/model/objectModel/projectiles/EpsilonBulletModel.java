@@ -4,7 +4,7 @@ package model.objectModel.projectiles;
 import constants.SizeConstants;
 import constants.VelocityConstants;
 import model.ModelData;
-import model.interfaces.IsCircle;
+import model.interfaces.collisionInterfaces.IsCircle;
 import utils.Math;
 import utils.Vector;
 

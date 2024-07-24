@@ -7,15 +7,15 @@ import controller.enums.ModelType;
 import controller.manager.Spawner;
 import model.ModelData;
 import model.interfaces.Ability;
-import model.interfaces.HasVertices;
-import model.interfaces.ImpactAble;
-import model.interfaces.IsPolygon;
+import model.interfaces.collisionInterfaces.HasVertices;
+import model.interfaces.movementIntefaces.ImpactAble;
+import model.interfaces.collisionInterfaces.IsPolygon;
 import utils.Math;
 import utils.Vector;
 
 import java.util.ArrayList;
 
-public class TrigorathModel extends BasicEnemyModel implements HasVertices, IsPolygon, Ability, ImpactAble {
+public class TrigorathModel extends BasicEnemyModel implements Ability, ImpactAble {
     private ArrayList<Vector> vertices;
     private boolean isImpacted = false;
     public TrigorathModel(Vector position ,String id){
@@ -33,7 +33,7 @@ public class TrigorathModel extends BasicEnemyModel implements HasVertices, IsPo
         initVertices();
     }
 
-    void initVertices(){
+    public void initVertices(){
         vertices = new ArrayList<>();
         vertices.add(new Vector(
                 position.x ,

@@ -3,7 +3,7 @@ package model.objectModel.projectiles;
 import constants.DamageConstants;
 import constants.SizeConstants;
 import constants.VelocityConstants;
-import model.interfaces.IsCircle;
+import model.interfaces.collisionInterfaces.IsCircle;
 import utils.Math;
 import utils.Vector;
 

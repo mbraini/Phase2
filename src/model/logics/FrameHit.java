@@ -3,7 +3,7 @@ package model.logics;
 import constants.DistanceConstants;
 import constants.TimeConstants;
 import model.animations.FrameAnimation;
-import model.interfaces.FrameAttacher;
+import model.interfaces.movementIntefaces.FrameAttacher;
 import model.objectModel.ObjectModel;
 import model.objectModel.frameModel.FrameLocations;
 import model.objectModel.frameModel.FrameModel;

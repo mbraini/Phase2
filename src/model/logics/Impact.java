@@ -5,7 +5,7 @@ import constants.SoundPathConstants;
 import constants.TimeConstants;
 import model.ModelData;
 import model.animations.DashAnimation;
-import model.interfaces.ImpactAble;
+import model.interfaces.movementIntefaces.ImpactAble;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Math;
 import utils.Vector;

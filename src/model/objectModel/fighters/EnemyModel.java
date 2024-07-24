@@ -4,8 +4,8 @@ package model.objectModel.fighters;
 import controller.ObjectController;
 import controller.manager.GameState;
 import model.logics.collision.Collision;
-import model.interfaces.IsCircle;
-import model.interfaces.IsPolygon;
+import model.interfaces.collisionInterfaces.IsCircle;
+import model.interfaces.collisionInterfaces.IsPolygon;
 import model.objectModel.FighterModel;
 import utils.Vector;
 

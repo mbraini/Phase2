@@ -35,8 +35,6 @@ public class PortalPanel extends PIG {
         initPayLabels();
         initDeclineLabels();
         portalFrame.add(this);
-        this.setFocusable(true);
-        this.grabFocus();
         initChoose();
         this.setVisible(true);
         portalFrame.setVisible(true);

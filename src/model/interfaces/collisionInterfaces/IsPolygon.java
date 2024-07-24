@@ -1,4 +1,4 @@
-package model.interfaces;
+package model.interfaces.collisionInterfaces;
 
 import utils.Vector;
 

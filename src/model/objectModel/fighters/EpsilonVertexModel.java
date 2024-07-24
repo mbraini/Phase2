@@ -3,7 +3,7 @@ package model.objectModel.fighters;
 
 import constants.SizeConstants;
 import controller.enums.ModelType;
-import model.interfaces.IsCircle;
+import model.interfaces.collisionInterfaces.IsCircle;
 import model.objectModel.ObjectModel;
 import utils.Math;
 import utils.Vector;

@@ -6,10 +6,13 @@ import controller.ObjectController;
 import controller.manager.GameState;
 import model.ModelData;
 import model.interfaces.*;
+import model.interfaces.collisionInterfaces.CollisionDetector;
+import model.interfaces.collisionInterfaces.IsCircle;
+import model.interfaces.movementIntefaces.MoveAble;
 import utils.Math;
 import utils.Vector;
 
-public class CollectiveModel extends ObjectModel implements IsCircle, Ability, MoveAble , CollisionDetector , Fader {
+public class CollectiveModel extends ObjectModel implements IsCircle, Ability, MoveAble, CollisionDetector, Fader {
     int value;
     double time;
     boolean hasAbility = false;

@@ -6,10 +6,13 @@ import constants.SizeConstants;
 import controller.manager.GameState;
 import model.ModelData;
 import model.ModelRequests;
+import model.interfaces.movementIntefaces.MoveAble;
+import model.interfaces.movementIntefaces.Navigator;
 import model.logics.collision.Collision;
 import model.interfaces.*;
 import model.objectModel.ObjectModel;
 import model.objectModel.fighters.EnemyModel;
+import model.objectModel.projectiles.EnemyBulletModel;
 import utils.Vector;
 
 import java.util.ArrayList;
@@ -79,7 +82,7 @@ public class GameLoop extends Thread {
                 }
             }
             if (model instanceof MoveAble) {
-                if (model instanceof EnemyModel && GameState.isDizzy())
+                if ((model instanceof EnemyModel || model instanceof EnemyBulletModel) && GameState.isDizzy())
                     continue;
                 ((MoveAble) model).move();
             }

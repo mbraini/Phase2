@@ -2,8 +2,8 @@ package model.logics.collision;
 
 
 import constants.SizeConstants;
-import model.interfaces.IsCircle;
-import model.interfaces.IsPolygon;
+import model.interfaces.collisionInterfaces.IsCircle;
+import model.interfaces.collisionInterfaces.IsPolygon;
 import model.objectModel.*;
 import model.objectModel.frameModel.FrameModel;
 import utils.Helper;

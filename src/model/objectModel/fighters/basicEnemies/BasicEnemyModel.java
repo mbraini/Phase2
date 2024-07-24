@@ -2,12 +2,13 @@ package model.objectModel.fighters.basicEnemies;
 
 import constants.RefreshRateConstants;
 import controller.manager.GameState;
-import model.interfaces.HasVertices;
-import model.interfaces.MoveAble;
+import model.interfaces.collisionInterfaces.HasVertices;
+import model.interfaces.collisionInterfaces.IsPolygon;
+import model.interfaces.movementIntefaces.MoveAble;
 import model.objectModel.fighters.EnemyModel;
 import utils.Math;
 
-public abstract class BasicEnemyModel extends EnemyModel implements MoveAble {
+public abstract class BasicEnemyModel extends EnemyModel implements MoveAble ,HasVertices, IsPolygon {
     @Override
     public void move() {
         if (GameState.isDizzy())
@@ -22,9 +23,10 @@ public abstract class BasicEnemyModel extends EnemyModel implements MoveAble {
         omega += alpha * RefreshRateConstants.UPS;
         double thetaMoved = ((2 * omega - alpha * RefreshRateConstants.UPS) / 2) * RefreshRateConstants.UPS;
         theta = theta + thetaMoved;
-        if (this instanceof HasVertices)
-            ((HasVertices) this).UpdateVertices(xMoved ,yMoved ,thetaMoved);
+        UpdateVertices(xMoved ,yMoved ,thetaMoved);
     }
+
+    public abstract void initVertices();
 
 
 }

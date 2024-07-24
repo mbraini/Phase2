@@ -54,6 +54,7 @@ public class GameState {
         isPause = false;
         isOver = false;
         isDizzy = false;
+        isInAnimation = false;
     }
 
 

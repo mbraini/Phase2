@@ -1,6 +1,6 @@
 package model.objectModel.fighters.finalBoss.bossAI;
 
-import model.interfaces.IsPolygon;
+import model.interfaces.collisionInterfaces.IsPolygon;
 import model.objectModel.ObjectModel;
 import utils.Vector;
 

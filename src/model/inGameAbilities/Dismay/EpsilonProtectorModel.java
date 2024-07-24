@@ -4,7 +4,7 @@ import constants.SizeConstants;
 import controller.ObjectController;
 import controller.enums.ModelType;
 import model.interfaces.Ability;
-import model.interfaces.IsCircle;
+import model.interfaces.collisionInterfaces.IsCircle;
 import model.objectModel.ObjectModel;
 import model.objectModel.fighters.EpsilonModel;
 import utils.Vector;
